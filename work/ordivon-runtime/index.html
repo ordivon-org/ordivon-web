@@ -39,7 +39,7 @@
         <p class="eyebrow">Agent infrastructure · Trusted-local Runtime · Adoption</p>
         <h1>Preserve the execution facts an agent cannot reconstruct.</h1>
         <p class="lede">Ordivon Runtime sits between an MCP client and the local host. The agent continues to reason, choose tools, and write implementation; Ordivon owns the narrow execution identity, process tree, bounded output, cancellation intent, result, and Artifact state required after interruption.</p>
-        <div class="actions"><a class="button button-primary" href="../../notes/ordivon-runtime-release/">Read the release record</a><a class="button button-secondary" href="https://github.com/zycxfyh/Ordivon">Inspect the repository</a></div>
+        <div class="actions"><a class="button button-primary" href="../../notes/ordivon-runtime-release/">Read the release record</a><a class="button button-secondary" href="https://github.com/zycxfyh/ordivon-runtime">Inspect the repository</a></div>
       </header>
 
       <section class="project-facts" aria-label="Current project facts">
@@ -79,10 +79,10 @@
       <section class="section section-simple" aria-labelledby="state-title">
         <div class="section-heading"><p class="section-index">Current state</p><h2 id="state-title">Current facts, historical evidence, and boundaries are kept separate.</h2></div>
         <div class="evidence-table" role="table" aria-label="Ordivon Runtime evidence and boundaries">
-          <div role="row"><strong role="cell">Current fact</strong><span role="cell">One Rust MCP origin exposes ten tools and one transactional global execution limit.</span><a role="cell" href="https://github.com/zycxfyh/Ordivon/blob/main/docs/current-state.md">Current state ↗</a></div>
-          <div role="row"><strong role="cell">Current fact</strong><span role="cell">Git owns code identity; SQLite owns execution identity; systemd/cgroups own live process trees; bounded files own result bytes.</span><a role="cell" href="https://github.com/zycxfyh/Ordivon/blob/main/docs/architecture/runtime.md">Architecture ↗</a></div>
+          <div role="row"><strong role="cell">Current fact</strong><span role="cell">One Rust MCP origin exposes ten tools and one transactional global execution limit.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/current-state.md">Current state ↗</a></div>
+          <div role="row"><strong role="cell">Current fact</strong><span role="cell">Git owns code identity; SQLite owns execution identity; systemd/cgroups own live process trees; bounded files own result bytes.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/architecture/runtime.md">Architecture ↗</a></div>
           <div role="row"><strong role="cell">Historical evidence</strong><span role="cell">The 23 July 2026 release record summarizes the M0–M7 simplification and observed ten-tool acceptance.</span><a role="cell" href="../../notes/ordivon-runtime-release/">Release record →</a></div>
-          <div role="row"><strong role="cell">Boundary</strong><span role="cell">Workspace isolation protects Git state; it is not a host security sandbox. Trusted-local tasks inherit the service user's accessible authority.</span><a role="cell" href="https://github.com/zycxfyh/Ordivon/blob/main/docs/operations/runbook.md">Runbook ↗</a></div>
+          <div role="row"><strong role="cell">Boundary</strong><span role="cell">Workspace isolation protects Git state; it is not a host security sandbox. Trusted-local tasks inherit the service user's accessible authority.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/operations/runbook.md">Runbook ↗</a></div>
         </div>
       </section>
 
@@ -103,7 +103,7 @@
 
       <section class="project-links" aria-labelledby="links-title">
         <div><p class="section-index">Evidence and outputs</p><h2 id="links-title">Follow current truth to its owner.</h2><p>The site explains the inquiry. The repository, current-state document, architecture, tests, and runbook own current technical claims.</p></div>
-        <div class="link-stack"><a href="https://github.com/zycxfyh/Ordivon">Repository <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/Ordivon/blob/main/docs/current-state.md">Current state <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/Ordivon/blob/main/docs/architecture/runtime.md">Runtime architecture <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/Ordivon/tree/main/crates/ordivon-exec/tests">Transactional tests <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/Ordivon/blob/main/scripts/mcp_e2e.py">MCP E2E script <span aria-hidden="true">↗</span></a><a href="../../notes/ordivon-runtime-release/">Release record <span aria-hidden="true">→</span></a></div>
+        <div class="link-stack"><a href="https://github.com/zycxfyh/ordivon-runtime">Repository <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/current-state.md">Current state <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/architecture/runtime.md">Runtime architecture <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-runtime/tree/main/crates/ordivon-exec/tests">Transactional tests <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-runtime/blob/main/scripts/mcp_e2e.py">MCP E2E script <span aria-hidden="true">↗</span></a><a href="../../notes/ordivon-runtime-release/">Release record <span aria-hidden="true">→</span></a></div>
       </section>
     </main>
 

@@ -5,6 +5,7 @@ import fs from "node:fs/promises";
 const routes = [
   "/",
   "/work/",
+  "/work/computing/",
   "/work/ordivon-runtime/",
   "/work/finharness/",
   "/work/ordivon-web/",
@@ -19,6 +20,7 @@ const routes = [
 const screenshotRoutes = new Set([
   "/",
   "/work/",
+  "/work/computing/",
   "/work/ordivon-runtime/",
   "/notes/",
   "/about/",

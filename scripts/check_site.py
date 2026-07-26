@@ -18,6 +18,7 @@ REQUIRED_FILES = (
     "index.html",
     "404.html",
     "work/index.html",
+    "work/computing/index.html",
     "work/ordivon-runtime/index.html",
     "work/finharness/index.html",
     "work/ordivon-web/index.html",
