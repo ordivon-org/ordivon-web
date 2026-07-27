@@ -24,9 +24,11 @@ canonical repositories.
 ```text
 /                                      research and project publishing entrypoint
 /work/                                 maintained engineering project directory
-/work/ordivon-runtime/                 durable agent execution and recovery runtime
-/work/finharness/                      personal capital review and decision system
+/work/ordivon-runtime/                 committed Agent effects, execution, and recovery
+/work/ordivon-finance/                 current personal-finance project page
+/work/finharness/                      historical route to Ordivon Finance
 /work/ordivon-web/                     public publishing and deployment surface
+/work/computing/                       computing-stack research and conformance root
 /notes/                                chronological authored notes and release records
 /feed.xml                              Atom feed for published notes
 /notes/ordivon-runtime-release/        Ordivon Runtime M0–M7 core release note
