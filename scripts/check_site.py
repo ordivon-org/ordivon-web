@@ -27,6 +27,9 @@ REQUIRED_FILES = (
     "work/finharness/index.html",
     "work/ordivon-web/index.html",
     "notes/index.html",
+    "notes/runtime-after-core/index.html",
+    "notes/host-task-continuity/index.html",
+    "notes/link-edge-boundary/index.html",
     "notes/why-ordivon/index.html",
     "now/index.html",
     "about/index.html",
@@ -407,6 +410,9 @@ def check_distribution_metadata() -> None:
         fail("index.html: WebSite and Person JSON-LD are required")
 
     for relative in (
+        "notes/runtime-after-core/index.html",
+        "notes/host-task-continuity/index.html",
+        "notes/link-edge-boundary/index.html",
         "notes/ordivon-runtime-release/index.html",
         "notes/why-ordivon/index.html",
     ):
@@ -489,9 +495,12 @@ def check_atom_feed() -> None:
     if self_links != [f"{BASE_URL}/feed.xml"]:
         fail("feed.xml: canonical self link is required")
     entries = root.findall("atom:entry", namespace)
-    if len(entries) != 2:
-        fail(f"feed.xml: expected 2 entries; found {len(entries)}")
+    if len(entries) != 5:
+        fail(f"feed.xml: expected 5 entries; found {len(entries)}")
     expected_urls = {
+        f"{BASE_URL}/notes/runtime-after-core/",
+        f"{BASE_URL}/notes/host-task-continuity/",
+        f"{BASE_URL}/notes/link-edge-boundary/",
         f"{BASE_URL}/notes/ordivon-runtime-release/",
         f"{BASE_URL}/notes/why-ordivon/",
     }

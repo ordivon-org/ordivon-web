@@ -14,6 +14,9 @@ const routes = [
   "/work/finharness/",
   "/work/ordivon-web/",
   "/notes/",
+  "/notes/runtime-after-core/",
+  "/notes/host-task-continuity/",
+  "/notes/link-edge-boundary/",
   "/notes/ordivon-runtime-release/",
   "/notes/why-ordivon/",
   "/now/",
@@ -29,6 +32,7 @@ const screenshotRoutes = new Set([
   "/work/ordivon-runtime/",
   "/work/ordivon-finance/",
   "/notes/",
+  "/notes/runtime-after-core/",
   "/about/",
 ]);
 
