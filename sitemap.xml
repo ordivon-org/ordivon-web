@@ -2,8 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://ordivon.com/</loc></url>
   <url><loc>https://ordivon.com/work/</loc><lastmod>2026-07-28</lastmod></url>
-  <url><loc>https://ordivon.com/work/computing/</loc><lastmod>2026-07-27</lastmod></url>
+  <url><loc>https://ordivon.com/work/computing/</loc><lastmod>2026-07-28</lastmod></url>
+  <url><loc>https://ordivon.com/work/ordivon-host/</loc><lastmod>2026-07-28</lastmod></url>
   <url><loc>https://ordivon.com/work/ordivon-runtime/</loc><lastmod>2026-07-28</lastmod></url>
+  <url><loc>https://ordivon.com/work/ordivon-link/</loc><lastmod>2026-07-28</lastmod></url>
+  <url><loc>https://ordivon.com/work/ordivon-edge/</loc><lastmod>2026-07-28</lastmod></url>
   <url><loc>https://ordivon.com/work/ordivon-finance/</loc><lastmod>2026-07-28</lastmod></url>
   <url><loc>https://ordivon.com/work/finharness/</loc><lastmod>2026-07-28</lastmod></url>
   <url><loc>https://ordivon.com/work/ordivon-web/</loc><lastmod>2026-07-23</lastmod></url>
