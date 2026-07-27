@@ -29,6 +29,9 @@ canonical repositories.
 /work/finharness/                      historical route to Ordivon Finance
 /work/ordivon-web/                     public publishing and deployment surface
 /work/computing/                       computing-stack research and conformance root
+/work/ordivon-host/                    persistent Goal and Task control plane
+/work/ordivon-link/                    local path observation and transport layer
+/work/ordivon-edge/                    externally hosted bounded execution layer
 /notes/                                chronological authored notes and release records
 /feed.xml                              Atom feed for published notes
 /notes/ordivon-runtime-release/        Ordivon Runtime M0–M7 core release note

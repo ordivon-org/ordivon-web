@@ -19,7 +19,10 @@ REQUIRED_FILES = (
     "404.html",
     "work/index.html",
     "work/computing/index.html",
+    "work/ordivon-host/index.html",
     "work/ordivon-runtime/index.html",
+    "work/ordivon-link/index.html",
+    "work/ordivon-edge/index.html",
     "work/ordivon-finance/index.html",
     "work/finharness/index.html",
     "work/ordivon-web/index.html",
@@ -428,26 +431,40 @@ def check_current_claims() -> None:
         "index.html",
         "work/index.html",
         "work/ordivon-runtime/index.html",
+    "work/ordivon-link/index.html",
+    "work/ordivon-edge/index.html",
         "work/ordivon-finance/index.html",
         "now/index.html",
         "about/index.html",
         "contact/index.html",
     )
-    prohibited = {
-        "old FinHarness repository": "https://github.com/zycxfyh/FinHarness",
+    for relative in current_pages:
+        text = (ROOT / relative).read_text(encoding="utf-8")
+        if "https://github.com/zycxfyh/FinHarness" in text:
+            fail(f"{relative}: stale current claim: old FinHarness repository")
+
+    runtime = (ROOT / "work/ordivon-runtime/index.html").read_text(encoding="utf-8")
+    for name, value in {
         "removed Runtime current-state path": "docs/current-state.md",
         "removed Runtime architecture path": "docs/architecture/runtime.md",
         "removed Runtime runbook path": "docs/operations/runbook.md",
-    }
-    for relative in current_pages:
-        text = (ROOT / relative).read_text(encoding="utf-8")
-        for name, value in prohibited.items():
-            if value in text:
-                fail(f"{relative}: stale current claim: {name}")
-
-    runtime = (ROOT / "work/ordivon-runtime/index.html").read_text(encoding="utf-8")
+    }.items():
+        if value in runtime:
+            fail(f"work/ordivon-runtime/index.html: stale current claim: {name}")
     if "14 MCP tools" not in runtime or "workspace.execPlan" not in runtime:
         fail("work/ordivon-runtime/index.html: current 14-tool surface is required")
+
+    host = (ROOT / "work/ordivon-host/index.html").read_text(encoding="utf-8")
+    if "Task continuity" not in host or "ordivon-host" not in host:
+        fail("work/ordivon-host/index.html: current Host boundary is required")
+
+    link = (ROOT / "work/ordivon-link/index.html").read_text(encoding="utf-8")
+    if "Path evidence" not in link or "ordivon-link" not in link:
+        fail("work/ordivon-link/index.html: current Link boundary is required")
+
+    edge = (ROOT / "work/ordivon-edge/index.html").read_text(encoding="utf-8")
+    if "Hosted execution" not in edge or "ordivon-edge" not in edge:
+        fail("work/ordivon-edge/index.html: current Edge boundary is required")
 
     finance = (ROOT / "work/ordivon-finance/index.html").read_text(encoding="utf-8")
     if "Ordivon Finance" not in finance or "ordivon-finance" not in finance:

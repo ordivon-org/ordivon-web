@@ -44,14 +44,14 @@
 
       <section class="project-facts" aria-label="Current project facts">
         <div><span>Stack model</span><strong>14 layers + cross-cutting planes</strong></div>
-        <div><span>Executable slices</span><strong>Semantic Kernel, external contracts, task continuation</strong></div>
+        <div><span>Executable slices</span><strong>Semantic Kernel, contracts, continuation, Host conformance</strong></div>
         <div><span>Evidence</span><strong>Python conformance + Rust canonical vectors</strong></div>
-        <div><span>Current boundary</span><strong>Computing mother project, not production Runtime</strong></div>
+        <div><span>Current boundary</span><strong>Protocol and research root, not Host or Runtime state owner</strong></div>
       </section>
 
       <section class="section section-simple" aria-labelledby="question-title">
         <div class="section-heading"><p class="section-index">Central question</p><h2 id="question-title">Which facts and contracts must remain stable when models, Hosts, tools, and execution backends change?</h2></div>
-        <div class="section-copy"><p>A model can reconstruct prose, but it cannot safely infer whether an external Effect already crossed a boundary, which concrete request was sent, whether the result is unknown, which evidence supports a Fact, or what another model must retain to continue a Task.</p><p>The project turns those failure modes into explicit objects, executable state transitions, immutable receipts, and small reference systems. Real projects decide which abstractions survive.</p></div>
+        <div class="section-copy"><p>A model can reconstruct prose, but it cannot safely infer whether an external Effect already crossed a boundary, which concrete request was sent, whether the result is unknown, which evidence supports a Fact, or which durable Task state belongs to Host rather than a provider session.</p><p>The project turns those failure modes into explicit objects, executable state transitions, immutable receipts, and small reference systems. Real projects decide which abstractions survive.</p></div>
       </section>
 
       <section class="section section-simple" aria-labelledby="stack-title">
@@ -71,7 +71,7 @@
           <div><strong>Core</strong><code>core/stack.md</code><code>core/primitives.md</code><p>The current 14-layer map, working foundations, and boundaries among stable primitives.</p></div>
           <div><strong>Semantic Kernel</strong><code>Effect</code><code>Dispatch</code><code>Observation</code><code>Fact</code><p>Reference invariants for identity, uncertainty, evidence, authority, and replay.</p></div>
           <div><strong>External contracts</strong><code>EffectEnvelope</code><code>ToolContract</code><code>EffectBinding</code><p>Separate stable semantic intent from provider-specific interfaces and request bytes.</p></div>
-          <div><strong>Continuation</strong><code>TaskCapsule</code><code>Context Compiler</code><p>Fresh-process continuation across Codex/GPT and Hermes/DeepSeek without transcript replay.</p></div>
+          <div><strong>Host conformance</strong><code>TaskCapsule</code><code>Context Compiler</code><code>ordivon-protocol</code><p>Fresh-process continuation and the exact protocol dependency now consumed by the independent Ordivon Host repository.</p></div>
         </div>
       </section>
 
@@ -79,7 +79,7 @@
         <div class="section-heading"><p class="section-index">Hard boundary</p><h2 id="boundary-title">Computing does not become another Runtime, product, or implementation monorepo.</h2></div>
         <div class="evidence-table" role="table" aria-label="Ordivon Computing responsibilities and exclusions">
           <div role="row"><strong role="cell">Owns</strong><span role="cell">The computing-stack model, structured research routes, cross-layer vocabulary, protocols, reference implementations, conformance, fault experiments, evaluation, and synthesis.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-computing/blob/main/projects/NAMING.md">Repository matrix ↗</a></div>
-          <div role="row"><strong role="cell">Does not own</strong><span role="cell">Production Workspace, Job, process, Artifact, networking, or user Task state.</span><a role="cell" href="../ordivon-runtime/">Runtime boundary →</a></div>
+          <div role="row"><strong role="cell">Does not own</strong><span role="cell">Production Goal, Task, Workspace, Job, process, Artifact, network path, hosted capability, or product state.</span><a role="cell" href="../ordivon-host/">Host boundary →</a></div>
           <div role="row"><strong role="cell">Namespace</strong><span role="cell"><code>ANC-*</code> and <code>anc_*</code> remain technical identifiers for agent-native contracts; Ordivon is the public repository brand.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-computing/tree/main/research">Research map ↗</a></div>
           <div role="row"><strong role="cell">Method</strong><span role="cell">New abstractions require a real workload failure, a minimal executable artifact, fault injection, and a consumer.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-computing/tree/main/research/experiments">Experiments ↗</a></div>
         </div>
@@ -92,12 +92,13 @@
           <li><time>Semantic Core</time><div><strong>Test the smallest non-reconstructable execution facts.</strong><p>Effect, Dispatch, unknown state, evidence, Fact admission, authority, and Journal replay became executable.</p></div></li>
           <li><time>Contracts</time><div><strong>Separate stable intent from concrete tools.</strong><p>EffectEnvelope, ToolContract, Binding, and admission were tested across Ordivon and a deterministic backend.</p></div></li>
           <li><time>Continuation</time><div><strong>Replace the model without replacing the Task.</strong><p>Codex/GPT and Hermes/DeepSeek continued the same Capsule and Context through the same semantic trajectory.</p></div></li>
+          <li><time>Host extraction</time><div><strong>Move proven Task continuity into an independent state owner.</strong><p>After H2–H6 read, cognition, mutation, and recovery gates, Ordivon Host was extracted with history while Computing retained protocol and conformance authority.</p></div></li>
         </ol>
       </section>
 
       <section class="section section-simple" aria-labelledby="open-title">
-        <div class="section-heading"><p class="section-index">Next evidence</p><h2 id="open-title">A usable Host and a second independent workload now matter more than another abstract layer.</h2></div>
-        <div class="question-list"><p>Can an Ordivon Workbench turn a real repository Goal into a recoverable Patch, test result, review, and PR?</p><p>Which Task Runtime objects are required by asynchronous waiting, multiple Attempts, readiness, or Join semantics?</p><p>Which contracts survive a second workload without being tailored to the current continuation fixture?</p></div>
+        <div class="section-heading"><p class="section-index">Next evidence</p><h2 id="open-title">A second independent workload and cross-project contract drift now matter more than another abstract layer.</h2></div>
+        <div class="question-list"><p>Can the independent Host turn a general repository Goal into a recoverable Patch, test result, review, and PR without absorbing Runtime mechanics?</p><p>Which Task Runtime objects are required by asynchronous waiting, multiple Attempts, readiness, or Join semantics?</p><p>Which contracts survive Finance, Game, Link, and Edge workloads without being tailored to one repository or provider?</p></div>
       </section>
 
       <section class="project-links" aria-labelledby="links-title">
