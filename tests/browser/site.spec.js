@@ -7,6 +7,7 @@ const routes = [
   "/work/",
   "/work/computing/",
   "/work/ordivon-runtime/",
+  "/work/ordivon-finance/",
   "/work/finharness/",
   "/work/ordivon-web/",
   "/notes/",
@@ -22,6 +23,7 @@ const screenshotRoutes = new Set([
   "/work/",
   "/work/computing/",
   "/work/ordivon-runtime/",
+  "/work/ordivon-finance/",
   "/notes/",
   "/about/",
 ]);
