@@ -34,7 +34,10 @@ canonical repositories.
 /work/ordivon-edge/                    externally hosted bounded execution layer
 /notes/                                chronological authored notes and release records
 /feed.xml                              Atom feed for published notes
-/notes/ordivon-runtime-release/        Ordivon Runtime M0–M7 core release note
+/notes/runtime-after-core/             Runtime commitment and lifecycle report
+/notes/host-task-continuity/           Host and Runtime ownership report
+/notes/link-edge-boundary/             Link and Edge boundary report
+/notes/ordivon-runtime-release/        historical Runtime M0–M7 core release
 /notes/why-ordivon/                    first substantive design note
 /now/                                  current activity and explicit non-offerings
 /about/                                scope, relationships, and ownership boundary
