@@ -457,8 +457,10 @@ def check_current_claims() -> None:
     }.items():
         if value in runtime:
             fail(f"work/ordivon-runtime/index.html: stale current claim: {name}")
-    if "14 MCP tools" not in runtime or "workspace.execPlan" not in runtime:
-        fail("work/ordivon-runtime/index.html: current 14-tool surface is required")
+    if "13 MCP tools" not in runtime or "workspace.execPlan" not in runtime:
+        fail("work/ordivon-runtime/index.html: current 13-tool surface is required")
+    if "workspace.patch" in runtime:
+        fail("work/ordivon-runtime/index.html: retired workspace.patch must not be current")
 
     host = (ROOT / "work/ordivon-host/index.html").read_text(encoding="utf-8")
     if "Task continuity" not in host or "ordivon-host" not in host:
