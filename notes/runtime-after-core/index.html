@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="How Ordivon Runtime evolved after its ten-tool core into a fourteen-tool Agent Effect Commit Kernel with explicit execution environments, deployment receipts, Workspace lifecycle, repair, and hygiene." />
+    <meta name="description" content="How Ordivon Runtime evolved after its ten-tool core into a thirteen-tool Agent Effect Commit Kernel with explicit execution environments, deployment receipts, Workspace lifecycle, repair, and secret-free status." />
     <meta name="theme-color" content="#0b0f14" />
     <meta property="og:title" content="Ordivon Runtime after the core" />
     <meta property="og:description" content="Commitment, recovery, Agent-facing execution UX, and production lifecycle after the original Runtime release." />
@@ -22,7 +22,7 @@
     <meta name="twitter:description" content="Commitment, recovery, Agent-facing execution UX, and production lifecycle after the original Runtime release." />
     <meta name="twitter:image" content="https://ordivon.com/assets/social/runtime.png" />
     <link rel="alternate" type="application/atom+xml" title="Ordivon Notes" href="../../feed.xml" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Ordivon Runtime after the core","description":"How Ordivon Runtime evolved after its ten-tool core into a fourteen-tool Agent Effect Commit Kernel with explicit execution environments, deployment receipts, Workspace lifecycle, repair, and hygiene.","datePublished":"2026-07-28","dateModified":"2026-07-28","author":{"@type":"Person","name":"zycxfyh","url":"https://github.com/zycxfyh"},"publisher":{"@type":"Person","name":"zycxfyh"},"mainEntityOfPage":"https://ordivon.com/notes/runtime-after-core/","image":"https://ordivon.com/assets/social/runtime.png","articleSection":"Agent infrastructure","isPartOf":{"@type":"WebSite","name":"Ordivon","url":"https://ordivon.com/"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Ordivon Runtime after the core","description":"How Ordivon Runtime evolved after its ten-tool core into a thirteen-tool Agent Effect Commit Kernel with explicit execution environments, deployment receipts, Workspace lifecycle, repair, and secret-free status.","datePublished":"2026-07-28","dateModified":"2026-07-28","author":{"@type":"Person","name":"zycxfyh","url":"https://github.com/zycxfyh"},"publisher":{"@type":"Person","name":"zycxfyh"},"mainEntityOfPage":"https://ordivon.com/notes/runtime-after-core/","image":"https://ordivon.com/assets/social/runtime.png","articleSection":"Agent infrastructure","isPartOf":{"@type":"WebSite","name":"Ordivon","url":"https://ordivon.com/"}}</script>
     <title>Ordivon Runtime after the core — Ordivon</title>
     <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
     <link rel="manifest" href="../../site.webmanifest" />
@@ -42,7 +42,7 @@
         <header class="article-header">
           <p class="eyebrow">Engineering report / Agent infrastructure</p>
           <h1>Ordivon Runtime after the core</h1>
-          <p class="article-deck">The ten-tool release proved durable execution. Later work clarified commitment semantics, added four universal Agent primitives, and closed the production lifecycle around environment, deployment, retention, repair, and cleanup.</p>
+          <p class="article-deck">The ten-tool release proved durable execution. Later work clarified commitment semantics, added recovery and structured-progress primitives, retired one overlapping editor, and closed the production lifecycle around environment, deployment, retention, repair, and status.</p>
           <p class="note-meta">Engineering report · Ordivon Runtime · Published <time datetime="2026-07-28">28 July 2026</time> · 10 min read · By zycxfyh</p>
         </header>
         <div class="article-body">
@@ -52,10 +52,10 @@
           <p>The original release should not be rewritten simply because the protocol later grew. It proved the first execution boundary and closed M0–M7. Four later tools entered only after repeated work showed universal gaps:</p>
           <ul>
             <li><code>workspace.get</code> and <code>workspace.list</code> restore Workspace identity after a client or conversation loses local memory;</li>
-            <li><code>workspace.patch</code> applies one digest-guarded, multi-file text transaction;</li>
-            <li><code>workspace.execPlan</code> runs ordered native steps and exposes structured progress without parsing shell text.</li>
+            <li><code>workspace.execPlan</code> runs ordered native steps and exposes structured progress without parsing shell text;</li>
+            <li><code>workspace.patch</code> briefly supplied positional multi-file editing, then left the public surface after production use showed that <code>workspace.mutate</code> and ordinary scripts already covered the need.</li>
           </ul>
-          <p>The current surface therefore contains fourteen tools, but the historical release record remains accurate for its date.</p>
+          <p>The current surface contains thirteen tools. The historical ten-tool release and the later fourteen-tool phase remain accurate for their dates.</p>
 
           <h2>The decisive abstraction is commitment</h2>
           <p>An Agent may choose a different action after interruption. A command runner cannot distinguish a proposal from a committed effect, or process exit from proof that an external action occurred exactly once. The Runtime now states a narrower kernel:</p>
@@ -81,13 +81,13 @@
           <p>Build, cache, and temporary outputs moved outside Git Workspaces. <code>workspace.close</code> removes disposable external state before worktree removal and tombstone commitment. A cleanup failure therefore leaves the Workspace open and retryable rather than returning an error after closure already committed.</p>
           <p>A thin lifecycle controller adds three policy classes over existing truth owners: ephemeral Workspaces default to 24 hours, review Workspaces to seven days, and pinned Workspaces are never automatic. The later of creation and durable Job activity forms the retention basis. Active, dirty, pinned, unknown, and orphan-directory cases remain excluded.</p>
 
-          <h2>Repair and hygiene preserve evidence</h2>
+          <h2>Repair and status preserve evidence</h2>
           <p>Repository renames left healthy worktrees pointing at old source paths. Repair uses exact aliases, verifies the recorded commit in the mapped repository, repairs Git metadata, rechecks HEAD, and updates only source identity. Unrepairable bytes can be quarantined only through a second explicit confirmation.</p>
-          <p>Installation hygiene similarly digest-checks obsolete binaries and legacy state before moving them into receipt quarantine. Current binaries and the current rollback generation remain protected.</p>
+          <p>The one-time installation hygiene pass digest-checked obsolete binaries and legacy state before moving them into receipt quarantine, then retired from the active subsystem. A secret-free status command now compares deployment receipts, installed binary digests, systemd state, allowlisted configuration, Registry facts, Workspace state, and lifecycle receipts without loading the bearer token.</p>
 
           <h2>Deployment became a receipted transaction</h2>
           <p>An exact clean commit produces a digest-bound candidate manifest. Planning checks source identity, candidate and installed binaries, Registry capacity, environment files, and the expected tool catalog. Apply stages, stops admission, rechecks active work, installs, starts, initializes MCP, probes, and records digests. Rollback validates and restores the exact receipt-bound previous set.</p>
-          <p>A production audit found one real gap: auxiliary operational scripts were deployed separately from Rust binaries, allowing an older reclaim script to survive. The script was synchronized and receipted. The remaining debt is one unified release entrypoint that still preserves distinct evidence for binary and operational assets.</p>
+          <p>A production audit found one real gap: auxiliary operational scripts were deployed separately from Rust binaries, allowing an older reclaim script to survive. The script was synchronized and receipted. The current deployment also binds the status operator asset and the retirement of one-time hygiene to the same release receipt while preserving separate digests.</p>
 
           <h2>The production cleanup was measurable</h2>
           <p>Four unknown Workspaces caused by repository renames were repaired. A one-time backlog drain then closed 42 clean, inactive Workspaces through the existing close contract. No active or dirty work was forced. The Runtime store fell from roughly 7.2 GB to 3.4 GB, while caches belonging to active work were preserved.</p>

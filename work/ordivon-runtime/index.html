@@ -43,10 +43,10 @@
       </header>
 
       <section class="project-facts" aria-label="Current project facts">
-        <div><span>Current surface</span><strong>14 MCP tools</strong></div>
+        <div><span>Current surface</span><strong>13 MCP tools</strong></div>
         <div><span>Commitment model</span><strong>Operation → Attempt → evidence → reconciliation</strong></div>
         <div><span>Authority model</span><strong>Trusted-local service-user authority</strong></div>
-        <div><span>Operations</span><strong>Receipted deploy, rollback, lifecycle, and hygiene</strong></div>
+        <div><span>Operations</span><strong>Receipted deploy, rollback, lifecycle, and status</strong></div>
       </section>
 
       <section class="section section-simple" aria-labelledby="question-title">
@@ -67,22 +67,22 @@
       </section>
 
       <section class="section section-simple" aria-labelledby="surface-title">
-        <div class="section-heading"><p class="section-index">Public surface</p><h2 id="surface-title">Fourteen tools cover Workspace recovery, atomic editing, structured execution, observation, and retained evidence.</h2></div>
+        <div class="section-heading"><p class="section-index">Public surface</p><h2 id="surface-title">Thirteen tools cover Workspace recovery, validated editing, structured execution, observation, and retained evidence.</h2></div>
         <div class="tool-matrix" aria-label="Ordivon Runtime public tools">
           <div><strong>Workspace identity</strong><code>workspace.open</code><code>workspace.get</code><code>workspace.list</code><code>workspace.close</code><p>Open exact Git state, reconnect through durable identity, and release only when closure remains safe.</p></div>
-          <div><strong>Source work</strong><code>workspace.read</code><code>workspace.mutate</code><code>workspace.patch</code><code>workspace.diff</code><p>Bounded reads, validated mutations, atomic multi-file text patches, and compact review.</p></div>
+          <div><strong>Source work</strong><code>workspace.read</code><code>workspace.mutate</code><code>workspace.diff</code><p>Bounded reads, digest-guarded mutation batches, and compact review.</p></div>
           <div><strong>Execution</strong><code>workspace.exec</code><code>workspace.execPlan</code><p>One opaque command or an ordered native step plan with explicit budgets and progress.</p></div>
           <div><strong>Recovery</strong><code>task.observe</code><code>task.cancel</code><code>task.list</code><code>artifact.read</code><p>Reattach, wait for change, cancel the owned process tree, correlate Jobs, and read retained evidence.</p></div>
         </div>
       </section>
 
       <section class="section section-simple" aria-labelledby="lifecycle-title">
-        <div class="section-heading"><p class="section-index">Operational lifecycle</p><h2 id="lifecycle-title">Production use now includes release, retention, repair, cleanup, and rollback—not only execution.</h2></div>
+        <div class="section-heading"><p class="section-index">Operational lifecycle</p><h2 id="lifecycle-title">Production use now includes release, retention, repair, status, and rollback—not only execution.</h2></div>
         <div class="evidence-table" role="table" aria-label="Ordivon Runtime operational capabilities">
           <div role="row"><strong role="cell">Deployment</strong><span role="cell">An exact clean commit is built into digest-bound candidates, checked against live capacity, installed transactionally, probed, and recorded in a deployment receipt.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/operations.md">Operations ↗</a></div>
           <div role="row"><strong role="cell">Execution environment</strong><span role="cell">Target processes receive an explicit configured PATH, HOME, locale, temporary directory, and external cache roots instead of inheriting Runtime service secrets or ambient variables.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/runtime.md">Runtime model ↗</a></div>
           <div role="row"><strong role="cell">Workspace lifecycle</strong><span role="cell">Ephemeral, review, and pinned classes combine age with durable Job activity; active, dirty, unknown, and pinned work is never automatically reclaimed.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/packaging/systemd/ordivon-workspace-retention.json">Retention policy ↗</a></div>
-          <div role="row"><strong role="cell">Repair and hygiene</strong><span role="cell">Repository-renamed Workspaces can be repaired by exact alias and commit checks; obsolete binaries and legacy state are digest-rechecked and moved into receipt quarantine.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/tree/main/scripts">Operational tools ↗</a></div>
+          <div role="row"><strong role="cell">Repair and status</strong><span role="cell">Repository-renamed Workspaces can be repaired by exact alias and commit checks; the secret-free status command compares deployment identity, installed digests, service state, Registry facts, and Workspace state.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/operations.md">Status contract ↗</a></div>
         </div>
       </section>
 
@@ -95,9 +95,9 @@
         <div class="section-heading"><p class="section-index">Evolution</p><h2 id="evolution-title">The ten-tool core became a production effect boundary without becoming a general workflow platform.</h2></div>
         <ol class="evolution-list">
           <li><time>23 Jul 2026</time><div><strong>Close the M0–M7 ten-tool core.</strong><p>The first release established Workspace operations, durable execution, cancellation, Artifacts, and restart recovery.</p></div></li>
-          <li><time>Agent UX</time><div><strong>Add reconnectable Workspaces, atomic Patch, and structured ExecPlan.</strong><p>Repeated engineering friction justified four universal primitives while Git and GitHub workflows remained replaceable Skills.</p></div></li>
+          <li><time>Agent UX</time><div><strong>Add reconnectable Workspaces and structured ExecPlan; retire overlapping Patch.</strong><p>Repeated engineering friction justified durable recovery and progress primitives. Production evidence later showed Patch duplicated mutation and script editing, so it left the public surface.</p></div></li>
           <li><time>Effect Kernel</time><div><strong>Bind request identity separately from world commitment.</strong><p>Source-state commitment, pre-spawn validation, explicit ambiguity, and opaque-effect limits made the physical boundary precise.</p></div></li>
-          <li><time>28 Jul 2026</time><div><strong>Close the production lifecycle.</strong><p>Explicit execution environments, external caches, daily retention, repair, hygiene, receipted deployment, and historical Workspace reclaim turned the Runtime into a maintainable service.</p></div></li>
+          <li><time>28 Jul 2026</time><div><strong>Close the production lifecycle.</strong><p>Explicit execution environments, external caches, daily retention, repair, secret-free status, receipted deployment, and historical Workspace reclaim turned the Runtime into a maintainable service.</p></div></li>
         </ol>
       </section>
 
