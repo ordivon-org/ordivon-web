@@ -23,8 +23,6 @@ REQUIRED_FILES = (
     "work/ordivon-runtime/index.html",
     "work/ordivon-link/index.html",
     "work/ordivon-edge/index.html",
-    "work/ordivon-finance/index.html",
-    "work/finharness/index.html",
     "work/ordivon-web/index.html",
     "notes/index.html",
     "notes/runtime-after-core/index.html",
@@ -40,8 +38,6 @@ REQUIRED_FILES = (
     "assets/mark.svg",
     "assets/social/default.png",
     "assets/social/runtime.png",
-    "assets/social/finharness.png",
-    "assets/social/finance.png",
     "assets/social/web.png",
     "feed.xml",
     "site.webmanifest",
@@ -427,7 +423,7 @@ def check_distribution_metadata() -> None:
             if marker not in text:
                 fail(f"{relative}: missing article metadata {marker!r}")
 
-    for name in ("default.png", "runtime.png", "finharness.png", "finance.png", "web.png"):
+    for name in ("default.png", "runtime.png", "web.png"):
         check_png_dimensions(ROOT / "assets" / "social" / name, 1200, 630)
 
 
@@ -439,15 +435,12 @@ def check_current_claims() -> None:
         "work/ordivon-runtime/index.html",
     "work/ordivon-link/index.html",
     "work/ordivon-edge/index.html",
-        "work/ordivon-finance/index.html",
         "now/index.html",
         "about/index.html",
         "contact/index.html",
     )
     for relative in current_pages:
         text = (ROOT / relative).read_text(encoding="utf-8")
-        if "https://github.com/zycxfyh/FinHarness" in text:
-            fail(f"{relative}: stale current claim: old FinHarness repository")
 
     runtime = (ROOT / "work/ordivon-runtime/index.html").read_text(encoding="utf-8")
     for name, value in {
@@ -474,13 +467,6 @@ def check_current_claims() -> None:
     if "Hosted execution" not in edge or "ordivon-edge" not in edge:
         fail("work/ordivon-edge/index.html: current Edge boundary is required")
 
-    finance = (ROOT / "work/ordivon-finance/index.html").read_text(encoding="utf-8")
-    if "Ordivon Finance" not in finance or "ordivon-finance" not in finance:
-        fail("work/ordivon-finance/index.html: current project identity is required")
-
-    legacy = (ROOT / "work/finharness/index.html").read_text(encoding="utf-8")
-    if "Historical project route" not in legacy or "../ordivon-finance/" not in legacy:
-        fail("work/finharness/index.html: migration route must point to Ordivon Finance")
 
 def check_atom_feed() -> None:
     path = ROOT / "feed.xml"
