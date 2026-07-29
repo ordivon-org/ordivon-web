@@ -3,23 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Ordivon Edge is the externally hosted execution layer of the Ordivon stack, providing bounded Fetch, Browser Run, private Artifacts, receipts, and recoverable releases." />
+    <meta name="description" content="Ordivon Edge was a prototype repository whose implementation and history have migrated into Ordivon World." />
     <meta name="theme-color" content="#0b0f14" />
-    <meta property="og:title" content="Ordivon Edge" />
-    <meta property="og:description" content="Execute bounded network-side capabilities through signed requests, fenced leases, private Artifacts, deterministic receipts, and versioned Cloudflare releases." />
+    <meta property="og:title" content="Ordivon Edge migrated to Ordivon World" />
+    <meta property="og:description" content="The implementation remains available inside Ordivon World; this page preserves the former project URL as a migration record." />
     <meta property="og:type" content="website" />
     <link rel="canonical" href="https://ordivon.com/work/ordivon-edge/" />
     <meta property="og:url" content="https://ordivon.com/work/ordivon-edge/" />
     <meta property="og:image" content="https://ordivon.com/assets/social/default.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Ordivon Edge — externally hosted bounded execution, private Artifacts, receipts, and recovery" />
+    <meta property="og:image:alt" content="Ordivon Edge migrated to Ordivon World" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Ordivon Edge" />
-    <meta name="twitter:description" content="Execute bounded network-side capabilities through signed requests, fenced leases, private Artifacts, deterministic receipts, and versioned releases." />
+    <meta name="twitter:title" content="Ordivon Edge migrated to Ordivon World" />
+    <meta name="twitter:description" content="The prototype implementation and Git history now live inside Ordivon World." />
     <meta name="twitter:image" content="https://ordivon.com/assets/social/default.png" />
     <link rel="alternate" type="application/atom+xml" title="Ordivon Notes" href="../../feed.xml" />
-    <title>Ordivon Edge — Ordivon</title>
+    <title>Ordivon Edge migrated to Ordivon World — Ordivon</title>
     <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
     <link rel="manifest" href="../../site.webmanifest" />
     <link rel="stylesheet" href="../../assets/styles.css" />
@@ -36,68 +36,23 @@
 
     <main id="main" class="page-main">
       <header class="project-hero">
-        <p class="eyebrow">Hosted execution · Bounded capabilities · Receipts and Artifacts</p>
-        <h1>Execute a network-side capability without turning the edge into a proxy or scheduler.</h1>
-        <p class="lede">Ordivon Edge owns externally hosted Fetch and Browser Run execution, private R2 Artifacts, policy and execution budgets, idempotent receipts, fenced leases, release control, and recovery. Local route observation and transport selection belong to Link; local Agent Jobs and Workspaces belong to Runtime.</p>
-        <div class="actions"><a class="button button-primary" href="https://github.com/zycxfyh/ordivon-edge">Inspect the repository</a><a class="button button-secondary" href="https://github.com/zycxfyh/ordivon-edge/blob/main/docs/reliability.md">Read reliability model</a></div>
+        <p class="eyebrow">Historical prototype · Migrated 30 July 2026</p>
+        <h1>Ordivon Edge now lives inside Ordivon World.</h1>
+        <p class="lede">The former Edge prototype contributed the production Cloudflare Fetch and Browser provider, private R2 Artifacts, Receipts, fencing, remote-outcome reconciliation, and release operations. The separation clarified classical boundaries, but real Task-level external work couples connection, identity, provider execution, evidence, uncertainty, and recovery. The top-level repositories were therefore unified.</p>
+        <div class="actions"><a class="button button-primary" href="../ordivon-world/">Open Ordivon World</a><a class="button button-secondary" href="https://github.com/zycxfyh/ordivon-world/tree/main/providers/cloudflare">Inspect the migrated module</a></div>
       </header>
-
-      <section class="project-facts" aria-label="Current project facts">
-        <div><span>Platform</span><strong>Cloudflare Worker + private R2 + Browser binding</strong></div>
-        <div><span>Capabilities</span><strong>Allowlisted Fetch and bounded Browser Run</strong></div>
-        <div><span>Recovery</span><strong>Generation leases, fencing, receipts, reconciliation</strong></div>
-        <div><span>Release</span><strong>Version upload, 0% smoke, promotion, rollback</strong></div>
+      <section class="project-facts" aria-label="Migration facts">
+        <div><span>Former project</span><strong>Ordivon Edge</strong></div>
+        <div><span>Current project</span><strong>Ordivon World</strong></div>
+        <div><span>History</span><strong>Preserved through Git subtree imports</strong></div>
       </section>
-
-      <section class="section section-simple" aria-labelledby="question-title">
-        <div class="section-heading"><p class="section-index">Central question</p><h2 id="question-title">Which externally hosted capability should execute one bounded task and return a receipt or Artifact?</h2></div>
-        <div class="section-copy"><p>An external Fetch or browser snapshot crosses a different trust and failure boundary from local process execution. Requests can be duplicated, responses can be lost after commitment, leases can expire, policy can change, Artifacts can outlive receipts, and a release can time out after the control plane accepted it.</p><p>Edge makes those states explicit without becoming an open URL proxy, a local VPN controller, a general remote browser, or another Agent task runtime.</p></div>
+      <section class="section section-simple" aria-labelledby="migration-title">
+        <div class="section-heading"><p class="section-index">Migration</p><h2 id="migration-title">The implementation was retained; the project boundary was deleted.</h2></div>
+        <div class="section-copy"><p>The old repository is no longer an active source of current truth. Its exact main revision, Git commits, code, tests, and historical terminology are preserved in the unified repository. Compatibility command and crate names may remain inside the module while operational users migrate.</p><p>New research begins from one World Interaction: target, path, identity, transport, provider, execution, Receipt, Artifact, Observation, uncertainty, invalidation, and rebinding are correlated without collapsing them into one universal ID.</p></div>
       </section>
-
-      <section class="section section-simple" aria-labelledby="flow-title">
-        <div class="section-heading"><p class="section-index">Execution contract</p><h2 id="flow-title">One signed Request ID becomes an authoritative pending state, a fenced execution generation, and one committed receipt.</h2></div>
-        <div tabindex="0" class="system-diagram" role="img" aria-label="A signed bounded request creates authoritative pending state, executes under a generation lease, writes private Artifacts, commits an ETag-fenced receipt, and supports deterministic replay">
-          <div><span>Authenticate</span><strong>Signed request</strong><small>Method, path, body digest, time, Request ID</small></div><b aria-hidden="true">→</b>
-          <div><span>Admit</span><strong>Pending state</strong><small>Semantic digest, policy, capability, lease</small></div><b aria-hidden="true">→</b>
-          <div><span>Execute</span><strong>Bounded adapter</strong><small>Fetch or Browser Run</small></div><b aria-hidden="true">→</b>
-          <div><span>Persist</span><strong>Private Artifacts</strong><small>Generation-scoped R2 keys</small></div><b aria-hidden="true">→</b>
-          <div><span>Commit</span><strong>Receipt replay</strong><small>ETag fencing and reconciliation</small></div>
-        </div>
-      </section>
-
-      <section class="section section-simple" aria-labelledby="surface-title">
-        <div class="section-heading"><p class="section-index">Implemented execution plane</p><h2 id="surface-title">Capability, state, Artifact, policy, and release identities are bound into the result.</h2></div>
-        <div class="tool-matrix" aria-label="Ordivon Edge capabilities">
-          <div><strong>External Fetch</strong><code>POST /v1/fetch</code><p>HTTPS-only allowlists, bounded redirects, response size and time limits, manual streaming, hashing, and private R2 persistence.</p></div>
-          <div><strong>Browser Run</strong><code>POST /v1/browser/run</code><p>Same-origin bounded snapshots producing PNG, rendered HTML, and manifest Artifacts without arbitrary action scripting.</p></div>
-          <div><strong>Receipts</strong><code>requests/v2</code><code>receipts/v2</code><p>One authoritative request state, deterministic replay, pending reads, 90-day idempotency, and legacy committed receipt compatibility.</p></div>
-          <div><strong>Release control</strong><code>upload</code><code>smoke</code><code>promote</code><code>rollback</code><p>Version-bound release receipts, source identity, readiness checks, control-plane timeout recovery, and rollback.</p></div>
-        </div>
-      </section>
-
-      <section class="section section-simple" aria-labelledby="reliability-title">
-        <div class="section-heading"><p class="section-index">Reliability boundary</p><h2 id="reliability-title">Expired executors may be replaced, but stale generations cannot commit or delete newer output.</h2></div>
-        <div class="evidence-table" role="table" aria-label="Ordivon Edge reliability mechanisms">
-          <div role="row"><strong role="cell">Fencing</strong><span role="cell">Conditional R2 writes create pending state and commit final receipts against the current ETag; takeover increments the lease generation.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-edge/blob/main/docs/reliability.md">Reliability ↗</a></div>
-          <div role="row"><strong role="cell">Artifacts</strong><span role="cell">Generation-scoped keys prevent stale cleanup from deleting current output. Failed immediate cleanup produces a bounded validated tombstone for the GC controller.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-edge/blob/main/docs/architecture.md">Architecture ↗</a></div>
-          <div role="row"><strong role="cell">Ambiguity</strong><span role="cell">After a possibly committed R2 write throws, Edge rereads authoritative state. Matching committed state wins; pending or changed generation fails closed and cleans its own Artifacts.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-edge/blob/main/docs/reliability.md">Ambiguous writes ↗</a></div>
-          <div role="row"><strong role="cell">Policy</strong><span role="cell">The effective allowlist and policy file form a fingerprint carried by leases and receipts, fencing expired work across policy changes.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-edge/blob/main/config/edge-policy.json">Policy source ↗</a></div>
-        </div>
-      </section>
-
-      <section class="section section-simple" aria-labelledby="boundary-title">
-        <div class="section-heading"><p class="section-index">Strict boundary</p><h2 id="boundary-title">Edge executes hosted capabilities; it does not decide local connectivity.</h2></div>
-        <div class="section-copy"><p>VPN detection, DNS and route inspection, path measurement, transport clients, local failover, and workstation status belong to Ordivon Link. Workspace, Job, process, Artifact, and local recovery lifecycle belong to Ordivon Runtime. Public presentation belongs to Ordivon Web.</p><p>Workers.dev, preview URLs, and public R2 access remain disabled. Edge is not a public proxy, subscription service, traffic reseller, credential broker, or remote shell.</p></div>
-      </section>
-
-      <section class="section section-simple" aria-labelledby="open-title">
-        <div class="section-heading"><p class="section-index">Next evidence</p><h2 id="open-title">The next capability must justify its hosted boundary and complete Effect contract.</h2></div>
-        <div class="question-list"><p>Which external capability cannot be served safely or efficiently through local Runtime and mature command-line tools?</p><p>How should future remote Edge-node lifecycle preserve source identity, receipt evidence, policy fencing, and rollback?</p><p>Which Artifact retention and privacy rules remain valid as browser and Fetch workloads become more varied?</p></div>
-      </section>
-
-      <section class="project-links" aria-labelledby="links-title">
-        <div><p class="section-index">Canonical sources</p><h2 id="links-title">Inspect architecture, reliability, policy, release, operations, security, and repository boundary.</h2><p>The Worker, R2 state, receipts, tests, and release evidence own current hosted-execution truth.</p></div>
-        <div class="link-stack"><a href="https://github.com/zycxfyh/ordivon-edge">Repository <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-edge/blob/main/docs/architecture.md">Architecture <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-edge/blob/main/docs/reliability.md">Reliability <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-edge/blob/main/docs/release.md">Release <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-edge/blob/main/docs/operations.md">Operations <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-edge/blob/main/docs/boundary.md">Boundary <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-edge/blob/main/docs/security.md">Security <span aria-hidden="true">↗</span></a></div>
+      <section class="project-links" aria-labelledby="migration-links-title">
+        <div><p class="section-index">Current sources</p><h2 id="migration-links-title">Continue from the unified repository and research charter.</h2><p>This URL remains as a dated migration record so existing references do not silently fail.</p></div>
+        <div class="link-stack"><a href="https://github.com/zycxfyh/ordivon-world">Ordivon World <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-world/tree/main/providers/cloudflare">Migrated module <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-world/blob/main/docs/migration.md">Migration record <span aria-hidden="true">↗</span></a><a href="../../notes/link-edge-boundary/">Architecture correction <span aria-hidden="true">→</span></a></div>
       </section>
     </main>
 
