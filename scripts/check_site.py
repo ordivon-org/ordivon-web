@@ -21,6 +21,7 @@ REQUIRED_FILES = (
     "work/computing/index.html",
     "work/ordivon-host/index.html",
     "work/ordivon-runtime/index.html",
+    "work/ordivon-world/index.html",
     "work/ordivon-link/index.html",
     "work/ordivon-edge/index.html",
     "work/ordivon-web/index.html",
@@ -435,6 +436,7 @@ def check_current_claims() -> None:
         "index.html",
         "work/index.html",
         "work/ordivon-runtime/index.html",
+    "work/ordivon-world/index.html",
     "work/ordivon-link/index.html",
     "work/ordivon-edge/index.html",
         "now/index.html",
@@ -461,13 +463,17 @@ def check_current_claims() -> None:
     if "Task continuity" not in host or "ordivon-host" not in host:
         fail("work/ordivon-host/index.html: current Host boundary is required")
 
-    link = (ROOT / "work/ordivon-link/index.html").read_text(encoding="utf-8")
-    if "Path evidence" not in link or "ordivon-link" not in link:
-        fail("work/ordivon-link/index.html: current Link boundary is required")
+    world = (ROOT / "work/ordivon-world/index.html").read_text(encoding="utf-8")
+    for marker in ("World Interaction", "Cloudflare provider", "Network observation", "ordivon-world"):
+        if marker not in world:
+            fail(f"work/ordivon-world/index.html: current World boundary requires {marker!r}")
 
-    edge = (ROOT / "work/ordivon-edge/index.html").read_text(encoding="utf-8")
-    if "Hosted execution" not in edge or "ordivon-edge" not in edge:
-        fail("work/ordivon-edge/index.html: current Edge boundary is required")
+    for retired in ("ordivon-link", "ordivon-edge"):
+        text = (ROOT / "work" / retired / "index.html").read_text(encoding="utf-8")
+        if "Historical prototype" not in text or "Ordivon World" not in text:
+            fail(f"work/{retired}/index.html: explicit World migration record is required")
+        if f"github.com/zycxfyh/{retired}" in text:
+            fail(f"work/{retired}/index.html: retired repository must not remain a current link")
 
 
 def check_atom_feed() -> None:

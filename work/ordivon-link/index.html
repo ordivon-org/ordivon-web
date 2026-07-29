@@ -3,23 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Ordivon Link is the local network observation, transport, path-selection, and recovery layer of the Ordivon stack." />
+    <meta name="description" content="Ordivon Link was a prototype repository whose implementation and history have migrated into Ordivon World." />
     <meta name="theme-color" content="#0b0f14" />
-    <meta property="og:title" content="Ordivon Link" />
-    <meta property="og:description" content="Observe local paths, probe named targets, compare evidence, select replaceable transports, verify connectivity, and recover without conflating networking with task execution." />
+    <meta property="og:title" content="Ordivon Link migrated to Ordivon World" />
+    <meta property="og:description" content="The implementation remains available inside Ordivon World; this page preserves the former project URL as a migration record." />
     <meta property="og:type" content="website" />
     <link rel="canonical" href="https://ordivon.com/work/ordivon-link/" />
     <meta property="og:url" content="https://ordivon.com/work/ordivon-link/" />
     <meta property="og:image" content="https://ordivon.com/assets/social/default.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Ordivon Link — local network observation, transport, selection, and recovery" />
+    <meta property="og:image:alt" content="Ordivon Link migrated to Ordivon World" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Ordivon Link" />
-    <meta name="twitter:description" content="Observe local paths, probe targets, compare evidence, select replaceable transports, verify connectivity, and recover." />
+    <meta name="twitter:title" content="Ordivon Link migrated to Ordivon World" />
+    <meta name="twitter:description" content="The prototype implementation and Git history now live inside Ordivon World." />
     <meta name="twitter:image" content="https://ordivon.com/assets/social/default.png" />
     <link rel="alternate" type="application/atom+xml" title="Ordivon Notes" href="../../feed.xml" />
-    <title>Ordivon Link — Ordivon</title>
+    <title>Ordivon Link migrated to Ordivon World — Ordivon</title>
     <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
     <link rel="manifest" href="../../site.webmanifest" />
     <link rel="stylesheet" href="../../assets/styles.css" />
@@ -36,63 +36,23 @@
 
     <main id="main" class="page-main">
       <header class="project-hero">
-        <p class="eyebrow">Connectivity · Path evidence · Replaceable transport</p>
-        <h1>Observe and recover the path without owning the task that uses it.</h1>
-        <p class="lede">Ordivon Link owns facts and decisions about network paths between a user-controlled device and local, remote, or third-party endpoints. It observes, probes, compares, selects, connects, verifies, fails over, and recovers while keeping local Agent execution in Runtime and externally hosted capabilities in Edge.</p>
-        <div class="actions"><a class="button button-primary" href="https://github.com/zycxfyh/ordivon-link">Inspect the repository</a><a class="button button-secondary" href="https://github.com/zycxfyh/ordivon-link/blob/main/docs/current-state.md">Read current state</a></div>
+        <p class="eyebrow">Historical prototype · Migrated 30 July 2026</p>
+        <h1>Ordivon Link now lives inside Ordivon World.</h1>
+        <p class="lede">The former Link prototype contributed path and endpoint observations, sanitized history, controlled network-condition experiments, reference transport work, and private egress tooling. The separation clarified classical boundaries, but real Task-level external work couples connection, identity, provider execution, evidence, uncertainty, and recovery. The top-level repositories were therefore unified.</p>
+        <div class="actions"><a class="button button-primary" href="../ordivon-world/">Open Ordivon World</a><a class="button button-secondary" href="https://github.com/zycxfyh/ordivon-world/tree/main/modules/network-observation">Inspect the migrated module</a></div>
       </header>
-
-      <section class="project-facts" aria-label="Current project facts">
-        <div><span>Local control</span><strong>Routes, DNS, VPN, WARP, services, interfaces</strong></div>
-        <div><span>Evidence</span><strong>HTTP/TLS, HTTP/3/QUIC, lifetime probes</strong></div>
-        <div><span>Transport</span><strong>Baseline v0 + Quinn/rustls mTLS reference</strong></div>
-        <div><span>Mutation</span><strong>Explicit isolated VPN namespace only</strong></div>
+      <section class="project-facts" aria-label="Migration facts">
+        <div><span>Former project</span><strong>Ordivon Link</strong></div>
+        <div><span>Current project</span><strong>Ordivon World</strong></div>
+        <div><span>History</span><strong>Preserved through Git subtree imports</strong></div>
       </section>
-
-      <section class="section section-simple" aria-labelledby="question-title">
-        <div class="section-heading"><p class="section-index">Central question</p><h2 id="question-title">Which network path is available, suitable, selected, connected, and recoverable?</h2></div>
-        <div class="section-copy"><p>Connectivity is not one boolean. A route may resolve DNS but fail QUIC, reach one endpoint but not another, work through a system VPN while degrading a local tunnel, or remain fast only for short responses. Link converts those observations into bounded evidence and explicit route identities.</p><p>It does not claim knowledge of the full packet path, mutate the root route automatically, or turn a network status console into a general control plane.</p></div>
+      <section class="section section-simple" aria-labelledby="migration-title">
+        <div class="section-heading"><p class="section-index">Migration</p><h2 id="migration-title">The implementation was retained; the project boundary was deleted.</h2></div>
+        <div class="section-copy"><p>The old repository is no longer an active source of current truth. Its exact main revision, Git commits, code, tests, and historical terminology are preserved in the unified repository. Compatibility command and crate names may remain inside the module while operational users migrate.</p><p>New research begins from one World Interaction: target, path, identity, transport, provider, execution, Receipt, Artifact, Observation, uncertainty, invalidation, and rebinding are correlated without collapsing them into one universal ID.</p></div>
       </section>
-
-      <section class="section section-simple" aria-labelledby="flow-title">
-        <div class="section-heading"><p class="section-index">Path loop</p><h2 id="flow-title">Measurement, selection, transport, and recovery remain separate operations.</h2></div>
-        <div tabindex="0" class="system-diagram" role="img" aria-label="Local path observation feeds named target probes, reduced evidence, route selection, a replaceable transport, verification, failover, and recovery">
-          <div><span>Observe</span><strong>Local state</strong><small>Route, DNS, interface, VPN, services</small></div><b aria-hidden="true">→</b>
-          <div><span>Probe</span><strong>Named targets</strong><small>Reachability, transfer, lifetime, QUIC</small></div><b aria-hidden="true">→</b>
-          <div><span>Reduce</span><strong>Path evidence</strong><small>Snapshots, changes, comparisons</small></div><b aria-hidden="true">→</b>
-          <div><span>Connect</span><strong>Transport adapter</strong><small>Explicit selected route</small></div><b aria-hidden="true">→</b>
-          <div><span>Recover</span><strong>Verify or fail over</strong><small>No task-state ownership</small></div>
-        </div>
-      </section>
-
-      <section class="section section-simple" aria-labelledby="slices-title">
-        <div class="section-heading"><p class="section-index">Independent slices</p><h2 id="slices-title">Local observation and the wire reference remain decoupled so presentation cannot acquire relay authority.</h2></div>
-        <div class="tool-matrix" aria-label="Ordivon Link slices">
-          <div><strong>Evidence model</strong><code>link-model</code><p>Stable target, transport, observation, route, snapshot, and event values without network or filesystem effects.</p></div>
-          <div><strong>Observation</strong><code>link-probe</code><code>link-observer</code><p>Bounded measurements, sanitized state reduction, SQLite snapshots, and state-change history.</p></div>
-          <div><strong>Presentation</strong><code>link-console</code><p>A loopback-only read-only API, interface, and SSE stream that cannot mutate VPN, DNS, routes, firewall, or Runtime.</p></div>
-          <div><strong>Wire reference</strong><code>link-wire</code><code>link-transport-quic</code><p>Bounded Baseline v0 frames and a localhost Quinn/rustls mTLS client-server reference.</p></div>
-        </div>
-      </section>
-
-      <section class="section section-simple" aria-labelledby="state-title">
-        <div class="section-heading"><p class="section-index">Current evidence</p><h2 id="state-title">The repository already measures and explains paths; automatic selection and production transport remain open.</h2></div>
-        <div class="evidence-table" role="table" aria-label="Ordivon Link current evidence and boundaries">
-          <div role="row"><strong role="cell">Implemented</strong><span role="cell">WSL, Windows, Surfshark, route, MTU, DNS, Cloudflare Tunnel, Runtime MCP, and service observations with sanitized history and bounded probe reports.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-link/blob/main/docs/current-state.md">Current state ↗</a></div>
-          <div role="row"><strong role="cell">Implemented</strong><span role="cell">A root-only WireGuard namespace controller runs explicitly selected commands without moving the WSL root namespace, Runtime, MCP, or Tunnel.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-link/blob/main/docs/vpn-namespace.md">VPN namespace ↗</a></div>
-          <div role="row"><strong role="cell">Not implemented</strong><span role="cell">Automatic route execution, automatic failover, production remote certificates, public Baseline endpoints, mature transport adapters, and seven-day controlled path evidence.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-link/blob/main/docs/current-state.md">Open boundary ↗</a></div>
-          <div role="row"><strong role="cell">Exclusion</strong><span role="cell">Cloudflare Fetch, Browser Rendering, R2 Artifacts, Agent Jobs, Workspaces, and process recovery belong to Edge or Runtime.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-link/blob/main/docs/repository-boundary.md">Repository boundary ↗</a></div>
-        </div>
-      </section>
-
-      <section class="section section-simple" aria-labelledby="open-title">
-        <div class="section-heading"><p class="section-index">Next evidence</p><h2 id="open-title">Selection policy should follow repeated path evidence rather than protocol preference.</h2></div>
-        <div class="question-list"><p>Can controlled direct, system-VPN, and isolated-namespace measurements remain comparable across changing mobile and fixed networks?</p><p>Which mature transport adapter deserves production integration after the reference wire contract has proved its limits?</p><p>When should Link recommend or execute failover, and which user-visible evidence must accompany that decision?</p></div>
-      </section>
-
-      <section class="project-links" aria-labelledby="links-title">
-        <div><p class="section-index">Canonical sources</p><h2 id="links-title">Inspect current state, architecture, repository boundary, protocol charter, privacy model, and operational commands.</h2><p>The repository owns current path and transport facts. Edge and Runtime remain separate state owners.</p></div>
-        <div class="link-stack"><a href="https://github.com/zycxfyh/ordivon-link">Repository <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-link/blob/main/docs/current-state.md">Current state <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-link/blob/main/docs/architecture.md">Architecture <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-link/blob/main/docs/repository-boundary.md">Repository boundary <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-link/blob/main/docs/protocol-charter.md">Protocol charter <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-link/blob/main/docs/operations.md">Operations <span aria-hidden="true">↗</span></a></div>
+      <section class="project-links" aria-labelledby="migration-links-title">
+        <div><p class="section-index">Current sources</p><h2 id="migration-links-title">Continue from the unified repository and research charter.</h2><p>This URL remains as a dated migration record so existing references do not silently fail.</p></div>
+        <div class="link-stack"><a href="https://github.com/zycxfyh/ordivon-world">Ordivon World <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-world/tree/main/modules/network-observation">Migrated module <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-world/blob/main/docs/migration.md">Migration record <span aria-hidden="true">↗</span></a><a href="../../notes/link-edge-boundary/">Architecture correction <span aria-hidden="true">→</span></a></div>
       </section>
     </main>
 
