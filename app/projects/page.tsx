@@ -1,4 +1,26 @@
-export const metadata = { title: "Projects" };
+import type { Metadata } from "next";
+import Link from "next/link";
+import { SectionHeading } from "@/components/section-heading";
+import { SystemMap } from "@/components/system-map";
+import { projects } from "@/lib/projects";
+
+export const metadata: Metadata = { title: "Projects", description: "Five independent Ordivon state owners for contracts, Tasks, effects, paths, and hosted capabilities." };
+
 export default function ProjectsPage() {
-  return <section className="hero"><p className="eyebrow">Static route proof</p><h1>Projects will become a graph, not a product grid.</h1><p className="lede">Round 1 preserves only enough structure to validate routing and deployment. The project information architecture is built in Round 2.</p></section>;
+  return (
+    <div className="page-shell page-top">
+      <header className="index-hero"><p className="eyebrow">Projects</p><h1>Independent state owners, connected by evidence.</h1><p>Each project answers a different failure mode. The boundaries matter because a system becomes unreliable when one layer invents facts owned by another.</p></header>
+      <SystemMap compact />
+      <section className="project-directory">
+        {projects.map((project) => (
+          <Link href={`/projects/${project.slug}`} className="project-directory-card" key={project.slug}>
+            <div className="directory-card-head"><span>{project.index}</span><p>{project.group}</p><b aria-hidden="true">↗</b></div>
+            <h2>{project.title}</h2><h3>{project.thesis}</h3><p>{project.summary}</p>
+            <dl><div><dt>Owns</dt><dd>{project.owns.slice(0, 2).join(" · ")}</dd></div><div><dt>Current state</dt><dd>{project.state}</dd></div></dl>
+          </Link>
+        ))}
+      </section>
+      <section className="portfolio-boundary"><SectionHeading index="06" eyebrow="Portfolio boundary" title="The stack is a graph, not one mandatory request pipeline." /><div><p>A local Runtime task may need no Edge. A Link measurement may need no Host. Computing can falsify a contract without owning any production state.</p><p>Source, tests, data, receipts, and each repository&apos;s current documents remain the technical truth. This site provides orientation and dated interpretation.</p></div></section>
+    </div>
+  );
 }

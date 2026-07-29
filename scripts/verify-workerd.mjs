@@ -37,7 +37,10 @@ try {
   await expectResponse("/", 200, "text/html");
   await expectResponse("/projects", 200, "text/html");
   await expectResponse("/writing", 200, "text/html");
-  await expectResponse("/preview-mdx", 200, "text/html");
+  await expectResponse("/projects/runtime", 200, "text/html");
+  await expectResponse("/writing/the-future-will-not-wait", 200, "text/html");
+  await expectResponse("/feed.xml", 200, "application/rss+xml");
+  await expectResponse("/sitemap.xml", 200, "application/xml");
   await expectResponse("/opengraph-image", 200, "image/png");
   const redirect = await expectResponse("/work", 308);
   if (!redirect.headers.get("location")?.endsWith("/projects")) throw new Error(`unexpected redirect ${redirect.headers.get("location")}`);
