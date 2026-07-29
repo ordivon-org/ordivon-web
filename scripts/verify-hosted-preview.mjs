@@ -6,12 +6,26 @@ if (!base) throw new Error("HOSTED_PREVIEW_URL is required");
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function waitReady() {
   for (let i = 0; i < 60; i += 1) {
-    try { if ((await fetch(base)).status === 200) return; } catch {}
+    try { if ((await fetchWithRetry(base, {}, 2)).status === 200) return; } catch {}
     await sleep(500);
   }
   throw new Error(`${base} did not become ready`);
 }
-async function request(route, init = {}) { return fetch(`${base}${route}`, { redirect: "manual", ...init }); }
+async function fetchWithRetry(url, init = {}, attempts = 6) {
+  let lastError;
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      const response = await fetch(url, { signal: AbortSignal.timeout(30_000), ...init });
+      if (response.status < 500 || attempt === attempts) return response;
+      lastError = new Error(`${url}: HTTP ${response.status}`);
+    } catch (error) {
+      lastError = error;
+    }
+    await sleep(500 * attempt);
+  }
+  throw lastError;
+}
+async function request(route, init = {}) { return fetchWithRetry(`${base}${route}`, { redirect: "manual", ...init }); }
 function assert(value, message) { if (!value) throw new Error(message); }
 function canonicalPath(route) { return route === "/" ? "/" : route.replace(/\/$/, ""); }
 

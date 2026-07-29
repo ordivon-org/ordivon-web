@@ -30,10 +30,10 @@ test("writing filter remains interactive", async ({ page }) => {
   expect(allRows).toBe(6);
   const reportButton = page.getByRole("button", { name: /Engineering report/i });
   if (await reportButton.count()) {
+    await expect(reportButton).toBeEnabled();
     await reportButton.click();
-    const filtered = await page.locator(".writing-row").count();
-    expect(filtered).toBeGreaterThan(0);
-    expect(filtered).toBeLessThan(allRows);
+    await expect(reportButton).toHaveClass(/active/);
+    await expect(page.locator(".writing-row")).toHaveCount(1);
   }
 });
 
