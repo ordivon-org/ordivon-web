@@ -81,7 +81,45 @@ const routes = [
   ["article", "/writing/the-future-will-not-wait"],
 ];
 const modes = ["mobile", "desktop"];
-const report = { generatedAt: new Date().toISOString(), environment: "wrangler-pages-dev", results: [] };
+const runsPerAudit = 3;
+const report = { generatedAt: new Date().toISOString(), environment: "wrangler-pages-dev", aggregation: "median-of-three", runsPerAudit, results: [] };
+
+function median(values) {
+  const sorted = [...values].sort((a, b) => a - b);
+  return sorted[Math.floor(sorted.length / 2)];
+}
+
+function extractResult(result, attempt) {
+  return {
+    attempt,
+    scores: {
+      performance: score(result, "performance"),
+      accessibility: score(result, "accessibility"),
+      bestPractices: score(result, "best-practices"),
+      seo: score(result, "seo"),
+    },
+    metrics: {
+      firstContentfulPaintMs: Math.round(metric(result, "first-contentful-paint") || 0),
+      largestContentfulPaintMs: Math.round(metric(result, "largest-contentful-paint") || 0),
+      totalBlockingTimeMs: Math.round(metric(result, "total-blocking-time") || 0),
+      cumulativeLayoutShift: +(metric(result, "cumulative-layout-shift") || 0).toFixed(4),
+      speedIndexMs: Math.round(metric(result, "speed-index") || 0),
+      interactiveMs: Math.round(metric(result, "interactive") || 0),
+      totalByteWeight: Math.round(metric(result, "total-byte-weight") || 0),
+      unusedJavaScriptBytes: Math.round(metric(result, "unused-javascript") || 0),
+    },
+  };
+}
+
+function aggregateAttempts(attempts) {
+  const scoreKeys = Object.keys(attempts[0].scores);
+  const metricKeys = Object.keys(attempts[0].metrics);
+  return {
+    scores: Object.fromEntries(scoreKeys.map((key) => [key, median(attempts.map((item) => item.scores[key]))])),
+    metrics: Object.fromEntries(metricKeys.map((key) => [key, median(attempts.map((item) => item.metrics[key]))])),
+  };
+}
+
 let chrome;
 try {
   await waitReady();
@@ -96,43 +134,31 @@ try {
         throttlingMethod: "simulate",
         preset: mode === "desktop" ? "desktop" : undefined,
       };
-      const result = await lighthouse(`${base}${route}`, flags);
-      if (!result) throw new Error(`${mode} ${route}: no Lighthouse result`);
-      const row = {
-        mode, slug, route,
-        scores: {
-          performance: score(result, "performance"),
-          accessibility: score(result, "accessibility"),
-          bestPractices: score(result, "best-practices"),
-          seo: score(result, "seo"),
-        },
-        metrics: {
-          firstContentfulPaintMs: Math.round(metric(result, "first-contentful-paint") || 0),
-          largestContentfulPaintMs: Math.round(metric(result, "largest-contentful-paint") || 0),
-          totalBlockingTimeMs: Math.round(metric(result, "total-blocking-time") || 0),
-          cumulativeLayoutShift: +(metric(result, "cumulative-layout-shift") || 0).toFixed(4),
-          speedIndexMs: Math.round(metric(result, "speed-index") || 0),
-          interactiveMs: Math.round(metric(result, "interactive") || 0),
-          totalByteWeight: Math.round(metric(result, "total-byte-weight") || 0),
-          unusedJavaScriptBytes: Math.round(metric(result, "unused-javascript") || 0),
-        },
-      };
+      const attempts = [];
+      for (let attempt = 1; attempt <= runsPerAudit; attempt += 1) {
+        const result = await lighthouse(`${base}${route}`, flags);
+        if (!result) throw new Error(`${mode} ${route} attempt ${attempt}: no Lighthouse result`);
+        attempts.push(extractResult(result, attempt));
+      }
+      const aggregate = aggregateAttempts(attempts);
+      const row = { mode, slug, route, runs: runsPerAudit, aggregation: "median", ...aggregate, attempts };
       report.results.push(row);
       const minPerformance = mode === "desktop" ? 90 : 85;
-      assert(row.scores.performance >= minPerformance, `${mode} ${route}: performance ${row.scores.performance} < ${minPerformance}`);
-      assert(row.scores.accessibility === 100, `${mode} ${route}: accessibility ${row.scores.accessibility}`);
-      assert(row.scores.bestPractices >= 95, `${mode} ${route}: best practices ${row.scores.bestPractices}`);
-      assert(row.scores.seo === 100, `${mode} ${route}: SEO ${row.scores.seo}`);
-      assert(row.metrics.largestContentfulPaintMs <= 2500, `${mode} ${route}: LCP ${row.metrics.largestContentfulPaintMs}`);
-      assert(row.metrics.totalBlockingTimeMs <= 200, `${mode} ${route}: TBT ${row.metrics.totalBlockingTimeMs}`);
-      assert(row.metrics.cumulativeLayoutShift <= 0.1, `${mode} ${route}: CLS ${row.metrics.cumulativeLayoutShift}`);
-      assert(row.metrics.totalByteWeight <= 700_000, `${mode} ${route}: bytes ${row.metrics.totalByteWeight}`);
-      console.log(`${mode.padEnd(7)} ${slug.padEnd(8)} P${row.scores.performance} A${row.scores.accessibility} B${row.scores.bestPractices} S${row.scores.seo} LCP=${row.metrics.largestContentfulPaintMs}ms TBT=${row.metrics.totalBlockingTimeMs}ms CLS=${row.metrics.cumulativeLayoutShift} bytes=${row.metrics.totalByteWeight}`);
+      assert(row.scores.performance >= minPerformance, `${mode} ${route}: median performance ${row.scores.performance} < ${minPerformance}`);
+      assert(row.scores.accessibility === 100, `${mode} ${route}: median accessibility ${row.scores.accessibility}`);
+      assert(row.scores.bestPractices >= 95, `${mode} ${route}: median best practices ${row.scores.bestPractices}`);
+      assert(row.scores.seo === 100, `${mode} ${route}: median SEO ${row.scores.seo}`);
+      assert(row.metrics.largestContentfulPaintMs <= 2500, `${mode} ${route}: median LCP ${row.metrics.largestContentfulPaintMs}`);
+      assert(row.metrics.totalBlockingTimeMs <= 200, `${mode} ${route}: median TBT ${row.metrics.totalBlockingTimeMs}`);
+      assert(row.metrics.cumulativeLayoutShift <= 0.1, `${mode} ${route}: median CLS ${row.metrics.cumulativeLayoutShift}`);
+      assert(row.metrics.totalByteWeight <= 700_000, `${mode} ${route}: median bytes ${row.metrics.totalByteWeight}`);
+      const tbtRuns = attempts.map((item) => item.metrics.totalBlockingTimeMs).join("/");
+      console.log(`${mode.padEnd(7)} ${slug.padEnd(8)} P${row.scores.performance} A${row.scores.accessibility} B${row.scores.bestPractices} S${row.scores.seo} LCP=${row.metrics.largestContentfulPaintMs}ms TBT=${row.metrics.totalBlockingTimeMs}ms [${tbtRuns}] CLS=${row.metrics.cumulativeLayoutShift} bytes=${row.metrics.totalByteWeight}`);
     }
   }
   await mkdir("artifacts/v2-round3", { recursive: true });
   await writeFile("artifacts/v2-round3/lighthouse.json", `${JSON.stringify(report, null, 2)}\n`);
-  console.log(`Lighthouse budgets passed for ${report.results.length} audits`);
+  console.log(`Lighthouse budgets passed for ${report.results.length} route/device audits (${report.results.length * runsPerAudit} runs, median enforced)`);
 } finally {
   if (chrome) await chrome.kill();
   try { process.kill(-server.pid, "SIGTERM"); } catch {}

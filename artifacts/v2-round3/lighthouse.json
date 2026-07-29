@@ -1,116 +1,15 @@
 {
-  "generatedAt": "2026-07-29T10:40:06.625Z",
+  "generatedAt": "2026-07-29T10:56:42.232Z",
   "environment": "wrangler-pages-dev",
+  "aggregation": "median-of-three",
+  "runsPerAudit": 3,
   "results": [
     {
       "mode": "mobile",
       "slug": "home",
       "route": "/",
-      "scores": {
-        "performance": 99,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 761,
-        "largestContentfulPaintMs": 1809,
-        "totalBlockingTimeMs": 79,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 761,
-        "interactiveMs": 1809,
-        "totalByteWeight": 172033,
-        "unusedJavaScriptBytes": 150
-      }
-    },
-    {
-      "mode": "mobile",
-      "slug": "projects",
-      "route": "/projects",
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 760,
-        "largestContentfulPaintMs": 1889,
-        "totalBlockingTimeMs": 29,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 760,
-        "interactiveMs": 1889,
-        "totalByteWeight": 190298,
-        "unusedJavaScriptBytes": 300
-      }
-    },
-    {
-      "mode": "mobile",
-      "slug": "runtime",
-      "route": "/projects/runtime",
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 764,
-        "largestContentfulPaintMs": 1886,
-        "totalBlockingTimeMs": 41,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 764,
-        "interactiveMs": 1886,
-        "totalByteWeight": 156927,
-        "unusedJavaScriptBytes": 300
-      }
-    },
-    {
-      "mode": "mobile",
-      "slug": "writing",
-      "route": "/writing",
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 766,
-        "largestContentfulPaintMs": 1881,
-        "totalBlockingTimeMs": 15,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 766,
-        "interactiveMs": 1881,
-        "totalByteWeight": 179070,
-        "unusedJavaScriptBytes": 300
-      }
-    },
-    {
-      "mode": "mobile",
-      "slug": "article",
-      "route": "/writing/the-future-will-not-wait",
-      "scores": {
-        "performance": 99,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 910,
-        "largestContentfulPaintMs": 2038,
-        "totalBlockingTimeMs": 31,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 910,
-        "interactiveMs": 2038,
-        "totalByteWeight": 179896,
-        "unusedJavaScriptBytes": 300
-      }
-    },
-    {
-      "mode": "desktop",
-      "slug": "home",
-      "route": "/",
+      "runs": 3,
+      "aggregation": "median",
       "scores": {
         "performance": 100,
         "accessibility": 100,
@@ -119,19 +18,80 @@
       },
       "metrics": {
         "firstContentfulPaintMs": 762,
-        "largestContentfulPaintMs": 1881,
-        "totalBlockingTimeMs": 19,
+        "largestContentfulPaintMs": 1895,
+        "totalBlockingTimeMs": 52,
         "cumulativeLayoutShift": 0,
         "speedIndexMs": 762,
-        "interactiveMs": 1881,
-        "totalByteWeight": 172029,
+        "interactiveMs": 1895,
+        "totalByteWeight": 171994,
         "unusedJavaScriptBytes": 300
-      }
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 764,
+            "largestContentfulPaintMs": 1795,
+            "totalBlockingTimeMs": 52,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 764,
+            "interactiveMs": 1795,
+            "totalByteWeight": 172002,
+            "unusedJavaScriptBytes": 150
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1895,
+            "totalBlockingTimeMs": 35,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 760,
+            "interactiveMs": 1895,
+            "totalByteWeight": 171985,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1897,
+            "totalBlockingTimeMs": 86,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1897,
+            "totalByteWeight": 171994,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
     },
     {
-      "mode": "desktop",
+      "mode": "mobile",
       "slug": "projects",
       "route": "/projects",
+      "runs": 3,
+      "aggregation": "median",
       "scores": {
         "performance": 100,
         "accessibility": 100,
@@ -140,19 +100,326 @@
       },
       "metrics": {
         "firstContentfulPaintMs": 761,
-        "largestContentfulPaintMs": 1878,
-        "totalBlockingTimeMs": 17,
+        "largestContentfulPaintMs": 1884,
+        "totalBlockingTimeMs": 23,
         "cumulativeLayoutShift": 0,
         "speedIndexMs": 761,
-        "interactiveMs": 1878,
-        "totalByteWeight": 190275,
+        "interactiveMs": 1884,
+        "totalByteWeight": 190230,
         "unusedJavaScriptBytes": 300
-      }
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1876,
+            "totalBlockingTimeMs": 17,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 759,
+            "interactiveMs": 1876,
+            "totalByteWeight": 190218,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1884,
+            "totalBlockingTimeMs": 23,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1884,
+            "totalByteWeight": 190248,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1902,
+            "totalBlockingTimeMs": 41,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1902,
+            "totalByteWeight": 190230,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
+      "slug": "runtime",
+      "route": "/projects/runtime",
+      "runs": 3,
+      "aggregation": "median",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 760,
+        "largestContentfulPaintMs": 1871,
+        "totalBlockingTimeMs": 11,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 760,
+        "interactiveMs": 1871,
+        "totalByteWeight": 156899,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1871,
+            "totalBlockingTimeMs": 10,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1871,
+            "totalByteWeight": 156896,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1871,
+            "totalBlockingTimeMs": 11,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 760,
+            "interactiveMs": 1871,
+            "totalByteWeight": 156899,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1878,
+            "totalBlockingTimeMs": 18,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 760,
+            "interactiveMs": 1878,
+            "totalByteWeight": 156918,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
+      "slug": "writing",
+      "route": "/writing",
+      "runs": 3,
+      "aggregation": "median",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 762,
+        "largestContentfulPaintMs": 1888,
+        "totalBlockingTimeMs": 26,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 762,
+        "interactiveMs": 1888,
+        "totalByteWeight": 179058,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1888,
+            "totalBlockingTimeMs": 26,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1888,
+            "totalByteWeight": 179058,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 764,
+            "largestContentfulPaintMs": 1893,
+            "totalBlockingTimeMs": 29,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 764,
+            "interactiveMs": 1893,
+            "totalByteWeight": 179053,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1885,
+            "totalBlockingTimeMs": 23,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1885,
+            "totalByteWeight": 179058,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
+      "slug": "article",
+      "route": "/writing/the-future-will-not-wait",
+      "runs": 3,
+      "aggregation": "median",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 913,
+        "largestContentfulPaintMs": 2039,
+        "totalBlockingTimeMs": 28,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 913,
+        "interactiveMs": 2039,
+        "totalByteWeight": 179885,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 914,
+            "largestContentfulPaintMs": 2027,
+            "totalBlockingTimeMs": 13,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 914,
+            "interactiveMs": 2027,
+            "totalByteWeight": 179899,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 97,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 913,
+            "largestContentfulPaintMs": 2039,
+            "totalBlockingTimeMs": 157,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 913,
+            "interactiveMs": 2039,
+            "totalByteWeight": 179885,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 911,
+            "largestContentfulPaintMs": 2039,
+            "totalBlockingTimeMs": 28,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 911,
+            "interactiveMs": 2039,
+            "totalByteWeight": 179883,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
     },
     {
       "mode": "desktop",
-      "slug": "runtime",
-      "route": "/projects/runtime",
+      "slug": "home",
+      "route": "/",
+      "runs": 3,
+      "aggregation": "median",
       "scores": {
         "performance": 100,
         "accessibility": 100,
@@ -161,19 +428,80 @@
       },
       "metrics": {
         "firstContentfulPaintMs": 763,
-        "largestContentfulPaintMs": 1892,
-        "totalBlockingTimeMs": 29,
+        "largestContentfulPaintMs": 1885,
+        "totalBlockingTimeMs": 24,
         "cumulativeLayoutShift": 0,
         "speedIndexMs": 763,
-        "interactiveMs": 1892,
-        "totalByteWeight": 156925,
+        "interactiveMs": 1885,
+        "totalByteWeight": 171999,
         "unusedJavaScriptBytes": 300
-      }
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1884,
+            "totalBlockingTimeMs": 21,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1884,
+            "totalByteWeight": 171999,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1891,
+            "totalBlockingTimeMs": 28,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1891,
+            "totalByteWeight": 172018,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1885,
+            "totalBlockingTimeMs": 24,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1885,
+            "totalByteWeight": 171986,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
     },
     {
       "mode": "desktop",
-      "slug": "writing",
-      "route": "/writing",
+      "slug": "projects",
+      "route": "/projects",
+      "runs": 3,
+      "aggregation": "median",
       "scores": {
         "performance": 100,
         "accessibility": 100,
@@ -181,20 +509,245 @@
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 761,
-        "largestContentfulPaintMs": 1881,
-        "totalBlockingTimeMs": 20,
+        "firstContentfulPaintMs": 763,
+        "largestContentfulPaintMs": 1895,
+        "totalBlockingTimeMs": 32,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 761,
-        "interactiveMs": 1881,
-        "totalByteWeight": 179069,
+        "speedIndexMs": 763,
+        "interactiveMs": 1895,
+        "totalByteWeight": 190238,
         "unusedJavaScriptBytes": 300
-      }
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1875,
+            "totalBlockingTimeMs": 12,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1875,
+            "totalByteWeight": 190238,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1897,
+            "totalBlockingTimeMs": 35,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1897,
+            "totalByteWeight": 190262,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1895,
+            "totalBlockingTimeMs": 32,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1895,
+            "totalByteWeight": 190223,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "runtime",
+      "route": "/projects/runtime",
+      "runs": 3,
+      "aggregation": "median",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 762,
+        "largestContentfulPaintMs": 1884,
+        "totalBlockingTimeMs": 22,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 762,
+        "interactiveMs": 1884,
+        "totalByteWeight": 156898,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1898,
+            "totalBlockingTimeMs": 35,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1898,
+            "totalByteWeight": 156898,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1877,
+            "totalBlockingTimeMs": 16,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1877,
+            "totalByteWeight": 156896,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1884,
+            "totalBlockingTimeMs": 22,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1884,
+            "totalByteWeight": 156907,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "writing",
+      "route": "/writing",
+      "runs": 3,
+      "aggregation": "median",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 762,
+        "largestContentfulPaintMs": 1886,
+        "totalBlockingTimeMs": 23,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 762,
+        "interactiveMs": 1886,
+        "totalByteWeight": 179065,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1886,
+            "totalBlockingTimeMs": 25,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1886,
+            "totalByteWeight": 179065,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1884,
+            "totalBlockingTimeMs": 22,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1884,
+            "totalByteWeight": 179074,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1886,
+            "totalBlockingTimeMs": 23,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1886,
+            "totalByteWeight": 179048,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
     },
     {
       "mode": "desktop",
       "slug": "article",
       "route": "/writing/the-future-will-not-wait",
+      "runs": 3,
+      "aggregation": "median",
       "scores": {
         "performance": 99,
         "accessibility": 100,
@@ -202,15 +755,74 @@
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 911,
-        "largestContentfulPaintMs": 2038,
-        "totalBlockingTimeMs": 27,
+        "firstContentfulPaintMs": 912,
+        "largestContentfulPaintMs": 2035,
+        "totalBlockingTimeMs": 23,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 911,
-        "interactiveMs": 2038,
-        "totalByteWeight": 179895,
+        "speedIndexMs": 912,
+        "interactiveMs": 2035,
+        "totalByteWeight": 179883,
         "unusedJavaScriptBytes": 300
-      }
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 913,
+            "largestContentfulPaintMs": 2028,
+            "totalBlockingTimeMs": 15,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 913,
+            "interactiveMs": 2028,
+            "totalByteWeight": 179893,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 912,
+            "largestContentfulPaintMs": 2035,
+            "totalBlockingTimeMs": 23,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 912,
+            "interactiveMs": 2035,
+            "totalByteWeight": 179883,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 911,
+            "largestContentfulPaintMs": 2036,
+            "totalBlockingTimeMs": 25,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 911,
+            "interactiveMs": 2036,
+            "totalByteWeight": 179882,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
     }
   ]
 }

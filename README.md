@@ -39,7 +39,7 @@ Core gates:
 - `pnpm check:release` adds Chromium, Firefox, WebKit, mobile Chromium, Lighthouse budgets, and all external-link checks. It is intended for Ubuntu CI with all Playwright browser dependencies installed.
 - `pnpm check:release:local` runs the same release boundary on the Arch WSL host, using the official Playwright Noble container for WebKit ABI isolation.
 - `pnpm verify:static` validates canonical pages, metadata, JSON-LD, internal links, anchors, RSS, robots, health, security headers, cache policy, all V1 redirects, immutable assets, and the custom 404 through `wrangler pages dev`.
-- `pnpm audit:lighthouse` enforces mobile and desktop performance budgets on the Pages runtime surface.
+- `pnpm audit:lighthouse` runs each route/device audit three times and enforces the median against the mobile and desktop performance budgets, preserving strict thresholds without making one shared-runner CPU spike decisive.
 - `pnpm audit:links` distinguishes reachable, access-restricted, and broken external references.
 - `pnpm deploy` builds and uploads `out/` to the non-production Cloudflare Pages project. It does not attach `ordivon.com`.
 

@@ -64,20 +64,20 @@ The checks assert HTTP status, visible content, no horizontal overflow, no conso
 
 ## Lighthouse budgets
 
-Ten Lighthouse audits cover the homepage, project index, Runtime page, Writing index, and longest article on mobile and desktop.
+Ten route/device Lighthouse audits cover the homepage, project index, Runtime page, Writing index, and longest article on mobile and desktop. Each audit runs three times and enforces the median of every score and metric, preventing one shared-runner CPU spike from hiding a sustained regression or creating a false failure.
 
 Minimum and worst-case results:
 
 | Measure | Result |
 |---|---:|
-| Performance | 97 minimum |
-| Accessibility | 100 |
-| Best Practices | 100 |
-| SEO | 100 |
-| Largest Contentful Paint | 2,038 ms maximum |
-| Total Blocking Time | 178 ms maximum |
-| Cumulative Layout Shift | 0 across all audits |
-| Transfer weight | 156–190 KiB |
+| Performance | 99 minimum median |
+| Accessibility | 100 median |
+| Best Practices | 100 median |
+| SEO | 100 median |
+| Largest Contentful Paint | 2,039 ms maximum median |
+| Total Blocking Time | 52 ms maximum median |
+| Cumulative Layout Shift | 0 maximum median |
+| Transfer weight | 153–185 KiB median |
 
 The enforced budgets remain in `scripts/audit-lighthouse.mjs`; the current evidence is `artifacts/v2-round3/lighthouse.json`.
 
