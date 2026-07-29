@@ -4,7 +4,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 const port = 8788;
 const base = `http://127.0.0.1:${port}`;
-const server = spawn("pnpm", ["exec", "wrangler", "pages", "dev", "out", "--port", String(port), "--compatibility-date", "2026-07-29"], { stdio: ["ignore", "pipe", "pipe"], detached: true });
+const server = spawn("pnpm", ["exec", "wrangler", "dev", "--port", String(port)], { stdio: ["ignore", "pipe", "pipe"], detached: true });
 let log = "";
 server.stdout.on("data", (chunk) => { log += chunk; });
 server.stderr.on("data", (chunk) => { log += chunk; });
@@ -20,7 +20,7 @@ async function request(route, init = {}) { return fetch(`${base}${route}`, { red
 function assert(value, message) { if (!value) throw new Error(message); }
 function canonicalPath(route) { return route === "/" ? "/" : route.replace(/\/$/, ""); }
 
-const report = { generatedAt: new Date().toISOString(), routes: [], redirects: [], assets: [], warnings: [] };
+const report = { generatedAt: new Date().toISOString(), environment: "wrangler-workers-static-assets", routes: [], redirects: [], assets: [], warnings: [] };
 try {
   await waitReady();
   const sitemapResponse = await request("/sitemap.xml");

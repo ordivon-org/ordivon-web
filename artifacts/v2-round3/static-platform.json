@@ -1,5 +1,6 @@
 {
-  "generatedAt": "2026-07-29T10:43:02.453Z",
+  "generatedAt": "2026-07-29T16:43:59.601Z",
+  "environment": "wrangler-workers-static-assets",
   "routes": [
     {
       "route": "/",
@@ -285,37 +286,37 @@
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/chunks/app/about/page-c9367c0639145474.js",
+      "asset": "/_next/static/chunks/app/about/page-4d7fbf82201cfd02.js",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/chunks/app/now/page-c9367c0639145474.js",
+      "asset": "/_next/static/chunks/app/now/page-4d7fbf82201cfd02.js",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/chunks/app/page-c9367c0639145474.js",
+      "asset": "/_next/static/chunks/app/page-4d7fbf82201cfd02.js",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/chunks/app/projects/%5Bslug%5D/page-c9367c0639145474.js",
+      "asset": "/_next/static/chunks/app/projects/%5Bslug%5D/page-4d7fbf82201cfd02.js",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/chunks/app/projects/page-c9367c0639145474.js",
+      "asset": "/_next/static/chunks/app/projects/page-4d7fbf82201cfd02.js",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/chunks/app/writing/%5Bslug%5D/page-c5be3d1a5f45f618.js",
+      "asset": "/_next/static/chunks/app/writing/%5Bslug%5D/page-bb7737cb6c5871ee.js",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/chunks/app/writing/page-87ea458433025bb5.js",
+      "asset": "/_next/static/chunks/app/writing/page-83aab5096b704ee0.js",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     },
@@ -325,7 +326,7 @@
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/chunks/main-app-863a6fda50a81706.js",
+      "asset": "/_next/static/chunks/main-app-a1529369d4761ce0.js",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     },

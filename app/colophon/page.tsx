@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const facts = [
   ["Framework", "Next.js App Router + React"],
   ["Writing", "Deterministic V1 migration + local MDX"],
-  ["Delivery", "Static export on Cloudflare Pages"],
+  ["Delivery", "Static export via Workers Static Assets"],
   ["Verification", "TypeScript, ESLint, Playwright, axe, Lighthouse"],
   ["Recovery", "Exact V1 archive, visual evidence, hashes, route map"],
   ["Production", "V1 remains live until explicit cutover"],
@@ -45,12 +45,10 @@ export default function ColophonPage() {
             dated interpretation. Repositories, tests, receipts, and operational state remain canonical.
           </p>
           <p>
-            Every public route is generated at build time. Cloudflare Pages serves immutable assets, redirects, security
-            headers, RSS, metadata, and custom error pages without a database, ISR layer, or request-time application Worker.
+            Every public route is generated at build time. Cloudflare Workers Static Assets serves immutable assets, redirects, security headers, RSS, metadata, and custom error pages without a database, ISR layer, or request-time application module.
           </p>
           <p>
-            Production remains the archived V1 site until the account-hosted preview, release checks, cutover rehearsal, and
-            rollback proof all pass together.
+            Production remains the archived V1 site until the hosted edge checks, release checks, cutover rehearsal, and rollback proof all pass together.
           </p>
         </div>
       </section>

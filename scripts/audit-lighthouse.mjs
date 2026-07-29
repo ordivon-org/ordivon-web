@@ -5,11 +5,12 @@ import net from "node:net";
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 
 const previewPort = 8788;
-const base = `http://127.0.0.1:${previewPort}`;
-const server = spawn("pnpm", ["exec", "wrangler", "pages", "dev", "out", "--port", String(previewPort), "--compatibility-date", "2026-07-29"], { stdio: ["ignore", "pipe", "pipe"], detached: true });
+const externalBase = process.env.LIGHTHOUSE_BASE_URL?.replace(/\/$/, "");
+const base = externalBase || `http://127.0.0.1:${previewPort}`;
+const server = externalBase ? null : spawn("pnpm", ["exec", "wrangler", "dev", "--port", String(previewPort)], { stdio: ["ignore", "pipe", "pipe"], detached: true });
 let serverLog = "";
-server.stdout.on("data", (chunk) => { serverLog += chunk; });
-server.stderr.on("data", (chunk) => { serverLog += chunk; });
+server?.stdout.on("data", (chunk) => { serverLog += chunk; });
+server?.stderr.on("data", (chunk) => { serverLog += chunk; });
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 async function waitReady() {
   for (let i = 0; i < 120; i += 1) {
@@ -82,7 +83,7 @@ const routes = [
 ];
 const modes = ["mobile", "desktop"];
 const runsPerAudit = 3;
-const report = { generatedAt: new Date().toISOString(), environment: "wrangler-pages-dev", aggregation: "median-of-three", runsPerAudit, results: [] };
+const report = { generatedAt: new Date().toISOString(), environment: externalBase ? `hosted:${externalBase}` : "wrangler-workers-static-assets", aggregation: "median-of-three", runsPerAudit, results: [] };
 
 function median(values) {
   const sorted = [...values].sort((a, b) => a - b);
@@ -157,10 +158,13 @@ try {
     }
   }
   await mkdir("artifacts/v2-round3", { recursive: true });
-  await writeFile("artifacts/v2-round3/lighthouse.json", `${JSON.stringify(report, null, 2)}\n`);
+  const output = externalBase ? "artifacts/v2-round3/lighthouse-hosted.json" : "artifacts/v2-round3/lighthouse.json";
+  await writeFile(output, `${JSON.stringify(report, null, 2)}\n`);
   console.log(`Lighthouse budgets passed for ${report.results.length} route/device audits (${report.results.length * runsPerAudit} runs, median enforced)`);
 } finally {
   if (chrome) await chrome.kill();
-  try { process.kill(-server.pid, "SIGTERM"); } catch {}
-  await sleep(500);
+  if (server) {
+    try { process.kill(-server.pid, "SIGTERM"); } catch {}
+    await sleep(500);
+  }
 }
