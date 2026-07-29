@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T18:04:20.425Z",
+  "generatedAt": "2026-07-29T18:27:41.209Z",
   "environment": "wrangler-workers-static-assets",
   "routes": [
     {
@@ -364,7 +364,7 @@
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/css/6d4c52351a7f0583.css",
+      "asset": "/_next/static/css/8e765a046df7c724.css",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     }

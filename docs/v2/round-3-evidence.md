@@ -81,7 +81,7 @@ Representative pages and interactions are exercised on Chromium, Firefox, mobile
 
 Total: **40/40 local release-browser checks passed**.
 
-The hosted matrix repeats the same 36 checks against the public `workers.dev` deployment. Final result: **36/36 hosted browser checks passed**. On Arch, WebKit runs in the official `mcr.microsoft.com/playwright:v1.62.0-noble` container rather than installing obsolete Ubuntu ABI compatibility libraries into the host.
+The hosted matrix repeats the same 36 checks against the public `workers.dev` deployment. Final result: **44/44 hosted browser checks passed**. On Arch, WebKit runs in the official `mcr.microsoft.com/playwright:v1.62.0-noble` container rather than installing obsolete Ubuntu ABI compatibility libraries into the host.
 
 Checks assert HTTP status, visible content, no horizontal overflow, no console errors, no real request failures, Writing filtering, article navigation, anchors, and permanent redirects. Chromium's cancelled same-origin `HEAD` prefetch requests are separated from real resource failures.
 
@@ -102,7 +102,7 @@ Local minimum and worst-case medians:
 | Cumulative Layout Shift | 0 |
 | Transfer weight | 153–185 KiB |
 
-The same unchanged budgets are enforced against the hosted edge using independent route/device Chrome profiles. Final hosted medians: Performance 98 minimum, Accessibility/Best Practices/SEO 100/100/100, LCP 2,297 ms maximum, TBT 154 ms maximum, CLS 0, and transfer weight up to 193 KiB. Evidence: `artifacts/v2-round3/lighthouse-hosted.json`.
+The same unchanged budgets are enforced against the hosted edge using independent route/device Chrome profiles. Final hosted medians: Performance 99 minimum, Accessibility/Best Practices/SEO 100/100/100, LCP 2,037 ms maximum, TBT 29 ms maximum, CLS 0, and transfer weight up to 185 KiB. Evidence: `artifacts/v2-round3/lighthouse-hosted.json`.
 
 ## External references
 

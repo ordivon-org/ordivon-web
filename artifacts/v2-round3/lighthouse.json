@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T17:39:38.628Z",
+  "generatedAt": "2026-07-29T18:28:17.102Z",
   "environment": "wrangler-workers-static-assets",
   "aggregation": "median-of-five",
   "runsPerAudit": 5,
@@ -18,13 +18,13 @@
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 760,
-        "largestContentfulPaintMs": 1879,
-        "totalBlockingTimeMs": 19,
+        "firstContentfulPaintMs": 764,
+        "largestContentfulPaintMs": 1881,
+        "totalBlockingTimeMs": 21,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 760,
-        "interactiveMs": 1879,
-        "totalByteWeight": 172066,
+        "speedIndexMs": 764,
+        "interactiveMs": 1881,
+        "totalByteWeight": 171888,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -37,13 +37,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1896,
-            "totalBlockingTimeMs": 34,
+            "firstContentfulPaintMs": 764,
+            "largestContentfulPaintMs": 1903,
+            "totalBlockingTimeMs": 39,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1896,
-            "totalByteWeight": 172066,
+            "speedIndexMs": 764,
+            "interactiveMs": 1903,
+            "totalByteWeight": 171900,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -56,13 +56,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 764,
-            "largestContentfulPaintMs": 1894,
-            "totalBlockingTimeMs": 30,
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1881,
+            "totalBlockingTimeMs": 21,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 764,
-            "interactiveMs": 1894,
-            "totalByteWeight": 172061,
+            "speedIndexMs": 760,
+            "interactiveMs": 1881,
+            "totalByteWeight": 171884,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -75,13 +75,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1878,
-            "totalBlockingTimeMs": 18,
+            "firstContentfulPaintMs": 764,
+            "largestContentfulPaintMs": 1896,
+            "totalBlockingTimeMs": 32,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1878,
-            "totalByteWeight": 172099,
+            "speedIndexMs": 764,
+            "interactiveMs": 1896,
+            "totalByteWeight": 171894,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -94,13 +94,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1875,
-            "totalBlockingTimeMs": 15,
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1811,
+            "totalBlockingTimeMs": 8,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1875,
-            "totalByteWeight": 172055,
+            "speedIndexMs": 761,
+            "interactiveMs": 1848,
+            "totalByteWeight": 171858,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -113,14 +113,14 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1879,
-            "totalBlockingTimeMs": 19,
+            "firstContentfulPaintMs": 764,
+            "largestContentfulPaintMs": 1514,
+            "totalBlockingTimeMs": 12,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1879,
-            "totalByteWeight": 172083,
-            "unusedJavaScriptBytes": 300
+            "speedIndexMs": 764,
+            "interactiveMs": 1719,
+            "totalByteWeight": 171888,
+            "unusedJavaScriptBytes": 0
           }
         }
       ]
@@ -140,12 +140,12 @@
       },
       "metrics": {
         "firstContentfulPaintMs": 760,
-        "largestContentfulPaintMs": 1886,
-        "totalBlockingTimeMs": 24,
+        "largestContentfulPaintMs": 1870,
+        "totalBlockingTimeMs": 13,
         "cumulativeLayoutShift": 0,
         "speedIndexMs": 760,
-        "interactiveMs": 1886,
-        "totalByteWeight": 190260,
+        "interactiveMs": 1870,
+        "totalByteWeight": 190330,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -158,13 +158,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 759,
-            "largestContentfulPaintMs": 1889,
-            "totalBlockingTimeMs": 30,
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1898,
+            "totalBlockingTimeMs": 38,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 759,
-            "interactiveMs": 1889,
-            "totalByteWeight": 190255,
+            "speedIndexMs": 760,
+            "interactiveMs": 1898,
+            "totalByteWeight": 190318,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -177,14 +177,14 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1886,
-            "totalBlockingTimeMs": 24,
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1510,
+            "totalBlockingTimeMs": 13,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1886,
-            "totalByteWeight": 190282,
-            "unusedJavaScriptBytes": 300
+            "speedIndexMs": 760,
+            "interactiveMs": 1716,
+            "totalByteWeight": 190315,
+            "unusedJavaScriptBytes": 0
           }
         },
         {
@@ -196,13 +196,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1884,
-            "totalBlockingTimeMs": 24,
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1882,
+            "totalBlockingTimeMs": 19,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1884,
-            "totalByteWeight": 190257,
+            "speedIndexMs": 763,
+            "interactiveMs": 1882,
+            "totalByteWeight": 190356,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -215,13 +215,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 758,
-            "largestContentfulPaintMs": 1889,
-            "totalBlockingTimeMs": 31,
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1870,
+            "totalBlockingTimeMs": 10,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 758,
-            "interactiveMs": 1889,
-            "totalByteWeight": 190272,
+            "speedIndexMs": 760,
+            "interactiveMs": 1870,
+            "totalByteWeight": 190342,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -234,13 +234,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1880,
-            "totalBlockingTimeMs": 20,
+            "firstContentfulPaintMs": 758,
+            "largestContentfulPaintMs": 1866,
+            "totalBlockingTimeMs": 8,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1880,
-            "totalByteWeight": 190260,
+            "speedIndexMs": 758,
+            "interactiveMs": 1866,
+            "totalByteWeight": 190330,
             "unusedJavaScriptBytes": 300
           }
         }
@@ -261,12 +261,12 @@
       },
       "metrics": {
         "firstContentfulPaintMs": 762,
-        "largestContentfulPaintMs": 1882,
-        "totalBlockingTimeMs": 20,
+        "largestContentfulPaintMs": 1881,
+        "totalBlockingTimeMs": 17,
         "cumulativeLayoutShift": 0,
         "speedIndexMs": 762,
-        "interactiveMs": 1882,
-        "totalByteWeight": 156936,
+        "interactiveMs": 1881,
+        "totalByteWeight": 156930,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -279,13 +279,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 765,
-            "largestContentfulPaintMs": 1894,
-            "totalBlockingTimeMs": 29,
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1883,
+            "totalBlockingTimeMs": 20,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 765,
-            "interactiveMs": 1894,
-            "totalByteWeight": 156945,
+            "speedIndexMs": 763,
+            "interactiveMs": 1883,
+            "totalByteWeight": 156942,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -298,13 +298,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1882,
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1881,
             "totalBlockingTimeMs": 20,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1882,
-            "totalByteWeight": 156926,
+            "speedIndexMs": 761,
+            "interactiveMs": 1881,
+            "totalByteWeight": 156924,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -317,37 +317,18 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 767,
-            "largestContentfulPaintMs": 1367,
-            "totalBlockingTimeMs": 9,
+            "firstContentfulPaintMs": 766,
+            "largestContentfulPaintMs": 1883,
+            "totalBlockingTimeMs": 17,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 767,
-            "interactiveMs": 1652,
-            "totalByteWeight": 156928,
-            "unusedJavaScriptBytes": 150
-          }
-        },
-        {
-          "attempt": 4,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 761,
-            "largestContentfulPaintMs": 1884,
-            "totalBlockingTimeMs": 23,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 761,
-            "interactiveMs": 1884,
-            "totalByteWeight": 156936,
+            "speedIndexMs": 766,
+            "interactiveMs": 1883,
+            "totalByteWeight": 156930,
             "unusedJavaScriptBytes": 300
           }
         },
         {
-          "attempt": 5,
+          "attempt": 4,
           "scores": {
             "performance": 100,
             "accessibility": 100,
@@ -361,7 +342,147 @@
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 762,
             "interactiveMs": 1878,
-            "totalByteWeight": 156944,
+            "totalByteWeight": 156923,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1360,
+            "totalBlockingTimeMs": 10,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 760,
+            "interactiveMs": 1646,
+            "totalByteWeight": 156943,
+            "unusedJavaScriptBytes": 150
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
+      "slug": "world",
+      "route": "/projects/world",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 760,
+        "largestContentfulPaintMs": 1877,
+        "totalBlockingTimeMs": 17,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 760,
+        "interactiveMs": 1877,
+        "totalByteWeight": 157112,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1890,
+            "totalBlockingTimeMs": 30,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 760,
+            "interactiveMs": 1890,
+            "totalByteWeight": 157118,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1877,
+            "totalBlockingTimeMs": 17,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 760,
+            "interactiveMs": 1877,
+            "totalByteWeight": 157132,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1875,
+            "totalBlockingTimeMs": 14,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1875,
+            "totalByteWeight": 157107,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1875,
+            "totalBlockingTimeMs": 16,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 759,
+            "interactiveMs": 1875,
+            "totalByteWeight": 157112,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1879,
+            "totalBlockingTimeMs": 18,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1879,
+            "totalByteWeight": 157109,
             "unusedJavaScriptBytes": 300
           }
         }
@@ -382,12 +503,12 @@
       },
       "metrics": {
         "firstContentfulPaintMs": 762,
-        "largestContentfulPaintMs": 1882,
-        "totalBlockingTimeMs": 20,
+        "largestContentfulPaintMs": 1879,
+        "totalBlockingTimeMs": 17,
         "cumulativeLayoutShift": 0,
         "speedIndexMs": 762,
-        "interactiveMs": 1882,
-        "totalByteWeight": 179153,
+        "interactiveMs": 1879,
+        "totalByteWeight": 179199,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -400,13 +521,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 764,
-            "largestContentfulPaintMs": 1888,
-            "totalBlockingTimeMs": 24,
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1901,
+            "totalBlockingTimeMs": 38,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 764,
-            "interactiveMs": 1888,
-            "totalByteWeight": 179142,
+            "speedIndexMs": 763,
+            "interactiveMs": 1901,
+            "totalByteWeight": 179202,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -420,12 +541,12 @@
           },
           "metrics": {
             "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1892,
-            "totalBlockingTimeMs": 30,
+            "largestContentfulPaintMs": 1879,
+            "totalBlockingTimeMs": 17,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 762,
-            "interactiveMs": 1892,
-            "totalByteWeight": 179153,
+            "interactiveMs": 1879,
+            "totalByteWeight": 179176,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -438,13 +559,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1878,
-            "totalBlockingTimeMs": 16,
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1876,
+            "totalBlockingTimeMs": 15,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1878,
-            "totalByteWeight": 179168,
+            "speedIndexMs": 761,
+            "interactiveMs": 1876,
+            "totalByteWeight": 179181,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -463,7 +584,7 @@
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 763,
             "interactiveMs": 1881,
-            "totalByteWeight": 179141,
+            "totalByteWeight": 179199,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -476,13 +597,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1882,
-            "totalBlockingTimeMs": 20,
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1876,
+            "totalBlockingTimeMs": 17,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1882,
-            "totalByteWeight": 179156,
+            "speedIndexMs": 759,
+            "interactiveMs": 1876,
+            "totalByteWeight": 179205,
             "unusedJavaScriptBytes": 300
           }
         }
@@ -502,13 +623,13 @@
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 912,
-        "largestContentfulPaintMs": 2032,
-        "totalBlockingTimeMs": 22,
+        "firstContentfulPaintMs": 911,
+        "largestContentfulPaintMs": 2033,
+        "totalBlockingTimeMs": 24,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 912,
-        "interactiveMs": 2032,
-        "totalByteWeight": 179933,
+        "speedIndexMs": 911,
+        "interactiveMs": 2033,
+        "totalByteWeight": 179965,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -521,13 +642,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 915,
-            "largestContentfulPaintMs": 2042,
-            "totalBlockingTimeMs": 27,
+            "firstContentfulPaintMs": 911,
+            "largestContentfulPaintMs": 2047,
+            "totalBlockingTimeMs": 36,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 915,
-            "interactiveMs": 2042,
-            "totalByteWeight": 179938,
+            "speedIndexMs": 911,
+            "interactiveMs": 2047,
+            "totalByteWeight": 179965,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -540,13 +661,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 914,
-            "largestContentfulPaintMs": 2032,
-            "totalBlockingTimeMs": 18,
+            "firstContentfulPaintMs": 911,
+            "largestContentfulPaintMs": 2030,
+            "totalBlockingTimeMs": 27,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 914,
-            "interactiveMs": 2032,
-            "totalByteWeight": 179926,
+            "speedIndexMs": 911,
+            "interactiveMs": 2030,
+            "totalByteWeight": 179966,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -559,13 +680,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 909,
-            "largestContentfulPaintMs": 2026,
-            "totalBlockingTimeMs": 17,
+            "firstContentfulPaintMs": 912,
+            "largestContentfulPaintMs": 2033,
+            "totalBlockingTimeMs": 21,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 909,
-            "interactiveMs": 2026,
-            "totalByteWeight": 179937,
+            "speedIndexMs": 912,
+            "interactiveMs": 2033,
+            "totalByteWeight": 179966,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -578,13 +699,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 912,
-            "largestContentfulPaintMs": 2044,
-            "totalBlockingTimeMs": 32,
+            "firstContentfulPaintMs": 910,
+            "largestContentfulPaintMs": 2034,
+            "totalBlockingTimeMs": 24,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 912,
-            "interactiveMs": 2044,
-            "totalByteWeight": 179931,
+            "speedIndexMs": 910,
+            "interactiveMs": 2034,
+            "totalByteWeight": 179959,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -597,13 +718,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 910,
-            "largestContentfulPaintMs": 2032,
+            "firstContentfulPaintMs": 909,
+            "largestContentfulPaintMs": 2031,
             "totalBlockingTimeMs": 22,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 910,
-            "interactiveMs": 2032,
-            "totalByteWeight": 179933,
+            "speedIndexMs": 909,
+            "interactiveMs": 2031,
+            "totalByteWeight": 179951,
             "unusedJavaScriptBytes": 300
           }
         }
@@ -624,12 +745,12 @@
       },
       "metrics": {
         "firstContentfulPaintMs": 761,
-        "largestContentfulPaintMs": 1878,
-        "totalBlockingTimeMs": 17,
+        "largestContentfulPaintMs": 1879,
+        "totalBlockingTimeMs": 18,
         "cumulativeLayoutShift": 0,
         "speedIndexMs": 761,
-        "interactiveMs": 1878,
-        "totalByteWeight": 172071,
+        "interactiveMs": 1879,
+        "totalByteWeight": 171881,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -642,13 +763,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 761,
-            "largestContentfulPaintMs": 1892,
-            "totalBlockingTimeMs": 31,
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1888,
+            "totalBlockingTimeMs": 26,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 761,
-            "interactiveMs": 1892,
-            "totalByteWeight": 172096,
+            "speedIndexMs": 762,
+            "interactiveMs": 1888,
+            "totalByteWeight": 171866,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -662,12 +783,12 @@
           },
           "metrics": {
             "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1874,
-            "totalBlockingTimeMs": 14,
+            "largestContentfulPaintMs": 1878,
+            "totalBlockingTimeMs": 18,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 760,
-            "interactiveMs": 1874,
-            "totalByteWeight": 172087,
+            "interactiveMs": 1878,
+            "totalByteWeight": 171879,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -680,13 +801,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1887,
-            "totalBlockingTimeMs": 25,
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1881,
+            "totalBlockingTimeMs": 18,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1887,
-            "totalByteWeight": 172053,
+            "speedIndexMs": 763,
+            "interactiveMs": 1881,
+            "totalByteWeight": 171881,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -700,12 +821,12 @@
           },
           "metrics": {
             "firstContentfulPaintMs": 761,
-            "largestContentfulPaintMs": 1877,
-            "totalBlockingTimeMs": 16,
+            "largestContentfulPaintMs": 1879,
+            "totalBlockingTimeMs": 18,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 761,
-            "interactiveMs": 1877,
-            "totalByteWeight": 172059,
+            "interactiveMs": 1879,
+            "totalByteWeight": 171897,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -718,13 +839,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 761,
-            "largestContentfulPaintMs": 1878,
-            "totalBlockingTimeMs": 17,
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1876,
+            "totalBlockingTimeMs": 16,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 761,
-            "interactiveMs": 1878,
-            "totalByteWeight": 172071,
+            "speedIndexMs": 760,
+            "interactiveMs": 1876,
+            "totalByteWeight": 171881,
             "unusedJavaScriptBytes": 300
           }
         }
@@ -745,12 +866,12 @@
       },
       "metrics": {
         "firstContentfulPaintMs": 760,
-        "largestContentfulPaintMs": 1880,
-        "totalBlockingTimeMs": 18,
+        "largestContentfulPaintMs": 1877,
+        "totalBlockingTimeMs": 17,
         "cumulativeLayoutShift": 0,
         "speedIndexMs": 760,
-        "interactiveMs": 1880,
-        "totalByteWeight": 190258,
+        "interactiveMs": 1877,
+        "totalByteWeight": 190323,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -763,13 +884,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 758,
-            "largestContentfulPaintMs": 1887,
-            "totalBlockingTimeMs": 29,
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1900,
+            "totalBlockingTimeMs": 41,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 758,
-            "interactiveMs": 1887,
-            "totalByteWeight": 190258,
+            "speedIndexMs": 759,
+            "interactiveMs": 1900,
+            "totalByteWeight": 190323,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -782,13 +903,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1873,
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1874,
             "totalBlockingTimeMs": 13,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1873,
-            "totalByteWeight": 190266,
+            "speedIndexMs": 761,
+            "interactiveMs": 1874,
+            "totalByteWeight": 190326,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -801,14 +922,14 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1510,
-            "totalBlockingTimeMs": 10,
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1881,
+            "totalBlockingTimeMs": 22,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1713,
-            "totalByteWeight": 190265,
-            "unusedJavaScriptBytes": 0
+            "speedIndexMs": 759,
+            "interactiveMs": 1881,
+            "totalByteWeight": 190328,
+            "unusedJavaScriptBytes": 300
           }
         },
         {
@@ -820,13 +941,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1880,
-            "totalBlockingTimeMs": 18,
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1869,
+            "totalBlockingTimeMs": 6,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1880,
-            "totalByteWeight": 190252,
+            "speedIndexMs": 763,
+            "interactiveMs": 1869,
+            "totalByteWeight": 190303,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -840,12 +961,12 @@
           },
           "metrics": {
             "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1886,
-            "totalBlockingTimeMs": 26,
+            "largestContentfulPaintMs": 1877,
+            "totalBlockingTimeMs": 17,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 760,
-            "interactiveMs": 1886,
-            "totalByteWeight": 190241,
+            "interactiveMs": 1877,
+            "totalByteWeight": 190298,
             "unusedJavaScriptBytes": 300
           }
         }
@@ -865,13 +986,13 @@
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 761,
-        "largestContentfulPaintMs": 1886,
-        "totalBlockingTimeMs": 24,
+        "firstContentfulPaintMs": 762,
+        "largestContentfulPaintMs": 1880,
+        "totalBlockingTimeMs": 18,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 761,
-        "interactiveMs": 1886,
-        "totalByteWeight": 156940,
+        "speedIndexMs": 762,
+        "interactiveMs": 1880,
+        "totalByteWeight": 156931,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -885,12 +1006,133 @@
           },
           "metrics": {
             "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1892,
-            "totalBlockingTimeMs": 30,
+            "largestContentfulPaintMs": 1901,
+            "totalBlockingTimeMs": 39,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 762,
-            "interactiveMs": 1892,
-            "totalByteWeight": 156955,
+            "interactiveMs": 1901,
+            "totalByteWeight": 156901,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1880,
+            "totalBlockingTimeMs": 18,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1880,
+            "totalByteWeight": 156931,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1880,
+            "totalBlockingTimeMs": 17,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1880,
+            "totalByteWeight": 156928,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1881,
+            "totalBlockingTimeMs": 19,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1881,
+            "totalByteWeight": 156933,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1870,
+            "totalBlockingTimeMs": 9,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1870,
+            "totalByteWeight": 156934,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "world",
+      "route": "/projects/world",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 762,
+        "largestContentfulPaintMs": 1878,
+        "totalBlockingTimeMs": 16,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 762,
+        "interactiveMs": 1878,
+        "totalByteWeight": 157114,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1881,
+            "totalBlockingTimeMs": 19,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1881,
+            "totalByteWeight": 157114,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -904,12 +1146,12 @@
           },
           "metrics": {
             "firstContentfulPaintMs": 761,
-            "largestContentfulPaintMs": 1887,
-            "totalBlockingTimeMs": 26,
+            "largestContentfulPaintMs": 1871,
+            "totalBlockingTimeMs": 10,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 761,
-            "interactiveMs": 1887,
-            "totalByteWeight": 156944,
+            "interactiveMs": 1871,
+            "totalByteWeight": 157108,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -922,13 +1164,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 766,
-            "largestContentfulPaintMs": 1886,
-            "totalBlockingTimeMs": 20,
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1885,
+            "totalBlockingTimeMs": 23,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 766,
-            "interactiveMs": 1886,
-            "totalByteWeight": 156938,
+            "speedIndexMs": 762,
+            "interactiveMs": 1885,
+            "totalByteWeight": 157119,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -941,13 +1183,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1875,
-            "totalBlockingTimeMs": 15,
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1878,
+            "totalBlockingTimeMs": 16,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1875,
-            "totalByteWeight": 156931,
+            "speedIndexMs": 762,
+            "interactiveMs": 1878,
+            "totalByteWeight": 157121,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -960,14 +1202,14 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1884,
-            "totalBlockingTimeMs": 24,
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1509,
+            "totalBlockingTimeMs": 9,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1884,
-            "totalByteWeight": 156940,
-            "unusedJavaScriptBytes": 300
+            "speedIndexMs": 759,
+            "interactiveMs": 1711,
+            "totalByteWeight": 157113,
+            "unusedJavaScriptBytes": 0
           }
         }
       ]
@@ -986,13 +1228,13 @@
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 762,
-        "largestContentfulPaintMs": 1882,
-        "totalBlockingTimeMs": 21,
+        "firstContentfulPaintMs": 761,
+        "largestContentfulPaintMs": 1867,
+        "totalBlockingTimeMs": 8,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 762,
-        "interactiveMs": 1882,
-        "totalByteWeight": 179147,
+        "speedIndexMs": 761,
+        "interactiveMs": 1867,
+        "totalByteWeight": 179186,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -1005,13 +1247,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 763,
-            "largestContentfulPaintMs": 1895,
-            "totalBlockingTimeMs": 32,
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1888,
+            "totalBlockingTimeMs": 27,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 763,
-            "interactiveMs": 1895,
-            "totalByteWeight": 179147,
+            "speedIndexMs": 761,
+            "interactiveMs": 1888,
+            "totalByteWeight": 179182,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1024,14 +1266,14 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 759,
-            "largestContentfulPaintMs": 1509,
-            "totalBlockingTimeMs": 14,
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1879,
+            "totalBlockingTimeMs": 19,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 759,
-            "interactiveMs": 1717,
-            "totalByteWeight": 179151,
-            "unusedJavaScriptBytes": 0
+            "speedIndexMs": 760,
+            "interactiveMs": 1879,
+            "totalByteWeight": 179197,
+            "unusedJavaScriptBytes": 300
           }
         },
         {
@@ -1043,13 +1285,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1877,
-            "totalBlockingTimeMs": 15,
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1865,
+            "totalBlockingTimeMs": 6,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1877,
-            "totalByteWeight": 179138,
+            "speedIndexMs": 759,
+            "interactiveMs": 1865,
+            "totalByteWeight": 179187,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1062,13 +1304,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1882,
-            "totalBlockingTimeMs": 22,
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1812,
+            "totalBlockingTimeMs": 8,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1882,
-            "totalByteWeight": 179144,
+            "speedIndexMs": 762,
+            "interactiveMs": 1848,
+            "totalByteWeight": 179177,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1081,13 +1323,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 763,
-            "largestContentfulPaintMs": 1884,
-            "totalBlockingTimeMs": 21,
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1867,
+            "totalBlockingTimeMs": 6,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 763,
-            "interactiveMs": 1884,
-            "totalByteWeight": 179164,
+            "speedIndexMs": 761,
+            "interactiveMs": 1867,
+            "totalByteWeight": 179186,
             "unusedJavaScriptBytes": 300
           }
         }
@@ -1107,13 +1349,13 @@
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 914,
-        "largestContentfulPaintMs": 2036,
+        "firstContentfulPaintMs": 911,
+        "largestContentfulPaintMs": 2037,
         "totalBlockingTimeMs": 29,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 914,
-        "interactiveMs": 2036,
-        "totalByteWeight": 179933,
+        "speedIndexMs": 911,
+        "interactiveMs": 2037,
+        "totalByteWeight": 179980,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -1127,12 +1369,12 @@
           },
           "metrics": {
             "firstContentfulPaintMs": 911,
-            "largestContentfulPaintMs": 2044,
-            "totalBlockingTimeMs": 33,
+            "largestContentfulPaintMs": 2040,
+            "totalBlockingTimeMs": 29,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 911,
-            "interactiveMs": 2044,
-            "totalByteWeight": 179933,
+            "interactiveMs": 2040,
+            "totalByteWeight": 179983,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1145,13 +1387,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 910,
-            "largestContentfulPaintMs": 2036,
-            "totalBlockingTimeMs": 29,
+            "firstContentfulPaintMs": 914,
+            "largestContentfulPaintMs": 2037,
+            "totalBlockingTimeMs": 23,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 910,
-            "interactiveMs": 2036,
-            "totalByteWeight": 179933,
+            "speedIndexMs": 914,
+            "interactiveMs": 2037,
+            "totalByteWeight": 179971,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1164,51 +1406,51 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 914,
-            "largestContentfulPaintMs": 2052,
-            "totalBlockingTimeMs": 38,
+            "firstContentfulPaintMs": 911,
+            "largestContentfulPaintMs": 2033,
+            "totalBlockingTimeMs": 22,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 914,
-            "interactiveMs": 2052,
-            "totalByteWeight": 179925,
+            "speedIndexMs": 911,
+            "interactiveMs": 2033,
+            "totalByteWeight": 179980,
             "unusedJavaScriptBytes": 300
           }
         },
         {
           "attempt": 4,
           "scores": {
-            "performance": 99,
+            "performance": 98,
             "accessibility": 100,
             "bestPractices": 100,
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 916,
-            "largestContentfulPaintMs": 1939,
-            "totalBlockingTimeMs": 27,
+            "firstContentfulPaintMs": 912,
+            "largestContentfulPaintMs": 2038,
+            "totalBlockingTimeMs": 142,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 916,
-            "interactiveMs": 1939,
-            "totalByteWeight": 179940,
-            "unusedJavaScriptBytes": 150
+            "speedIndexMs": 912,
+            "interactiveMs": 2038,
+            "totalByteWeight": 179979,
+            "unusedJavaScriptBytes": 300
           }
         },
         {
           "attempt": 5,
           "scores": {
-            "performance": 99,
+            "performance": 98,
             "accessibility": 100,
             "bestPractices": 100,
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 915,
-            "largestContentfulPaintMs": 2036,
-            "totalBlockingTimeMs": 21,
+            "firstContentfulPaintMs": 911,
+            "largestContentfulPaintMs": 2020,
+            "totalBlockingTimeMs": 119,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 915,
-            "interactiveMs": 2036,
-            "totalByteWeight": 179932,
+            "speedIndexMs": 911,
+            "interactiveMs": 2020,
+            "totalByteWeight": 179995,
             "unusedJavaScriptBytes": 300
           }
         }
