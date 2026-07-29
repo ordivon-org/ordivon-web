@@ -1,14 +1,43 @@
 {
-  "name": "ordivon-web-ci",
+  "name": "ordivon-web",
+  "version": "2.0.0-alpha.1",
   "private": true,
-  "type": "module",
+  "packageManager": "pnpm@11.17.0",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "test:browser": "playwright test",
-    "test:links": "python3 scripts/check_external_links.py"
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "playwright test",
+    "test:smoke": "playwright test tests/smoke.spec.ts",
+    "check": "pnpm typecheck && pnpm lint && pnpm build && pnpm test:smoke"
+  },
+  "dependencies": {
+    "@mdx-js/loader": "latest",
+    "@mdx-js/react": "latest",
+    "@next/mdx": "latest",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "@axe-core/playwright": "4.12.1",
-    "@playwright/test": "1.61.1",
-    "lighthouse": "13.4.1"
+    "@opennextjs/cloudflare": "latest",
+    "@playwright/test": "latest",
+    "@types/mdx": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "eslint": "9.39.2",
+    "eslint-config-next": "latest",
+    "typescript": "6.0.2",
+    "wrangler": "latest"
   }
 }

@@ -1,4 +1,12 @@
 node_modules/
-artifacts/
+.next/
+.open-next/
+.wrangler/
 playwright-report/
 test-results/
+coverage/
+.env*
+!.env.example
+.DS_Store
+
+*.tsbuildinfo
