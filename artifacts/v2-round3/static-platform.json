@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T16:43:59.601Z",
+  "generatedAt": "2026-07-29T17:03:47.515Z",
   "environment": "wrangler-workers-static-assets",
   "routes": [
     {
@@ -316,7 +316,7 @@
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/chunks/app/writing/page-83aab5096b704ee0.js",
+      "asset": "/_next/static/chunks/app/writing/page-210b8b90d4756386.js",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     },
@@ -341,7 +341,7 @@
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/css/e5c44b1c6da2359a.css",
+      "asset": "/_next/static/css/8e0ab1bc64729730.css",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     }

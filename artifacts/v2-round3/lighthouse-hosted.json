@@ -1,0 +1,1218 @@
+{
+  "generatedAt": "2026-07-29T17:26:45.271Z",
+  "environment": "hosted:https://ordivon-web-v2-preview.ordivon-lab.workers.dev",
+  "aggregation": "median-of-five",
+  "runsPerAudit": 5,
+  "results": [
+    {
+      "mode": "mobile",
+      "slug": "home",
+      "route": "/",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 1356,
+        "largestContentfulPaintMs": 1404,
+        "totalBlockingTimeMs": 11,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 2544,
+        "interactiveMs": 1855,
+        "totalByteWeight": 177059,
+        "unusedJavaScriptBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 96,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1758,
+            "largestContentfulPaintMs": 1758,
+            "totalBlockingTimeMs": 30,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 4371,
+            "interactiveMs": 2449,
+            "totalByteWeight": 174644,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1404,
+            "largestContentfulPaintMs": 1404,
+            "totalBlockingTimeMs": 11,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2544,
+            "interactiveMs": 1855,
+            "totalByteWeight": 176171,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1356,
+            "largestContentfulPaintMs": 1506,
+            "totalBlockingTimeMs": 13,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 3570,
+            "interactiveMs": 1883,
+            "totalByteWeight": 177217,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1348,
+            "largestContentfulPaintMs": 1348,
+            "totalBlockingTimeMs": 8,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2046,
+            "interactiveMs": 1817,
+            "totalByteWeight": 177059,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1347,
+            "largestContentfulPaintMs": 1347,
+            "totalBlockingTimeMs": 11,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1934,
+            "interactiveMs": 1819,
+            "totalByteWeight": 177105,
+            "unusedJavaScriptBytes": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
+      "slug": "projects",
+      "route": "/projects",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 1338,
+        "largestContentfulPaintMs": 1488,
+        "totalBlockingTimeMs": 12,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 2190,
+        "interactiveMs": 1863,
+        "totalByteWeight": 197900,
+        "unusedJavaScriptBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1348,
+            "largestContentfulPaintMs": 1498,
+            "totalBlockingTimeMs": 15,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 4195,
+            "interactiveMs": 2118,
+            "totalByteWeight": 195510,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1338,
+            "largestContentfulPaintMs": 1488,
+            "totalBlockingTimeMs": 12,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2190,
+            "interactiveMs": 1863,
+            "totalByteWeight": 198263,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1336,
+            "largestContentfulPaintMs": 1486,
+            "totalBlockingTimeMs": 8,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1951,
+            "interactiveMs": 1857,
+            "totalByteWeight": 197916,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1338,
+            "largestContentfulPaintMs": 1488,
+            "totalBlockingTimeMs": 11,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2105,
+            "interactiveMs": 1862,
+            "totalByteWeight": 197818,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1342,
+            "largestContentfulPaintMs": 1492,
+            "totalBlockingTimeMs": 84,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2250,
+            "interactiveMs": 1865,
+            "totalByteWeight": 197900,
+            "unusedJavaScriptBytes": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
+      "slug": "runtime",
+      "route": "/projects/runtime",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 1218,
+        "largestContentfulPaintMs": 1354,
+        "totalBlockingTimeMs": 13,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 2482,
+        "interactiveMs": 1758,
+        "totalByteWeight": 160771,
+        "unusedJavaScriptBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1314,
+            "largestContentfulPaintMs": 1383,
+            "totalBlockingTimeMs": 12,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 3579,
+            "interactiveMs": 1758,
+            "totalByteWeight": 158322,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1222,
+            "largestContentfulPaintMs": 1362,
+            "totalBlockingTimeMs": 13,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2864,
+            "interactiveMs": 1740,
+            "totalByteWeight": 161188,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1214,
+            "largestContentfulPaintMs": 1354,
+            "totalBlockingTimeMs": 9,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2482,
+            "interactiveMs": 1726,
+            "totalByteWeight": 160661,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1218,
+            "largestContentfulPaintMs": 1218,
+            "totalBlockingTimeMs": 155,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1989,
+            "interactiveMs": 1840,
+            "totalByteWeight": 160771,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1207,
+            "largestContentfulPaintMs": 1348,
+            "totalBlockingTimeMs": 159,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2055,
+            "interactiveMs": 1830,
+            "totalByteWeight": 160801,
+            "unusedJavaScriptBytes": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
+      "slug": "writing",
+      "route": "/writing",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 1248,
+        "largestContentfulPaintMs": 1381,
+        "totalBlockingTimeMs": 10,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 2348,
+        "interactiveMs": 1760,
+        "totalByteWeight": 184441,
+        "unusedJavaScriptBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1311,
+            "largestContentfulPaintMs": 1381,
+            "totalBlockingTimeMs": 10,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 4040,
+            "interactiveMs": 1753,
+            "totalByteWeight": 182109,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1222,
+            "largestContentfulPaintMs": 1222,
+            "totalBlockingTimeMs": 135,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2348,
+            "interactiveMs": 1832,
+            "totalByteWeight": 185096,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1248,
+            "largestContentfulPaintMs": 1390,
+            "totalBlockingTimeMs": 9,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2063,
+            "interactiveMs": 1761,
+            "totalByteWeight": 184441,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1249,
+            "largestContentfulPaintMs": 1388,
+            "totalBlockingTimeMs": 10,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1992,
+            "interactiveMs": 1760,
+            "totalByteWeight": 184412,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 97,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 788,
+            "largestContentfulPaintMs": 788,
+            "totalBlockingTimeMs": 21,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 4560,
+            "interactiveMs": 1237,
+            "totalByteWeight": 184920,
+            "unusedJavaScriptBytes": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
+      "slug": "article",
+      "route": "/writing/the-future-will-not-wait",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 1379,
+        "largestContentfulPaintMs": 2297,
+        "totalBlockingTimeMs": 32,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 2054,
+        "interactiveMs": 2793,
+        "totalByteWeight": 175440,
+        "unusedJavaScriptBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 95,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1059,
+            "largestContentfulPaintMs": 2422,
+            "totalBlockingTimeMs": 32,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 4722,
+            "interactiveMs": 2422,
+            "totalByteWeight": 176025,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1379,
+            "largestContentfulPaintMs": 2259,
+            "totalBlockingTimeMs": 108,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2048,
+            "interactiveMs": 2793,
+            "totalByteWeight": 175868,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1370,
+            "largestContentfulPaintMs": 1370,
+            "totalBlockingTimeMs": 112,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2054,
+            "interactiveMs": 2457,
+            "totalByteWeight": 175440,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1404,
+            "largestContentfulPaintMs": 2319,
+            "totalBlockingTimeMs": 9,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2143,
+            "interactiveMs": 2852,
+            "totalByteWeight": 175383,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1394,
+            "largestContentfulPaintMs": 2297,
+            "totalBlockingTimeMs": 8,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1954,
+            "interactiveMs": 2829,
+            "totalByteWeight": 175425,
+            "unusedJavaScriptBytes": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "home",
+      "route": "/",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 1381,
+        "largestContentfulPaintMs": 1417,
+        "totalBlockingTimeMs": 9,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 2241,
+        "interactiveMs": 1898,
+        "totalByteWeight": 177123,
+        "unusedJavaScriptBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1342,
+            "largestContentfulPaintMs": 1342,
+            "totalBlockingTimeMs": 34,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 3618,
+            "interactiveMs": 2036,
+            "totalByteWeight": 174732,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1381,
+            "largestContentfulPaintMs": 1531,
+            "totalBlockingTimeMs": 9,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2187,
+            "interactiveMs": 1898,
+            "totalByteWeight": 177704,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1418,
+            "largestContentfulPaintMs": 1568,
+            "totalBlockingTimeMs": 14,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2351,
+            "interactiveMs": 1944,
+            "totalByteWeight": 177183,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1356,
+            "largestContentfulPaintMs": 1356,
+            "totalBlockingTimeMs": 9,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1936,
+            "interactiveMs": 1812,
+            "totalByteWeight": 177123,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1417,
+            "largestContentfulPaintMs": 1417,
+            "totalBlockingTimeMs": 8,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2241,
+            "interactiveMs": 1873,
+            "totalByteWeight": 177071,
+            "unusedJavaScriptBytes": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "projects",
+      "route": "/projects",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 1392,
+        "largestContentfulPaintMs": 1539,
+        "totalBlockingTimeMs": 11,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 2165,
+        "interactiveMs": 1912,
+        "totalByteWeight": 197747,
+        "unusedJavaScriptBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 97,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1393,
+            "largestContentfulPaintMs": 1393,
+            "totalBlockingTimeMs": 14,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 4487,
+            "interactiveMs": 1852,
+            "totalByteWeight": 195645,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1389,
+            "largestContentfulPaintMs": 1539,
+            "totalBlockingTimeMs": 11,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 3518,
+            "interactiveMs": 1912,
+            "totalByteWeight": 198366,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1392,
+            "largestContentfulPaintMs": 1542,
+            "totalBlockingTimeMs": 10,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2080,
+            "interactiveMs": 1915,
+            "totalByteWeight": 197747,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1408,
+            "largestContentfulPaintMs": 1558,
+            "totalBlockingTimeMs": 10,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2165,
+            "interactiveMs": 1932,
+            "totalByteWeight": 197593,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1332,
+            "largestContentfulPaintMs": 1482,
+            "totalBlockingTimeMs": 37,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2028,
+            "interactiveMs": 1854,
+            "totalByteWeight": 197849,
+            "unusedJavaScriptBytes": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "runtime",
+      "route": "/projects/runtime",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 1209,
+        "largestContentfulPaintMs": 1340,
+        "totalBlockingTimeMs": 12,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 2041,
+        "interactiveMs": 1778,
+        "totalByteWeight": 160753,
+        "unusedJavaScriptBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1262,
+            "largestContentfulPaintMs": 1338,
+            "totalBlockingTimeMs": 12,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 3869,
+            "interactiveMs": 1714,
+            "totalByteWeight": 158193,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1199,
+            "largestContentfulPaintMs": 1340,
+            "totalBlockingTimeMs": 125,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2041,
+            "interactiveMs": 1805,
+            "totalByteWeight": 161149,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1209,
+            "largestContentfulPaintMs": 1351,
+            "totalBlockingTimeMs": 9,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1818,
+            "interactiveMs": 1722,
+            "totalByteWeight": 160767,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1196,
+            "largestContentfulPaintMs": 1335,
+            "totalBlockingTimeMs": 142,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1893,
+            "interactiveMs": 1812,
+            "totalByteWeight": 160753,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1249,
+            "largestContentfulPaintMs": 1388,
+            "totalBlockingTimeMs": 10,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2100,
+            "interactiveMs": 1778,
+            "totalByteWeight": 160482,
+            "unusedJavaScriptBytes": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "writing",
+      "route": "/writing",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 1199,
+        "largestContentfulPaintMs": 1334,
+        "totalBlockingTimeMs": 114,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 2087,
+        "interactiveMs": 1710,
+        "totalByteWeight": 184372,
+        "unusedJavaScriptBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1261,
+            "largestContentfulPaintMs": 1333,
+            "totalBlockingTimeMs": 9,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 3640,
+            "interactiveMs": 1703,
+            "totalByteWeight": 182065,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 96,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 790,
+            "largestContentfulPaintMs": 929,
+            "totalBlockingTimeMs": 114,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 4592,
+            "interactiveMs": 1390,
+            "totalByteWeight": 184893,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1205,
+            "largestContentfulPaintMs": 1343,
+            "totalBlockingTimeMs": 131,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2087,
+            "interactiveMs": 1812,
+            "totalByteWeight": 184507,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1193,
+            "largestContentfulPaintMs": 1334,
+            "totalBlockingTimeMs": 158,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2006,
+            "interactiveMs": 1832,
+            "totalByteWeight": 184372,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1199,
+            "largestContentfulPaintMs": 1341,
+            "totalBlockingTimeMs": 7,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1832,
+            "interactiveMs": 1710,
+            "totalByteWeight": 184368,
+            "unusedJavaScriptBytes": 0
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "article",
+      "route": "/writing/the-future-will-not-wait",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 1391,
+        "largestContentfulPaintMs": 1391,
+        "totalBlockingTimeMs": 154,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 2261,
+        "interactiveMs": 1977,
+        "totalByteWeight": 175462,
+        "unusedJavaScriptBytes": 0
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1444,
+            "largestContentfulPaintMs": 1444,
+            "totalBlockingTimeMs": 27,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 3586,
+            "interactiveMs": 2170,
+            "totalByteWeight": 173149,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1359,
+            "largestContentfulPaintMs": 1359,
+            "totalBlockingTimeMs": 10,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1982,
+            "interactiveMs": 1802,
+            "totalByteWeight": 175957,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 98,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1358,
+            "largestContentfulPaintMs": 1358,
+            "totalBlockingTimeMs": 154,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 1994,
+            "interactiveMs": 1890,
+            "totalByteWeight": 175422,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 94,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1410,
+            "largestContentfulPaintMs": 1410,
+            "totalBlockingTimeMs": 273,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2549,
+            "interactiveMs": 1996,
+            "totalByteWeight": 175514,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 94,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 1391,
+            "largestContentfulPaintMs": 1391,
+            "totalBlockingTimeMs": 274,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 2261,
+            "interactiveMs": 1977,
+            "totalByteWeight": 175462,
+            "unusedJavaScriptBytes": 0
+          }
+        }
+      ]
+    }
+  ]
+}

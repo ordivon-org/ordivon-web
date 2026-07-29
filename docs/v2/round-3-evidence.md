@@ -77,13 +77,13 @@ Representative pages and interactions are exercised on Chromium, Firefox, mobile
 
 Total: **36/36 local release-browser checks passed**.
 
-The hosted matrix repeats the same 36 checks against the public `workers.dev` deployment. On Arch, WebKit runs in the official `mcr.microsoft.com/playwright:v1.62.0-noble` container rather than installing obsolete Ubuntu ABI compatibility libraries into the host.
+The hosted matrix repeats the same 36 checks against the public `workers.dev` deployment. Final result: **36/36 hosted browser checks passed**. On Arch, WebKit runs in the official `mcr.microsoft.com/playwright:v1.62.0-noble` container rather than installing obsolete Ubuntu ABI compatibility libraries into the host.
 
 Checks assert HTTP status, visible content, no horizontal overflow, no console errors, no real request failures, Writing filtering, article navigation, anchors, and permanent redirects. Chromium's cancelled same-origin `HEAD` prefetch requests are separated from real resource failures.
 
 ## Lighthouse budgets
 
-Ten route/device audits cover the homepage, project index, Runtime page, Writing index, and longest article on mobile and desktop. Each audit runs three times and enforces the median of every score and metric.
+Ten route/device audits cover the homepage, project index, Runtime page, Writing index, and longest article on mobile and desktop. Each audit runs five times, uses an independent Chrome profile for every route/device group, and enforces the median of every score and metric.
 
 Local minimum and worst-case medians:
 
@@ -93,12 +93,12 @@ Local minimum and worst-case medians:
 | Accessibility | 100 |
 | Best Practices | 100 |
 | SEO | 100 |
-| Largest Contentful Paint | 2,041 ms maximum |
-| Total Blocking Time | 35 ms maximum |
+| Largest Contentful Paint | 2,036 ms maximum |
+| Total Blocking Time | 29 ms maximum |
 | Cumulative Layout Shift | 0 |
 | Transfer weight | 153–185 KiB |
 
-The same unchanged budgets are enforced against the hosted edge and recorded in `artifacts/v2-round3/lighthouse-hosted.json`.
+The same unchanged budgets are enforced against the hosted edge using independent route/device Chrome profiles. Final hosted medians: Performance 98 minimum, Accessibility/Best Practices/SEO 100/100/100, LCP 2,297 ms maximum, TBT 154 ms maximum, CLS 0, and transfer weight up to 193 KiB. Evidence: `artifacts/v2-round3/lighthouse-hosted.json`.
 
 ## External references
 

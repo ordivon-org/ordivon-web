@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T16:54:58.438Z",
+  "generatedAt": "2026-07-29T17:11:18.591Z",
   "base": "https://ordivon-web-v2-preview.ordivon-lab.workers.dev",
   "provider": "Cloudflare Workers Static Assets",
   "routes": [
@@ -9,7 +9,7 @@
       "title": "Ordivon — Persistent work for capable agents",
       "canonical": "https://ordivon.com",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da68a4f6b135e-LAX"
+      "cfRay": "a22dbdfedd66f23a-LAX"
     },
     {
       "route": "/projects",
@@ -17,7 +17,7 @@
       "title": "Projects — Ordivon",
       "canonical": "https://ordivon.com/projects",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da68e0a62135e-LAX"
+      "cfRay": "a22dbe02ab17f23a-LAX"
     },
     {
       "route": "/writing",
@@ -25,7 +25,7 @@
       "title": "Writing — Ordivon",
       "canonical": "https://ordivon.com/writing",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da692a8da135e-LAX"
+      "cfRay": "a22dbe064e47f23a-LAX"
     },
     {
       "route": "/now",
@@ -33,7 +33,7 @@
       "title": "Current — Ordivon",
       "canonical": "https://ordivon.com/now",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da69789bb135e-LAX"
+      "cfRay": "a22dbe09babff23a-LAX"
     },
     {
       "route": "/about",
@@ -41,7 +41,7 @@
       "title": "About — Ordivon",
       "canonical": "https://ordivon.com/about",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da69c0fbd135e-LAX"
+      "cfRay": "a22dbe0d381ef23a-LAX"
     },
     {
       "route": "/colophon",
@@ -49,7 +49,7 @@
       "title": "Colophon — Ordivon",
       "canonical": "https://ordivon.com/colophon",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6a07d9b135e-LAX"
+      "cfRay": "a22dbe10bebef23a-LAX"
     },
     {
       "route": "/projects/computing",
@@ -57,7 +57,7 @@
       "title": "Ordivon Computing — Ordivon",
       "canonical": "https://ordivon.com/projects/computing",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6a52bfe135e-LAX"
+      "cfRay": "a22dbe140d49f23a-LAX"
     },
     {
       "route": "/projects/host",
@@ -65,7 +65,7 @@
       "title": "Ordivon Host — Ordivon",
       "canonical": "https://ordivon.com/projects/host",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6a9bb6a135e-LAX"
+      "cfRay": "a22dbe184d75f23a-LAX"
     },
     {
       "route": "/projects/runtime",
@@ -73,7 +73,7 @@
       "title": "Ordivon Runtime — Ordivon",
       "canonical": "https://ordivon.com/projects/runtime",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6ae8ca4135e-LAX"
+      "cfRay": "a22dbe1bba70f23a-LAX"
     },
     {
       "route": "/projects/link",
@@ -81,7 +81,7 @@
       "title": "Ordivon Link — Ordivon",
       "canonical": "https://ordivon.com/projects/link",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6b2fae4135e-LAX"
+      "cfRay": "a22dbe1f5f5ef23a-LAX"
     },
     {
       "route": "/projects/edge",
@@ -89,7 +89,7 @@
       "title": "Ordivon Edge — Ordivon",
       "canonical": "https://ordivon.com/projects/edge",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6b748a2135e-LAX"
+      "cfRay": "a22dbe233d86f23a-LAX"
     },
     {
       "route": "/writing/the-future-will-not-wait",
@@ -97,7 +97,7 @@
       "title": "The Future Will Not Wait — Ordivon",
       "canonical": "https://ordivon.com/writing/the-future-will-not-wait",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6bbbfbc135e-LAX"
+      "cfRay": "a22dbe273c80f23a-LAX"
     },
     {
       "route": "/writing/runtime-after-core",
@@ -105,7 +105,7 @@
       "title": "Ordivon Runtime after the core — Ordivon",
       "canonical": "https://ordivon.com/writing/runtime-after-core",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6c2181c135e-LAX"
+      "cfRay": "a22dbe2c3e36f23a-LAX"
     },
     {
       "route": "/writing/link-edge-boundary",
@@ -113,7 +113,7 @@
       "title": "Separating connectivity from external execution — Ordivon",
       "canonical": "https://ordivon.com/writing/link-edge-boundary",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6c6e899135e-LAX"
+      "cfRay": "a22dbe2fcc74f23a-LAX"
     },
     {
       "route": "/writing/host-task-continuity",
@@ -121,7 +121,7 @@
       "title": "Why Task continuity belongs above execution — Ordivon",
       "canonical": "https://ordivon.com/writing/host-task-continuity",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6cbbf88135e-LAX"
+      "cfRay": "a22dbe336b11f23a-LAX"
     },
     {
       "route": "/writing/ordivon-runtime-release",
@@ -129,7 +129,7 @@
       "title": "Ordivon Runtime: from governance platform to durable execution — Ordivon",
       "canonical": "https://ordivon.com/writing/ordivon-runtime-release",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6d07e3c135e-LAX"
+      "cfRay": "a22dbe3709d1f23a-LAX"
     },
     {
       "route": "/writing/why-ordivon",
@@ -137,7 +137,7 @@
       "title": "Why Ordivon matters in the AI era — Ordivon",
       "canonical": "https://ordivon.com/writing/why-ordivon",
       "cacheControl": "public, max-age=0, must-revalidate",
-      "cfRay": "a22da6d51d17135e-LAX"
+      "cfRay": "a22dbe3af8ddf23a-LAX"
     }
   ],
   "redirects": [
@@ -334,7 +334,7 @@
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/chunks/app/writing/page-83aab5096b704ee0.js",
+      "asset": "/_next/static/chunks/app/writing/page-210b8b90d4756386.js",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     },
@@ -359,14 +359,14 @@
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/css/e5c44b1c6da2359a.css",
+      "asset": "/_next/static/css/8e0ab1bc64729730.css",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     }
   ],
   "edge": {
     "server": "cloudflare",
-    "cfRay": "a22da78c388ab589-LAX",
+    "cfRay": "a22dbec64d08f23a-LAX",
     "cfCacheStatus": "HIT",
     "altSvc": "h3=\":443\"; ma=86400"
   }

@@ -49,10 +49,10 @@ Core gates:
 - `pnpm check` regenerates the six-article snapshot, then runs TypeScript, explicit-source ESLint, production dependency audit, static build, desktop/mobile smoke tests, axe scans, and the complete local Workers Static Assets protocol audit.
 - `pnpm check:release` adds Chromium, Firefox, WebKit, mobile Chromium, Lighthouse budgets, and all external-link checks. It is intended for Ubuntu CI with all Playwright browser dependencies installed.
 - `pnpm check:release:local` runs the same release boundary on the Arch WSL host, using the official Playwright Noble container for WebKit ABI isolation.
-- `pnpm check:hosted` validates the actual `workers.dev` deployment through the complete hosted protocol matrix, Chromium, Firefox, mobile Chromium, containerized WebKit, and 30 hosted Lighthouse runs.
+- `pnpm check:hosted` validates the actual `workers.dev` deployment through the complete hosted protocol matrix, Chromium, Firefox, mobile Chromium, containerized WebKit, and 50 hosted Lighthouse runs.
 - `pnpm verify:static` validates canonical pages, metadata, JSON-LD, internal links, anchors, RSS, robots, health, security headers, cache policy, all V1 redirects, immutable assets, and the custom 404 through `wrangler dev`.
 - `pnpm verify:hosted` repeats that protocol boundary against the public Cloudflare edge and additionally asserts Cloudflare response identity.
-- `pnpm audit:lighthouse` runs each route/device audit three times and enforces the median against the mobile and desktop performance budgets.
+- `pnpm audit:lighthouse` runs each route/device audit five times in an independent route/device Chrome profile and enforces the median against the mobile and desktop performance budgets.
 - `pnpm audit:links` distinguishes reachable, access-restricted, and broken external references.
 - `pnpm deploy` builds and uploads `out/` to the non-production Static Assets service. It reads `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, or the existing root-only Ordivon secret file; credentials are never included in the bundle or artifacts.
 

@@ -1,19 +1,72 @@
 {
-  "attemptedAt": "2026-07-29T10:47:37Z",
-  "candidateCommit": "9adb343e4a6f6e3ab1b66775e1777b066c79fc2d",
-  "projectName": "ordivon-web-v2-preview",
-  "provider": "Cloudflare Pages",
-  "accountRead": {
-    "projectsStatus": 200,
-    "existingProjectCount": 0
+  "recordedAt": "2026-07-29T17:47:51.094303Z",
+  "candidateCommit": "f1a1af9c4fbe14db8e8cb3b7763b58b38df7c390",
+  "provider": "Cloudflare Workers Static Assets",
+  "serviceName": "ordivon-web-v2-preview",
+  "accountSubdomain": "ordivon-lab",
+  "url": "https://ordivon-web-v2-preview.ordivon-lab.workers.dev",
+  "version": {
+    "id": "c1fe93b1-4c10-4bb2-86f8-a63b143b3515",
+    "number": 3,
+    "annotation": "Ordivon Web V2 Round 3 hosted preview f1a1af9c4fbe"
   },
-  "createAttempt": {
-    "result": "blocked",
-    "errorCode": 10000,
-    "classification": "pages-write-permission-missing"
+  "deployment": {
+    "id": "2f7a25e3-0515-4265-b268-9ee6a2f85ffa",
+    "createdOn": "2026-07-29T17:07:34.626759Z",
+    "strategy": "percentage",
+    "percentage": 100
   },
-  "productionChanged": false,
-  "customDomainAttached": false,
-  "dnsChanged": false,
-  "nextAction": "Grant Cloudflare Pages Edit permission to the connected credential, then create the GitHub-bound project or run pnpm deploy with an equivalent scoped token."
+  "staticAssets": {
+    "requestTimeModule": false,
+    "serviceBindings": false,
+    "outputDirectory": "out"
+  },
+  "hostedVerification": {
+    "canonicalRoutes": 17,
+    "permanentRedirects": 30,
+    "immutableAssets": 14,
+    "browserChecks": {
+      "chromiumDesktop": 9,
+      "firefoxDesktop": 9,
+      "mobileChromium": 9,
+      "webkitDesktop": 9,
+      "total": 36
+    },
+    "lighthouse": {
+      "routeDeviceAudits": 10,
+      "runsPerAudit": 5,
+      "totalRuns": 50,
+      "aggregation": "median-of-five",
+      "browserIsolation": "route-device",
+      "minimumScores": {
+        "performance": 98,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "maximumMetrics": {
+        "largestContentfulPaintMs": 2297,
+        "totalBlockingTimeMs": 154,
+        "cumulativeLayoutShift": 0,
+        "totalByteWeight": 197900
+      }
+    },
+    "edge": {
+      "server": "cloudflare",
+      "cfRay": "a22dbec64d08f23a-LAX",
+      "cfCacheStatus": "HIT",
+      "altSvc": "h3=\":443\"; ma=86400"
+    }
+  },
+  "production": {
+    "changed": false,
+    "customDomainAttached": false,
+    "productionDnsChanged": false,
+    "productionWorkerRouteChanged": false
+  },
+  "diagnosticCleanup": {
+    "temporaryHost": "preview.ordivon.com",
+    "dnsRecordsRemaining": 0,
+    "workerRoutesRemaining": 0
+  }
 }
