@@ -26,7 +26,7 @@
 - `node_modules`: approximately 838 MiB.
 - Wrangler upload measurement: approximately 6.9 MiB raw / 1.72 MiB compressed.
 
-These local resources are intentionally retained. Recoverability and verification coverage take priority over minimizing disk usage.
+These sizes were accepted during validation rather than optimized away. The generated directories are excluded from Git and can be reproduced with `pnpm install`, `pnpm build`, and `pnpm build:worker`; the durable recovery evidence is committed separately.
 
 ## Cloudflare boundary
 
