@@ -10,6 +10,7 @@ const routes = [
   ["projects", "/work/"],
   ["runtime", "/work/ordivon-runtime/"],
   ["article", "/notes/runtime-after-core/"],
+  ["acceleration", "/notes/the-future-will-not-wait/"],
 ];
 const modes = [
   ["desktop", { viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 }],
@@ -48,7 +49,7 @@ try {
   await browser.close();
 }
 await writeFile(path.join(outputRoot, "metrics.json"), `${JSON.stringify(metrics, null, 2)}\n`);
-await writeFile(path.join(outputRoot, "source-commit.txt"), "15e3a2037512914900c51c919804f9dd5286089a\n");
+await writeFile(path.join(outputRoot, "source-commit.txt"), "7c7021796cb3cf4894809d1a3925451050d8a7e5\n");
 const sums = [];
 for (const metric of metrics) {
   const name = `${metric.mode}-${metric.slug}.jpg`;

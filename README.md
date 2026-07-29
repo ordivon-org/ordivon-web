@@ -20,7 +20,6 @@ pnpm capture:v1
 
 ## Recovery surfaces
 
-- `legacy-v1/` is an exact archive of production commit `15e3a2037512914900c51c919804f9dd5286089a`.
+- `legacy-v1/` is an exact archive of production commit `7c7021796cb3cf4894809d1a3925451050d8a7e5`.
 - `artifacts/v1-baseline/` contains asserted desktop/mobile screenshots, metrics, and hashes.
-- `content-drafts/` preserves unpublished material needed by migration.
 - `docs/v2/` records route, content, deployment, and rollback decisions.

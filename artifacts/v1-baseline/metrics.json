@@ -48,6 +48,18 @@
     "screens": 6.8
   },
   {
+    "mode": "desktop",
+    "slug": "acceleration",
+    "path": "/notes/the-future-will-not-wait/",
+    "title": "The Future Will Not Wait — Ordivon",
+    "h1": "The Future Will Not Wait",
+    "words": 3397,
+    "scrollHeight": 15132,
+    "viewportHeight": 1000,
+    "overflow": 0,
+    "screens": 15.1
+  },
+  {
     "mode": "mobile",
     "slug": "home",
     "path": "/",
@@ -94,5 +106,17 @@
     "viewportHeight": 839,
     "overflow": 0,
     "screens": 10.5
+  },
+  {
+    "mode": "mobile",
+    "slug": "acceleration",
+    "path": "/notes/the-future-will-not-wait/",
+    "title": "The Future Will Not Wait — Ordivon",
+    "h1": "The Future Will Not Wait",
+    "words": 3392,
+    "scrollHeight": 23280,
+    "viewportHeight": 839,
+    "overflow": 0,
+    "screens": 27.7
   }
 ]

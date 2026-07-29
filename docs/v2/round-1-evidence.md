@@ -2,10 +2,10 @@
 
 ## Frozen inputs
 
-- Production V1 commit: `15e3a2037512914900c51c919804f9dd5286089a`.
+- Production V1 commit: `7c7021796cb3cf4894809d1a3925451050d8a7e5`.
 - Complete V1 tree: `legacy-v1/`, verified against a fresh Git archive manifest.
 - V1 rendering baseline: eight asserted full-page desktop/mobile screenshots under `artifacts/v1-baseline/`.
-- Unpublished essay: `content-drafts/the-future-will-not-wait/source.html`, hash-equal to commit `bb57ae2534c0cd325b37ff23e398b637bc92663d`.
+- Published acceleration essay: included in `legacy-v1/notes/the-future-will-not-wait/` from the current production commit.
 
 ## Runtime proof
 
