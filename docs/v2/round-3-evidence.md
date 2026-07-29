@@ -62,7 +62,7 @@ service: ordivon-web-v2-preview
 URL: https://ordivon-web-v2-preview.ordivon-lab.workers.dev
 ```
 
-The first hosted version was created from candidate `a4ec7f9`; the final version and deployment IDs are frozen in `artifacts/v2-round3/hosted-preview.json` after the final candidate deployment.
+The final hosted World candidate is `adcb315905a4a42424a27fbe6525d909d29b4021`. Worker version `ec011abc-000b-434b-a76a-e31bff7effb8` is deployed at 100% through deployment `2e7fa67f-eb51-4c49-bda4-5b38cf602ab1`; the full identity is frozen in `artifacts/v2-round3/hosted-preview.json`.
 
 The stable `workers.dev` host has a Cloudflare-managed certificate covering `ordivon-lab.workers.dev` and `*.ordivon-lab.workers.dev`. A temporary `preview.ordivon.com` DNS record and Worker Route used during diagnosis were deleted after `workers.dev` became ready. No production host or route remains changed.
 
@@ -102,7 +102,7 @@ Local minimum and worst-case medians:
 | Cumulative Layout Shift | 0 |
 | Transfer weight | 153–185 KiB |
 
-The same unchanged budgets are enforced against the hosted edge using independent route/device Chrome profiles. Final hosted medians: Performance 99 minimum, Accessibility/Best Practices/SEO 100/100/100, LCP 2,037 ms maximum, TBT 29 ms maximum, CLS 0, and transfer weight up to 185 KiB. Evidence: `artifacts/v2-round3/lighthouse-hosted.json`.
+The same unchanged budgets are enforced against the hosted edge using independent route/device Chrome profiles. Final hosted medians: Performance 97 minimum, Accessibility/Best Practices/SEO 100/100/100, LCP 1,479 ms maximum, TBT 113 ms maximum, CLS 0, and transfer weight up to 193 KiB. Evidence: `artifacts/v2-round3/lighthouse-hosted.json`.
 
 ## External references
 

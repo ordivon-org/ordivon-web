@@ -30,7 +30,7 @@ The account-hosted release candidate is available at:
 https://ordivon-web-v2-preview.ordivon-lab.workers.dev
 ```
 
-It is isolated from `ordivon.com`, `www.ordivon.com`, and `lab.ordivon.com`. The preview service is named `ordivon-web-v2-preview`.
+It is isolated from `ordivon.com`, `www.ordivon.com`, and `lab.ordivon.com`. The preview service is named `ordivon-web-v2-preview`. Source candidate `adcb315905a4a42424a27fbe6525d909d29b4021` is deployed as Worker version `ec011abc-000b-434b-a76a-e31bff7effb8` through deployment `2e7fa67f-eb51-4c49-bda4-5b38cf602ab1` at 100%.
 
 ## Commands
 

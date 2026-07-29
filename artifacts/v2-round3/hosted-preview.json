@@ -1,68 +1,93 @@
 {
-  "recordedAt": "2026-07-29T17:47:51.094303Z",
-  "candidateCommit": "f1a1af9c4fbe14db8e8cb3b7763b58b38df7c390",
+  "recordedAt": "2026-07-29T19:29:19.110055Z",
+  "sourceCandidateCommit": "adcb315905a4a42424a27fbe6525d909d29b4021",
+  "evidenceParentCommit": "adcb315905a4a42424a27fbe6525d909d29b4021",
   "provider": "Cloudflare Workers Static Assets",
   "serviceName": "ordivon-web-v2-preview",
   "accountSubdomain": "ordivon-lab",
   "url": "https://ordivon-web-v2-preview.ordivon-lab.workers.dev",
   "version": {
-    "id": "c1fe93b1-4c10-4bb2-86f8-a63b143b3515",
-    "number": 3,
-    "annotation": "Ordivon Web V2 Round 3 hosted preview f1a1af9c4fbe"
+    "id": "ec011abc-000b-434b-a76a-e31bff7effb8",
+    "number": 4,
+    "createdOn": "2026-07-29T18:47:11.766219Z",
+    "message": "Ordivon Web V2 Round 3 hosted preview adcb315905a4",
+    "hasPreview": true
   },
   "deployment": {
-    "id": "2f7a25e3-0515-4265-b268-9ee6a2f85ffa",
-    "createdOn": "2026-07-29T17:07:34.626759Z",
+    "id": "2e7fa67f-eb51-4c49-bda4-5b38cf602ab1",
+    "createdOn": "2026-07-29T18:47:12.493842Z",
     "strategy": "percentage",
-    "percentage": 100
+    "percentage": 100,
+    "versionId": "ec011abc-000b-434b-a76a-e31bff7effb8"
   },
   "staticAssets": {
-    "requestTimeModule": false,
-    "serviceBindings": false,
-    "outputDirectory": "out"
+    "outputDirectory": "out",
+    "requestTimeApplicationModule": false,
+    "serviceBindings": false
   },
   "hostedVerification": {
-    "canonicalRoutes": 17,
-    "permanentRedirects": 30,
+    "canonicalRoutes": 16,
+    "permanentRedirects": 36,
     "immutableAssets": 14,
     "browserChecks": {
-      "chromiumDesktop": 9,
-      "firefoxDesktop": 9,
-      "mobileChromium": 9,
-      "webkitDesktop": 9,
-      "total": 36
+      "chromiumDesktop": 11,
+      "firefoxDesktop": 11,
+      "mobileChromium": 11,
+      "webkitDesktop": 11,
+      "total": 44
     },
     "lighthouse": {
-      "routeDeviceAudits": 10,
+      "routeDeviceAudits": 12,
       "runsPerAudit": 5,
-      "totalRuns": 50,
+      "totalRuns": 60,
       "aggregation": "median-of-five",
       "browserIsolation": "route-device",
       "minimumScores": {
-        "performance": 98,
+        "performance": 97,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "maximumMetrics": {
-        "largestContentfulPaintMs": 2297,
-        "totalBlockingTimeMs": 154,
+        "largestContentfulPaintMs": 1479,
+        "totalBlockingTimeMs": 113,
         "cumulativeLayoutShift": 0,
-        "totalByteWeight": 197900
+        "totalByteWeight": 197850
       }
     },
     "edge": {
       "server": "cloudflare",
-      "cfRay": "a22dbec64d08f23a-LAX",
+      "cfRay": "a22e4ed96c322b72-LAX",
       "cfCacheStatus": "HIT",
       "altSvc": "h3=\":443\"; ma=86400"
     }
   },
-  "production": {
-    "changed": false,
+  "localVerification": {
+    "lighthouse": {
+      "routeDeviceAudits": 12,
+      "runsPerAudit": 5,
+      "totalRuns": 60,
+      "browserIsolation": "route-device",
+      "minimumScores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "maximumMetrics": {
+        "largestContentfulPaintMs": 2037,
+        "totalBlockingTimeMs": 29,
+        "cumulativeLayoutShift": 0,
+        "totalByteWeight": 190330
+      }
+    }
+  },
+  "productionBoundary": {
+    "productionChanged": false,
     "customDomainAttached": false,
     "productionDnsChanged": false,
-    "productionWorkerRouteChanged": false
+    "productionWorkerRouteChanged": false,
+    "productionMain": "33c97c0409b370db9e8e870a591d5b93cf56b774"
   },
   "diagnosticCleanup": {
     "temporaryHost": "preview.ordivon.com",
