@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/lib/content";
 import { projects } from "@/lib/projects";
+export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://ordivon.com";
   const core = ["", "/projects", "/writing", "/now", "/about", "/colophon"].map((path) => ({ url: `${base}${path}`, lastModified: "2026-07-29", changeFrequency: "weekly" as const, priority: path === "" ? 1 : .7 }));

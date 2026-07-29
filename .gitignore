@@ -1,6 +1,5 @@
 node_modules/
 .next/
-.open-next/
 .wrangler/
 playwright-report/
 test-results/
@@ -9,3 +8,4 @@ coverage/
 !.env.example
 .DS_Store
 *.tsbuildinfo
+out/

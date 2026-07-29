@@ -17,8 +17,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     title: "Ordivon — Persistent work for capable agents",
     description: "Systems for Task continuity, committed effects, recoverable paths, hosted capabilities, and durable evidence.",
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Ordivon — persistent work for capable agents" }],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
   icons: { icon: "/icon.svg" },
 };
 

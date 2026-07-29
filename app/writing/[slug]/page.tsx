@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: article.title,
     description: article.description,
     alternates: { canonical: `/writing/${article.slug}` },
-    openGraph: { type: "article", title: article.title, description: article.description, publishedTime: article.date, authors: [article.author] },
+    openGraph: { type: "article", title: article.title, description: article.description, publishedTime: article.date, authors: [article.author], images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Ordivon — persistent work for capable agents" }] },
   };
 }
 

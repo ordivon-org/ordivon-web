@@ -29,19 +29,7 @@ test("publishing endpoints render", async ({ request }) => {
   expect((await request.get("/feed.xml")).headers()["content-type"]).toContain("application/rss+xml");
   expect((await request.get("/sitemap.xml")).status()).toBe(200);
   expect((await request.get("/robots.txt")).status()).toBe(200);
-  expect((await request.get("/opengraph-image")).headers()["content-type"]).toContain("image/png");
-});
-
-test("legacy routes redirect to V2", async ({ request }) => {
-  const expected = new Map([
-    ["/work", "/projects"], ["/work/ordivon-runtime", "/projects/runtime"], ["/notes", "/writing"],
-    ["/notes/the-future-will-not-wait", "/writing/the-future-will-not-wait"], ["/contact", "/about"],
-  ]);
-  for (const [route, destination] of expected) {
-    const response = await request.get(route, { maxRedirects: 0 });
-    expect([307, 308], route).toContain(response.status());
-    expect(response.headers().location, route).toContain(destination);
-  }
+  expect((await request.get("/opengraph-image.png")).headers()["content-type"]).toContain("image/png");
 });
 
 test("internal navigation targets resolve", async ({ page, request }) => {

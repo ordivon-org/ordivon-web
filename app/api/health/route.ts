@@ -1,4 +1,9 @@
-export const dynamic = "force-dynamic";
-export async function GET(request: Request) {
-  return Response.json({ ok: true, runtime: "cloudflare-workers-compatible", requestUrl: request.url, generatedAt: new Date().toISOString() });
+export const dynamic = "force-static";
+
+export function GET() {
+  return Response.json({
+    ok: true,
+    runtime: "static-export",
+    release: "v2-round3",
+  });
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { WritingFilter } from "@/components/writing-filter";
 import { articles } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Writing", description: "Essays, engineering reports, architecture records, releases, and design arguments from Ordivon." };
+export const metadata: Metadata = { title: "Writing", description: "Essays, engineering reports, architecture records, releases, and design arguments from Ordivon.", alternates: { canonical: "/writing" } };
 
 export default function WritingPage() {
   const summaries = articles.map(({ slug, title, description, type, project, date, readMinutes }) => ({ slug, title, description, type, project, date, readMinutes }));
