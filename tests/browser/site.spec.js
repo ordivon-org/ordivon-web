@@ -12,6 +12,7 @@ const routes = [
   "/work/ordivon-edge/",
   "/work/ordivon-web/",
   "/notes/",
+  "/notes/the-future-will-not-wait/",
   "/notes/runtime-after-core/",
   "/notes/host-task-continuity/",
   "/notes/link-edge-boundary/",
@@ -29,6 +30,7 @@ const screenshotRoutes = new Set([
   "/work/ordivon-host/",
   "/work/ordivon-runtime/",
   "/notes/",
+  "/notes/the-future-will-not-wait/",
   "/notes/runtime-after-core/",
   "/about/",
 ]);
@@ -49,6 +51,13 @@ for (const route of routes) {
     expect(response?.status()).toBe(200);
     await expect(page.locator("h1")).toBeVisible();
     await expect(page.locator("body")).not.toContainText("Ordinary Prosperity");
+
+    if (route === "/notes/the-future-will-not-wait/") {
+      await expect(page.locator(".article-toc")).toBeVisible();
+      await expect(page.locator(".future-path > div")).toHaveCount(6);
+      await expect(page.locator(".acceleration-grid > div")).toHaveCount(6);
+      await expect(page.locator(".source-list li")).toHaveCount(13);
+    }
 
     const dimensions = await page.evaluate(() => ({
       scrollWidth: document.documentElement.scrollWidth,

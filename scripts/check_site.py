@@ -25,6 +25,7 @@ REQUIRED_FILES = (
     "work/ordivon-edge/index.html",
     "work/ordivon-web/index.html",
     "notes/index.html",
+    "notes/the-future-will-not-wait/index.html",
     "notes/runtime-after-core/index.html",
     "notes/host-task-continuity/index.html",
     "notes/link-edge-boundary/index.html",
@@ -406,6 +407,7 @@ def check_distribution_metadata() -> None:
         fail("index.html: WebSite and Person JSON-LD are required")
 
     for relative in (
+        "notes/the-future-will-not-wait/index.html",
         "notes/runtime-after-core/index.html",
         "notes/host-task-continuity/index.html",
         "notes/link-edge-boundary/index.html",
@@ -483,9 +485,10 @@ def check_atom_feed() -> None:
     if self_links != [f"{BASE_URL}/feed.xml"]:
         fail("feed.xml: canonical self link is required")
     entries = root.findall("atom:entry", namespace)
-    if len(entries) != 5:
-        fail(f"feed.xml: expected 5 entries; found {len(entries)}")
+    if len(entries) != 6:
+        fail(f"feed.xml: expected 6 entries; found {len(entries)}")
     expected_urls = {
+        f"{BASE_URL}/notes/the-future-will-not-wait/",
         f"{BASE_URL}/notes/runtime-after-core/",
         f"{BASE_URL}/notes/host-task-continuity/",
         f"{BASE_URL}/notes/link-edge-boundary/",
