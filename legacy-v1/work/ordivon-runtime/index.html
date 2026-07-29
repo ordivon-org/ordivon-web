@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Ordivon Runtime is the trusted-local effect execution and recovery subsystem of Ordivon, preserving committed operation identity, process ownership, evidence, and recovery across interruption." />
+    <meta name="theme-color" content="#0b0f14" />
+    <meta property="og:title" content="Ordivon Runtime" />
+    <meta property="og:description" content="A thin trusted-local Runtime for committed Agent effects, durable Jobs, recoverable Workspaces, bounded evidence, cancellation, and lifecycle operations." />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="https://ordivon.com/work/ordivon-runtime/" />
+    <meta property="og:url" content="https://ordivon.com/work/ordivon-runtime/" />
+    <meta property="og:image" content="https://ordivon.com/assets/social/runtime.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ordivon Runtime — durable execution and recovery for capable local agents" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ordivon Runtime" />
+    <meta name="twitter:description" content="A thin trusted-local Runtime for committed Agent effects, durable Jobs, recoverable Workspaces, bounded evidence, cancellation, and lifecycle operations." />
+    <meta name="twitter:image" content="https://ordivon.com/assets/social/runtime.png" />
+    <link rel="alternate" type="application/atom+xml" title="Ordivon Notes" href="../../feed.xml" />
+    <title>Ordivon Runtime — Ordivon</title>
+    <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
+    <link rel="manifest" href="../../site.webmanifest" />
+    <link rel="stylesheet" href="../../assets/styles.css" />
+    <link rel="stylesheet" href="../../assets/umbrella.css" />
+    <script src="../../assets/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="../../" aria-label="Ordivon home"><img src="../../assets/mark.svg" alt="" width="28" height="28" /><span>Ordivon</span></a>
+      <nav class="desktop-navigation"><a href="../../work/" aria-current="page">Projects</a><a href="../../notes/">Notes</a><a href="../../now/">Current</a><a href="../../about/">About</a><a href="https://github.com/zycxfyh">GitHub <span aria-hidden="true">↗</span></a></nav>
+      <details class="mobile-navigation"><summary class="mobile-navigation-summary">Menu</summary><nav aria-label="Mobile navigation"><a href="../../work/" aria-current="page">Projects</a><a href="../../notes/">Notes</a><a href="../../now/">Current</a><a href="../../about/">About</a><a href="https://github.com/zycxfyh">GitHub <span aria-hidden="true">↗</span></a><a href="../../contact/">Contact</a></nav></details>
+    </header>
+
+    <main id="main" class="page-main">
+      <header class="project-hero">
+        <p class="eyebrow">Agent infrastructure · Effect commitment · Trusted-local execution</p>
+        <h1>Commit one Agent action to reality without losing what happened.</h1>
+        <p class="lede">Ordivon Runtime owns the deterministic boundary between an Agent decision and local machine execution. It binds one operation to exact source and executable state, dispatches one process tree at most once per Attempt, retains bounded evidence, preserves uncertainty, and supports recovery after clients, services, or sessions disappear.</p>
+        <div class="actions"><a class="button button-primary" href="../../notes/ordivon-runtime-release/">Read the release record</a><a class="button button-secondary" href="https://github.com/zycxfyh/ordivon-runtime">Inspect the repository</a></div>
+      </header>
+
+      <section class="project-facts" aria-label="Current project facts">
+        <div><span>Current surface</span><strong>13 MCP tools</strong></div>
+        <div><span>Commitment model</span><strong>Operation → Attempt → evidence → reconciliation</strong></div>
+        <div><span>Authority model</span><strong>Trusted-local service-user authority</strong></div>
+        <div><span>Operations</span><strong>Receipted deploy, rollback, lifecycle, and status</strong></div>
+      </section>
+
+      <section class="section section-simple" aria-labelledby="question-title">
+        <div class="section-heading"><p class="section-index">Central question</p><h2 id="question-title">Which execution facts cannot safely be reconstructed after interruption?</h2></div>
+        <div class="section-copy"><p>An Agent may reconstruct its plan, but it cannot infer whether a process crossed the physical dispatch boundary, which exact source world it used, whether cancellation won a race, whether a response was lost after commitment, or which retained bytes belong to the original operation.</p><p>The Runtime persists only the facts required to identify, observe, cancel, reconcile, recover, and eventually release that work. Linux, systemd, Git, SQLite, and digest-bound files remain the strongest owners of the mechanics beneath it.</p></div>
+      </section>
+
+      <section class="section section-simple" aria-labelledby="kernel-title">
+        <div class="section-heading"><p class="section-index">Effect Commit Kernel</p><h2 id="kernel-title">Proposal, physical dispatch, execution evidence, and semantic completion remain different claims.</h2></div>
+        <div tabindex="0" class="system-diagram" role="img" aria-label="Agent proposal becomes a committed Operation, one Attempt and physical Dispatch, identity-bound evidence, then reconciliation or continuation">
+          <div><span>Candidate</span><strong>Agent proposal</strong><small>Reasoning may change</small></div><b aria-hidden="true">→</b>
+          <div><span>Commit</span><strong>Operation identity</strong><small>Request + source + executable + limits</small></div><b aria-hidden="true">→</b>
+          <div><span>Dispatch</span><strong>One Attempt</strong><small>At most one physical launch</small></div><b aria-hidden="true">→</b>
+          <div><span>Evidence</span><strong>Result + Artifacts</strong><small>Identity-bound, bounded bytes</small></div><b aria-hidden="true">→</b>
+          <div><span>Recovery</span><strong>Reconciliation</strong><small>Converge or preserve uncertainty</small></div>
+        </div>
+        <div class="section-copy"><p>Arbitrary command execution remains effect-opaque. Process success does not prove an external effect occurred exactly once, an Artifact does not prove a claim is correct, and Runtime completion does not prove the user's goal is satisfied. Ambiguous work is never silently redispatched.</p></div>
+      </section>
+
+      <section class="section section-simple" aria-labelledby="surface-title">
+        <div class="section-heading"><p class="section-index">Public surface</p><h2 id="surface-title">Thirteen tools cover Workspace recovery, validated editing, structured execution, observation, and retained evidence.</h2></div>
+        <div class="tool-matrix" aria-label="Ordivon Runtime public tools">
+          <div><strong>Workspace identity</strong><code>workspace.open</code><code>workspace.get</code><code>workspace.list</code><code>workspace.close</code><p>Open exact Git state, reconnect through durable identity, and release only when closure remains safe.</p></div>
+          <div><strong>Source work</strong><code>workspace.read</code><code>workspace.mutate</code><code>workspace.diff</code><p>Bounded reads, digest-guarded mutation batches, and compact review.</p></div>
+          <div><strong>Execution</strong><code>workspace.exec</code><code>workspace.execPlan</code><p>One opaque command or an ordered native step plan with explicit budgets and progress.</p></div>
+          <div><strong>Recovery</strong><code>task.observe</code><code>task.cancel</code><code>task.list</code><code>artifact.read</code><p>Reattach, wait for change, cancel the owned process tree, correlate Jobs, and read retained evidence.</p></div>
+        </div>
+      </section>
+
+      <section class="section section-simple" aria-labelledby="lifecycle-title">
+        <div class="section-heading"><p class="section-index">Operational lifecycle</p><h2 id="lifecycle-title">Production use now includes release, retention, repair, status, and rollback—not only execution.</h2></div>
+        <div class="evidence-table" role="table" aria-label="Ordivon Runtime operational capabilities">
+          <div role="row"><strong role="cell">Deployment</strong><span role="cell">An exact clean commit is built into digest-bound candidates, checked against live capacity, installed transactionally, probed, and recorded in a deployment receipt.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/operations.md">Operations ↗</a></div>
+          <div role="row"><strong role="cell">Execution environment</strong><span role="cell">Target processes receive an explicit configured PATH, HOME, locale, temporary directory, and external cache roots instead of inheriting Runtime service secrets or ambient variables.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/runtime.md">Runtime model ↗</a></div>
+          <div role="row"><strong role="cell">Workspace lifecycle</strong><span role="cell">Ephemeral, review, and pinned classes combine age with durable Job activity; active, dirty, unknown, and pinned work is never automatically reclaimed.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/packaging/systemd/ordivon-workspace-retention.json">Retention policy ↗</a></div>
+          <div role="row"><strong role="cell">Repair and status</strong><span role="cell">Repository-renamed Workspaces can be repaired by exact alias and commit checks; the secret-free status command compares deployment identity, installed digests, service state, Registry facts, and Workspace state.</span><a role="cell" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/operations.md">Status contract ↗</a></div>
+        </div>
+      </section>
+
+      <section class="section section-simple" aria-labelledby="boundary-title">
+        <div class="section-heading"><p class="section-index">Boundary</p><h2 id="boundary-title">Workspace isolation protects code state; it is not a sandbox for untrusted code.</h2></div>
+        <div class="section-copy"><p>An authenticated Agent receives the installed service user's trusted-local authority. The Runtime commits and recovers execution; it does not reduce root authority, adjudicate model correctness, own Goal or Task continuity, or guarantee exactly-once effects inside an arbitrary executable. Untrusted work requires a separate VM or container boundary.</p></div>
+      </section>
+
+      <section class="section section-simple" aria-labelledby="evolution-title">
+        <div class="section-heading"><p class="section-index">Evolution</p><h2 id="evolution-title">The ten-tool core became a production effect boundary without becoming a general workflow platform.</h2></div>
+        <ol class="evolution-list">
+          <li><time>23 Jul 2026</time><div><strong>Close the M0–M7 ten-tool core.</strong><p>The first release established Workspace operations, durable execution, cancellation, Artifacts, and restart recovery.</p></div></li>
+          <li><time>Agent UX</time><div><strong>Add reconnectable Workspaces and structured ExecPlan; retire overlapping Patch.</strong><p>Repeated engineering friction justified durable recovery and progress primitives. Production evidence later showed Patch duplicated mutation and script editing, so it left the public surface.</p></div></li>
+          <li><time>Effect Kernel</time><div><strong>Bind request identity separately from world commitment.</strong><p>Source-state commitment, pre-spawn validation, explicit ambiguity, and opaque-effect limits made the physical boundary precise.</p></div></li>
+          <li><time>28 Jul 2026</time><div><strong>Close the production lifecycle.</strong><p>Explicit execution environments, external caches, daily retention, repair, secret-free status, receipted deployment, and historical Workspace reclaim turned the Runtime into a maintainable service.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="section section-simple" aria-labelledby="open-title">
+        <div class="section-heading"><p class="section-index">Open questions</p><h2 id="open-title">The next additions must strengthen a real effect contract or remove observed operational friction.</h2></div>
+        <div class="question-list"><p>Which real structured operation can prove canonical identity, enforceable preconditions, provider-owned evidence, and deterministic reconciliation?</p><p>How should operational assets and Runtime binaries become one unified release entrypoint without collapsing their separate receipts?</p><p>Which remaining Host and user-experience failures belong above the Runtime rather than becoming new execution primitives?</p></div>
+      </section>
+
+      <section class="project-links" aria-labelledby="links-title">
+        <div><p class="section-index">Canonical sources</p><h2 id="links-title">Inspect the current model, Effect Kernel, Agent-facing UX, operations, source, and tests.</h2><p>This page is an orientation layer. The repository and live Runtime own current technical truth.</p></div>
+        <div class="link-stack"><a href="https://github.com/zycxfyh/ordivon-runtime">Repository <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/runtime.md">Runtime model <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/effect-kernel.md">Effect Commit Kernel <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/agent-ux.md">Agent-facing UX <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/operations.md">Operations <span aria-hidden="true">↗</span></a><a href="https://github.com/zycxfyh/ordivon-runtime/blob/main/scripts/mcp_e2e.py">MCP E2E <span aria-hidden="true">↗</span></a><a href="../../notes/ordivon-runtime-release/">Historical core release <span aria-hidden="true">→</span></a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div><p>© <span id="year">2026</span> Ordivon</p><p>Operation identity · Physical dispatch · Evidence · Recovery</p></div><nav aria-label="Footer navigation"><a href="../../">Home</a><a href="../">Projects</a><a href="../../notes/">Notes</a><a href="../../now/">Current</a><a href="../../about/">About</a></nav></footer>
+  </body>
+</html>

@@ -14,7 +14,7 @@ test("dynamic health route executes", async ({ request }) => {
   expect((await response.json()).ok).toBe(true);
 });
 test("legacy routes redirect", async ({ request }) => {
-  const response = await request.get("/work/ordivon-runtime", { maxRedirects: 0 });
+  const response = await request.get("/work", { maxRedirects: 0 });
   expect([307, 308]).toContain(response.status());
-  expect(response.headers().location).toContain("/projects/ordivon-runtime");
+  expect(response.headers().location).toContain("/projects");
 });

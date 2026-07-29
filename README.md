@@ -1,19 +1,26 @@
 # Ordivon Web V2
 
-Round 1 rebuild branch for the Ordivon public narrative, research publishing, visualization, and evidence-navigation surface.
+Recoverable rebuild of the Ordivon public narrative, research publishing, visualization, and evidence-navigation surface.
+
+Round 1 proves the runtime and migration substrate. Production remains the V1 static site on `main` until a later cutover round.
 
 ## Commands
 
 ```bash
 pnpm install
 pnpm dev
-pnpm build
+pnpm check
 pnpm preview
-pnpm test:smoke
+pnpm capture:v1
 ```
 
-`pnpm preview` builds through OpenNext and runs in Cloudflare's `workerd`-compatible local environment. Production remains served from `main` until the V2 cutover round.
+- `pnpm check` runs type checking, lint, production dependency audit, Next production build, desktop/mobile browser checks, OpenNext build, and real local `workerd` requests.
+- `pnpm preview` builds through OpenNext and runs the generated Worker under Wrangler/workerd.
+- `pnpm capture:v1` refreshes the asserted production rendering baseline.
 
-- `legacy-v1/` preserves the current static production implementation.
-- `content-drafts/` preserves unpublished content needed by migration.
-- `docs/v2/` records route, content, deployment, and rollback baselines.
+## Recovery surfaces
+
+- `legacy-v1/` is an exact archive of production commit `15e3a2037512914900c51c919804f9dd5286089a`.
+- `artifacts/v1-baseline/` contains asserted desktop/mobile screenshots, metrics, and hashes.
+- `content-drafts/` preserves unpublished material needed by migration.
+- `docs/v2/` records route, content, deployment, and rollback decisions.

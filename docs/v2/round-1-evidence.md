@@ -1,33 +1,42 @@
 # Round 1 evidence
 
-## Proven
+## Frozen inputs
 
-- Next.js App Router 16.2.12 builds with React 19 and TypeScript 6.
-- Local MDX compiles as a Server Component using the webpack production path.
-- Static pages, a dynamic request-time route, metadata, a generated Open Graph image, redirects, and a custom 404 build together.
+- Production V1 commit: `15e3a2037512914900c51c919804f9dd5286089a`.
+- Complete V1 tree: `legacy-v1/`, verified against a fresh Git archive manifest.
+- V1 rendering baseline: eight asserted full-page desktop/mobile screenshots under `artifacts/v1-baseline/`.
+- Unpublished essay: `content-drafts/the-future-will-not-wait/source.html`, hash-equal to commit `bb57ae2534c0cd325b37ff23e398b637bc92663d`.
+
+## Runtime proof
+
+- Next.js App Router 16.2.12 builds with React 19.2.8 and TypeScript 6.0.2.
+- Local MDX compiles as a Server Component through the webpack production path.
+- Static pages, a dynamic request-time route, metadata, an Open Graph image, redirects, and a custom 404 build together.
 - OpenNext Cloudflare 1.20.2 generates `.open-next/worker.js` successfully.
-- The generated bundle runs under local Wrangler/workerd.
-- `/`, `/preview-mdx`, `/opengraph-image`, and `/api/health` return successful responses in workerd.
-- Desktop and mobile Playwright smoke tests passed: 12/12.
-- TypeScript, ESLint, pnpm peer validation, and the Next production build pass.
+- The generated bundle runs under Wrangler 4.115.0 and local `workerd`.
+- `workerd` returns 200 for `/`, `/projects`, `/writing`, `/preview-mdx`, `/opengraph-image`, and `/api/health`; `/work` returns a permanent redirect.
+- Desktop and mobile Playwright smoke tests pass: 12/12.
+- TypeScript, ESLint, production dependency audit, Next production build, OpenNext build, and process cleanup pass.
+- The production dependency audit reports no known vulnerabilities after narrow overrides to patched `postcss` and `sharp` versions inherited from Next 16.2.12.
 
 ## Build sizes
 
 - `.next`: approximately 253 MiB.
 - `.open-next`: approximately 37 MiB.
 - `node_modules`: approximately 838 MiB.
-- Temporary deploy upload: approximately 6.9 MiB raw / 1.72 MiB gzip.
+- Wrangler upload measurement: approximately 6.9 MiB raw / 1.72 MiB compressed.
 
 These local resources are intentionally retained. Recoverability and verification coverage take priority over minimizing disk usage.
 
-## Public preview boundary
+## Cloudflare boundary
 
-A Cloudflare temporary-account deployment uploaded all static assets but rejected the Worker because that temporary account allows a 1 MiB compressed Worker and the OpenNext bundle is approximately 1.72 MiB compressed. The repository has no Cloudflare deployment secrets and local Wrangler is not authenticated to the production account. No production DNS, Worker, Pages project, or `ordivon.com` route was changed.
+An anonymous temporary-account deployment accepted all static assets but rejected the Worker because that temporary flow applies a 1 MiB compressed-script limit. The connected Cloudflare account was separately verified as Workers Free; Cloudflare's current documented Free Worker size limit is 3 MB, above the measured 1.72 MiB bundle.
 
-This is an external credential/plan boundary rather than a framework or runtime failure. Formal preview deployment remains the only unfinished external proof in Round 1; local workerd execution proves the generated Worker itself runs.
+Round 1 deliberately does not authenticate the local Wrangler process to production or attach a Worker route. Local `workerd` proves runtime compatibility; an account-hosted preview belongs to the deployment/cutover round, where it can be created without changing `ordivon.com` traffic.
 
 ## Compatibility decisions
 
-- Use webpack for Next 16 MDX builds until the Turbopack/MDX production path is verified independently.
-- Keep Open Graph generation on the default Worker runtime. Explicit Edge Runtime requires separate OpenNext function configuration and is unnecessary for V2 Round 1.
-- pnpm build-script permissions are declared in `pnpm-workspace.yaml` for `esbuild`, `sharp`, `unrs-resolver`, and `workerd`.
+- Use webpack for Next 16 MDX builds until the Turbopack/MDX production path is independently verified.
+- Keep Open Graph generation on the default runtime. Explicit Edge Runtime requires a separate OpenNext function and adds no Round 1 value.
+- Pin direct dependencies and use targeted pnpm overrides for `next@16.2.12>postcss` and `next@16.2.12>sharp`.
+- Declare pnpm build-script permissions for `esbuild`, `sharp`, `unrs-resolver`, and `workerd`.

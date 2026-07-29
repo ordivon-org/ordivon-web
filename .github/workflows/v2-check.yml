@@ -1,17 +1,23 @@
 name: V2 checks
+
 on:
   pull_request:
   push:
-    branches: [rebuild/web-v2-round1]
+    branches: [rebuild/web-v2]
+
 permissions:
   contents: read
+
 concurrency:
   group: v2-check-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
+    env:
+      WRANGLER_SEND_METRICS: "false"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,8 +30,5 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm typecheck
-      - run: pnpm lint
-      - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm test:smoke
+      - run: pnpm check
