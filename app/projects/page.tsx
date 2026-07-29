@@ -4,7 +4,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { SystemMap } from "@/components/system-map";
 import { projects } from "@/lib/projects";
 
-export const metadata: Metadata = { title: "Projects", description: "Five independent Ordivon state owners for contracts, Tasks, effects, paths, and hosted capabilities.", alternates: { canonical: "/projects" } };
+export const metadata: Metadata = { title: "Projects", description: "Four independent Ordivon state owners for contracts, Tasks, local effects, and conditioned external interaction.", alternates: { canonical: "/projects" } };
 
 export default function ProjectsPage() {
   return (
@@ -20,7 +20,7 @@ export default function ProjectsPage() {
           </Link>
         ))}
       </section>
-      <section className="portfolio-boundary"><SectionHeading index="06" eyebrow="Portfolio boundary" title="The stack is a graph, not one mandatory request pipeline." /><div><p>A local Runtime task may need no Edge. A Link measurement may need no Host. Computing can falsify a contract without owning any production state.</p><p>Source, tests, data, receipts, and each repository&apos;s current documents remain the technical truth. This site provides orientation and dated interpretation.</p></div></section>
+      <section className="portfolio-boundary"><SectionHeading index="06" eyebrow="Portfolio boundary" title="The stack is a graph, not one mandatory request pipeline." /><div><p>A local Runtime task may never cross into World. A World observation may exist before any Host Task. Computing can falsify a contract without owning production state.</p><p>Source, tests, data, receipts, and each repository&apos;s current documents remain the technical truth. This site provides orientation and dated interpretation.</p></div></section>
     </div>
   );
 }

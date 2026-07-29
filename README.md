@@ -3,7 +3,7 @@
 Recoverable rebuild of the Ordivon public narrative, project explanation, research publishing, visualization, and evidence-navigation surface.
 
 - **Round 1** froze the production V1 baseline and proved a modern Next.js build path.
-- **Round 2** established the reader-facing homepage, five-project graph, differentiated project pages, Writing archive, and long-form reading system.
+- **Round 2** established the reader-facing homepage, initial project graph, later corrected from separate Link and Edge projects to Ordivon World, differentiated project pages, Writing archive, and long-form reading system.
 - **Round 3** removes the unnecessary request-time Next runtime and publishes the complete site as a deterministic static export through Cloudflare Workers Static Assets, with release-grade browser, accessibility, performance, metadata, redirect, cache, link, and hosted-edge verification.
 
 Production remains the V1 GitHub Pages site on `main` until a separate, explicit cutover.
@@ -58,7 +58,8 @@ Core gates:
 
 ## Recovery surfaces
 
-- `legacy-v1/` is an exact archive of production commit `7c7021796cb3cf4894809d1a3925451050d8a7e5`.
+- `legacy-v1/` is the original Round 1 production archive at `7c7021796cb3cf4894809d1a3925451050d8a7e5`.
+- `legacy-v1-current/` is the exact current V1 production archive at `33c97c0409b370db9e8e870a591d5b93cf56b774`, including the Ordivon World correction.
 - `artifacts/v1-baseline/` contains asserted V1 screenshots, metrics, and hashes.
 - `artifacts/v2-round2/` contains V2 editorial screenshots, first-viewport previews, metrics, and hashes.
 - `artifacts/v2-round3/` contains local platform, hosted platform, Lighthouse, external-link, deployment, and release evidence.

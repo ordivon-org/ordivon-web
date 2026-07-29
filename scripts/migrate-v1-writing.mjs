@@ -4,6 +4,7 @@ import path from "node:path";
 
 const sourceRoot = path.resolve("legacy-v1/notes");
 const outputPath = path.resolve("content/writing/articles.json");
+const overrideRoot = path.resolve("content/writing/overrides");
 const oldOrigin = "https://ordivon.com";
 
 const routeMap = new Map([
@@ -13,8 +14,9 @@ const routeMap = new Map([
   ["/work/computing/", "/projects/computing"],
   ["/work/ordivon-host/", "/projects/host"],
   ["/work/ordivon-runtime/", "/projects/runtime"],
-  ["/work/ordivon-link/", "/projects/link"],
-  ["/work/ordivon-edge/", "/projects/edge"],
+  ["/work/ordivon-link/", "/projects/world"],
+  ["/work/ordivon-edge/", "/projects/world"],
+  ["/work/ordivon-world/", "/projects/world"],
   ["/work/ordivon-web/", "/colophon"],
   ["/about/", "/about"],
   ["/contact/", "/about#contact"],
@@ -61,8 +63,12 @@ for (const entry of entries) {
   if (!entry.isDirectory()) continue;
   const slug = entry.name;
   const file = path.join(sourceRoot, slug, "index.html");
+  const overrideFile = path.join(overrideRoot, `${slug}.html`);
   let html;
-  try { html = await readFile(file, "utf8"); } catch { continue; }
+  try { html = await readFile(overrideFile, "utf8"); }
+  catch {
+    try { html = await readFile(file, "utf8"); } catch { continue; }
+  }
   const $ = load(html);
   const header = $(".article-header");
   if (!header.length) continue;
@@ -73,6 +79,7 @@ for (const entry of entries) {
   const meta = header.find(".note-meta").first().text().replace(/\s+/g, " ").trim();
   const description = $("meta[name=description]").attr("content")?.trim() || deck;
   const date = header.find("time").first().attr("datetime") || "2026-07-29";
+  const modifiedDate = $('meta[property="article:modified_time"]').attr("content") || date;
   const parts = meta.split("·").map((part) => part.trim()).filter(Boolean);
   const type = parts[0] || "Note";
   const project = parts[1] || "Ordivon";
@@ -109,7 +116,7 @@ for (const entry of entries) {
   const relatedHeading = $(".related-reading h2").first().text().replace(/\s+/g, " ").trim();
 
   articles.push({
-    slug, title, kicker, deck, description, meta, type, project, date,
+    slug, title, kicker, deck, description, meta, type, project, date, modifiedDate,
     readMinutes, author, lead, toc, bodyHtml: body.html()?.trim() || "",
     footerHtml: $(".article-footer").first().html()?.trim() || "",
     relatedHeading, related,

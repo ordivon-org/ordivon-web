@@ -12,6 +12,7 @@ export type Article = {
   type: string;
   project: string;
   date: string;
+  modifiedDate?: string;
   readMinutes: number;
   author: string;
   lead: string;

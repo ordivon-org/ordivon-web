@@ -35,7 +35,7 @@ const sitemapResponse = await request("/sitemap.xml");
 assert(sitemapResponse.status === 200, `sitemap ${sitemapResponse.status}`);
 const sitemapText = await sitemapResponse.text();
 const sitemapRoutes = [...sitemapText.matchAll(/<loc>https:\/\/ordivon\.com([^<]*)<\/loc>/g)].map((m) => m[1] || "/");
-assert(sitemapRoutes.length === 17, `expected 17 sitemap routes, got ${sitemapRoutes.length}`);
+assert(sitemapRoutes.length === 16, `expected 16 sitemap routes, got ${sitemapRoutes.length}`);
 const internalTargets = new Set();
 const staticAssets = new Set();
 

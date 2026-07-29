@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T17:03:47.515Z",
+  "generatedAt": "2026-07-29T18:04:20.425Z",
   "environment": "wrangler-workers-static-assets",
   "routes": [
     {
@@ -66,17 +66,10 @@
       "cacheControl": "public, max-age=0, must-revalidate"
     },
     {
-      "route": "/projects/link",
+      "route": "/projects/world",
       "status": 200,
-      "title": "Ordivon Link — Ordivon",
-      "canonical": "https://ordivon.com/projects/link",
-      "cacheControl": "public, max-age=0, must-revalidate"
-    },
-    {
-      "route": "/projects/edge",
-      "status": 200,
-      "title": "Ordivon Edge — Ordivon",
-      "canonical": "https://ordivon.com/projects/edge",
+      "title": "Ordivon World — Ordivon",
+      "canonical": "https://ordivon.com/projects/world",
       "cacheControl": "public, max-age=0, must-revalidate"
     },
     {
@@ -87,17 +80,17 @@
       "cacheControl": "public, max-age=0, must-revalidate"
     },
     {
+      "route": "/writing/link-edge-boundary",
+      "status": 200,
+      "title": "From Link and Edge to Ordivon World — Ordivon",
+      "canonical": "https://ordivon.com/writing/link-edge-boundary",
+      "cacheControl": "public, max-age=0, must-revalidate"
+    },
+    {
       "route": "/writing/runtime-after-core",
       "status": 200,
       "title": "Ordivon Runtime after the core — Ordivon",
       "canonical": "https://ordivon.com/writing/runtime-after-core",
-      "cacheControl": "public, max-age=0, must-revalidate"
-    },
-    {
-      "route": "/writing/link-edge-boundary",
-      "status": 200,
-      "title": "Separating connectivity from external execution — Ordivon",
-      "canonical": "https://ordivon.com/writing/link-edge-boundary",
       "cacheControl": "public, max-age=0, must-revalidate"
     },
     {
@@ -165,22 +158,52 @@
     },
     {
       "source": "/work/ordivon-link",
-      "destination": "/projects/link",
+      "destination": "/projects/world",
       "status": 301
     },
     {
       "source": "/work/ordivon-link/",
-      "destination": "/projects/link",
+      "destination": "/projects/world",
       "status": 301
     },
     {
       "source": "/work/ordivon-edge",
-      "destination": "/projects/edge",
+      "destination": "/projects/world",
       "status": 301
     },
     {
       "source": "/work/ordivon-edge/",
-      "destination": "/projects/edge",
+      "destination": "/projects/world",
+      "status": 301
+    },
+    {
+      "source": "/work/ordivon-world",
+      "destination": "/projects/world",
+      "status": 301
+    },
+    {
+      "source": "/work/ordivon-world/",
+      "destination": "/projects/world",
+      "status": 301
+    },
+    {
+      "source": "/projects/link",
+      "destination": "/projects/world",
+      "status": 301
+    },
+    {
+      "source": "/projects/link/",
+      "destination": "/projects/world",
+      "status": 301
+    },
+    {
+      "source": "/projects/edge",
+      "destination": "/projects/world",
+      "status": 301
+    },
+    {
+      "source": "/projects/edge/",
+      "destination": "/projects/world",
       "status": 301
     },
     {
@@ -341,7 +364,7 @@
       "cacheControl": "public,max-age=31536000,immutable"
     },
     {
-      "asset": "/_next/static/css/8e0ab1bc64729730.css",
+      "asset": "/_next/static/css/6d4c52351a7f0583.css",
       "status": 200,
       "cacheControl": "public,max-age=31536000,immutable"
     }

@@ -1,8 +1,8 @@
 # Recovery boundary
 
-- Production remains `main` at V1 commit `7c7021796cb3cf4894809d1a3925451050d8a7e5` until the cutover round.
+- Production remains V1 on `main`; the current production commit is `33c97c0409b370db9e8e870a591d5b93cf56b774` until the cutover round.
 - V2 work is isolated on `rebuild/web-v2`.
-- `legacy-v1/` is a byte-for-byte archive of the complete V1 tree, with `V1-SOURCE-COMMIT` recording its source.
+- `legacy-v1/` preserves the original Round 1 V1 tree at `7c70217`. `legacy-v1-current/` preserves the exact current V1 tree at `33c97c0`, after World replaced Link and Edge.
 - `artifacts/v1-baseline/` preserves asserted desktop/mobile renderings, metrics, and SHA-256 sums.
 - The newly published acceleration essay and its corrected research link are included in the current V1 archive.
 - Production DNS, GitHub Pages, `ordivon.com`, `www`, and `lab` remain unchanged. Round 3 creates only an isolated `workers.dev` preview identity; a temporary diagnostic `preview.ordivon.com` record and route were removed before closeout.

@@ -3,9 +3,8 @@ import Link from "next/link";
 const nodes = [
   { href: "/projects/computing", index: "01", title: "Computing", detail: "contracts" },
   { href: "/projects/host", index: "02", title: "Host", detail: "tasks" },
-  { href: "/projects/runtime", index: "03", title: "Runtime", detail: "effects" },
-  { href: "/projects/link", index: "04", title: "Link", detail: "paths" },
-  { href: "/projects/edge", index: "05", title: "Edge", detail: "capabilities" },
+  { href: "/projects/runtime", index: "03", title: "Runtime", detail: "local effects" },
+  { href: "/projects/world", index: "04", title: "World", detail: "external interaction" },
 ];
 
 export function SystemMap({ compact = false }: { compact?: boolean }) {
@@ -18,7 +17,7 @@ export function SystemMap({ compact = false }: { compact?: boolean }) {
           <span>{node.index}</span><strong>{node.title}</strong><small>{node.detail}</small>
         </Link>
       ))}
-      <div className="map-caption"><span>Replaceable cognition</span><span>Durable evidence</span></div>
+      <div className="map-caption"><span>Replaceable cognition</span><span>Conditioned evidence</span></div>
     </div>
   );
 }

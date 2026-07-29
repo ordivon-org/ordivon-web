@@ -12,22 +12,22 @@ export default function HomePage() {
         <div className="hero-copy">
           <p className="eyebrow"><span>Independent research + engineering</span><b>2026</b></p>
           <h1>Agents should outlive the sessions that think for them.</h1>
-          <p className="hero-lede">Ordivon builds the layers that let capable agents continue work, commit actions, recover paths, preserve evidence, and change models without starting over.</p>
+          <p className="hero-lede">Ordivon builds the layers that let capable agents continue work, commit actions, reconcile external interactions, preserve evidence, and change models without starting over.</p>
           <div className="actions"><Link className="button primary" href="/projects">Explore the system</Link><Link className="button text" href="/writing">Read the argument <span>↗</span></Link></div>
         </div>
         <div className="hero-proof" aria-label="Current system status">
-          <div className="proof-label"><span>Current snapshot</span><time dateTime="2026-07-29">29 July 2026</time></div>
+          <div className="proof-label"><span>Current snapshot</span><time dateTime="2026-07-30">30 July 2026</time></div>
           <dl>
             <div><dt>Semantic continuity</dt><dd>Host journal and recoverable Tasks</dd></div>
             <div><dt>Physical execution</dt><dd>13-tool production Runtime</dd></div>
-            <div><dt>World interfaces</dt><dd>Measured paths and bounded Edge effects</dd></div>
+            <div><dt>World interaction</dt><dd>Conditioned paths, provider actions, and reconciliation</dd></div>
             <div><dt>Public record</dt><dd>Source-linked writing and evidence</dd></div>
           </dl>
         </div>
       </section>
 
       <section className="map-section page-shell">
-        <SectionHeading index="01" eyebrow="The system" title="One graph. Five independent state owners." description="Ordivon is not a monolithic agent framework. Each project owns facts that the others must not fabricate." />
+        <SectionHeading index="01" eyebrow="The system" title="One graph. Four independent state owners." description="Ordivon is not a monolithic agent framework. Each project owns facts that the others must not fabricate." />
         <SystemMap />
       </section>
 

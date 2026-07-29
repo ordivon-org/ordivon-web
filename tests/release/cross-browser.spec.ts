@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const routes = ["/", "/projects", "/projects/runtime", "/writing", "/writing/the-future-will-not-wait", "/about"];
+const routes = ["/", "/projects", "/projects/runtime", "/projects/world", "/writing", "/writing/the-future-will-not-wait", "/about"];
 
 for (const route of routes) {
   test(`${route} renders cleanly`, async ({ page }) => {
@@ -10,7 +10,7 @@ for (const route of routes) {
     page.on("requestfailed", (request) => {
       const error = request.failure()?.errorText || "";
       const url = new URL(request.url());
-      const benignPrefetchAbort = request.method() === "HEAD" && url.origin === "http://127.0.0.1:8788" && /ERR_ABORTED|NS_BINDING_ABORTED/i.test(error);
+      const benignPrefetchAbort = request.method() === "HEAD" && url.origin === new URL(page.url()).origin && /ERR_ABORTED|NS_BINDING_ABORTED/i.test(error);
       if (!benignPrefetchAbort) requestFailures.push(`${request.method()} ${request.url()} ${error}`);
     });
     const response = await page.goto(route, { waitUntil: "domcontentloaded" });
@@ -61,4 +61,13 @@ test("legacy route redirects permanently", async ({ request }) => {
   const response = await request.get("/notes/runtime-after-core", { maxRedirects: 0 });
   expect(response.status()).toBe(301);
   expect(response.headers().location).toBe("/writing/runtime-after-core");
+});
+
+
+test("retired project routes redirect to World", async ({ request }) => {
+  for (const route of ["/projects/link", "/projects/edge", "/work/ordivon-link", "/work/ordivon-edge", "/work/ordivon-world"]) {
+    const response = await request.get(route, { maxRedirects: 0 });
+    expect(response.status(), route).toBe(301);
+    expect(response.headers().location, route).toBe("/projects/world");
+  }
 });

@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-29T10:41:30.673Z",
-  "total": 34,
+  "generatedAt": "2026-07-29T18:15:08.577Z",
+  "total": 33,
   "summary": {
-    "ok": 31,
+    "ok": 30,
     "restricted": 3
   },
   "results": [
@@ -84,10 +84,9 @@
         "/preview-mdx.html",
         "/projects.html",
         "/projects/computing.html",
-        "/projects/edge.html",
         "/projects/host.html",
-        "/projects/link.html",
         "/projects/runtime.html",
+        "/projects/world.html",
         "/writing.html",
         "/writing/host-task-continuity.html",
         "/writing/link-edge-boundary.html",
@@ -134,24 +133,6 @@
       ]
     },
     {
-      "url": "https://github.com/zycxfyh/ordivon-edge",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-edge",
-      "error": null,
-      "attempts": [
-        {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-edge",
-          "method": "HEAD",
-          "error": null
-        }
-      ],
-      "sources": [
-        "/projects/edge.html"
-      ]
-    },
-    {
       "url": "https://github.com/zycxfyh/ordivon-host",
       "classification": "ok",
       "status": 200,
@@ -185,24 +166,6 @@
       ],
       "sources": [
         "/writing/host-task-continuity.html"
-      ]
-    },
-    {
-      "url": "https://github.com/zycxfyh/ordivon-link",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-link",
-      "error": null,
-      "attempts": [
-        {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-link",
-          "method": "HEAD",
-          "error": null
-        }
-      ],
-      "sources": [
-        "/projects/link.html"
       ]
     },
     {
@@ -283,10 +246,9 @@
         "/preview-mdx.html",
         "/projects.html",
         "/projects/computing.html",
-        "/projects/edge.html",
         "/projects/host.html",
-        "/projects/link.html",
         "/projects/runtime.html",
+        "/projects/world.html",
         "/writing.html",
         "/writing/host-task-continuity.html",
         "/writing/link-edge-boundary.html",
@@ -294,6 +256,25 @@
         "/writing/runtime-after-core.html",
         "/writing/the-future-will-not-wait.html",
         "/writing/why-ordivon.html"
+      ]
+    },
+    {
+      "url": "https://github.com/zycxfyh/ordivon-world",
+      "classification": "ok",
+      "status": 200,
+      "finalUrl": "https://github.com/zycxfyh/ordivon-world",
+      "error": null,
+      "attempts": [
+        {
+          "status": 200,
+          "finalUrl": "https://github.com/zycxfyh/ordivon-world",
+          "method": "HEAD",
+          "error": null
+        }
+      ],
+      "sources": [
+        "/projects/world.html",
+        "/writing/link-edge-boundary.html"
       ]
     },
     {

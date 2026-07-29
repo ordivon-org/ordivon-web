@@ -15,13 +15,17 @@ Keeping a full Next server bundle added a second cache model, script-size constr
 
 Workers Static Assets uses a Worker service as the Cloudflare publication identity, but the deployed version contains static assets and no request-time module or service binding.
 
+## Ordivon World correction
+
+While Round 3 was closing, production main merged the architectural correction that retired Link and Edge as independent projects and unified their proven slices under Ordivon World. V2 now presents four maintained state owners, preserves the dated Link/Edge article as migration history, and redirects retired project routes to `/projects/world`. The exact corrected V1 production tree is archived in `legacy-v1-current/`.
+
 ## Static output
 
 `pnpm build` produces `out/` with:
 
-- 24 generated routes and support documents;
-- 17 canonical public pages listed in the sitemap;
-- five project detail pages;
+- 23 generated routes and support documents;
+- 16 canonical public pages listed in the sitemap;
+- four project detail pages;
 - six article detail pages;
 - RSS, sitemap, robots, health JSON, social image, favicon, and custom 404;
 - Cloudflare `_redirects` and `_headers` policies.
@@ -32,7 +36,7 @@ The output is approximately 3.1 MiB before transport compression.
 
 `scripts/verify-static-platform.mjs` runs the export through `wrangler dev` and validates:
 
-- 17/17 canonical pages return HTML 200;
+- 16/16 canonical pages return HTML 200;
 - exact canonical URL, description, Open Graph, Twitter, language, H1, IDs, and Article JSON-LD;
 - all internal paths and same-page anchors resolve;
 - RSS contains six articles and uses `application/rss+xml`;
@@ -42,7 +46,7 @@ The output is approximately 3.1 MiB before transport compression.
 - 14 hashed JS/CSS assets use one-year immutable caching;
 - HTML uses `max-age=0, must-revalidate`;
 - global CSP, frame, MIME, referrer, permissions, and opener policies are present;
-- 30/30 V1 routes return exact permanent redirects;
+- 36/36 legacy and migration routes return exact permanent redirects;
 - an unknown route returns the custom HTML 404.
 
 Machine-readable result: `artifacts/v2-round3/static-platform.json`.
@@ -75,7 +79,7 @@ Representative pages and interactions are exercised on Chromium, Firefox, mobile
 | Chromium Pixel 7 emulation | 9/9 |
 | WebKit desktop | 9/9 |
 
-Total: **36/36 local release-browser checks passed**.
+Total: **40/40 local release-browser checks passed**.
 
 The hosted matrix repeats the same 36 checks against the public `workers.dev` deployment. Final result: **36/36 hosted browser checks passed**. On Arch, WebKit runs in the official `mcr.microsoft.com/playwright:v1.62.0-noble` container rather than installing obsolete Ubuntu ABI compatibility libraries into the host.
 
@@ -83,7 +87,7 @@ Checks assert HTTP status, visible content, no horizontal overflow, no console e
 
 ## Lighthouse budgets
 
-Ten route/device audits cover the homepage, project index, Runtime page, Writing index, and longest article on mobile and desktop. Each audit runs five times, uses an independent Chrome profile for every route/device group, and enforces the median of every score and metric.
+Twelve route/device audits cover the homepage, project index, Runtime page, Writing index, and longest article on mobile and desktop. Each audit runs five times, uses an independent Chrome profile for every route/device group, and enforces the median of every score and metric.
 
 Local minimum and worst-case medians:
 
@@ -128,4 +132,4 @@ Workers Static Assets applies:
 
 ## Production boundary
 
-Production remains V1 on GitHub Pages from `main@7c7021796cb3cf4894809d1a3925451050d8a7e5`. Round 3 creates a real hosted candidate and rehearses cutover and rollback; it does not route `ordivon.com`, `www.ordivon.com`, or `lab.ordivon.com` to V2.
+Production remains V1 on GitHub Pages from `main@33c97c0409b370db9e8e870a591d5b93cf56b774`, which already carries the World correction. Round 3 creates a real hosted candidate and rehearses cutover and rollback; it does not route `ordivon.com`, `www.ordivon.com`, or `lab.ordivon.com` to V2.

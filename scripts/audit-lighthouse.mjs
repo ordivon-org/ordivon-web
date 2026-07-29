@@ -78,6 +78,7 @@ const routes = [
   ["home", "/"],
   ["projects", "/projects"],
   ["runtime", "/projects/runtime"],
+  ["world", "/projects/world"],
   ["writing", "/writing"],
   ["article", "/writing/the-future-will-not-wait"],
 ];

@@ -1,5 +1,5 @@
 export type Project = {
-  slug: "computing" | "host" | "runtime" | "link" | "edge";
+  slug: "computing" | "host" | "runtime" | "world";
   index: string;
   group: string;
   title: string;
@@ -90,52 +90,28 @@ export const projects: Project[] = [
     relatedWriting: ["runtime-after-core", "ordivon-runtime-release", "host-task-continuity"],
   },
   {
-    slug: "link",
+    slug: "world",
     index: "04",
-    group: "World interfaces",
-    title: "Ordivon Link",
-    label: "Path evidence and recovery",
-    thesis: "Observe and recover the path without owning the task that uses it.",
-    summary: "A local connectivity and replaceable-transport layer. Link observes, probes, compares, selects, connects, verifies, and recovers network paths while remaining separate from local execution and hosted capabilities.",
-    question: "Which network path is available, suitable, selected, connected, and recoverable?",
-    state: "Observation, history, read-only presentation, and bounded reference transport implemented.",
-    owns: ["Path observations", "Route identity", "Transport choice", "Recovery evidence"],
-    boundary: ["No automatic root-route mutation", "No hosted execution", "No general control plane"],
+    group: "World interaction",
+    title: "Ordivon World",
+    label: "Conditioned external interaction",
+    thesis: "Let a Task reach and act through a changing external world without rebuilding the world beneath it.",
+    summary: "The Task-to-external-world interaction boundary. World correlates target, path, identity, transport, provider execution, authority, Receipt, Artifact, conditioned evidence, uncertainty, reconciliation, and rebinding while mature systems retain their native mechanisms.",
+    question: "What must remain continuous when connection and external action fail together?",
+    state: "Former Link and Edge histories unified; Cloudflare provider and network-observation slices preserved while the shared World Interaction boundary remains under experiment.",
+    owns: ["World Interaction bindings", "Conditioned observations", "External evidence", "Reconciliation and rebinding"],
+    boundary: ["No universal proxy or transport", "No provider reimplementation", "No Goal, Task, or local process ownership"],
     evidence: [
-      { value: "4", label: "path states" },
-      { value: "SSE", label: "read-only stream" },
-      { value: "mTLS", label: "wire reference" },
+      { value: "2", label: "migrated prototype slices" },
+      { value: "1", label: "correlated interaction" },
+      { value: "0", label: "universal IDs" },
     ],
     openQuestions: [
-      "When should repeated evidence justify automatic failover?",
-      "Which mature transport adapter deserves production integration?",
+      "Can one Host Task combine path evidence and provider execution, reconcile a lost response, and continue without duplicate work?",
+      "Does a thin World boundary prevent a real failure better than direct Host integration?",
     ],
-    repository: "https://github.com/zycxfyh/ordivon-link",
-    relatedWriting: ["link-edge-boundary", "runtime-after-core"],
-  },
-  {
-    slug: "edge",
-    index: "05",
-    group: "World interfaces",
-    title: "Ordivon Edge",
-    label: "Bounded hosted capabilities",
-    thesis: "Execute a network-side capability without turning the edge into a proxy or scheduler.",
-    summary: "A Cloudflare execution plane for signed Fetch and Browser Run operations, private Artifacts, policy budgets, fenced leases, deterministic receipts, release control, and recovery.",
-    question: "Which externally hosted capability should execute one bounded task and return a receipt or Artifact?",
-    state: "Fetch, Browser, Artifact, policy, idempotency, and recoverable release planes active.",
-    owns: ["Hosted requests", "Fenced leases", "Private Artifacts", "Receipts"],
-    boundary: ["No public proxy", "No remote shell", "No local path selection"],
-    evidence: [
-      { value: "90 d", label: "idempotency window" },
-      { value: "R2", label: "private artifacts" },
-      { value: "2", label: "bounded capabilities" },
-    ],
-    openQuestions: [
-      "Which next capability genuinely earns its hosted boundary?",
-      "Which retention and privacy rules survive more varied browser workloads?",
-    ],
-    repository: "https://github.com/zycxfyh/ordivon-edge",
-    relatedWriting: ["link-edge-boundary", "runtime-after-core"],
+    repository: "https://github.com/zycxfyh/ordivon-world",
+    relatedWriting: ["link-edge-boundary", "host-task-continuity", "runtime-after-core"],
   },
 ];
 

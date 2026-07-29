@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 const coreRoutes = [
-  "/", "/projects", "/projects/computing", "/projects/host", "/projects/runtime", "/projects/link", "/projects/edge",
+  "/", "/projects", "/projects/computing", "/projects/host", "/projects/runtime", "/projects/world",
   "/writing", "/writing/the-future-will-not-wait", "/writing/runtime-after-core", "/now", "/about", "/colophon",
 ];
 

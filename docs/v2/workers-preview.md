@@ -42,7 +42,7 @@ pnpm audit:lighthouse:hosted
 The hosted candidate is accepted only when:
 
 1. deployed version metadata identifies the approved Git candidate;
-2. all 17 canonical routes, 30 redirects, 14 immutable assets, RSS, sitemap, robots, health JSON, social image, security headers, and 404 pass;
+2. all 16 canonical routes, 36 redirects, 14 immutable assets, RSS, sitemap, robots, health JSON, social image, security headers, and 404 pass;
 3. Chromium, Firefox, mobile Chromium, and WebKit pass the public-edge matrix;
 4. hosted Lighthouse medians satisfy the unchanged budgets;
 5. `ordivon.com`, `www`, and `lab` remain on their previous production configuration.

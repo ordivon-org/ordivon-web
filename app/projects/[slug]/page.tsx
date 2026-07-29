@@ -22,7 +22,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <div className={`project-page project-${project.slug}`}>
       <header className="project-hero page-shell page-top">
-        <div className="project-hero-meta"><p>{project.group}</p><span>{project.index} / 05</span></div>
+        <div className="project-hero-meta"><p>{project.group}</p><span>{project.index} / {String(projects.length).padStart(2, "0")}</span></div>
         <h1>{project.thesis}</h1>
         <div className="project-intro"><p>{project.summary}</p><a className="button primary" href={project.repository}>Repository <span>↗</span></a></div>
       </header>

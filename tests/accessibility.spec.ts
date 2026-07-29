@@ -18,7 +18,7 @@ async function analyzeStablePage(page: Page, route: string) {
   throw lastError;
 }
 
-for (const route of ["/", "/projects", "/writing", "/writing/the-future-will-not-wait", "/projects/runtime", "/about"]) {
+for (const route of ["/", "/projects", "/writing", "/writing/the-future-will-not-wait", "/projects/runtime", "/projects/world", "/about"]) {
   test(`${route} has no serious accessibility violations`, async ({ page }) => {
     const results = await analyzeStablePage(page, route);
     const serious = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact || ""));

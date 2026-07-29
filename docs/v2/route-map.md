@@ -1,9 +1,10 @@
 # V1 → V2 route map
 
-- V1 source commit: `7c7021796cb3cf4894809d1a3925451050d8a7e5`
+- Frozen V1 archive source: `7c7021796cb3cf4894809d1a3925451050d8a7e5`
+- Current production content correction: `33c97c0409b370db9e8e870a591d5b93cf56b774`
 - Redirect class: permanent
 
-| V1 route | V2 route |
+| Prior route | V2 route |
 |---|---|
 | `/` | `/` |
 | `/about/` | `/about` |
@@ -18,8 +19,11 @@
 | `/now/` | `/now` |
 | `/work/` | `/projects` |
 | `/work/computing/` | `/projects/computing` |
-| `/work/ordivon-edge/` | `/projects/edge` |
 | `/work/ordivon-host/` | `/projects/host` |
-| `/work/ordivon-link/` | `/projects/link` |
 | `/work/ordivon-runtime/` | `/projects/runtime` |
+| `/work/ordivon-world/` | `/projects/world` |
+| `/work/ordivon-link/` | `/projects/world` |
+| `/work/ordivon-edge/` | `/projects/world` |
+| `/projects/link` | `/projects/world` |
+| `/projects/edge` | `/projects/world` |
 | `/work/ordivon-web/` | `/colophon` |

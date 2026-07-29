@@ -9,14 +9,11 @@ function Host() {
 function Runtime() {
   return <div className="mechanism runtime-model"><div><span>proposal</span><b>not committed</b></div><div><span>dispatch</span><b>physical boundary</b></div><div><span>evidence</span><b>retained facts</b></div><div><span>completion</span><b>separate claim</b></div></div>;
 }
-function Link() {
-  return <div className="mechanism link-model"><div><b>Direct</b><span>available</span><small>observed</small></div><div className="selected"><b>Tokyo</b><span>selected</span><small>stable</small></div><div><b>VPN</b><span>degraded</span><small>variable</small></div><div><b>Fallback</b><span>recoverable</span><small>held</small></div></div>;
-}
-function Edge() {
-  return <div className="mechanism edge-model"><div><span>signed request</span></div><i>→</i><div><span>fenced lease</span></div><i>→</i><div><span>bounded execution</span></div><i>→</i><div><span>receipt + artifact</span></div></div>;
+function World() {
+  return <div className="mechanism world-model"><div><span>01</span><b>Intent</b><small>external relation</small></div><div><span>02</span><b>Observation</b><small>path + provider</small></div><div><span>03</span><b>Binding</b><small>identity + authority</small></div><div><span>04</span><b>Interaction</b><small>native mechanism</small></div><div><span>05</span><b>Evidence</b><small>Receipt + Artifact</small></div><div><span>06</span><b>Continuation</b><small>reconcile + rebind</small></div></div>;
 }
 
 export function ProjectMechanism({ project }: { project: Project }) {
-  const models = { computing: <Computing />, host: <Host />, runtime: <Runtime />, link: <Link />, edge: <Edge /> };
+  const models = { computing: <Computing />, host: <Host />, runtime: <Runtime />, world: <World /> };
   return <div className={`project-mechanism ${project.slug}`}><p>Working model</p>{models[project.slug]}</div>;
 }
