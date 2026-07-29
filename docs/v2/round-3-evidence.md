@@ -109,7 +109,9 @@ Pages applies:
 
 ## Hosted preview boundary
 
-The account-hosted Cloudflare Pages preview is created only after the branch commit and CI gates pass. It must remain on the `pages.dev` project domain during Round 3. No `ordivon.com`, `www.ordivon.com`, or `lab.ordivon.com` route, certificate, DNS record, or redirect policy is changed.
+The branch is ready for an account-hosted Cloudflare Pages preview, but the connected Cloudflare credential can only read Pages state. Project creation returned Cloudflare error `10000`, classified as missing Pages write permission. No Pages project, deployment URL, custom domain, DNS record, certificate, or redirect policy was created or changed.
+
+The remaining external input is narrowly defined in `pages-preview-setup.md`: grant Pages Edit to the deployment credential, then create or upload project `ordivon-web-v2-preview` and run the hosted verification matrix. This blocker does not affect the static build, local Pages runtime proof, browser matrix, performance budgets, or recovery proof.
 
 ## Production boundary
 

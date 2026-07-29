@@ -1,0 +1,19 @@
+{
+  "attemptedAt": "2026-07-29T10:47:37Z",
+  "candidateCommit": "9adb343e4a6f6e3ab1b66775e1777b066c79fc2d",
+  "projectName": "ordivon-web-v2-preview",
+  "provider": "Cloudflare Pages",
+  "accountRead": {
+    "projectsStatus": 200,
+    "existingProjectCount": 0
+  },
+  "createAttempt": {
+    "result": "blocked",
+    "errorCode": 10000,
+    "classification": "pages-write-permission-missing"
+  },
+  "productionChanged": false,
+  "customDomainAttached": false,
+  "dnsChanged": false,
+  "nextAction": "Grant Cloudflare Pages Edit permission to the connected credential, then create the GitHub-bound project or run pnpm deploy with an equivalent scoped token."
+}
