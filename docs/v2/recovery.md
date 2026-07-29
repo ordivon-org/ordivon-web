@@ -5,5 +5,5 @@
 - `legacy-v1/` is a byte-for-byte archive of the complete V1 tree, with `V1-SOURCE-COMMIT` recording its source.
 - `artifacts/v1-baseline/` preserves asserted desktop/mobile renderings, metrics, and SHA-256 sums.
 - The newly published acceleration essay and its corrected research link are included in the current V1 archive.
-- No DNS, GitHub Pages, Worker route, or `ordivon.com` production setting changes in Round 1.
+- No DNS, GitHub Pages, Worker route, or `ordivon.com` production setting changes in Rounds 1–2.
 - Removing the V2 branch returns development to the untouched production path; production itself requires no rollback.

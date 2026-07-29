@@ -43,3 +43,30 @@ test("legacy routes redirect to V2", async ({ request }) => {
     expect(response.headers().location, route).toContain(destination);
   }
 });
+
+test("internal navigation targets resolve", async ({ page, request }) => {
+  const sourceRoutes = ["/", "/projects", "/writing", "/about", "/now", "/projects/runtime", "/writing/the-future-will-not-wait"];
+  const targets = new Set<string>();
+  for (const route of sourceRoutes) {
+    await page.goto(route, { waitUntil: "domcontentloaded" });
+    for (const href of await page.locator('a[href^="/"]').evaluateAll((links) => links.map((link) => link.getAttribute("href") || ""))) {
+      const pathname = href.split("#", 1)[0];
+      if (pathname) targets.add(pathname);
+    }
+  }
+  for (const target of [...targets].sort()) {
+    const response = await request.get(target);
+    expect(response.status(), target).toBeLessThan(400);
+  }
+});
+
+test("article navigation matches viewport", async ({ page, isMobile }) => {
+  await page.goto("/writing/the-future-will-not-wait", { waitUntil: "domcontentloaded" });
+  if (isMobile) {
+    await expect(page.locator(".article-toc-mobile")).toBeVisible();
+    await expect(page.locator(".article-rail")).toBeHidden();
+  } else {
+    await expect(page.locator(".article-rail")).toBeVisible();
+    await expect(page.locator(".article-toc-mobile")).toBeHidden();
+  }
+});

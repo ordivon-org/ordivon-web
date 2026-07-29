@@ -1,8 +1,18 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTypeScript from "eslint-config-next/typescript";
+import nextTs from "eslint-config-next/typescript";
+
 export default defineConfig([
   ...nextVitals,
-  ...nextTypeScript,
-  globalIgnores([".next/**", ".open-next/**", "legacy-v1/**", "playwright-report/**", "test-results/**"])
+  ...nextTs,
+  globalIgnores([
+    ".next/**",
+    ".open-next/**",
+    "node_modules/**",
+    "playwright-report/**",
+    "test-results/**",
+    "artifacts/**",
+    "legacy-v1/**",
+    "next-env.d.ts",
+  ]),
 ]);

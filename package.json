@@ -16,7 +16,7 @@
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint .",
+    "lint": "eslint app components lib scripts tests eslint.config.mjs mdx-components.tsx next.config.ts open-next.config.ts playwright.config.ts",
     "test": "playwright test",
     "test:smoke": "playwright test tests/smoke.spec.ts",
     "test:workerd": "node scripts/verify-workerd.mjs",
@@ -25,7 +25,8 @@
     "audit:prod": "pnpm audit --prod --audit-level moderate",
     "migrate:v1": "node scripts/migrate-v1-writing.mjs",
     "test:a11y": "playwright test tests/accessibility.spec.ts",
-    "capture:v2": "node scripts/capture-v2-round2.mjs"
+    "capture:v2": "node scripts/capture-v2-round2.mjs",
+    "measure:v2": "node scripts/measure-v2-layout.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.1",
