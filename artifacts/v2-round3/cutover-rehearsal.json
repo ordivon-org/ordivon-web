@@ -1,0 +1,102 @@
+{
+  "generatedAt": "2026-07-30T03:01:29.861004+00:00",
+  "classification": "sanitized-public-receipt",
+  "rehearsal": {
+    "productionRouteAppliedBriefly": true,
+    "semanticParityObserved": true,
+    "releaseApproved": false,
+    "rollbackComplete": true
+  },
+  "currentProduction": {
+    "source": "GitHub Pages",
+    "mainCommit": "33c97c0409b370db9e8e870a591d5b93cf56b774",
+    "dnsRecords": [
+      {
+        "type": "A",
+        "name": "ordivon.com",
+        "content": "185.199.108.153",
+        "proxied": false,
+        "ttl": 3600
+      },
+      {
+        "type": "A",
+        "name": "ordivon.com",
+        "content": "185.199.109.153",
+        "proxied": false,
+        "ttl": 3600
+      },
+      {
+        "type": "A",
+        "name": "ordivon.com",
+        "content": "185.199.110.153",
+        "proxied": false,
+        "ttl": 3600
+      },
+      {
+        "type": "A",
+        "name": "ordivon.com",
+        "content": "185.199.111.153",
+        "proxied": false,
+        "ttl": 3600
+      },
+      {
+        "type": "CNAME",
+        "name": "lab.ordivon.com",
+        "content": "ordivon.com",
+        "proxied": true,
+        "ttl": 1
+      },
+      {
+        "type": "CNAME",
+        "name": "www.ordivon.com",
+        "content": "zycxfyh.github.io",
+        "proxied": false,
+        "ttl": 3600
+      },
+      {
+        "type": "TXT",
+        "name": "ordivon.com",
+        "content": "\"v=spf1 -all\"",
+        "proxied": false,
+        "ttl": 3600
+      }
+    ],
+    "workerRoutes": [
+      {
+        "pattern": "lab.ordivon.com/*",
+        "script": "ordivon-lab-redirect"
+      }
+    ],
+    "apexWorkerRoutePresent": false
+  },
+  "cloudflareBaselineRestoration": {
+    "rum": "on",
+    "browserIntegrityCheck": "on",
+    "restored": true
+  },
+  "privateRawEvidence": {
+    "retainedOutsideRepository": true,
+    "fileCount": 24,
+    "archiveBytes": 14109,
+    "sha256": "3bd531e700a616dbe7004785e3a929a0142e989d4249bf53897a7cea55012f74",
+    "mode": "600"
+  },
+  "safety": {
+    "containsApiToken": false,
+    "containsAccountOrZoneIdentifiers": false,
+    "containsAnalyticsToken": false
+  },
+  "hostedCandidateVerification": {
+    "sourceCommit": "1f829cba34867de461dc4314883ff64d320bceb2",
+    "versionId": "ea65536e-9232-48bb-bcb1-c536609b992b",
+    "versionNumber": 6,
+    "deploymentId": "0067f0bc-ac4d-43c5-989b-7755c6d36cf7",
+    "trafficPercent": 100,
+    "temporaryHostname": "v2-verify-20260730.ordivon.com",
+    "protocolMatrixPassed": true,
+    "browserChecksPassed": 44,
+    "lighthouseRunsPassed": 60,
+    "temporaryDnsAndRouteRemoved": true,
+    "apexWwwLabUnchanged": true
+  }
+}

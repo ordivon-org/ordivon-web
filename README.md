@@ -1,130 +1,67 @@
-# ordivon-web
+# Ordivon Web V2
 
-The public website and internet entrypoint for Ordivon.
+Recoverable rebuild of the Ordivon public narrative, project explanation, research publishing, visualization, and evidence-navigation surface.
 
-Current public site: <https://ordivon.com>
+- **Round 1** froze the production V1 baseline and proved a modern Next.js build path.
+- **Round 2** established the reader-facing homepage, initial project graph, later corrected from separate Link and Edge projects to Ordivon World, differentiated project pages, Writing archive, and long-form reading system.
+- **Round 3** removes the unnecessary request-time Next runtime and publishes the complete site as a deterministic static export through Cloudflare Workers Static Assets, with release-grade browser, accessibility, performance, metadata, redirect, cache, link, and hosted-edge verification.
 
-## Current scope
+Production remains the V1 GitHub Pages site on `production/v1-pages@33c97c0409b370db9e8e870a591d5b93cf56b774` until a separate, explicit cutover. The development mainline is no longer the rollback origin.
 
-This repository contains a deliberately small multi-page static site:
-
-- no frontend framework or runtime package manager;
-- pinned npm development dependencies only for browser, accessibility, and Lighthouse CI;
-- no database, accounts, or backend;
-- no analytics, cookies, or contact-data collection;
-- no external fonts, scripts, or image dependencies;
-- deployable from the repository root with GitHub Pages.
-
-The site provides thin, useful surfaces for Home, Projects, Notes, Current, About, and
-Contact. Project implementation and technical documentation remain in their
-canonical repositories.
-
-## Public routes
+## Runtime shape
 
 ```text
-/                                      research and project publishing entrypoint
-/work/                                 maintained engineering project directory
-/work/ordivon-runtime/                 committed Agent effects, execution, and recovery
-/work/ordivon-web/                     public publishing and deployment surface
-/work/computing/                       computing-stack research and conformance root
-/work/ordivon-host/                    persistent Goal and Task control plane
-/work/ordivon-world/                   external-world interaction, evidence, and continuity
-/work/ordivon-link/                    historical migration page
-/work/ordivon-edge/                    historical migration page
-/notes/                                chronological authored notes and release records
-/feed.xml                              Atom feed for published notes
-/notes/runtime-after-core/             Runtime commitment and lifecycle report
-/notes/host-task-continuity/           Host and Runtime ownership report
-/notes/link-edge-boundary/             Link/Edge unification and World architecture correction
-/notes/ordivon-runtime-release/        historical Runtime M0–M7 core release
-/notes/why-ordivon/                    first substantive design note
-/now/                                  current activity and explicit non-offerings
-/about/                                scope, relationships, and ownership boundary
-/contact/                              public discussion and reporting routes
+Next.js build
+    ↓
+out/ static export
+    ↓
+Cloudflare Workers Static Assets
 ```
 
-## Local preview
+All public project and article routes are known at build time. RSS, sitemap, robots, health metadata, social images, redirects, headers, and the custom 404 are emitted as static files or static-asset configuration. There is no request-time application module, database, ISR cache, Pages Function, D1, KV, R2, Queue, or service binding.
 
-```bash
-python3 -m http.server 8000
-```
+The previously verified OpenNext application-Worker path remains recoverable from commit `218b86a24666c7522109af85b0edf0d70d3fb77a`; it is deliberately absent from the current dependency graph.
 
-Then open `http://localhost:8000`.
+## Hosted preview
 
-## Verification
-
-Run the fast dependency-free contract:
-
-```bash
-python3 scripts/check_site.py
-```
-
-The check validates:
-
-- required pages and metadata;
-- nested local links, runtime assets, shared navigation, and Home routes;
-- canonical URLs, `sitemap.xml`, `robots.txt`, `site.webmanifest`, and Atom feed;
-- Open Graph, Twitter Card, JSON-LD, and local 1200×630 social images;
-- the exact `ordivon.com` CNAME;
-- the absence of selected analytics, tracking, cookie-writing, and external-network patterns.
-
-Install the pinned development-only verification tools and run the browser layer:
-
-```bash
-npm ci
-npx playwright install chromium
-npm run test:browser
-npm run test:links
-```
-
-The browser workflow checks all maintained public routes across desktop, tablet,
-and mobile viewports. It verifies keyboard navigation, target sizes, horizontal
-overflow, browser-console errors, and serious or critical axe findings. Selected
-full-page screenshots and informational Lighthouse reports are uploaded as CI
-Artifacts rather than committed as visual baselines.
-
-## Main files
+The account-hosted release candidate is available at:
 
 ```text
-index.html                    public landing page
-work/                         project directory and project detail pages
-notes/                        notes index, release records, and authored articles
-now/                          time-bounded current activity
-about/                        scope and operating model
-contact/                      public contact routes
-404.html                      static not-found page
-assets/styles.css             base visual system and responsive layout
-assets/umbrella.css           multi-page components
-assets/app.js                 minimal progressive enhancement
-assets/mark.svg               site mark and favicon
-assets/social/                local social-preview PNG files
-feed.xml                      Atom feed for Notes
-site.webmanifest              install/display metadata
-sitemap.xml                   explicit maintained-route map
-robots.txt                    crawler guidance
-scripts/check_site.py         dependency-free release contract
-scripts/check_external_links.py
-                              bounded external-link sampling
-playwright.config.mjs         browser project and local-server configuration
-tests/browser/site.spec.js    responsive, keyboard, accessibility, and screenshot checks
-package.json / package-lock.json
-                              pinned development-only browser verification dependencies
-docs/operations.md            deployment and recovery runbook
-.github/workflows/site-check.yml
-                              fast pull-request and main-branch verification
-.github/workflows/browser-check.yml
-                              browser evidence and informational Lighthouse reports
-.nojekyll                     disable Jekyll processing on GitHub Pages
-CNAME                         GitHub Pages custom-domain claim
+https://ordivon-web-v2-preview.ordivon-lab.workers.dev
 ```
 
-## Deployment boundary
+It is isolated from `ordivon.com`, `www.ordivon.com`, and `lab.ordivon.com`. The preview service is named `ordivon-web-v2-preview`. Exact source, Version, Deployment, traffic, Hosted verification, and production-boundary identities are recorded once in `artifacts/v2-round3/hosted-preview.json`; README does not duplicate mutable deployment identifiers.
 
-GitHub Pages publishes from `main` and the repository root with `ordivon.com` as
-the canonical custom domain. Cloudflare is the authoritative DNS provider;
-`www.ordivon.com` resolves through GitHub Pages and `lab.ordivon.com` is a
-Cloudflare-managed permanent redirect to the matching path on the apex domain.
+## Commands
 
-A normal content release or rollback must not modify DNS. See
-[`docs/operations.md`](docs/operations.md) before changing Pages settings,
-`CNAME`, Cloudflare DNS, or redirect rules.
+```bash
+pnpm install --frozen-lockfile
+pnpm dev
+pnpm build
+pnpm preview
+pnpm check
+pnpm check:release
+pnpm check:hosted
+```
+
+Core gates:
+
+- `pnpm check` regenerates the article snapshot, then runs TypeScript, explicit-source ESLint, production dependency audit, static build, desktop/mobile smoke tests, axe scans, and the complete local Workers Static Assets protocol audit.
+- `pnpm check:release` adds byte-reproducibility verification, Chromium, Firefox, WebKit, mobile Chromium, Lighthouse budgets, and all external-link checks. It is intended for Ubuntu CI with all Playwright browser dependencies installed.
+- `pnpm check:release:local` runs the same release boundary on the Arch WSL host, using the official Playwright Noble container for WebKit ABI isolation.
+- `pnpm check:hosted` validates the actual `workers.dev` deployment through the complete hosted protocol matrix, Chromium, Firefox, mobile Chromium, containerized WebKit, and 60 hosted Lighthouse runs.
+- `pnpm verify:static` validates canonical pages, metadata, JSON-LD, internal links, anchors, RSS, robots, health, security headers, cache policy, all V1 redirects, immutable assets, and the custom 404 through `wrangler dev`.
+- `pnpm verify:hosted` repeats that protocol boundary against the public Cloudflare edge and additionally asserts Cloudflare response identity.
+- `pnpm audit:lighthouse` runs five baseline measurements per route/device in a fresh Chrome. If and only if the aggregate fails solely on timing-sensitive Performance, LCP, or TBT budgets, it runs one complete confirmation batch in another fresh Chrome; deterministic accessibility, best-practice, SEO, CLS, or transfer failures never retry.
+- `pnpm audit:links` uses direct HTTP, GitHub REST API fallback, and an expiring explicit restriction allowlist; new unreachable, server-error, client-error, or unapproved restricted references fail the gate.
+- `pnpm deploy` builds and uploads `out/` to the non-production Static Assets service. It reads `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, or the existing root-only Ordivon secret file; credentials are never included in the bundle or artifacts.
+
+## Recovery surfaces
+
+- `legacy-v1/` is the original Round 1 production archive at `7c7021796cb3cf4894809d1a3925451050d8a7e5`.
+- `production/v1-pages` is the live, independently frozen V1 GitHub Pages source at `33c97c0409b370db9e8e870a591d5b93cf56b774`; `legacy-v1-current/` is its in-tree archive, including the Ordivon World correction.
+- `artifacts/v1-baseline/` contains asserted V1 screenshots, metrics, and hashes.
+- `artifacts/v2-round2/` contains V2 editorial screenshots, first-viewport previews, metrics, and hashes.
+- `artifacts/v2-round3/` contains local platform, hosted platform, Lighthouse, external-link, deployment, and release evidence.
+- `docs/v2/` records route, deployment, cutover, rollback, and architectural decisions.
+- Draft PR #31 remains isolated from production until the cutover gate is explicitly approved.

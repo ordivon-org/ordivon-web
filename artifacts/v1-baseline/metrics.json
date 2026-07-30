@@ -1,0 +1,122 @@
+[
+  {
+    "mode": "desktop",
+    "slug": "home",
+    "path": "/",
+    "title": "Ordivon — Research, projects, and public notes",
+    "h1": "Projects, notes, and working ideas built in public.",
+    "words": 620,
+    "scrollHeight": 6396,
+    "viewportHeight": 1000,
+    "overflow": 0,
+    "screens": 6.4
+  },
+  {
+    "mode": "desktop",
+    "slug": "projects",
+    "path": "/work/",
+    "title": "Projects — Ordivon",
+    "h1": "Independent projects shaped by real questions and revision.",
+    "words": 667,
+    "scrollHeight": 5929,
+    "viewportHeight": 1000,
+    "overflow": 0,
+    "screens": 5.9
+  },
+  {
+    "mode": "desktop",
+    "slug": "runtime",
+    "path": "/work/ordivon-runtime/",
+    "title": "Ordivon Runtime — Ordivon",
+    "h1": "Commit one Agent action to reality without losing what happened.",
+    "words": 816,
+    "scrollHeight": 9266,
+    "viewportHeight": 1000,
+    "overflow": 0,
+    "screens": 9.3
+  },
+  {
+    "mode": "desktop",
+    "slug": "article",
+    "path": "/notes/runtime-after-core/",
+    "title": "Ordivon Runtime after the core — Ordivon",
+    "h1": "Ordivon Runtime after the core",
+    "words": 1158,
+    "scrollHeight": 6774,
+    "viewportHeight": 1000,
+    "overflow": 0,
+    "screens": 6.8
+  },
+  {
+    "mode": "desktop",
+    "slug": "acceleration",
+    "path": "/notes/the-future-will-not-wait/",
+    "title": "The Future Will Not Wait — Ordivon",
+    "h1": "The Future Will Not Wait",
+    "words": 3397,
+    "scrollHeight": 15132,
+    "viewportHeight": 1000,
+    "overflow": 0,
+    "screens": 15.1
+  },
+  {
+    "mode": "mobile",
+    "slug": "home",
+    "path": "/",
+    "title": "Ordivon — Research, projects, and public notes",
+    "h1": "Projects, notes, and working ideas built in public.",
+    "words": 615,
+    "scrollHeight": 8594,
+    "viewportHeight": 839,
+    "overflow": 0,
+    "screens": 10.2
+  },
+  {
+    "mode": "mobile",
+    "slug": "projects",
+    "path": "/work/",
+    "title": "Projects — Ordivon",
+    "h1": "Independent projects shaped by real questions and revision.",
+    "words": 662,
+    "scrollHeight": 8297,
+    "viewportHeight": 839,
+    "overflow": 0,
+    "screens": 9.9
+  },
+  {
+    "mode": "mobile",
+    "slug": "runtime",
+    "path": "/work/ordivon-runtime/",
+    "title": "Ordivon Runtime — Ordivon",
+    "h1": "Commit one Agent action to reality without losing what happened.",
+    "words": 811,
+    "scrollHeight": 11178,
+    "viewportHeight": 839,
+    "overflow": 0,
+    "screens": 13.3
+  },
+  {
+    "mode": "mobile",
+    "slug": "article",
+    "path": "/notes/runtime-after-core/",
+    "title": "Ordivon Runtime after the core — Ordivon",
+    "h1": "Ordivon Runtime after the core",
+    "words": 1153,
+    "scrollHeight": 8848,
+    "viewportHeight": 839,
+    "overflow": 0,
+    "screens": 10.5
+  },
+  {
+    "mode": "mobile",
+    "slug": "acceleration",
+    "path": "/notes/the-future-will-not-wait/",
+    "title": "The Future Will Not Wait — Ordivon",
+    "h1": "The Future Will Not Wait",
+    "words": 3392,
+    "scrollHeight": 23280,
+    "viewportHeight": 839,
+    "overflow": 0,
+    "screens": 27.7
+  }
+]
