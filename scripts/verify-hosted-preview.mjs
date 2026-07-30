@@ -58,6 +58,8 @@ for (const route of sitemapRoutes) {
   assert(description.length >= 40, `${route}: description`);
   const canonicalUrl = new URL(canonical);
   assert(canonicalUrl.origin === "https://ordivon.com" && canonicalUrl.pathname === canonicalPath(route), `${route}: canonical ${canonical}`);
+  const htmlCache = response.headers.get("cache-control") || "";
+  assert(htmlCache.includes("max-age=0") && htmlCache.includes("must-revalidate") && htmlCache.includes("no-transform"), `${route}: HTML cache ${htmlCache}; expected max-age=0, must-revalidate, no-transform`);
   assert(h1.length === 1, `${route}: h1 count ${h1.length}`);
   assert(duplicates.length === 0, `${route}: duplicate ids`);
   assert($("html").attr("lang") === "en", `${route}: lang`);

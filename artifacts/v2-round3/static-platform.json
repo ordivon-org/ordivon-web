@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T18:27:41.209Z",
+  "generatedAt": "2026-07-30T00:34:19.787Z",
   "environment": "wrangler-workers-static-assets",
   "routes": [
     {
@@ -7,112 +7,112 @@
       "status": 200,
       "title": "Ordivon — Persistent work for capable agents",
       "canonical": "https://ordivon.com",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/projects",
       "status": 200,
       "title": "Projects — Ordivon",
       "canonical": "https://ordivon.com/projects",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/writing",
       "status": 200,
       "title": "Writing — Ordivon",
       "canonical": "https://ordivon.com/writing",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/now",
       "status": 200,
       "title": "Current — Ordivon",
       "canonical": "https://ordivon.com/now",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/about",
       "status": 200,
       "title": "About — Ordivon",
       "canonical": "https://ordivon.com/about",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/colophon",
       "status": 200,
       "title": "Colophon — Ordivon",
       "canonical": "https://ordivon.com/colophon",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/projects/computing",
       "status": 200,
       "title": "Ordivon Computing — Ordivon",
       "canonical": "https://ordivon.com/projects/computing",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/projects/host",
       "status": 200,
       "title": "Ordivon Host — Ordivon",
       "canonical": "https://ordivon.com/projects/host",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/projects/runtime",
       "status": 200,
       "title": "Ordivon Runtime — Ordivon",
       "canonical": "https://ordivon.com/projects/runtime",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/projects/world",
       "status": 200,
       "title": "Ordivon World — Ordivon",
       "canonical": "https://ordivon.com/projects/world",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/writing/the-future-will-not-wait",
       "status": 200,
       "title": "The Future Will Not Wait — Ordivon",
       "canonical": "https://ordivon.com/writing/the-future-will-not-wait",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/writing/link-edge-boundary",
       "status": 200,
       "title": "From Link and Edge to Ordivon World — Ordivon",
       "canonical": "https://ordivon.com/writing/link-edge-boundary",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/writing/runtime-after-core",
       "status": 200,
       "title": "Ordivon Runtime after the core — Ordivon",
       "canonical": "https://ordivon.com/writing/runtime-after-core",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/writing/host-task-continuity",
       "status": 200,
       "title": "Why Task continuity belongs above execution — Ordivon",
       "canonical": "https://ordivon.com/writing/host-task-continuity",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/writing/ordivon-runtime-release",
       "status": 200,
       "title": "Ordivon Runtime: from governance platform to durable execution — Ordivon",
       "canonical": "https://ordivon.com/writing/ordivon-runtime-release",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     },
     {
       "route": "/writing/why-ordivon",
       "status": 200,
       "title": "Why Ordivon matters in the AI era — Ordivon",
       "canonical": "https://ordivon.com/writing/why-ordivon",
-      "cacheControl": "public, max-age=0, must-revalidate"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform"
     }
   ],
   "redirects": [
@@ -301,72 +301,72 @@
     {
       "asset": "/_next/static/chunks/642-9c0d07db28d08b11.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/758-b673f4d371537c9f.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/about/page-4d7fbf82201cfd02.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/now/page-4d7fbf82201cfd02.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/page-4d7fbf82201cfd02.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/projects/%5Bslug%5D/page-4d7fbf82201cfd02.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/projects/page-4d7fbf82201cfd02.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/writing/%5Bslug%5D/page-bb7737cb6c5871ee.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/writing/page-210b8b90d4756386.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/e1c267a5-18d6da3b3792db7d.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/main-app-a1529369d4761ce0.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/webpack-016c9312ab43d5a6.js",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/css/8e765a046df7c724.css",
       "status": 200,
-      "cacheControl": "public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
     }
   ],
   "warnings": []

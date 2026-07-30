@@ -133,3 +133,7 @@ Workers Static Assets applies:
 ## Production boundary
 
 Production remains V1 on GitHub Pages from `main@33c97c0409b370db9e8e870a591d5b93cf56b774`, which already carries the World correction. Round 3 creates a real hosted candidate and rehearses cutover and rollback; it does not route `ordivon.com`, `www.ordivon.com`, or `lab.ordivon.com` to V2.
+
+## Edge transformation boundary
+
+HTML responses declare `Cache-Control: public,max-age=0,must-revalidate,no-transform`. The `no-transform` directive prevents Cloudflare JavaScript Detections and Web Analytics from rewriting approved static HTML at the edge, so the strict CSP and zero-console-error browser gate remain valid on custom domains. Static and hosted protocol verifiers require the directive on every canonical HTML route. More specific immutable-asset and document cache rules remain unchanged.

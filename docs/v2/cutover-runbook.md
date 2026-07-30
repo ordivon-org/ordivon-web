@@ -68,3 +68,8 @@ Rollback immediately for:
 ## Success criteria
 
 Cutover is complete only when all canonical routes serve the approved V2 deployment, V1 redirects remain exact, `www` remains canonical, `lab` remains unchanged, production hosted gates pass, and the rollback snapshot remains intact.
+
+
+## Edge transformation guard
+
+Before attaching the production route, verify every canonical HTML response includes `Cache-Control: no-transform`. This prevents Cloudflare JavaScript Detections or automatic analytics injection from mutating the static response and conflicting with the site CSP. Do not solve an injection conflict by widening the CSP.

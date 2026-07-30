@@ -4,7 +4,7 @@ Rollback restores the known V1 GitHub Pages path and exact pre-cutover Cloudflar
 
 ## Recovery anchors
 
-- V1 production source: `7c7021796cb3cf4894809d1a3925451050d8a7e5`.
+- V1 production source: `33c97c0409b370db9e8e870a591d5b93cf56b774`.
 - Exact V1 tree: `legacy-v1/`.
 - V1 visual baseline: `artifacts/v1-baseline/`.
 - Round 2 OpenNext comparison point: `218b86a24666c7522109af85b0edf0d70d3fb77a`.

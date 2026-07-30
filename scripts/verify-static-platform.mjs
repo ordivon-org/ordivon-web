@@ -105,7 +105,7 @@ try {
     report.assets.push({ asset, status: response.status, cacheControl: cache });
   }
   const htmlCache = (await request("/projects")).headers.get("cache-control") || "";
-  assert(htmlCache.includes("max-age=0") && htmlCache.includes("must-revalidate"), `HTML cache ${htmlCache}`);
+  assert(htmlCache.includes("max-age=0") && htmlCache.includes("must-revalidate") && htmlCache.includes("no-transform"), `HTML cache ${htmlCache}; expected max-age=0, must-revalidate, no-transform`);
   const headers = await request("/");
   for (const name of ["x-content-type-options", "referrer-policy", "x-frame-options", "permissions-policy", "cross-origin-opener-policy", "content-security-policy"]) {
     assert(headers.headers.get(name), `missing security header ${name}`);
