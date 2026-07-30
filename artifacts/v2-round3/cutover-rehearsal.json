@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-07-30T02:24:30.172248+00:00",
+  "classification": "sanitized-public-receipt",
+  "rehearsal": {
+    "productionRouteAppliedBriefly": true,
+    "semanticParityObserved": true,
+    "releaseApproved": false,
+    "rollbackComplete": true
+  },
+  "currentProduction": {
+    "source": "GitHub Pages",
+    "mainCommit": "33c97c0409b370db9e8e870a591d5b93cf56b774",
+    "dnsRecords": [
+      {
+        "type": "A",
+        "name": "ordivon.com",
+        "content": "185.199.108.153",
+        "proxied": false,
+        "ttl": 3600
+      },
+      {
+        "type": "A",
+        "name": "ordivon.com",
+        "content": "185.199.109.153",
+        "proxied": false,
+        "ttl": 3600
+      },
+      {
+        "type": "A",
+        "name": "ordivon.com",
+        "content": "185.199.110.153",
+        "proxied": false,
+        "ttl": 3600
+      },
+      {
+        "type": "A",
+        "name": "ordivon.com",
+        "content": "185.199.111.153",
+        "proxied": false,
+        "ttl": 3600
+      },
+      {
+        "type": "CNAME",
+        "name": "lab.ordivon.com",
+        "content": "ordivon.com",
+        "proxied": true,
+        "ttl": 1
+      },
+      {
+        "type": "CNAME",
+        "name": "www.ordivon.com",
+        "content": "zycxfyh.github.io",
+        "proxied": false,
+        "ttl": 3600
+      },
+      {
+        "type": "TXT",
+        "name": "ordivon.com",
+        "content": "\"v=spf1 -all\"",
+        "proxied": false,
+        "ttl": 3600
+      }
+    ],
+    "workerRoutes": [
+      {
+        "pattern": "lab.ordivon.com/*",
+        "script": "ordivon-lab-redirect"
+      }
+    ],
+    "apexWorkerRoutePresent": false
+  },
+  "cloudflareBaselineRestoration": {
+    "rum": "on",
+    "browserIntegrityCheck": "on",
+    "restored": true
+  },
+  "privateRawEvidence": {
+    "retainedOutsideRepository": true,
+    "fileCount": 24,
+    "archiveBytes": 14109,
+    "sha256": "3bd531e700a616dbe7004785e3a929a0142e989d4249bf53897a7cea55012f74",
+    "mode": "600"
+  },
+  "safety": {
+    "containsApiToken": false,
+    "containsAccountOrZoneIdentifiers": false,
+    "containsAnalyticsToken": false
+  }
+}

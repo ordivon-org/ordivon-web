@@ -107,6 +107,7 @@ for (const asset of [...staticAssets].sort()) {
   const cache = response.headers.get("cache-control") || "";
   assert(response.status === 200, `${asset}: ${response.status}`);
   assert(cache.includes("31536000") && cache.includes("immutable"), `${asset}: cache ${cache}`);
+  assert(!cache.includes("no-transform"), `${asset}: no-transform disables edge compression: ${cache}`);
   report.assets.push({ asset, status: response.status, cacheControl: cache });
 }
 const home = await request("/");

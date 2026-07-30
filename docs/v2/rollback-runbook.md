@@ -16,7 +16,7 @@ Rollback restores the known V1 GitHub Pages path and exact pre-cutover Cloudflar
 1. Stop additional deployments and content changes.
 2. Remove or disable the `ordivon.com/*` route to the V2 Static Assets service.
 3. Restore the exact pre-cutover proxy state and apex/`www` redirect configuration.
-4. Confirm GitHub Pages still publishes `main@7c70217` with its previous custom-domain state.
+4. Confirm GitHub Pages still publishes `main@33c97c0` with its previous custom-domain state.
 5. Purge only paths whose delivery route changed.
 6. Verify apex TLS and canonical redirect behavior.
 7. Test V1 homepage, Projects, Runtime, Notes, representative article, `www`, and `lab`.

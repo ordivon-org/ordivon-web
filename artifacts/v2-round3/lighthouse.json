@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T00:35:10.476Z",
+  "generatedAt": "2026-07-30T02:13:03.394Z",
   "environment": "wrangler-workers-static-assets",
   "aggregation": "median-of-five",
   "runsPerAudit": 5,
@@ -12,624 +12,19 @@
       "aggregation": "median",
       "browserIsolation": "route-device",
       "scores": {
-        "performance": 99,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 777,
-        "largestContentfulPaintMs": 1910,
-        "totalBlockingTimeMs": 53,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 777,
-        "interactiveMs": 1972,
-        "totalByteWeight": 172404,
-        "unusedJavaScriptBytes": 150
-      },
-      "attempts": [
-        {
-          "attempt": 1,
-          "scores": {
-            "performance": 97,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 839,
-            "largestContentfulPaintMs": 1979,
-            "totalBlockingTimeMs": 150,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 839,
-            "interactiveMs": 1979,
-            "totalByteWeight": 172400,
-            "unusedJavaScriptBytes": 150
-          }
-        },
-        {
-          "attempt": 2,
-          "scores": {
-            "performance": 99,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 771,
-            "largestContentfulPaintMs": 1972,
-            "totalBlockingTimeMs": 53,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 771,
-            "interactiveMs": 1972,
-            "totalByteWeight": 172418,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 3,
-          "scores": {
-            "performance": 99,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 778,
-            "largestContentfulPaintMs": 1910,
-            "totalBlockingTimeMs": 69,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 778,
-            "interactiveMs": 1910,
-            "totalByteWeight": 172417,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 4,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 776,
-            "largestContentfulPaintMs": 1870,
-            "totalBlockingTimeMs": 43,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 776,
-            "interactiveMs": 1870,
-            "totalByteWeight": 172380,
-            "unusedJavaScriptBytes": 150
-          }
-        },
-        {
-          "attempt": 5,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 777,
-            "largestContentfulPaintMs": 1807,
-            "totalBlockingTimeMs": 35,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 777,
-            "interactiveMs": 2011,
-            "totalByteWeight": 172404,
-            "unusedJavaScriptBytes": 150
-          }
-        }
-      ]
-    },
-    {
-      "mode": "mobile",
-      "slug": "projects",
-      "route": "/projects",
-      "runs": 5,
-      "aggregation": "median",
-      "browserIsolation": "route-device",
-      "scores": {
-        "performance": 99,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 776,
-        "largestContentfulPaintMs": 1795,
-        "totalBlockingTimeMs": 69,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 776,
-        "interactiveMs": 1926,
-        "totalByteWeight": 191374,
-        "unusedJavaScriptBytes": 150
-      },
-      "attempts": [
-        {
-          "attempt": 1,
-          "scores": {
-            "performance": 97,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 777,
-            "largestContentfulPaintMs": 1923,
-            "totalBlockingTimeMs": 179,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 777,
-            "interactiveMs": 1923,
-            "totalByteWeight": 191365,
-            "unusedJavaScriptBytes": 150
-          }
-        },
-        {
-          "attempt": 2,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 776,
-            "largestContentfulPaintMs": 1591,
-            "totalBlockingTimeMs": 34,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 776,
-            "interactiveMs": 1825,
-            "totalByteWeight": 191394,
-            "unusedJavaScriptBytes": 150
-          }
-        },
-        {
-          "attempt": 3,
-          "scores": {
-            "performance": 99,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 783,
-            "largestContentfulPaintMs": 1849,
-            "totalBlockingTimeMs": 69,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 783,
-            "interactiveMs": 2068,
-            "totalByteWeight": 191408,
-            "unusedJavaScriptBytes": 150
-          }
-        },
-        {
-          "attempt": 4,
-          "scores": {
-            "performance": 98,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 770,
-            "largestContentfulPaintMs": 1670,
-            "totalBlockingTimeMs": 141,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 770,
-            "interactiveMs": 1926,
-            "totalByteWeight": 191374,
-            "unusedJavaScriptBytes": 150
-          }
-        },
-        {
-          "attempt": 5,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 766,
-            "largestContentfulPaintMs": 1795,
-            "totalBlockingTimeMs": 34,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 766,
-            "interactiveMs": 1992,
-            "totalByteWeight": 191371,
-            "unusedJavaScriptBytes": 150
-          }
-        }
-      ]
-    },
-    {
-      "mode": "mobile",
-      "slug": "runtime",
-      "route": "/projects/runtime",
-      "runs": 5,
-      "aggregation": "median",
-      "browserIsolation": "route-device",
-      "scores": {
         "performance": 100,
         "accessibility": 100,
         "bestPractices": 100,
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 767,
-        "largestContentfulPaintMs": 1886,
-        "totalBlockingTimeMs": 31,
+        "firstContentfulPaintMs": 761,
+        "largestContentfulPaintMs": 1874,
+        "totalBlockingTimeMs": 16,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 767,
-        "interactiveMs": 1888,
-        "totalByteWeight": 157335,
-        "unusedJavaScriptBytes": 300
-      },
-      "attempts": [
-        {
-          "attempt": 1,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 766,
-            "largestContentfulPaintMs": 1811,
-            "totalBlockingTimeMs": 46,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 766,
-            "interactiveMs": 1811,
-            "totalByteWeight": 157330,
-            "unusedJavaScriptBytes": 150
-          }
-        },
-        {
-          "attempt": 2,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 766,
-            "largestContentfulPaintMs": 1886,
-            "totalBlockingTimeMs": 20,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 766,
-            "interactiveMs": 1886,
-            "totalByteWeight": 157335,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 3,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 767,
-            "largestContentfulPaintMs": 1888,
-            "totalBlockingTimeMs": 21,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 767,
-            "interactiveMs": 1888,
-            "totalByteWeight": 157349,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 4,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 774,
-            "largestContentfulPaintMs": 1524,
-            "totalBlockingTimeMs": 31,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 774,
-            "interactiveMs": 1905,
-            "totalByteWeight": 157335,
-            "unusedJavaScriptBytes": 0
-          }
-        },
-        {
-          "attempt": 5,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 775,
-            "largestContentfulPaintMs": 1911,
-            "totalBlockingTimeMs": 36,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 775,
-            "interactiveMs": 1911,
-            "totalByteWeight": 157370,
-            "unusedJavaScriptBytes": 300
-          }
-        }
-      ]
-    },
-    {
-      "mode": "mobile",
-      "slug": "world",
-      "route": "/projects/world",
-      "runs": 5,
-      "aggregation": "median",
-      "browserIsolation": "route-device",
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 767,
-        "largestContentfulPaintMs": 1896,
-        "totalBlockingTimeMs": 30,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 767,
-        "interactiveMs": 1896,
-        "totalByteWeight": 157539,
-        "unusedJavaScriptBytes": 300
-      },
-      "attempts": [
-        {
-          "attempt": 1,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 764,
-            "largestContentfulPaintMs": 1905,
-            "totalBlockingTimeMs": 41,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 764,
-            "interactiveMs": 1905,
-            "totalByteWeight": 157521,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 2,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 769,
-            "largestContentfulPaintMs": 1896,
-            "totalBlockingTimeMs": 27,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 769,
-            "interactiveMs": 1896,
-            "totalByteWeight": 157539,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 3,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 764,
-            "largestContentfulPaintMs": 1894,
-            "totalBlockingTimeMs": 30,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 764,
-            "interactiveMs": 1894,
-            "totalByteWeight": 157543,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 4,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 772,
-            "largestContentfulPaintMs": 1891,
-            "totalBlockingTimeMs": 19,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 772,
-            "interactiveMs": 1891,
-            "totalByteWeight": 157552,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 5,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 767,
-            "largestContentfulPaintMs": 1901,
-            "totalBlockingTimeMs": 34,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 767,
-            "interactiveMs": 1901,
-            "totalByteWeight": 157532,
-            "unusedJavaScriptBytes": 300
-          }
-        }
-      ]
-    },
-    {
-      "mode": "mobile",
-      "slug": "writing",
-      "route": "/writing",
-      "runs": 5,
-      "aggregation": "median",
-      "browserIsolation": "route-device",
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 763,
-        "largestContentfulPaintMs": 1884,
-        "totalBlockingTimeMs": 21,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 763,
-        "interactiveMs": 1884,
-        "totalByteWeight": 179881,
-        "unusedJavaScriptBytes": 300
-      },
-      "attempts": [
-        {
-          "attempt": 1,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 766,
-            "largestContentfulPaintMs": 1905,
-            "totalBlockingTimeMs": 39,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 766,
-            "interactiveMs": 1905,
-            "totalByteWeight": 179871,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 2,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 763,
-            "largestContentfulPaintMs": 1884,
-            "totalBlockingTimeMs": 21,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 763,
-            "interactiveMs": 1884,
-            "totalByteWeight": 179898,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 3,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1887,
-            "totalBlockingTimeMs": 25,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1887,
-            "totalByteWeight": 179871,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 4,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 763,
-            "largestContentfulPaintMs": 1882,
-            "totalBlockingTimeMs": 19,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 763,
-            "interactiveMs": 1882,
-            "totalByteWeight": 179881,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 5,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 763,
-            "largestContentfulPaintMs": 1882,
-            "totalBlockingTimeMs": 19,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 763,
-            "interactiveMs": 1882,
-            "totalByteWeight": 179894,
-            "unusedJavaScriptBytes": 300
-          }
-        }
-      ]
-    },
-    {
-      "mode": "mobile",
-      "slug": "article",
-      "route": "/writing/the-future-will-not-wait",
-      "runs": 5,
-      "aggregation": "median",
-      "browserIsolation": "route-device",
-      "scores": {
-        "performance": 99,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 911,
-        "largestContentfulPaintMs": 2034,
-        "totalBlockingTimeMs": 23,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 911,
-        "interactiveMs": 2034,
-        "totalByteWeight": 180432,
+        "speedIndexMs": 761,
+        "interactiveMs": 1874,
+        "totalByteWeight": 171987,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -637,261 +32,19 @@
           "attempt": 1,
           "scores": {
             "performance": 99,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 913,
-            "largestContentfulPaintMs": 2037,
-            "totalBlockingTimeMs": 24,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 913,
-            "interactiveMs": 2037,
-            "totalByteWeight": 180440,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 2,
-          "scores": {
-            "performance": 99,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 911,
-            "largestContentfulPaintMs": 2035,
-            "totalBlockingTimeMs": 24,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 911,
-            "interactiveMs": 2035,
-            "totalByteWeight": 180457,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 3,
-          "scores": {
-            "performance": 99,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 912,
-            "largestContentfulPaintMs": 2031,
-            "totalBlockingTimeMs": 19,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 912,
-            "interactiveMs": 2031,
-            "totalByteWeight": 180432,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 4,
-          "scores": {
-            "performance": 99,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 910,
-            "largestContentfulPaintMs": 2020,
-            "totalBlockingTimeMs": 10,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 910,
-            "interactiveMs": 2020,
-            "totalByteWeight": 180428,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 5,
-          "scores": {
-            "performance": 99,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 911,
-            "largestContentfulPaintMs": 2034,
-            "totalBlockingTimeMs": 23,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 911,
-            "interactiveMs": 2034,
-            "totalByteWeight": 180423,
-            "unusedJavaScriptBytes": 300
-          }
-        }
-      ]
-    },
-    {
-      "mode": "desktop",
-      "slug": "home",
-      "route": "/",
-      "runs": 5,
-      "aggregation": "median",
-      "browserIsolation": "route-device",
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 762,
-        "largestContentfulPaintMs": 1881,
-        "totalBlockingTimeMs": 19,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 762,
-        "interactiveMs": 1881,
-        "totalByteWeight": 172420,
-        "unusedJavaScriptBytes": 300
-      },
-      "attempts": [
-        {
-          "attempt": 1,
-          "scores": {
-            "performance": 100,
             "accessibility": 100,
             "bestPractices": 100,
             "seo": 100
           },
           "metrics": {
             "firstContentfulPaintMs": 759,
-            "largestContentfulPaintMs": 1884,
-            "totalBlockingTimeMs": 25,
+            "largestContentfulPaintMs": 1817,
+            "totalBlockingTimeMs": 72,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 759,
-            "interactiveMs": 1884,
-            "totalByteWeight": 172449,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 2,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 763,
-            "largestContentfulPaintMs": 1513,
-            "totalBlockingTimeMs": 12,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 763,
-            "interactiveMs": 1718,
-            "totalByteWeight": 172421,
-            "unusedJavaScriptBytes": 0
-          }
-        },
-        {
-          "attempt": 3,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1881,
-            "totalBlockingTimeMs": 19,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1881,
-            "totalByteWeight": 172405,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 4,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1882,
-            "totalBlockingTimeMs": 20,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1882,
-            "totalByteWeight": 172415,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 5,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1877,
-            "totalBlockingTimeMs": 17,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1877,
-            "totalByteWeight": 172420,
-            "unusedJavaScriptBytes": 300
-          }
-        }
-      ]
-    },
-    {
-      "mode": "desktop",
-      "slug": "projects",
-      "route": "/projects",
-      "runs": 5,
-      "aggregation": "median",
-      "browserIsolation": "route-device",
-      "scores": {
-        "performance": 100,
-        "accessibility": 100,
-        "bestPractices": 100,
-        "seo": 100
-      },
-      "metrics": {
-        "firstContentfulPaintMs": 763,
-        "largestContentfulPaintMs": 1883,
-        "totalBlockingTimeMs": 22,
-        "cumulativeLayoutShift": 0,
-        "speedIndexMs": 763,
-        "interactiveMs": 1883,
-        "totalByteWeight": 191444,
-        "unusedJavaScriptBytes": 300
-      },
-      "attempts": [
-        {
-          "attempt": 1,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1889,
-            "totalBlockingTimeMs": 29,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1889,
-            "totalByteWeight": 191444,
-            "unusedJavaScriptBytes": 300
+            "interactiveMs": 1817,
+            "totalByteWeight": 171962,
+            "unusedJavaScriptBytes": 150
           }
         },
         {
@@ -904,12 +57,12 @@
           },
           "metrics": {
             "firstContentfulPaintMs": 761,
-            "largestContentfulPaintMs": 1883,
-            "totalBlockingTimeMs": 22,
+            "largestContentfulPaintMs": 1878,
+            "totalBlockingTimeMs": 17,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 761,
-            "interactiveMs": 1883,
-            "totalByteWeight": 191432,
+            "interactiveMs": 1878,
+            "totalByteWeight": 172009,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -922,13 +75,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 763,
-            "largestContentfulPaintMs": 1878,
-            "totalBlockingTimeMs": 15,
+            "firstContentfulPaintMs": 764,
+            "largestContentfulPaintMs": 1880,
+            "totalBlockingTimeMs": 16,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 763,
-            "interactiveMs": 1878,
-            "totalByteWeight": 191455,
+            "speedIndexMs": 764,
+            "interactiveMs": 1880,
+            "totalByteWeight": 171999,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -941,13 +94,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 764,
-            "largestContentfulPaintMs": 1894,
-            "totalBlockingTimeMs": 30,
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1870,
+            "totalBlockingTimeMs": 7,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 764,
-            "interactiveMs": 1894,
-            "totalByteWeight": 191445,
+            "speedIndexMs": 763,
+            "interactiveMs": 1870,
+            "totalByteWeight": 171980,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -960,20 +113,141 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 765,
-            "largestContentfulPaintMs": 1877,
-            "totalBlockingTimeMs": 12,
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1874,
+            "totalBlockingTimeMs": 15,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 765,
-            "interactiveMs": 1877,
-            "totalByteWeight": 191442,
+            "speedIndexMs": 759,
+            "interactiveMs": 1874,
+            "totalByteWeight": 171987,
             "unusedJavaScriptBytes": 300
           }
         }
       ]
     },
     {
-      "mode": "desktop",
+      "mode": "mobile",
+      "slug": "projects",
+      "route": "/projects",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 760,
+        "largestContentfulPaintMs": 1875,
+        "totalBlockingTimeMs": 16,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 760,
+        "interactiveMs": 1875,
+        "totalByteWeight": 191051,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 758,
+            "largestContentfulPaintMs": 1886,
+            "totalBlockingTimeMs": 28,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 758,
+            "interactiveMs": 1886,
+            "totalByteWeight": 191033,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1875,
+            "totalBlockingTimeMs": 16,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 759,
+            "interactiveMs": 1875,
+            "totalByteWeight": 191052,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1881,
+            "totalBlockingTimeMs": 21,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 760,
+            "interactiveMs": 1881,
+            "totalByteWeight": 191051,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1510,
+            "totalBlockingTimeMs": 8,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 760,
+            "interactiveMs": 1711,
+            "totalByteWeight": 191042,
+            "unusedJavaScriptBytes": 0
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1871,
+            "totalBlockingTimeMs": 10,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1871,
+            "totalByteWeight": 191061,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
       "slug": "runtime",
       "route": "/projects/runtime",
       "runs": 5,
@@ -986,13 +260,13 @@
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 764,
-        "largestContentfulPaintMs": 1886,
-        "totalBlockingTimeMs": 20,
+        "firstContentfulPaintMs": 762,
+        "largestContentfulPaintMs": 1878,
+        "totalBlockingTimeMs": 17,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 764,
-        "interactiveMs": 1886,
-        "totalByteWeight": 157349,
+        "speedIndexMs": 762,
+        "interactiveMs": 1878,
+        "totalByteWeight": 156941,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -1005,13 +279,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 764,
-            "largestContentfulPaintMs": 1901,
-            "totalBlockingTimeMs": 37,
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1878,
+            "totalBlockingTimeMs": 17,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 764,
-            "interactiveMs": 1901,
-            "totalByteWeight": 157364,
+            "speedIndexMs": 761,
+            "interactiveMs": 1878,
+            "totalByteWeight": 156945,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1024,13 +298,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 763,
-            "largestContentfulPaintMs": 1886,
-            "totalBlockingTimeMs": 23,
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1879,
+            "totalBlockingTimeMs": 17,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 763,
-            "interactiveMs": 1886,
-            "totalByteWeight": 157349,
+            "speedIndexMs": 762,
+            "interactiveMs": 1879,
+            "totalByteWeight": 156941,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1043,13 +317,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 764,
-            "largestContentfulPaintMs": 1884,
-            "totalBlockingTimeMs": 20,
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1886,
+            "totalBlockingTimeMs": 24,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 764,
-            "interactiveMs": 1884,
-            "totalByteWeight": 157356,
+            "speedIndexMs": 762,
+            "interactiveMs": 1886,
+            "totalByteWeight": 156957,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1062,13 +336,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 764,
-            "largestContentfulPaintMs": 1883,
-            "totalBlockingTimeMs": 19,
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1870,
+            "totalBlockingTimeMs": 8,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 764,
-            "interactiveMs": 1883,
-            "totalByteWeight": 157332,
+            "speedIndexMs": 762,
+            "interactiveMs": 1870,
+            "totalByteWeight": 156938,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1081,20 +355,20 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 767,
-            "largestContentfulPaintMs": 1887,
-            "totalBlockingTimeMs": 20,
+            "firstContentfulPaintMs": 766,
+            "largestContentfulPaintMs": 1366,
+            "totalBlockingTimeMs": 9,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 767,
-            "interactiveMs": 1887,
-            "totalByteWeight": 157344,
-            "unusedJavaScriptBytes": 300
+            "speedIndexMs": 766,
+            "interactiveMs": 1650,
+            "totalByteWeight": 156941,
+            "unusedJavaScriptBytes": 150
           }
         }
       ]
     },
     {
-      "mode": "desktop",
+      "mode": "mobile",
       "slug": "world",
       "route": "/projects/world",
       "runs": 5,
@@ -1107,13 +381,13 @@
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 762,
+        "firstContentfulPaintMs": 761,
         "largestContentfulPaintMs": 1878,
-        "totalBlockingTimeMs": 16,
+        "totalBlockingTimeMs": 18,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 762,
+        "speedIndexMs": 761,
         "interactiveMs": 1878,
-        "totalByteWeight": 157545,
+        "totalByteWeight": 157127,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -1126,56 +400,18 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 763,
-            "largestContentfulPaintMs": 1890,
-            "totalBlockingTimeMs": 27,
+            "firstContentfulPaintMs": 767,
+            "largestContentfulPaintMs": 1893,
+            "totalBlockingTimeMs": 26,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 763,
-            "interactiveMs": 1890,
-            "totalByteWeight": 157541,
+            "speedIndexMs": 767,
+            "interactiveMs": 1893,
+            "totalByteWeight": 157115,
             "unusedJavaScriptBytes": 300
           }
         },
         {
           "attempt": 2,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1875,
-            "totalBlockingTimeMs": 13,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1875,
-            "totalByteWeight": 157535,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 3,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1878,
-            "totalBlockingTimeMs": 16,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1878,
-            "totalByteWeight": 157550,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 4,
           "scores": {
             "performance": 100,
             "accessibility": 100,
@@ -1189,7 +425,45 @@
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 761,
             "interactiveMs": 1879,
-            "totalByteWeight": 157545,
+            "totalByteWeight": 157131,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1876,
+            "totalBlockingTimeMs": 14,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1876,
+            "totalByteWeight": 157125,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1867,
+            "totalBlockingTimeMs": 6,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1867,
+            "totalByteWeight": 157127,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1203,12 +477,738 @@
           },
           "metrics": {
             "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1810,
-            "totalBlockingTimeMs": 3,
+            "largestContentfulPaintMs": 1878,
+            "totalBlockingTimeMs": 18,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 760,
-            "interactiveMs": 1840,
-            "totalByteWeight": 157549,
+            "interactiveMs": 1878,
+            "totalByteWeight": 157130,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
+      "slug": "writing",
+      "route": "/writing",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 761,
+        "largestContentfulPaintMs": 1879,
+        "totalBlockingTimeMs": 18,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 761,
+        "interactiveMs": 1879,
+        "totalByteWeight": 179389,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1886,
+            "totalBlockingTimeMs": 24,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1886,
+            "totalByteWeight": 179376,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1879,
+            "totalBlockingTimeMs": 18,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1879,
+            "totalByteWeight": 179385,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1878,
+            "totalBlockingTimeMs": 17,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1878,
+            "totalByteWeight": 179389,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1882,
+            "totalBlockingTimeMs": 23,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 759,
+            "interactiveMs": 1882,
+            "totalByteWeight": 179392,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1513,
+            "totalBlockingTimeMs": 7,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1713,
+            "totalByteWeight": 179398,
+            "unusedJavaScriptBytes": 150
+          }
+        }
+      ]
+    },
+    {
+      "mode": "mobile",
+      "slug": "article",
+      "route": "/writing/the-future-will-not-wait",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 912,
+        "largestContentfulPaintMs": 2024,
+        "totalBlockingTimeMs": 17,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 912,
+        "interactiveMs": 2024,
+        "totalByteWeight": 179978,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 918,
+            "largestContentfulPaintMs": 1957,
+            "totalBlockingTimeMs": 80,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 918,
+            "interactiveMs": 1957,
+            "totalByteWeight": 179977,
+            "unusedJavaScriptBytes": 150
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 910,
+            "largestContentfulPaintMs": 2022,
+            "totalBlockingTimeMs": 12,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 910,
+            "interactiveMs": 2022,
+            "totalByteWeight": 179994,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 911,
+            "largestContentfulPaintMs": 2024,
+            "totalBlockingTimeMs": 13,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 911,
+            "interactiveMs": 2024,
+            "totalByteWeight": 179978,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 912,
+            "largestContentfulPaintMs": 2033,
+            "totalBlockingTimeMs": 21,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 912,
+            "interactiveMs": 2033,
+            "totalByteWeight": 179981,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 99,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 913,
+            "largestContentfulPaintMs": 2030,
+            "totalBlockingTimeMs": 17,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 913,
+            "interactiveMs": 2030,
+            "totalByteWeight": 179963,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "home",
+      "route": "/",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 763,
+        "largestContentfulPaintMs": 1885,
+        "totalBlockingTimeMs": 25,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 763,
+        "interactiveMs": 1885,
+        "totalByteWeight": 171983,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1904,
+            "totalBlockingTimeMs": 41,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1904,
+            "totalByteWeight": 171990,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 764,
+            "largestContentfulPaintMs": 1874,
+            "totalBlockingTimeMs": 10,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 764,
+            "interactiveMs": 1874,
+            "totalByteWeight": 171983,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1883,
+            "totalBlockingTimeMs": 36,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 760,
+            "interactiveMs": 1883,
+            "totalByteWeight": 171973,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 760,
+            "largestContentfulPaintMs": 1885,
+            "totalBlockingTimeMs": 25,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 760,
+            "interactiveMs": 1885,
+            "totalByteWeight": 171972,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1888,
+            "totalBlockingTimeMs": 25,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1888,
+            "totalByteWeight": 171988,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "projects",
+      "route": "/projects",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 761,
+        "largestContentfulPaintMs": 1882,
+        "totalBlockingTimeMs": 20,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 761,
+        "interactiveMs": 1882,
+        "totalByteWeight": 191036,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1889,
+            "totalBlockingTimeMs": 27,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1889,
+            "totalByteWeight": 191036,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1879,
+            "totalBlockingTimeMs": 20,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 759,
+            "interactiveMs": 1879,
+            "totalByteWeight": 191036,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 759,
+            "largestContentfulPaintMs": 1878,
+            "totalBlockingTimeMs": 19,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 759,
+            "interactiveMs": 1878,
+            "totalByteWeight": 191060,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1882,
+            "totalBlockingTimeMs": 19,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1882,
+            "totalByteWeight": 191031,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1882,
+            "totalBlockingTimeMs": 21,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1882,
+            "totalByteWeight": 191045,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "runtime",
+      "route": "/projects/runtime",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 762,
+        "largestContentfulPaintMs": 1880,
+        "totalBlockingTimeMs": 18,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 762,
+        "interactiveMs": 1880,
+        "totalByteWeight": 156927,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1898,
+            "totalBlockingTimeMs": 35,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1898,
+            "totalByteWeight": 156941,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1878,
+            "totalBlockingTimeMs": 17,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1878,
+            "totalByteWeight": 156921,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1879,
+            "totalBlockingTimeMs": 17,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1879,
+            "totalByteWeight": 156927,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1880,
+            "totalBlockingTimeMs": 18,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1880,
+            "totalByteWeight": 156926,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1881,
+            "totalBlockingTimeMs": 19,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1881,
+            "totalByteWeight": 156945,
+            "unusedJavaScriptBytes": 300
+          }
+        }
+      ]
+    },
+    {
+      "mode": "desktop",
+      "slug": "world",
+      "route": "/projects/world",
+      "runs": 5,
+      "aggregation": "median",
+      "browserIsolation": "route-device",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "firstContentfulPaintMs": 762,
+        "largestContentfulPaintMs": 1883,
+        "totalBlockingTimeMs": 20,
+        "cumulativeLayoutShift": 0,
+        "speedIndexMs": 762,
+        "interactiveMs": 1883,
+        "totalByteWeight": 157126,
+        "unusedJavaScriptBytes": 300
+      },
+      "attempts": [
+        {
+          "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 767,
+            "largestContentfulPaintMs": 1893,
+            "totalBlockingTimeMs": 26,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 767,
+            "interactiveMs": 1893,
+            "totalByteWeight": 157126,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1883,
+            "totalBlockingTimeMs": 20,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1883,
+            "totalByteWeight": 157144,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1873,
+            "totalBlockingTimeMs": 11,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1873,
+            "totalByteWeight": 157119,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 762,
+            "largestContentfulPaintMs": 1879,
+            "totalBlockingTimeMs": 17,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 762,
+            "interactiveMs": 1879,
+            "totalByteWeight": 157132,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 5,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 761,
+            "largestContentfulPaintMs": 1885,
+            "totalBlockingTimeMs": 24,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 761,
+            "interactiveMs": 1885,
+            "totalByteWeight": 157124,
             "unusedJavaScriptBytes": 300
           }
         }
@@ -1228,18 +1228,75 @@
         "seo": 100
       },
       "metrics": {
-        "firstContentfulPaintMs": 761,
-        "largestContentfulPaintMs": 1876,
-        "totalBlockingTimeMs": 17,
+        "firstContentfulPaintMs": 764,
+        "largestContentfulPaintMs": 1885,
+        "totalBlockingTimeMs": 21,
         "cumulativeLayoutShift": 0,
-        "speedIndexMs": 761,
-        "interactiveMs": 1876,
-        "totalByteWeight": 179886,
+        "speedIndexMs": 764,
+        "interactiveMs": 1885,
+        "totalByteWeight": 179394,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
         {
           "attempt": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 766,
+            "largestContentfulPaintMs": 1914,
+            "totalBlockingTimeMs": 48,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 766,
+            "interactiveMs": 1914,
+            "totalByteWeight": 179382,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 764,
+            "largestContentfulPaintMs": 1885,
+            "totalBlockingTimeMs": 21,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 764,
+            "interactiveMs": 1885,
+            "totalByteWeight": 179394,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "bestPractices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "firstContentfulPaintMs": 763,
+            "largestContentfulPaintMs": 1663,
+            "totalBlockingTimeMs": 6,
+            "cumulativeLayoutShift": 0,
+            "speedIndexMs": 763,
+            "interactiveMs": 1779,
+            "totalByteWeight": 179400,
+            "unusedJavaScriptBytes": 300
+          }
+        },
+        {
+          "attempt": 4,
           "scores": {
             "performance": 100,
             "accessibility": 100,
@@ -1253,64 +1310,7 @@
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 761,
             "interactiveMs": 1881,
-            "totalByteWeight": 179886,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 2,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 765,
-            "largestContentfulPaintMs": 1889,
-            "totalBlockingTimeMs": 24,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 765,
-            "interactiveMs": 1889,
-            "totalByteWeight": 179885,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 3,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 760,
-            "largestContentfulPaintMs": 1875,
-            "totalBlockingTimeMs": 15,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 760,
-            "interactiveMs": 1875,
-            "totalByteWeight": 179895,
-            "unusedJavaScriptBytes": 300
-          }
-        },
-        {
-          "attempt": 4,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "bestPractices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "firstContentfulPaintMs": 762,
-            "largestContentfulPaintMs": 1868,
-            "totalBlockingTimeMs": 6,
-            "cumulativeLayoutShift": 0,
-            "speedIndexMs": 762,
-            "interactiveMs": 1868,
-            "totalByteWeight": 179876,
+            "totalByteWeight": 179389,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1323,13 +1323,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 759,
-            "largestContentfulPaintMs": 1876,
-            "totalBlockingTimeMs": 17,
+            "firstContentfulPaintMs": 764,
+            "largestContentfulPaintMs": 1893,
+            "totalBlockingTimeMs": 29,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 759,
-            "interactiveMs": 1876,
-            "totalByteWeight": 179889,
+            "speedIndexMs": 764,
+            "interactiveMs": 1893,
+            "totalByteWeight": 179409,
             "unusedJavaScriptBytes": 300
           }
         }
@@ -1350,12 +1350,12 @@
       },
       "metrics": {
         "firstContentfulPaintMs": 911,
-        "largestContentfulPaintMs": 2028,
-        "totalBlockingTimeMs": 20,
+        "largestContentfulPaintMs": 2032,
+        "totalBlockingTimeMs": 21,
         "cumulativeLayoutShift": 0,
         "speedIndexMs": 911,
-        "interactiveMs": 2028,
-        "totalByteWeight": 180445,
+        "interactiveMs": 2032,
+        "totalByteWeight": 179978,
         "unusedJavaScriptBytes": 300
       },
       "attempts": [
@@ -1368,13 +1368,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 913,
-            "largestContentfulPaintMs": 2043,
-            "totalBlockingTimeMs": 30,
+            "firstContentfulPaintMs": 915,
+            "largestContentfulPaintMs": 2039,
+            "totalBlockingTimeMs": 28,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 913,
-            "interactiveMs": 2043,
-            "totalByteWeight": 180452,
+            "speedIndexMs": 915,
+            "interactiveMs": 2039,
+            "totalByteWeight": 179977,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1388,12 +1388,12 @@
           },
           "metrics": {
             "firstContentfulPaintMs": 911,
-            "largestContentfulPaintMs": 2023,
-            "totalBlockingTimeMs": 12,
+            "largestContentfulPaintMs": 2033,
+            "totalBlockingTimeMs": 22,
             "cumulativeLayoutShift": 0,
             "speedIndexMs": 911,
-            "interactiveMs": 2023,
-            "totalByteWeight": 180445,
+            "interactiveMs": 2033,
+            "totalByteWeight": 179982,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1406,32 +1406,32 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 908,
-            "largestContentfulPaintMs": 2028,
-            "totalBlockingTimeMs": 20,
+            "firstContentfulPaintMs": 911,
+            "largestContentfulPaintMs": 2030,
+            "totalBlockingTimeMs": 19,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 908,
-            "interactiveMs": 2028,
-            "totalByteWeight": 180457,
+            "speedIndexMs": 911,
+            "interactiveMs": 2030,
+            "totalByteWeight": 179979,
             "unusedJavaScriptBytes": 300
           }
         },
         {
           "attempt": 4,
           "scores": {
-            "performance": 98,
+            "performance": 99,
             "accessibility": 100,
             "bestPractices": 100,
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 909,
+            "firstContentfulPaintMs": 911,
             "largestContentfulPaintMs": 2027,
-            "totalBlockingTimeMs": 110,
+            "totalBlockingTimeMs": 16,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 909,
+            "speedIndexMs": 911,
             "interactiveMs": 2027,
-            "totalByteWeight": 180422,
+            "totalByteWeight": 179978,
             "unusedJavaScriptBytes": 300
           }
         },
@@ -1444,13 +1444,13 @@
             "seo": 100
           },
           "metrics": {
-            "firstContentfulPaintMs": 914,
-            "largestContentfulPaintMs": 2033,
-            "totalBlockingTimeMs": 19,
+            "firstContentfulPaintMs": 911,
+            "largestContentfulPaintMs": 2032,
+            "totalBlockingTimeMs": 21,
             "cumulativeLayoutShift": 0,
-            "speedIndexMs": 914,
-            "interactiveMs": 2033,
-            "totalByteWeight": 180428,
+            "speedIndexMs": 911,
+            "interactiveMs": 2032,
+            "totalByteWeight": 179968,
             "unusedJavaScriptBytes": 300
           }
         }

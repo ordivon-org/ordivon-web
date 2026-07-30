@@ -1,9 +1,10 @@
 {
-  "generatedAt": "2026-07-29T18:34:49.518Z",
+  "generatedAt": "2026-07-30T02:20:57.762Z",
   "total": 33,
   "summary": {
-    "ok": 30,
-    "restricted": 3
+    "ok": 20,
+    "restricted": 4,
+    "unreachable": 9
   },
   "results": [
     {
@@ -44,13 +45,13 @@
     },
     {
       "url": "https://data.iaea.org/group/about/safeguards-and-verification",
-      "classification": "ok",
-      "status": 200,
+      "classification": "restricted",
+      "status": 403,
       "finalUrl": "https://data.iaea.org/group/about/safeguards-and-verification",
       "error": null,
       "attempts": [
         {
-          "status": 200,
+          "status": 403,
           "finalUrl": "https://data.iaea.org/group/about/safeguards-and-verification",
           "method": "HEAD",
           "error": null
@@ -98,16 +99,28 @@
     },
     {
       "url": "https://github.com/zycxfyh/ordivon-computing",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-computing",
-      "error": null,
+      "classification": "unreachable",
+      "status": null,
+      "finalUrl": null,
+      "error": "TypeError: fetch failed",
       "attempts": [
         {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-computing",
+          "status": null,
+          "finalUrl": null,
           "method": "HEAD",
-          "error": null
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
         }
       ],
       "sources": [
@@ -116,16 +129,28 @@
     },
     {
       "url": "https://github.com/zycxfyh/ordivon-computing/tree/main/studies/2026-adaptive-acceleration",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-computing/tree/main/studies/2026-adaptive-acceleration",
-      "error": null,
+      "classification": "unreachable",
+      "status": null,
+      "finalUrl": null,
+      "error": "TypeError: fetch failed",
       "attempts": [
         {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-computing/tree/main/studies/2026-adaptive-acceleration",
+          "status": null,
+          "finalUrl": null,
           "method": "HEAD",
-          "error": null
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
         }
       ],
       "sources": [
@@ -134,16 +159,28 @@
     },
     {
       "url": "https://github.com/zycxfyh/ordivon-host",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-host",
-      "error": null,
+      "classification": "unreachable",
+      "status": null,
+      "finalUrl": null,
+      "error": "TypeError: fetch failed",
       "attempts": [
         {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-host",
+          "status": null,
+          "finalUrl": null,
           "method": "HEAD",
-          "error": null
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "AbortError: This operation was aborted"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
         }
       ],
       "sources": [
@@ -152,16 +189,28 @@
     },
     {
       "url": "https://github.com/zycxfyh/ordivon-host/blob/main/ARCHITECTURE.md",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-host/blob/main/ARCHITECTURE.md",
-      "error": null,
+      "classification": "unreachable",
+      "status": null,
+      "finalUrl": null,
+      "error": "TypeError: fetch failed",
       "attempts": [
         {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-host/blob/main/ARCHITECTURE.md",
+          "status": null,
+          "finalUrl": null,
           "method": "HEAD",
-          "error": null
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
         }
       ],
       "sources": [
@@ -170,16 +219,28 @@
     },
     {
       "url": "https://github.com/zycxfyh/ordivon-runtime",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-runtime",
-      "error": null,
+      "classification": "unreachable",
+      "status": null,
+      "finalUrl": null,
+      "error": "TypeError: fetch failed",
       "attempts": [
         {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-runtime",
+          "status": null,
+          "finalUrl": null,
           "method": "HEAD",
-          "error": null
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
         }
       ],
       "sources": [
@@ -188,16 +249,28 @@
     },
     {
       "url": "https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/effect-kernel.md",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/effect-kernel.md",
-      "error": null,
+      "classification": "unreachable",
+      "status": null,
+      "finalUrl": null,
+      "error": "TypeError: fetch failed",
       "attempts": [
         {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/effect-kernel.md",
+          "status": null,
+          "finalUrl": null,
           "method": "HEAD",
-          "error": null
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
         }
       ],
       "sources": [
@@ -206,16 +279,28 @@
     },
     {
       "url": "https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/runtime.md",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/runtime.md",
-      "error": null,
+      "classification": "unreachable",
+      "status": null,
+      "finalUrl": null,
+      "error": "TypeError: fetch failed",
       "attempts": [
         {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/runtime.md",
+          "status": null,
+          "finalUrl": null,
           "method": "HEAD",
-          "error": null
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
         }
       ],
       "sources": [
@@ -224,16 +309,28 @@
     },
     {
       "url": "https://github.com/zycxfyh/ordivon-web",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-web",
-      "error": null,
+      "classification": "unreachable",
+      "status": null,
+      "finalUrl": null,
+      "error": "TypeError: fetch failed",
       "attempts": [
         {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-web",
+          "status": null,
+          "finalUrl": null,
           "method": "HEAD",
-          "error": null
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
         }
       ],
       "sources": [
@@ -260,16 +357,28 @@
     },
     {
       "url": "https://github.com/zycxfyh/ordivon-world",
-      "classification": "ok",
-      "status": 200,
-      "finalUrl": "https://github.com/zycxfyh/ordivon-world",
-      "error": null,
+      "classification": "unreachable",
+      "status": null,
+      "finalUrl": null,
+      "error": "TypeError: fetch failed",
       "attempts": [
         {
-          "status": 200,
-          "finalUrl": "https://github.com/zycxfyh/ordivon-world",
+          "status": null,
+          "finalUrl": null,
           "method": "HEAD",
-          "error": null
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
         }
       ],
       "sources": [
@@ -393,9 +502,15 @@
       "error": null,
       "attempts": [
         {
+          "status": null,
+          "finalUrl": null,
+          "method": "HEAD",
+          "error": "TypeError: fetch failed"
+        },
+        {
           "status": 200,
           "finalUrl": "https://www.governance.ai/research-paper/frontier-ai-auditing-toward-rigorous-third-party-assessment-of-safety-and-security-practices-at-leading-ai-companies",
-          "method": "HEAD",
+          "method": "GET",
           "error": null
         }
       ],
@@ -411,9 +526,21 @@
       "error": null,
       "attempts": [
         {
+          "status": null,
+          "finalUrl": null,
+          "method": "HEAD",
+          "error": "TypeError: fetch failed"
+        },
+        {
+          "status": null,
+          "finalUrl": null,
+          "method": "GET",
+          "error": "TypeError: fetch failed"
+        },
+        {
           "status": 200,
           "finalUrl": "https://www.governance.ai/research-paper/training-compute-thresholds-features-and-functions-in-ai-regulation",
-          "method": "HEAD",
+          "method": "GET",
           "error": null
         }
       ],

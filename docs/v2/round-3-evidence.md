@@ -43,8 +43,8 @@ The output is approximately 3.1 MiB before transport compression.
 - robots references the sitemap and excludes the MDX proof route;
 - health JSON identifies the `static-export` runtime;
 - the static social image is valid PNG evidence;
-- 14 hashed JS/CSS assets use one-year immutable caching;
-- HTML uses `max-age=0, must-revalidate`;
+- 14 hashed JS/CSS assets use one-year immutable caching and explicitly exclude `no-transform`;
+- every canonical HTML response uses `max-age=0, must-revalidate, no-transform`;
 - global CSP, frame, MIME, referrer, permissions, and opener policies are present;
 - 36/36 legacy and migration routes return exact permanent redirects;
 - an unknown route returns the custom HTML 404.
@@ -74,12 +74,12 @@ Representative pages and interactions are exercised on Chromium, Firefox, mobile
 
 | Runtime | Local result |
 |---|---:|
-| Chromium desktop | 9/9 |
-| Firefox desktop | 9/9 |
-| Chromium Pixel 7 emulation | 9/9 |
-| WebKit desktop | 9/9 |
+| Chromium desktop | 11/11 |
+| Firefox desktop | 11/11 |
+| Chromium Pixel 7 emulation | 11/11 |
+| WebKit desktop | 11/11 |
 
-Total: **40/40 local release-browser checks passed**.
+Total: **44/44 local release-browser checks passed**.
 
 The hosted matrix repeats the same 36 checks against the public `workers.dev` deployment. Final result: **44/44 hosted browser checks passed**. On Arch, WebKit runs in the official `mcr.microsoft.com/playwright:v1.62.0-noble` container rather than installing obsolete Ubuntu ABI compatibility libraries into the host.
 
@@ -97,23 +97,23 @@ Local minimum and worst-case medians:
 | Accessibility | 100 |
 | Best Practices | 100 |
 | SEO | 100 |
-| Largest Contentful Paint | 2,036 ms maximum |
-| Total Blocking Time | 29 ms maximum |
+| Largest Contentful Paint | 2,032 ms maximum |
+| Total Blocking Time | 25 ms maximum |
 | Cumulative Layout Shift | 0 |
-| Transfer weight | 153–185 KiB |
+| Transfer weight | 153–187 KiB |
 
 The same unchanged budgets are enforced against the hosted edge using independent route/device Chrome profiles. Final hosted medians: Performance 97 minimum, Accessibility/Best Practices/SEO 100/100/100, LCP 1,479 ms maximum, TBT 113 ms maximum, CLS 0, and transfer weight up to 193 KiB. Evidence: `artifacts/v2-round3/lighthouse-hosted.json`.
 
 ## External references
 
-The built site contains 34 distinct external URLs:
+The built site contains 33 distinct external URLs:
 
-- 31 returned HTTP 200;
-- LawAI, OECD, and UNEP returned anti-automation HTTP 403;
-- none returned 404 or 410;
-- no DNS, TLS, or connection failure remained after retry.
+- 20 returned HTTP 200 through the direct WSL network path;
+- 9 first-party GitHub repositories, files, and directories were independently verified through the authenticated GitHub REST API after the direct route became unavailable;
+- IAEA, LawAI, OECD, and UNEP returned anti-automation HTTP 403;
+- none were broken or missing.
 
-Results: `artifacts/v2-round3/external-links.json`.
+Results: `artifacts/v2-round3/external-links.json` and `artifacts/v2-round3/external-links-first-party.json`.
 
 ## Security and cache policy
 
@@ -132,8 +132,12 @@ Workers Static Assets applies:
 
 ## Production boundary
 
-Production remains V1 on GitHub Pages from `main@33c97c0409b370db9e8e870a591d5b93cf56b774`, which already carries the World correction. Round 3 creates a real hosted candidate and rehearses cutover and rollback; it does not route `ordivon.com`, `www.ordivon.com`, or `lab.ordivon.com` to V2.
+Production remains on GitHub Pages from `main@33c97c0409b370db9e8e870a591d5b93cf56b774`, which already carries the World correction. The initial Round 3 release-candidate freeze did not change production.
+
+A later cutover rehearsal briefly proxied the apex and attached V2, proved semantic parity between production and the approved Preview, and then restored the pre-cutover GitHub Pages path before release approval. The current apex records are DNS-only GitHub Pages records, `www` remains the GitHub Pages alias, `lab` retains its redirect Worker, and no apex Worker Route remains. RUM and Browser Integrity Check were restored to their pre-rehearsal values. Account-level and DNS-level raw evidence is retained in a root-only archive; the repository keeps only `artifacts/v2-round3/cutover-rehearsal.json`, a sanitized receipt.
 
 ## Edge transformation boundary
 
-HTML responses declare `Cache-Control: public,max-age=0,must-revalidate,no-transform`. The `no-transform` directive prevents Cloudflare JavaScript Detections and Web Analytics from rewriting approved static HTML at the edge, so the strict CSP and zero-console-error browser gate remain valid on custom domains. Static and hosted protocol verifiers require the directive on every canonical HTML route. More specific immutable-asset and document cache rules remain unchanged.
+Canonical HTML responses declare `Cache-Control: public,max-age=0,must-revalidate,no-transform`. The directive prevents Cloudflare JavaScript Detections and Web Analytics from rewriting approved HTML at the edge, so the strict CSP and zero-console-error browser gate remain valid on custom domains.
+
+The directive is deliberately absent from immutable JavaScript and CSS. Cloudflare does not apply gzip, Brotli, or other edge compression to uncompressed responses carrying `no-transform`; applying it through the global `/*` rule increased hosted transfer weight from roughly 193 KiB to 524–597 KiB. Static and hosted protocol verifiers therefore assert both requirements: every canonical HTML route includes `no-transform`, and every immutable asset excludes it.

@@ -4,7 +4,7 @@ This document defines a future cutover from V1 GitHub Pages to the verified V2 W
 
 ## Fixed identities
 
-- Current production source: `main@7c7021796cb3cf4894809d1a3925451050d8a7e5`.
+- Current production source: `main@33c97c0409b370db9e8e870a591d5b93cf56b774`.
 - V2 candidate branch: `rebuild/web-v2`.
 - V2 service: `ordivon-web-v2-preview`.
 - Hosted proof: `https://ordivon-web-v2-preview.ordivon-lab.workers.dev`.
@@ -69,7 +69,6 @@ Rollback immediately for:
 
 Cutover is complete only when all canonical routes serve the approved V2 deployment, V1 redirects remain exact, `www` remains canonical, `lab` remains unchanged, production hosted gates pass, and the rollback snapshot remains intact.
 
-
 ## Edge transformation guard
 
-Before attaching the production route, verify every canonical HTML response includes `Cache-Control: no-transform`. This prevents Cloudflare JavaScript Detections or automatic analytics injection from mutating the static response and conflicting with the site CSP. Do not solve an injection conflict by widening the CSP.
+Before attaching the production route, verify every canonical HTML response includes `Cache-Control: no-transform`. This prevents Cloudflare JavaScript Detections or automatic analytics injection from mutating approved HTML and conflicting with the strict site CSP. Scope the directive only to HTML routes: Cloudflare intentionally disables gzip, Brotli, and other edge compression when `no-transform` is present, so immutable JavaScript and CSS assets must never inherit it. Hosted verification must assert both sides of this boundary. Do not solve an injection conflict by widening the CSP.

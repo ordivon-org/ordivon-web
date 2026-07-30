@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T00:34:19.787Z",
+  "generatedAt": "2026-07-30T02:12:26.090Z",
   "environment": "wrangler-workers-static-assets",
   "routes": [
     {
@@ -301,72 +301,72 @@
     {
       "asset": "/_next/static/chunks/642-9c0d07db28d08b11.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/758-b673f4d371537c9f.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/about/page-4d7fbf82201cfd02.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/now/page-4d7fbf82201cfd02.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/page-4d7fbf82201cfd02.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/projects/%5Bslug%5D/page-4d7fbf82201cfd02.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/projects/page-4d7fbf82201cfd02.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/writing/%5Bslug%5D/page-bb7737cb6c5871ee.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/app/writing/page-210b8b90d4756386.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/e1c267a5-18d6da3b3792db7d.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/main-app-a1529369d4761ce0.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/polyfills-42372ed130431b0a.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/chunks/webpack-016c9312ab43d5a6.js",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     },
     {
       "asset": "/_next/static/css/8e765a046df7c724.css",
       "status": 200,
-      "cacheControl": "public,max-age=0,must-revalidate,no-transform, public,max-age=31536000,immutable"
+      "cacheControl": "public,max-age=31536000,immutable"
     }
   ],
   "warnings": []
