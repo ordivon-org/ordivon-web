@@ -1,0 +1,40 @@
+<h2 id="a-conversation-is-not-a-task-database">A conversation is not a Task database</h2>
+          <p>Provider sessions are useful cognition transports, but they do not safely own Goal identity, the current Task frontier, the exact candidate set shown to a model, completed Effects, unresolved Dispatches, verification receipts, or TaskOutcome. Transcripts are also expensive and ambiguous continuation artifacts: they mix instructions, observations, rejected ideas, hidden provider state, and presentation.</p>
+          <p>Host therefore compiles one bounded immutable Context from durable objects, invokes a replaceable provider outside the Task lease, and deterministically admits or rejects the returned decision against the current world.</p>
+
+          <h2 id="runtime-truth-and-task-truth-are-different">Runtime truth and Task truth are different</h2>
+          <p>Runtime owns Workspaces, Jobs, Attempts, systemd units, process trees, output, Artifacts, cancellation, and physical recovery. Host owns Goals, Tasks, semantic Effects, current Tool bindings, candidate decisions, Dispatch correlation, independent verification, and outcomes.</p>
+          <blockquote>A successful Runtime Job is evidence about execution. It is not proof that the Task is semantically complete.</blockquote>
+          <p>This separation allows Runtime to remain thin and universal while Host can interpret the result without teaching the execution layer about repository goals, model choices, or product meaning.</p>
+
+          <h2 id="the-durable-host-has-two-mechanisms">The durable Host has two mechanisms</h2>
+          <p>Typed immutable JSON objects are written and fsynced before an event references them. One SQLite transaction then compares the expected stream revision and commits the object references, event, stream head, graph indexes, and resulting Task projection together.</p>
+          <p>The projection is a checked materialized view, not a second source of truth. A fresh Host validates referenced objects and rebuilds every Task from its event head before accepting work. Stream gaps, object corruption, projection drift, or identity conflict fail startup rather than being guessed away.</p>
+
+          <h2 id="a-minimal-kernel-coordinates-transitions-not-workflows">A minimal kernel coordinates transitions, not workflows</h2>
+          <p>Read, cognition, and mutation workloads repeated the same mechanical sequence: read the current projection and event head, acquire a short Task lease, recheck revision and frontier, build one next semantic transition, append at most one event with revision CAS, and release the lease.</p>
+          <p><code>HostKernel</code> owns only lease lifetime, monotonic timestamps, one-transition admission, and atomic event/projection commit. It never invokes a provider or Runtime Tool and does not become a scheduler, workflow DSL, policy engine, or generic Effect framework.</p>
+
+          <h2 id="cognition-is-split-by-a-durable-boundary">Cognition is split by a durable boundary</h2>
+          <p>Context compilation commits before provider invocation. The Task lease is released while the external model runs. On return, Host reacquires the lease, rereads current state, checks that the decision targets the exact Context and one admitted candidate, rejects invented identities, rechecks world drift and completed Effects, and marks a stale decision superseded if another process already advanced the Task.</p>
+          <p>Codex/GPT and Hermes/DeepSeek can evaluate the same durable Context. Agreement is evidence about replaceability, not authority to bypass deterministic admission.</p>
+
+          <h2 id="unknown-is-a-first-class-recovery-state">UNKNOWN is a first-class recovery state</h2>
+          <p>Before a changing Runtime call, Host persists the Effect, Tool contract, Binding, stable client request identity, and Dispatch intent. A lost response after delivery becomes UNKNOWN. A fresh Host process searches for the original Runtime Job by the committed request identity and observes that Job to terminal state.</p>
+          <p>Failure to find the Job does not authorize redispatch. Conflicting Jobs fail closed. Runtime success still does not finish the Task: Host independently reads and verifies the changed world before recording a completed outcome.</p>
+
+          <h2 id="live-faults-changed-the-architecture">Live faults changed the architecture</h2>
+          <p>Production history contained thousands of Jobs, making full Registry scans semantically correct but operationally slow. Runtime gained exact <code>clientRequestId</code> filtering; Host discovers the capability from the Tool schema and still rejects conflicting identities. Runtime restart recovery also learned that systemd “active” is not readiness—MCP initialization must succeed before reconciliation.</p>
+          <p>These changes reduced the measured local guarded-mutation recovery path to subsecond without weakening ambiguity handling.</p>
+
+          <h2 id="why-host-became-an-independent-repository">Why Host became an independent repository</h2>
+          <p>Once read, cognition, mutation, and restart recovery crossed their gates, continued incubation would blur state ownership. Host now versions implementation, Host storage, provider adapters, Runtime coordination, tests, and evidence independently. Computing remains authoritative for shared protocol definitions and conformance. Runtime remains authoritative for physical execution.</p>
+
+          <h2 id="what-is-still-missing">What is still missing</h2>
+          <p>The current mutation is a narrow proof workload. Host has no formal CLI, service, state-root contract, inspect or doctor surface, backup and restore, deploy and rollback, or general user Workbench. Whole-machine restart, abrupt power loss, long-history performance, remote partition, multi-Agent scheduling, and general repository engineering remain unproven.</p>
+          <p>The next step is not another abstract Task object. It is a real repository Goal that must survive model replacement, Runtime interruption, verification, review, and eventual publication.</p>
+
+<footer className="article-footer">
+<p>This report describes the independent Host boundary established by H2–H6 and extracted on 27 July 2026. Current implementation truth belongs to the Host repository, tests, and evidence.</p>
+          <div className="actions"><a className="button button-primary" href="/projects/host">Explore Ordivon Host</a><a className="button button-secondary" href="https://github.com/zycxfyh/ordivon-host/blob/main/ARCHITECTURE.md">Read the architecture</a></div>
+</footer>

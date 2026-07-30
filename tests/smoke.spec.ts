@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import articleData from "../content/writing/articles.json";
+import { articleMetadata } from "../content/articles/registry";
 import { expect, test } from "@playwright/test";
 
 const coreRoutes = [
@@ -20,7 +20,7 @@ for (const route of coreRoutes) {
 }
 
 test("all migrated writing routes render", async ({ request }) => {
-  for (const { slug } of articleData) {
+  for (const { slug } of articleMetadata) {
     const response = await request.get(`/writing/${slug}`);
     expect(response.status(), slug).toBe(200);
   }

@@ -1,0 +1,82 @@
+<h2 id="what-has-been-completed">What has been completed</h2>
+          <p>The released core consists of one Rust MCP server, one execution Runtime, and ten public tools. Together they let an authenticated agent create an exact Git workspace, inspect and mutate files, review the resulting diff, execute host commands, observe or cancel long-running work, list durable Jobs, read retained Artifacts, and remove completed workspaces.</p>
+          <p>The active execution path is deliberately small:</p>
+          <blockquote>Agent reasoning → Ordivon durable execution → observable result → recovery or continuation.</blockquote>
+          <p>Under that path, SQLite owns Job and Attempt truth, systemd and cgroups own the process tree, bounded files own stdout, stderr, results, and Artifact bytes, and Git continues to own repository history and rollback.</p>
+
+          <h2 id="the-important-change-was-subtraction">The important change was subtraction</h2>
+          <p>Ordivon did not arrive here by adding another layer to the earlier architecture. It arrived by replacing a broad governance platform with the narrow Runtime that real agent work required.</p>
+          <p>The earlier direction contained policy objects, registries, proof structures, document systems, specialized adapters, and multiple forms of predeclared control. Many of those mechanisms were defensible from a classical software-governance perspective. They were also expensive in an agentic workflow: they duplicated facts already owned by Git or the host, increased context, created more states to reconcile, and often blocked ordinary reversible work without improving recovery.</p>
+          <p>The simplified Runtime keeps mechanisms only when they preserve reality or provide causal feedback. That means process identity, cancellation intent, terminal results, bounded output, Artifact identity, and restart reconciliation remain. Reconstructable metadata and ceremonial governance do not.</p>
+
+          <h2 id="a-new-division-of-responsibility">A new division of responsibility</h2>
+          <p>The current system rests on a sharper responsibility split:</p>
+          <ul>
+            <li><strong>The user owns intent.</strong> Objectives, preferences, risk posture, and final commitments remain human responsibilities.</li>
+            <li><strong>The agent owns implementation and operation.</strong> It reasons, chooses tools, edits code, runs tests, repairs failures, and adapts to observations.</li>
+            <li><strong>The Runtime owns durable execution truth.</strong> It identifies the request, owns the process tree, records terminal reality, exposes Artifacts, and recovers after interruption.</li>
+          </ul>
+          <p>This is not an attempt to make the Runtime intelligent. It is an attempt to let increasingly intelligent agents operate without losing the execution facts that matter.</p>
+
+          <h2 id="the-ten-tool-surface">The ten-tool surface</h2>
+          <p>The public protocol now contains exactly ten tools:</p>
+          <ol>
+            <li><code>workspace.open</code> — create an isolated workspace at an exact Git revision;</li>
+            <li><code>workspace.close</code> — remove a completed workspace and its record;</li>
+            <li><code>workspace.read</code> — read bounded full or sliced UTF-8 content;</li>
+            <li><code>workspace.mutate</code> — apply validated writes, appends, and exact replacements;</li>
+            <li><code>workspace.diff</code> — inspect tracked changes and untracked paths;</li>
+            <li><code>workspace.exec</code> — execute one command with durable Job and Attempt identity;</li>
+            <li><code>task.observe</code> — observe running or terminal task state;</li>
+            <li><code>task.cancel</code> — persist cancellation intent and terminate the owned process tree;</li>
+            <li><code>task.list</code> — list Jobs through stable cursor pagination;</li>
+            <li><code>artifact.read</code> — read retained Artifact bytes by range and digest-bound identity.</li>
+          </ol>
+          <p>This surface is intentionally narrower than a general desktop-control toolkit. Ordinary host capabilities—Git, Docker, systemd, cloud CLIs, package managers, browsers, and language toolchains—remain available through <code>workspace.exec</code> instead of becoming bespoke Ordivon abstractions.</p>
+
+          <h2 id="what-the-protocol-dogfood-proved">What the protocol dogfood proved</h2>
+          <p>The final acceptance run called all ten tools through the production MCP path. Every positive path passed:</p>
+          <ul>
+            <li>an exact repository revision opened and later closed cleanly;</li>
+            <li>full and sliced reads preserved a stable file digest;</li>
+            <li>write, append, and exact replacement mutations advanced revision digests correctly;</li>
+            <li>the diff exposed an untracked probe without inventing tracked changes;</li>
+            <li>synchronous execution returned compact Artifact descriptors directly;</li>
+            <li>a running process transitioned predictably from working to cancelled;</li>
+            <li>task pagination advanced through a stable cursor;</li>
+            <li>Artifact range reads returned consistent bytes and digest identity;</li>
+            <li>workspace cleanup left no accessible test workspace behind.</li>
+          </ul>
+          <p>The negative boundaries also failed closed:</p>
+          <ul>
+            <li>a stale mutation digest returned <code>REVISION_MISMATCH</code>;</li>
+            <li>reusing one client request identity for a different command returned <code>IDEMPOTENCY_CONFLICT</code>;</li>
+            <li>pairing an Artifact with the wrong Job returned <code>ARTIFACT_IDENTITY_CONFLICT</code>;</li>
+            <li>access after cleanup returned <code>WORKSPACE_NOT_FOUND</code>.</li>
+          </ul>
+          <p>The same request identity and identical execution request also returned the same Job and Attempt rather than dispatching duplicate work.</p>
+
+          <h2 id="what-ordivon-deliberately-is-not">What Ordivon deliberately is not</h2>
+          <p>The core release is easier to understand through its negative boundary. Ordivon is not an agent loop, governance operating system, policy platform, document knowledge base, cloud scheduler, multi-tenant control plane, or user interface.</p>
+          <p>It does not prebuild a GitHub platform, Docker platform, browser platform, memory system, skill registry, or scheduler around the agent. A dedicated capability should be added only after repeated real tasks demonstrate that ordinary command execution cannot provide the required semantics.</p>
+
+          <h2 id="three-engineering-defaults-survived-the-redesign">Three engineering defaults survived the redesign</h2>
+          <ol>
+            <li><strong>Thin active context.</strong> Source, tests, Git, live state, and a few current documents should provide the working mental model.</li>
+            <li><strong>Thin recovery.</strong> Git restores code; Ordivon preserves only execution facts that cannot be reconstructed reliably.</li>
+            <li><strong>Reallocated responsibility.</strong> Human intent, agent operation, and Runtime execution truth remain separate.</li>
+          </ol>
+          <p>These defaults are not aesthetic minimalism. They reduce the amount of stale or contradictory state the agent must interpret and keep the system focused on facts with operational consequences.</p>
+
+          <h2 id="core-complete-does-not-mean-operations-finished">Core complete does not mean operations finished</h2>
+          <p>The implementation and protocol boundary are complete enough to close the M0–M7 construction line. Production adoption remains an observable operational task: the installed Rust MCP must carry real Ordivon engineering and research work; backup and restore must preserve the minimal Registry; and the production Cloudflare route must remain recoverable with the old bridge available only as rollback.</p>
+          <p>This distinction matters. The next phase should not add breadth because the core has been released. It should use the Runtime, measure where the agent still falls back to older tools or manual intervention, and remove any state or helper that real recovery does not justify.</p>
+
+          <h2 id="what-comes-next">What comes next</h2>
+          <p>Ordivon now grows by observed failure rather than roadmap imagination. Real engineering and research tasks will determine whether a missing operation deserves a new primitive. Until that evidence exists, the mature host toolchain remains the extension surface.</p>
+          <p>The release is therefore both a completion and a constraint: the thin core exists, the ten tools have been exercised, and future complexity must earn its place through repeated use.</p>
+
+<footer className="article-footer">
+<p>This is a dated release record. Current capability belongs to the repository’s current-state document, runtime architecture, source, tests, and runbook.</p>
+          <div className="actions"><a className="button button-primary" href="/projects/runtime">Explore Ordivon Runtime</a><a className="button button-secondary" href="https://github.com/zycxfyh/ordivon-runtime/blob/main/docs/runtime.md">Read current state</a></div>
+</footer>
