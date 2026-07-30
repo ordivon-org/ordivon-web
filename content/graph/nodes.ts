@@ -1,7 +1,7 @@
 import { articleMetadata } from "@/content/articles/registry";
 import type { ArticleNode, DecisionNode, ExperimentNode, FindingNode, GraphNode, ProjectNode, QuestionNode, SystemNode } from "@/lib/graph/types";
 
-export const graphUpdatedAt = "2026-07-30";
+export const graphUpdatedAt = "2026-07-31";
 
 export const systemNodes: SystemNode[] = [
   {
@@ -79,7 +79,7 @@ export const projectNodes: ProjectNode[] = [
     id: "project:web", kind: "project", slug: "web", title: "Ordivon Web", status: "active", group: "Public interface",
     label: "Research as an explorable system", publicPage: false,
     summary: "The public interface that connects projects, research questions, experiments, findings, decisions, and writing without duplicating repository truth.",
-    state: "Static delivery is live; System, Research, Writing, article context, and the homepage now project different views from one typed graph.",
+    state: "Static delivery is live; System, Research, Writing, article context, and a continuity-led homepage now project different views from one typed graph.",
     evidence: [{ value: "19", label: "document relations" }, { value: "11", label: "research dossiers" }, { value: "6", label: "argument nodes" }],
     repository: "https://github.com/zycxfyh/ordivon-web", updatedAt: graphUpdatedAt,
   },
@@ -194,8 +194,8 @@ export const questionNodes: QuestionNode[] = [
     summary: "Test whether graph-based navigation improves understanding and makes the system worth revisiting.",
     importance: "A static project directory records conclusions but hides why boundaries changed, which experiments mattered, and what remains unresolved.",
     hypothesis: "Typed relations, explorable system perspectives, and durable Question dossiers can expose changing judgment without duplicating repository truth.",
-    currentJudgment: "Structurally supported. Governance was removed, MDX became composable, and /system now exposes three graph perspectives; repeated public use of Question dossiers is the next evidence.",
-    nextStep: "Publish every active Question as a dated dossier, use the site as the working orientation layer, and observe which views actually reduce explanation cost.",
+    currentJudgment: "Structurally and visually supported. One typed graph now drives System, Research, Writing, article context, and a continuity-led homepage without restoring release governance or duplicate state.",
+    nextStep: "Use the public interface during real cross-project work and observe whether the continuity poster, Question dossiers, and argument links reduce explanation cost for first-time and returning readers.",
     falsifier: "If the graph and dossiers are harder to maintain or understand than concise project pages and articles, collapse them back into simpler editorial views.",
     status: "active", state: "testing", href: "/research/web-research-interface", updatedAt: graphUpdatedAt,
   },

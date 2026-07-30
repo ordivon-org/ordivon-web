@@ -20,7 +20,7 @@ export default function ProjectsPage() {
           </Link>
         ))}
       </section>
-      <section className="portfolio-boundary"><SectionHeading index="06" eyebrow="Portfolio boundary" title="The stack is a graph, not one mandatory request pipeline." /><div><p>A local Runtime task may never cross into World. A World observation may exist before any Host Task. Computing can falsify a contract without owning production state.</p><p>Source, tests, data, receipts, and each repository&apos;s current documents remain the technical truth. This site provides orientation and dated interpretation.</p></div></section>
+      <section className="portfolio-boundary"><SectionHeading eyebrow="Portfolio boundary" title="The stack is a graph, not one mandatory request pipeline." /><div><p>A local Runtime task may never cross into World. A World observation may exist before any Host Task. Computing can falsify a contract without owning production state.</p><p>Source, tests, data, receipts, and each repository&apos;s current documents remain the technical truth. This site provides orientation and dated interpretation.</p></div></section>
     </div>
   );
 }

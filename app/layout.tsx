@@ -7,6 +7,7 @@ import "../styles/system.css";
 import "../styles/research.css";
 import "../styles/writing.css";
 import "../styles/motion.css";
+import "../styles/home.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ordivon.com"),

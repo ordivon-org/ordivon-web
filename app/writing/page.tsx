@@ -28,7 +28,6 @@ export default function WritingPage() {
 
         <section className="writing-archive" aria-labelledby="writing-archive-title">
           <SectionHeading
-            index="02"
             eyebrow="Chronological archive"
             title="The network does not replace publication history."
             description="Filter the complete record by document type. Dates remain visible because a later argument may revise the architecture without rewriting the earlier claim."

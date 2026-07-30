@@ -64,7 +64,6 @@ export default function ResearchPage() {
 
         <section className="research-method" aria-labelledby="research-method-title">
           <SectionHeading
-            index="02"
             eyebrow="Research contract"
             title="Evidence may revise the map; the map may not revise the evidence."
             description="The site can organize and interpret work, but repositories, tests, receipts, and observed behavior remain authoritative. Empty evidence sections are preserved as uncertainty rather than filled with narrative confidence."

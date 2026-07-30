@@ -58,7 +58,6 @@ export default function SystemPage() {
 
         <section className="system-language" aria-labelledby="system-language-title">
           <SectionHeading
-            index="02"
             eyebrow="Visual language"
             title="Shape, status, and relation carry meaning."
             description="The interface does not use one generic card for every object. Node kinds identify what a thing is; status signals its current condition; edge grammar states why two objects are connected."
@@ -95,7 +94,6 @@ export default function SystemPage() {
 
         <section className="system-owners" aria-labelledby="system-owners-title">
           <SectionHeading
-            index="03"
             eyebrow="State owners"
             title="Four boundaries prevent convenient fiction."
             description="Each layer owns facts that remain expensive or unsafe for another layer to reconstruct after interruption."
