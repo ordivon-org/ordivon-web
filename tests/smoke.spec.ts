@@ -1,9 +1,11 @@
 import AxeBuilder from "@axe-core/playwright";
 import { articleMetadata } from "../content/articles/registry";
+import { questionNodes } from "../content/graph/nodes";
 import { expect, test } from "@playwright/test";
 
 const coreRoutes = [
-  "/", "/system", "/projects", "/projects/computing", "/projects/host", "/projects/runtime", "/projects/world",
+  "/", "/system", "/research", "/research/web-research-interface", "/research/security-adversarial-trajectory",
+  "/projects", "/projects/computing", "/projects/host", "/projects/runtime", "/projects/world",
   "/writing", "/writing/the-future-will-not-wait", "/writing/runtime-after-core", "/now", "/about", "/colophon",
 ];
 
@@ -26,6 +28,13 @@ test("all migrated writing routes render", async ({ request }) => {
   }
 });
 
+test("all research dossiers render", async ({ request }) => {
+  for (const { slug } of questionNodes) {
+    const response = await request.get(`/research/${slug}`);
+    expect(response.status(), slug).toBe(200);
+  }
+});
+
 test("publishing endpoints render", async ({ request }) => {
   expect((await request.get("/feed.xml")).headers()["content-type"]).toContain("application/rss+xml");
   expect((await request.get("/sitemap.xml")).status()).toBe(200);
@@ -34,7 +43,10 @@ test("publishing endpoints render", async ({ request }) => {
 });
 
 test("internal navigation targets resolve", async ({ page, request }) => {
-  const sourceRoutes = ["/", "/system", "/projects", "/writing", "/about", "/now", "/projects/runtime", "/writing/the-future-will-not-wait"];
+  const sourceRoutes = [
+    "/", "/system", "/research", "/research/web-research-interface", "/projects", "/writing", "/about", "/now",
+    "/projects/runtime", "/writing/the-future-will-not-wait",
+  ];
   const targets = new Set<string>();
   for (const route of sourceRoutes) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
@@ -49,15 +61,22 @@ test("internal navigation targets resolve", async ({ page, request }) => {
   }
 });
 
-test("research graph drives current and project views", async ({ page }) => {
+test("research graph drives current, project, and dossier views", async ({ page }) => {
   await page.goto("/now", { waitUntil: "domcontentloaded" });
-  await expect(page.getByRole("heading", { name: "Web gained a typed research graph" })).toBeVisible();
-  await expect(page.getByText("Can the public site expose Ordivon as a changing research graph rather than a directory of pages?")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Research questions became durable public dossiers" })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Can the public site expose Ordivon as a changing research graph/ })).toHaveAttribute("href", "/research/web-research-interface/");
 
   await page.goto("/projects/runtime", { waitUntil: "domcontentloaded" });
-  await expect(page.getByRole("heading", { name: "Which real structured operation can complete the full Effect contract?" })).toBeVisible();
-});
+  const runtimeQuestion = page.getByRole("link", { name: /testing Which real structured operation can complete the full Effect contract/ });
+  await expect(runtimeQuestion).toHaveAttribute("href", "/research/runtime-structured-effect/");
 
+  await page.goto("/research/web-research-interface", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Web governance displacement audit", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Return Web release checks to build, smoke, preview, and deploy", exact: true })).toBeVisible();
+
+  await page.goto("/research/security-adversarial-trajectory", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "No experiment has earned entry into this dossier yet." })).toBeVisible();
+});
 
 test("system explorer switches perspective and inspects typed nodes", async ({ page }) => {
   await page.goto("/system", { waitUntil: "domcontentloaded" });
@@ -79,6 +98,26 @@ test("system explorer switches perspective and inspects typed nodes", async ({ p
   await expect(page.getByRole("button", { name: /Runtime.*Ordivon Runtime/ })).toBeVisible();
 });
 
+test("research atlas switches organization without changing its source", async ({ page }) => {
+  await page.goto("/research", { waitUntil: "domcontentloaded" });
+  await expect(page.locator(".research-explorer")).toHaveAttribute("data-ready", "true");
+  await expect(page.getByRole("button", { name: "Questions the active frontier" })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("link", { name: /Can Host complete a general repository Goal/ })).toBeVisible();
+
+  await page.getByRole("button", { name: "Projects where pressure accumulates" }).click();
+  await expect(page.locator('[data-view="projects"]')).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Ordivon Host", exact: true })).toBeVisible();
+
+  await page.getByRole("button", { name: "Timeline what changed the model" }).click();
+  await expect(page.locator('[data-view="timeline"]')).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Research questions became durable public dossiers" })).toBeVisible();
+
+  await page.getByRole("button", { name: "Status testing, open, resolved" }).click();
+  await expect(page.locator('[data-view="status"]')).toBeVisible();
+  await expect(page.getByText("testing", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("open", { exact: true }).first()).toBeVisible();
+});
+
 test("article navigation matches viewport", async ({ page, isMobile }) => {
   await page.goto("/writing/the-future-will-not-wait", { waitUntil: "domcontentloaded" });
   if (isMobile) {
@@ -90,9 +129,8 @@ test("article navigation matches viewport", async ({ page, isMobile }) => {
   }
 });
 
-
 test("core pages have no serious accessibility violations", async ({ page }) => {
-  for (const route of ["/", "/system", "/projects", "/writing", "/projects/runtime"]) {
+  for (const route of ["/", "/system", "/research", "/research/web-research-interface", "/projects", "/writing", "/projects/runtime"]) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
     const results = await new AxeBuilder({ page }).analyze();
     const serious = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact || ""));

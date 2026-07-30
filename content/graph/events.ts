@@ -2,6 +2,14 @@ import type { GraphEvent } from "@/lib/graph/types";
 
 export const graphEvents = [
   {
+    id: "event:web-research-dossiers",
+    date: "2026-07-30",
+    type: "project",
+    title: "Research questions became durable public dossiers",
+    summary: "Eleven Questions now publish their hypothesis, current judgment, next admitted test, deletion condition, evidence trajectory, and connected public record.",
+    nodeIds: ["project:web", "question:web-research-interface"],
+  },
+  {
     id: "event:web-system-explorer",
     date: "2026-07-30",
     type: "project",
