@@ -39,7 +39,13 @@ export type ProjectNode = BaseNode & {
 
 export type QuestionNode = BaseNode & {
   kind: "question";
+  slug: string;
   state: "open" | "testing" | "answered" | "reframed";
+  importance: string;
+  hypothesis: string;
+  currentJudgment: string;
+  nextStep: string;
+  falsifier: string;
 };
 
 export type ExperimentNode = BaseNode & {

@@ -36,7 +36,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div><p className="section-index">Owns</p><h2>Facts this project is allowed to commit.</h2><ul>{project.owns.map((item) => <li key={item}>{item}</li>)}</ul></div>
         <div><p className="section-index">Hard boundary</p><h2>Claims it must leave to another owner.</h2><ul>{project.boundary.map((item) => <li key={item}>{item}</li>)}</ul></div>
       </section>
-      <section className="open-questions page-shell"><p className="section-index">Open questions</p><div>{project.openQuestions.map((question, index) => <article key={question}><span>{String(index + 1).padStart(2, "0")}</span><h2>{question}</h2></article>)}</div></section>
+      <section className="open-questions page-shell"><p className="section-index">Research questions</p><div>{project.openQuestions.map((question, index) => <Link href={question.href} key={question.href}><span>{String(index + 1).padStart(2, "0")}</span><div><p>{question.state}</p><h2>{question.title}</h2></div><b aria-hidden="true">↗</b></Link>)}</div></section>
       <section className="project-related page-shell"><p className="section-index">Related writing</p><div>{related.map((article) => article && <Link href={`/writing/${article.slug}`} key={article.slug}><span>{article.type}</span><h2>{article.title}</h2><b>{article.readMinutes} min ↗</b></Link>)}</div></section>
     </div>
   );

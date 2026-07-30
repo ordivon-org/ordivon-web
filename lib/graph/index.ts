@@ -13,6 +13,21 @@ function validateDate(value: string, label: string) {
 
 function validateGraph() {
   if (nodeById.size !== graphNodes.length) throw new Error("graph contains duplicate node IDs");
+  const questionSlugs = new Set<string>();
+  for (const question of graphNodes.filter((node): node is QuestionNode => node.kind === "question")) {
+    if (questionSlugs.has(question.slug)) throw new Error(`duplicate question slug ${question.slug}`);
+    questionSlugs.add(question.slug);
+    if (question.href !== `/research/${question.slug}`) throw new Error(`${question.id} has invalid research href ${question.href}`);
+    for (const [field, value] of Object.entries({
+      importance: question.importance,
+      hypothesis: question.hypothesis,
+      currentJudgment: question.currentJudgment,
+      nextStep: question.nextStep,
+      falsifier: question.falsifier,
+    })) {
+      if (!value.trim()) throw new Error(`${question.id} has empty ${field}`);
+    }
+  }
   const relationIds = new Set<string>();
   for (const relation of graphRelations) {
     if (relationIds.has(relation.id)) throw new Error(`duplicate relation ID ${relation.id}`);

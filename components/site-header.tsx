@@ -3,6 +3,7 @@ import { BrandMark } from "./brand-mark";
 
 const navigation = [
   ["System", "/system"],
+  ["Research", "/research"],
   ["Projects", "/projects"],
   ["Writing", "/writing"],
   ["Current", "/now"],

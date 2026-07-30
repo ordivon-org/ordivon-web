@@ -15,7 +15,7 @@ export type Project = {
   owns: string[];
   boundary: string[];
   evidence: { value: string; label: string }[];
-  openQuestions: string[];
+  openQuestions: { title: string; href: string; state: string }[];
   repository: string;
   relatedWriting: string[];
 };
@@ -29,7 +29,7 @@ export const projects: Project[] = getNodesByKind("project")
       .filter((relation) => relation.source === project.id && relation.type === "raises")
       .map((relation) => getNode(relation.target))
       .filter((node) => node?.kind === "question")
-      .map((node) => node.title);
+      .map((node) => ({ title: node.title, href: `/research/${node.slug}`, state: node.state }));
     return {
       id: project.id,
       slug: project.slug,
