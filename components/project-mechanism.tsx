@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Project } from "@/lib/projects";
 
 function Computing() {
@@ -14,6 +15,10 @@ function World() {
 }
 
 export function ProjectMechanism({ project }: { project: Project }) {
-  const models = { computing: <Computing />, host: <Host />, runtime: <Runtime />, world: <World /> };
-  return <div className={`project-mechanism ${project.slug}`}><p>Working model</p>{models[project.slug]}</div>;
+  let model: ReactNode = null;
+  if (project.slug === "computing") model = <Computing />;
+  if (project.slug === "host") model = <Host />;
+  if (project.slug === "runtime") model = <Runtime />;
+  if (project.slug === "world") model = <World />;
+  return <div className={`project-mechanism ${project.slug}`}><p>Working model</p>{model}</div>;
 }

@@ -1,0 +1,52 @@
+import type { GraphEvent } from "@/lib/graph/types";
+
+export const graphEvents = [
+  {
+    id: "event:web-graph-kernel",
+    date: "2026-07-30",
+    type: "project",
+    title: "Web gained a typed research graph",
+    summary: "System responsibilities, repositories, questions, experiments, findings, decisions, and articles now share one validated relation source.",
+    nodeIds: ["project:web", "question:web-research-interface", "decision:mdx-writing"],
+  },
+  {
+    id: "event:web-mdx",
+    date: "2026-07-30",
+    type: "decision",
+    title: "Writing became composable MDX",
+    summary: "Six articles left JSON-embedded HTML; the first interactive architecture comparison now lives inside the article itself.",
+    nodeIds: ["project:web", "decision:mdx-writing", "article:link-edge-boundary"],
+  },
+  {
+    id: "event:web-governance",
+    date: "2026-07-30",
+    type: "decision",
+    title: "Release governance was removed",
+    summary: "Duplicate V1 trees, evidence archives, browser matrices, Lighthouse batches, and release runbooks left the active repository.",
+    nodeIds: ["project:web", "finding:web-governance-displaced-interface", "decision:thin-web-release"],
+  },
+  {
+    id: "event:world-unified",
+    date: "2026-07-30",
+    type: "decision",
+    title: "Link and Edge became Ordivon World",
+    summary: "Connectivity and provider action remain distinct planes inside one external-interaction continuity boundary.",
+    nodeIds: ["project:world", "finding:link-edge-boundary-wrong", "decision:unify-world"],
+  },
+  {
+    id: "event:runtime-dogfood",
+    date: "2026-07-28",
+    type: "experiment",
+    title: "Runtime production use changed the kernel",
+    summary: "Exact request lookup, structured progress, repair, lifecycle retention, and receipted deployment were earned through repeated work.",
+    nodeIds: ["project:runtime", "experiment:runtime-production-dogfood", "finding:runtime-commitment-boundary"],
+  },
+  {
+    id: "event:host-extracted",
+    date: "2026-07-27",
+    type: "decision",
+    title: "Host became independent",
+    summary: "Deterministic continuation and restart recovery proved that Task truth deserves an owner above sessions and processes.",
+    nodeIds: ["project:host", "experiment:host-h2-h6", "decision:extract-host"],
+  },
+] as const satisfies readonly GraphEvent[];

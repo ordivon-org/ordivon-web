@@ -49,6 +49,15 @@ test("internal navigation targets resolve", async ({ page, request }) => {
   }
 });
 
+test("research graph drives current and project views", async ({ page }) => {
+  await page.goto("/now", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Web gained a typed research graph" })).toBeVisible();
+  await expect(page.getByText("Can the public site expose Ordivon as a changing research graph rather than a directory of pages?")).toBeVisible();
+
+  await page.goto("/projects/runtime", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Which real structured operation can complete the full Effect contract?" })).toBeVisible();
+});
+
 test("article navigation matches viewport", async ({ page, isMobile }) => {
   await page.goto("/writing/the-future-will-not-wait", { waitUntil: "domcontentloaded" });
   if (isMobile) {
