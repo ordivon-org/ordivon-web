@@ -5,6 +5,7 @@ import "./globals.css";
 import "../styles/visual-language.css";
 import "../styles/system.css";
 import "../styles/research.css";
+import "../styles/writing.css";
 import "../styles/motion.css";
 
 export const metadata: Metadata = {

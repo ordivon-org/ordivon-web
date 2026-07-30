@@ -2,33 +2,48 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { SystemMap } from "@/components/system-map";
 import { articles, formatDate } from "@/lib/content";
-import { graphUpdatedAt } from "@/lib/graph";
+import { getNodesByKind, getRecentEvents, graphRelations, graphUpdatedAt } from "@/lib/graph";
+import { getResearchQuestionSummaries } from "@/lib/graph/research";
+import { getFeaturedWriting } from "@/lib/graph/writing";
 import { projects } from "@/lib/projects";
 
 export default function HomePage() {
-  const featured = articles.slice(0, 3);
-  const runtime = projects.find((project) => project.slug === "runtime");
-  const currentMetrics = [
-    ...(runtime?.evidence || []),
-    { value: "UNKNOWN", label: "preserved, not guessed" },
-  ];
+  const research = getResearchQuestionSummaries();
+  const testing = research
+    .filter((item) => item.question.state === "testing")
+    .sort((left, right) => right.evidenceCount - left.evidenceCount || (right.latestEvidenceDate || "").localeCompare(left.latestEvidenceDate || ""));
+  const frontier = testing[0] || research[0];
+  const featured = getFeaturedWriting(3).map((argument) => {
+    const article = articles.find((candidate) => candidate.slug === argument.article.slug);
+    if (!article) throw new Error(`missing content article ${argument.article.slug}`);
+    return { article, argument };
+  });
+  const evidenceCount = getNodesByKind("experiment").length + getNodesByKind("finding").length + getNodesByKind("decision").length;
+  const documentRelationCount = graphRelations.filter((relation) => relation.type === "documents").length;
+  const latestEvent = getRecentEvents(1)[0];
+  const currentMetrics = frontier ? [
+    { value: String(frontier.evidenceCount), label: "admitted evidence objects" },
+    { value: String(frontier.articleCount), label: "connected public records" },
+    { value: frontier.question.state.toUpperCase(), label: "question state" },
+    { value: frontier.project?.title.replace("Ordivon ", "") || "ORDIVON", label: "current project line" },
+  ] : [];
 
   return (
     <>
       <section className="home-hero page-shell">
         <div className="hero-copy">
-          <p className="eyebrow"><span>Independent research + engineering</span><b>2026</b></p>
+          <p className="eyebrow"><span>Independent research + engineering</span><b>{formatDate(graphUpdatedAt)}</b></p>
           <h1>Agents should outlive the sessions that think for them.</h1>
           <p className="hero-lede">Ordivon builds the layers that let capable agents continue work, commit actions, reconcile external interactions, preserve evidence, and change models without starting over.</p>
-          <div className="actions"><Link className="button primary" href="/system">Explore the system</Link><Link className="button text" href="/writing">Read the argument <span>↗</span></Link></div>
+          <div className="actions"><Link className="button primary" href="/system">Explore the system</Link><Link className="button text" href="/research">Inspect the frontier <span>↗</span></Link></div>
         </div>
-        <div className="hero-proof" aria-label="Current system status">
-          <div className="proof-label"><span>Current snapshot</span><time dateTime={graphUpdatedAt}>{formatDate(graphUpdatedAt)}</time></div>
+        <div className="hero-proof" aria-label="Current graph status">
+          <div className="proof-label"><span>Graph-derived snapshot</span><time dateTime={graphUpdatedAt}>{formatDate(graphUpdatedAt)}</time></div>
           <dl>
-            <div><dt>Semantic continuity</dt><dd>Host journal and recoverable Tasks</dd></div>
-            <div><dt>Physical execution</dt><dd>Production Runtime with durable effect identity</dd></div>
-            <div><dt>World interaction</dt><dd>Conditioned paths, provider actions, and reconciliation</dd></div>
-            <div><dt>Public record</dt><dd>Composable MDX connected by a typed research graph</dd></div>
+            <div><dt>State owners</dt><dd>{getNodesByKind("system").length} independent system layers</dd></div>
+            <div><dt>Research frontier</dt><dd>{research.length} Questions · {testing.length} currently under test</dd></div>
+            <div><dt>Admitted evidence</dt><dd>{evidenceCount} experiments, findings, and decisions</dd></div>
+            <div><dt>Public argument</dt><dd>{articles.length} articles · {documentRelationCount} typed document relations</dd></div>
           </dl>
         </div>
       </section>
@@ -61,33 +76,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="current-feature page-shell">
-        <div className="current-copy">
-          <p className="section-index">Current evidence</p>
-          <h2>Runtime moved from a command surface to a maintained effect boundary.</h2>
-          <p>The original ten tools proved durable local execution. Production use then clarified commitment, explicit ambiguity, structured progress, lifecycle retention, repair, status, and receipted deployment.</p>
-          <Link className="text-link" href="/writing/runtime-after-core">Read the engineering report <span>↗</span></Link>
-        </div>
-        <div className="current-metrics">
-          {currentMetrics.map((metric) => <div key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></div>)}
-        </div>
-      </section>
+      {frontier && (
+        <section className="current-feature page-shell">
+          <div className="current-copy">
+            <p className="section-index">Current frontier · {frontier.project?.title || "Ordivon"}</p>
+            <h2>{frontier.question.title}</h2>
+            <p>{frontier.question.currentJudgment}</p>
+            <Link className="text-link" href={`/research/${frontier.question.slug}`}>Open the Question dossier <span>↗</span></Link>
+          </div>
+          <div className="current-metrics">
+            {currentMetrics.map((metric) => <div key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></div>)}
+          </div>
+        </section>
+      )}
 
       <section className="writing-preview page-shell">
-        <SectionHeading index="04" eyebrow="Writing" title="The reasoning that does not belong in source code." description="Essays, engineering reports, architecture records, and releases preserve dated arguments while repositories continue to change." />
+        <SectionHeading index="04" eyebrow="Writing network" title="Arguments are selected by connection, not recency alone." description="The featured positions are the most connected articles in the current graph. Their rank changes when Questions, findings, decisions, or project boundaries change." />
         <div className="featured-writing">
-          {featured.map((article, index) => (
+          {featured.map(({ article, argument }, index) => (
             <Link href={`/writing/${article.slug}`} key={article.slug} className={index === 0 ? "featured-article lead" : "featured-article"}>
-              <div><span>{article.type}</span><time dateTime={article.date}>{formatDate(article.date)}</time></div><h3>{article.title}</h3><p>{article.description}</p><b>{article.readMinutes} min ↗</b>
+              <div><span>{article.type} · {argument.anchors.length} anchors</span><time dateTime={article.date}>{formatDate(article.date)}</time></div><h3>{article.title}</h3><p>{article.description}</p><b>{article.readMinutes} min · centrality {argument.centrality} ↗</b>
             </Link>
           ))}
         </div>
       </section>
 
       <section className="closing-statement page-shell">
-        <p>Ordivon is built around one operational belief.</p>
+        <p>{latestEvent ? `Latest model change · ${latestEvent.title}` : "Ordivon is built around one operational belief."}</p>
         <h2>Move faster by making failure local, evidence durable, and cognition replaceable.</h2>
-        <div className="actions"><Link className="button primary inverse" href="/about">How the work is organized</Link><a className="button text inverse" href="https://github.com/zycxfyh">Inspect the repositories ↗</a></div>
+        <div className="actions"><Link className="button primary inverse" href="/writing">Explore the argument network</Link><a className="button text inverse" href="https://github.com/zycxfyh">Inspect the repositories ↗</a></div>
       </section>
     </>
   );

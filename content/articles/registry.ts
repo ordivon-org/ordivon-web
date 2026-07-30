@@ -1,6 +1,4 @@
 export type TocEntry = { id: string; label: string };
-export type RelatedLink = { href: string; title: string };
-
 export type ArticleMetadata = {
   slug: string;
   title: string;
@@ -16,8 +14,6 @@ export type ArticleMetadata = {
   author: string;
   lead: string;
   toc: TocEntry[];
-  relatedHeading: string;
-  related: RelatedLink[];
 };
 
 export const articleMetadata = [
@@ -72,21 +68,6 @@ export const articleMetadata = [
         "id": "sources-title",
         "label": "Research behind the argument"
       }
-    ],
-    "relatedHeading": "Continue from the civilizational position into the systems being built.",
-    "related": [
-      {
-        "href": "/writing/why-ordivon",
-        "title": "Why Ordivon matters in the AI era"
-      },
-      {
-        "href": "/projects/computing",
-        "title": "Ordivon Computing"
-      },
-      {
-        "href": "/writing/runtime-after-core",
-        "title": "Ordivon Runtime after the core"
-      }
     ]
   },
   {
@@ -131,21 +112,6 @@ export const articleMetadata = [
       {
         "id": "the-correction-is-part-of-the-evidence",
         "label": "The correction is part of the evidence"
-      }
-    ],
-    "relatedHeading": "Follow the unified project and the layers around it.",
-    "related": [
-      {
-        "href": "/projects/world",
-        "title": "Ordivon World project page"
-      },
-      {
-        "href": "/writing/host-task-continuity",
-        "title": "Why Task continuity belongs above execution"
-      },
-      {
-        "href": "/writing/runtime-after-core",
-        "title": "Ordivon Runtime after the core"
       }
     ]
   },
@@ -208,21 +174,6 @@ export const articleMetadata = [
         "id": "what-remains-outside-runtime",
         "label": "What remains outside Runtime"
       }
-    ],
-    "relatedHeading": "Compare the historical core release and the layer above it.",
-    "related": [
-      {
-        "href": "/writing/ordivon-runtime-release",
-        "title": "Original ten-tool core release"
-      },
-      {
-        "href": "/writing/host-task-continuity",
-        "title": "Why Task continuity belongs above execution"
-      },
-      {
-        "href": "/projects/runtime",
-        "title": "Current Runtime project page"
-      }
     ]
   },
   {
@@ -275,21 +226,6 @@ export const articleMetadata = [
       {
         "id": "what-is-still-missing",
         "label": "What is still missing"
-      }
-    ],
-    "relatedHeading": "Continue through the physical layer and stack research.",
-    "related": [
-      {
-        "href": "/writing/runtime-after-core",
-        "title": "Ordivon Runtime after the core"
-      },
-      {
-        "href": "/projects/computing",
-        "title": "Ordivon Computing"
-      },
-      {
-        "href": "/projects/host",
-        "title": "Current Host project page"
       }
     ]
   },
@@ -344,17 +280,6 @@ export const articleMetadata = [
         "id": "what-comes-next",
         "label": "What comes next"
       }
-    ],
-    "relatedHeading": "Continue through the current project and design argument.",
-    "related": [
-      {
-        "href": "/projects/runtime",
-        "title": "Ordivon Runtime project page"
-      },
-      {
-        "href": "/writing/why-ordivon",
-        "title": "Why Ordivon matters in the AI era"
-      }
     ]
   },
   {
@@ -395,21 +320,6 @@ export const articleMetadata = [
       {
         "id": "principles-that-travel-across-systems",
         "label": "Principles that travel across systems"
-      }
-    ],
-    "relatedHeading": "See how the argument appears in the projects.",
-    "related": [
-      {
-        "href": "/projects/runtime",
-        "title": "Ordivon Runtime"
-      },
-      {
-        "href": "/projects/host",
-        "title": "Ordivon Host"
-      },
-      {
-        "href": "/writing/ordivon-runtime-release",
-        "title": "Runtime release record"
       }
     ]
   }

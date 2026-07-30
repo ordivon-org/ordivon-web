@@ -5,9 +5,9 @@ import RuntimeAfterCore from "@/content/articles/runtime-after-core.mdx";
 import HostTaskContinuity from "@/content/articles/host-task-continuity.mdx";
 import RuntimeRelease from "@/content/articles/ordivon-runtime-release.mdx";
 import WhyOrdivon from "@/content/articles/why-ordivon.mdx";
-import { articleMetadata, type ArticleMetadata, type ArticleSlug, type RelatedLink, type TocEntry } from "@/content/articles/registry";
+import { articleMetadata, type ArticleMetadata, type ArticleSlug, type TocEntry } from "@/content/articles/registry";
 
-export type { ArticleMetadata, ArticleSlug, RelatedLink, TocEntry };
+export type { ArticleMetadata, ArticleSlug, TocEntry };
 export type Article = ArticleMetadata & { Content: ComponentType };
 
 const articleComponents: Record<ArticleSlug, ComponentType> = {

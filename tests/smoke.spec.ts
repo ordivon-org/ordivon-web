@@ -36,7 +36,10 @@ test("all research dossiers render", async ({ request }) => {
 });
 
 test("publishing endpoints render", async ({ request }) => {
-  expect((await request.get("/feed.xml")).headers()["content-type"]).toContain("application/rss+xml");
+  const feed = await request.get("/feed.xml");
+  expect(feed.status()).toBe(200);
+  expect(feed.headers()["content-type"]).toMatch(/(?:application|text)\/xml/);
+  expect(await feed.text()).toMatch(/<rss version="2\.0"><channel>/);
   expect((await request.get("/sitemap.xml")).status()).toBe(200);
   expect((await request.get("/robots.txt")).status()).toBe(200);
   expect((await request.get("/opengraph-image.png")).headers()["content-type"]).toContain("image/png");
@@ -116,6 +119,40 @@ test("research atlas switches organization without changing its source", async (
   await expect(page.locator('[data-view="status"]')).toBeVisible();
   await expect(page.getByText("testing", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("open", { exact: true }).first()).toBeVisible();
+});
+
+test("writing network reveals graph-derived argument context", async ({ page, isMobile }) => {
+  await page.goto("/writing", { waitUntil: "domcontentloaded" });
+  const network = page.locator(".writing-network");
+  await expect(network).toHaveAttribute("data-ready", "true");
+  await expect(network.getByText("19", { exact: true })).toBeVisible();
+
+  const surface = isMobile ? page.locator(".writing-network-mobile") : page.locator(".writing-network-canvas");
+  const hostArgument = surface.getByRole("button", { name: /Architecture report.*Why Task continuity belongs above execution/ });
+  await hostArgument.click();
+  await expect(page.getByLabel("Selected writing argument").getByRole("heading", { name: "Why Task continuity belongs above execution" })).toBeVisible();
+  await expect(page.getByLabel("Selected writing argument").getByRole("link", { name: /Research Question.*Can Host complete a general repository Goal/ })).toHaveAttribute("href", "/research/host-general-repository-goal/");
+  await expect(page.getByLabel("Selected writing argument").getByRole("link", { name: /Ordivon Runtime after the core/ })).toBeVisible();
+});
+
+test("article context is derived from typed document relations", async ({ page }) => {
+  await page.goto("/writing/runtime-after-core", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "What this article documents in the research graph." })).toBeVisible();
+  await expect(page.getByRole("link", { name: /question Which real structured operation can complete the full Effect contract/ })).toHaveAttribute("href", "/research/runtime-structured-effect/");
+  await expect(page.getByRole("heading", { name: "Commitment—not command execution—is Runtime's decisive abstraction" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Continue through shared research objects." })).toBeVisible();
+  await expect(page.locator(".related-reading").getByRole("link", { name: /Why Task continuity belongs above execution/ })).toBeVisible();
+});
+
+test("homepage snapshot and features derive from the graph", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" });
+  const snapshot = page.getByLabel("Current graph status");
+  await expect(snapshot.getByText("4 independent system layers")).toBeVisible();
+  await expect(snapshot.getByText("11 Questions · 6 currently under test")).toBeVisible();
+  await expect(snapshot.getByText("19 typed document relations")).toBeVisible();
+  await expect(page.getByText("Latest model change · Writing became an explorable argument network")).toBeVisible();
+  await expect(page.locator(".current-feature").getByRole("link", { name: "Open the Question dossier ↗" })).toHaveAttribute("href", /\/research\/.+\//);
+  await expect(page.getByRole("heading", { name: "Arguments are selected by connection, not recency alone." })).toBeVisible();
 });
 
 test("article navigation matches viewport", async ({ page, isMobile }) => {
