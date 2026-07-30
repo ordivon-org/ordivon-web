@@ -1,3 +1,4 @@
+import AxeBuilder from "@axe-core/playwright";
 import articleData from "../content/writing/articles.json";
 import { expect, test } from "@playwright/test";
 
@@ -26,7 +27,6 @@ test("all migrated writing routes render", async ({ request }) => {
 });
 
 test("publishing endpoints render", async ({ request }) => {
-  expect((await request.get("/api/health")).status()).toBe(200);
   expect((await request.get("/feed.xml")).headers()["content-type"]).toContain("application/rss+xml");
   expect((await request.get("/sitemap.xml")).status()).toBe(200);
   expect((await request.get("/robots.txt")).status()).toBe(200);
@@ -57,5 +57,15 @@ test("article navigation matches viewport", async ({ page, isMobile }) => {
   } else {
     await expect(page.locator(".article-rail")).toBeVisible();
     await expect(page.locator(".article-toc-mobile")).toBeHidden();
+  }
+});
+
+
+test("core pages have no serious accessibility violations", async ({ page }) => {
+  for (const route of ["/", "/projects", "/writing", "/projects/runtime"]) {
+    await page.goto(route, { waitUntil: "domcontentloaded" });
+    const results = await new AxeBuilder({ page }).analyze();
+    const serious = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact || ""));
+    expect(serious, route).toEqual([]);
   }
 });

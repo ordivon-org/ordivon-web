@@ -10,7 +10,6 @@ export default defineConfig([
     "node_modules/**",
     "playwright-report/**",
     "test-results/**",
-    "artifacts/**",
     "legacy-v1/**",
     "next-env.d.ts",
   ]),
