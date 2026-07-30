@@ -39,6 +39,9 @@ pnpm test:webkit:hosted
 pnpm audit:lighthouse:hosted
 ```
 
+
+When the workstation network path cannot resolve the stable `workers.dev` hostname correctly, the same deployed version may be verified through a narrowly scoped temporary custom hostname. The hostname must be independently named, mapped only to this service, recorded as verification transport, and removed immediately after the full protocol/browser/Lighthouse matrix. It must never reuse the apex, `www`, or `lab`.
+
 The hosted candidate is accepted only when:
 
 1. deployed version metadata identifies the approved Git candidate;

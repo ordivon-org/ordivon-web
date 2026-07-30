@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-30T02:24:30.172248+00:00",
+  "generatedAt": "2026-07-30T03:01:29.861004+00:00",
   "classification": "sanitized-public-receipt",
   "rehearsal": {
     "productionRouteAppliedBriefly": true,
@@ -85,5 +85,18 @@
     "containsApiToken": false,
     "containsAccountOrZoneIdentifiers": false,
     "containsAnalyticsToken": false
+  },
+  "hostedCandidateVerification": {
+    "sourceCommit": "1f829cba34867de461dc4314883ff64d320bceb2",
+    "versionId": "ea65536e-9232-48bb-bcb1-c536609b992b",
+    "versionNumber": 6,
+    "deploymentId": "0067f0bc-ac4d-43c5-989b-7755c6d36cf7",
+    "trafficPercent": 100,
+    "temporaryHostname": "v2-verify-20260730.ordivon.com",
+    "protocolMatrixPassed": true,
+    "browserChecksPassed": 44,
+    "lighthouseRunsPassed": 60,
+    "temporaryDnsAndRouteRemoved": true,
+    "apexWwwLabUnchanged": true
   }
 }

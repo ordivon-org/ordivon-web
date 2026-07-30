@@ -62,9 +62,9 @@ service: ordivon-web-v2-preview
 URL: https://ordivon-web-v2-preview.ordivon-lab.workers.dev
 ```
 
-The final hosted World candidate is `adcb315905a4a42424a27fbe6525d909d29b4021`. Worker version `ec011abc-000b-434b-a76a-e31bff7effb8` is deployed at 100% through deployment `2e7fa67f-eb51-4c49-bda4-5b38cf602ab1`; the full identity is frozen in `artifacts/v2-round3/hosted-preview.json`.
+The final hosted World candidate is `1f829cba34867de461dc4314883ff64d320bceb2`. Worker Version 6, `ea65536e-9232-48bb-bcb1-c536609b992b`, is deployed at 100% through deployment `0067f0bc-ac4d-43c5-989b-7755c6d36cf7`; the full identity is frozen in `artifacts/v2-round3/hosted-preview.json`.
 
-The stable `workers.dev` host has a Cloudflare-managed certificate covering `ordivon-lab.workers.dev` and `*.ordivon-lab.workers.dev`. A temporary `preview.ordivon.com` DNS record and Worker Route used during diagnosis were deleted after `workers.dev` became ready. No production host or route remains changed.
+The stable service identity remains the `workers.dev` URL. The workstation DNS path later resolved that hostname incorrectly, so the exact deployed Version 6 was verified through the isolated hostname `v2-verify-20260730.ordivon.com`, routed to the same service. Its DNS record and Worker Route were deleted immediately after verification; apex, `www`, and `lab` remained byte-for-byte/configuration-equivalent to their captured baseline.
 
 `scripts/verify-hosted-preview.mjs` repeats the complete protocol matrix at the public edge and additionally asserts Cloudflare server identity, `cf-ray`, edge cache behavior, and TLS-backed HTTPS delivery. Result: `artifacts/v2-round3/hosted-platform.json`.
 
@@ -81,7 +81,7 @@ Representative pages and interactions are exercised on Chromium, Firefox, mobile
 
 Total: **44/44 local release-browser checks passed**.
 
-The hosted matrix repeats the same 36 checks against the public `workers.dev` deployment. Final result: **44/44 hosted browser checks passed**. On Arch, WebKit runs in the official `mcr.microsoft.com/playwright:v1.62.0-noble` container rather than installing obsolete Ubuntu ABI compatibility libraries into the host.
+The hosted matrix repeats the same **44 checks** against the exact Version 6 public edge through the isolated verification hostname. Final result: **44/44 hosted browser checks passed**. On Arch, WebKit runs in the official `mcr.microsoft.com/playwright:v1.62.0-noble` container rather than installing obsolete Ubuntu ABI compatibility libraries into the host.
 
 Checks assert HTTP status, visible content, no horizontal overflow, no console errors, no real request failures, Writing filtering, article navigation, anchors, and permanent redirects. Chromium's cancelled same-origin `HEAD` prefetch requests are separated from real resource failures.
 
@@ -102,7 +102,7 @@ Local minimum and worst-case medians:
 | Cumulative Layout Shift | 0 |
 | Transfer weight | 153–187 KiB |
 
-The same unchanged budgets are enforced against the hosted edge using independent route/device Chrome profiles. Final hosted medians: Performance 97 minimum, Accessibility/Best Practices/SEO 100/100/100, LCP 1,479 ms maximum, TBT 113 ms maximum, CLS 0, and transfer weight up to 193 KiB. Evidence: `artifacts/v2-round3/lighthouse-hosted.json`.
+The same unchanged budgets are enforced against the hosted edge using independent route/device Chrome profiles. Final hosted medians: Performance 96 minimum, Accessibility/Best Practices/SEO 100/100/100, LCP 2,232 ms maximum, TBT 181 ms maximum, CLS 0, and transfer weight up to 247 KiB. Evidence: `artifacts/v2-round3/lighthouse-hosted.json`.
 
 ## External references
 
