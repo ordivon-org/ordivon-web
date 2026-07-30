@@ -23,6 +23,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) notFound();
+  const Content = article.Content;
   const index = articles.findIndex((item) => item.slug === article.slug);
   const previous = articles[index + 1];
   const next = articles[index - 1];
@@ -39,8 +40,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <ArticleToc entries={article.toc} />
         <div className="article-column">
           <p className="article-lead">{article.lead}</p>
-          <div className="article-body" dangerouslySetInnerHTML={{ __html: article.bodyHtml }} />
-          {article.footerHtml && <footer className="article-footer" dangerouslySetInnerHTML={{ __html: article.footerHtml }} />}
+          <div className="article-body"><Content /></div>
         </div>
       </div>
       <aside className="related-reading page-shell"><p className="section-index">Related reading</p><h2>{article.relatedHeading || "Continue through the system."}</h2><div>{article.related.map((item) => <Link href={item.href} key={`${item.href}-${item.title}`}>{item.title}<span>↗</span></Link>)}</div></aside>

@@ -8,11 +8,11 @@ export const metadata: Metadata = {
 
 const facts = [
   ["Framework", "Next.js App Router + React"],
-  ["Writing", "Deterministic V1 migration + local MDX"],
+  ["Writing", "Typed metadata + composable MDX"],
   ["Delivery", "Static export via Workers Static Assets"],
-  ["Verification", "TypeScript, ESLint, Playwright, axe, Lighthouse"],
-  ["Recovery", "Exact V1 archive, visual evidence, hashes, route map"],
-  ["Production", "V1 remains live until explicit cutover"],
+  ["Verification", "TypeScript, ESLint, Chromium smoke, focused axe checks"],
+  ["Recovery", "Git history + redeploy"],
+  ["State", "Structured content at build time; no application backend"],
 ] as const;
 
 export default function ColophonPage() {
@@ -48,7 +48,7 @@ export default function ColophonPage() {
             Every public route is generated at build time. Cloudflare Workers Static Assets serves immutable assets, redirects, security headers, RSS, metadata, and custom error pages without a database, ISR layer, or request-time application module.
           </p>
           <p>
-            Production remains the archived V1 site until the hosted edge checks, release checks, cutover rehearsal, and rollback proof all pass together.
+            The repository keeps only checks that protect visible routes, content composition, and basic accessibility. Deployment recovery is a Git revert and redeploy, not a parallel evidence system.
           </p>
         </div>
       </section>

@@ -1,4 +1,5 @@
-import articleData from "../content/writing/articles.json";
+import AxeBuilder from "@axe-core/playwright";
+import { articleMetadata } from "../content/articles/registry";
 import { expect, test } from "@playwright/test";
 
 const coreRoutes = [
@@ -19,14 +20,13 @@ for (const route of coreRoutes) {
 }
 
 test("all migrated writing routes render", async ({ request }) => {
-  for (const { slug } of articleData) {
+  for (const { slug } of articleMetadata) {
     const response = await request.get(`/writing/${slug}`);
     expect(response.status(), slug).toBe(200);
   }
 });
 
 test("publishing endpoints render", async ({ request }) => {
-  expect((await request.get("/api/health")).status()).toBe(200);
   expect((await request.get("/feed.xml")).headers()["content-type"]).toContain("application/rss+xml");
   expect((await request.get("/sitemap.xml")).status()).toBe(200);
   expect((await request.get("/robots.txt")).status()).toBe(200);
@@ -49,6 +49,15 @@ test("internal navigation targets resolve", async ({ page, request }) => {
   }
 });
 
+test("research graph drives current and project views", async ({ page }) => {
+  await page.goto("/now", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Web gained a typed research graph" })).toBeVisible();
+  await expect(page.getByText("Can the public site expose Ordivon as a changing research graph rather than a directory of pages?")).toBeVisible();
+
+  await page.goto("/projects/runtime", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Which real structured operation can complete the full Effect contract?" })).toBeVisible();
+});
+
 test("article navigation matches viewport", async ({ page, isMobile }) => {
   await page.goto("/writing/the-future-will-not-wait", { waitUntil: "domcontentloaded" });
   if (isMobile) {
@@ -57,5 +66,15 @@ test("article navigation matches viewport", async ({ page, isMobile }) => {
   } else {
     await expect(page.locator(".article-rail")).toBeVisible();
     await expect(page.locator(".article-toc-mobile")).toBeHidden();
+  }
+});
+
+
+test("core pages have no serious accessibility violations", async ({ page }) => {
+  for (const route of ["/", "/projects", "/writing", "/projects/runtime"]) {
+    await page.goto(route, { waitUntil: "domcontentloaded" });
+    const results = await new AxeBuilder({ page }).analyze();
+    const serious = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact || ""));
+    expect(serious, route).toEqual([]);
   }
 });

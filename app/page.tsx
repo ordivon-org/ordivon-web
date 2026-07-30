@@ -2,10 +2,17 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { SystemMap } from "@/components/system-map";
 import { articles, formatDate } from "@/lib/content";
+import { graphUpdatedAt } from "@/lib/graph";
 import { projects } from "@/lib/projects";
 
 export default function HomePage() {
   const featured = articles.slice(0, 3);
+  const runtime = projects.find((project) => project.slug === "runtime");
+  const currentMetrics = [
+    ...(runtime?.evidence || []),
+    { value: "UNKNOWN", label: "preserved, not guessed" },
+  ];
+
   return (
     <>
       <section className="home-hero page-shell">
@@ -16,12 +23,12 @@ export default function HomePage() {
           <div className="actions"><Link className="button primary" href="/projects">Explore the system</Link><Link className="button text" href="/writing">Read the argument <span>↗</span></Link></div>
         </div>
         <div className="hero-proof" aria-label="Current system status">
-          <div className="proof-label"><span>Current snapshot</span><time dateTime="2026-07-30">30 July 2026</time></div>
+          <div className="proof-label"><span>Current snapshot</span><time dateTime={graphUpdatedAt}>{formatDate(graphUpdatedAt)}</time></div>
           <dl>
             <div><dt>Semantic continuity</dt><dd>Host journal and recoverable Tasks</dd></div>
-            <div><dt>Physical execution</dt><dd>13-tool production Runtime</dd></div>
+            <div><dt>Physical execution</dt><dd>Production Runtime with durable effect identity</dd></div>
             <div><dt>World interaction</dt><dd>Conditioned paths, provider actions, and reconciliation</dd></div>
-            <div><dt>Public record</dt><dd>Source-linked writing and evidence</dd></div>
+            <div><dt>Public record</dt><dd>Composable MDX connected by a typed research graph</dd></div>
           </dl>
         </div>
       </section>
@@ -62,7 +69,7 @@ export default function HomePage() {
           <Link className="text-link" href="/writing/runtime-after-core">Read the engineering report <span>↗</span></Link>
         </div>
         <div className="current-metrics">
-          <div><strong>13</strong><span>public tools</span></div><div><strong>42</strong><span>Workspaces reclaimed</span></div><div><strong>3.4 GB</strong><span>retained store</span></div><div><strong>UNKNOWN</strong><span>preserved, not guessed</span></div>
+          {currentMetrics.map((metric) => <div key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></div>)}
         </div>
       </section>
 
