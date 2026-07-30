@@ -2,7 +2,7 @@ import { spawn } from "node:child_process";
 
 const port = 8788;
 const external = process.env.PW_EXTERNAL_SERVER === "1";
-const base = process.env.PW_BASE_URL || `http://127.0.0.1:${port}`;
+const base = process.env.PW_BASE_URL || process.env.HOSTED_BASE_URL || (external ? "https://ordivon-web-v2-preview.ordivon-lab.workers.dev" : `http://127.0.0.1:${port}`);
 const image = "mcr.microsoft.com/playwright:v1.62.0-noble";
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const preview = external ? null : spawn("pnpm", ["exec", "wrangler", "dev", "--port", String(port)], { stdio: ["ignore", "pipe", "pipe"], detached: true });

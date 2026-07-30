@@ -1,3 +1,4 @@
+import articleData from "../content/writing/articles.json";
 import { expect, test } from "@playwright/test";
 
 const coreRoutes = [
@@ -18,7 +19,7 @@ for (const route of coreRoutes) {
 }
 
 test("all migrated writing routes render", async ({ request }) => {
-  for (const slug of ["the-future-will-not-wait", "runtime-after-core", "link-edge-boundary", "host-task-continuity", "ordivon-runtime-release", "why-ordivon"]) {
+  for (const { slug } of articleData) {
     const response = await request.get(`/writing/${slug}`);
     expect(response.status(), slug).toBe(200);
   }

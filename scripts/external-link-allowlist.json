@@ -1,0 +1,25 @@
+{
+  "generatedAt": "2026-07-30",
+  "entries": [
+    {
+      "url": "https://data.iaea.org/group/about/safeguards-and-verification",
+      "reason": "IAEA blocks automated verification with HTTP 403",
+      "expiresOn": "2027-01-30"
+    },
+    {
+      "url": "https://law-ai.org/computing-power-and-the-governance-of-artificial-intelligence/",
+      "reason": "LawAI blocks automated verification with HTTP 403",
+      "expiresOn": "2027-01-30"
+    },
+    {
+      "url": "https://www.oecd.org/en/publications/is-generative-ai-a-general-purpose-technology_704e2d12-en.html",
+      "reason": "OECD blocks automated verification with HTTP 403",
+      "expiresOn": "2027-01-30"
+    },
+    {
+      "url": "https://www.unep.org/ozonaction/who-we-are/about-montreal-protocol",
+      "reason": "UNEP blocks automated verification with HTTP 403",
+      "expiresOn": "2027-01-30"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const externalServer = process.env.PW_EXTERNAL_SERVER === "1";
-const baseURL = process.env.PW_BASE_URL || "http://127.0.0.1:8788";
+const baseURL = process.env.PW_BASE_URL || process.env.HOSTED_BASE_URL || (externalServer ? "https://ordivon-web-v2-preview.ordivon-lab.workers.dev" : "http://127.0.0.1:8788");
 
 export default defineConfig({
   testDir: "./tests/release",

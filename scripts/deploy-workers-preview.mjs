@@ -18,8 +18,12 @@ const env = {
   WRANGLER_SEND_METRICS: "false",
   NODE_OPTIONS: [process.env.NODE_OPTIONS, "--dns-result-order=ipv4first"].filter(Boolean).join(" "),
 };
-const revision = spawnSync("git", ["rev-parse", "--short=12", "HEAD"], { encoding: "utf8" }).stdout.trim() || "unknown";
-const args = ["node_modules/wrangler/bin/wrangler.js", "deploy", "--config", "wrangler.jsonc", "--message", `Ordivon Web V2 Round 3 hosted preview ${revision}`];
+const status = spawnSync("git", ["status", "--porcelain"], { encoding: "utf8" });
+if (status.status !== 0 || status.stdout.trim()) throw new Error("refusing to deploy a dirty or unreadable Git worktree");
+const revisionResult = spawnSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" });
+const revision = revisionResult.status === 0 ? revisionResult.stdout.trim() : "";
+if (!/^[0-9a-f]{40}$/.test(revision)) throw new Error("refusing to deploy without an exact Git revision");
+const args = ["node_modules/wrangler/bin/wrangler.js", "deploy", "--config", "wrangler.jsonc", "--message", `Ordivon Web V2 hosted preview ${revision}`];
 const child = spawn(process.execPath, args, { env, stdio: "inherit" });
 child.once("error", (error) => { throw error; });
 child.once("exit", (code, signal) => {

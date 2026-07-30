@@ -51,10 +51,12 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec playwright install --with-deps chromium firefox webkit
-      - run: pnpm build
+      - run: pnpm verify:reproducible
       - run: pnpm test:cross-browser
       - run: pnpm audit:lighthouse
       - run: pnpm audit:links
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:

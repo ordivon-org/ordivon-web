@@ -5,7 +5,8 @@ import net from "node:net";
 import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 
 const previewPort = 8788;
-const externalBase = process.env.LIGHTHOUSE_BASE_URL?.replace(/\/$/, "");
+const hostedMode = process.env.LIGHTHOUSE_HOSTED === "1";
+const externalBase = (process.env.HOSTED_BASE_URL || process.env.LIGHTHOUSE_BASE_URL || (hostedMode ? "https://ordivon-web-v2-preview.ordivon-lab.workers.dev" : ""))?.replace(/\/$/, "");
 const base = externalBase || `http://127.0.0.1:${previewPort}`;
 const server = externalBase ? null : spawn("pnpm", ["exec", "wrangler", "dev", "--port", String(previewPort)], { stdio: ["ignore", "pipe", "pipe"], detached: true });
 let serverLog = "";
@@ -84,7 +85,8 @@ const routes = [
 ];
 const modes = ["mobile", "desktop"];
 const runsPerAudit = 5;
-const report = { generatedAt: new Date().toISOString(), environment: externalBase ? `hosted:${externalBase}` : "wrangler-workers-static-assets", aggregation: "median-of-five", runsPerAudit, results: [] };
+const maxTransferBytes = externalBase ? 350_000 : 300_000;
+const report = { generatedAt: new Date().toISOString(), environment: externalBase ? `hosted:${externalBase}` : "wrangler-workers-static-assets", aggregation: "median-of-five", runsPerAudit, budgets: { maxTransferBytes }, results: [] };
 
 function median(values) {
   const sorted = [...values].sort((a, b) => a - b);
@@ -153,7 +155,7 @@ try {
         assert(row.metrics.largestContentfulPaintMs <= 2500, `${mode} ${route}: median LCP ${row.metrics.largestContentfulPaintMs}`);
         assert(row.metrics.totalBlockingTimeMs <= 200, `${mode} ${route}: median TBT ${row.metrics.totalBlockingTimeMs}`);
         assert(row.metrics.cumulativeLayoutShift <= 0.1, `${mode} ${route}: median CLS ${row.metrics.cumulativeLayoutShift}`);
-        assert(row.metrics.totalByteWeight <= 700_000, `${mode} ${route}: median bytes ${row.metrics.totalByteWeight}`);
+        assert(row.metrics.totalByteWeight <= maxTransferBytes, `${mode} ${route}: median bytes ${row.metrics.totalByteWeight} > ${maxTransferBytes}`);
         const tbtRuns = attempts.map((item) => item.metrics.totalBlockingTimeMs).join("/");
         console.log(`${mode.padEnd(7)} ${slug.padEnd(8)} P${row.scores.performance} A${row.scores.accessibility} B${row.scores.bestPractices} S${row.scores.seo} LCP=${row.metrics.largestContentfulPaintMs}ms TBT=${row.metrics.totalBlockingTimeMs}ms [${tbtRuns}] CLS=${row.metrics.cumulativeLayoutShift} bytes=${row.metrics.totalByteWeight}`);
       } finally {

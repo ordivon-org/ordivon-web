@@ -1,3 +1,4 @@
+import articleData from "../../content/writing/articles.json";
 import { expect, test } from "@playwright/test";
 
 const routes = ["/", "/projects", "/projects/runtime", "/projects/world", "/writing", "/writing/the-future-will-not-wait", "/about"];
@@ -27,13 +28,13 @@ for (const route of routes) {
 test("writing filter remains interactive", async ({ page }) => {
   await page.goto("/writing", { waitUntil: "domcontentloaded" });
   const allRows = await page.locator(".writing-row").count();
-  expect(allRows).toBe(6);
+  expect(allRows).toBe(articleData.length);
   const reportButton = page.getByRole("button", { name: /Engineering report/i });
   if (await reportButton.count()) {
     await expect(reportButton).toBeEnabled();
     await reportButton.click();
     await expect(reportButton).toHaveClass(/active/);
-    await expect(page.locator(".writing-row")).toHaveCount(1);
+    await expect(page.locator(".writing-row")).toHaveCount(articleData.filter((article) => article.type === "Engineering report").length);
   }
 });
 

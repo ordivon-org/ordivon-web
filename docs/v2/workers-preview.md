@@ -33,11 +33,10 @@ pnpm deploy
 ## Mandatory verification
 
 ```bash
-pnpm verify:hosted
-pnpm test:cross-browser:hosted:host
-pnpm test:webkit:hosted
-pnpm audit:lighthouse:hosted
+HOSTED_BASE_URL=https://<verified-host> pnpm check:hosted
 ```
+
+All Hosted sub-gates consume the same `HOSTED_BASE_URL`. When it is omitted they use the stable `workers.dev` service URL.
 
 
 When the workstation network path cannot resolve the stable `workers.dev` hostname correctly, the same deployed version may be verified through a narrowly scoped temporary custom hostname. The hostname must be independently named, mapped only to this service, recorded as verification transport, and removed immediately after the full protocol/browser/Lighthouse matrix. It must never reuse the apex, `www`, or `lab`.
@@ -45,7 +44,7 @@ When the workstation network path cannot resolve the stable `workers.dev` hostna
 The hosted candidate is accepted only when:
 
 1. deployed version metadata identifies the approved Git candidate;
-2. all 16 canonical routes, 36 redirects, 14 immutable assets, RSS, sitemap, robots, health JSON, social image, security headers, and 404 pass;
+2. all content-derived canonical routes, every declared redirect, every referenced immutable asset, RSS, sitemap, robots, health JSON, social image, security headers, and 404 pass;
 3. Chromium, Firefox, mobile Chromium, and WebKit pass the public-edge matrix;
 4. hosted Lighthouse medians satisfy the unchanged budgets;
 5. `ordivon.com`, `www`, and `lab` remain on their previous production configuration.

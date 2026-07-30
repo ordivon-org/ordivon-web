@@ -27,7 +27,15 @@ try {
   assert(sitemapResponse.status === 200, `sitemap ${sitemapResponse.status}`);
   const sitemapText = await sitemapResponse.text();
   const sitemapRoutes = [...sitemapText.matchAll(/<loc>https:\/\/ordivon\.com([^<]*)<\/loc>/g)].map((m) => m[1] || "/");
-  assert(sitemapRoutes.length === 16, `expected 16 sitemap routes, got ${sitemapRoutes.length}`);
+  const articleData = JSON.parse(await readFile("content/writing/articles.json", "utf8"));
+const expectedRoutes = [
+  "/", "/projects", "/writing", "/now", "/about", "/colophon",
+  "/projects/computing", "/projects/host", "/projects/runtime", "/projects/world",
+  ...articleData.map((article) => `/writing/${article.slug}`),
+];
+assert(new Set(sitemapRoutes).size === sitemapRoutes.length, "duplicate sitemap routes");
+assert(sitemapRoutes.length === expectedRoutes.length, `sitemap route count ${sitemapRoutes.length} != content-derived ${expectedRoutes.length}`);
+for (const route of expectedRoutes) assert(sitemapRoutes.includes(route), `sitemap missing ${route}`);
   const htmlByRoute = new Map();
   const internalTargets = new Set();
   const staticAssets = new Set();
@@ -85,10 +93,10 @@ try {
   const feed = await request("/feed.xml");
   assert(feed.status === 200 && (feed.headers.get("content-type") || "").includes("application/rss+xml"), "feed endpoint");
   const feedText = await feed.text();
-  assert((feedText.match(/<item>/g) || []).length === 6, "feed item count");
+  assert((feedText.match(/<item>/g) || []).length === articleData.length, `feed item count != ${articleData.length}`);
   const robots = await request("/robots.txt");
   const robotsText = await robots.text();
-  assert(robotsText.includes("Disallow: /preview-mdx") && robotsText.includes("https://ordivon.com/sitemap.xml"), "robots policy");
+  assert(robotsText.includes("https://ordivon.com/sitemap.xml") && !robotsText.includes("preview-mdx"), "robots policy");
   const health = await request("/api/health");
   assert(health.status === 200, "health status");
   const healthJson = await health.json();

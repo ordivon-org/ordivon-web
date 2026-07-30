@@ -132,7 +132,7 @@ Workers Static Assets applies:
 
 ## Production boundary
 
-Production remains on GitHub Pages from `main@33c97c0409b370db9e8e870a591d5b93cf56b774`, which already carries the World correction. The initial Round 3 release-candidate freeze did not change production.
+Production remains on GitHub Pages from the independently frozen `production/v1-pages@33c97c0409b370db9e8e870a591d5b93cf56b774`, which carries the World correction and no longer couples rollback to `main`. The initial Round 3 release-candidate freeze did not change production.
 
 A later cutover rehearsal briefly proxied the apex and attached V2, proved semantic parity between production and the approved Preview, and then restored the pre-cutover GitHub Pages path before release approval. The current apex records are DNS-only GitHub Pages records, `www` remains the GitHub Pages alias, `lab` retains its redirect Worker, and no apex Worker Route remains. RUM and Browser Integrity Check were restored to their pre-rehearsal values. Account-level and DNS-level raw evidence is retained in a root-only archive; the repository keeps only `artifacts/v2-round3/cutover-rehearsal.json`, a sanitized receipt.
 

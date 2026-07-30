@@ -1,30 +1,31 @@
 # V2 production cutover runbook
 
-This document defines a future cutover from V1 GitHub Pages to the verified V2 Workers Static Assets service. It is a rehearsal specification, not authorization to change production.
+This document defines the production transition from the frozen V1 GitHub Pages origin to a verified V2 Workers Static Assets deployment. It is an execution specification, not authorization by itself.
 
-## Fixed identities
+## Fixed boundaries
 
-- Current production source: `main@33c97c0409b370db9e8e870a591d5b93cf56b774`.
-- V2 candidate branch: `rebuild/web-v2`.
+- V1 recovery origin: `production/v1-pages@33c97c0409b370db9e8e870a591d5b93cf56b774`.
+- GitHub Pages source: `production/v1-pages /`.
+- V2 development branch before merge: `rebuild/web-v2`.
+- V2 production source after merge: the exact merge commit on `main`.
 - V2 service: `ordivon-web-v2-preview`.
-- Hosted proof: `https://ordivon-web-v2-preview.ordivon-lab.workers.dev`.
 - Canonical production host: `https://ordivon.com`.
-- `www.ordivon.com` must continue redirecting to the apex.
+- `www.ordivon.com` must redirect to the apex.
 - `lab.ordivon.com` retains its existing redirect Worker unless separately approved.
 
 ## Go / no-go gate
 
 All conditions are mandatory:
 
-1. Candidate commit equals the successful GitHub Actions head.
-2. `pnpm check:release` passes in Ubuntu CI.
-3. Deployed Static Assets version is built from the candidate content.
-4. Hosted protocol, browser, metadata, redirect, cache, security-header, RSS, sitemap, 404, and Lighthouse gates pass.
-5. V1 archive and all evidence hashes verify.
-6. Current apex, `www`, and `lab` DNS/proxy state, Worker routes, GitHub Pages state, and certificates are exported.
-7. Rollback is dry-run from the captured state.
-8. No unrelated service, route, or DNS change is included.
-9. A human explicitly approves the production switch.
+1. GitHub Pages independently serves `production/v1-pages@33c97c0`, and its production response matches the captured V1 fingerprint.
+2. PR #31 is merged with a merge commit; squash and rebase are not permitted because the source and evidence commits must remain reachable.
+3. The exact `main` merge commit passes required `verify` and `release` checks.
+4. A clean worktree at that exact merge commit produces a byte-reproducible static export.
+5. The deployed Static Assets Version metadata names that exact merge commit.
+6. Hosted protocol, browser, metadata, redirect, cache, security-header, RSS, sitemap, 404, compression, and Lighthouse gates pass against the exact deployment.
+7. Current apex, `www`, and `lab` DNS/proxy state, Worker routes, GitHub Pages state, settings, and certificates are exported.
+8. Rollback to `production/v1-pages` is dry-run from the captured state.
+9. No unrelated service, route, setting, or DNS change is included.
 
 Any failed condition is a no-go.
 
@@ -32,43 +33,32 @@ Any failed condition is a no-go.
 
 Record immediately before the change:
 
-- `main`, candidate, Worker version, deployment, and CI IDs;
+- V1 Pages branch, `main`, Worker Version, Deployment, build manifest, and CI IDs;
 - apex, `www`, and `lab` DNS records and proxy state;
-- GitHub Pages custom-domain state;
-- all Cloudflare Worker routes matching the three hosts;
+- GitHub Pages source and custom-domain state;
+- all Worker routes matching the three hosts;
+- RUM and Browser Integrity Check state;
 - production headers and route matrix;
 - certificate status and expiration;
-- V1 homepage and representative article screenshots.
+- V1 homepage fingerprint and representative screenshots.
 
 ## Cutover sequence
 
-1. Freeze changes to `main` and `rebuild/web-v2`.
-2. Re-run all hosted gates against the exact `workers.dev` deployment.
-3. Create the narrowest production route for `ordivon.com/*` pointing to the approved Static Assets service.
-4. Make only the DNS proxy-state adjustment required for the Worker Route; preserve record targets until the route is proven.
-5. Verify TLS and apex routing before modifying `www` behavior.
-6. Preserve or recreate the canonical `www` redirect.
-7. Leave `lab.ordivon.com` unchanged.
-8. Verify every canonical route, all V1 redirects, RSS, sitemap, robots, Open Graph, cache policy, security headers, and custom 404 from multiple networks.
-9. Observe error rates, TLS, cache status, and response consistency before unfreezing changes.
+1. Freeze `main`, the deployed Worker Version, and `production/v1-pages`.
+2. Re-run all Hosted gates against the exact deployed Version using one `HOSTED_BASE_URL`.
+3. Confirm the V1 Pages origin remains independently healthy.
+4. Create the narrowest production route for `ordivon.com/*` pointing to the approved Static Assets service.
+5. Make only the apex proxy-state adjustment required for the Worker Route; preserve DNS record targets.
+6. Verify TLS, exact content identity, compression, and canonical routing before changing `www` behavior.
+7. Preserve or recreate the canonical `www` redirect.
+8. Leave `lab.ordivon.com` unchanged.
+9. Verify every canonical route, all redirects, RSS, sitemap, robots, Open Graph, cache policy, security headers, custom 404, and multiple network paths.
+10. Observe error rate, TLS, cache status, and response consistency before declaring completion.
 
 ## Immediate rollback triggers
 
-Rollback immediately for:
-
-- TLS or route activation failure;
-- inconsistent apex resolution or mixed origins;
-- any canonical public page returning 4xx/5xx;
-- V1 redirects becoming incorrect;
-- first-party resources blocked by CSP;
-- invalid RSS, sitemap, robots, Open Graph, or 404 behavior;
-- substantial browser-specific rendering failure;
-- production content differing from the approved deployment.
-
-## Success criteria
-
-Cutover is complete only when all canonical routes serve the approved V2 deployment, V1 redirects remain exact, `www` remains canonical, `lab` remains unchanged, production hosted gates pass, and the rollback snapshot remains intact.
+Rollback immediately for TLS or route activation failure, mixed origins, canonical 4xx/5xx responses, redirect drift, CSP/resource failures, invalid publishing endpoints, substantial browser rendering failures, compression loss, or production content differing from the approved deployment.
 
 ## Edge transformation guard
 
-Before attaching the production route, verify every canonical HTML response includes `Cache-Control: no-transform`. This prevents Cloudflare JavaScript Detections or automatic analytics injection from mutating approved HTML and conflicting with the strict site CSP. Scope the directive only to HTML routes: Cloudflare intentionally disables gzip, Brotli, and other edge compression when `no-transform` is present, so immutable JavaScript and CSS assets must never inherit it. Hosted verification must assert both sides of this boundary. Do not solve an injection conflict by widening the CSP.
+Every canonical HTML response must include `Cache-Control: no-transform`. Immutable JavaScript and CSS must not inherit it, because doing so disables useful edge compression. Hosted verification asserts both sides of this boundary. Do not widen CSP to accommodate unexpected edge injection.
