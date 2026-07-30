@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const facts = [
   ["Framework", "Next.js App Router + React"],
   ["Writing", "Typed metadata + composable MDX"],
-  ["Delivery", "Static export via Workers Static Assets"],
+  ["Delivery", "Static export via GitHub Pages"],
   ["Verification", "TypeScript, ESLint, Chromium smoke, focused axe checks"],
   ["Recovery", "Git history + redeploy"],
   ["State", "Structured content at build time; no application backend"],
@@ -45,7 +45,7 @@ export default function ColophonPage() {
             dated interpretation. Repositories, tests, receipts, and operational state remain canonical.
           </p>
           <p>
-            Every public route is generated at build time. Cloudflare Workers Static Assets serves immutable assets, redirects, security headers, RSS, metadata, and custom error pages without a database, ISR layer, or request-time application module.
+            Every public route is generated at build time and published through GitHub Pages. Cloudflare remains authoritative DNS only. Historical routes are materialized as static redirect documents, so the public site needs no database, ISR layer, Worker, or request-time application module.
           </p>
           <p>
             The repository keeps only checks that protect visible routes, content composition, and basic accessibility. Deployment recovery is a Git revert and redeploy, not a parallel evidence system.

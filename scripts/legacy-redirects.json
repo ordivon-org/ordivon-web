@@ -1,0 +1,20 @@
+{
+  "/work": "/projects",
+  "/work/computing": "/projects/computing",
+  "/work/ordivon-host": "/projects/host",
+  "/work/ordivon-runtime": "/projects/runtime",
+  "/work/ordivon-link": "/projects/world",
+  "/work/ordivon-edge": "/projects/world",
+  "/work/ordivon-world": "/projects/world",
+  "/work/ordivon-web": "/colophon",
+  "/projects/link": "/projects/world",
+  "/projects/edge": "/projects/world",
+  "/notes": "/writing",
+  "/notes/host-task-continuity": "/writing/host-task-continuity",
+  "/notes/link-edge-boundary": "/writing/link-edge-boundary",
+  "/notes/ordivon-runtime-release": "/writing/ordivon-runtime-release",
+  "/notes/runtime-after-core": "/writing/runtime-after-core",
+  "/notes/the-future-will-not-wait": "/writing/the-future-will-not-wait",
+  "/notes/why-ordivon": "/writing/why-ordivon",
+  "/contact": "/about#contact"
+}
