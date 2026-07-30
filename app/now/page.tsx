@@ -40,7 +40,6 @@ export default function NowPage() {
 
       <section className="now-frontier" aria-labelledby="now-frontier-title">
         <SectionHeading
-          index="01"
           eyebrow="Under test"
           title="Questions currently receiving real pressure."
           description="A Question remains on the frontier while an admitted experiment or workload can still change its judgment, project boundary, or next action."
@@ -58,7 +57,6 @@ export default function NowPage() {
 
       <section className="now-signals" aria-labelledby="now-signals-title">
         <SectionHeading
-          index="02"
           eyebrow="Latest signals"
           title="The newest objects admitted as evidence or public record."
           description="Recency does not imply confidence. Each object keeps its own type, status, and date rather than being flattened into a generic update."
@@ -77,7 +75,6 @@ export default function NowPage() {
 
       <section className="now-exits" aria-labelledby="now-exits-title">
         <SectionHeading
-          index="03"
           eyebrow="Structural exits"
           title="Progress includes removing boundaries that no longer earn themselves."
           description="These decisions changed repository ownership, reduced governance, or replaced a migration compromise. They remain visible because deletion is part of the research result."
@@ -96,7 +93,6 @@ export default function NowPage() {
 
       <section className="now-timeline-section" aria-labelledby="now-timeline-title">
         <SectionHeading
-          index="04"
           eyebrow="Change ledger"
           title="What changed the working model."
           description="Events are short dated records. Their connected Questions and evidence objects carry the longer argument."

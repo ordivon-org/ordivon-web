@@ -2,6 +2,14 @@ import type { GraphEvent } from "@/lib/graph/types";
 
 export const graphEvents = [
   {
+    id: "event:web-continuity-visual-thesis",
+    date: "2026-07-31",
+    type: "project",
+    title: "Web adopted one continuity-led visual thesis",
+    summary: "The homepage became a full-bleed research poster organized around one persistent trajectory, one dark surface system, one brand accent, concrete proof, and cardless evidence navigation.",
+    nodeIds: ["project:web", "question:web-research-interface", "experiment:host-h2-h6", "finding:host-state-above-session"],
+  },
+  {
     id: "event:web-writing-network",
     date: "2026-07-30",
     type: "project",

@@ -144,15 +144,38 @@ test("article context is derived from typed document relations", async ({ page }
   await expect(page.locator(".related-reading").getByRole("link", { name: /Why Task continuity belongs above execution/ })).toBeVisible();
 });
 
-test("homepage snapshot and features derive from the graph", async ({ page }) => {
+test("homepage presents one continuous dark visual thesis", async ({ page, isMobile }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
-  const snapshot = page.getByLabel("Current graph status");
-  await expect(snapshot.getByText("4 independent system layers")).toBeVisible();
-  await expect(snapshot.getByText("11 Questions · 6 currently under test")).toBeVisible();
-  await expect(snapshot.getByText("19 typed document relations")).toBeVisible();
-  await expect(page.getByText("Latest model change · Writing became an explorable argument network")).toBeVisible();
-  await expect(page.locator(".current-feature").getByRole("link", { name: "Open the Question dossier ↗" })).toHaveAttribute("href", /\/research\/.+\//);
-  await expect(page.getByRole("heading", { name: "Arguments are selected by connection, not recency alone." })).toBeVisible();
+  await expect(page.locator(".home-poster-brand")).toHaveText("ORDIVON");
+  await expect(page.getByRole("heading", { name: "Work should survive the intelligence that started it." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Task truth survived session loss, restart recovery, and model replacement." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Four owners. No shared fiction." })).toBeVisible();
+  await expect(page.locator(".home-owner-row")).toHaveCount(4);
+  await expect(page.locator(".home-frontier").getByRole("link", { name: /See the evidence and deletion condition/ })).toHaveAttribute("href", /\/research\/.+\//);
+  await expect(page.locator(".home-writing-row")).toHaveCount(3);
+  await expect(page.getByText("Latest change · Web adopted one continuity-led visual thesis")).toBeVisible();
+  await expect(page.locator(".current-feature")).toHaveCount(0);
+  await expect(page.locator(".closing-statement")).toHaveCount(0);
+
+  const palette = await page.evaluate(() => {
+    const root = getComputedStyle(document.documentElement);
+    return {
+      accent: root.getPropertyValue("--accent").trim(),
+      success: root.getPropertyValue("--success").trim(),
+      frontier: getComputedStyle(document.querySelector(".home-frontier")!).backgroundColor,
+      final: getComputedStyle(document.querySelector(".home-final")!).backgroundColor,
+    };
+  });
+  expect(palette.accent).toBe("#9187ff");
+  expect(palette.success).toBe("#70cba2");
+  expect(palette.frontier).toBe("rgb(23, 29, 41)");
+  expect(palette.final).toBe("rgb(17, 22, 32)");
+
+  const poster = await page.locator(".home-poster").boundingBox();
+  const header = await page.locator(".site-header").boundingBox();
+  expect(poster).not.toBeNull();
+  expect(header).not.toBeNull();
+  expect(Math.abs((poster!.height + header!.height) - await page.evaluate(() => innerHeight))).toBeLessThan(isMobile ? 8 : 4);
 });
 
 test("article navigation matches viewport", async ({ page, isMobile }) => {

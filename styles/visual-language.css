@@ -1,21 +1,21 @@
 :root {
   --node-system: var(--accent);
-  --node-project: #b9a7ff;
-  --node-question: var(--signal);
-  --node-experiment: #62c7ff;
-  --node-finding: #e8d26e;
-  --node-decision: #ff858b;
-  --node-article: #d7d4ca;
-  --status-active: var(--accent);
+  --node-project: #8098bd;
+  --node-question: #d09872;
+  --node-experiment: #70a9c8;
+  --node-finding: #c9b675;
+  --node-decision: #bd8292;
+  --node-article: #aeb8c6;
+  --status-active: var(--success);
   --status-experimental: var(--signal);
-  --status-paused: #9b8bc4;
-  --status-retired: #666a63;
-  --status-historical: #747870;
-  --relation-dependency: #d7d4ca;
+  --status-paused: #8980a8;
+  --status-retired: #59616c;
+  --status-historical: #69727f;
+  --relation-dependency: #aeb8c6;
   --relation-implementation: var(--accent);
   --relation-test: var(--signal);
-  --relation-support: #e8d26e;
-  --relation-document: #b9a7ff;
+  --relation-support: #c9b675;
+  --relation-document: #8098bd;
 }
 
 .kind-system { --node-color: var(--node-system); }
