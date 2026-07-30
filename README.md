@@ -52,7 +52,7 @@ Core gates:
 - `pnpm check:hosted` validates the actual `workers.dev` deployment through the complete hosted protocol matrix, Chromium, Firefox, mobile Chromium, containerized WebKit, and 60 hosted Lighthouse runs.
 - `pnpm verify:static` validates canonical pages, metadata, JSON-LD, internal links, anchors, RSS, robots, health, security headers, cache policy, all V1 redirects, immutable assets, and the custom 404 through `wrangler dev`.
 - `pnpm verify:hosted` repeats that protocol boundary against the public Cloudflare edge and additionally asserts Cloudflare response identity.
-- `pnpm audit:lighthouse` runs each route/device audit five times in an independent route/device Chrome profile and enforces the median against the mobile and desktop performance budgets.
+- `pnpm audit:lighthouse` runs five baseline measurements per route/device in a fresh Chrome. If and only if the aggregate fails solely on timing-sensitive Performance, LCP, or TBT budgets, it runs one complete confirmation batch in another fresh Chrome; deterministic accessibility, best-practice, SEO, CLS, or transfer failures never retry.
 - `pnpm audit:links` uses direct HTTP, GitHub REST API fallback, and an expiring explicit restriction allowlist; new unreachable, server-error, client-error, or unapproved restricted references fail the gate.
 - `pnpm deploy` builds and uploads `out/` to the non-production Static Assets service. It reads `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`, or the existing root-only Ordivon secret file; credentials are never included in the bundle or artifacts.
 

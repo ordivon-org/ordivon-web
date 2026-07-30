@@ -46,5 +46,5 @@ The hosted candidate is accepted only when:
 1. deployed version metadata identifies the approved Git candidate;
 2. all content-derived canonical routes, every declared redirect, every referenced immutable asset, RSS, sitemap, robots, health JSON, social image, security headers, and 404 pass;
 3. Chromium, Firefox, mobile Chromium, and WebKit pass the public-edge matrix;
-4. hosted Lighthouse medians satisfy the unchanged budgets;
+4. hosted Lighthouse medians satisfy the unchanged budgets; a timing-only failure may use one recorded fresh-browser confirmation batch, while deterministic category, CLS, or transfer failures do not retry;
 5. `ordivon.com`, `www`, and `lab` remain on their previous production configuration.
