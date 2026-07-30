@@ -2,7 +2,7 @@
 
 The public research and engineering interface for Ordivon.
 
-The site is built with Next.js, React, TypeScript, and MDX, exported as static assets, and deployed through Cloudflare Workers Static Assets. The runtime remains intentionally simple; the browser experience is free to become visual, interactive, and exploratory.
+The site is built with Next.js, React, TypeScript, and MDX, exported as static files, and published from the `production/v1-pages` branch through GitHub Pages. Cloudflare remains the authoritative DNS provider; it is not an application runtime for this site.
 
 ## Runtime shape
 
@@ -13,10 +13,10 @@ structured content + React components
                 ↓
           out/ static export
                 ↓
- Cloudflare Workers Static Assets
+      GitHub Pages + custom domain
 ```
 
-There is no request-time application server, database, CMS, ISR cache, D1, KV, R2, Queue, or service binding.
+There is no request-time application server, database, CMS, ISR cache, Worker, D1, KV, R2, Queue, or service binding.
 
 ## Commands
 
@@ -29,7 +29,9 @@ pnpm check
 pnpm deploy
 ```
 
-`pnpm check` runs TypeScript, ESLint, a production build, and the Chromium desktop/mobile smoke suite. Release recovery is Git-based: revert to a known commit and redeploy rather than maintaining a second governance system inside the repository.
+`pnpm check` runs TypeScript, ESLint, a production build, and the Chromium desktop/mobile smoke suite.
+
+`pnpm deploy` refuses dirty or unmerged source, rebuilds the exact `origin/main` revision, replaces the contents of `production/v1-pages`, preserves the `ordivon.com` custom-domain claim, and materializes the small set of historical route redirects. GitHub Pages then publishes that branch. Recovery is a Git revert on `main` followed by another deployment.
 
 ## Content and source of truth
 

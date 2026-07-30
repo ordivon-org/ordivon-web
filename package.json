@@ -9,9 +9,9 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
-    "start": "wrangler dev --port 8788",
-    "preview": "pnpm build && wrangler dev --port 8788",
-    "deploy": "pnpm build && node scripts/deploy-workers-preview.mjs",
+    "start": "python3 -m http.server 8788 --directory out",
+    "preview": "pnpm build && pnpm start",
+    "deploy": "pnpm build && node scripts/deploy-pages.mjs",
     "typecheck": "next typegen && tsc --noEmit",
     "lint": "eslint --no-error-on-unmatched-pattern app components content lib scripts tests eslint.config.mjs mdx-components.tsx next.config.ts playwright.config.ts",
     "test": "playwright test tests/smoke.spec.ts",
@@ -35,7 +35,6 @@
     "@types/react-dom": "19.2.3",
     "eslint": "9.39.2",
     "eslint-config-next": "16.2.12",
-    "typescript": "6.0.2",
-    "wrangler": "4.115.0"
+    "typescript": "6.0.2"
   }
 }

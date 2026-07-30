@@ -16,6 +16,7 @@ function resolveBuildId() {
 
 const config: NextConfig = {
   output: "export",
+  trailingSlash: true,
   generateBuildId: async () => resolveBuildId(),
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   poweredByHeader: false,
