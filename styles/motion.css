@@ -1,0 +1,36 @@
+@keyframes system-node-enter {
+  from { opacity: 0; transform: translateY(12px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes system-edge-enter {
+  from { opacity: 0; stroke-dashoffset: 70; }
+  to { opacity: 1; stroke-dashoffset: 0; }
+}
+
+@keyframes system-status-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--status-color) 0%, transparent); }
+  50% { box-shadow: 0 0 0 5px color-mix(in srgb, var(--status-color) 13%, transparent); }
+}
+
+.system-node-object {
+  animation: system-node-enter .45s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.system-edge path:first-child {
+  animation: system-edge-enter .6s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.graph-node-card.active .graph-node-meta i,
+.system-owner-card > div i {
+  animation: system-status-pulse 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .system-node-object,
+  .system-edge path:first-child,
+  .graph-node-card.active .graph-node-meta i,
+  .system-owner-card > div i {
+    animation: none;
+  }
+}

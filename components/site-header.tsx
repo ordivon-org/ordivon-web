@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BrandMark } from "./brand-mark";
 
 const navigation = [
+  ["System", "/system"],
   ["Projects", "/projects"],
   ["Writing", "/writing"],
   ["Current", "/now"],

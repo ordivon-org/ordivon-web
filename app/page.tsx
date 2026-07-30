@@ -20,7 +20,7 @@ export default function HomePage() {
           <p className="eyebrow"><span>Independent research + engineering</span><b>2026</b></p>
           <h1>Agents should outlive the sessions that think for them.</h1>
           <p className="hero-lede">Ordivon builds the layers that let capable agents continue work, commit actions, reconcile external interactions, preserve evidence, and change models without starting over.</p>
-          <div className="actions"><Link className="button primary" href="/projects">Explore the system</Link><Link className="button text" href="/writing">Read the argument <span>↗</span></Link></div>
+          <div className="actions"><Link className="button primary" href="/system">Explore the system</Link><Link className="button text" href="/writing">Read the argument <span>↗</span></Link></div>
         </div>
         <div className="hero-proof" aria-label="Current system status">
           <div className="proof-label"><span>Current snapshot</span><time dateTime={graphUpdatedAt}>{formatDate(graphUpdatedAt)}</time></div>

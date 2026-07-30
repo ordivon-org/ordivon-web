@@ -1,0 +1,43 @@
+:root {
+  --node-system: var(--accent);
+  --node-project: #b9a7ff;
+  --node-question: var(--signal);
+  --node-experiment: #62c7ff;
+  --node-finding: #e8d26e;
+  --node-decision: #ff858b;
+  --node-article: #d7d4ca;
+  --status-active: var(--accent);
+  --status-experimental: var(--signal);
+  --status-paused: #9b8bc4;
+  --status-retired: #666a63;
+  --status-historical: #747870;
+  --relation-dependency: #d7d4ca;
+  --relation-implementation: var(--accent);
+  --relation-test: var(--signal);
+  --relation-support: #e8d26e;
+  --relation-document: #b9a7ff;
+}
+
+.kind-system { --node-color: var(--node-system); }
+.kind-project { --node-color: var(--node-project); }
+.kind-question { --node-color: var(--node-question); }
+.kind-experiment { --node-color: var(--node-experiment); }
+.kind-finding { --node-color: var(--node-finding); }
+.kind-decision { --node-color: var(--node-decision); }
+.kind-article { --node-color: var(--node-article); }
+
+.status-active { --status-color: var(--status-active); }
+.status-experimental { --status-color: var(--status-experimental); }
+.status-paused { --status-color: var(--status-paused); }
+.status-retired { --status-color: var(--status-retired); }
+.status-historical { --status-color: var(--status-historical); }
+
+.relation-depends_on { --relation-color: var(--relation-dependency); --relation-dash: 8 8; }
+.relation-defines { --relation-color: var(--relation-implementation); --relation-dash: 2 7; }
+.relation-implements { --relation-color: var(--relation-implementation); --relation-dash: 0; }
+.relation-tests { --relation-color: var(--relation-test); --relation-dash: 12 6 2 6; }
+.relation-supports { --relation-color: var(--relation-support); --relation-dash: 0; }
+.relation-documents { --relation-color: var(--relation-document); --relation-dash: 5 6; }
+.relation-raises { --relation-color: var(--node-question); --relation-dash: 3 6; }
+.relation-contradicts { --relation-color: var(--node-decision); --relation-dash: 2 4; }
+.relation-supersedes { --relation-color: var(--node-decision); --relation-dash: 10 3; }
