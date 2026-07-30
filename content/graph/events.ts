@@ -2,6 +2,14 @@ import type { GraphEvent } from "@/lib/graph/types";
 
 export const graphEvents = [
   {
+    id: "event:web-writing-network",
+    date: "2026-07-30",
+    type: "project",
+    title: "Writing became an explorable argument network",
+    summary: "Article relevance, research anchors, nearest arguments, and homepage features now derive from typed document relations instead of hand-maintained related links.",
+    nodeIds: ["project:web", "question:web-research-interface", "article:runtime-after-core", "article:host-task-continuity"],
+  },
+  {
     id: "event:web-research-dossiers",
     date: "2026-07-30",
     type: "project",

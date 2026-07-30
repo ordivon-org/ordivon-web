@@ -40,6 +40,10 @@ function validateGraph() {
     if (node.updatedAt) validateDate(node.updatedAt, node.id);
     if (node.kind === "experiment" || node.kind === "finding" || node.kind === "decision" || node.kind === "article") validateDate(node.date, node.id);
   }
+  for (const article of graphNodes.filter((node): node is ArticleNode => node.kind === "article")) {
+    const documents = graphRelations.filter((relation) => relation.type === "documents" && relation.source === article.id);
+    if (!documents.length) throw new Error(`${article.id} does not document any graph object`);
+  }
   for (const event of graphEvents) {
     validateDate(event.date, event.id);
     for (const nodeId of event.nodeIds) if (!nodeById.has(nodeId)) throw new Error(`${event.id} references missing node ${nodeId}`);

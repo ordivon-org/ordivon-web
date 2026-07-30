@@ -14,9 +14,9 @@
     "deploy": "pnpm build && node scripts/deploy-pages.mjs",
     "typecheck": "next typegen && tsc --noEmit",
     "lint": "eslint --no-error-on-unmatched-pattern app components content lib scripts tests eslint.config.mjs mdx-components.tsx next.config.ts playwright.config.ts",
-    "test": "playwright test tests/smoke.spec.ts",
-    "test:smoke": "playwright test tests/smoke.spec.ts",
-    "check": "pnpm typecheck && pnpm lint && pnpm build && pnpm test"
+    "test": "pnpm build && playwright test tests/smoke.spec.ts",
+    "test:smoke": "pnpm build && playwright test tests/smoke.spec.ts",
+    "check": "pnpm typecheck && pnpm lint && pnpm build && playwright test tests/smoke.spec.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.1",
