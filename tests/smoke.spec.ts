@@ -3,7 +3,7 @@ import { articleMetadata } from "../content/articles/registry";
 import { expect, test } from "@playwright/test";
 
 const coreRoutes = [
-  "/", "/projects", "/projects/computing", "/projects/host", "/projects/runtime", "/projects/world",
+  "/", "/system", "/projects", "/projects/computing", "/projects/host", "/projects/runtime", "/projects/world",
   "/writing", "/writing/the-future-will-not-wait", "/writing/runtime-after-core", "/now", "/about", "/colophon",
 ];
 
@@ -34,7 +34,7 @@ test("publishing endpoints render", async ({ request }) => {
 });
 
 test("internal navigation targets resolve", async ({ page, request }) => {
-  const sourceRoutes = ["/", "/projects", "/writing", "/about", "/now", "/projects/runtime", "/writing/the-future-will-not-wait"];
+  const sourceRoutes = ["/", "/system", "/projects", "/writing", "/about", "/now", "/projects/runtime", "/writing/the-future-will-not-wait"];
   const targets = new Set<string>();
   for (const route of sourceRoutes) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
@@ -58,6 +58,27 @@ test("research graph drives current and project views", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Which real structured operation can complete the full Effect contract?" })).toBeVisible();
 });
 
+
+test("system explorer switches perspective and inspects typed nodes", async ({ page }) => {
+  await page.goto("/system", { waitUntil: "domcontentloaded" });
+  await expect(page.locator(".system-explorer")).toHaveAttribute("data-ready", "true");
+  await expect(page.getByRole("button", { name: "Structure State ownership" })).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByLabel("Selected graph node").getByRole("heading", { name: "Host", exact: true })).toBeVisible();
+  const hostRepository = page.getByRole("button", { name: /Host repository.*Ordivon Host/ });
+  await hostRepository.focus();
+  await expect(page.getByLabel("Selected graph node").getByRole("heading", { name: "Ordivon Host" })).toBeVisible();
+  await hostRepository.press("Enter");
+  await expect(hostRepository).toHaveAttribute("aria-pressed", "true");
+
+  await page.getByRole("button", { name: "Research Judgment trajectory" }).click();
+  await expect(page.getByRole("button", { name: /Web question.*Can the public site expose Ordivon/ })).toBeVisible();
+  await page.getByRole("button", { name: /Finding.*Release governance had become larger/ }).first().click();
+  await expect(page.getByLabel("Selected graph node").getByRole("heading", { name: "Release governance had become larger than the Web interface it protected" })).toBeVisible();
+
+  await page.getByRole("button", { name: "Execution Effect path" }).click();
+  await expect(page.getByRole("button", { name: /Runtime.*Ordivon Runtime/ })).toBeVisible();
+});
+
 test("article navigation matches viewport", async ({ page, isMobile }) => {
   await page.goto("/writing/the-future-will-not-wait", { waitUntil: "domcontentloaded" });
   if (isMobile) {
@@ -71,7 +92,7 @@ test("article navigation matches viewport", async ({ page, isMobile }) => {
 
 
 test("core pages have no serious accessibility violations", async ({ page }) => {
-  for (const route of ["/", "/projects", "/writing", "/projects/runtime"]) {
+  for (const route of ["/", "/system", "/projects", "/writing", "/projects/runtime"]) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
     const results = await new AxeBuilder({ page }).analyze();
     const serious = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact || ""));

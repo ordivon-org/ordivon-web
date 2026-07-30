@@ -2,6 +2,14 @@ import type { GraphEvent } from "@/lib/graph/types";
 
 export const graphEvents = [
   {
+    id: "event:web-system-explorer",
+    date: "2026-07-30",
+    type: "project",
+    title: "System became an explorable research space",
+    summary: "A typed SVG interface now exposes state ownership, execution paths, and research trajectories with node inspection and relation highlighting.",
+    nodeIds: ["project:web", "question:web-research-interface"],
+  },
+  {
     id: "event:web-graph-kernel",
     date: "2026-07-30",
     type: "project",

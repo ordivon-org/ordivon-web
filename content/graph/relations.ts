@@ -28,13 +28,21 @@ const researchRelations: GraphRelation[] = [
   { id: "relation:runtime-experiment-tests", type: "tests", source: "experiment:runtime-production-dogfood", target: "question:runtime-boundary-friction" },
   { id: "relation:runtime-finding-supports", type: "supports", source: "finding:runtime-commitment-boundary", target: "question:runtime-structured-effect" },
   { id: "relation:world-experiment-tests", type: "tests", source: "experiment:world-unification", target: "question:world-boundary-value" },
+  { id: "relation:world-experiment-supports-finding", type: "supports", source: "experiment:world-unification", target: "finding:link-edge-boundary-wrong" },
   { id: "relation:world-finding-supports", type: "supports", source: "finding:link-edge-boundary-wrong", target: "decision:unify-world" },
   { id: "relation:web-experiment-tests", type: "tests", source: "experiment:web-governance-audit", target: "question:web-research-interface" },
+  { id: "relation:web-experiment-supports-finding", type: "supports", source: "experiment:web-governance-audit", target: "finding:web-governance-displaced-interface" },
   { id: "relation:web-finding-supports", type: "supports", source: "finding:web-governance-displaced-interface", target: "decision:thin-web-release" },
+  { id: "relation:web-thin-release-implements", type: "implements", source: "decision:thin-web-release", target: "question:web-research-interface" },
   { id: "relation:web-mdx-implements", type: "implements", source: "decision:mdx-writing", target: "question:web-research-interface" },
   { id: "relation:host-runtime-dependency", type: "depends_on", source: "system:host", target: "system:runtime", label: "dispatches physical effects" },
   { id: "relation:host-computing-dependency", type: "depends_on", source: "system:host", target: "system:computing", label: "implements shared contracts" },
   { id: "relation:world-computing-dependency", type: "depends_on", source: "system:world", target: "system:computing", label: "tests continuity contracts" },
+  { id: "relation:project-computing-defines-host", type: "defines", source: "project:computing", target: "project:host", label: "defines shared contracts" },
+  { id: "relation:project-computing-defines-runtime", type: "defines", source: "project:computing", target: "project:runtime", label: "defines effect contracts" },
+  { id: "relation:project-computing-defines-world", type: "defines", source: "project:computing", target: "project:world", label: "defines continuity contracts" },
+  { id: "relation:project-host-runtime-dependency", type: "depends_on", source: "project:host", target: "project:runtime", label: "commits local effects" },
+  { id: "relation:project-host-world-dependency", type: "depends_on", source: "project:host", target: "project:world", label: "acts through external bindings" },
 ];
 
 const articleRelations: GraphRelation[] = [

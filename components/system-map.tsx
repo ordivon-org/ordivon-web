@@ -2,25 +2,37 @@ import Link from "next/link";
 import { getNodesByKind } from "@/lib/graph";
 
 const nodeDetails: Record<string, string> = {
-  computing: "contracts",
-  host: "tasks",
-  runtime: "local effects",
-  world: "external interaction",
+  computing: "contracts + conformance",
+  host: "Goals + Tasks",
+  runtime: "committed local effects",
+  world: "conditioned external action",
 };
 
 const nodes = getNodesByKind("system").sort((a, b) => a.index.localeCompare(b.index));
 
 export function SystemMap({ compact = false }: { compact?: boolean }) {
   return (
-    <div className={compact ? "system-map compact" : "system-map"} aria-label="Ordivon system map">
-      <div className="map-axis"><span>semantic continuity</span><span>physical reality</span></div>
-      <div className="map-track" aria-hidden="true" />
-      {nodes.map((node, index) => (
-        <Link className={`map-node node-${index + 1}`} href={node.href || `/projects/${node.slug}`} key={node.id}>
-          <span>{node.index}</span><strong>{node.title}</strong><small>{nodeDetails[node.slug] || node.status}</small>
-        </Link>
-      ))}
-      <div className="map-caption"><span>Replaceable cognition</span><span>Conditioned evidence</span></div>
+    <div className={`system-overview ${compact ? "compact" : ""}`} aria-label="Ordivon state ownership overview">
+      <div className="system-overview-head">
+        <span>Four independent state owners</span>
+        <Link href="/system">Explore typed graph <span aria-hidden="true">↗</span></Link>
+      </div>
+      <div className="system-overview-stage">
+        <svg viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true">
+          <path className="highlight" d="M 450 170 C 340 80, 265 80, 150 170" />
+          <path className="highlight" d="M 450 170 C 555 260, 650 260, 750 170" />
+          <path d="M 1050 170 C 800 360, 390 360, 150 170" />
+        </svg>
+        <div className="system-overview-nodes">
+          {nodes.map((node) => (
+            <Link className={`system-overview-node status-${node.status}`} href={node.href || `/projects/${node.slug}`} key={node.id}>
+              <div><span>{node.index}</span><i>{node.status}</i></div>
+              <strong>{node.title}</strong>
+              <small>{nodeDetails[node.slug] || node.question}</small>
+            </Link>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

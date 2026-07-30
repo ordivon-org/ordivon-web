@@ -79,8 +79,8 @@ export const projectNodes: ProjectNode[] = [
     id: "project:web", kind: "project", slug: "web", title: "Ordivon Web", status: "active", group: "Public interface",
     label: "Research as an explorable system", publicPage: false,
     summary: "The public interface that connects projects, research questions, experiments, findings, decisions, and writing without duplicating repository truth.",
-    state: "Static delivery retained; governance overhead removed; MDX and the research graph are now the active foundation.",
-    evidence: [{ value: "6", label: "composable articles" }, { value: "1", label: "graph source" }],
+    state: "Static delivery retained; /system now exposes structural, execution, and research perspectives over the shared graph.",
+    evidence: [{ value: "6", label: "composable articles" }, { value: "3", label: "graph perspectives" }, { value: "1", label: "validated graph source" }],
     repository: "https://github.com/zycxfyh/ordivon-web", updatedAt: graphUpdatedAt,
   },
   {

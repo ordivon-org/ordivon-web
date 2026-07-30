@@ -10,7 +10,7 @@ export function SiteFooter() {
           <p>Persistent work. Recoverable execution. Durable evidence.</p>
         </div>
         <div className="footer-links">
-          <div><span>Explore</span><Link href="/projects">Projects</Link><Link href="/writing">Writing</Link><Link href="/now">Current</Link></div>
+          <div><span>Explore</span><Link href="/system">System</Link><Link href="/projects">Projects</Link><Link href="/writing">Writing</Link><Link href="/now">Current</Link></div>
           <div><span>Context</span><Link href="/about">About</Link><Link href="/colophon">Colophon</Link><a href="/feed.xml">RSS</a></div>
           <div><span>Source</span><a href="https://github.com/zycxfyh">GitHub</a><a href="https://github.com/zycxfyh/ordivon-web">Web repository</a></div>
         </div>
