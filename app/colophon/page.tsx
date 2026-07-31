@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const facts = [
   ["Framework", "Next.js App Router + React"],
-  ["Writing", "Composable MDX + graph-derived argument network"],
+  ["Writing", "Composable MDX + metadata-derived topic index"],
   ["Delivery", "Static export via GitHub Pages"],
   ["Verification", "TypeScript, ESLint, static-export Chromium smoke, focused axe checks"],
   ["Recovery", "Git history + redeploy"],

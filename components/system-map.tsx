@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getNodesByKind } from "@/lib/graph";
+import { systems } from "@/content/model";
 
 const nodeDetails: Record<string, string> = {
   computing: "contracts + conformance",
@@ -8,14 +8,14 @@ const nodeDetails: Record<string, string> = {
   world: "conditioned external action",
 };
 
-const nodes = getNodesByKind("system").sort((a, b) => a.index.localeCompare(b.index));
+const nodes = [...systems].sort((a, b) => a.index.localeCompare(b.index));
 
 export function SystemMap({ compact = false }: { compact?: boolean }) {
   return (
     <div className={`system-overview ${compact ? "compact" : ""}`} aria-label="Ordivon state ownership overview">
       <div className="system-overview-head">
         <span>Four independent state owners</span>
-        <Link href="/system">Explore typed graph <span aria-hidden="true">↗</span></Link>
+        <Link href="/system">Explore architecture <span aria-hidden="true">↗</span></Link>
       </div>
       <div className="system-overview-stage">
         <svg viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true">

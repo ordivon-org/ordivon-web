@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
-import type { SystemPerspective, SystemViewEdge, SystemViewId, SystemViewNode } from "@/lib/graph/system-views";
+import type { SystemPerspective, SystemViewEdge, SystemViewId, SystemViewNode } from "@/lib/system-views";
 
 function edgePath(edge: SystemViewEdge) {
   const source = edge.sourceNode;
@@ -76,7 +76,7 @@ export function SystemExplorer({ perspectives }: { perspectives: SystemPerspecti
           <h2 id="system-explorer-title">{perspective.label} view</h2>
           <span>{perspective.description}</span>
         </div>
-        <div className="system-view-switcher" role="group" aria-label="System graph perspective">
+        <div className="system-view-switcher" role="group" aria-label="System architecture perspective">
           {perspectives.map((item) => (
             <button
               type="button"
@@ -95,7 +95,7 @@ export function SystemExplorer({ perspectives }: { perspectives: SystemPerspecti
         <div className="system-canvas-wrap">
           <div className="system-canvas-meta">
             <span>{perspective.nodes.length} visible nodes</span>
-            <span>{perspective.edges.length} typed relations</span>
+            <span>{perspective.edges.length} visible connections</span>
             <span>Hover or focus to inspect</span>
           </div>
           <svg className="system-canvas" viewBox="0 0 1200 680" role="group" aria-label={`${perspective.label} system graph`}>
@@ -183,7 +183,7 @@ export function SystemExplorer({ perspectives }: { perspectives: SystemPerspecti
         </div>
 
         {activeNode && (
-          <aside className={`system-inspector kind-${activeNode.kind}`} aria-live="polite" aria-label="Selected graph node">
+          <aside className={`system-inspector kind-${activeNode.kind}`} aria-live="polite" aria-label="Selected architecture object">
             <div className="system-inspector-head">
               <span>{activeNode.kind}</span>
               <i>{activeNode.status}</i>
@@ -211,7 +211,7 @@ export function SystemExplorer({ perspectives }: { perspectives: SystemPerspecti
                     </li>
                   ))}
                 </ul>
-              ) : <span>No typed relations in the current graph.</span>}
+              ) : <span>No visible connections in the current graph.</span>}
             </div>
 
             {activeNode.href && (
