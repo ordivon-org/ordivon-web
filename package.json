@@ -17,7 +17,9 @@
     "lint": "eslint --no-error-on-unmatched-pattern app components content lib scripts tests eslint.config.mjs mdx-components.tsx next.config.ts playwright.config.ts",
     "test": "pnpm build && playwright test tests/smoke.spec.ts",
     "test:smoke": "pnpm build && playwright test tests/smoke.spec.ts",
-    "check": "pnpm typecheck && pnpm lint && pnpm build && playwright test tests/smoke.spec.ts"
+    "check": "pnpm publication:check && pnpm typecheck && pnpm lint && pnpm build && playwright test tests/smoke.spec.ts",
+    "publication:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/validate-publications.mjs",
+    "site:audit": "node scripts/site-audit.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.1",

@@ -1,3 +1,17 @@
+<InBrief claim="One task survived both tested Codex↔Hermes replacement orders without making provider output task truth." evidence="E4 · exact source, retained receipts, live runs, and injected faults" scope="One bounded repository task across Codex App Server and Hermes ACP">
+  <p>Replacement succeeded because Host-owned identity, generation, artifacts, and completion admission remained durable while provider sessions and lifecycles stayed different.</p>
+</InBrief>
+
+<PublicationFigure title="Two replacement orders, one durable task" caption="Four real provider runs completed Codex→Hermes and Hermes→Codex. Stale completion, missing artifacts, and response loss were contained without blind redispatch.">
+  <ReplacementFigure />
+</PublicationFigure>
+
+<ClaimBoundary
+  observed={["Both replacement orders completed.", "Three injected faults did not become accepted completion.", "Provider lifecycles and accepted source implementations remained different."]}
+  supports={["Host-owned task state above provider sessions.", "Generation fences, artifact requirements, and reconciliation before completion."]}
+  doesNotEstablish={["General provider interchangeability.", "Equivalent model quality.", "Long-horizon autonomous reliability."]}
+/>
+
 <h2 id="the-experiment-was-not-a-provider-benchmark">The experiment was not a Provider benchmark</h2>
 
 <p>H1–H5 asked an architecture question: can one durable Task survive materially different Agent Harnesses, physical execution, stale workers, missing deliverables, and ambiguous responses without making a Provider Session or Runtime process the source of truth?</p>

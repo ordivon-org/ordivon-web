@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { siteUpdatedAt } from "@/content/model";
 import { articles, formatDate, getArticle } from "@/lib/content";
 import { getResearchDossier, getResearchQuestionSummaries } from "@/lib/research";
+import { editorialSelections } from "@/content/editorial/selections";
 
 export const metadata: Metadata = {
   title: "Research",
@@ -27,10 +28,10 @@ const method = [
 
 export default function ResearchPage() {
   const questions = getResearchQuestionSummaries();
-  const current = getResearchDossier("host-general-repository-goal");
-  const answered = getResearchDossier("harness-composition-and-completion");
+  const current = getResearchDossier(editorialSelections.research.currentQuestion);
+  const answered = getResearchDossier(editorialSelections.research.recentlyAnswered);
   const changed = getResearchDossier("smallest-agent-native-core");
-  const changedArticle = getArticle("smaller-core-strong-baselines");
+  const changedArticle = getArticle(editorialSelections.research.architectureChangingExperiment);
   if (!current || !answered || !changed || !changedArticle) throw new Error("research editorial entry is incomplete");
   const timeline: ResearchTimelineItem[] = [...articles]
     .sort((left, right) => (right.modifiedDate || right.date).localeCompare(left.modifiedDate || left.date))

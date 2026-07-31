@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import type { SystemPerspective, SystemViewEdge, SystemViewId, SystemViewNode } from "@/lib/system-views";
+import { getHydrationSnapshot, getServerHydrationSnapshot, subscribeToHydration } from "@/lib/hydration";
 
 function edgePath(edge: SystemViewEdge) {
   const source = edge.sourceNode;
@@ -44,10 +45,8 @@ function nodeIsConnected(node: SystemViewNode, activeId: string | null, edges: S
 }
 
 
-const subscribeToHydration = () => () => undefined;
-
 export function SystemExplorer({ perspectives }: { perspectives: SystemPerspective[] }) {
-  const ready = useSyncExternalStore(subscribeToHydration, () => true, () => false);
+  const ready = useSyncExternalStore(subscribeToHydration, getHydrationSnapshot, getServerHydrationSnapshot);
   const [viewId, setViewId] = useState<SystemViewId>(perspectives[0]?.id || "structure");
   const perspective = perspectives.find((item) => item.id === viewId) || perspectives[0];
   const [selectedId, setSelectedId] = useState(perspective.defaultNodeId);

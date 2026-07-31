@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import type { ResearchQuestionSummary } from "@/lib/research";
+import { getHydrationSnapshot, getServerHydrationSnapshot, subscribeToHydration } from "@/lib/hydration";
 
 export type ResearchTimelineItem = {
   id: string;
@@ -15,8 +16,6 @@ export type ResearchTimelineItem = {
 };
 
 type ResearchView = "questions" | "projects" | "timeline" | "status";
-
-const subscribeToHydration = () => () => undefined;
 
 function QuestionCard({ item, index }: { item: ResearchQuestionSummary; index: number }) {
   const { question, project } = item;
@@ -43,7 +42,7 @@ function QuestionCard({ item, index }: { item: ResearchQuestionSummary; index: n
 }
 
 export function ResearchExplorer({ questions, timeline }: { questions: ResearchQuestionSummary[]; timeline: ResearchTimelineItem[] }) {
-  const ready = useSyncExternalStore(subscribeToHydration, () => true, () => false);
+  const ready = useSyncExternalStore(subscribeToHydration, getHydrationSnapshot, getServerHydrationSnapshot);
   const [view, setView] = useState<ResearchView>("questions");
   const projectGroups = useMemo(() => {
     const groups = new Map<string, ResearchQuestionSummary[]>();
