@@ -107,9 +107,9 @@ const definitions: PerspectiveDefinition[] = [
       "relation:project-computing-defines-world",
       "relation:project-host-runtime-dependency",
       "relation:project-host-world-dependency",
-      "relation:project-question-3",
-      "relation:project-question-5",
-      "relation:project-question-7",
+      "relation:project-question-host-general-goal",
+      "relation:project-question-runtime-structured-effect",
+      "relation:project-question-world-correlated-recovery",
     ],
   },
   {

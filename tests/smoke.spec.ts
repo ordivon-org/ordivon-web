@@ -5,6 +5,8 @@ import { expect, test } from "@playwright/test";
 
 const coreRoutes = [
   "/", "/system", "/research", "/research/web-research-interface", "/research/security-adversarial-trajectory",
+  "/research/smallest-agent-native-core", "/research/harness-composition-and-completion",
+  "/research/calibrated-non-action", "/research/opponent-state-transfer",
   "/projects", "/projects/computing", "/projects/host", "/projects/runtime", "/projects/world",
   "/writing", "/writing/the-future-will-not-wait", "/writing/runtime-after-core", "/now", "/about", "/colophon",
 ];
@@ -66,11 +68,14 @@ test("internal navigation targets resolve", async ({ page, request }) => {
 
 test("research graph drives current, project, and dossier views", async ({ page }) => {
   await page.goto("/now", { waitUntil: "domcontentloaded" });
-  await expect(page.getByRole("heading", { name: "Research questions became durable public dossiers" })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Can the public site expose Ordivon as a changing research graph/ })).toHaveAttribute("href", "/research/web-research-interface/");
+  await expect(page.getByRole("heading", { name: "Harness H1–H3 established the current Host boundary" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Strong baselines reduced the proposed Agent-native core" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Security completed 84 bounded adversarial Trials" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Station Zero v0.1.0-alpha.1 became source-playable" })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Which Harness objects survive live provider replacement/ })).toHaveAttribute("href", "/research/harness-composition-and-completion/");
 
   await page.goto("/projects/runtime", { waitUntil: "domcontentloaded" });
-  const runtimeQuestion = page.getByRole("link", { name: /testing Which real structured operation can complete the full Effect contract/ });
+  const runtimeQuestion = page.getByRole("link", { name: /testing Which real structured operation can complete the minimal Effect contract across a second backend/ });
   await expect(runtimeQuestion).toHaveAttribute("href", "/research/runtime-structured-effect/");
 
   await page.goto("/research/web-research-interface", { waitUntil: "domcontentloaded" });
@@ -78,7 +83,14 @@ test("research graph drives current, project, and dossier views", async ({ page 
   await expect(page.getByRole("heading", { name: "Return Web release checks to build, smoke, preview, and deploy", exact: true })).toBeVisible();
 
   await page.goto("/research/security-adversarial-trajectory", { waitUntil: "domcontentloaded" });
-  await expect(page.getByRole("heading", { name: "No experiment has earned entry into this dossier yet." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Security dynamic-opponent Round 1", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Tactical success can be strategically harmful", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Do not build a custom Ordivon cyber range", exact: true })).toBeVisible();
+
+  await page.goto("/research/harness-composition-and-completion", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Codex App Server H3 live Harness run", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "A successful Harness process does not complete a Task", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Do not expand Runtime for Harness correlation", exact: true })).toBeVisible();
 });
 
 test("system explorer switches perspective and inspects typed nodes", async ({ page }) => {
@@ -138,7 +150,7 @@ test("writing network reveals graph-derived argument context", async ({ page, is
 test("article context is derived from typed document relations", async ({ page }) => {
   await page.goto("/writing/runtime-after-core", { waitUntil: "domcontentloaded" });
   await expect(page.getByRole("heading", { name: "What this article documents in the research graph." })).toBeVisible();
-  await expect(page.getByRole("link", { name: /question Which real structured operation can complete the full Effect contract/ })).toHaveAttribute("href", "/research/runtime-structured-effect/");
+  await expect(page.getByRole("link", { name: /question Which real structured operation can complete the minimal Effect contract across a second backend/ })).toHaveAttribute("href", "/research/runtime-structured-effect/");
   await expect(page.getByRole("heading", { name: "Commitment—not command execution—is Runtime's decisive abstraction" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Continue through shared research objects." })).toBeVisible();
   await expect(page.locator(".related-reading").getByRole("link", { name: /Why Task continuity belongs above execution/ })).toBeVisible();
@@ -153,7 +165,7 @@ test("homepage presents one continuous dark visual thesis", async ({ page, isMob
   await expect(page.locator(".home-owner-row")).toHaveCount(4);
   await expect(page.locator(".home-frontier").getByRole("link", { name: /See the evidence and deletion condition/ })).toHaveAttribute("href", /\/research\/.+\//);
   await expect(page.locator(".home-writing-row")).toHaveCount(3);
-  await expect(page.getByText("Latest change · Web adopted one continuity-led visual thesis")).toBeVisible();
+  await expect(page.getByText("Latest change · Harness H1–H3 established the current Host boundary")).toBeVisible();
   await expect(page.locator(".current-feature")).toHaveCount(0);
   await expect(page.locator(".closing-statement")).toHaveCount(0);
 

@@ -24,8 +24,15 @@ export default function NowPage() {
   const latestDecision = [...getNodesByKind("decision")].sort((a, b) => b.date.localeCompare(a.date))[0];
   const latestArticle = [...getNodesByKind("article")].sort((a, b) => b.date.localeCompare(a.date))[0];
   const signals = [latestExperiment, latestFinding, latestDecision, latestArticle].filter((node): node is NonNullable<typeof node> => Boolean(node));
-  const exits = getNodesByKind("decision").filter((decision) => ["decision:extract-host", "decision:unify-world", "decision:thin-web-release", "decision:mdx-writing"].includes(decision.id));
-  const events = getRecentEvents(8);
+  const exits = getNodesByKind("decision").filter((decision) => [
+    "decision:no-task-runtime",
+    "decision:no-context-kernel",
+    "decision:no-custom-cyber-range",
+    "decision:embedded-game-host",
+    "decision:unify-world",
+    "decision:thin-web-release",
+  ].includes(decision.id));
+  const events = getRecentEvents(5);
 
   return (
     <div className="page-shell page-top now-page">
