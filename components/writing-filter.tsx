@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
 import { getHydrationSnapshot, getServerHydrationSnapshot, subscribeToHydration } from "@/lib/hydration";
 
-type WritingSummary = { slug: string; title: string; description: string; type: string; project: string; date: string; readMinutes: number };
+type WritingSummary = { slug: string; title: string; description: string; type: string; project: string; publishedAt: string; readMinutes: number };
 
 export function WritingFilter({ articles }: { articles: WritingSummary[] }) {
   const types = ["All", ...new Set(articles.map((article) => article.type))];
@@ -21,7 +21,7 @@ export function WritingFilter({ articles }: { articles: WritingSummary[] }) {
           <Link className="writing-row" href={`/writing/${article.slug}`} key={article.slug}>
             <span className="writing-number">{String(index + 1).padStart(2, "0")}</span>
             <div className="writing-copy"><p>{article.type} · {article.project}</p><h2>{article.title}</h2><span>{article.description}</span></div>
-            <div className="writing-meta"><time dateTime={article.date}>{article.date}</time><span>{article.readMinutes} min</span><b aria-hidden="true">↗</b></div>
+            <div className="writing-meta"><time dateTime={article.publishedAt}>{article.publishedAt}</time><span>{article.readMinutes} min</span><b aria-hidden="true">↗</b></div>
           </Link>
         ))}
       </div>

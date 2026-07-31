@@ -1,4 +1,36 @@
-<h2 id="replay-is-easy-to-add-and-easy-to-corrupt">Replay is easy to add—and easy to corrupt</h2>
+export const metadata = {
+  "slug": "replay-without-second-truth-store",
+  "title": "Replay Without a Second Truth Store",
+  "deck": "Station Zero derives point-in-time World state, evidence graphs, bounded frames, curves, key turns, diagnosis, and exact comparison from retained authority without creating another synchronized database or asking a model to invent causality.",
+  "description": "How replay and evidence-linked diagnosis can remain pure deterministic projections of World, Host, Team, authority, Message, Provider, Effect, Observation, and verification records.",
+  "projectSlugs": [
+    "game"
+  ],
+  "questionSlugs": [
+    "game-agent-native-mechanics"
+  ],
+  "type": "Engineering report",
+  "project": "Ordivon Game",
+  "publishedAt": "2026-07-31",
+  "readMinutes": 6,
+  "author": "zycxfyh",
+  "lead": "Replay becomes dangerous when it quietly becomes another authority. Station Zero instead rebuilds explanation from stable identities and retained evidence, so the projection can be deleted and regenerated without changing the work it describes.",
+  "status": "current",
+  "claimClass": "engineering-inference",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "Replay and diagnosis can be deterministic projections of retained authority.",
+    "Point-in-time state, evidence graphs, and comparisons do not require another mutable database.",
+    "Disposable projections improve recovery because they can be rebuilt from source evidence."
+  ],
+  "limitations": [
+    "Projection cost may require caching at larger scale.",
+    "The approach assumes the authoritative records preserve enough identity and evidence."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-game/releases/download/v0.1.0-alpha.1/M5-RECEIPT.md"
+};
+
+<h2 id="replay-is-easy-to-add-and-easy-to-corrupt" data-toc="Replay can create another authority">Replay is easy to add—and easy to corrupt</h2>
 
 <p>A system that already stores World state, Host state, Team decisions, Messages, authority grants, Provider receipts, Effects, Observations, and verification can make replay look simple: copy the state into another table, add timestamps, and render a timeline.</p>
 
@@ -6,7 +38,7 @@
 
 <div className="article-thesis"><p>Replay should be a deterministic projection of retained authority, not a second database that competes with it.</p></div>
 
-<h2 id="one-graph-from-existing-evidence">One graph from existing evidence</h2>
+<h2 id="one-graph-from-existing-evidence" data-toc="One graph from existing evidence">One graph from existing evidence</h2>
 
 <p>Station Zero builds a <code>RunEvidenceGraph</code> from already authoritative objects:</p>
 
@@ -27,7 +59,7 @@
   <div><strong>859</strong><span>failure evidence edges</span></div>
 </div>
 
-<h2 id="point-in-time-state-comes-from-world-authority">Point-in-time state comes from World authority</h2>
+<h2 id="point-in-time-state-comes-from-world-authority" data-toc="Point-in-time World state">Point-in-time state comes from World authority</h2>
 
 <p><code>stateAtRevision()</code> reconstructs exact state from Genesis, retained Commands, Events, and verified Snapshots. A Snapshot is a cache, not an alternative history. Sequence, hash, and digest verification must pass before the selected revision is presented.</p>
 
@@ -35,7 +67,7 @@
 
 <p>Each bounded frame includes current World state, relevant Actor and Task state, admitted proposals, Effects, verification, authority, and Message evidence. Large raw Context and Artifact bodies remain behind explicit detail APIs so replay does not become an unbounded transcript dump.</p>
 
-<h2 id="diagnosis-needs-evidence-classes">Diagnosis needs evidence classes</h2>
+<h2 id="diagnosis-needs-evidence-classes" data-toc="Evidence classes">Diagnosis needs evidence classes</h2>
 
 <p>A timeline can show that two events happened near each other. It cannot silently upgrade temporal proximity into causality. Station Zero assigns every non-context diagnosis claim an evidence class:</p>
 
@@ -49,13 +81,13 @@
 
 <p>A verified contributor is never presented as the unique cause. Counterfactual sensitivity is one bounded deterministic legal-alternative test. It is not a statistical estimate, a causal graph learned from data, or a philosophical account of causation.</p>
 
-<h2 id="key-turns-are-derived-not-authored">Key turns are derived, not authored</h2>
+<h2 id="key-turns-are-derived-not-authored" data-toc="Derived key turns">Key turns are derived, not authored</h2>
 
 <p>Resource curves cover battery, oxygen, heat, health, system status, item ownership, and Objective resolution. Deterministic rules select at most twelve key turns from verified state changes, authority frontiers, communication delays, waits, Provider failures, resource conflicts, and terminal conditions.</p>
 
 <p>The same retained Run always produces the same frames, curves, key turns, graph digest, and diagnosis. No model call is needed. This makes explanation available when remote Providers are offline and makes changes in explanation traceable to code and evidence rather than model drift.</p>
 
-<h2 id="comparison-is-exact-only-when-inputs-are-compatible">Comparison is exact only when inputs are compatible</h2>
+<h2 id="comparison-is-exact-only-when-inputs-are-compatible" data-toc="Exact comparison">Comparison is exact only when inputs are compatible</h2>
 
 <p>Station Zero stores an immutable deployment manifest containing Scenario Case, loadout, Provider order, authority mode, coordination profile, ruleset, and evaluated-input digest. Comparison is exact only when the compatible identity fields match. Cross-Case comparison remains descriptive.</p>
 
@@ -67,7 +99,7 @@
 
 <p>The exact comparison records one changed field, terminal-status change, score delta 1,090, and minimum-battery delta two. It does not claim that coordination profile is the only causal variable in all possible Runs. It states that the immutable evaluated inputs differ only there in these two retained executions.</p>
 
-<h2 id="pure-reads-have-a-recovery-advantage">Pure reads have a recovery advantage</h2>
+<h2 id="pure-reads-have-a-recovery-advantage" data-toc="Recovery through pure reads">Pure reads have a recovery advantage</h2>
 
 <p>A pure replay projection has no write-ahead recovery problem of its own. If the service restarts, it rebuilds from authoritative retained evidence. If projection code changes, the graph digest and frames can be recomputed and compared. If an authority record is missing, the projection fails rather than inventing a replacement row.</p>
 
@@ -81,7 +113,7 @@
   <div><span>Player</span><strong>Inspection and choice</strong><p>Selects revisions, follows evidence, clones deployment, and changes one input.</p></div>
 </div>
 
-<h2 id="what-this-architecture-refuses">What this architecture refuses</h2>
+<h2 id="what-this-architecture-refuses" data-toc="What it refuses">What this architecture refuses</h2>
 
 <ul>
   <li>No synchronized replay truth tables.</li>
@@ -93,7 +125,7 @@
   <li>No replay read that mutates semantic state.</li>
 </ul>
 
-<h2 id="the-general-use">The general use</h2>
+<h2 id="the-general-use" data-toc="The general use">The general use</h2>
 
 <p>The pattern extends beyond games. Any Agent system that already retains authoritative state can derive inspection and explanation from identities and evidence rather than copying mutable truth into an analytics store first. The projection may still be cached or indexed, but the cache remains disposable and rebuildable.</p>
 
@@ -103,7 +135,7 @@
 
 <section className="article-sources" aria-labelledby="sources-title">
   <p className="section-index">Evidence</p>
-  <h2 id="sources-title">Replay and release record</h2>
+  <h2 id="sources-title" data-toc="Replay record">Replay and release record</h2>
   <ol className="source-list">
 
 <li><span>Release receipt.</span> <a href="https://github.com/zycxfyh/ordivon-game/releases/download/v0.1.0-alpha.1/M5-RECEIPT.md">M5 first-playable receipt</a>.</li>

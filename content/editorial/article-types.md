@@ -6,39 +6,33 @@ Publish when a result, question, decision, release, or position has become worth
 
 Length and publication count are variable. A small result may deserve a three-minute note. A major disagreement may require several articles. A week with no durable insight may produce no article.
 
-## Required metadata for every publication
+## Required article source
 
-Current required fields remain useful:
+Each publication is one MDX authoring unit containing exported metadata, the complete body, and identified h2 headings. The build derives the manifest and table of contents.
+
+Required metadata:
 
 - slug
 - title
-- kicker
 - deck
 - description
 - projectSlugs
 - questionSlugs
 - type
 - project
-- date
-- modifiedDate when revised
+- publishedAt
+- revisedAt only for a substantive argument change
 - readMinutes
 - author
 - lead
-- table of contents
+- status
+- claimClass
+- evidenceLevel
+- at least one takeaway
+- at least one limitation
+- canonicalResearchRecord for E3–E5 evidence
 
-Future article work should add where relevant:
-
-- `audience`
-- `claimClass`
-- `evidenceLevel`
-- `series`
-- `coverImage`
-- `socialImage`
-- `takeaways`
-- `limitations`
-- `canonicalResearchRecord`
-
-These fields should be added only when the templates consume them. Do not create unused metadata governance.
+Optional fields should be added only after a real template, discovery surface, or editorial decision consumes them. Do not create unused metadata governance.
 
 ## 1. Research report
 
@@ -213,7 +207,7 @@ A flagship article is not complete when the MDX body exists. It should also have
 - a distinct 1200×630 social image;
 - one-sentence summary;
 - 80–120 word summary;
-- three key takeaways;
+- the smallest useful set of key takeaways;
 - one mechanism or evidence visual;
 - one quotable passage;
 - canonical source/research link;

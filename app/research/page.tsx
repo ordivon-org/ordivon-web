@@ -34,8 +34,8 @@ export default function ResearchPage() {
   const changedArticle = getArticle(editorialSelections.research.architectureChangingExperiment);
   if (!current || !answered || !changed || !changedArticle) throw new Error("research editorial entry is incomplete");
   const timeline: ResearchTimelineItem[] = [...articles]
-    .sort((left, right) => (right.modifiedDate || right.date).localeCompare(left.modifiedDate || left.date))
-    .map((article) => ({ id: article.slug, date: article.modifiedDate || article.date, displayDate: formatDate(article.modifiedDate || article.date), type: article.type, title: article.title, summary: article.description, href: `/writing/${article.slug}` }));
+    .sort((left, right) => (right.revisedAt || right.publishedAt).localeCompare(left.revisedAt || left.publishedAt))
+    .map((article) => ({ id: article.slug, date: article.revisedAt || article.publishedAt, displayDate: formatDate(article.revisedAt || article.publishedAt), type: article.type, title: article.title, summary: article.description, href: `/writing/${article.slug}` }));
 
   return (
     <div className="research-page">

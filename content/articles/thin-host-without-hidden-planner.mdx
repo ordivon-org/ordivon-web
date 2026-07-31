@@ -1,4 +1,38 @@
-<h2 id="the-model-did-not-need-more-history">The model did not need more history</h2>
+export const metadata = {
+  "slug": "thin-host-without-hidden-planner",
+  "title": "A Thin Host Can Improve Strategy Without Becoming a Planner",
+  "deck": "The World, models, admission rules, Skills, verification, and replay stayed fixed. Explicit Goal dependencies, threat horizons, regression meaning, and one-step visibility changed two live paths from failure to verified victory.",
+  "description": "How Station Zero M2.1 improved Codex and Codex-to-Hermes strategy by compiling trustworthy decision semantics without forcing rank one, adding unrestricted memory, or introducing a hidden planner.",
+  "projectSlugs": [
+    "host",
+    "game"
+  ],
+  "questionSlugs": [
+    "host-general-repository-goal",
+    "game-agent-native-mechanics"
+  ],
+  "type": "Engineering report",
+  "project": "Ordivon Host / Game",
+  "publishedAt": "2026-07-31",
+  "readMinutes": 5,
+  "author": "zycxfyh",
+  "lead": "A persistent Host had already preserved identity, execution, recovery, and Provider replacement. Strategy improved only after the Host made current Goal structure and consequence visible—without taking the final choice away from the model.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "Explicit goal dependencies and consequence visibility improved two live paths without adding a hidden planner.",
+    "The model retained the final choice; Host compiled trustworthy decision semantics rather than rank one.",
+    "More transcript history was not the missing capability."
+  ],
+  "limitations": [
+    "The comparison covers one game workload and two live paths.",
+    "It does not prove that the same semantic compilation improves arbitrary strategic tasks."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-game/blob/7b44504da7a3467d65d6260d7cbc479b0fc971a8/docs/M21-RECEIPT.md"
+};
+
+<h2 id="the-model-did-not-need-more-history" data-toc="The model did not need more history">The model did not need more history</h2>
 
 <p>Station Zero's first live single-Agent Host already preserved identity, candidate admission, deterministic Skill execution, verification, replay, recovery, and Provider replacement. It still failed strategically. Codex exhausted power. Hermes rushed communications and lost to reactor meltdown. A Codex-to-Hermes continuation preserved the Task and still ended with the Engineer incapacitated.</p>
 
@@ -6,7 +40,7 @@
 
 <div className="article-thesis"><p>A thin Host can improve strategy by compiling trustworthy decision semantics without becoming the decision-maker.</p></div>
 
-<h2 id="the-world-model-and-admission-rules-stayed-fixed">The World, model, and admission rules stayed fixed</h2>
+<h2 id="the-world-model-and-admission-rules-stayed-fixed" data-toc="What stayed fixed">The World, model, and admission rules stayed fixed</h2>
 
 <p>M2.1 changed no World rule, model, Skill, admission rule, verification path, or replay contract. Providers still selected any exact current candidate. The Host added:</p>
 
@@ -22,7 +56,7 @@
 
 <p>Full state search was measured and rejected after exceeding 20,000 nodes and one minute. The retained semantics remained bounded, inspectable, and recomputable from current verified state.</p>
 
-<h2 id="before-and-after">Before and after</h2>
+<h2 id="before-and-after" data-toc="Before and after">Before and after</h2>
 
 <div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="M2 to M2.1 live results">
   <div className="article-data-row article-data-head" role="row"><span role="columnheader">Provider path</span><span role="columnheader">M2</span><span role="columnheader">M2.1</span><span role="columnheader">Calls</span><span role="columnheader">New score</span></div>
@@ -33,7 +67,7 @@
 
 <p>Codex reached verified rescue in ten Provider calls and 25 verified Effects. Codex-to-Hermes also reached victory after five decisions from each Provider, without transferring Codex transcript, Session, memory, or Tool history. Hermes-only survived far longer and followed the threat order more coherently, but repaired life support too late and still failed.</p>
 
-<h2 id="what-the-host-actually-compiled">What the Host actually compiled</h2>
+<h2 id="what-the-host-actually-compiled" data-toc="What Host compiled">What the Host actually compiled</h2>
 
 <p>Each candidate exposed changes to terminal requirements, persistent regressions, threat horizons, urgent mitigation, battery use, projected power draw, optimistic remaining steps, Tick slack, and whether one subsequent strategic operation could project victory.</p>
 
@@ -45,19 +79,19 @@
   <div><span>One-step lookahead</span><strong>What becomes possible next</strong><p>Bounded visibility replaces a hidden search tree.</p></div>
 </div>
 
-<h2 id="the-host-did-not-force-the-best-ranked-action">The Host did not force the best-ranked action</h2>
+<h2 id="the-host-did-not-force-the-best-ranked-action" data-toc="No forced rank-one policy">The Host did not force the best-ranked action</h2>
 
 <p>The strategic score and rank were public candidate semantics, not an admission override. The Provider remained free to choose any exact legal candidate. A separate rank-one baseline—using neither Fixture nor model—followed a different route and won in 26 Ticks. This proved that the ranking was executable and useful without making it the hidden policy behind the live runs.</p>
 
 <p>Codex explicitly cited the shortest threat horizon, safe cooling shutdown, and projected-victory requirement. The improvement is attributable to better current semantics, not to changing the World after seeing a failure or silently replacing the Provider's choice.</p>
 
-<h2 id="hermes-remained-a-required-counterexample">Hermes remained a required counterexample</h2>
+<h2 id="hermes-remained-a-required-counterexample" data-toc="Hermes remained a counterexample">Hermes remained a required counterexample</h2>
 
 <p>Hermes no longer failed at Turn 10. It repaired and powered cooling first, sealed the breach, stabilized the crew, and survived until Turn 25. It still delayed life support until oxygen reached 15 and Engineer health reached zero.</p>
 
 <p>This retained failure prevents a false conclusion. Public decision semantics can materially improve policy while leaving Provider-specific planning variance intact. A Host can expose the dependency graph; it cannot guarantee that every model will allocate time and resources correctly.</p>
 
-<h2 id="why-not-a-planner">Why not a planner?</h2>
+<h2 id="why-not-a-planner" data-toc="Why not a planner">Why not a planner?</h2>
 
 <p>A hidden planner would make the model decorative. A complete state search was already too large for the workload's thin runtime budget. A forced rank-one action would erase useful Provider differences and make failure evidence less informative. Longer transcripts would preserve more old reasoning, not necessarily more current truth.</p>
 
@@ -69,7 +103,7 @@
 
 <p>That boundary is compatible with stronger future models. Better cognition can use the same semantics without inheriting a hidden policy that assumes today's models are permanently weak.</p>
 
-<h2 id="what-this-experiment-proves">What this experiment proves</h2>
+<h2 id="what-this-experiment-proves" data-toc="What it proves">What this experiment proves</h2>
 
 <ul>
   <li>Decision quality can improve when Goal structure and consequences become explicit without changing the model or World.</li>
@@ -78,7 +112,7 @@
   <li>Host semantics can remain advisory and inspectable rather than becoming an opaque planner.</li>
 </ul>
 
-<h2 id="what-it-does-not-prove">What it does not prove</h2>
+<h2 id="what-it-does-not-prove" data-toc="What it does not prove">What it does not prove</h2>
 
 <p>Three live paths on one deterministic World do not establish general planning superiority. The strategic score was designed for Station Zero. The rank-one baseline does not prove that fixed ranking beats models across changing Worlds. Hermes-only still failed. No human compared interpretability or intervention cost.</p>
 
@@ -88,7 +122,7 @@
 
 <section className="article-sources" aria-labelledby="sources-title">
   <p className="section-index">Evidence</p>
-  <h2 id="sources-title">M2.1 record</h2>
+  <h2 id="sources-title" data-toc="M2.1 record">M2.1 record</h2>
   <ol className="source-list">
 
 <li><span>Receipt.</span> <a href="https://github.com/zycxfyh/ordivon-game/blob/7b44504da7a3467d65d6260d7cbc479b0fc971a8/docs/M21-RECEIPT.md">Goal-directed strategy semantics receipt</a>.</li>

@@ -32,7 +32,7 @@ export default async function ResearchDossierPage({ params }: { params: Promise<
   const next = allQuestions[index + 1];
 
   return (
-    <article className={`research-dossier status-${dossier.question.status}`}>
+    <article className={`research-dossier status-${dossier.question.state}`}>
       <header className="research-dossier-hero page-shell page-top">
         <div className="research-dossier-meta">
           <span>Question dossier</span>
@@ -95,7 +95,7 @@ export default async function ResearchDossierPage({ params }: { params: Promise<
                 <span>{article.type}</span>
                 <h3>{article.title}</h3>
                 <p>{article.description}</p>
-                <b>{formatDate(article.modifiedDate || article.date)} ↗</b>
+                <b>{formatDate(article.revisedAt || article.publishedAt)} ↗</b>
               </Link>
             ))}
             {!dossier.articles.length && (

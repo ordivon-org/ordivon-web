@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate one static Open Graph PNG per registered article.
 
-The parser intentionally reads the public registry rather than maintaining a second
+The parser reads each article metadata export rather than maintaining a second
 social-card manifest. Rendering uses rsvg-convert so the committed assets work on
 static hosting without request-time image generation.
 """
@@ -16,24 +16,23 @@ import textwrap
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-REGISTRY = ROOT / "content/articles/registry.ts"
+ARTICLE_DIRECTORY = ROOT / "content/articles"
 OUTPUT = ROOT / "public/og"
 SIZE = (1200, 630)
 
 
 def extract_articles() -> list[dict[str, str]]:
-    source = REGISTRY.read_text(encoding="utf-8")
-    slug_matches = list(re.finditer(r'"slug"\s*:\s*"([^"]+)"', source))
+    import json
     articles: list[dict[str, str]] = []
-    for index, match in enumerate(slug_matches):
-        segment = source[match.start() : slug_matches[index + 1].start() if index + 1 < len(slug_matches) else len(source)]
-        article = {"slug": match.group(1)}
-        for field in ("title", "deck", "type", "project"):
-            field_match = re.search(rf'"{field}"\s*:\s*"([^"]+)"', segment)
-            if not field_match:
-                raise RuntimeError(f"{article['slug']} is missing {field}")
-            article[field] = field_match.group(1)
-        articles.append(article)
+    prefix = "export const metadata = "
+    for path in sorted(ARTICLE_DIRECTORY.glob("*.mdx")):
+        source = path.read_text(encoding="utf-8")
+        start = source.find(prefix)
+        end = source.find(";\n", start + len(prefix))
+        if start < 0 or end < 0:
+            raise RuntimeError(f"{path.name} has no parseable metadata export")
+        metadata = json.loads(source[start + len(prefix):end])
+        articles.append({field: metadata[field] for field in ("slug", "title", "deck", "type", "project")})
     return articles
 
 

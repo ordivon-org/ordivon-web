@@ -1,3 +1,38 @@
+export const metadata = {
+  "slug": "from-tokens-to-work",
+  "title": "From Tokens to Work: The Complete Agent Execution Stack",
+  "deck": "A model generates representations. A harness creates one cognitive, tool-using run. Host preserves the work across runs. Runtime turns admitted actions into physical evidence.",
+  "description": "A first-principles walkthrough from token generation to tool execution, verification, TaskOutcome, and graph advancement, compared with OpenAI, Anthropic, Microsoft, Google, and Ordivon's tested boundaries.",
+  "projectSlugs": [
+    "computing",
+    "host",
+    "runtime"
+  ],
+  "questionSlugs": [
+    "harness-composition-and-completion",
+    "ordivon-harness-v0"
+  ],
+  "type": "Architecture guide",
+  "project": "Ordivon Computing",
+  "publishedAt": "2026-07-31",
+  "readMinutes": 12,
+  "author": "zycxfyh",
+  "lead": "The path from a prompt to completed work is not one model call. It is a stack of nested loops, authority boundaries, physical execution, evidence, and semantic decisions—and each layer fails differently when its owner is unclear.",
+  "status": "current",
+  "claimClass": "engineering-inference",
+  "evidenceLevel": "E3",
+  "takeaways": [
+    "A model call is only one layer in a complete work system.",
+    "Harness, Host, Runtime, and World fail differently and should not share one authority.",
+    "Durable progress is a graph of admitted work and evidence, not a long conversation."
+  ],
+  "limitations": [
+    "The architecture combines public provider behavior with Ordivon experiments; it does not establish every provider's private implementation.",
+    "World remains less experimentally mature than Host and Runtime."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-computing/tree/c8ad154329a67344e772119ae3288eafce9fe62f/studies/2026-model-to-work-and-ordivon-harness"
+};
+
 <InBrief claim="A model call is only one layer in a complete work system." evidence="E3 · bounded experiments and primary provider documentation" scope="Model output through admitted work, evidence, and graph advancement">
   <p>The useful boundary is not one universal agent stack. It is a division of authority that lets intelligence, sessions, processes, and providers change without forcing another layer to invent what happened.</p>
 </InBrief>
@@ -12,7 +47,7 @@
   doesNotEstablish={["One mandatory implementation for every provider or workload.", "The private internal architecture of OpenAI, Anthropic, Google, or Microsoft systems."]}
 />
 
-<h2 id="a-model-does-not-act">A model does not act</h2>
+<h2 id="a-model-does-not-act" data-toc="A model does not act">A model does not act</h2>
 
 <p>A language model receives an encoded Context and produces another representation: tokens, structured fields, or a Tool request. Even when the output says <code>run_tests</code>, no process has started. Even when it says <code>deployment complete</code>, no deployment has been verified. Intelligence has proposed a continuation; another system must decide what the proposal means and whether anything should happen.</p>
 
@@ -20,7 +55,7 @@
 
 <p>Modern products often package that stack under one name. Codex, Claude Code, an IDE Agent, or a managed Agent platform may combine a user Surface, Session hosting, an Agent Loop, Tool adapters, sandboxing, memory, evaluation, and deployment. The package is useful. The logical separation still matters whenever work must survive restart, model replacement, ambiguous execution, or a false claim of completion.</p>
 
-<h2 id="four-loops-run-at-different-timescales">Four loops run at different timescales</h2>
+<h2 id="four-loops-run-at-different-timescales" data-toc="Four loops, different timescales">Four loops run at different timescales</h2>
 
 <div className="surviving-stack">
   <div><span>Token loop</span><strong>Generate the next output unit</strong><p>Model serving encodes Context, computes a distribution, decodes output, and stops.</p></div>
@@ -31,7 +66,7 @@
 
 <p>Confusing these loops produces predictable errors. A Provider Session becomes the Task database. A successful process becomes proof of completion. A final assistant message becomes an Artifact. A retry after a lost response duplicates an external Effect. Or a workflow engine is rebuilt because a transcript did not preserve application state.</p>
 
-<h2 id="the-complete-call-chain">The complete call chain</h2>
+<h2 id="the-complete-call-chain" data-toc="The complete call chain">The complete call chain</h2>
 
 <p>The full path begins before a prompt and ends after a verified change in the world.</p>
 
@@ -61,7 +96,7 @@
   <li><strong>Participant feedback:</strong> the result returns to the user or institution, becoming input to the next Goal loop.</li>
 </ol>
 
-<h2 id="five-kinds-of-memory-are-not-one-memory">Five kinds of memory are not one memory</h2>
+<h2 id="five-kinds-of-memory-are-not-one-memory" data-toc="Five kinds of memory">Five kinds of memory are not one memory</h2>
 
 <div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Memory ownership">
   <div className="article-data-row article-data-head" role="row"><span role="columnheader">State</span><span role="columnheader">Owner</span><span role="columnheader">What it preserves</span><span role="columnheader">What it must not become</span></div>
@@ -74,7 +109,7 @@
 
 <p>Anthropic's long-running Agent work makes this distinction concrete. Later contexts do better when earlier work leaves explicit files, progress state, tests, and structured handoffs. Compaction can help a Session continue, but it does not replace an authoritative project state. OpenAI's Codex architecture likewise separates the model from the Harness that coordinates user input and Tools, while App Server lets multiple Surfaces consume the same Agent system.</p>
 
-<h2 id="where-ordivon-draws-the-boundary">Where Ordivon draws the boundary</h2>
+<h2 id="where-ordivon-draws-the-boundary" data-toc="Where Ordivon draws the boundary">Where Ordivon draws the boundary</h2>
 
 <div className="surviving-stack">
   <div><span>Ordivon Host</span><strong>Durable work meaning</strong><p>Goal, Task, Attempt, Assignment generation, semantic Context, replacement, acceptance, completion, and recovery.</p></div>
@@ -85,7 +120,7 @@
 
 <p>The two Harness paths are peers. Host may assign work to Ordivon Harness when only a model API exists, or to a mature external Harness when its provider-specific Loop is already stronger. They share durable input and evidence output; they do not need the same internal event model.</p>
 
-<h2 id="what-top-labs-are-actually-building">What top labs are actually building</h2>
+<h2 id="what-top-labs-are-actually-building" data-toc="What top labs are building">What top labs are actually building</h2>
 
 <p>OpenAI builds a Provider Harness optimized jointly with Codex models and reused across CLI, IDE, Web, and App. Anthropic builds Claude Code and Agent SDK capabilities while also publishing workload-specific structures for long-running development. Microsoft separates model clients, Agents, a batteries-included Harness, explicit Workflows, and Hosting. Google exposes an Agent framework plus managed Runtime, Sessions, memory, evaluation, observability, and graph workflows.</p>
 
@@ -93,7 +128,7 @@
 
 <blockquote>Product boundaries can vary. Authority boundaries cannot remain ambiguous when work must survive replacement.</blockquote>
 
-<h2 id="the-result-is-a-graph-not-a-chat">The result is a graph, not a chat</h2>
+<h2 id="the-result-is-a-graph-not-a-chat" data-toc="A graph, not a chat">The result is a graph, not a chat</h2>
 
 <p>A real trajectory links Goal, Task, Attempt, Assignment, Harness Run, model call, Tool Call, Runtime Job, Artifact or Effect, CompletionProposal, Decision, and Outcome. The model/Tool interaction contains a loop, but the durable provenance becomes an append-only evidence graph.</p>
 
@@ -104,7 +139,7 @@ Harness Run → CompletionProposal → CompletionDecision → TaskOutcome → ne
 
 <p>This graph is why Ordivon is not merely a prompt wrapper. It preserves enough identity to answer which intelligence acted, under which authority, against which source, through which process, with which evidence, and why the Task advanced.</p>
 
-<h2 id="what-remains-open">What remains open</h2>
+<h2 id="what-remains-open" data-toc="What remains open">What remains open</h2>
 
 <p>The broad stack is now understood. The next question is empirical and deliberately smaller: how little code can implement Ordivon Harness for a bare model API while reusing Host and Runtime?</p>
 
@@ -114,7 +149,7 @@ Harness Run → CompletionProposal → CompletionDecision → TaskOutcome → ne
 
 <section className="article-sources" aria-labelledby="sources-title">
   <p className="section-index">Sources</p>
-  <h2 id="sources-title">Primary architecture and Ordivon evidence</h2>
+  <h2 id="sources-title" data-toc="Primary sources">Primary architecture and Ordivon evidence</h2>
   <ol className="source-list">
     <li><span>OpenAI.</span> <a href="https://openai.com/index/unrolling-the-codex-agent-loop/">Unrolling the Codex agent loop</a> and <a href="https://openai.com/index/unlocking-the-codex-harness/">Unlocking the Codex harness</a>.</li>
     <li><span>Anthropic.</span> <a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Effective harnesses for long-running agents</a> and <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps">Harness design for long-running application development</a>.</li>

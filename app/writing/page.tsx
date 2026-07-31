@@ -17,7 +17,7 @@ export default function WritingPage() {
   const flagship = getArticle(editorialSelections.writing.startHere);
   const evidenceReports = editorialSelections.writing.evidenceReports.map(getArticle);
   if (!flagship || evidenceReports.some((article) => !article)) throw new Error("writing editorial selection is incomplete");
-  const summaries = articles.map(({ slug, title, description, type, project, date, readMinutes }) => ({ slug, title, description, type, project, date, readMinutes }));
+  const summaries = articles.map(({ slug, title, description, type, project, publishedAt, readMinutes }) => ({ slug, title, description, type, project, publishedAt, readMinutes }));
   const researchReports = articles.filter((article) => article.type === "Research report").length;
   const engineeringRecords = articles.filter((article) => ["Engineering report", "Architecture report", "Architecture guide", "Architecture decision", "Architecture correction", "Release", "Release note"].includes(article.type)).length;
   const essaysAndNotes = articles.length - researchReports - engineeringRecords;

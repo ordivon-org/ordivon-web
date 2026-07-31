@@ -25,7 +25,7 @@ export default function ProjectsPage() {
           const openQuestion = project.openQuestions[0];
           if (!proofArticle || !openQuestion) throw new Error(`${project.slug} is missing public proof or an open question`);
           return (
-            <article className={`project-capability-card status-${project.status}`} key={project.slug}>
+            <article className={`project-capability-card status-${project.lifecycle}`} key={project.slug}>
               <header>
                 <div><span>{project.index}</span><b>{project.group}</b></div>
                 <i>{project.maturity}</i>

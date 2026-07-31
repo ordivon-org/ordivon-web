@@ -1,4 +1,38 @@
-<h2 id="the-word-harness-was-hiding-two-decisions">The word Harness was hiding two decisions</h2>
+export const metadata = {
+  "slug": "why-ordivon-needs-a-harness",
+  "title": "Why Ordivon Needs a Harness—but Not a Universal Harness",
+  "deck": "Reuse mature provider harnesses when they exist. Own a thin first-party agent loop when a provider supplies intelligence but no complete harness.",
+  "description": "Why H5 correctly rejected a common Codex/Hermes lifecycle while a separate Ordivon Harness remains strategically necessary for bare model APIs, local inference, and controlled agent-loop research.",
+  "projectSlugs": [
+    "host",
+    "computing"
+  ],
+  "questionSlugs": [
+    "harness-composition-and-completion",
+    "ordivon-harness-v0"
+  ],
+  "type": "Architecture decision",
+  "project": "Ordivon Host",
+  "publishedAt": "2026-07-31",
+  "readMinutes": 10,
+  "author": "zycxfyh",
+  "lead": "The word Harness had been hiding two different decisions. Ordivon should not flatten mature Provider Agent systems into a lowest-common-denominator platform. It should still be able to turn a bare model API into one bounded, Tool-using, verifiable Agent Run.",
+  "status": "current",
+  "claimClass": "architecture-decision",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "Mature provider harnesses should remain native rather than be flattened into one lifecycle.",
+    "A thin first-party harness is still needed for bare model APIs and controlled loop research.",
+    "The v0 boundary is admitted by a deletion condition, not by a universal-platform ambition."
+  ],
+  "limitations": [
+    "The decision is grounded in Codex and Hermes plus current bare-API requirements, not every future provider.",
+    "The first-party harness has not yet earned a separate repository through broad production use."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-host/blob/4ac03b52322cb76ade8f2902ab5b08113141c3e7/docs/harness-boundary-h5-decision.md"
+};
+
+<h2 id="the-word-harness-was-hiding-two-decisions" data-toc="Two decisions hidden in one word">The word Harness was hiding two decisions</h2>
 
 <p>Ordivon H1–H5 concluded that Codex App Server and Hermes ACP should not be compressed into one shared internal lifecycle. Codex exposes Thread, Turn, Item, structured output, and explicit terminal events. Hermes exposes JSON-RPC Session and Prompt semantics, bidirectional requests, thought chunks, sparse Tool updates, and—in our live replacement Runs—no usable final assistant text.</p>
 
@@ -6,7 +40,7 @@
 
 <div className="article-thesis"><p>Ordivon does not need a Harness above every Harness. It does need a Harness when the Provider supplies intelligence but no Agent Loop.</p></div>
 
-<h2 id="two-paths-not-one-platform">Two paths, not one platform</h2>
+<h2 id="two-paths-not-one-platform" data-toc="Two paths, not one platform">Two paths, not one platform</h2>
 
 <div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Harness execution paths">
   <div className="article-data-row article-data-head" role="row"><span role="columnheader">Path</span><span role="columnheader">Provider supplies</span><span role="columnheader">Ordivon supplies</span><span role="columnheader">Best use</span></div>
@@ -24,7 +58,7 @@
   → optional CompletionProposal
   → Host verification and TaskOutcome`}</code></pre>
 
-<h2 id="why-the-first-party-loop-is-strategically-necessary">Why the first-party Loop is strategically necessary</h2>
+<h2 id="why-the-first-party-loop-is-strategically-necessary" data-toc="Why the first-party Loop matters">Why the first-party Loop is strategically necessary</h2>
 
 <h3>Bare models otherwise remain only inference functions</h3>
 
@@ -42,7 +76,7 @@
 
 <p>The goal is not to reproduce years of Codex or Claude Code engineering. A thin first-party Loop is a capability floor: Ordivon can still act through Tools when only intelligence is available. Mature Harnesses remain preferred when their capabilities and optimization justify the dependency.</p>
 
-<h2 id="why-a-universal-harness-is-the-wrong-goal">Why a universal Harness is the wrong goal</h2>
+<h2 id="why-a-universal-harness-is-the-wrong-goal" data-toc="Why universal is the wrong goal">Why a universal Harness is the wrong goal</h2>
 
 <p>A universal internal lifecycle usually has two failure modes.</p>
 
@@ -56,7 +90,7 @@
 
 <blockquote>Normalize durable facts that the Host needs. Do not normalize Provider behavior that did not occur.</blockquote>
 
-<h2 id="why-ordivon-harness-can-remain-thin">Why Ordivon Harness can remain thin</h2>
+<h2 id="why-ordivon-harness-can-remain-thin" data-toc="Why it can remain thin">Why Ordivon Harness can remain thin</h2>
 
 <p>Most general Agent frameworks are broad because they also own planning, workflows, sessions, memory, files, shell, approvals, hosting, observability, and deployment. Ordivon has already assigned the heaviest responsibilities elsewhere.</p>
 
@@ -68,7 +102,7 @@
 
 <p>This is not a claim that the Agent Loop is trivial. It is a design constraint: whenever Ordivon Harness begins to own durable Task truth or process supervision, it has crossed into an existing layer.</p>
 
-<h2 id="the-admitted-v0">The admitted v0</h2>
+<h2 id="the-admitted-v0" data-toc="The admitted v0">The admitted v0</h2>
 
 <p>Version zero is intentionally austere:</p>
 
@@ -85,7 +119,7 @@
 
 <p>It will compare the same frozen repository task under a one-shot ModelGateway, Ordivon Harness with a bare model API, and one mature Provider Harness. The first-party Loop earns retention only if it solves a real failure or enables a real model path at acceptable permanent cost.</p>
 
-<h2 id="what-v0-deliberately-does-not-contain">What v0 deliberately does not contain</h2>
+<h2 id="what-v0-deliberately-does-not-contain" data-toc="What v0 excludes">What v0 deliberately does not contain</h2>
 
 <div className="surviving-invariants" aria-label="Deferred Harness capabilities">
   <span>persistent Session</span><span>compaction</span><span>parallel Tools</span><span>subagents</span><span>model routing</span><span>Skills</span><span>Plugins</span><span>workflow language</span><span>new database</span>
@@ -93,7 +127,7 @@
 
 <p>Each capability may become valuable. None is free. Persistent Sessions create replacement and hidden-state questions. Parallel Tools create dependency and partial-failure semantics. Subagents blur Harness-local work and Host-managed durable workers. Compaction can turn unverified summaries into accidental truth. They should enter only after a bounded failure and ablation.</p>
 
-<h2 id="when-ordivon-harness-becomes-a-repository">When Ordivon Harness becomes a repository</h2>
+<h2 id="when-ordivon-harness-becomes-a-repository" data-toc="Repository promotion gate">When Ordivon Harness becomes a repository</h2>
 
 <p>The project name is already Ordivon Harness. Its first implementation should remain inside Host. A standalone repository is eligible only after:</p>
 
@@ -108,7 +142,7 @@
 
 <p>This is a different promotion gate from H5. H5 tested whether Provider drivers should become a common platform. The new gate tests whether a real first-party Agent Loop has become an independently useful component.</p>
 
-<h2 id="the-deletion-condition-matters">The deletion condition matters</h2>
+<h2 id="the-deletion-condition-matters" data-toc="The deletion condition">The deletion condition matters</h2>
 
 <p>Ordivon Harness is strategically plausible, not exempt from evidence. If one-shot calls and mature Provider Harnesses cover the actual workloads with equal correctness and recovery at lower permanent cost—and no bare-model path matters—the prototype should be deleted.</p>
 
@@ -118,7 +152,7 @@
 
 <section className="article-sources" aria-labelledby="sources-title">
   <p className="section-index">Evidence</p>
-  <h2 id="sources-title">Decision record and primary sources</h2>
+  <h2 id="sources-title" data-toc="Evidence and sources">Decision record and primary sources</h2>
   <ol className="source-list">
     <li><span>Ordivon H5.</span> <a href="https://github.com/zycxfyh/ordivon-host/blob/4ac03b52322cb76ade8f2902ab5b08113141c3e7/docs/harness-boundary-h5-decision.md">Harness Boundary H5 Decision</a>.</li>
     <li><span>Ordivon research.</span> <a href="https://github.com/zycxfyh/ordivon-computing/tree/c8ad154329a67344e772119ae3288eafce9fe62f/studies/2026-model-to-work-and-ordivon-harness">From Model Tokens to Durable Work</a> and <a href="https://github.com/zycxfyh/ordivon-computing/issues/90">ANC-HARNESS-002</a>.</li>

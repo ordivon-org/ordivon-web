@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { formatDate } from "@/lib/content";
+import { editorialSelections } from "@/content/editorial/selections";
+import { getQuestionBySlug } from "@/content/model";
 import { getResearchQuestionSummaries } from "@/lib/research";
-import { currentUpdatedAt, getCurrentProjects, getRecentPublications, getRecentlyUpdatedQuestions } from "@/lib/updates";
+import { currentUpdatedAt, getCurrentProjects, getRecentPublications } from "@/lib/updates";
 
 export const metadata: Metadata = {
   title: "Now",
@@ -38,7 +40,7 @@ export default function NowPage() {
   const frontier = getResearchQuestionSummaries().filter((item) => item.question.state === "testing").slice(0, 6);
   const publications = getRecentPublications(8);
   const projects = getCurrentProjects();
-  const revisedQuestions = getRecentlyUpdatedQuestions(6);
+  const revisedQuestions = editorialSelections.now.judgmentChanges.map(getQuestionBySlug).filter((question): question is NonNullable<typeof question> => Boolean(question));
 
   return (
     <div className="page-shell page-top now-page">
@@ -75,7 +77,7 @@ export default function NowPage() {
           {publications.slice(0, 4).map((article) => (
             <Link className="kind-article" href={`/writing/${article.slug}`} key={article.slug}>
               <span>{article.type}</span><h3>{article.title}</h3><p>{article.description}</p>
-              <time dateTime={article.date}>{formatDate(article.date)}</time>
+              <time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time>
             </Link>
           ))}
         </div>
@@ -85,8 +87,8 @@ export default function NowPage() {
         <SectionHeading eyebrow="Current project boundaries" title="What is tested, experimental, or still waiting for proof." description="Project pages explain the current capability and boundary. Repositories retain implementation truth, tests, receipts, and release identity." />
         <div className="now-exit-grid">
           {projects.map((project) => (
-            <article className={`kind-project status-${project.status}`} key={project.id}>
-              <span>{project.status}</span><h3>{project.title}</h3><p>{project.state}</p>
+            <article className={`kind-project status-${project.lifecycle}`} key={project.id}>
+              <span>{project.lifecycle}</span><h3>{project.title}</h3><p>{project.state}</p>
               <Link href={`/projects/${project.slug}`}>Open project boundary ↗</Link>
             </article>
           ))}
@@ -94,7 +96,7 @@ export default function NowPage() {
       </section>
 
       <section className="now-timeline-section" aria-labelledby="now-questions-title">
-        <SectionHeading eyebrow="Recently revised judgments" title="Questions whose current answer changed." description="Each research page states the present judgment, the next decisive test, and what evidence would make the current boundary unnecessary." />
+        <SectionHeading eyebrow="Judgments selected for review" title="Questions carrying the current architectural pressure." description="This authored set highlights judgments that currently matter; date order does not decide importance." />
         <div className="now-timeline">
           {revisedQuestions.map((question) => (
             <Link href={`/research/${question.slug}`} key={question.id}>

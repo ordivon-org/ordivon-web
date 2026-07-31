@@ -2,7 +2,7 @@
 
 The public research and engineering interface for Ordivon.
 
-The site is built with Next.js, React, TypeScript, and MDX, exported as static files, and published from the `production/v1-pages` branch through GitHub Pages. Cloudflare remains the authoritative DNS provider; it is not an application runtime for this site.
+The site is built with Next.js, React, TypeScript, and MDX, exported as static files, and published as a tested GitHub Pages Artifact from the exact `main` commit. Cloudflare remains the authoritative DNS provider; it is not an application runtime for this site.
 
 ## Runtime shape
 
@@ -26,12 +26,12 @@ pnpm dev
 pnpm build
 pnpm preview
 pnpm check
-pnpm deploy
+pnpm pages:prepare
 ```
 
 `pnpm check` runs TypeScript, ESLint, a production build, and the Chromium desktop/mobile smoke suite.
 
-`pnpm deploy` refuses dirty or unmerged source, rebuilds the exact `origin/main` revision, replaces the contents of `production/v1-pages`, preserves the `ordivon.com` custom-domain claim, and materializes the small set of historical route redirects. GitHub Pages then publishes that branch. Recovery is a Git revert on `main` followed by another deployment.
+The `Deploy Pages` workflow runs the complete check, materializes historical redirects and the custom-domain files, writes `deploy-manifest.json`, uploads the static Artifact, and deploys it through the protected `github-pages` environment. Recovery is a Git revert or a workflow dispatch for a chosen source revision, followed by the same verified deployment path.
 
 ## Content and source of truth
 

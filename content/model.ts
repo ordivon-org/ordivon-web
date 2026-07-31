@@ -1,50 +1,56 @@
-import type { ProjectDefinition, QuestionDefinition, SystemDefinition } from "@/lib/model/types";
+import type { BoundaryDefinition, ProjectDefinition, QuestionDefinition, ResearchPlaneDefinition } from "@/lib/model/types";
 
-export const siteUpdatedAt = "2026-07-31";
+export const siteUpdatedAt = "2026-08-01";
+const portfolioUpdatedAt = "2026-07-31";
 
-export const systems: SystemDefinition[] = [
+export const researchPlanes: ResearchPlaneDefinition[] = [
   {
-    id: "system:computing", kind: "system", slug: "computing", index: "01", title: "Computing", status: "active",
-    summary: "The contract and conformance layer for persistent work performed with replaceable probabilistic cognition.",
-    thesis: "Keep cognition, Task continuity, semantic execution, and machine execution separable.",
+    id: "system:computing", kind: "research-plane", slug: "computing", index: "R", title: "Computing", status: "active",
+    summary: "The research and conformance plane that tests which shared contracts deserve to survive.",
+    thesis: "Keep cognition, Task continuity, semantic execution, and machine execution separable—and delete abstractions that mature systems already carry.",
     question: "Which facts and contracts must remain stable when models, Hosts, tools, and execution backends change?",
-    owns: ["Stack model", "Semantic contracts", "Reference systems", "Conformance"],
-    boundary: ["No production Tasks", "No physical Jobs", "No implementation monorepo"],
-    href: "/projects/computing", updatedAt: siteUpdatedAt,
+    owns: ["Stack model", "Semantic contracts", "Reference experiments", "Conformance"],
+    boundary: ["No production Tasks", "No physical Jobs", "No place in the execution path"],
+    href: "/projects/computing", updatedAt: portfolioUpdatedAt,
   },
+];
+
+export const boundaries: BoundaryDefinition[] = [
   {
-    id: "system:host", kind: "system", slug: "host", index: "02", title: "Host", status: "active",
-    summary: "The semantic control plane that keeps Goals and Tasks continuous above replaceable sessions and processes.",
+    id: "system:host", kind: "boundary", slug: "host", index: "01", title: "Host", maturity: "tested",
+    summary: "The semantic control boundary that keeps Goals and Tasks continuous above replaceable sessions and processes.",
     thesis: "Replace the model session without replacing the Task.",
     question: "Which semantic state must survive when cognition, transport, and execution processes are replaced?",
     owns: ["Goals and Tasks", "Host journal", "Cognition contexts", "Outcomes"],
     boundary: ["No process ownership", "No model monopoly", "No Runtime mechanics"],
-    href: "/projects/host", updatedAt: siteUpdatedAt,
+    href: "/projects/host", updatedAt: portfolioUpdatedAt,
   },
   {
-    id: "system:runtime", kind: "system", slug: "runtime", index: "03", title: "Runtime", status: "active",
+    id: "system:runtime", kind: "boundary", slug: "runtime", index: "02", title: "Runtime", maturity: "tested",
     summary: "The physical effect boundary that owns durable local execution identity, process state, and retained evidence.",
-    thesis: "Commit one Agent action to reality without losing what happened.",
+    thesis: "Commit one Agent action to local reality without losing what happened.",
     question: "Which execution facts cannot safely be reconstructed after interruption?",
     owns: ["Workspaces", "Jobs and Attempts", "Process trees", "Artifacts"],
     boundary: ["Trusted-local, not a sandbox", "No Goal ownership", "No invented exactly-once claims"],
-    href: "/projects/runtime", updatedAt: siteUpdatedAt,
+    href: "/projects/runtime", updatedAt: portfolioUpdatedAt,
   },
   {
-    id: "system:world", kind: "system", slug: "world", index: "04", title: "World", status: "experimental",
-    summary: "The continuity boundary for paths, identities, authority, provider actions, receipts, and external uncertainty.",
+    id: "system:world", kind: "boundary", slug: "world", index: "03", title: "World", maturity: "experimental",
+    summary: "The experimental continuity boundary for paths, identities, authority, provider actions, receipts, and external uncertainty.",
     thesis: "Let a Task reach and act through a changing external world without rebuilding the world beneath it.",
     question: "What must remain continuous when connection and external action fail together?",
     owns: ["World Interaction bindings", "Conditioned observations", "External evidence", "Reconciliation and rebinding"],
     boundary: ["No universal proxy or transport", "No provider reimplementation", "No Goal, Task, or local process ownership"],
-    href: "/projects/world", updatedAt: siteUpdatedAt,
+    href: "/projects/world", updatedAt: portfolioUpdatedAt,
   },
 ];
 
+export const architectureRoles = [...researchPlanes, ...boundaries];
+
 export const projects: ProjectDefinition[] = [
   {
-    id: "project:computing", kind: "project", slug: "computing", title: "Ordivon Computing", status: "active", group: "Foundations",
-    label: "Contracts that survive replacement", systemNodeId: "system:computing", publicPage: true,
+    id: "project:computing", kind: "project", slug: "computing", title: "Ordivon Computing", lifecycle: "active", group: "Foundations",
+    label: "Contracts that survive replacement", architectureRoleId: "system:computing", publicPage: true,
     problem: "Agent systems can accumulate shared abstractions faster than real workloads justify them.",
     capability: "Compares proposed contracts against mature baselines and keeps only the responsibilities that survive replacement, interruption, and a deletion test.",
     maturity: "Active research foundation",
@@ -54,11 +60,11 @@ export const projects: ProjectDefinition[] = [
     summary: "The research and conformance root for persistent work performed with probabilistic models. Computing defines the contracts that other projects test rather than becoming another production runtime.",
     state: "The model-to-work stack and Harness H1–H5 are closed as canonical research. Computing now distinguishes mature Provider Harnesses from the ready Ordivon Harness v0 construction question for bare model APIs.",
     evidence: [{ value: "H1–H5", label: "boundary stages closed" }, { value: "493,294", label: "H5 reported tokens" }, { value: "1", label: "ready Harness construction question" }],
-    repository: "https://github.com/zycxfyh/ordivon-computing", href: "/projects/computing", updatedAt: siteUpdatedAt,
+    repository: "https://github.com/zycxfyh/ordivon-computing", href: "/projects/computing", updatedAt: portfolioUpdatedAt,
   },
   {
-    id: "project:host", kind: "project", slug: "host", title: "Ordivon Host", status: "active", group: "Agent system",
-    label: "Task continuity above sessions", systemNodeId: "system:host", publicPage: true,
+    id: "project:host", kind: "project", slug: "host", title: "Ordivon Host", lifecycle: "active", group: "Agent system",
+    label: "Task continuity above sessions", architectureRoleId: "system:host", publicPage: true,
     problem: "A capable model can finish one run while the user's larger task, accepted decisions, and unfinished work disappear with the session.",
     capability: "Preserves goals, tasks, accepted decisions, assignments, and completion evidence above replaceable model runs and local processes.",
     maturity: "Tested architectural core",
@@ -68,11 +74,11 @@ export const projects: ProjectDefinition[] = [
     summary: "A persistent agent control plane for goals, tasks, bounded cognition, candidate admission, harness assignment, effect proposals, verification, and outcomes. Model sessions and Runtime processes remain replaceable dependencies.",
     state: "Harness H1–H5 are closed: Host retained Task Attempt, Assignment generation, Run receipts, completion admission, and opaque Runtime correlation while rejecting a shared Provider lifecycle. The next bounded construction is Ordivon Harness v0 for bare model APIs.",
     evidence: [{ value: "H1–H5", label: "Harness boundary closed" }, { value: "2/2", label: "replacement orders accepted" }, { value: "3", label: "first faults survived" }],
-    repository: "https://github.com/zycxfyh/ordivon-host", href: "/projects/host", updatedAt: siteUpdatedAt,
+    repository: "https://github.com/zycxfyh/ordivon-host", href: "/projects/host", updatedAt: portfolioUpdatedAt,
   },
   {
-    id: "project:runtime", kind: "project", slug: "runtime", title: "Ordivon Runtime", status: "active", group: "Agent system",
-    label: "Committed local effects", systemNodeId: "system:runtime", publicPage: true,
+    id: "project:runtime", kind: "project", slug: "runtime", title: "Ordivon Runtime", lifecycle: "active", group: "Agent system",
+    label: "Committed local effects", architectureRoleId: "system:runtime", publicPage: true,
     problem: "Shell commands and transient processes do not preserve enough identity or evidence for a later agent to know what actually happened.",
     capability: "Turns admitted local operations into durable jobs, observable process state, bounded output, artifacts, cancellation, and restart recovery.",
     maturity: "Production-tested local runtime",
@@ -82,11 +88,11 @@ export const projects: ProjectDefinition[] = [
     summary: "The deterministic boundary between an agent decision and local machine execution. Runtime binds exact source and operation identity to durable jobs, process trees, bounded evidence, cancellation, reconciliation, and recovery.",
     state: "Production Runtime remains at thirteen public tools. Host H2/R2 proved cross-layer correlation, replay, recovery, and terminal evidence through existing request identity and opaque foreign references without adding Host Task semantics to Runtime.",
     evidence: [{ value: "13", label: "public tools" }, { value: "4", label: "opaque Host references" }, { value: "0", label: "new Runtime semantic objects" }],
-    repository: "https://github.com/zycxfyh/ordivon-runtime", href: "/projects/runtime", updatedAt: siteUpdatedAt,
+    repository: "https://github.com/zycxfyh/ordivon-runtime", href: "/projects/runtime", updatedAt: portfolioUpdatedAt,
   },
   {
-    id: "project:world", kind: "project", slug: "world", title: "Ordivon World", status: "experimental", group: "World interaction",
-    label: "Conditioned external interaction", systemNodeId: "system:world", publicPage: true,
+    id: "project:world", kind: "project", slug: "world", title: "Ordivon World", lifecycle: "active", group: "World interaction",
+    label: "Conditioned external interaction", architectureRoleId: "system:world", publicPage: true,
     problem: "An external action can lose its response while paths, identities, and provider conditions change, making a blind retry unsafe.",
     capability: "Correlates target, path, identity, authority, provider execution, receipts, observations, uncertainty, reconciliation, and rebinding around one external interaction.",
     maturity: "Experimental boundary",
@@ -96,10 +102,10 @@ export const projects: ProjectDefinition[] = [
     summary: "The task-to-external-world interaction boundary. World correlates target, path, identity, transport, provider execution, authority, receipt, artifact, conditioned evidence, uncertainty, reconciliation, and rebinding while mature systems retain their native mechanisms.",
     state: "Former Link and Edge histories are unified and retired as separate projects. The next decision is empirical: compare one correlated lost-response recovery path against direct Host-to-provider integration.",
     evidence: [{ value: "2", label: "retired prototype boundaries" }, { value: "1", label: "World Interaction question" }, { value: "W1", label: "next decisive experiment" }],
-    repository: "https://github.com/zycxfyh/ordivon-world", href: "/projects/world", updatedAt: siteUpdatedAt,
+    repository: "https://github.com/zycxfyh/ordivon-world", href: "/projects/world", updatedAt: portfolioUpdatedAt,
   },
   {
-    id: "project:web", kind: "project", slug: "web", title: "Ordivon Web", status: "active", group: "Public interface",
+    id: "project:web", kind: "project", slug: "web", title: "Ordivon Web", lifecycle: "active", group: "Public interface",
     label: "Research as an explorable system", publicPage: false,
     summary: "The public interface that connects stable projects, active research questions, and dated writing without duplicating repository truth.",
     state: "Web V2 is closed around static delivery, durable Question dossiers, an article-centered publication index, and a continuity-led visual thesis. Project and Question metadata now derive navigation without a second public fact registry.",
@@ -107,20 +113,20 @@ export const projects: ProjectDefinition[] = [
     repository: "https://github.com/zycxfyh/ordivon-web", updatedAt: siteUpdatedAt,
   },
   {
-    id: "project:game", kind: "project", slug: "game", title: "Ordivon Game", status: "experimental", group: "Agent-native application",
+    id: "project:game", kind: "project", slug: "game", title: "Ordivon Game", lifecycle: "active", group: "Agent-native application",
     label: "Persistent Agents inside a verified World", publicPage: false,
     summary: "Station Zero tests persistent single- and multi-Agent roles, partial knowledge, typed communication, player authority, deterministic World effects, replay, diagnosis, and exact comparison through shared Host semantics.",
     state: "Station Zero v0.1.0-alpha.1 is released as a source-playable developer Alpha with replay, evidence-linked diagnosis, exact run comparison, reload recovery, and clean archive verification.",
     evidence: [{ value: "v0.1.0-alpha.1", label: "released Alpha" }, { value: "406,855 B", label: "verified archive" }, { value: "2", label: "exact-comparison runs" }],
-    repository: "https://github.com/zycxfyh/ordivon-game", updatedAt: siteUpdatedAt,
+    repository: "https://github.com/zycxfyh/ordivon-game", updatedAt: portfolioUpdatedAt,
   },
   {
-    id: "project:security", kind: "project", slug: "security", title: "Ordivon Security", status: "experimental", group: "Adversarial agency",
+    id: "project:security", kind: "project", slug: "security", title: "Ordivon Security", lifecycle: "active", group: "Adversarial agency",
     label: "Control under strategic opposition", publicPage: false,
     summary: "A research line for strategic adversarial agency, dynamic opponents, trajectory evidence, multidimensional outcomes, and evaluation when the acting subject adapts to observation and intervention.",
     state: "Round 1 completed 84 bounded Trials across a local dynamic-opponent World, CAGE Challenge 4, and model-backed diagnostics. The experimental method is retained; no Campaign engine, organization ontology, strategic state, custom cyber range, or general capability claim was promoted.",
     evidence: [{ value: "84", label: "bounded Trials" }, { value: "3", label: "experiment families" }, { value: "0", label: "strategic layers promoted" }],
-    repository: "https://github.com/zycxfyh/ordivon-security", updatedAt: siteUpdatedAt,
+    repository: "https://github.com/zycxfyh/ordivon-security", updatedAt: portfolioUpdatedAt,
   },
 ];
 
@@ -133,8 +139,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "Task meaning belongs in Host, physical execution truth in Runtime, and correlated external interaction may belong in World; durable workflow mechanics, generalized Context state, and provider-specific lifecycle can remain in mature systems or owning applications.",
     currentJudgment: "Answered within the Round 1 boundary. LangGraph and Temporal carried durable work state; current-revision retrieval matched the tested Context need; single-backend Effect machinery shrank to identity, UNKNOWN, correlation, reconciliation, and no blind redispatch; live provider replacement preserved Task state without proving model equivalence.",
     nextStep: "Use the result as an admission test in World W1 and Harness H4–H5. Reopen the shared-core boundary only when a materially different workload exposes an unowned non-bypassable responsibility.",
-    falsifier: "A future workload repeatedly fails because a stable responsibility cannot remain in Host, Runtime, World, a mature workflow engine, or a provider-faithful adapter.",
-    status: "active", state: "answered", href: "/research/smallest-agent-native-core", updatedAt: siteUpdatedAt,
+    falsifier: "A future workload repeatedly fails because a stable responsibility cannot remain in Host, Runtime, World, a mature workflow engine, or a provider-faithful adapter.", state: "answered", href: "/research/smallest-agent-native-core", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:computing-async-join", kind: "question", slug: "async-waiting-and-join", projectSlug: "computing",
@@ -144,8 +149,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "A thin set of durable dependency edges, wait conditions, Join policy, and Ready Frontier state is sufficient; scheduling and workflow authoring can remain outside the core contracts.",
     currentJudgment: "Open. Round 1 showed that mature workflow engines can carry durable work mechanics, but no interrupted fan-out and fan-in workload has yet proved which semantic Join facts must remain visible above those mechanics.",
     nextStep: "Run one real Task that fans out across replaceable workers, waits through interruption, and joins without reconstructing admitted state.",
-    falsifier: "If existing Task, Job, Outcome, workflow state, and typed relation objects express waiting and Join behavior without ambiguity or hidden durable facts, add nothing.",
-    status: "active", state: "open", href: "/research/async-waiting-and-join", updatedAt: siteUpdatedAt,
+    falsifier: "If existing Task, Job, Outcome, workflow state, and typed relation objects express waiting and Join behavior without ambiguity or hidden durable facts, add nothing.", state: "open", href: "/research/async-waiting-and-join", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:computing-second-workload", kind: "question", slug: "contracts-across-a-second-workload", projectSlug: "computing",
@@ -155,8 +159,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "Task continuity, effect identity, evidence, and recovery contracts should survive materially different workloads through adapters rather than workload-specific core fields.",
     currentJudgment: "Strongly supported but not fully closed. Game implemented the immutable Host workload profile across a TypeScript deterministic World, single- and multi-Agent paths, response-loss recovery, and exact replay, then removed thirteen duplicate truth tables without changing World outcomes. A second non-Game external domain remains useful pressure.",
     nextStep: "Apply the surviving contracts to World W1 or another non-Game provider path and record every requested exception before promoting any further shared field.",
-    falsifier: "If repeated workload-specific exceptions are necessary to preserve progress, split or narrow the claimed shared contract instead of generalizing it further.",
-    status: "active", state: "testing", href: "/research/contracts-across-a-second-workload", updatedAt: siteUpdatedAt,
+    falsifier: "If repeated workload-specific exceptions are necessary to preserve progress, split or narrow the claimed shared contract instead of generalizing it further.", state: "testing", href: "/research/contracts-across-a-second-workload", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:computing-calibrated-non-action", kind: "question", slug: "calibrated-non-action", projectSlug: "computing",
@@ -166,8 +169,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "Host-local DecisionRequests, explicit UNKNOWN and wait states, deadlines, evidence requirements, and paired act/abstain evaluation can preserve authorized utility with fewer operator interruptions than uniform approval rules.",
     currentJudgment: "Testing. Round 1 reduced deterministic approval interruptions from 12 to 7 with no missed escalation in its designed cases, but those timings were estimated rather than measured with real operators. Security, Game, Runtime, and World now provide stronger act-versus-wait trajectories.",
     nextStep: "Run paired act/abstain trajectories with real timing, consequence, expiry, and recovery data across one authority request, one UNKNOWN Effect, and one adversarial policy switch.",
-    falsifier: "A simpler static policy or always-act baseline achieves equal authorized utility, timing, recovery, and operator cost with fewer persistent states.",
-    status: "active", state: "testing", href: "/research/calibrated-non-action", updatedAt: siteUpdatedAt,
+    falsifier: "A simpler static policy or always-act baseline achieves equal authorized utility, timing, recovery, and operator cost with fewer persistent states.", state: "testing", href: "/research/calibrated-non-action", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:host-general-goal", kind: "question", slug: "host-general-repository-goal", projectSlug: "host",
@@ -177,8 +179,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "Host can own Goal, Task, candidate admission, Harness assignment, verification, and Outcome while Runtime exclusively owns Workspaces, Jobs, process trees, and physical evidence.",
     currentJudgment: "Strongly supported but still bounded. H2–H6 established continuation; Harness H1–H5 completed a frozen repository-repair workload in both Codex/Hermes replacement orders, rejected stale and missing-Artifact completion claims, recovered a dropped repair response without redispatch, and committed TaskOutcome only after independent Runtime acceptance. A broader unbounded repository Goal remains outstanding.",
     nextStep: "Run one broader multi-step repository Goal with open-ended decomposition across Host restart and later Harness replacement while preserving admitted decisions, unknown-effect handling, and acceptance evidence.",
-    falsifier: "If Host must copy process, Workspace, or Artifact truth to continue correctly—or loses semantic commitments when those objects remain in Runtime—the boundary is wrong.",
-    status: "active", state: "testing", href: "/research/host-general-repository-goal", updatedAt: siteUpdatedAt,
+    falsifier: "If Host must copy process, Workspace, or Artifact truth to continue correctly—or loses semantic commitments when those objects remain in Runtime—the boundary is wrong.", state: "testing", href: "/research/host-general-repository-goal", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:host-operational-surface", kind: "question", slug: "host-operational-surface", projectSlug: "host",
@@ -188,8 +189,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "A small inspect surface, service lifecycle, append-only journal backup, and explicit recovery report will be sufficient; a general operations platform is unnecessary.",
     currentJudgment: "Open. The journal, recovery model, operator handoff, and Harness receipts exist, but long-lived installation and operator recovery have not yet established the minimum public surface.",
     nextStep: "Run Host as a persistent service through routine restart, backup, restore, and one deliberately interrupted Task.",
-    falsifier: "If the current journal plus ordinary service tooling already makes every required state observable and recoverable, do not add a separate operations layer.",
-    status: "active", state: "open", href: "/research/host-operational-surface", updatedAt: siteUpdatedAt,
+    falsifier: "If the current journal plus ordinary service tooling already makes every required state observable and recoverable, do not add a separate operations layer.", state: "open", href: "/research/host-operational-surface", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:host-harness-composition", kind: "question", slug: "harness-composition-and-completion", projectSlug: "host",
@@ -199,8 +199,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "Host-local Assignment, HarnessRunReceipt, CompletionProposal, capability manifest, generation fencing, and completion adjudication will survive Codex App Server and Hermes ACP, while provider Thread and Session identities remain local evidence.",
     currentJudgment: "Answered by H1–H5. Both replacement orders completed through one Task Attempt and fresh Assignment generation; stale completion, missing Artifact, and response loss were handled correctly. Provider final text was not portable evidence, and Codex/Hermes lifecycles remained materially different. The durable Host boundary survived; a shared internal Provider lifecycle did not.",
     nextStep: "Keep the shared mature-Provider lifecycle closed. Reopen only if a second independent consumer proves stable shared semantics and measurable net deletion without Provider capability loss. Use the separate Ordivon Harness v0 question for bare model APIs.",
-    falsifier: "Direct provider drivers plus ordinary Host Task state remain simpler and equally correct, or a shared interface destroys material provider capability or adds more lifecycle code than it removes.",
-    status: "active", state: "answered", href: "/research/harness-composition-and-completion", updatedAt: siteUpdatedAt,
+    falsifier: "Direct provider drivers plus ordinary Host Task state remain simpler and equally correct, or a shared interface destroys material provider capability or adds more lifecycle code than it removes.", state: "answered", href: "/research/harness-composition-and-completion", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:ordivon-harness-v0", kind: "question", slug: "ordivon-harness-v0", projectSlug: "host",
@@ -210,8 +209,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "A Host-local v0 with one Model Adapter, sequential Tool Loop, Assignment-scoped catalog, Runtime bridge, bounded Run state, interruption, and existing Run receipts can solve one real multi-turn workload while remaining materially smaller than mature Provider drivers.",
     currentJudgment: "Ready for construction at M2. The complete model-to-work stack, H1–H5 ownership boundary, first falsifier, comparison baselines, acceptance, non-goals, and deletion condition are frozen. No implementation evidence exists yet.",
     nextStep: "Compare one frozen repository workload under one-shot ModelGateway, Ordivon Harness with a bare model API, and one mature Provider Harness; retain the prototype only if it solves a real failure or enables a real model path at acceptable permanent cost.",
-    falsifier: "One-shot or mature Provider Harness paths match correctness, recovery, portability, and cost while no bare-model use case requires the first-party Loop.",
-    status: "active", state: "open", href: "/research/ordivon-harness-v0", updatedAt: siteUpdatedAt,
+    falsifier: "One-shot or mature Provider Harness paths match correctness, recovery, portability, and cost while no bare-model use case requires the first-party Loop.", state: "open", href: "/research/ordivon-harness-v0", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:runtime-structured-effect", kind: "question", slug: "runtime-structured-effect", projectSlug: "runtime",
@@ -221,8 +219,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "The surviving cross-backend core is stable intended identity, explicit UNKNOWN, backend correlation, reconciliation, and a prohibition on blind redispatch; authority, path, and provider receipts remain World-owned when they condition the external effect.",
     currentJudgment: "Testing after contraction. Runtime dogfood supports commitment as the local abstraction, while Round 1 showed no advantage for a larger single-backend Effect graph. Host H2/R2 also completed real correlation and recovery through existing Runtime request identity and opaque references without expanding Runtime.",
     nextStep: "Use World W1 as the second backend and compare direct provider integration against the minimum Effect fields under response loss, path change, reconciliation, and continuation.",
-    falsifier: "Stable provider request identity, native receipts, durable Activities, and direct Host integration preserve the same ambiguity and recovery with less permanent machinery.",
-    status: "active", state: "testing", href: "/research/runtime-structured-effect", updatedAt: siteUpdatedAt,
+    falsifier: "Stable provider request identity, native receipts, durable Activities, and direct Host integration preserve the same ambiguity and recovery with less permanent machinery.", state: "testing", href: "/research/runtime-structured-effect", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:runtime-boundary-friction", kind: "question", slug: "runtime-boundary-friction", projectSlug: "runtime",
@@ -232,8 +229,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "A new Runtime primitive is justified only when a physical fact cannot be reconstructed after interruption; workflow, Task, Harness, and provider convenience belongs in Host, adapters, or World.",
     currentJudgment: "Strongly supported. Repeated dogfood earned request lookup, progress, repair, lifecycle retention, and receipts. Harness H2/R2 then proved Assignment and Harness Run correlation, exact replay, fresh-client recovery, and terminal evidence using four opaque foreign references with zero new Runtime semantic objects.",
     nextStep: "Apply the unreconstructable-physical-fact test to each new friction reported by Host, Game, World, and future workloads before adding any primitive.",
-    falsifier: "A repeated failure cannot be recovered, correlated, or explained without a new durable Runtime-owned physical fact.",
-    status: "active", state: "open", href: "/research/runtime-boundary-friction", updatedAt: siteUpdatedAt,
+    falsifier: "A repeated failure cannot be recovered, correlated, or explained without a new durable Runtime-owned physical fact.", state: "open", href: "/research/runtime-boundary-friction", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:world-correlated-recovery", kind: "question", slug: "world-correlated-recovery", projectSlug: "world",
@@ -243,8 +239,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "One World Interaction identity can bind target, path, identity, authority, provider request, receipt, and conditioned observation without replacing mature transports or provider APIs.",
     currentJudgment: "Testing. Link and Edge are now retired as separate projects and their useful planes are preserved inside World, but no end-to-end lost-response trajectory has yet reconciled a real provider action across a path change.",
     nextStep: "Run World W1: perform one provider mutation, lose the response deliberately, change the usable path, reconcile by evidence, and continue the original Task without duplicate work.",
-    falsifier: "Provider idempotency and existing transport receipts compose directly in Host with equal recoverability and less state.",
-    status: "experimental", state: "testing", href: "/research/world-correlated-recovery", updatedAt: siteUpdatedAt,
+    falsifier: "Provider idempotency and existing transport receipts compose directly in Host with equal recoverability and less state.", state: "testing", href: "/research/world-correlated-recovery", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:world-boundary-value", kind: "question", slug: "world-boundary-value", projectSlug: "world",
@@ -254,8 +249,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "World earns its boundary only where path-conditioned delivery and external effect reconciliation must remain one recoverable interaction.",
     currentJudgment: "Supported as a corrected research boundary but still experimentally open. Link and Edge unification removed the wrong repository split; World W1 must now prove that correlated recovery creates more value than direct Host integration.",
     nextStep: "Implement the smallest correlated World Interaction and compare its failure recovery against a direct Host-to-provider path.",
-    falsifier: "Direct Host integration remains simpler while preserving the same evidence, ambiguity, rebinding, and no-duplicate guarantees.",
-    status: "experimental", state: "open", href: "/research/world-boundary-value", updatedAt: siteUpdatedAt,
+    falsifier: "Direct Host integration remains simpler while preserving the same evidence, ambiguity, rebinding, and no-duplicate guarantees.", state: "open", href: "/research/world-boundary-value", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:web-research-interface", kind: "question", slug: "web-research-interface", projectSlug: "web",
@@ -265,8 +259,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "Stable Project ownership, durable Question dossiers, dated Articles, and a few curated architecture views can expose changing judgment while detailed evidence remains in publications and owning repositories.",
     currentJudgment: "Answered after contraction. The full Experiment/Finding/Decision/Event graph and explicit relation registry were removed. Project, Question, and Article metadata now drive Research, Writing, Current, article context, and curated System views with substantially less duplicate state.",
     nextStep: "Use the article-centered interface during real publication work and observe whether Question dossiers, topic browsing, and source links reduce explanation cost for first-time and returning readers.",
-    falsifier: "If Project, Question, and Article metadata cannot support navigation without repeated manual exceptions, add only the narrow missing relation—not a general public graph.",
-    status: "active", state: "testing", href: "/research/web-research-interface", updatedAt: siteUpdatedAt,
+    falsifier: "If Project, Question, and Article metadata cannot support navigation without repeated manual exceptions, add only the narrow missing relation—not a general public graph.", state: "testing", href: "/research/web-research-interface", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:game-agent-native-mechanics", kind: "question", slug: "game-agent-native-mechanics", projectSlug: "game",
@@ -276,8 +269,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "Persistent Agents sharing Task continuity can sustain actor-local knowledge, typed communication, authority, replaceable cognition, and recoverable commitments that fixed NPC state machines cannot express economically.",
     currentJudgment: "Testing with a released application. Station Zero now demonstrates persistent specialists, partial observations, communication whose reachability changes outcomes, player authority, provider replacement, replay, diagnosis, and exact run comparison. It still does not prove that these mechanics outperform a strong classical implementation or equal-budget single Agent.",
     nextStep: "Run the planned equal-budget single-Agent/multi-Agent ablation and implement one strong deterministic scripted baseline for the same mechanic and player information surface.",
-    falsifier: "The same mechanic and player experience can be reproduced with a conventional state machine or single Agent without losing essential behavior or causing disproportionate authoring cost.",
-    status: "experimental", state: "testing", href: "/research/game-agent-native-mechanics", updatedAt: siteUpdatedAt,
+    falsifier: "The same mechanic and player experience can be reproduced with a conventional state machine or single Agent without losing essential behavior or causing disproportionate authoring cost.", state: "testing", href: "/research/game-agent-native-mechanics", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:security-adversarial-trajectory", kind: "question", slug: "security-adversarial-trajectory", projectSlug: "security",
@@ -287,8 +279,7 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "A thin experiment layer with exact identities, observation/truth separation, digest-bound traces, dynamic opponents, and independent tactical, operational, strategic, information, organization, evaluator, and cost outcomes is sufficient to test candidate Agent-native distinctions before promoting shared architecture.",
     currentJudgment: "Testing with executable evidence. Round 1 completed 84 Trials and showed that tactical success can be strategically harmful, CAGE reward and foothold spread can conflict, richer model interpretation need not improve action, and organization can isolate compromised advice without creating new capability. The method survived; no Campaign engine or strategic ontology was promoted.",
     nextStep: "Run the next bounded experiment across multiple seeds, held-out opponent policies, compiled opponent state, and deliberate Host Session disruption while retaining multidimensional evidence.",
-    falsifier: "Classical authorization, simulation, ordinary Goal/Task state, source-native metrics, and reactive policies explain the same failures and comparisons with fewer Security-specific objects.",
-    status: "experimental", state: "testing", href: "/research/security-adversarial-trajectory", updatedAt: siteUpdatedAt,
+    falsifier: "Classical authorization, simulation, ordinary Goal/Task state, source-native metrics, and reactive policies explain the same failures and comparisons with fewer Security-specific objects.", state: "testing", href: "/research/security-adversarial-trajectory", updatedAt: portfolioUpdatedAt,
   },
   {
     id: "question:security-opponent-state-transfer", kind: "question", slug: "opponent-state-transfer", projectSlug: "security",
@@ -298,13 +289,14 @@ export const questions: QuestionDefinition[] = [
     hypothesis: "Explicit opponent hypotheses and revisions will improve held-out switch recognition, resource timing, and objective completion when transcript Context is truncated or the Harness is replaced, provided the state is compiled from verified observations rather than model narrative alone.",
     currentJudgment: "Open after mixed Round 1 evidence. The local opponent-aware actor improved diagnosis and objective rate, one Codex strategic Trial recognized a switch, Hermes outcomes were unchanged, and no model Trial completed the genuine objective. No causal or transferable advantage is established.",
     nextStep: "Compare transcript-only and compiled-state conditions across multiple seeds, held-out opponent policies, bounded Context loss, and both Codex and Hermes Harness replacement.",
-    falsifier: "A reactive policy or transcript-only Agent matches held-out objective, information, timing, and recovery outcomes with lower state and maintenance cost.",
-    status: "experimental", state: "testing", href: "/research/opponent-state-transfer", updatedAt: siteUpdatedAt,
+    falsifier: "A reactive policy or transcript-only Agent matches held-out objective, information, timing, and recovery outcomes with lower state and maintenance cost.", state: "testing", href: "/research/opponent-state-transfer", updatedAt: portfolioUpdatedAt,
   },
 ];
 
-export function getSystemById(id: string) { return systems.find((item) => item.id === id); }
-export function getSystemBySlug(slug: string) { return systems.find((item) => item.slug === slug); }
+export function getArchitectureRoleById(id: string) { return architectureRoles.find((item) => item.id === id); }
+export function getArchitectureRoleBySlug(slug: string) { return architectureRoles.find((item) => item.slug === slug); }
+export function getBoundaryById(id: string) { return boundaries.find((item) => item.id === id); }
+export function getResearchPlaneById(id: string) { return researchPlanes.find((item) => item.id === id); }
 export function getProjectById(id: string) { return projects.find((item) => item.id === id); }
 export function getProjectBySlug(slug: string) { return projects.find((item) => item.slug === slug); }
 export function getQuestionById(id: string) { return questions.find((item) => item.id === id); }

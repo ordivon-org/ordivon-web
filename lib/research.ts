@@ -18,7 +18,7 @@ export type ResearchDossier = ResearchQuestionSummary & {
 const stateOrder: Record<QuestionDefinition["state"], number> = { testing: 0, open: 1, reframed: 2, answered: 3 };
 
 function byNewest(left: Article, right: Article) {
-  return (right.modifiedDate || right.date).localeCompare(left.modifiedDate || left.date);
+  return (right.revisedAt || right.publishedAt).localeCompare(left.revisedAt || left.publishedAt);
 }
 
 export function getResearchQuestions() {
@@ -41,7 +41,7 @@ export function getResearchDossier(questionOrSlug: QuestionDefinition | string):
   const relatedQuestions = project
     ? getResearchQuestions().filter((candidate) => candidate.id !== question.id && getProjectForQuestion(candidate.id)?.id === project.id)
     : [];
-  const latestPublicationDate = supporting.map((article) => article.modifiedDate || article.date).sort((a, b) => b.localeCompare(a))[0];
+  const latestPublicationDate = supporting.map((article) => article.revisedAt || article.publishedAt).sort((a, b) => b.localeCompare(a))[0];
   return { question, project, articles: supporting, relatedQuestions, articleCount: supporting.length, latestPublicationDate };
 }
 

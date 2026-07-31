@@ -1,4 +1,36 @@
-<h2 id="a-transcript-can-explain-without-authorizing">A transcript can explain without authorizing</h2>
+export const metadata = {
+  "slug": "transcript-not-task-database",
+  "title": "A Transcript Is Not a Task Database",
+  "deck": "Conversation history can preserve rationale while omitting the operation identity, source revision, authority, and unresolved commitment that determine whether the next action is safe.",
+  "description": "Why transcripts and summaries remain useful cognitive evidence but should not become the authoritative database of durable agent work.",
+  "projectSlugs": [
+    "computing"
+  ],
+  "questionSlugs": [
+    "smallest-agent-native-core"
+  ],
+  "type": "Research note",
+  "project": "Ordivon Computing",
+  "publishedAt": "2026-07-31",
+  "readMinutes": 3,
+  "author": "zycxfyh",
+  "lead": "A summary can preserve the story of a Task while deleting the exact pending operation whose retry would duplicate reality.",
+  "status": "current",
+  "claimClass": "engineering-inference",
+  "evidenceLevel": "E2",
+  "takeaways": [
+    "A transcript can preserve rationale while omitting operation identity and unresolved commitment.",
+    "More historical text can amplify stale or untrusted instructions.",
+    "Conversation history is cognitive evidence, not authoritative task state."
+  ],
+  "limitations": [
+    "The note synthesizes bounded Ordivon failures rather than a controlled cross-system benchmark.",
+    "Some short-lived tasks can safely rely on transcripts because their consequences are cheap and local."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-host"
+};
+
+<h2 id="a-transcript-can-explain-without-authorizing" data-toc="Explain without authorizing">A transcript can explain without authorizing</h2>
 
 <p>A conversation is useful evidence of how a model reached a proposal. It is not, by itself, a safe database of what work remains admissible.</p>
 
@@ -6,7 +38,7 @@
 
 <div className="article-thesis"><p>A summary can preserve narrative continuity while destroying operational continuity.</p></div>
 
-<h2 id="the-missing-facts">The missing facts</h2>
+<h2 id="the-missing-facts" data-toc="The missing facts">The missing facts</h2>
 
 <p>Safe continuation required facts that prose did not reliably retain:</p>
 
@@ -16,7 +48,7 @@
 
 <p>These facts have different owners and lifetimes. Repository revision comes from source control. Process truth comes from Runtime. External receipts come from the Provider or World. Goal and Task commitments belong to Host. A transcript may cite them, but citation does not transfer authority.</p>
 
-<h2 id="more-transcript-can-be-less-safe">More transcript can be less safe</h2>
+<h2 id="more-transcript-can-be-less-safe" data-toc="More transcript can be less safe">More transcript can be less safe</h2>
 
 <p>The full-transcript Context path also failed. It included an obsolete trusted specification, an old Tool catalog, and a plausible untrusted README that recommended removing validation. More text exposed the model to more stale and unsupported claims.</p>
 
@@ -24,7 +56,7 @@
 
 <blockquote>Compile Context from separately owned current state instead of treating conversation accumulation as truth accumulation.</blockquote>
 
-<h2 id="what-a-transcript-is-good-for">What a transcript is good for</h2>
+<h2 id="what-a-transcript-is-good-for" data-toc="What transcript is good for">What a transcript is good for</h2>
 
 <ul>
   <li>preserving model rationale for later inspection;</li>
@@ -36,7 +68,7 @@
 
 <p>It should not silently decide whether an external operation may be retried, whether an approval remains current, which source revision is authoritative, or whether a Task is complete.</p>
 
-<h2 id="the-thin-boundary">The thin boundary</h2>
+<h2 id="the-thin-boundary" data-toc="The thin boundary">The thin boundary</h2>
 
 <p>Ordivon does not require eliminating transcripts. It requires a smaller separation:</p>
 
@@ -53,7 +85,7 @@
 
 <section className="article-sources" aria-labelledby="sources-title">
   <p className="section-index">Evidence</p>
-  <h2 id="sources-title">Related record</h2>
+  <h2 id="sources-title" data-toc="Related record">Related record</h2>
   <ol className="source-list">
 <li><a href="/writing/smaller-core-strong-baselines">The Smaller Core That Survived Strong Baselines</a></li>
     <li><a href="/research/smallest-agent-native-core">Smallest Agent-native core dossier</a></li>

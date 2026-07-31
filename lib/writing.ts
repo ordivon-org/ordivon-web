@@ -9,7 +9,7 @@ export type WritingAnchor =
 export type WritingConnection = { article: Article; sharedProjects: ProjectDefinition[]; sharedQuestions: QuestionDefinition[]; score: number };
 export type ArticleContext = { article: Article; anchors: WritingAnchor[]; related: WritingConnection[] };
 
-function articleDate(article: Article) { return article.modifiedDate || article.date; }
+function articleDate(article: Article) { return article.revisedAt || article.publishedAt; }
 function byDate(left: Article, right: Article) { return articleDate(right).localeCompare(articleDate(left)); }
 
 export function getArticleAnchors(article: Article): WritingAnchor[] {
@@ -33,11 +33,6 @@ export function getArticleContext(slug: string): ArticleContext | undefined {
     return { article: candidate, sharedProjects, sharedQuestions, score: sharedQuestions.length * 5 + sharedProjects.length * 2 };
   }).filter((item) => item.score > 0).sort((left, right) => right.score - left.score || byDate(left.article, right.article));
   return { article, anchors: getArticleAnchors(article), related };
-}
-
-export function getFeaturedWriting(limit = 3) {
-  const longForm = [...articles].filter((article) => article.type !== "Research note").sort(byDate);
-  return longForm.slice(0, limit);
 }
 
 export function getWritingTopics() {

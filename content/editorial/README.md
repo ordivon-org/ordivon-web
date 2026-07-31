@@ -57,3 +57,5 @@ Public copy may interpret and organize the work. It must not become a second tec
 A change to a public page or article should be reviewed against the relevant files above. The system is guidance, not a mandatory prose bureaucracy. Apply it where it improves comprehension, credibility, or reach; do not create process that costs more than the communication failure it prevents.
 
 - [`publication-system-2026-08-01.md`](./publication-system-2026-08-01.md) — implemented the publication schema, reusable primitives, flagship packages, revision semantics, and production audit.
+
+- [`a-series-web-constraint-audit-2026-08-01.md`](./a-series-web-constraint-audit-2026-08-01.md) — applies Ordivon Computer A0–A16 to Web architecture, gates, and publication constraints.

@@ -1,4 +1,37 @@
-<h2 id="semantic-reuse-created-two-authorities">Semantic reuse created two authorities</h2>
+export const metadata = {
+  "slug": "one-authority-thirteen-tables",
+  "title": "One Authority, Thirteen Tables Deleted",
+  "deck": "A working Python Host sidecar lost to an embedded authority on startup, lifecycle latency, code size, deployment, and recovery cost. The cutover preserved exact World outcomes while deleting thirteen duplicate truth tables.",
+  "description": "Why Ordivon Game reused the Host contract without forcing every workload through one Python process, and how unique semantic authority enabled a net deletion of 641 implementation and test lines.",
+  "projectSlugs": [
+    "host",
+    "game"
+  ],
+  "questionSlugs": [
+    "contracts-across-a-second-workload"
+  ],
+  "type": "Engineering report",
+  "project": "Ordivon Host / Game",
+  "publishedAt": "2026-07-31",
+  "readMinutes": 5,
+  "author": "zycxfyh",
+  "lead": "The sidecar was functionally correct. It was deleted because the in-process Game workload gained no capability from the process boundary while paying transport, startup, deployment, code-size, and split-recovery cost.",
+  "status": "current",
+  "claimClass": "engineering-inference",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "A working sidecar still lost when it duplicated semantic authority.",
+    "Embedding the authority preserved exact World outcomes while deleting thirteen truth tables.",
+    "Contract reuse does not require every workload to share one process."
+  ],
+  "limitations": [
+    "The conclusion applies to this Host/Game boundary and does not reject sidecars generally.",
+    "The latency and deletion gains were measured in one local architecture."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-game/blob/7b44504da7a3467d65d6260d7cbc479b0fc971a8/docs/HOST-AUTHORITY-CUTOVER-P3-P6.md"
+};
+
+<h2 id="semantic-reuse-created-two-authorities" data-toc="Semantic reuse created two authorities">Semantic reuse created two authorities</h2>
 
 <p>Ordivon Game adopted the Host workload contract before it adopted one production authority. The P0–P2 adapters proved that Game's single-Agent and Team lifecycles could map into TaskDescriptor, Dispatch, Observation, VerificationReceipt, and TaskOutcome. They also left Game reconstructing the same generic truth through local tables and adapters.</p>
 
@@ -6,7 +39,7 @@
 
 <div className="article-thesis"><p>Reusing one implementation is not automatically cheaper than reusing one contract.</p></div>
 
-<h2 id="the-sidecar-worked">The sidecar worked</h2>
+<h2 id="the-sidecar-worked" data-toc="The sidecar worked">The sidecar worked</h2>
 
 <p>A minimal Python JSONL sidecar completed one real World Tick, including recovery after a World commit with a lost response. It did not require HTTP, MCP, Python-to-Node callbacks, or a cross-database transaction. It was not rejected because it was broken.</p>
 
@@ -23,7 +56,7 @@
 
 <p>The sidecar also divided startup, transport, packaging, evidence lookup, and recovery across two processes. None of those costs supplied a capability required by the three-specialist Scenario.</p>
 
-<h2 id="one-authority-replaced-reconstruction">One authority replaced reconstruction</h2>
+<h2 id="one-authority-replaced-reconstruction" data-toc="One authority replaced reconstruction">One authority replaced reconstruction</h2>
 
 <p>The final boundary is:</p>
 
@@ -40,7 +73,7 @@ GameWorldExecutor
 
 <p>The generic Host lifecycle is stored only in immutable <code>host_artifacts</code> and one hash-chained <code>host_journal</code>. Game retains domain state that is not a second generic Host: cognition sessions, actor leases, profiles, Messages, authority decisions, Rounds, actor-visible Context references, Proposals, and TickPlans.</p>
 
-<h2 id="thirteen-duplicate-truth-tables-left">Thirteen duplicate truth tables left</h2>
+<h2 id="thirteen-duplicate-truth-tables-left" data-toc="Thirteen tables left">Thirteen duplicate truth tables left</h2>
 
 <div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Deleted duplicate Host tables">
   <div className="article-data-row article-data-head" role="row"><span role="columnheader">Path</span><span role="columnheader">Deleted generic tables</span><span role="columnheader">Deleted adapters</span><span role="columnheader">Retained authority</span><span role="columnheader">Outcome</span></div>
@@ -60,13 +93,13 @@ GameWorldExecutor
 
 <p>Deleting tables mattered more than deleting lines. The system no longer had to decide which copy of Goal, Task, Effect, Dispatch, Observation, or Verification truth would win after interruption.</p>
 
-<h2 id="world-results-did-not-move">World results did not move</h2>
+<h2 id="world-results-did-not-move" data-toc="World results did not move">World results did not move</h2>
 
 <p>The deterministic single-Agent workload preserved ten admitted Decisions, 25 primitive World Effects, 25 Host lifecycles, final revision 25, and the exact terminal digest. The Team workload preserved 18 Rounds, 54 actor Contexts, 54 Proposals, 18 joint Effects, 54 per-Actor result items, zero duplicate Ticks, final revision 18, and the exact terminal digest.</p>
 
 <p>A live Codex single-Agent Run also reached victory with verified replay after the cutover. The authority migration changed ownership and recovery, not the World rules or accepted outcome.</p>
 
-<h2 id="what-game-still-owns">What Game still owns</h2>
+<h2 id="what-game-still-owns" data-toc="What Game still owns">What Game still owns</h2>
 
 <p>Unique authority does not mean flattening every domain object into Host. Game still owns the structures whose meaning is genuinely local:</p>
 
@@ -76,7 +109,7 @@ GameWorldExecutor
 
 <p>Host owns the generic work lifecycle. World owns physical Game state and replay. Mission Control derives a product projection from both. It does not become another authority store.</p>
 
-<h2 id="the-general-lesson">The general lesson</h2>
+<h2 id="the-general-lesson" data-toc="The general lesson">The general lesson</h2>
 
 <p>There are at least three different kinds of reuse:</p>
 
@@ -92,7 +125,7 @@ GameWorldExecutor
 
 <blockquote>Which authority must be unique, and what is the cheapest implementation that preserves that uniqueness for this workload?</blockquote>
 
-<h2 id="what-this-does-not-generalize">What this does not generalize</h2>
+<h2 id="what-this-does-not-generalize" data-toc="What does not generalize">What this does not generalize</h2>
 
 <p>The result does not imply that sidecars or services are generally wrong. A separate process can be correct when consumers use different trust zones, machines, release cadences, languages, resource controls, or operational ownership. Historical databases containing removed tables were not migrated. Game-specific Actions and Ticks were not promoted into the shared protocol.</p>
 
@@ -102,7 +135,7 @@ GameWorldExecutor
 
 <section className="article-sources" aria-labelledby="sources-title">
   <p className="section-index">Evidence</p>
-  <h2 id="sources-title">Authority cutover record</h2>
+  <h2 id="sources-title" data-toc="Authority record">Authority cutover record</h2>
   <ol className="source-list">
 
 <li><span>Full report.</span> <a href="https://github.com/zycxfyh/ordivon-game/blob/7b44504da7a3467d65d6260d7cbc479b0fc971a8/docs/HOST-AUTHORITY-CUTOVER-P3-P6.md">Host authority cutover P3–P6</a>.</li>

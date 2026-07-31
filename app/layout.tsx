@@ -3,11 +3,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 import "../styles/visual-language.css";
-import "../styles/system.css";
-import "../styles/research.css";
-import "../styles/writing.css";
 import "../styles/motion.css";
-import "../styles/home.css";
 import "../styles/editorial.css";
 
 export const metadata: Metadata = {
