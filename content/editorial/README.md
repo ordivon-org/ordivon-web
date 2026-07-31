@@ -27,6 +27,7 @@ The desired public standard is:
 - [`claim-policy.md`](./claim-policy.md) — evidence obligations, claim classes, limitations, corrections, and marketing boundaries.
 - [`audit-2026-07-31.md`](./audit-2026-07-31.md) — R1 inventory and scored baseline of the current public copy.
 - [`r2-p0-2026-07-31.md`](./r2-p0-2026-07-31.md) — implemented high-leverage entry, title, metadata, and social-distribution changes.
+- [`r2-p1-p2-2026-07-31.md`](./r2-p1-p2-2026-07-31.md) — implemented reader orientation, progressive technical disclosure, and selected recovery improvements.
 
 ## Editorial sequence
 
