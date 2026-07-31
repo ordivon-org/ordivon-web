@@ -48,4 +48,4 @@ const missing = await fetch(`${base}/this-page-does-not-exist/`);
 if (missing.status !== 404) failures.push(`404 route returned ${missing.status}`);
 
 console.log(JSON.stringify({ base, main, production, publishedSource, routes: routes.length, status: failures.length ? "failed" : "passed", failures }, null, 2));
-if (failures.length) process.exit(1);
+process.exit(failures.length ? 1 : 0);
