@@ -4,7 +4,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { SystemMap } from "@/components/system-map";
 import { projects } from "@/lib/projects";
 
-export const metadata: Metadata = { title: "Projects", description: "Four independent Ordivon state owners for contracts, Tasks, local effects, and conditioned external interaction.", alternates: { canonical: "/projects" } };
+export const metadata: Metadata = { title: "Projects", description: "Explore the Ordivon projects that preserve task meaning, execute local work, interact with external systems, and test shared contracts.", alternates: { canonical: "/projects" } };
 
 export default function ProjectsPage() {
   return (

@@ -8,7 +8,7 @@ import { getResearchQuestionSummaries } from "@/lib/research";
 
 export const metadata: Metadata = {
   title: "Research",
-  description: "Explore Ordivon through durable research questions, current judgments, next falsifiers, and the publications that support them.",
+  description: "Follow the questions and experiments changing Ordivon, including what was proved, rejected, reduced, or left open.",
   alternates: { canonical: "/research" },
 };
 

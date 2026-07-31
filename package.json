@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
+    "social:generate": "python3 scripts/generate-social-cards.py",
     "start": "python3 -m http.server 8788 --directory out",
     "preview": "pnpm build && pnpm start",
     "deploy": "pnpm build && node scripts/deploy-pages.mjs",

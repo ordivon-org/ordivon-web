@@ -6,8 +6,8 @@ import { getResearchQuestionSummaries } from "@/lib/research";
 import { currentUpdatedAt, getCurrentProjects, getRecentPublications, getRecentlyUpdatedQuestions } from "@/lib/updates";
 
 export const metadata: Metadata = {
-  title: "Current",
-  description: `The active Ordivon research frontier and recent public record as of ${formatDate(currentUpdatedAt)}.`,
+  title: "Now",
+  description: `What changed across Ordivon, what evidence changed our judgment, and what is being tested next as of ${formatDate(currentUpdatedAt)}.`,
   alternates: { canonical: "/now" },
 };
 
@@ -20,9 +20,9 @@ export default function NowPage() {
   return (
     <div className="page-shell page-top now-page">
       <header className="index-hero">
-        <p className="eyebrow">Current · {formatDate(currentUpdatedAt)}</p>
-        <h1>The frontier is what could still change the map.</h1>
-        <p>This page is derived from active Questions, current Project boundaries, and dated publications. It does not maintain a second event ledger beside the work itself.</p>
+        <p className="eyebrow">Now · {formatDate(currentUpdatedAt)}</p>
+        <h1>What changed, what we learned, and what we are testing now.</h1>
+        <p>A dated view of the experiments, publications, project boundaries, and open questions currently shaping Ordivon.</p>
       </header>
 
       <section className="now-frontier" aria-labelledby="now-frontier-title">

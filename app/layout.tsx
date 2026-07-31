@@ -11,8 +11,8 @@ import "../styles/home.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ordivon.com"),
-  title: { default: "Ordivon — Persistent work for capable agents", template: "%s — Ordivon" },
-  description: "Ordivon builds persistent Task continuity, recoverable execution, path evidence, hosted capabilities, and durable public records for capable agents.",
+  title: { default: "Ordivon — Durable work for AI agents", template: "%s — Ordivon" },
+  description: "Independent research and engineering for AI work that can continue, recover, and remain verifiable across model sessions, processes, machines, and providers.",
   applicationName: "Ordivon",
   authors: [{ name: "zycxfyh", url: "https://github.com/zycxfyh" }],
   creator: "zycxfyh",
@@ -21,9 +21,9 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Ordivon",
     locale: "en_US",
-    title: "Ordivon — Persistent work for capable agents",
-    description: "Systems for Task continuity, committed effects, recoverable paths, hosted capabilities, and durable evidence.",
-    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Ordivon — persistent work for capable agents" }],
+    title: "Ordivon — Durable work for AI agents",
+    description: "Systems that preserve task meaning, execution evidence, and recovery when models, sessions, processes, or providers change.",
+    images: [{ url: "/opengraph-image.png", width: 1200, height: 630, alt: "Ordivon — durable work for AI agents" }],
   },
   twitter: { card: "summary_large_image", images: ["/opengraph-image.png"] },
   icons: { icon: "/icon.svg" },

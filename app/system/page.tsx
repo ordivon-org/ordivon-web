@@ -7,7 +7,7 @@ import { systemPerspectives } from "@/lib/system-views";
 
 export const metadata: Metadata = {
   title: "System",
-  description: "Explore curated Ordivon architecture views for state ownership, execution flow, active research questions, and their public arguments.",
+  description: "See how Ordivon separates task meaning, local execution, external consequences, and contract research so work can survive model and process replacement.",
   alternates: { canonical: "/system" },
 };
 
