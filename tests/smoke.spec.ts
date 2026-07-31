@@ -83,9 +83,9 @@ test("internal navigation targets resolve", async ({ page, request }) => {
 
 test("public model is article-centered and does not expose the retired graph ledger", async ({ page }) => {
   await page.goto("/now", { waitUntil: "domcontentloaded" });
-  await expect(page.getByRole("heading", { name: "The newest complete public arguments." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "What each public project owns now." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Recently revised Question dossiers." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Read the arguments and reports that changed the judgment." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What is tested, experimental, or still waiting for proof." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Questions whose current answer changed." })).toBeVisible();
   await expect(page.getByRole("link", { name: /Creation, Judgment, and Recoverable Systems/ })).toBeVisible();
 
   await page.goto("/research/web-research-interface", { waitUntil: "domcontentloaded" });
@@ -118,11 +118,38 @@ test("public model is article-centered and does not expose the retired graph led
   }
 });
 
+test("reader orientation precedes formal models on the remaining R2 surfaces", async ({ page }) => {
+  await page.goto("/now", { waitUntil: "domcontentloaded" });
+  await expect(page.locator(".now-brief-grid > article")).toHaveCount(4);
+  await expect(page.getByRole("heading", { name: "The system became smaller where evidence was strong and more explicit where uncertainty remained." })).toBeVisible();
+
+  await page.goto("/about", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: /Ordivon began with a simple failure/ })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Built in public by zycxfyh." })).toBeVisible();
+  await expect(page.locator(".about-principle-grid > article")).toHaveCount(4);
+
+  await page.goto("/projects", { waitUntil: "domcontentloaded" });
+  await expect(page.locator(".project-capability-card")).toHaveCount(4);
+  await expect(page.getByText("Production-tested local runtime", { exact: true })).toBeVisible();
+  await expect(page.getByText("Experimental boundary", { exact: true })).toBeVisible();
+
+  await page.goto("/projects/runtime", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Ordivon Runtime", exact: true })).toBeVisible();
+  await expect(page.locator(".project-use-strip > div")).toHaveCount(3);
+  await expect(page.getByText("Capability evidence", { exact: true })).toBeVisible();
+
+  await page.goto("/research", { waitUntil: "domcontentloaded" });
+  await expect(page.locator(".research-start-grid > a")).toHaveCount(3);
+  await expect(page.getByText("Most important question under test", { exact: true })).toBeVisible();
+  await expect(page.getByText("Recently answered boundary", { exact: true })).toBeVisible();
+  await expect(page.getByText("Experiment that most changed the architecture", { exact: true })).toBeVisible();
+});
+
 test("system explorer uses curated architecture views", async ({ page }) => {
   await page.goto("/system", { waitUntil: "domcontentloaded" });
-  await expect(page.getByRole("heading", { name: "Ordivon has a small public model and richer source repositories." })).toBeVisible();
-  await expect(page.getByText("4", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("16", { exact: true }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { name: "One task can outlive the model, process, and path that carried it." })).toBeVisible();
+  await expect(page.locator(".system-trajectory li")).toHaveCount(5);
+  for (const value of ["2 / 2", "3", "13", "W1"]) await expect(page.locator(".system-hero-stats").getByText(value, { exact: true })).toBeVisible();
   await expect(page.locator(".system-explorer")).toHaveAttribute("data-ready", "true");
   await expect(page.getByRole("button", { name: "Structure State ownership" })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByLabel("Selected architecture object").getByRole("heading", { name: "Host", exact: true })).toBeVisible();
@@ -136,7 +163,7 @@ test("system explorer uses curated architecture views", async ({ page }) => {
   await page.getByRole("button", { name: "Research Question to publication" }).click();
   await expect(page.getByRole("button", { name: /Strong-baseline report.*The Smaller Core That Survived Strong Baselines/ })).toBeVisible();
   await page.getByRole("button", { name: /Station Zero Alpha.*Station Zero v0.1.0-alpha.1/ }).click();
-  await expect(page.getByLabel("Selected architecture object").getByRole("heading", { name: "Station Zero v0.1.0-alpha.1" })).toBeVisible();
+  await expect(page.getByLabel("Selected architecture object").getByRole("heading", { name: "Station Zero v0.1.0-alpha.1 — The First Source-Playable Release" })).toBeVisible();
 
   await page.getByRole("button", { name: "Execution Effect path" }).click();
   await expect(page.getByRole("button", { name: /Runtime.*Ordivon Runtime/ })).toBeVisible();
@@ -185,7 +212,7 @@ test("writing provides editorial entry paths before metadata-derived research na
 
 const publicationContracts = [
   { slug: "creation-judgment-recoverable-systems", title: "Creation, Judgment, and Recoverable Systems", tables: 1, phrase: "The goal is not a system that prevents every internal failure." },
-  { slug: "station-zero-alpha-1", title: "Station Zero v0.1.0-alpha.1", tables: 2, phrase: "The release unit is not a screenshot or a successful local database." },
+  { slug: "station-zero-alpha-1", title: "Station Zero v0.1.0-alpha.1 — The First Source-Playable Release", tables: 2, phrase: "The release unit is not a screenshot or a successful local database." },
   { slug: "thin-host-without-hidden-planner", title: "A Thin Host Can Improve Strategy Without Becoming a Planner", tables: 1, phrase: "The thin Host improves the conditions of judgment." },
   { slug: "one-authority-thirteen-tables", title: "One Authority, Thirteen Tables Deleted", tables: 2, phrase: "Reusing one implementation is not automatically cheaper than reusing one contract." },
   { slug: "replay-without-second-truth-store", title: "Replay Without a Second Truth Store", tables: 2, phrase: "Replay should be a deterministic projection of retained authority" },
