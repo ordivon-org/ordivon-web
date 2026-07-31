@@ -20,6 +20,36 @@ export type ArticleMetadata = {
 
 export const articleMetadata = [
   {
+    "slug": "from-tokens-to-work", "title": "From Tokens to Work: The Complete Agent Execution Stack", "kicker": "Architecture guide / Agent systems",
+    "deck": "A model generates representations. A Harness creates one cognitive and Tool-use Run. Host preserves work across Runs. Runtime turns admitted actions into physical evidence.",
+    "description": "A first-principles walkthrough from token generation to Tool execution, verification, TaskOutcome, and graph advancement, compared with OpenAI, Anthropic, Microsoft, Google, and Ordivon's tested boundaries.",
+    "projectSlugs": ["computing", "host", "runtime"], "questionSlugs": ["harness-composition-and-completion", "ordivon-harness-v0"],
+    "meta": "Architecture guide · Ordivon Computing · Published 31 July 2026 · 12 min read · By zycxfyh", "type": "Architecture guide", "project": "Ordivon Computing",
+    "date": "2026-07-31", "modifiedDate": "2026-07-31", "readMinutes": 12, "author": "zycxfyh",
+    "lead": "The path from a prompt to completed work is not one model call. It is a stack of nested loops, authority boundaries, physical execution, evidence, and semantic decisions—and each layer fails differently when its owner is unclear.",
+    "toc": [{ "id": "a-model-does-not-act", "label": "A model does not act" }, { "id": "four-loops-run-at-different-timescales", "label": "Four loops, different timescales" }, { "id": "the-complete-call-chain", "label": "The complete call chain" }, { "id": "five-kinds-of-memory-are-not-one-memory", "label": "Five kinds of memory" }, { "id": "where-ordivon-draws-the-boundary", "label": "Where Ordivon draws the boundary" }, { "id": "what-top-labs-are-actually-building", "label": "What top labs are building" }, { "id": "the-result-is-a-graph-not-a-chat", "label": "A graph, not a chat" }, { "id": "what-remains-open", "label": "What remains open" }, { "id": "sources-title", "label": "Primary sources" }]
+  },
+  {
+    "slug": "why-ordivon-needs-a-harness", "title": "Why Ordivon Needs a Harness—but Not a Universal Harness", "kicker": "Architecture decision / Agent systems",
+    "deck": "Reuse mature Provider Harnesses when they exist. Own a thin first-party Agent Loop when a Provider supplies intelligence but no complete Harness.",
+    "description": "Why H5 correctly rejected a common Codex/Hermes lifecycle while a separate Ordivon Harness remains strategically necessary for bare model APIs, local inference, and controlled Agent-loop research.",
+    "projectSlugs": ["host", "computing"], "questionSlugs": ["harness-composition-and-completion", "ordivon-harness-v0"],
+    "meta": "Architecture decision · Ordivon Host · Published 31 July 2026 · 10 min read · By zycxfyh", "type": "Architecture decision", "project": "Ordivon Host",
+    "date": "2026-07-31", "modifiedDate": "2026-07-31", "readMinutes": 10, "author": "zycxfyh",
+    "lead": "The word Harness had been hiding two different decisions. Ordivon should not flatten mature Provider Agent systems into a lowest-common-denominator platform. It should still be able to turn a bare model API into one bounded, Tool-using, verifiable Agent Run.",
+    "toc": [{ "id": "the-word-harness-was-hiding-two-decisions", "label": "Two decisions hidden in one word" }, { "id": "two-paths-not-one-platform", "label": "Two paths, not one platform" }, { "id": "why-the-first-party-loop-is-strategically-necessary", "label": "Why the first-party Loop matters" }, { "id": "why-a-universal-harness-is-the-wrong-goal", "label": "Why universal is the wrong goal" }, { "id": "why-ordivon-harness-can-remain-thin", "label": "Why it can remain thin" }, { "id": "the-admitted-v0", "label": "The admitted v0" }, { "id": "what-v0-deliberately-does-not-contain", "label": "What v0 excludes" }, { "id": "when-ordivon-harness-becomes-a-repository", "label": "Repository promotion gate" }, { "id": "the-deletion-condition-matters", "label": "The deletion condition" }, { "id": "sources-title", "label": "Evidence and sources" }]
+  },
+  {
+    "slug": "what-h1-h5-proved", "title": "What H1–H5 Proved About Durable Agent Work", "kicker": "Research report / Harness boundary",
+    "deck": "Two replacement orders, four real Provider Runs, three injected faults, 493,294 reported tokens, and one narrower boundary that survived without becoming a platform.",
+    "description": "The complete H1–H5 evidence: Codex App Server, Hermes ACP, bidirectional mid-Task replacement, stale Assignment rejection, missing-Artifact rejection, response-loss recovery, and Artifact-first completion.",
+    "projectSlugs": ["host", "runtime", "computing"], "questionSlugs": ["harness-composition-and-completion", "ordivon-harness-v0"],
+    "meta": "Research report · Ordivon Host · Published 31 July 2026 · 12 min read · By zycxfyh", "type": "Research report", "project": "Ordivon Host",
+    "date": "2026-07-31", "modifiedDate": "2026-07-31", "readMinutes": 12, "author": "zycxfyh",
+    "lead": "H1–H5 did not prove that Codex and Hermes were interchangeable. It proved that one Task could remain coherent while their Sessions, event protocols, Tool semantics, final responses, and accepted source implementations remained different.",
+    "toc": [{ "id": "the-experiment-was-not-a-provider-benchmark", "label": "Not a Provider benchmark" }, { "id": "the-five-stages", "label": "The five stages" }, { "id": "h3-and-h4-proved-that-harnesses-are-materially-different", "label": "H3 and H4: different Harnesses" }, { "id": "h5-ran-both-replacement-orders", "label": "Both replacement orders" }, { "id": "different-code-same-accepted-work", "label": "Different code, accepted work" }, { "id": "fault-one-stale-assignment", "label": "F1: stale Assignment" }, { "id": "fault-two-process-success-without-artifact", "label": "F2: success without Artifact" }, { "id": "fault-three-response-loss", "label": "F3: response loss" }, { "id": "the-final-message-failed-as-a-contract", "label": "Final text failed as a contract" }, { "id": "what-survived-and-what-did-not", "label": "What survived" }, { "id": "what-h1-h5-did-not-prove", "label": "What H1–H5 did not prove" }, { "id": "the-new-question", "label": "The new question" }, { "id": "sources-title", "label": "Receipts and closeout" }]
+  },
+  {
     "slug": "creation-judgment-recoverable-systems",
     "title": "Creation, Judgment, and Recoverable Systems",
     "kicker": "Research essay / Project intent",

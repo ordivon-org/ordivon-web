@@ -1,0 +1,129 @@
+<h2 id="the-word-harness-was-hiding-two-decisions">The word Harness was hiding two decisions</h2>
+
+<p>Ordivon H1–H5 concluded that Codex App Server and Hermes ACP should not be compressed into one shared internal lifecycle. Codex exposes Thread, Turn, Item, structured output, and explicit terminal events. Hermes exposes JSON-RPC Session and Prompt semantics, bidirectional requests, thought chunks, sparse Tool updates, and—in our live replacement Runs—no usable final assistant text.</p>
+
+<p>That negative result was correct. The language around it was too broad. Rejecting a universal wrapper around mature Provider Harnesses is not the same as rejecting an Ordivon-owned Agent Loop for a bare model API.</p>
+
+<div className="article-thesis"><p>Ordivon does not need a Harness above every Harness. It does need a Harness when the Provider supplies intelligence but no Agent Loop.</p></div>
+
+<h2 id="two-paths-not-one-platform">Two paths, not one platform</h2>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Harness execution paths">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Path</span><span role="columnheader">Provider supplies</span><span role="columnheader">Ordivon supplies</span><span role="columnheader">Best use</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Mature external Harness</strong><span role="cell">Session, Agent Loop, Tools, lifecycle</span><span role="cell">Assignment, durable Context, Runtime binding, evidence admission</span><span role="cell">Provider-optimized coding and Agent work</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Ordivon Harness</strong><span role="cell">Model inference API or local endpoint</span><span role="cell">Model Adapter, Tool Loop, Run-local Context, budgets, evidence</span><span role="cell">Bare APIs, local models, controlled experiments, fallback independence</span></div>
+</div>
+
+<p>The first path reuses Codex, Hermes, Claude Code, or another complete Agent system. The second path turns OpenAI Responses, Anthropic Messages, Gemini, DeepSeek, OpenRouter, vLLM, or a local inference endpoint into one bounded Agent Run.</p>
+
+<p>Both return to the same Host boundary:</p>
+
+<pre tabIndex={0}><code>{`HarnessAssignment
+  → external Provider Harness OR Ordivon Harness
+  → HarnessRunReceipt
+  → optional CompletionProposal
+  → Host verification and TaskOutcome`}</code></pre>
+
+<h2 id="why-the-first-party-loop-is-strategically-necessary">Why the first-party Loop is strategically necessary</h2>
+
+<h3>Bare models otherwise remain only inference functions</h3>
+
+<p>A raw model API can produce Tool requests, but someone must interpret them, check authority, execute through Runtime, return observations, maintain a bounded Context, stop on budget or interruption, and emit evidence. Without that Loop, Ordivon can use the model for one-shot judgment but not as a general Tool-using Agent.</p>
+
+<h3>Not every useful model will ship a mature Harness</h3>
+
+<p>Local models, specialist models, research checkpoints, new API providers, and self-hosted inference systems may expose only generation. Requiring every intelligence source to arrive inside Codex- or Claude-shaped software would make Ordivon's work continuity independent at the top but dependent at the cognition boundary.</p>
+
+<h3>Some research requires control of the Loop</h3>
+
+<p>Context selection, Artifact-first completion, Tool-result compression, stopping behavior, calibrated non-action, cost routing, and model replacement cannot always be studied when the Provider owns every internal decision. Ordivon Harness creates one controlled experimental path without forcing external Harnesses through it.</p>
+
+<h3>A minimal fallback is different from rebuilding the ecosystem</h3>
+
+<p>The goal is not to reproduce years of Codex or Claude Code engineering. A thin first-party Loop is a capability floor: Ordivon can still act through Tools when only intelligence is available. Mature Harnesses remain preferred when their capabilities and optimization justify the dependency.</p>
+
+<h2 id="why-a-universal-harness-is-the-wrong-goal">Why a universal Harness is the wrong goal</h2>
+
+<p>A universal internal lifecycle usually has two failure modes.</p>
+
+<h3>Lowest common denominator</h3>
+
+<p>The abstraction keeps only Session, Tool request, message, and final result. Rich Provider events, interruption, provenance, output schema, thought observations, modes, compaction, or native commands disappear. The interface becomes portable by discarding the reasons to use a mature Harness.</p>
+
+<h3>Synthetic equivalence</h3>
+
+<p>The abstraction requires every backend to emit <code>ToolStarted</code>, <code>ToolCompleted</code>, and <code>FinalText</code>. When Hermes omits a Tool completion update or final assistant text, the wrapper must invent an event, guess a state, or fail valid work. H4 and H5 observed both sparse Tool completion and absent final text.</p>
+
+<blockquote>Normalize durable facts that the Host needs. Do not normalize Provider behavior that did not occur.</blockquote>
+
+<h2 id="why-ordivon-harness-can-remain-thin">Why Ordivon Harness can remain thin</h2>
+
+<p>Most general Agent frameworks are broad because they also own planning, workflows, sessions, memory, files, shell, approvals, hosting, observability, and deployment. Ordivon has already assigned the heaviest responsibilities elsewhere.</p>
+
+<div className="surviving-stack">
+  <div><span>Host already owns</span><strong>Task semantics</strong><p>Goal, Task, Attempt, Assignment generation, Context, Artifact provenance, recovery, completion, and Outcome.</p></div>
+  <div><span>Runtime already owns</span><strong>Execution mechanics</strong><p>Workspace, Job, process, output, Artifact retention, cancellation, request identity, and response-loss reconciliation.</p></div>
+  <div><span>Harness only needs</span><strong>The cognitive episode</strong><p>Model calls, Tool interpretation, bounded observations, Run-local Context, budget, interruption, stop, and receipt.</p></div>
+</div>
+
+<p>This is not a claim that the Agent Loop is trivial. It is a design constraint: whenever Ordivon Harness begins to own durable Task truth or process supervision, it has crossed into an existing layer.</p>
+
+<h2 id="the-admitted-v0">The admitted v0</h2>
+
+<p>Version zero is intentionally austere:</p>
+
+<ul>
+  <li>one real bare-model Adapter;</li>
+  <li>one sequential model/Tool Loop;</li>
+  <li>an Assignment-scoped Tool catalog;</li>
+  <li>Runtime-backed Tool execution;</li>
+  <li>turn, token, time, and Runtime-Job budgets;</li>
+  <li>cancellation and explicit stop states;</li>
+  <li>Artifact-first canonical result;</li>
+  <li>existing <code>HarnessRunReceipt</code> and <code>CompletionProposal</code> output.</li>
+</ul>
+
+<p>It will compare the same frozen repository task under a one-shot ModelGateway, Ordivon Harness with a bare model API, and one mature Provider Harness. The first-party Loop earns retention only if it solves a real failure or enables a real model path at acceptable permanent cost.</p>
+
+<h2 id="what-v0-deliberately-does-not-contain">What v0 deliberately does not contain</h2>
+
+<div className="surviving-invariants" aria-label="Deferred Harness capabilities">
+  <span>persistent Session</span><span>compaction</span><span>parallel Tools</span><span>subagents</span><span>model routing</span><span>Skills</span><span>Plugins</span><span>workflow language</span><span>new database</span>
+</div>
+
+<p>Each capability may become valuable. None is free. Persistent Sessions create replacement and hidden-state questions. Parallel Tools create dependency and partial-failure semantics. Subagents blur Harness-local work and Host-managed durable workers. Compaction can turn unverified summaries into accidental truth. They should enter only after a bounded failure and ablation.</p>
+
+<h2 id="when-ordivon-harness-becomes-a-repository">When Ordivon Harness becomes a repository</h2>
+
+<p>The project name is already Ordivon Harness. Its first implementation should remain inside Host. A standalone repository is eligible only after:</p>
+
+<ul>
+  <li>a working first-party model/Tool Loop exists;</li>
+  <li>two bare-model Adapters pass the same Loop contract;</li>
+  <li>two independent consumers need the package;</li>
+  <li>the package imports no Host storage and mutates no Task state;</li>
+  <li>the package owns no Runtime Workspace or process internals;</li>
+  <li>extraction produces measurable net deletion and independent release value.</li>
+</ul>
+
+<p>This is a different promotion gate from H5. H5 tested whether Provider drivers should become a common platform. The new gate tests whether a real first-party Agent Loop has become an independently useful component.</p>
+
+<h2 id="the-deletion-condition-matters">The deletion condition matters</h2>
+
+<p>Ordivon Harness is strategically plausible, not exempt from evidence. If one-shot calls and mature Provider Harnesses cover the actual workloads with equal correctness and recovery at lower permanent cost—and no bare-model path matters—the prototype should be deleted.</p>
+
+<p>Owning a capability is valuable only when the capability is used. Optional independence can become another expensive fiction.</p>
+
+<p className="article-closing">The right architecture is not Provider dependence or universal abstraction. It is selective ownership: reuse the complete Harness when it exists, own the minimal Loop when it does not.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Evidence</p>
+  <h2 id="sources-title">Decision record and primary sources</h2>
+  <ol className="source-list">
+    <li><span>Ordivon H5.</span> <a href="https://github.com/zycxfyh/ordivon-host/blob/4ac03b52322cb76ade8f2902ab5b08113141c3e7/docs/harness-boundary-h5-decision.md">Harness Boundary H5 Decision</a>.</li>
+    <li><span>Ordivon research.</span> <a href="https://github.com/zycxfyh/ordivon-computing/tree/c8ad154329a67344e772119ae3288eafce9fe62f/studies/2026-model-to-work-and-ordivon-harness">From Model Tokens to Durable Work</a> and <a href="https://github.com/zycxfyh/ordivon-computing/issues/90">ANC-HARNESS-002</a>.</li>
+    <li><span>OpenAI.</span> <a href="https://openai.com/index/unlocking-the-codex-harness/">Unlocking the Codex harness</a>.</li>
+    <li><span>Anthropic.</span> <a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Effective harnesses for long-running agents</a>.</li>
+    <li><span>Microsoft.</span> <a href="https://learn.microsoft.com/en-us/agent-framework/agents/harness">Agent Harnesses</a>.</li>
+  </ol>
+</section>
