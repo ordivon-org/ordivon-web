@@ -5,13 +5,14 @@ import { expect, test } from "@playwright/test";
 
 const coreRoutes = [
   "/", "/system", "/research", "/research/web-research-interface", "/research/security-adversarial-trajectory",
-  "/research/smallest-agent-native-core", "/research/harness-composition-and-completion",
+  "/research/smallest-agent-native-core", "/research/harness-composition-and-completion", "/research/ordivon-harness-v0",
   "/research/calibrated-non-action", "/research/opponent-state-transfer",
   "/projects", "/projects/computing", "/projects/host", "/projects/runtime", "/projects/world",
   "/writing", "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
   "/writing/thin-host-without-hidden-planner", "/writing/one-authority-thirteen-tables",
   "/writing/replay-without-second-truth-store", "/writing/transcript-not-task-database",
   "/writing/unknown-is-operational-state", "/writing/communication-is-gameplay-state",
+  "/writing/from-tokens-to-work", "/writing/why-ordivon-needs-a-harness", "/writing/what-h1-h5-proved",
   "/writing/winning-move-loses-contest", "/writing/smaller-core-strong-baselines",
   "/writing/the-future-will-not-wait", "/writing/runtime-after-core", "/now", "/about", "/colophon",
 ];
@@ -57,8 +58,9 @@ test("internal navigation targets resolve", async ({ page, request }) => {
     "/", "/system", "/research", "/research/web-research-interface", "/projects", "/writing", "/about", "/now",
     "/projects/runtime", "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
     "/writing/thin-host-without-hidden-planner", "/writing/one-authority-thirteen-tables",
-    "/writing/replay-without-second-truth-store", "/writing/winning-move-loses-contest",
-    "/writing/smaller-core-strong-baselines", "/writing/the-future-will-not-wait",
+    "/writing/replay-without-second-truth-store", "/writing/from-tokens-to-work",
+    "/writing/why-ordivon-needs-a-harness", "/writing/what-h1-h5-proved",
+    "/writing/winning-move-loses-contest", "/writing/smaller-core-strong-baselines", "/writing/the-future-will-not-wait",
   ];
   const targets = new Set<string>();
   for (const route of sourceRoutes) {
@@ -92,8 +94,15 @@ test("public model is article-centered and does not expose the retired graph led
 
   await page.goto("/research/harness-composition-and-completion", { waitUntil: "domcontentloaded" });
   await expect(page.getByText("answered", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("Answered within Harness Stage 1", { exact: false })).toBeVisible();
-  await expect(page.getByText("No publication has earned attachment to this Question yet.", { exact: false })).toBeVisible();
+  await expect(page.getByText("Answered by H1–H5", { exact: false })).toBeVisible();
+  await expect(page.getByRole("link", { name: /What H1–H5 Proved About Durable Agent Work/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
+
+  await page.goto("/research/ordivon-harness-v0", { waitUntil: "domcontentloaded" });
+  await expect(page.getByText("open", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("No implementation evidence exists yet.", { exact: false })).toBeVisible();
+  await expect(page.getByRole("link", { name: /From Tokens to Work/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 
   for (const route of ["/system", "/research", "/writing", "/now", "/research/web-research-interface"]) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
@@ -173,6 +182,9 @@ const publicationContracts = [
   { slug: "transcript-not-task-database", title: "A Transcript Is Not a Task Database", tables: 0, phrase: "A summary can preserve narrative continuity while destroying operational continuity." },
   { slug: "unknown-is-operational-state", title: "UNKNOWN Is an Operational State, Not a Model Feeling", tables: 0, phrase: "No response does not imply no commit." },
   { slug: "communication-is-gameplay-state", title: "Communication Is Gameplay State", tables: 1, phrase: "Communication is gameplay state when reachability changes" },
+  { slug: "from-tokens-to-work", title: "From Tokens to Work: The Complete Agent Execution Stack", tables: 1, phrase: "The model is the source of intelligence." },
+  { slug: "why-ordivon-needs-a-harness", title: "Why Ordivon Needs a Harness—but Not a Universal Harness", tables: 1, phrase: "selective ownership" },
+  { slug: "what-h1-h5-proved", title: "What H1–H5 Proved About Durable Agent Work", tables: 3, phrase: "H1–H5 retained a boundary, not a platform." },
 ] as const;
 
 for (const contract of publicationContracts) {
@@ -235,7 +247,7 @@ test("homepage presents one continuous dark visual thesis", async ({ page, isMob
   await expect(page.locator(".home-owner-row")).toHaveCount(4);
   await expect(page.locator(".home-frontier").getByRole("link", { name: /See the publications and deletion condition/ })).toHaveAttribute("href", /\/research\/.+\//);
   await expect(page.locator(".home-writing-row")).toHaveCount(3);
-  await expect(page.getByText("Latest publication · Creation, Judgment, and Recoverable Systems")).toBeVisible();
+  await expect(page.getByText("Latest publication · From Tokens to Work: The Complete Agent Execution Stack")).toBeVisible();
 
   const palette = await page.evaluate(() => {
     const root = getComputedStyle(document.documentElement);
@@ -273,8 +285,10 @@ test("core pages have no serious accessibility violations", async ({ page }) => 
   for (const route of ["/", "/system", "/research", "/research/web-research-interface", "/projects", "/writing",
     "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
     "/writing/thin-host-without-hidden-planner", "/writing/one-authority-thirteen-tables",
-    "/writing/replay-without-second-truth-store", "/writing/winning-move-loses-contest",
-    "/writing/smaller-core-strong-baselines", "/projects/runtime"]) {
+    "/writing/replay-without-second-truth-store", "/writing/from-tokens-to-work",
+    "/writing/why-ordivon-needs-a-harness", "/writing/what-h1-h5-proved",
+    "/writing/winning-move-loses-contest", "/writing/smaller-core-strong-baselines",
+    "/research/ordivon-harness-v0", "/projects/runtime"]) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
     const results = await new AxeBuilder({ page }).analyze();
     const serious = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact || ""));

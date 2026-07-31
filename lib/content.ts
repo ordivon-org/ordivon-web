@@ -1,4 +1,7 @@
 import type { ComponentType } from "react";
+import FromTokensToWork from "@/content/articles/from-tokens-to-work.mdx";
+import WhyOrdivonNeedsAHarness from "@/content/articles/why-ordivon-needs-a-harness.mdx";
+import WhatH1H5Proved from "@/content/articles/what-h1-h5-proved.mdx";
 import { getProjectBySlug, getQuestionBySlug } from "@/content/model";
 import CreationJudgmentRecoverableSystems from "@/content/articles/creation-judgment-recoverable-systems.mdx";
 import StationZeroAlpha1 from "@/content/articles/station-zero-alpha-1.mdx";
@@ -22,6 +25,9 @@ export type { ArticleMetadata, ArticleSlug, TocEntry };
 export type Article = ArticleMetadata & { Content: ComponentType };
 
 const articleComponents: Record<ArticleSlug, ComponentType> = {
+  "from-tokens-to-work": FromTokensToWork,
+  "why-ordivon-needs-a-harness": WhyOrdivonNeedsAHarness,
+  "what-h1-h5-proved": WhatH1H5Proved,
   "creation-judgment-recoverable-systems": CreationJudgmentRecoverableSystems,
   "station-zero-alpha-1": StationZeroAlpha1,
   "thin-host-without-hidden-planner": ThinHostWithoutHiddenPlanner,

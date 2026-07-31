@@ -1,0 +1,111 @@
+<h2 id="a-model-does-not-act">A model does not act</h2>
+
+<p>A language model receives an encoded Context and produces another representation: tokens, structured fields, or a Tool request. Even when the output says <code>run_tests</code>, no process has started. Even when it says <code>deployment complete</code>, no deployment has been verified. Intelligence has proposed a continuation; another system must decide what the proposal means and whether anything should happen.</p>
+
+<div className="article-thesis"><p>The distance from a token to completed work is not one API call. It is a stack of distinct loops, authorities, and evidence boundaries.</p></div>
+
+<p>Modern products often package that stack under one name. Codex, Claude Code, an IDE Agent, or a managed Agent platform may combine a user Surface, Session hosting, an Agent Loop, Tool adapters, sandboxing, memory, evaluation, and deployment. The package is useful. The logical separation still matters whenever work must survive restart, model replacement, ambiguous execution, or a false claim of completion.</p>
+
+<h2 id="four-loops-run-at-different-timescales">Four loops run at different timescales</h2>
+
+<div className="surviving-stack">
+  <div><span>Token loop</span><strong>Generate the next output unit</strong><p>Model serving encodes Context, computes a distribution, decodes output, and stops.</p></div>
+  <div><span>Agent loop</span><strong>Use intelligence and Tools for one Run</strong><p>A Harness invokes the model, interprets Tool requests, returns observations, and decides whether the Run continues.</p></div>
+  <div><span>Task loop</span><strong>Preserve work across replaceable Runs</strong><p>Host assigns ready work, retains evidence, rejects stale execution, and decides whether the Task continues or completes.</p></div>
+  <div><span>Goal/world loop</span><strong>Change reality and revise judgment</strong><p>Participants, applications, and authoritative Worlds determine whether actual outcomes still serve the Goal.</p></div>
+</div>
+
+<p>Confusing these loops produces predictable errors. A Provider Session becomes the Task database. A successful process becomes proof of completion. A final assistant message becomes an Artifact. A retry after a lost response duplicates an external Effect. Or a workflow engine is rebuilt because a transcript did not preserve application state.</p>
+
+<h2 id="the-complete-call-chain">The complete call chain</h2>
+
+<p>The full path begins before a prompt and ends after a verified change in the world.</p>
+
+<ol>
+  <li><strong>Participant and world:</strong> a real preference, repository, service, deadline, budget, person, or institution creates the need for work.</li>
+  <li><strong>Surface:</strong> chat, CLI, IDE, Web, mobile, voice, or API captures input and renders progress, approvals, Artifacts, and outcomes.</li>
+  <li><strong>Interaction hosting:</strong> identity, authentication, conversation transport, uploads, streaming, and notifications are maintained.</li>
+  <li><strong>Goal interpretation:</strong> intent becomes an objective, constraints, risks, preferences, and success conditions.</li>
+  <li><strong>Workload Contract:</strong> source revision, allowed operations, required Artifacts, acceptance criteria, Effect boundaries, budget, and dependencies become explicit.</li>
+  <li><strong>Task graph:</strong> Host represents ready, blocked, branching, waiting, replacement, and verification work.</li>
+  <li><strong>Task Attempt and Assignment:</strong> one current Harness receives versioned authority, exact Context, Tool catalog, source binding, prior Artifacts, and budget.</li>
+  <li><strong>Semantic Context compilation:</strong> Host selects the smallest current set of durable facts that the Run needs.</li>
+  <li><strong>Harness input compilation:</strong> the selected Harness turns those facts into model-specific messages, Tool schemas, and Provider options.</li>
+  <li><strong>Model Adapter and serving:</strong> a raw API or local inference service performs one model call and returns content, Tool requests, usage, stop reason, or error.</li>
+  <li><strong>Protocol interpretation:</strong> Harness distinguishes a message, Tool request, need for input, refusal, truncation, or candidate final result.</li>
+  <li><strong>Capability and authorization:</strong> requested Tools are checked against Assignment scope, arguments, authority, budget, consequence, and approval requirements.</li>
+  <li><strong>Tool Bridge:</strong> a semantic Tool request becomes an Ordivon Runtime request or an explicitly external provider call.</li>
+  <li><strong>Runtime and world:</strong> Workspace, Job, process, file, network, service, or other real state changes—or fails to change.</li>
+  <li><strong>Observation and Artifact capture:</strong> stdout, stderr, exit code, diff, receipt, content digest, external Effect, and terminal evidence are retained.</li>
+  <li><strong>Run-local Context update:</strong> Harness returns a bounded observation to the model and continues the Agent Loop.</li>
+  <li><strong>Run stop:</strong> the Harness ends as candidate-completed, waiting, interrupted, exhausted, invalid, or failed.</li>
+  <li><strong>Run evidence:</strong> Assignment, Harness, model, Session evidence, Context, Tools, Runtime Jobs, Artifacts, usage, and stop reason become a receipt.</li>
+  <li><strong>CompletionProposal:</strong> Harness may claim that acceptance appears satisfied, but cannot commit the Task outcome.</li>
+  <li><strong>Verification:</strong> deterministic tests, static checks, simulation, an independent evaluator, or a human inspects authoritative state.</li>
+  <li><strong>CompletionDecision:</strong> Host checks current Assignment generation, required Artifacts, unresolved Effects, and acceptance evidence.</li>
+  <li><strong>TaskOutcome and graph advancement:</strong> accepted work closes or revises graph nodes and changes the Ready Frontier.</li>
+  <li><strong>Participant feedback:</strong> the result returns to the user or institution, becoming input to the next Goal loop.</li>
+</ol>
+
+<h2 id="five-kinds-of-memory-are-not-one-memory">Five kinds of memory are not one memory</h2>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Memory ownership">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">State</span><span role="columnheader">Owner</span><span role="columnheader">What it preserves</span><span role="columnheader">What it must not become</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Model parameters</strong><span role="cell">Model</span><span role="cell">Learned statistical structure</span><span role="cell">Current Task truth</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Context window</strong><span role="cell">Harness / model call</span><span role="cell">Current working information</span><span role="cell">Durable work database</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Provider Session</strong><span role="cell">Provider Harness</span><span role="cell">Provider-local conversation and Run continuity</span><span role="cell">Task identity</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Task state</strong><span role="cell">Host</span><span role="cell">Goal, Attempt, Assignment, evidence, decision, Outcome</span><span role="cell">Process state</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">World and Artifacts</strong><span role="cell">Runtime / domain World</span><span role="cell">What physically or externally happened</span><span role="cell">Model narrative</span></div>
+</div>
+
+<p>Anthropic's long-running Agent work makes this distinction concrete. Later contexts do better when earlier work leaves explicit files, progress state, tests, and structured handoffs. Compaction can help a Session continue, but it does not replace an authoritative project state. OpenAI's Codex architecture likewise separates the model from the Harness that coordinates user input and Tools, while App Server lets multiple Surfaces consume the same Agent system.</p>
+
+<h2 id="where-ordivon-draws-the-boundary">Where Ordivon draws the boundary</h2>
+
+<div className="surviving-stack">
+  <div><span>Ordivon Host</span><strong>Durable work meaning</strong><p>Goal, Task, Attempt, Assignment generation, semantic Context, replacement, acceptance, completion, and recovery.</p></div>
+  <div><span>Ordivon Harness</span><strong>One first-party Agent Run</strong><p>Raw model calls, Run-local Context, Tool Loop, budgets, interruption, stop classification, and Run evidence.</p></div>
+  <div><span>External Harness</span><strong>Provider-optimized Agent Run</strong><p>Codex, Hermes, Claude, or another mature Harness keeps its native Session and lifecycle.</p></div>
+  <div><span>Ordivon Runtime</span><strong>Physical execution truth</strong><p>Workspace, Job, Attempt, process tree, output, Artifact, cancellation, and reconciliation.</p></div>
+</div>
+
+<p>The two Harness paths are peers. Host may assign work to Ordivon Harness when only a model API exists, or to a mature external Harness when its provider-specific Loop is already stronger. They share durable input and evidence output; they do not need the same internal event model.</p>
+
+<h2 id="what-top-labs-are-actually-building">What top labs are actually building</h2>
+
+<p>OpenAI builds a Provider Harness optimized jointly with Codex models and reused across CLI, IDE, Web, and App. Anthropic builds Claude Code and Agent SDK capabilities while also publishing workload-specific structures for long-running development. Microsoft separates model clients, Agents, a batteries-included Harness, explicit Workflows, and Hosting. Google exposes an Agent framework plus managed Runtime, Sessions, memory, evaluation, observability, and graph workflows.</p>
+
+<p>These systems do not prove one universal decomposition. They prove that the responsibilities exist. Each company packages them according to its product, platform, model, and customer goals. Ordivon uses failure ownership to keep the permanent core smaller.</p>
+
+<blockquote>Product boundaries can vary. Authority boundaries cannot remain ambiguous when work must survive replacement.</blockquote>
+
+<h2 id="the-result-is-a-graph-not-a-chat">The result is a graph, not a chat</h2>
+
+<p>A real trajectory links Goal, Task, Attempt, Assignment, Harness Run, model call, Tool Call, Runtime Job, Artifact or Effect, CompletionProposal, Decision, and Outcome. The model/Tool interaction contains a loop, but the durable provenance becomes an append-only evidence graph.</p>
+
+<pre tabIndex={0}><code>{`Goal → Task → Attempt → Assignment → Harness Run
+                                  ↘ model call → Tool Call → Runtime Job → Artifact
+                                                        ↖ observation ─────────────┘
+Harness Run → CompletionProposal → CompletionDecision → TaskOutcome → next Task`}</code></pre>
+
+<p>This graph is why Ordivon is not merely a prompt wrapper. It preserves enough identity to answer which intelligence acted, under which authority, against which source, through which process, with which evidence, and why the Task advanced.</p>
+
+<h2 id="what-remains-open">What remains open</h2>
+
+<p>The broad stack is now understood. The next question is empirical and deliberately smaller: how little code can implement Ordivon Harness for a bare model API while reusing Host and Runtime?</p>
+
+<p>Version zero will not begin with compaction, persistent Sessions, parallel Tools, subagents, model routing, Skills, Plugins, or another database. It must first show one bounded multi-turn Tool Loop, one independently verified Artifact, explicit interruption and budget stops, and a measurable advantage over a one-shot call.</p>
+
+<p className="article-closing">The model is the source of intelligence. It is not the owner of work, execution history, or truth.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Sources</p>
+  <h2 id="sources-title">Primary architecture and Ordivon evidence</h2>
+  <ol className="source-list">
+    <li><span>OpenAI.</span> <a href="https://openai.com/index/unrolling-the-codex-agent-loop/">Unrolling the Codex agent loop</a> and <a href="https://openai.com/index/unlocking-the-codex-harness/">Unlocking the Codex harness</a>.</li>
+    <li><span>Anthropic.</span> <a href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents">Effective harnesses for long-running agents</a> and <a href="https://www.anthropic.com/engineering/harness-design-long-running-apps">Harness design for long-running application development</a>.</li>
+    <li><span>Microsoft.</span> <a href="https://learn.microsoft.com/en-us/agent-framework/overview/">Agent Framework overview</a> and <a href="https://learn.microsoft.com/en-us/agent-framework/agents/harness">Agent Harnesses</a>.</li>
+    <li><span>Google Cloud.</span> <a href="https://cloud.google.com/vertex-ai/generative-ai/docs/reasoning-engine/overview">Vertex AI Agent Engine overview</a>.</li>
+    <li><span>Ordivon Computing.</span> <a href="https://github.com/zycxfyh/ordivon-computing/tree/c8ad154329a67344e772119ae3288eafce9fe62f/studies/2026-model-to-work-and-ordivon-harness">From Model Tokens to Durable Work</a>.</li>
+  </ol>
+</section>
