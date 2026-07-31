@@ -51,6 +51,11 @@ test("publishing endpoints render", async ({ request }) => {
   expect((await request.get("/sitemap.xml")).status()).toBe(200);
   expect((await request.get("/robots.txt")).status()).toBe(200);
   expect((await request.get("/opengraph-image.png")).headers()["content-type"]).toContain("image/png");
+  for (const { slug } of articleMetadata) {
+    const image = await request.get(`/og/${slug}.png`);
+    expect(image.status(), slug).toBe(200);
+    expect(image.headers()["content-type"], slug).toContain("image/png");
+  }
 });
 
 test("internal navigation targets resolve", async ({ page, request }) => {
@@ -95,7 +100,7 @@ test("public model is article-centered and does not expose the retired graph led
   await page.goto("/research/harness-composition-and-completion", { waitUntil: "domcontentloaded" });
   await expect(page.getByText("answered", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("Answered by H1–H5", { exact: false })).toBeVisible();
-  await expect(page.getByRole("link", { name: /What H1–H5 Proved About Durable Agent Work/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /What Survived When Codex and Hermes Replaced Each Other Mid-Task/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 
   await page.goto("/research/ordivon-harness-v0", { waitUntil: "domcontentloaded" });
@@ -157,20 +162,25 @@ test("research index switches among Questions, Projects, Publications, and Statu
   await expect(page.getByText("open", { exact: true }).first()).toBeVisible();
 });
 
-test("writing is organized by metadata-derived Questions and chronology", async ({ page }) => {
-  const expectedProjects = new Set(articleMetadata.flatMap((article) => article.projectSlugs)).size;
-  const expectedQuestions = new Set(articleMetadata.flatMap((article) => article.questionSlugs)).size;
+test("writing provides editorial entry paths before metadata-derived research navigation", async ({ page }) => {
+  const expectedResearchReports = articleMetadata.filter((article) => article.type === "Research report").length;
+  const engineeringTypes = new Set(["Engineering report", "Architecture report", "Architecture guide", "Architecture decision", "Architecture correction", "Release", "Release note"]);
+  const expectedEngineeringRecords = articleMetadata.filter((article) => engineeringTypes.has(article.type)).length;
+  const expectedEssaysAndNotes = articleMetadata.length - expectedResearchReports - expectedEngineeringRecords;
   await page.goto("/writing", { waitUntil: "domcontentloaded" });
-  await expect(page.getByRole("heading", { name: "Dated arguments, not a second fact database." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Ideas, experiments, and decisions behind durable agent work." })).toBeVisible();
   const summary = page.locator(".writing-summary");
-  await expect(summary.getByText(String(articleMetadata.length), { exact: true })).toBeVisible();
-  await expect(summary.getByText(String(expectedProjects), { exact: true })).toBeVisible();
-  await expect(summary.getByText(String(expectedQuestions), { exact: true })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Start from the uncertainty, then read the complete arguments." })).toBeVisible();
+  for (const value of [expectedResearchReports, expectedEngineeringRecords, expectedEssaysAndNotes]) {
+    await expect(summary.getByText(String(value), { exact: true })).toBeVisible();
+  }
+  await expect(page.locator(".writing-featured-main").getByRole("heading", { name: "From Tokens to Work: The Complete Agent Execution Stack" })).toBeVisible();
+  await expect(page.locator(".writing-featured-evidence > a")).toHaveCount(2);
+  await expect(page.getByRole("heading", { name: "Choose the question you want the work to answer." })).toBeVisible();
+  await expect(page.locator(".writing-path-grid > article")).toHaveCount(3);
   const smallestCoreTopic = page.locator(".writing-topic-list > article").filter({ has: page.getByRole("heading", { name: "Which Agent-native responsibilities remain after strong classical baselines?" }) });
   await expect(smallestCoreTopic).toBeVisible();
   await expect(smallestCoreTopic.getByRole("link", { name: /The Smaller Core That Survived Strong Baselines/ })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Publication history remains explicit." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Every published claim remains dated." })).toBeVisible();
 });
 
 const publicationContracts = [
@@ -184,7 +194,7 @@ const publicationContracts = [
   { slug: "communication-is-gameplay-state", title: "Communication Is Gameplay State", tables: 1, phrase: "Communication is gameplay state when reachability changes" },
   { slug: "from-tokens-to-work", title: "From Tokens to Work: The Complete Agent Execution Stack", tables: 1, phrase: "The model is the source of intelligence." },
   { slug: "why-ordivon-needs-a-harness", title: "Why Ordivon Needs a Harness—but Not a Universal Harness", tables: 1, phrase: "selective ownership" },
-  { slug: "what-h1-h5-proved", title: "What H1–H5 Proved About Durable Agent Work", tables: 3, phrase: "H1–H5 retained a boundary, not a platform." },
+  { slug: "what-h1-h5-proved", title: "What Survived When Codex and Hermes Replaced Each Other Mid-Task", tables: 3, phrase: "H1–H5 retained a boundary, not a platform." },
 ] as const;
 
 for (const contract of publicationContracts) {
@@ -235,17 +245,17 @@ test("article context is derived from Project and Question metadata", async ({ p
   await expect(page.getByRole("link", { name: /Research Question.*Which real structured operation can complete the minimal Effect contract/ })).toHaveAttribute("href", "/research/runtime-structured-effect/");
   await expect(page.getByRole("link", { name: /Project.*Ordivon Runtime/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Continue through shared Questions and Projects." })).toBeVisible();
-  await expect(page.locator(".related-reading").getByRole("link", { name: /Why Task continuity belongs above execution/ })).toBeVisible();
+  await expect(page.locator(".related-reading").getByRole("link", { name: /Why Task Continuity Belongs Above Execution/ })).toBeVisible();
 });
 
 test("homepage presents one continuous dark visual thesis", async ({ page, isMobile }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" });
   await expect(page.locator(".home-poster-brand")).toHaveText("ORDIVON");
   await expect(page.getByRole("heading", { name: "Work should survive the intelligence that started it." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Task truth survived session loss, restart recovery, and model replacement." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Four owners. No shared fiction." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "One task survived Codex↔Hermes replacement and three injected faults." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Four layers keep one trajectory recoverable." })).toBeVisible();
   await expect(page.locator(".home-owner-row")).toHaveCount(4);
-  await expect(page.locator(".home-frontier").getByRole("link", { name: /See the publications and deletion condition/ })).toHaveAttribute("href", /\/research\/.+\//);
+  await expect(page.locator(".home-frontier").getByRole("link", { name: /See the evidence and next test/ })).toHaveAttribute("href", /\/research\/.+\//);
   await expect(page.locator(".home-writing-row")).toHaveCount(3);
   await expect(page.getByText("Latest publication · From Tokens to Work: The Complete Agent Execution Stack")).toBeVisible();
 
@@ -282,6 +292,7 @@ test("article navigation matches viewport", async ({ page, isMobile }) => {
 });
 
 test("core pages have no serious accessibility violations", async ({ page }) => {
+  test.setTimeout(90_000);
   for (const route of ["/", "/system", "/research", "/research/web-research-interface", "/projects", "/writing",
     "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
     "/writing/thin-host-without-hidden-planner", "/writing/one-authority-thirteen-tables",

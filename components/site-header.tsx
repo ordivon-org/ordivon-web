@@ -3,9 +3,10 @@ import { BrandMark } from "./brand-mark";
 
 const navigation = [
   ["System", "/system"],
+  ["Projects", "/projects"],
   ["Research", "/research"],
   ["Writing", "/writing"],
-  ["Current", "/now"],
+  ["Now", "/now"],
 ] as const;
 
 export function SiteHeader() {
@@ -24,7 +25,6 @@ export function SiteHeader() {
           <summary>Menu</summary>
           <nav aria-label="Mobile navigation">
             {navigation.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
-            <Link href="/projects">Projects</Link>
             <Link href="/about">About</Link>
             <a href="https://github.com/zycxfyh">GitHub ↗</a>
           </nav>
