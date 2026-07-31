@@ -1,10 +1,10 @@
 import { articles } from "@/lib/content";
-import { getProjectById, getQuestionById, getSystemById } from "@/content/model";
-import type { ContentStatus } from "@/lib/model/types";
+import { getArchitectureRoleById, getProjectById, getQuestionById } from "@/content/model";
+import type { BoundaryMaturity, ProjectLifecycle, QuestionState, ResearchPlaneStatus } from "@/lib/model/types";
 
 export type SystemViewId = "structure" | "execution" | "research";
-export type SystemViewKind = "system" | "project" | "question" | "article";
-export type SystemViewStatus = ContentStatus | "published";
+export type SystemViewKind = "boundary" | "research-plane" | "project" | "question" | "article";
+export type SystemViewStatus = BoundaryMaturity | ResearchPlaneStatus | ProjectLifecycle | QuestionState | "published";
 export type SystemRelationType = "owns" | "depends_on" | "implements" | "explores" | "documents";
 
 export type SystemViewConnection = {
@@ -60,10 +60,10 @@ type PerspectiveDefinition = Omit<SystemPerspective, "nodes" | "edges"> & { plac
 const definitions: PerspectiveDefinition[] = [
   {
     id: "structure", label: "Structure", kicker: "State ownership",
-    description: "A curated view of the four durable state owners and the repositories that implement them. This is an architecture map, not a second fact store.",
+    description: "A curated view of three consequence boundaries, one research plane, and the repositories that implement them. This is an architecture map, not a second fact store.",
     defaultNodeId: "system:host",
     placements: [
-      { id: "system:computing", label: "Computing", detail: "contracts + conformance", x: 150, y: 155 },
+      { id: "system:computing", label: "Computing", detail: "research + conformance", x: 150, y: 155 },
       { id: "system:host", label: "Host", detail: "Goals + Tasks", x: 450, y: 155 },
       { id: "system:runtime", label: "Runtime", detail: "committed local effects", x: 750, y: 155 },
       { id: "system:world", label: "World", detail: "conditioned external action", x: 1050, y: 155 },
@@ -84,10 +84,10 @@ const definitions: PerspectiveDefinition[] = [
   },
   {
     id: "execution", label: "Execution", kicker: "Effect path",
-    description: "A curated execution path from shared contracts through semantic Tasks to local and external effects, with the Questions that can still change each boundary.",
+    description: "A curated execution path through Host, Runtime, and World, with Computing shown as external research pressure rather than an execution stage.",
     defaultNodeId: "project:host",
     placements: [
-      { id: "project:computing", label: "Computing", detail: "defines contracts", x: 150, y: 115 },
+      { id: "project:computing", label: "Computing", detail: "tests contracts", x: 150, y: 115 },
       { id: "project:host", label: "Host", detail: "admits + continues Tasks", x: 430, y: 300 },
       { id: "project:runtime", label: "Runtime", detail: "commits local effects", x: 770, y: 150 },
       { id: "project:world", label: "World", detail: "reconciles external effects", x: 1010, y: 475 },
@@ -133,22 +133,23 @@ function resolveNode(placement: Placement): SystemViewNode {
   if (placement.id.startsWith("article:")) {
     const article = articles.find((item) => `article:${item.slug}` === placement.id);
     if (!article) throw new Error(`curated system view references missing article ${placement.id}`);
-    return { id: placement.id, kind: "article", status: "published", title: article.title, label: placement.label, detail: placement.detail, summary: article.description, href: `/writing/${article.slug}`, x: placement.x, y: placement.y, width: placement.width || 220, height: placement.height || 118, facts: [{ label: "Publication", value: article.type }, { label: "Date", value: article.date }, { label: "Projects", value: article.projectSlugs.join(" · ") }], connections: [] };
+    return { id: placement.id, kind: "article", status: "published", title: article.title, label: placement.label, detail: placement.detail, summary: article.description, href: `/writing/${article.slug}`, x: placement.x, y: placement.y, width: placement.width || 220, height: placement.height || 118, facts: [{ label: "Publication", value: article.type }, { label: "Date", value: article.publishedAt }, { label: "Projects", value: article.projectSlugs.join(" · ") }], connections: [] };
   }
   if (placement.id.startsWith("system:")) {
-    const object = getSystemById(placement.id);
-    if (!object) throw new Error(`curated system view references missing system ${placement.id}`);
-    return { ...placement, width: placement.width || 220, height: placement.height || 118, id: object.id, kind: "system", status: object.status, title: object.title, summary: object.summary, href: object.href, facts: [{ label: "Central question", value: object.question }, { label: "Thesis", value: object.thesis }, { label: "Owns", value: object.owns.join(" · ") }, { label: "Refuses", value: object.boundary.join(" · ") }], connections: [] };
+    const object = getArchitectureRoleById(placement.id);
+    if (!object) throw new Error(`curated system view references missing architecture role ${placement.id}`);
+    const status = object.kind === "boundary" ? object.maturity : object.status;
+    return { ...placement, width: placement.width || 220, height: placement.height || 118, id: object.id, kind: object.kind, status, title: object.title, summary: object.summary, href: object.href, facts: [{ label: object.kind === "boundary" ? "Boundary question" : "Research question", value: object.question }, { label: "Thesis", value: object.thesis }, { label: "Owns", value: object.owns.join(" · ") }, { label: "Refuses", value: object.boundary.join(" · ") }], connections: [] };
   }
   if (placement.id.startsWith("project:")) {
     const object = getProjectById(placement.id);
     if (!object) throw new Error(`curated system view references missing project ${placement.id}`);
-    return { ...placement, width: placement.width || 220, height: placement.height || 118, id: object.id, kind: "project", status: object.status, title: object.title, summary: object.summary, href: object.publicPage ? `/projects/${object.slug}` : object.repository, facts: [{ label: "Current state", value: object.state }, { label: "Portfolio group", value: object.group }, { label: "Evidence", value: object.evidence.map((item) => `${item.value} ${item.label}`).join(" · ") }], connections: [] };
+    return { ...placement, width: placement.width || 220, height: placement.height || 118, id: object.id, kind: "project", status: object.lifecycle, title: object.title, summary: object.summary, href: object.publicPage ? `/projects/${object.slug}` : object.repository, facts: [{ label: "Current state", value: object.state }, { label: "Portfolio group", value: object.group }, { label: "Evidence", value: object.evidence.map((item) => `${item.value} ${item.label}`).join(" · ") }], connections: [] };
   }
   if (placement.id.startsWith("question:")) {
     const object = getQuestionById(placement.id);
     if (!object) throw new Error(`curated system view references missing question ${placement.id}`);
-    return { ...placement, width: placement.width || 220, height: placement.height || 118, id: object.id, kind: "question", status: object.status, title: object.title, summary: object.summary, href: `/research/${object.slug}`, facts: [{ label: "Question state", value: object.state }, { label: "Current judgment", value: object.currentJudgment }, { label: "Next test", value: object.nextStep }], connections: [] };
+    return { ...placement, width: placement.width || 220, height: placement.height || 118, id: object.id, kind: "question", status: object.state, title: object.title, summary: object.summary, href: `/research/${object.slug}`, facts: [{ label: "Question state", value: object.state }, { label: "Current judgment", value: object.currentJudgment }, { label: "Next test", value: object.nextStep }], connections: [] };
   }
   throw new Error(`unsupported curated object ${placement.id}`);
 }

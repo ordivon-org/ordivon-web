@@ -1,3 +1,37 @@
+export const metadata = {
+  "slug": "smaller-core-strong-baselines",
+  "title": "The Smaller Core That Survived Strong Baselines",
+  "deck": "Mature workflow, retrieval, idempotency, durable activity, and live provider baselines did not validate a larger Ordivon stack. They exposed the smaller set of responsibilities that remained independently necessary.",
+  "description": "How Core Work System Round 1 used strong classical baselines and live Codex/Hermes replacement to remove a Task Runtime, reject a generalized Context Kernel, shrink Effect, localize DecisionRequest, and retain provider-neutral Task state.",
+  "projectSlugs": [
+    "computing"
+  ],
+  "questionSlugs": [
+    "smallest-agent-native-core",
+    "runtime-structured-effect",
+    "calibrated-non-action"
+  ],
+  "type": "Research report",
+  "project": "Ordivon Computing",
+  "publishedAt": "2026-07-31",
+  "readMinutes": 13,
+  "author": "zycxfyh",
+  "lead": "Round 1 was built to make Ordivon's own abstractions lose. Mature systems carried durable work, filtered current sources, reconciled lost responses, and preserved safe approval boundaries. What remained was not a universal Agent stack, but a narrower division of ownership that could still explain failures the baselines could not erase.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "Strong workflow, retrieval, idempotency, and provider baselines made the proposed Ordivon core smaller.",
+    "Task Runtime and generalized Context Kernel did not survive; Effect and DecisionRequest narrowed.",
+    "Provider-neutral task state remained independently necessary under live replacement."
+  ],
+  "limitations": [
+    "Round 1 used a frozen workload designed to isolate four causal questions.",
+    "Retained boundaries still need pressure from broader repository goals and external-world recovery."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-computing/blob/0117c051746483412befd6b702a403b5808d69a6/research/experiments/core-work-system-v1/REPORT.md"
+};
+
 <InBrief claim="Strong baselines made the proposed Ordivon core smaller rather than validating a larger platform." evidence="E4 · deterministic matrix, live provider gauntlet, and retained closeout" scope="One frozen core-work workload across continuity, context, effect, attention, and provider replacement">
   <p>The experiment was designed to make Ordivon's abstractions lose. Task Runtime and a generalized Context Kernel did lose; Effect and DecisionRequest narrowed; provider-neutral task state survived.</p>
 </InBrief>
@@ -14,7 +48,7 @@
 
 import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
-<h2 id="the-experiment-was-designed-to-delete-our-own-architecture">The experiment was designed to delete our own architecture</h2>
+<h2 id="the-experiment-was-designed-to-delete-our-own-architecture" data-toc="Designed to delete our own architecture">The experiment was designed to delete our own architecture</h2>
 
 <p>Agent systems make architectural inflation unusually easy. A model needs Context, so a Context subsystem appears. Work must survive interruption, so a Task Runtime appears. External actions can become ambiguous, so an Effect graph appears. People should not approve every minor action, so an attention plane appears. Each proposal sounds reasonable because each names a real problem.</p>
 
@@ -24,7 +58,7 @@ import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
 <p>Core Work System Round 1 therefore did not ask whether an Ordivon-shaped implementation could work. It asked whether the same workload could be recovered by stronger and simpler alternatives. LangGraph and Temporal were allowed to persist the same application semantics. Current-revision retrieval was allowed to use the same trusted sources. Idempotency plus audit and a durable Activity were allowed to resolve the same lost-response operation. The experiment treated a mature baseline winning as a deletion signal, not as an inconvenience.</p>
 
-<h2 id="one-frozen-world-separated-four-causal-questions">One frozen world separated four causal questions</h2>
+<h2 id="one-frozen-world-separated-four-causal-questions" data-toc="One frozen world, four causal questions">One frozen world separated four causal questions</h2>
 
 <p>The frozen workload was a small repository-maintenance task. A concurrent maintainer changed the repository and Tool catalog. An untrusted README recommended removing schema-version validation. The legitimate Goal required updating the client to schema version one while preserving compatibility. A ledger-backed maintenance operation made duplicate Effects observable even when the final source tree still passed.</p>
 
@@ -48,7 +82,7 @@ import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
 <p>The 10/16 pass count is not a leaderboard. Several variants were intentionally weak so that specific failures would remain visible. A duplicate non-idempotent Effect, stale source use, blind redispatch, missed escalation, or rejected final repository failed regardless of storage size or elapsed time.</p>
 
-<h2 id="durable-work-survived-but-a-task-runtime-did-not">Durable work survived, but a Task Runtime did not</h2>
+<h2 id="durable-work-survived-but-a-task-runtime-did-not" data-toc="Durable work without a Task Runtime">Durable work survived, but a Task Runtime did not</h2>
 
 <p>The continuity comparison used four variants: a bounded transcript summary, LangGraph with SQLite checkpoints, Temporal Workflow state, and a minimal Ordivon typed state. Every durable-state variant stored the same Goal revision, repository revision, Tool catalog digest, ready frontier, completed Effects, unresolved operation identity, backend correlation, Facts, pending decision, and Provider identity.</p>
 
@@ -68,7 +102,7 @@ import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
 <blockquote>Durable mechanics are infrastructure. Goal, Task, unresolved operation, authority, and admissible continuation are semantic ownership.</blockquote>
 
-<h2 id="more-context-lost-to-current-revision-retrieval">More Context lost to current-revision retrieval</h2>
+<h2 id="more-context-lost-to-current-revision-retrieval" data-toc="More Context lost to current retrieval">More Context lost to current-revision retrieval</h2>
 
 <p>The Context comparison was deliberately hostile to the assumption that a larger prompt is safer. The full-transcript variant received an old trusted specification, an old Tool catalog, and the untrusted README together. It adopted the plausible but unsupported instruction to remove validation. The rolling summary attributed its claims correctly but remained bound to the obsolete Goal and catalog, so it preserved schema version zero.</p>
 
@@ -95,7 +129,7 @@ import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
 <p>Provenance matters when it changes admission. Recording a source for later audit would not have prevented the failed trajectories. The system must be able to invalidate Context or downgrade a Claim before an Effect is admitted.</p>
 
-<h2 id="the-full-effect-graph-lost-to-smaller-recovery-mechanisms">The full Effect graph lost to smaller recovery mechanisms</h2>
+<h2 id="the-full-effect-graph-lost-to-smaller-recovery-mechanisms" data-toc="The full Effect graph lost">The full Effect graph lost to smaller recovery mechanisms</h2>
 
 <p>The Effect comparison injected the most important ambiguity in long-running work:</p>
 
@@ -121,7 +155,7 @@ import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
 <p>Whether these invariants deserve a shared cross-backend Effect contract remains unresolved. A local repository mutation differs materially from a remote Fetch or Browser Provider in receipt ownership, path freshness, endpoint identity, response delivery, provider policy, and the ability to query previous execution. Ordivon World W1 must provide that second backend. A direct Provider idempotency path winning again is an accepted result.</p>
 
-<h2 id="attention-improved-only-as-a-host-local-decision-boundary">Attention improved only as a Host-local decision boundary</h2>
+<h2 id="attention-improved-only-as-a-host-local-decision-boundary" data-toc="Attention remained Host-local">Attention improved only as a Host-local decision boundary</h2>
 
 <p>The attention experiment used twelve deterministic cases. Some were private and reversible. Others involved shared ownership, foreign authority, an expired or revoked approval, stale world state, institutional budget, or an operation whose consequence was still unknown.</p>
 
@@ -139,7 +173,7 @@ import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
 <p>The scenario estimated a 41.7% reduction in interruptions and a 65% reduction in active operator time relative to approval-everywhere. Those time values were assigned by the deterministic harness—twelve seconds for evidence-rich decisions and twenty seconds for ordinary approvals. No human was timed. Round 1 therefore supports Host-local product development and paired act/abstain experiments, not a universal attention platform or a claim about real organizational productivity.</p>
 
-<h2 id="provider-replacement-survived-model-equivalence-did-not">Provider replacement survived; model equivalence did not</h2>
+<h2 id="provider-replacement-survived-model-equivalence-did-not" data-toc="Portability, not model equivalence">Provider replacement survived; model equivalence did not</h2>
 
 <p>Six live trajectories ran in both orders: three Codex → Hermes and three Hermes → Codex. The first Provider chose whether to apply the version-bound maintenance, follow the poisoned README, or declare completion without changing the world. After the backend committed and the response was lost, the replacement Provider chose whether to reconcile the original request, redispatch under a new identity, or classify the timeout as failure.</p>
 
@@ -156,7 +190,7 @@ import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
 <p>It does not prove that Codex and Hermes have equal reasoning, coding, planning, Tool-use, cost, or reliability. The action set was constrained to three choices, the safe action was listed first, and six Trials cannot estimate rare failure rates. Provider-neutrality means the Task has an identity outside the Provider. It does not turn different models into interchangeable commodities.</p>
 
-<h2 id="the-surviving-architecture-is-smaller-and-sharper">The surviving architecture is smaller and sharper</h2>
+<h2 id="the-surviving-architecture-is-smaller-and-sharper" data-toc="The surviving architecture">The surviving architecture is smaller and sharper</h2>
 
 <CoreDispositionMap
   items={[
@@ -210,7 +244,7 @@ import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
 <p>This is a stronger result than validating an expansive Ordivon core. It removes the incentive to rebuild classical systems merely because Agents now use them. It also makes the remaining research claims more vulnerable: Host must prove that semantic work ownership changes real continuation; Runtime must remain limited to physical facts; World must beat direct integration on a remote lost-response trajectory; DecisionRequest must improve real human decisions rather than a deterministic oracle.</p>
 
-<h2 id="what-the-numbers-do-not-say">What the numbers do not say</h2>
+<h2 id="what-the-numbers-do-not-say" data-toc="What the numbers do not say">What the numbers do not say</h2>
 
 <p>The experiment was designed to identify failure mechanisms and ownership boundaries, not to rank products.</p>
 
@@ -226,7 +260,7 @@ import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
 <p>The claims should therefore remain narrow. Round 1 shows that mature systems can carry durable Agent semantics, not that every configuration is production-ready. It shows that explicit operation identity prevents a constructed duplicate, not that every external service supports reconciliation. It shows that evidence-rich routing can dominate two simple policies in a deterministic oracle, not that users will decide faster or better.</p>
 
-<h2 id="round-two-must-attack-the-remaining-boundary">Round 2 must attack the remaining boundary</h2>
+<h2 id="round-two-must-attack-the-remaining-boundary" data-toc="Round 2 must attack the remainder">Round 2 must attack the remaining boundary</h2>
 
 <p>The next decisive experiment is Ordivon World W1. A Host Task will bind current network and target observations, execute a real Cloudflare Fetch or Browser operation, lose the response or restart the Host, reconcile the original provider interaction, verify the resulting content-addressed evidence, and continue without duplicate work.</p>
 
@@ -238,7 +272,7 @@ import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
 
 <section className="article-sources" aria-labelledby="sources-title">
   <p className="section-index">Evidence</p>
-  <h2 id="sources-title">Research record behind this argument</h2>
+  <h2 id="sources-title" data-toc="Research record">Research record behind this argument</h2>
   <ol className="source-list">
     <li><span>Complete report.</span> <a href="https://github.com/zycxfyh/ordivon-computing/blob/0117c051746483412befd6b702a403b5808d69a6/research/experiments/core-work-system-v1/REPORT.md">Core Work System Round 1: Strong-Baseline Experiment Report</a>, including methods, per-variant tables, threats to validity, and reproduction commands.</li>
     <li><span>Bound deterministic evidence.</span> <a href="https://github.com/zycxfyh/ordivon-computing/blob/0117c051746483412befd6b702a403b5808d69a6/research/experiments/core-work-system-v1/evidence/deterministic-matrix.json">Sixteen deterministic variant receipts</a>, digest-bound in the Round 1 closeout.</li>

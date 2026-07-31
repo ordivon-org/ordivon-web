@@ -1,3 +1,38 @@
+export const metadata = {
+  "slug": "what-h1-h5-proved",
+  "title": "What Survived When Codex and Hermes Replaced Each Other Mid-Task",
+  "deck": "Four live provider runs completed both replacement orders and survived stale completion, a missing artifact, and response loss without turning provider output into task truth.",
+  "description": "How one task remained coherent through Codex→Hermes and Hermes→Codex replacement, three injected faults, and materially different provider lifecycles.",
+  "projectSlugs": [
+    "host",
+    "runtime",
+    "computing"
+  ],
+  "questionSlugs": [
+    "harness-composition-and-completion",
+    "ordivon-harness-v0"
+  ],
+  "type": "Research report",
+  "project": "Ordivon Host",
+  "publishedAt": "2026-07-31",
+  "readMinutes": 12,
+  "author": "zycxfyh",
+  "lead": "H1–H5 did not prove that Codex and Hermes were interchangeable. It proved that one Task could remain coherent while their Sessions, event protocols, Tool semantics, final responses, and accepted source implementations remained different.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "One Host task remained coherent through both tested Codex↔Hermes replacement orders.",
+    "Stale completion, missing artifacts, and response loss did not become accepted task truth.",
+    "Provider sessions and lifecycles remained materially different; replacement did not require equivalence."
+  ],
+  "limitations": [
+    "The experiment used one bounded repository task and two provider harnesses.",
+    "It did not establish general provider interchangeability, model quality, or long-horizon autonomy."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-host/blob/4ac03b52322cb76ade8f2902ab5b08113141c3e7/evidence/harness-replacement-h5-live-76420e4-20260731.json"
+};
+
 <InBrief claim="One task survived both tested Codex↔Hermes replacement orders without making provider output task truth." evidence="E4 · exact source, retained receipts, live runs, and injected faults" scope="One bounded repository task across Codex App Server and Hermes ACP">
   <p>Replacement succeeded because Host-owned identity, generation, artifacts, and completion admission remained durable while provider sessions and lifecycles stayed different.</p>
 </InBrief>
@@ -12,7 +47,7 @@
   doesNotEstablish={["General provider interchangeability.", "Equivalent model quality.", "Long-horizon autonomous reliability."]}
 />
 
-<h2 id="the-experiment-was-not-a-provider-benchmark">The experiment was not a Provider benchmark</h2>
+<h2 id="the-experiment-was-not-a-provider-benchmark" data-toc="Not a Provider benchmark">The experiment was not a Provider benchmark</h2>
 
 <p>H1–H5 asked an architecture question: can one durable Task survive materially different Agent Harnesses, physical execution, stale workers, missing deliverables, and ambiguous responses without making a Provider Session or Runtime process the source of truth?</p>
 
@@ -20,7 +55,7 @@
 
 <div className="article-thesis"><p>The decisive result was not that Codex and Hermes behaved the same. It was that the Task remained coherent while they behaved differently.</p></div>
 
-<h2 id="the-five-stages">The five stages</h2>
+<h2 id="the-five-stages" data-toc="The five stages">The five stages</h2>
 
 <div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Harness H1 to H5">
   <div className="article-data-row article-data-head" role="row"><span role="columnheader">Stage</span><span role="columnheader">Question</span><span role="columnheader">Evidence</span><span role="columnheader">Result</span></div>
@@ -31,7 +66,7 @@
   <div className="article-data-row" role="row"><strong role="cell">H5</strong><span role="cell">Can both replacement orders survive first faults?</span><span role="cell">Four Provider Runs, independent verification, F1–F3</span><b role="cell" data-result="passed">Boundary retained, platform rejected</b></div>
 </div>
 
-<h2 id="h3-and-h4-proved-that-harnesses-are-materially-different">H3 and H4 proved that Harnesses are materially different</h2>
+<h2 id="h3-and-h4-proved-that-harnesses-are-materially-different" data-toc="H3 and H4: different Harnesses">H3 and H4 proved that Harnesses are materially different</h2>
 
 <div className="provider-result-strip" aria-label="H3 and H4 live measurements">
   <div><strong>27,325</strong><span>Codex reported tokens</span></div>
@@ -46,7 +81,7 @@
 
 <p>A code audit found approximately 841 lines in the Codex direct driver and 947 in Hermes, with an exact-line Jaccard similarity near 0.275. Most overlap was subprocess, queue, parsing, validation, serialization, and receipt mechanics. The lifecycle was not common enough to justify a universal implementation.</p>
 
-<h2 id="h5-ran-both-replacement-orders">H5 ran both replacement orders</h2>
+<h2 id="h5-ran-both-replacement-orders" data-toc="Both replacement orders">H5 ran both replacement orders</h2>
 
 <p>The frozen workload contained a deterministic largest-remainder allocation defect, a versioned specification, immutable tests, and two required Artifacts: <code>diagnosis.json</code> and <code>completion.json</code>.</p>
 
@@ -72,7 +107,7 @@ Hermes diagnosis → Host Assignment generation 2 → Codex repair`}</code></pre
 
 <p>Codex accounted for 114,111 reported tokens and Hermes for 379,183. These values come from different Provider protocols and Runs; they are not a normalized cost or capability benchmark. The experiment was designed to establish the boundary, not compare model efficiency.</p>
 
-<h2 id="different-code-same-accepted-work">Different code, same accepted work</h2>
+<h2 id="different-code-same-accepted-work" data-toc="Different code, accepted work">Different code, same accepted work</h2>
 
 <p>The two replacement orders produced different source digests:</p>
 
@@ -83,13 +118,13 @@ Hermes diagnosis → Host Assignment generation 2 → Codex repair`}</code></pre
 
 <p>Both satisfied the same frozen specification and acceptance tests. Semantic completion therefore bound diagnosis, required Artifacts, final source digest, and independent verification—not byte-identical implementation.</p>
 
-<h2 id="fault-one-stale-assignment">Fault one: stale Assignment</h2>
+<h2 id="fault-one-stale-assignment" data-toc="F1: stale Assignment">Fault one: stale Assignment</h2>
 
 <p>After Assignment generation 2 was committed, the generation-1 diagnosis Harness proposed that the Task was complete. Both stale proposals were retained and rejected as <code>stale_assignment</code>. The acceptance verifier did not run, no Runtime Job was dispatched by stale adjudication, and no TaskOutcome was created.</p>
 
 <p>This retained Assignment generation as a durable semantic fencing token. Task revision describes Task state; Assignment generation describes which current execution commitment may submit evidence.</p>
 
-<h2 id="fault-two-process-success-without-artifact">Fault two: process success without Artifact</h2>
+<h2 id="fault-two-process-success-without-artifact" data-toc="F2: success without Artifact">Fault two: process success without Artifact</h2>
 
 <p>A real Runtime process exited successfully and produced terminal evidence but did not create the required completion Artifact. Host rejected <code>missing_artifact</code>, skipped acceptance verification, and left the Task waiting.</p>
 
@@ -97,7 +132,7 @@ Hermes diagnosis → Host Assignment generation 2 → Codex repair`}</code></pre
 
 <p>This retained <code>CompletionProposal</code> and <code>CompletionDecision</code> as an admission boundary distinct from process state and TaskOutcome.</p>
 
-<h2 id="fault-three-response-loss">Fault three: response loss</h2>
+<h2 id="fault-three-response-loss" data-toc="F3: response loss">Fault three: response loss</h2>
 
 <p>The successful response to the Codex→Hermes repair dispatch was deliberately dropped. A fresh Host recovered exactly one original Runtime Job through the Assignment-bound request identity and opaque Host references:</p>
 
@@ -107,7 +142,7 @@ responseLost = true`}</code></pre>
 
 <p>No repair was blindly redispatched. This retained Host/Runtime request identity and rejected a Runtime Task table or semantic query platform.</p>
 
-<h2 id="the-final-message-failed-as-a-contract">The final message failed as a contract</h2>
+<h2 id="the-final-message-failed-as-a-contract" data-toc="Final text failed as a contract">The final message failed as a contract</h2>
 
 <p>Both Codex Runs returned usable structured final responses. Both Hermes Runs completed Tools, wrote valid Artifacts, and passed independent verification while ACP final assistant text was absent.</p>
 
@@ -115,7 +150,7 @@ responseLost = true`}</code></pre>
 
 <p>This was not a workaround for Hermes. It exposed a general systems error: language about completion is less authoritative than the state and evidence that completion requires.</p>
 
-<h2 id="what-survived-and-what-did-not">What survived—and what did not</h2>
+<h2 id="what-survived-and-what-did-not" data-toc="What survived">What survived—and what did not</h2>
 
 <div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="H5 architecture disposition">
   <div className="article-data-row article-data-head" role="row"><span role="columnheader">Candidate</span><span role="columnheader">Disposition</span><span role="columnheader">Reason</span><span role="columnheader">Owner</span></div>
@@ -129,7 +164,7 @@ responseLost = true`}</code></pre>
   <div className="article-data-row" role="row"><strong role="cell">Runtime Task state</strong><span role="cell">reject</span><span role="cell">opaque identity already recovered work</span><span role="cell">none</span></div>
 </div>
 
-<h2 id="what-h1-h5-did-not-prove">What H1–H5 did not prove</h2>
+<h2 id="what-h1-h5-did-not-prove" data-toc="What H1–H5 did not prove">What H1–H5 did not prove</h2>
 
 <ul>
   <li>It did not rank Codex and Hermes or establish equal-budget quality.</li>
@@ -140,7 +175,7 @@ responseLost = true`}</code></pre>
   <li>It did not test a first-party Ordivon Agent Loop over a bare model API.</li>
 </ul>
 
-<h2 id="the-new-question">The new question</h2>
+<h2 id="the-new-question" data-toc="The new question">The new question</h2>
 
 <p>The shared Provider-lifecycle question is closed. A distinct construction question is now ready: build the smallest Ordivon Harness that owns a raw model/Tool Loop without copying Host or Runtime.</p>
 
@@ -150,7 +185,7 @@ responseLost = true`}</code></pre>
 
 <section className="article-sources" aria-labelledby="sources-title">
   <p className="section-index">Evidence</p>
-  <h2 id="sources-title">Receipts and closeout</h2>
+  <h2 id="sources-title" data-toc="Receipts and closeout">Receipts and closeout</h2>
   <ol className="source-list">
     <li><span>Architecture decision.</span> <a href="https://github.com/zycxfyh/ordivon-host/blob/4ac03b52322cb76ade8f2902ab5b08113141c3e7/docs/harness-boundary-h5-decision.md">Harness Boundary H5 Decision</a>.</li>
     <li><span>Codex live receipt.</span> <a href="https://github.com/zycxfyh/ordivon-host/blob/4ac03b52322cb76ade8f2902ab5b08113141c3e7/evidence/codex-app-h3-live-64ab44b-20260731.json">H3 Codex App Server evidence</a>.</li>

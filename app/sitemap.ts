@@ -10,8 +10,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://ordivon.com";
   const core = ["", "/system", "/research", "/projects", "/writing", "/now", "/about", "/colophon"]
     .map((path) => ({ url: `${base}${path}`, lastModified: siteUpdatedAt }));
-  const projectRoutes = projects.map((project) => ({ url: `${base}/projects/${project.slug}`, lastModified: siteUpdatedAt }));
+  const projectRoutes = projects.map((project) => ({ url: `${base}/projects/${project.slug}`, lastModified: project.updatedAt || siteUpdatedAt }));
   const researchRoutes = getResearchQuestions().map((question) => ({ url: `${base}/research/${question.slug}`, lastModified: question.updatedAt }));
-  const writingRoutes = articles.map((article) => ({ url: `${base}/writing/${article.slug}`, lastModified: article.modifiedDate || article.date }));
+  const writingRoutes = articles.map((article) => ({ url: `${base}/writing/${article.slug}`, lastModified: article.revisedAt || article.publishedAt }));
   return [...core, ...researchRoutes, ...projectRoutes, ...writingRoutes];
 }

@@ -1,4 +1,39 @@
-<h2 id="the-historical-release-remains-ten-tools">The historical release remains ten tools</h2>
+export const metadata = {
+  "slug": "runtime-after-core",
+  "title": "How Ordivon Runtime Grew Beyond Its Ten-Tool Core",
+  "deck": "Sustained use clarified commitment semantics, added recovery and structured progress, removed an overlapping editor, and closed the operational lifecycle around deployment, retention, repair, and status.",
+  "description": "How a production-tested ten-tool runtime became a thirteen-tool execution and recovery system without absorbing task meaning or external-world semantics.",
+  "projectSlugs": [
+    "runtime",
+    "host",
+    "world"
+  ],
+  "questionSlugs": [
+    "runtime-structured-effect",
+    "runtime-boundary-friction"
+  ],
+  "type": "Engineering report",
+  "project": "Ordivon Runtime",
+  "publishedAt": "2026-07-28",
+  "readMinutes": 10,
+  "author": "zycxfyh",
+  "lead": "The 23 July release established exact Git Workspaces, durable Jobs and Attempts, owned process trees, bounded output, cancellation, Artifacts, and restart recovery. Sustained Agent work then exposed two further questions: what exactly is committed when a nondeterministic Agent crosses into reality, and what operational machinery lets the Runtime itself remain clean and recoverable?",
+  "status": "current",
+  "claimClass": "engineering-inference",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "Sustained use expanded Runtime from ten tools to a closed execution and recovery lifecycle.",
+    "Commitment identity, structured progress, retention, repair, and status improved operation without absorbing task meaning.",
+    "The core remained thin by deleting an overlapping editor and rejecting workflow ownership."
+  ],
+  "limitations": [
+    "Production-tested means sustained local use, not external production replication.",
+    "Future workloads may expose operational gaps without changing Runtime's semantic boundary."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-runtime/blob/d13be899329c5564643abb10a701a55ad8c39153/docs/effect-kernel.md"
+};
+
+<h2 id="the-historical-release-remains-ten-tools" data-toc="The historical release remains ten tools">The historical release remains ten tools</h2>
           <p>The original release should not be rewritten simply because the protocol later grew. It proved the first execution boundary and closed M0–M7. Four later tools entered only after repeated work showed universal gaps:</p>
           <ul>
             <li><code>workspace.get</code> and <code>workspace.list</code> restore Workspace identity after a client or conversation loses local memory;</li>
@@ -7,43 +42,43 @@
           </ul>
           <p>The current surface contains thirteen tools. The historical ten-tool release and the later fourteen-tool phase remain accurate for their dates.</p>
 
-          <h2 id="the-decisive-abstraction-is-commitment">The decisive abstraction is commitment</h2>
+          <h2 id="the-decisive-abstraction-is-commitment" data-toc="The decisive abstraction is commitment">The decisive abstraction is commitment</h2>
           <p>An Agent may choose a different action after interruption. A command runner cannot distinguish a proposal from a committed effect, or process exit from proof that an external action occurred exactly once. The Runtime now states a narrower kernel:</p>
           <blockquote>Bind one Agent candidate to a stable, world-conditioned operation; dispatch one physical Attempt at most once; retain identity-bound evidence; and preserve uncertainty without inventing or repeating effects.</blockquote>
           <p>Operation identity binds the principal, client request identity, Workspace source digest, executable, arguments, explicit environment, working directory, limits, and budgets. Request identity remains separate from the observed world. A response-loss replay returns the original Job even when the Workspace has since changed or closed.</p>
 
-          <h2 id="source-commitment-is-strong-but-scoped">Source commitment is strong but scoped</h2>
+          <h2 id="source-commitment-is-strong-but-scoped" data-toc="Source commitment is strong but scoped">Source commitment is strong but scoped</h2>
           <p>Initial admission hashes the semantic Git index, actual tracked bytes and modes, recursively initialized submodules, and nonignored untracked source. The Runner validates that source again immediately before spawn, and Runtime-mediated mutation is rejected while active work owns the Workspace.</p>
           <p>This detects stale source and fails closed. It does not create an immutable host snapshot. Direct writes by an equally privileged process, ignored caches, wall-clock time, network responses, and external service state remain outside the guarantee.</p>
 
-          <h2 id="opaque-execution-does-not-become-idempotent-by-declaration">Opaque execution does not become idempotent by declaration</h2>
+          <h2 id="opaque-execution-does-not-become-idempotent-by-declaration" data-toc="Opaque execution does not become idempotent by declaration">Opaque execution does not become idempotent by declaration</h2>
           <p><code>workspace.exec</code> can run any trusted-local executable. The Runtime cannot prove the number or identity of effects inside it. A structured non-opaque adapter must jointly own canonical identity, enforceable preconditions, committed authority, provider evidence, deterministic reconciliation, and ambiguity behavior.</p>
           <p>Until one real operation satisfies that full contract, ambiguous arbitrary execution is not automatically redispatched.</p>
 
-          <h2 id="agent-facing-ux-improved-without-absorbing-every-workflow">Agent-facing UX improved without absorbing every workflow</h2>
+          <h2 id="agent-facing-ux-improved-without-absorbing-every-workflow" data-toc="Agent-facing UX improved without absorbing every workflow">Agent-facing UX improved without absorbing every workflow</h2>
           <p>Observation now exposes elapsed time, retained byte counts, last output time, progress revision, current step, completed steps, and the first failed step. A caller can wait for change or terminal state instead of polling empty “working” responses.</p>
           <p>Typed operation errors identify origin, retry class, commitment state, trace identity, and—when known—operation identity. Git publication, GitHub pull requests, and compiler-report normalization remain replaceable Skills outside the trusted kernel.</p>
 
-          <h2 id="execution-stopped-inheriting-ambient-service-state">Execution stopped inheriting ambient service state</h2>
+          <h2 id="execution-stopped-inheriting-ambient-service-state" data-toc="Execution stopped inheriting ambient service state">Execution stopped inheriting ambient service state</h2>
           <p>Target processes now receive a configured PATH and HOME plus fixed locale, temporary directory, and external cache roots. Request-specific environment values overlay those committed defaults. Root authority remains available, but Runtime service secrets and unrelated variables no longer enter an operation through ambient inheritance.</p>
 
-          <h2 id="workspace-and-cache-lifecycles-were-separated">Workspace and cache lifecycles were separated</h2>
+          <h2 id="workspace-and-cache-lifecycles-were-separated" data-toc="Workspace and cache lifecycles were separated">Workspace and cache lifecycles were separated</h2>
           <p>Build, cache, and temporary outputs moved outside Git Workspaces. <code>workspace.close</code> removes disposable external state before worktree removal and tombstone commitment. A cleanup failure therefore leaves the Workspace open and retryable rather than returning an error after closure already committed.</p>
           <p>A thin lifecycle controller adds three policy classes over existing truth owners: ephemeral Workspaces default to 24 hours, review Workspaces to seven days, and pinned Workspaces are never automatic. The later of creation and durable Job activity forms the retention basis. Active, dirty, pinned, unknown, and orphan-directory cases remain excluded.</p>
 
-          <h2 id="repair-and-status-preserve-evidence">Repair and status preserve evidence</h2>
+          <h2 id="repair-and-status-preserve-evidence" data-toc="Repair and status preserve evidence">Repair and status preserve evidence</h2>
           <p>Repository renames left healthy worktrees pointing at old source paths. Repair uses exact aliases, verifies the recorded commit in the mapped repository, repairs Git metadata, rechecks HEAD, and updates only source identity. Unrepairable bytes can be quarantined only through a second explicit confirmation.</p>
           <p>The one-time installation hygiene pass digest-checked obsolete binaries and legacy state before moving them into receipt quarantine, then retired from the active subsystem. A secret-free status command now compares deployment receipts, installed binary digests, systemd state, allowlisted configuration, Registry facts, Workspace state, and lifecycle receipts without loading the bearer token.</p>
 
-          <h2 id="deployment-became-a-receipted-transaction">Deployment became a receipted transaction</h2>
+          <h2 id="deployment-became-a-receipted-transaction" data-toc="Deployment became a receipted transaction">Deployment became a receipted transaction</h2>
           <p>An exact clean commit produces a digest-bound candidate manifest. Planning checks source identity, candidate and installed binaries, Registry capacity, environment files, and the expected tool catalog. Apply stages, stops admission, rechecks active work, installs, starts, initializes MCP, probes, and records digests. Rollback validates and restores the exact receipt-bound previous set.</p>
           <p>A production audit found one real gap: auxiliary operational scripts were deployed separately from Rust binaries, allowing an older reclaim script to survive. The script was synchronized and receipted. The current deployment also binds the status operator asset and the retirement of one-time hygiene to the same release receipt while preserving separate digests.</p>
 
-          <h2 id="the-production-cleanup-was-measurable">The production cleanup was measurable</h2>
+          <h2 id="the-production-cleanup-was-measurable" data-toc="The production cleanup was measurable">The production cleanup was measurable</h2>
           <p>Four unknown Workspaces caused by repository renames were repaired. A one-time backlog drain then closed 42 clean, inactive Workspaces through the existing close contract. No active or dirty work was forced. The Runtime store fell from roughly 7.2 GB to 3.4 GB, while caches belonging to active work were preserved.</p>
           <p>The important result is not deletion volume. It is that source state, execution state, disposable computation, review retention, active leases, and unknown cases are now distinct enough for the Runtime to maintain itself conservatively.</p>
 
-          <h2 id="what-remains-outside-runtime">What remains outside Runtime</h2>
+          <h2 id="what-remains-outside-runtime" data-toc="What remains outside Runtime">What remains outside Runtime</h2>
           <p>Runtime does not own Goal or Task continuity, model choice, prompts, memory, semantic correctness, product workflows, cluster scheduling, untrusted-code isolation, or exactly-once external effects. Those exclusions keep Host, providers, operating systems, and domain systems as independent state owners.</p>
           <p>The next persistent addition must either enforce one complete real effect contract or remove repeated friction that cannot be handled better by Linux, systemd, Git, SQLite, a provider, Host, or a replaceable Skill.</p>
 

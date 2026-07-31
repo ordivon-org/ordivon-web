@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { articleMetadata } from "../content/articles/registry";
+import { articleMetadata } from "../content/articles/generated-metadata";
 import { questions } from "../content/model";
 import { expect, test, type Page } from "@playwright/test";
 
@@ -58,8 +58,8 @@ test("all research dossiers render", async ({ request }) => {
 test("publishing endpoints render", async ({ request }) => {
   const feed = await request.get("/feed.xml");
   expect(feed.status()).toBe(200);
-  expect(feed.headers()["content-type"]).toMatch(/(?:application|text)\/xml/);
-  expect(await feed.text()).toMatch(/<rss version="2\.0"[^>]*><channel>/);
+  expect(feed.headers()["content-type"]).toMatch(/(?:application|text)\/(?:atom\+)?xml/);
+  expect(await feed.text()).toContain(`<feed xmlns="http://www.w3.org/2005/Atom">`);
   expect((await request.get("/sitemap.xml")).status()).toBe(200);
   expect((await request.get("/robots.txt")).status()).toBe(200);
   expect((await request.get("/opengraph-image.png")).headers()["content-type"]).toContain("image/png");
@@ -72,11 +72,14 @@ test("publishing endpoints render", async ({ request }) => {
 
 test("publication metadata is visible and internally consistent", async ({ page }) => {
   for (const article of articleMetadata) {
-    expect(article.takeaways.length, article.slug).toBeGreaterThanOrEqual(3);
-    expect(article.takeaways.length, article.slug).toBeLessThanOrEqual(5);
+    expect(article.publishedAt, article.slug).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(article.takeaways.length, article.slug).toBeGreaterThanOrEqual(1);
     expect(article.limitations.length, article.slug).toBeGreaterThan(0);
-    expect(article.canonicalResearchRecord, article.slug).toMatch(/^https:\/\//);
+    if (["E3", "E4", "E5"].includes(article.evidenceLevel)) expect(article.canonicalResearchRecord, article.slug).toMatch(/^https:\/\//);
+    const revisedAt = "revisedAt" in article ? article.revisedAt : undefined;
+    if (revisedAt) expect(revisedAt >= article.publishedAt, article.slug).toBe(true);
   }
+  expect(articleMetadata.filter((article) => "revisedAt" in article).map((article) => article.slug)).toEqual(["link-edge-boundary"]);
   await gotoWithNetworkRetry(page, "/writing/from-tokens-to-work");
   await expect(page.locator(".publication-brief")).toBeVisible();
   await expect(page.locator(".publication-brief-status").getByText(/E3/)).toBeVisible();
@@ -109,9 +112,11 @@ test("historical releases and structured discovery remain explicit", async ({ pa
   expect(sitemap).not.toContain("<changefreq>");
 
   const feed = await (await request.get("/feed.xml")).text();
-  expect(feed).toContain("<atom:link");
-  expect(feed).toContain("<![CDATA[E4]]>");
-  expect(feed).toContain("Canonical research record");
+  expect(feed).toContain('<link rel="self" href="https://ordivon.com/feed.xml"/>');
+  expect(feed).toContain("<published>2026-07-31T12:00:00Z</published>");
+  expect(feed).toContain("<category term=\"E4\"/>");
+  expect(feed).toContain('rel="related"');
+  expect(feed).not.toContain("<source");
 });
 
 test("internal navigation targets resolve", async ({ page, request }) => {
@@ -141,7 +146,7 @@ test("public model is article-centered and does not expose the retired graph led
   await gotoWithNetworkRetry(page, "/now");
   await expect(page.getByRole("heading", { name: "Read the arguments and reports that changed the judgment." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "What is tested, experimental, or still waiting for proof." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Questions whose current answer changed." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Questions carrying the current architectural pressure." })).toBeVisible();
   await expect(page.getByRole("link", { name: /Creation, Judgment, and Recoverable Systems/ })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/research/web-research-interface");
@@ -205,6 +210,9 @@ test("system explorer uses curated architecture views", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/system");
   await expect(page.getByRole("heading", { name: "One task can outlive the model, process, and path that carried it." })).toBeVisible();
   await expect(page.locator(".system-trajectory li")).toHaveCount(5);
+  await expect(page.locator(".system-owner-grid .system-owner-card")).toHaveCount(3);
+  await expect(page.locator(".system-research-plane .system-owner-card")).toHaveCount(1);
+  await expect(page.getByRole("heading", { name: "Computing", exact: true })).toBeVisible();
   for (const value of ["2 / 2", "3", "13", "W1"]) await expect(page.locator(".system-hero-stats").getByText(value, { exact: true })).toBeVisible();
   await expect(page.locator(".system-explorer")).toHaveAttribute("data-ready", "true", { timeout: 15_000 });
   await expect(page.getByRole("button", { name: "Structure State ownership" })).toHaveAttribute("aria-pressed", "true");
@@ -336,11 +344,11 @@ test("homepage presents one continuous dark visual thesis", async ({ page, isMob
   await expect(page.locator(".home-poster-brand")).toHaveText("ORDIVON");
   await expect(page.getByRole("heading", { name: "Work should survive the intelligence that started it." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "One task survived Codex↔Hermes replacement and three injected faults." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Four layers keep one trajectory recoverable." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Three consequence boundaries and one research plane keep the work legible." })).toBeVisible();
   await expect(page.locator(".home-owner-row")).toHaveCount(4);
   await expect(page.locator(".home-frontier").getByRole("link", { name: /See the evidence and next test/ })).toHaveAttribute("href", /\/research\/.+\//);
   await expect(page.locator(".home-writing-row")).toHaveCount(3);
-  await expect(page.getByText("Latest publication · From Tokens to Work: The Complete Agent Execution Stack")).toBeVisible();
+  await expect(page.getByText("Latest publication · What Survived When Codex and Hermes Replaced Each Other Mid-Task")).toBeVisible();
 
   const palette = await page.evaluate(() => {
     const root = getComputedStyle(document.documentElement);

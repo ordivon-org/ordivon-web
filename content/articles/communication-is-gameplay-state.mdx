@@ -1,4 +1,36 @@
-<h2 id="the-same-message-produced-two-worlds">The same message produced two Worlds</h2>
+export const metadata = {
+  "slug": "communication-is-gameplay-state",
+  "title": "Communication Is Gameplay State",
+  "deck": "The same typed task offer produced victory when delivered locally and power exhaustion when a disabled radio delayed it beyond the coordination window.",
+  "description": "Why agent communication needs identity, reachability, delivery state, and World-conditioned timing rather than decorative chat logs or a shared transcript.",
+  "projectSlugs": [
+    "game"
+  ],
+  "questionSlugs": [
+    "game-agent-native-mechanics"
+  ],
+  "type": "Research note",
+  "project": "Ordivon Game",
+  "publishedAt": "2026-07-31",
+  "readMinutes": 3,
+  "author": "zycxfyh",
+  "lead": "A message becomes part of the World when the recipient may not receive it before the action window closes—and the lost time cannot be repaired by showing the text later.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E3",
+  "takeaways": [
+    "The same task offer produced different outcomes when reachability changed.",
+    "Messages need identity, delivery state, and World-conditioned timing rather than decorative logs.",
+    "Delayed communication can consume an irreversible coordination window."
+  ],
+  "limitations": [
+    "The result comes from one bounded Station Zero comparison.",
+    "It does not establish multi-agent superiority or a universal communication protocol."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-game/blob/7b44504da7a3467d65d6260d7cbc479b0fc971a8/docs/M3-RECEIPT.md"
+};
+
+<h2 id="the-same-message-produced-two-worlds" data-toc="The same message, two Worlds">The same message produced two Worlds</h2>
 
 <p>Station Zero evaluated the same typed <code>task-offer</code> under two communication conditions. When the Actors shared a local channel, the assignment was delivered immediately and the Team reached verified victory at Tick 18. When the station radio was unavailable, the message remained pending until communications recovered. The Team exhausted power at Tick 20.</p>
 
@@ -10,13 +42,13 @@
   <div className="article-data-row" role="row"><strong role="cell">station radio unavailable</strong><span role="cell">pending</span><span role="cell">Security waits until delivery</span><span role="cell">power exhausted</span><b role="cell" data-result="failed">20</b></div>
 </div>
 
-<h2 id="a-message-needs-more-than-text">A message needs more than text</h2>
+<h2 id="a-message-needs-more-than-text" data-toc="More than text">A message needs more than text</h2>
 
 <p>A persistent Agent communication object needs identity, sender, recipient, channel, creation time, delivery condition, status, and relation to Tasks or Proposals. The content can be identical while the operational meaning differs because one recipient has not yet received it.</p>
 
 <p>A shared transcript would erase the distinction. It would make information globally visible even when the World says the channel is unavailable. Decorative chat bubbles would preserve the wording but not the causal constraint.</p>
 
-<h2 id="reachability-creates-coordination-windows">Reachability creates coordination windows</h2>
+<h2 id="reachability-creates-coordination-windows" data-toc="Coordination windows">Reachability creates coordination windows</h2>
 
 <p>Communication can be:</p>
 
@@ -31,13 +63,13 @@
 
 <p>These states influence which Tasks are ready and which Proposals are reasonable. A delayed task offer can be perfectly correct and still arrive too late to change the outcome.</p>
 
-<h2 id="the-world-remains-authoritative">The World remains authoritative</h2>
+<h2 id="the-world-remains-authoritative" data-toc="World authority">The World remains authoritative</h2>
 
 <p>The Host stores Message identity and delivery status. The World determines whether the current channel condition permits delivery. The model cannot declare that a radio message arrived because it would be useful. Verification must bind the delivery transition to current World state.</p>
 
 <p>This separation also supports recovery. After process replacement, the Host can determine which Messages were delivered, which remain pending, and which coordination window has already closed without replaying a conversation.</p>
 
-<h2 id="communication-does-not-prove-multi-agent-superiority">Communication does not prove multi-Agent superiority</h2>
+<h2 id="communication-does-not-prove-multi-agent-superiority" data-toc="What it does not prove">Communication does not prove multi-Agent superiority</h2>
 
 <p>The experiment proves that communication reachability can materially change one multi-Agent trajectory. It does not prove that three Agents outperform one Agent, that natural-language negotiation is necessary, or that a general society layer should exist.</p>
 
@@ -47,7 +79,7 @@
 
 <section className="article-sources" aria-labelledby="sources-title">
   <p className="section-index">Evidence</p>
-  <h2 id="sources-title">Related record</h2>
+  <h2 id="sources-title" data-toc="Related record">Related record</h2>
   <ol className="source-list">
 <li><a href="https://github.com/zycxfyh/ordivon-game/blob/7b44504da7a3467d65d6260d7cbc479b0fc971a8/docs/M3-RECEIPT.md">Station Zero M3 receipt</a></li>
     <li><a href="/research/game-agent-native-mechanics">Agent-native game mechanics dossier</a></li>

@@ -1,5 +1,8 @@
 export const editorialSelections = {
-  homeProof: "what-h1-h5-proved",
+  home: {
+    proof: "what-h1-h5-proved",
+    recentArguments: ["what-h1-h5-proved", "smaller-core-strong-baselines", "winning-move-loses-contest"],
+  },
   writing: {
     startHere: "from-tokens-to-work",
     evidenceReports: ["what-h1-h5-proved", "winning-move-loses-contest"],
@@ -29,9 +32,10 @@ export const editorialSelections = {
     recentlyAnswered: "harness-composition-and-completion",
     architectureChangingExperiment: "smaller-core-strong-baselines",
   },
-  canonicalStatements: {
-    projectIntent: "creation-judgment-recoverable-systems",
-    executionStack: "from-tokens-to-work",
-    runtimeBoundary: "runtime-after-core",
+  now: {
+    judgmentChanges: [
+      "harness-composition-and-completion", "smallest-agent-native-core", "world-boundary-value",
+      "runtime-boundary-friction", "game-agent-native-mechanics", "security-adversarial-trajectory",
+    ],
   },
 } as const;

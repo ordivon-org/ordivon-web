@@ -432,11 +432,12 @@
 .disposition-figure [data-disposition="shrink"], .disposition-figure [data-disposition="localize"] { color: var(--accent-soft); }
 
 .divergence-figure { padding: 2rem 0; }
-.divergence-axis { height: 18rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; align-items: end; border-bottom: 1px solid var(--line-strong); }
-.divergence-axis > div { height: 100%; display: flex; flex-direction: column; justify-content: flex-end; gap: .8rem; }
-.divergence-axis span { display: block; min-height: 2rem; background: linear-gradient(180deg, var(--accent), color-mix(in srgb, var(--accent) 15%, transparent)); }
-.divergence-axis strong { min-height: 3rem; font-size: .68rem; font-weight: 520; }
-.divergence-figure > p { max-width: 36rem; color: var(--muted); }
+.divergence-source { width: fit-content; margin: 0 auto 2rem; padding: .8rem 1.2rem; border: 1px solid var(--line-strong); color: var(--paper); font: .7rem var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.divergence-branches { display: grid; grid-template-columns: repeat(5, 1fr); gap: .7rem; }
+.divergence-branches > div { min-height: 7rem; padding: 1rem; border: 1px solid var(--line); display: flex; flex-direction: column; justify-content: space-between; }
+.divergence-branches span { color: var(--accent); font-size: 1.2rem; }
+.divergence-branches strong { font-size: .72rem; font-weight: 520; }
+.divergence-figure > p { max-width: 42rem; color: var(--muted); }
 
 .recoverable-systems-figure { padding: 2rem 0; text-align: center; }
 .recoverable-wide, .recoverable-boundary { margin: 0 auto; padding: 2rem; border: 1px solid var(--line-strong); display: flex; flex-direction: column; gap: .7rem; }
@@ -463,7 +464,7 @@
   .replacement-metrics { grid-template-columns: 1fr 1fr; }
   .disposition-figure { overflow-x: auto; }
   .disposition-figure > div { min-width: 36rem; }
-  .divergence-axis { gap: .35rem; }
+  .divergence-branches { grid-template-columns: 1fr 1fr; }
   .recoverable-wide { width: 100%; }
   .recoverable-boundary { width: 75%; }
   .recoverable-principles { grid-template-columns: 1fr; }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { SystemExplorer } from "@/components/system/system-explorer";
-import { siteUpdatedAt, systems } from "@/content/model";
+import { boundaries, researchPlanes, siteUpdatedAt } from "@/content/model";
 import { formatDate } from "@/lib/content";
 import { systemPerspectives } from "@/lib/system-views";
 
@@ -28,7 +28,8 @@ const evidence = [
 ] as const;
 
 const objectKinds = [
-  ["system", "State owner", "A durable responsibility that another layer must not fabricate."],
+  ["boundary", "Consequence boundary", "A durable responsibility that preserves task meaning or execution evidence."],
+  ["research-plane", "Research plane", "A comparison and conformance role outside the execution path."],
   ["project", "Repository", "An implementation or research line with its own source of truth."],
   ["question", "Question", "A falsifiable uncertainty that can change priorities or boundaries."],
   ["article", "Publication", "A complete dated argument with evidence links, limits, and the next test."],
@@ -42,7 +43,8 @@ const connectionKinds = [
 ] as const;
 
 export default function SystemPage() {
-  const systemNodes = [...systems].sort((a, b) => a.index.localeCompare(b.index));
+  const boundaryNodes = [...boundaries].sort((a, b) => a.index.localeCompare(b.index));
+  const researchPlane = researchPlanes[0];
 
   return (
     <div className="system-page">
@@ -74,11 +76,11 @@ export default function SystemPage() {
         </section>
 
         <section className="system-owners" aria-labelledby="system-owners-title">
-          <SectionHeading eyebrow="Durable boundaries" title="Four owners preserve facts that interruption makes expensive to reconstruct." description="Each project can evolve independently because it does not need to copy the state owned by another layer." />
+          <SectionHeading eyebrow="Durable boundaries" title="Three consequence boundaries preserve facts that interruption makes expensive to reconstruct." description="Host owns task meaning, Runtime owns local execution evidence, and World tests the external consequence boundary." />
           <div className="system-owner-grid">
-            {systemNodes.map((node) => (
-              <article className={`system-owner-card status-${node.status}`} key={node.id}>
-                <div><span>{node.index}</span><i>{node.status}</i></div>
+            {boundaryNodes.map((node) => (
+              <article className={`system-owner-card status-${node.maturity}`} key={node.id}>
+                <div><span>{node.index}</span><i>{node.maturity}</i></div>
                 <h3>{node.title}</h3><p>{node.summary}</p>
                 <dl>
                   <div><dt>Preserves</dt><dd>{node.owns.join(" · ")}</dd></div>
@@ -87,6 +89,15 @@ export default function SystemPage() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="system-research-plane" aria-labelledby="system-research-plane-title">
+          <SectionHeading eyebrow="Research and conformance" title="Computing observes the trajectory; it is not another execution layer." description="The research plane compares boundaries against mature alternatives, preserves shared contracts, and deletes abstractions that fail their admission test." />
+          <article className={`system-owner-card status-${researchPlane.status}`}>
+            <div><span>{researchPlane.index}</span><i>{researchPlane.status}</i></div>
+            <h3 id="system-research-plane-title">{researchPlane.title}</h3><p>{researchPlane.summary}</p>
+            <dl><div><dt>Owns</dt><dd>{researchPlane.owns.join(" · ")}</dd></div><div><dt>Stays outside</dt><dd>{researchPlane.boundary.join(" · ")}</dd></div></dl>
+          </article>
         </section>
 
         <section className="system-language" aria-labelledby="system-language-title">

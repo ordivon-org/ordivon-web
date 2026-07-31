@@ -1,6 +1,6 @@
 import type { TocEntry } from "@/lib/content";
 
-export function ArticleToc({ entries }: { entries: TocEntry[] }) {
+export function ArticleToc({ entries }: { entries: readonly TocEntry[] }) {
   return (
     <>
       <aside className="article-rail" aria-label="Article sections">

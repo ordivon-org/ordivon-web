@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ArticleMetadata } from "@/content/articles/registry";
+import type { ArticleMetadata } from "@/content/articles/schema";
 import { claimLabels, evidenceLabels } from "@/lib/publication";
 
 export function PublicationBrief({ article }: { article: ArticleMetadata }) {
@@ -18,7 +18,7 @@ export function PublicationBrief({ article }: { article: ArticleMetadata }) {
       <details className="publication-limitations">
         <summary>Scope and limitations</summary>
         <ul>{article.limitations.map((item) => <li key={item}>{item}</li>)}</ul>
-        <Link href={article.canonicalResearchRecord}>Open the canonical research record ↗</Link>
+        {article.canonicalResearchRecord && <Link href={article.canonicalResearchRecord}>Open the canonical research record ↗</Link>}
       </details>
     </aside>
   );

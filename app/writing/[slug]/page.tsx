@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: article.title,
     description: article.description,
     alternates: { canonical: `/writing/${article.slug}` },
-    openGraph: { type: "article", title: article.title, description: article.description, publishedTime: article.date, modifiedTime: article.modifiedDate || article.date, authors: [article.author], images: [{ url: `/og/${article.slug}.png`, width: 1200, height: 630, alt: article.title }] },
+    openGraph: { type: "article", title: article.title, description: article.description, publishedTime: article.publishedAt, modifiedTime: article.revisedAt || article.publishedAt, authors: [article.author], images: [{ url: `/og/${article.slug}.png`, width: 1200, height: 630, alt: article.title }] },
     twitter: { card: "summary_large_image", title: article.title, description: article.description, images: [`/og/${article.slug}.png`] },
   };
 }
@@ -36,7 +36,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const replacement = article.supersededBy ? getArticle(article.supersededBy) : undefined;
   const schema = {
     "@context": "https://schema.org", "@type": "Article", headline: article.title, description: article.description,
-    image: `https://ordivon.com/og/${article.slug}.png`, datePublished: article.date, dateModified: article.modifiedDate || article.date,
+    image: `https://ordivon.com/og/${article.slug}.png`, datePublished: article.publishedAt, dateModified: article.revisedAt || article.publishedAt,
     author: { "@type": "Person", name: article.author, url: "https://github.com/zycxfyh" },
     publisher: { "@type": "Organization", name: "Ordivon", url: "https://ordivon.com" },
     mainEntityOfPage: `https://ordivon.com/writing/${article.slug}`,
@@ -53,7 +53,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <div className="article-kicker"><span>{article.type}</span><span>{article.project}</span></div>
         <h1>{article.title}</h1><p className="article-deck">{article.deck}</p>
         <div className="article-meta">
-          <span>By {article.author}</span><time dateTime={article.date}>{formatDate(article.date)}</time><span>{article.readMinutes} min read</span>
+          <span>By {article.author}</span><time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time><span>{article.readMinutes} min read</span>
           <span>{questionCount ? `${questionCount} research Question${questionCount === 1 ? "" : "s"}` : `${article.projectSlugs.length} project area${article.projectSlugs.length === 1 ? "" : "s"}`}</span>
         </div>
       </header>

@@ -20,7 +20,7 @@ type ResearchView = "questions" | "projects" | "timeline" | "status";
 function QuestionCard({ item, index }: { item: ResearchQuestionSummary; index: number }) {
   const { question, project } = item;
   return (
-    <Link className={`research-question-card kind-question status-${question.status}`} href={`/research/${question.slug}`}>
+    <Link className={`research-question-card kind-question status-${question.state}`} href={`/research/${question.slug}`}>
       <div className="research-question-meta">
         <span>{String(index + 1).padStart(2, "0")}</span>
         <b>{project?.title || "Independent research"}</b>

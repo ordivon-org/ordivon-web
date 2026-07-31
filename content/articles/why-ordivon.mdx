@@ -1,4 +1,35 @@
-<h2 id="fluency-changes-the-social-meaning-of-output">Fluency changes the social meaning of output</h2>
+export const metadata = {
+  "slug": "why-ordivon",
+  "title": "AI Agents Need More Than a Good Conversation",
+  "deck": "Models can reason, plan, and write code. Real work also needs task meaning, execution evidence, recovery, and responsibility that survive the conversation.",
+  "description": "Why capable AI agents need durable task and execution truth when work crosses into repositories, processes, credentials, machines, and consequential decisions.",
+  "projectSlugs": [
+    "computing",
+    "host"
+  ],
+  "questionSlugs": [],
+  "type": "Design argument",
+  "project": "Related to Ordivon Runtime",
+  "publishedAt": "2026-07-23",
+  "readMinutes": 6,
+  "author": "zycxfyh",
+  "lead": "Modern AI can produce explanations, plans, code, analysis, and recommendations with remarkable fluency. As agents gain tools and longer-running workflows, the decisive question moves beyond output quality: what must remain true when work crosses into processes, repositories, credentials, machines, and consequential decisions?",
+  "status": "current",
+  "claimClass": "thesis",
+  "evidenceLevel": "E1",
+  "takeaways": [
+    "Capable models do not by themselves preserve task meaning, execution evidence, or responsibility.",
+    "Real work crosses repositories, processes, credentials, machines, and consequential decisions.",
+    "Ordivon exists to make those trajectories durable while keeping intelligence replaceable."
+  ],
+  "limitations": [
+    "The argument establishes a design problem, not that Ordivon is the only or final solution.",
+    "Several mature systems already carry parts of the responsibility and should remain strong baselines."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/Ordivon"
+};
+
+<h2 id="fluency-changes-the-social-meaning-of-output" data-toc="Fluency changes the social meaning of output">Fluency changes the social meaning of output</h2>
           <p>A strong language model can compress uncertainty, missing context, disputed assumptions, and incomplete evidence into one coherent answer. The answer becomes more useful when the surrounding system keeps several layers visible:</p>
           <ul>
             <li>what was observed;</li>
@@ -11,24 +42,24 @@
           </ul>
           <p>These distinctions give fluent output a dependable place inside a larger workflow. Persuasion remains one input to judgment, while execution state, evidence, authority, and review provide the structure for action.</p>
 
-          <h2 id="dependable-work-needs-more-than-a-good-conversation">Dependable work needs more than a good conversation</h2>
+          <h2 id="dependable-work-needs-more-than-a-good-conversation" data-toc="Dependable work needs more than a good conversation">Dependable work needs more than a good conversation</h2>
           <p>A conversation can explain a plan, but it does not automatically own the process tree that implements it. A client can disconnect. A command can time out. Output can exceed the context window. A machine can restart. A later agent may need to determine whether work finished, failed, was cancelled, or produced an artifact.</p>
           <p>Useful autonomy therefore depends on a small durable layer. The reasoning system should remain free to adapt, while execution receives stable identity, bounded observation, explicit cancellation, and recoverable results.</p>
           <blockquote>Reasoning may be reconstructed. Execution facts that cannot be reconstructed must be owned durably.</blockquote>
 
-          <h2 id="ordivon-began-as-a-method-problem-and-became-a-runtime-problem">Ordivon began as a method problem—and became a runtime problem</h2>
+          <h2 id="ordivon-began-as-a-method-problem-and-became-a-runtime-problem" data-toc="Ordivon began as a method problem—and became a runtime problem">Ordivon began as a method problem—and became a runtime problem</h2>
           <p>Ordivon first explored how AI-generated work could remain connected to evidence, authority, verification, and durable receipts. Building real agent workflows exposed a more immediate engineering boundary: reasoning can be flexible, but execution state cannot disappear when a client disconnects, a process times out, or a machine restarts.</p>
           <p>The current Ordivon project therefore concentrates on a thin local execution and recovery runtime. It gives agent work durable Job and Attempt identity, process ownership, bounded output, cancellation, artifacts, and restart recovery. The earlier governance ideas survive as engineering defaults: preserve the facts that matter, keep responsibility explicit, and avoid replacing live system truth with excessive prose or machinery.</p>
 
-          <h2 id="thin-infrastructure-can-support-stronger-agents">Thin infrastructure can support stronger agents</h2>
+          <h2 id="thin-infrastructure-can-support-stronger-agents" data-toc="Thin infrastructure can support stronger agents">Thin infrastructure can support stronger agents</h2>
           <p>Ordivon does not attempt to own every Agent loop. Mature Provider Harnesses retain their native Sessions and lifecycle; Ordivon Harness will own a deliberately thin first-party loop only when a Provider supplies model intelligence without a complete Agent system. The agent owns reasoning and operation. Git, source, tests, and live host state remain canonical engineering truth. The runtime owns the narrow execution facts required to observe, cancel, recover, or continue work.</p>
           <p>This division reduces both fragility and governance overhead. A capable agent can use the host’s delegated tools directly in trusted-local mode, while explicit isolation remains available when input or authority should be reduced. The system constrains what must be constrained without turning every engineering action into a predeclared workflow.</p>
 
-          <h2 id="a-public-domain-connects-the-work">A public domain connects the work</h2>
+          <h2 id="a-public-domain-connects-the-work" data-toc="A public domain connects the work">A public domain connects the work</h2>
           <p>A durable public domain can show how infrastructure, systems, and writing reinforce one another. Ordivon Runtime makes physical execution durable. Ordivon Host keeps Goals, Tasks, Context, and verification above replaceable model sessions and processes. Ordivon Computing tests which contracts survive across projects, while Ordivon Web makes the questions, implementation choices, and release records discoverable.</p>
           <p>The result is a portfolio rather than a monolith: each project owns a different layer, while evidence and lessons can move between them without forcing one repository’s abstractions onto another.</p>
 
-          <h2 id="principles-that-travel-across-systems">Principles that travel across systems</h2>
+          <h2 id="principles-that-travel-across-systems" data-toc="Principles that travel across systems">Principles that travel across systems</h2>
           <p>Models, tools, and interfaces will continue to change. A small set of operating principles can travel across those changes:</p>
           <ol>
             <li>Keep live system truth closer than explanatory prose.</li>

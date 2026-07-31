@@ -186,7 +186,7 @@ Avoid without evidence:
 Dated articles should not silently rewrite historical claims.
 
 - Fix typographical and link errors directly.
-- Use `modifiedDate` for substantive clarification.
+- Use `revisedAt` for substantive clarification.
 - Add an editorial note when a conclusion changed materially.
 - Publish a new article when a later result reverses or supersedes the central argument.
 - Keep historical release facts tied to their original version.

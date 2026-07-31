@@ -1,9 +1,42 @@
+export const metadata = {
+  "slug": "link-edge-boundary",
+  "title": "Why Link and Edge Became One Ordivon World Boundary",
+  "deck": "Separating connectivity from external execution exposed useful classical boundaries. Keeping that split as two top-level projects created the wrong agent boundary for one recoverable external action.",
+  "description": "Why Ordivon first separated connectivity and external execution, then unified both prototypes around one complete Task-to-World Interaction.",
+  "projectSlugs": [
+    "world"
+  ],
+  "questionSlugs": [
+    "world-boundary-value"
+  ],
+  "type": "Architecture report",
+  "project": "Ordivon World",
+  "publishedAt": "2026-07-28",
+  "revisedAt": "2026-07-30",
+  "readMinutes": 9,
+  "author": "zycxfyh",
+  "lead": "The original split solved a real problem. Network observation, routing, VPNs, transports, browsers, cloud providers, Sandboxes, and remote execution are mature technical domains with different mechanisms. Treating them as one undifferentiated “edge” would have encouraged Ordivon to rebuild infrastructure it should reuse.",
+  "status": "current",
+  "claimClass": "architecture-decision",
+  "evidenceLevel": "E2",
+  "takeaways": [
+    "Connectivity and external execution are useful classical distinctions but poor top-level agent project boundaries.",
+    "One recoverable external action needs path, identity, authority, effect, observation, and reconciliation together.",
+    "Link and Edge were retired into the narrower World research boundary."
+  ],
+  "limitations": [
+    "World is still an experimental boundary and has not yet won against direct Host integration in W1.",
+    "The unification does not replace mature transport or provider-native mechanisms."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-world"
+};
+
 import { DecisionComparison } from "@/components/mdx/decision-comparison";
 
-<h2 id="the-split-was-analytically-correct">The split was analytically correct</h2>
+<h2 id="the-split-was-analytically-correct" data-toc="The split was analytically correct">The split was analytically correct</h2>
           <p>Link isolated facts about logical relationships, endpoints, paths, transports, identities, and network-conditioned observations. Edge isolated external capabilities, provider operations, bodies, Receipts, Artifacts, remote uncertainty, and residual state. That distinction remains useful inside the architecture.</p>
 
-          <h2 id="the-repository-boundary-was-wrong">The repository boundary was wrong</h2>
+          <h2 id="the-repository-boundary-was-wrong" data-toc="The repository boundary was wrong">The repository boundary was wrong</h2>
           <p>An open Task does not first solve an abstract network problem and then begin an unrelated execution problem. The intended Effect determines which endpoint, identity, locality, transport, session, and provider are acceptable. The chosen path and provider can change what the Task observes or what consequence occurs.</p>
           <p>A timeout demonstrates the coupling. The request may not have been delivered, the provider may have accepted but not completed it, the Effect may have succeeded while the response was lost, or the Artifact may have reached storage while the Receipt failed. Recovery must understand delivery and execution together before retry.</p>
 
@@ -15,20 +48,20 @@ import { DecisionComparison } from "@/components/mdx/decision-comparison";
   after={{ label: "World", detail: "One continuity boundary for conditioned external interaction" }}
 />
 
-<h2 id="external-work-is-a-graph">External work is a graph</h2>
+<h2 id="external-work-is-a-graph" data-toc="External work is a graph">External work is a graph</h2>
           <p>Local-to-remote calls are only one case. Remote work may call back to a changed Host generation. A Sandbox may send a large Artifact directly to object storage or another provider. One Task may fan out to several browsers, Sandboxes, Agents, or verifiers and later join their independently conditioned results.</p>
           <p>Ordivon should preserve why those interactions occur, which authority applies, which identities and revisions were used, what evidence was produced, and which outcome remains unknown. It should not route every byte through a central proxy merely to claim control.</p>
 
-          <h2 id="world-interaction-is-the-new-research-object">World Interaction is the new research object</h2>
+          <h2 id="world-interaction-is-the-new-research-object" data-toc="World Interaction is the new research object">World Interaction is the new research object</h2>
           <p>The unified project correlates Task, Attempt, Effect, Dispatch, target, participant, endpoint, path Observation, transport session, provider execution, Receipt, Artifact, Claim, and Verification. It does not collapse them into one ID. Connectivity and action remain independently versioned internal planes; continuity is where they meet.</p>
 
-          <h2 id="what-was-migrated">What was migrated</h2>
+          <h2 id="what-was-migrated" data-toc="What was migrated">What was migrated</h2>
           <p>The production Cloudflare Fetch, Browser, private R2, Receipt, fencing, reconciliation, release, and rollback implementation now lives under <code>providers/cloudflare/</code>. Route, DNS, endpoint, HTTP/TLS, QUIC, transfer, lifetime, Network World, reference transport, and private egress work now lives under <code>modules/network-observation/</code>. Both Git histories were imported into Ordivon World.</p>
 
-          <h2 id="what-was-not-created">What was not created</h2>
+          <h2 id="what-was-not-created" data-toc="What was not created">What was not created</h2>
           <p>There is no universal World schema, global identity, automatic resolver, route or provider selector, central data plane, general Sandbox, new VPN, CNI, Service Mesh, workflow engine, or permanent Agent body. The first experiment must show that a thin shared boundary prevents a real failure better than direct Host integration.</p>
 
-          <h2 id="the-correction-is-part-of-the-evidence">The correction is part of the evidence</h2>
+          <h2 id="the-correction-is-part-of-the-evidence" data-toc="The correction is part of the evidence">The correction is part of the evidence</h2>
           <p>Architecture should follow the object that must remain continuous, not the repositories that happened to exist first. Edge and Link were useful prototypes. Deleting their project boundary preserves the useful code while removing the assumptions that the code had begun to impose on the research.</p>
 
 <footer className="article-footer">

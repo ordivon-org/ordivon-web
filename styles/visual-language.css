@@ -29,6 +29,13 @@
 .status-paused { --status-color: var(--status-paused); }
 .status-retired { --status-color: var(--status-retired); }
 .status-historical { --status-color: var(--status-historical); }
+.status-tested { --status-color: var(--success); }
+.status-testing { --status-color: var(--signal); }
+.status-open { --status-color: var(--accent); }
+.status-answered { --status-color: var(--success); }
+.status-reframed { --status-color: var(--muted); }
+.kind-boundary { --node-color: var(--node-system); }
+.kind-research-plane { --node-color: var(--node-project); }
 
 .relation-depends_on { --relation-color: var(--relation-dependency); --relation-dash: 8 8; }
 .relation-defines { --relation-color: var(--relation-implementation); --relation-dash: 2 7; }

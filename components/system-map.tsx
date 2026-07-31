@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { systems } from "@/content/model";
+import { architectureRoles } from "@/content/model";
 
 const nodeDetails: Record<string, string> = {
   computing: "contracts + conformance",
@@ -8,13 +8,13 @@ const nodeDetails: Record<string, string> = {
   world: "conditioned external action",
 };
 
-const nodes = [...systems].sort((a, b) => a.index.localeCompare(b.index));
+const nodes = [...architectureRoles].sort((a, b) => a.index.localeCompare(b.index));
 
 export function SystemMap({ compact = false }: { compact?: boolean }) {
   return (
     <div className={`system-overview ${compact ? "compact" : ""}`} aria-label="Ordivon state ownership overview">
       <div className="system-overview-head">
-        <span>Four independent state owners</span>
+        <span>Three boundaries and one research plane</span>
         <Link href="/system">Explore architecture <span aria-hidden="true">↗</span></Link>
       </div>
       <div className="system-overview-stage">
@@ -25,8 +25,8 @@ export function SystemMap({ compact = false }: { compact?: boolean }) {
         </svg>
         <div className="system-overview-nodes">
           {nodes.map((node) => (
-            <Link className={`system-overview-node status-${node.status}`} href={node.href || `/projects/${node.slug}`} key={node.id}>
-              <div><span>{node.index}</span><i>{node.status}</i></div>
+            <Link className={`system-overview-node status-${node.kind === "boundary" ? node.maturity : node.status}`} href={node.href || `/projects/${node.slug}`} key={node.id}>
+              <div><span>{node.index}</span><i>{node.kind === "boundary" ? node.maturity : node.status}</i></div>
               <strong>{node.title}</strong>
               <small>{nodeDetails[node.slug] || node.question}</small>
             </Link>

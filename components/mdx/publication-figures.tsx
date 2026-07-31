@@ -24,7 +24,7 @@ export function CoreDispositionFigure() {
 
 export function OutcomeDivergenceFigure() {
   const metrics = ["Action success", "Reward", "Foothold spread", "Interpretation", "Objective completion"];
-  return <div className="divergence-figure" role="img" aria-label="Five tactical and strategic metrics diverge rather than forming one score"><div className="divergence-axis">{metrics.map((metric,index)=><div key={metric}><span style={{height:`${30 + (index%3)*22}%`}} /><strong>{metric}</strong></div>)}</div><p>No single metric preserved the long-horizon objective across all bounded trials.</p></div>;
+  return <div className="divergence-figure" role="img" aria-label="One trajectory is evaluated through five independent measures that may rank the outcome differently"><div className="divergence-source">One trajectory</div><div className="divergence-branches">{metrics.map((metric)=><div key={metric}><span aria-hidden="true">↗</span><strong>{metric}</strong></div>)}</div><p>The branches are categories, not quantities: no single measure preserved the long-horizon objective across all bounded trials.</p></div>;
 }
 
 export function RecoverableSystemsFigure() {

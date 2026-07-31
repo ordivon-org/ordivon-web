@@ -1,4 +1,36 @@
-<h2 id="a-playable-release-not-a-platform-promise">A playable release, not a platform promise</h2>
+export const metadata = {
+  "slug": "station-zero-alpha-1",
+  "title": "Station Zero v0.1.0-alpha.1 — The First Source-Playable Release",
+  "deck": "The first source-playable developer alpha binds one mission, exact replay, evidence-linked diagnosis, immutable deployment, same-case comparison, reload recovery, and clean archive verification to one release identity.",
+  "description": "What shipped in Station Zero v0.1.0-alpha.1, how the release journey is verified, what one coordination-only comparison proves, and which agent-native game claims remain open.",
+  "projectSlugs": [
+    "game"
+  ],
+  "questionSlugs": [
+    "game-agent-native-mechanics"
+  ],
+  "type": "Release note",
+  "project": "Ordivon Game",
+  "publishedAt": "2026-07-31",
+  "readMinutes": 5,
+  "author": "zycxfyh",
+  "lead": "Station Zero is now downloadable as an exact source release. The player can complete a bounded mission, inspect an earlier World revision, follow evidence-linked diagnosis, change one immutable input, run again, compare exact outcomes, and recover the same Run after reload.",
+  "status": "historical",
+  "claimClass": "observed-fact",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "Station Zero became source-playable as an exact alpha release.",
+    "Replay, diagnosis, comparison, and reload recovery are part of the release journey rather than screenshots.",
+    "The release proves a bounded playable loop, not a general agent-game platform."
+  ],
+  "limitations": [
+    "The alpha contains one bounded mission and developer-oriented operation.",
+    "External player usability, broader mechanics, and sustained agent behavior remain unproven."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-game/releases/tag/v0.1.0-alpha.1"
+};
+
+<h2 id="a-playable-release-not-a-platform-promise" data-toc="A playable release">A playable release, not a platform promise</h2>
 
 <p>Station Zero <code>v0.1.0-alpha.1</code> is the first source-playable Ordivon Game release. It is a bounded developer Alpha: one deterministic mission, one verified player journey, exact replay, evidence-linked diagnosis, immutable deployment, same-Case comparison, reload recovery, and an archive that can be unpacked and reverified from clean state.</p>
 
@@ -11,7 +43,7 @@
   <div><strong>1</strong><span>coordination input changed</span></div>
 </div>
 
-<h2 id="the-player-loop">The player loop</h2>
+<h2 id="the-player-loop" data-toc="The player loop">The player loop</h2>
 
 <p>The release journey is intentionally narrow:</p>
 
@@ -29,7 +61,7 @@
 
 <p>The product surface stays small: Mission, Replay, Diagnosis, Compare, and Deploy Again. Raw Commands, logs, internal identifiers, engineering receipts, and earlier milestone controls remain behind the explicit debug surface.</p>
 
-<h2 id="one-input-changed-the-terminal-outcome">One input changed the terminal outcome</h2>
+<h2 id="one-input-changed-the-terminal-outcome" data-toc="One input changed the outcome">One input changed the terminal outcome</h2>
 
 <p>Both retained Runs use the same <code>power-constrained</code> Scenario Case. The only evaluated-input difference is <code>coordinationProfileId</code>.</p>
 
@@ -41,7 +73,7 @@
 
 <p>The comparison reports a score delta of 1,090 and a minimum-battery delta of two. It does not infer a universal coordination law. It proves that a typed, immutable, measured product input can change a verified outcome while every other evaluated input remains bound.</p>
 
-<h2 id="replay-and-diagnosis-are-release-features">Replay and diagnosis are release features</h2>
+<h2 id="replay-and-diagnosis-are-release-features" data-toc="Replay and diagnosis">Replay and diagnosis are release features</h2>
 
 <p>The victory Run contains 19 point-in-time frames, 380 evidence nodes, 736 evidence edges, and 12 bounded key turns. The failure Run contains 22 frames, 443 nodes, 859 edges, and the same 12-key-turn cap.</p>
 
@@ -53,7 +85,7 @@
 
 <p>A verified contributor is not promoted to the unique cause. Counterfactual sensitivity is a bounded one-step legal-alternative test, not a statistical causal estimate. Evaluation timeout is not relabelled as a mission failure. Raw Context and Artifact bodies remain behind detail APIs rather than inflating every frame.</p>
 
-<h2 id="the-release-is-bound-to-exact-bytes">The release is bound to exact bytes</h2>
+<h2 id="the-release-is-bound-to-exact-bytes" data-toc="Exact release identity">The release is bound to exact bytes</h2>
 
 <div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Station Zero release identity">
   <div className="article-data-row article-data-head" role="row"><span role="columnheader">Object</span><span role="columnheader">Identity</span><span role="columnheader">Purpose</span><span role="columnheader">Mutable</span><span role="columnheader">Public</span></div>
@@ -65,7 +97,7 @@
 
 <p>The clean verification contract installs from the frozen lockfile, runs the complete check and Chromium journey, rebuilds receipts and measurements, and revalidates evaluated inputs. The tag workflow builds and uploads the same bytes it verifies. <code>SHA256SUMS</code> covers every uploaded evidence file except itself.</p>
 
-<h2 id="what-the-alpha-proves">What the Alpha proves</h2>
+<h2 id="what-the-alpha-proves" data-toc="What the Alpha proves">What the Alpha proves</h2>
 
 <ul>
   <li>A deterministic World and persistent multi-Agent Host can support a small player product rather than only an engineering harness.</li>
@@ -75,13 +107,13 @@
   <li>A source release can preserve identity beyond a Git tag through tree, evaluated-input, archive, and release digests.</li>
 </ul>
 
-<h2 id="what-the-alpha-does-not-prove">What the Alpha does not prove</h2>
+<h2 id="what-the-alpha-does-not-prove" data-toc="What it does not prove">What the Alpha does not prove</h2>
 
 <p>The Alpha does not establish that multi-Agent architecture is superior to an equal-budget single Agent. It does not claim that Codex or Hermes will complete every Scenario. It does not provide hosting, accounts, multiplayer, 3D, modding, a generic game platform, or a stable public compatibility promise.</p>
 
 <p>The release-critical path uses deterministic Fixture cognition. That is deliberate: a downloadable release should not fail because a remote model is unavailable, expensive, changed, or rate-limited. Live Provider trajectories remain research evidence, not a prerequisite for opening the game.</p>
 
-<h2 id="the-next-game-question">The next game question</h2>
+<h2 id="the-next-game-question" data-toc="The next game question">The next game question</h2>
 
 <p>The strongest next experiment is not more presentation. It is the equal-budget single-Agent versus multi-Agent ablation already required by the Game research dossier. The same World, information budget, Tool access, action budget, and player surface must compare whether persistent specialists, typed communication, and explicit authority create capability that a strong classical or single-Agent baseline cannot reproduce economically.</p>
 
@@ -89,7 +121,7 @@
 
 <section className="article-sources" aria-labelledby="sources-title">
   <p className="section-index">Evidence</p>
-  <h2 id="sources-title">Release record</h2>
+  <h2 id="sources-title" data-toc="Release record">Release record</h2>
   <ol className="source-list">
 
 <li><span>Release receipt.</span> <a href="https://github.com/zycxfyh/ordivon-game/releases/download/v0.1.0-alpha.1/M5-RECEIPT.md">Station Zero M5 receipt</a>.</li>
