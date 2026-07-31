@@ -2,6 +2,14 @@ import type { GraphEvent } from "@/lib/graph/types";
 
 export const graphEvents = [
   {
+    id: "event:security-round1-published",
+    date: "2026-07-31",
+    type: "publication",
+    title: "Strategic failure became visible across 84 adversarial Trials",
+    summary: "A canonical report now connects sixty local dynamic-opponent Trials, twenty pinned CAGE Challenge 4 Trials, four bounded model diagnostics, three metric contradictions, explicit negative results, and the next opponent-state transfer falsifier.",
+    nodeIds: ["project:security", "question:security-adversarial-trajectory", "question:security-opponent-state-transfer", "experiment:security-round1", "finding:tactical-not-strategic", "finding:interpretation-not-action", "finding:organization-isolation-not-intelligence", "decision:no-custom-cyber-range", "decision:no-campaign-promotion", "article:winning-move-loses-contest"],
+  },
+  {
     id: "event:smaller-core-published",
     date: "2026-07-31",
     type: "publication",

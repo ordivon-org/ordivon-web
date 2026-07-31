@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import WinningMoveLosesContest from "@/content/articles/winning-move-loses-contest.mdx";
 import SmallerCoreStrongBaselines from "@/content/articles/smaller-core-strong-baselines.mdx";
 import FutureWillNotWait from "@/content/articles/the-future-will-not-wait.mdx";
 import LinkEdgeBoundary from "@/content/articles/link-edge-boundary.mdx";
@@ -12,6 +13,7 @@ export type { ArticleMetadata, ArticleSlug, TocEntry };
 export type Article = ArticleMetadata & { Content: ComponentType };
 
 const articleComponents: Record<ArticleSlug, ComponentType> = {
+  "winning-move-loses-contest": WinningMoveLosesContest,
   "smaller-core-strong-baselines": SmallerCoreStrongBaselines,
   "the-future-will-not-wait": FutureWillNotWait,
   "link-edge-boundary": LinkEdgeBoundary,

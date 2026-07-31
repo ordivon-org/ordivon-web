@@ -8,7 +8,7 @@ const coreRoutes = [
   "/research/smallest-agent-native-core", "/research/harness-composition-and-completion",
   "/research/calibrated-non-action", "/research/opponent-state-transfer",
   "/projects", "/projects/computing", "/projects/host", "/projects/runtime", "/projects/world",
-  "/writing", "/writing/smaller-core-strong-baselines", "/writing/the-future-will-not-wait", "/writing/runtime-after-core", "/now", "/about", "/colophon",
+  "/writing", "/writing/winning-move-loses-contest", "/writing/smaller-core-strong-baselines", "/writing/the-future-will-not-wait", "/writing/runtime-after-core", "/now", "/about", "/colophon",
 ];
 
 for (const route of coreRoutes) {
@@ -50,7 +50,7 @@ test("publishing endpoints render", async ({ request }) => {
 test("internal navigation targets resolve", async ({ page, request }) => {
   const sourceRoutes = [
     "/", "/system", "/research", "/research/web-research-interface", "/projects", "/writing", "/about", "/now",
-    "/projects/runtime", "/writing/smaller-core-strong-baselines", "/writing/the-future-will-not-wait",
+    "/projects/runtime", "/writing/winning-move-loses-contest", "/writing/smaller-core-strong-baselines", "/writing/the-future-will-not-wait",
   ];
   const targets = new Set<string>();
   for (const route of sourceRoutes) {
@@ -68,11 +68,11 @@ test("internal navigation targets resolve", async ({ page, request }) => {
 
 test("research graph drives current, project, and dossier views", async ({ page }) => {
   await page.goto("/now", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Strategic failure became visible across 84 adversarial Trials" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Strong-baseline evidence became a canonical public argument" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Harness H1–H3 established the current Host boundary" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Web V2 closed around one research graph and continuity thesis" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Strong baselines reduced the proposed Agent-native core" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Security completed 84 bounded adversarial Trials" })).toBeVisible();
   await expect(page.getByRole("link", { name: /Which Harness objects survive live provider replacement/ })).toHaveAttribute("href", "/research/harness-composition-and-completion/");
 
   await page.goto("/projects/runtime", { waitUntil: "domcontentloaded" });
@@ -138,16 +138,37 @@ test("writing network reveals graph-derived argument context", async ({ page, is
   await page.goto("/writing", { waitUntil: "domcontentloaded" });
   const network = page.locator(".writing-network");
   await expect(network).toHaveAttribute("data-ready", "true");
-  await expect(network.getByText("7", { exact: true })).toBeVisible();
-  await expect(network.getByText("24", { exact: true })).toBeVisible();
-  await expect(network.getByText("33", { exact: true })).toBeVisible();
+  await expect(network.getByText("8", { exact: true })).toBeVisible();
+  await expect(network.getByText("32", { exact: true })).toBeVisible();
+  await expect(network.getByText("41", { exact: true })).toBeVisible();
 
   const surface = isMobile ? page.locator(".writing-network-mobile") : page.locator(".writing-network-canvas");
-  const coreArgument = surface.getByRole("button", { name: /Research report.*The Smaller Core That Survived Strong Baselines/ });
-  await coreArgument.click();
-  await expect(page.getByLabel("Selected writing argument").getByRole("heading", { name: "The Smaller Core That Survived Strong Baselines" })).toBeVisible();
-  await expect(page.getByLabel("Selected writing argument").getByRole("link", { name: /Research Question.*Which Agent-native responsibilities remain after strong classical baselines/ })).toHaveAttribute("href", "/research/smallest-agent-native-core/");
-  await expect(page.getByLabel("Selected writing argument").getByRole("link", { name: /Ordivon Runtime after the core/ })).toBeVisible();
+  const securityArgument = surface.getByRole("button", { name: /Research report.*Winning the Move Can Lose the Contest/ });
+  await securityArgument.click();
+  const inspector = page.getByLabel("Selected writing argument");
+  await expect(inspector.getByRole("heading", { name: "Winning the Move Can Lose the Contest" })).toBeVisible();
+  await expect(inspector.getByRole("link", { name: /Research Question.*Can strategic adversarial trajectories be evaluated without collapsing them into one reward or success flag/ })).toHaveAttribute("href", "/research/security-adversarial-trajectory/");
+  await expect(inspector.getByRole("link", { name: /Research Question.*Does compiled opponent state retain value across seeds/ })).toHaveAttribute("href", "/research/opponent-state-transfer/");
+  await expect(inspector.getByRole("link", { name: /Project.*Ordivon Security/ })).toBeVisible();
+});
+
+test("flagship adversarial report preserves metric contradictions and negative results", async ({ page }) => {
+  await page.goto("/writing/winning-move-loses-contest", { waitUntil: "domcontentloaded" });
+  await expect(page.getByRole("heading", { name: "Winning the Move Can Lose the Contest" })).toBeVisible();
+  const summary = page.locator(".security-round-summary");
+  for (const value of ["84", "60", "20", "4"]) await expect(summary.getByText(value, { exact: true })).toBeVisible();
+  await expect(page.locator(".outcome-divergence-rows article")).toHaveCount(3);
+  await expect(page.locator(".article-data-table")).toHaveCount(3);
+  await expect(page.getByText("Tactical success ≠ strategic success", { exact: true })).toBeVisible();
+  await expect(page.getByText("Foothold spread ≠ mission outcome", { exact: true })).toBeVisible();
+  await expect(page.getByText("Interpretation ≠ action value", { exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What the data does not establish" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "The next test is transfer under disruption" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Round 1 Full Experimental Report" })).toHaveAttribute("href", /8422165e83cc660e8190b07e78c472c7bff0fe59.*round1-full-experimental-report\.md/);
+  await expect(page.locator(".article-anchor-grid > *")).toHaveCount(8);
+  await expect(page.getByRole("link", { name: /question Can strategic adversarial trajectories be evaluated without collapsing them into one reward or success flag/ })).toHaveAttribute("href", "/research/security-adversarial-trajectory/");
+  await expect(page.getByRole("heading", { name: "Do not build a custom Ordivon cyber range", exact: true })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Do not promote Campaign or strategic state after Security Round 1", exact: true })).toBeVisible();
 });
 
 test("flagship strong-baseline report preserves evidence and claim boundaries", async ({ page }) => {
@@ -184,7 +205,7 @@ test("homepage presents one continuous dark visual thesis", async ({ page, isMob
   await expect(page.locator(".home-owner-row")).toHaveCount(4);
   await expect(page.locator(".home-frontier").getByRole("link", { name: /See the evidence and deletion condition/ })).toHaveAttribute("href", /\/research\/.+\//);
   await expect(page.locator(".home-writing-row")).toHaveCount(3);
-  await expect(page.getByText("Latest change · Strong-baseline evidence became a canonical public argument")).toBeVisible();
+  await expect(page.getByText("Latest change · Strategic failure became visible across 84 adversarial Trials")).toBeVisible();
   await expect(page.locator(".current-feature")).toHaveCount(0);
   await expect(page.locator(".closing-statement")).toHaveCount(0);
 
@@ -210,7 +231,7 @@ test("homepage presents one continuous dark visual thesis", async ({ page, isMob
 });
 
 test("article navigation matches viewport", async ({ page, isMobile }) => {
-  await page.goto("/writing/smaller-core-strong-baselines", { waitUntil: "domcontentloaded" });
+  await page.goto("/writing/winning-move-loses-contest", { waitUntil: "domcontentloaded" });
   if (isMobile) {
     await expect(page.locator(".article-toc-mobile")).toBeVisible();
     await expect(page.locator(".article-rail")).toBeHidden();
@@ -221,7 +242,7 @@ test("article navigation matches viewport", async ({ page, isMobile }) => {
 });
 
 test("core pages have no serious accessibility violations", async ({ page }) => {
-  for (const route of ["/", "/system", "/research", "/research/web-research-interface", "/projects", "/writing", "/writing/smaller-core-strong-baselines", "/projects/runtime"]) {
+  for (const route of ["/", "/system", "/research", "/research/web-research-interface", "/projects", "/writing", "/writing/winning-move-loses-contest", "/writing/smaller-core-strong-baselines", "/projects/runtime"]) {
     await page.goto(route, { waitUntil: "domcontentloaded" });
     const results = await new AxeBuilder({ page }).analyze();
     const serious = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact || ""));

@@ -18,6 +18,34 @@ export type ArticleMetadata = {
 
 export const articleMetadata = [
   {
+    "slug": "winning-move-loses-contest",
+    "title": "Winning the Move Can Lose the Contest",
+    "kicker": "Research report / Adversarial agency",
+    "deck": "Across 84 bounded Trials, action success, reward, foothold spread, interpretation, and objective completion repeatedly disagreed. The result supports a multidimensional experimental method—not a strategic Agent architecture.",
+    "description": "How Ordivon Security Round 1 used local dynamic opponents, CAGE Challenge 4, and bounded Hermes/Codex diagnostics to separate tactical success from strategic outcome without promoting a Campaign engine, organization ontology, strategic state, or custom cyber range.",
+    "meta": "Research report · Ordivon Security · Published 31 July 2026 · 12 min read · By zycxfyh",
+    "type": "Research report",
+    "project": "Ordivon Security",
+    "date": "2026-07-31",
+    "modifiedDate": "2026-07-31",
+    "readMinutes": 12,
+    "author": "zycxfyh",
+    "lead": "Round 1 did not produce an Agent that defeated an adaptive opponent. It produced something more useful for architecture: a system that could preserve the difference between what the World knew, what the Actor saw, what the Actor claimed, what an action changed, and whether the long-horizon objective improved.",
+    "toc": [
+      { "id": "the-action-succeeded-the-strategy-failed", "label": "The action succeeded; the strategy failed" },
+      { "id": "eighty-four-trials-preserved-metric-disagreement", "label": "Eighty-four Trials, independent outcomes" },
+      { "id": "a-decoy-can-win-the-move-and-lose-the-contest", "label": "A decoy can win the move" },
+      { "id": "better-belief-can-still-spend-the-option-to-act", "label": "Better belief can spend the option to act" },
+      { "id": "organization-isolated-bad-advice-but-created-no-new-intelligence", "label": "Isolation without new intelligence" },
+      { "id": "cage-made-reward-and-foothold-rankings-disagree", "label": "Reward and footholds disagreed" },
+      { "id": "richer-model-interpretation-still-failed-the-objective", "label": "Richer interpretation still failed" },
+      { "id": "the-method-survived-the-large-abstractions-did-not", "label": "The method survived" },
+      { "id": "what-the-data-does-not-establish", "label": "What the data does not establish" },
+      { "id": "the-next-test-is-transfer-under-disruption", "label": "Transfer under disruption" },
+      { "id": "sources-title", "label": "Research record" }
+    ]
+  },
+  {
     "slug": "smaller-core-strong-baselines",
     "title": "The Smaller Core That Survived Strong Baselines",
     "kicker": "Research report / Agent systems",
