@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import SmallerCoreStrongBaselines from "@/content/articles/smaller-core-strong-baselines.mdx";
 import FutureWillNotWait from "@/content/articles/the-future-will-not-wait.mdx";
 import LinkEdgeBoundary from "@/content/articles/link-edge-boundary.mdx";
 import RuntimeAfterCore from "@/content/articles/runtime-after-core.mdx";
@@ -11,6 +12,7 @@ export type { ArticleMetadata, ArticleSlug, TocEntry };
 export type Article = ArticleMetadata & { Content: ComponentType };
 
 const articleComponents: Record<ArticleSlug, ComponentType> = {
+  "smaller-core-strong-baselines": SmallerCoreStrongBaselines,
   "the-future-will-not-wait": FutureWillNotWait,
   "link-edge-boundary": LinkEdgeBoundary,
   "runtime-after-core": RuntimeAfterCore,

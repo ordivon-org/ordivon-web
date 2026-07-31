@@ -125,6 +125,21 @@ const researchRelations: GraphRelation[] = [
 ];
 
 const articleRelations: GraphRelation[] = [
+  { id: "relation:article-smaller-core-computing", type: "documents", source: "article:smaller-core-strong-baselines", target: "project:computing" },
+  { id: "relation:article-smaller-core-question", type: "documents", source: "article:smaller-core-strong-baselines", target: "question:computing-smallest-core" },
+  { id: "relation:article-smaller-core-effect-question", type: "documents", source: "article:smaller-core-strong-baselines", target: "question:runtime-structured-effect" },
+  { id: "relation:article-smaller-core-attention-question", type: "documents", source: "article:smaller-core-strong-baselines", target: "question:computing-calibrated-non-action" },
+  { id: "relation:article-smaller-core-experiment", type: "documents", source: "article:smaller-core-strong-baselines", target: "experiment:core-work-system-round1" },
+  { id: "relation:article-smaller-core-workflow-finding", type: "documents", source: "article:smaller-core-strong-baselines", target: "finding:mature-workflows-carry-state" },
+  { id: "relation:article-smaller-core-transcript-finding", type: "documents", source: "article:smaller-core-strong-baselines", target: "finding:transcript-not-task-database" },
+  { id: "relation:article-smaller-core-context-finding", type: "documents", source: "article:smaller-core-strong-baselines", target: "finding:more-context-not-safer" },
+  { id: "relation:article-smaller-core-unknown-finding", type: "documents", source: "article:smaller-core-strong-baselines", target: "finding:unknown-operational-state" },
+  { id: "relation:article-smaller-core-portability-finding", type: "documents", source: "article:smaller-core-strong-baselines", target: "finding:provider-portability-not-equivalence" },
+  { id: "relation:article-smaller-core-attention-finding", type: "documents", source: "article:smaller-core-strong-baselines", target: "finding:attention-is-admission-resource" },
+  { id: "relation:article-smaller-core-task-runtime-decision", type: "documents", source: "article:smaller-core-strong-baselines", target: "decision:no-task-runtime" },
+  { id: "relation:article-smaller-core-context-decision", type: "documents", source: "article:smaller-core-strong-baselines", target: "decision:no-context-kernel" },
+  { id: "relation:article-smaller-core-effect-decision", type: "documents", source: "article:smaller-core-strong-baselines", target: "decision:shrink-effect" },
+  { id: "relation:article-smaller-core-attention-decision", type: "documents", source: "article:smaller-core-strong-baselines", target: "decision:decision-request-host-local" },
   { id: "relation:article-future-computing", type: "documents", source: "article:the-future-will-not-wait", target: "project:computing" },
   { id: "relation:article-world-world", type: "documents", source: "article:link-edge-boundary", target: "project:world" },
   { id: "relation:article-world-decision", type: "documents", source: "article:link-edge-boundary", target: "decision:unify-world" },
