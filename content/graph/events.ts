@@ -2,6 +2,14 @@ import type { GraphEvent } from "@/lib/graph/types";
 
 export const graphEvents = [
   {
+    id: "event:smaller-core-published",
+    date: "2026-07-31",
+    type: "publication",
+    title: "Strong-baseline evidence became a canonical public argument",
+    summary: "The first post-V2 flagship report now connects the frozen Round 1 workload, sixteen deterministic variants, six live Provider replacements, five architectural dispositions, explicit validity limits, and the World W1 falsifier through one graph-derived article.",
+    nodeIds: ["project:computing", "question:computing-smallest-core", "experiment:core-work-system-round1", "finding:mature-workflows-carry-state", "finding:more-context-not-safer", "finding:unknown-operational-state", "finding:provider-portability-not-equivalence", "decision:no-task-runtime", "decision:no-context-kernel", "decision:shrink-effect", "article:smaller-core-strong-baselines"],
+  },
+  {
     id: "event:harness-h1-h3-complete",
     date: "2026-07-31",
     type: "experiment",

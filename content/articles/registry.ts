@@ -18,6 +18,34 @@ export type ArticleMetadata = {
 
 export const articleMetadata = [
   {
+    "slug": "smaller-core-strong-baselines",
+    "title": "The Smaller Core That Survived Strong Baselines",
+    "kicker": "Research report / Agent systems",
+    "deck": "LangGraph, Temporal, current-revision retrieval, idempotency, durable Activities, and live Provider replacement did not validate a larger Ordivon stack. They identified the smaller set of responsibilities that remained independently necessary.",
+    "description": "How Core Work System Round 1 used strong classical baselines and live Codex/Hermes replacement to remove a Task Runtime, reject a generalized Context Kernel, shrink Effect, localize DecisionRequest, and retain Provider-neutral Task state.",
+    "meta": "Research report · Ordivon Computing · Published 31 July 2026 · 13 min read · By zycxfyh",
+    "type": "Research report",
+    "project": "Ordivon Computing",
+    "date": "2026-07-31",
+    "modifiedDate": "2026-07-31",
+    "readMinutes": 13,
+    "author": "zycxfyh",
+    "lead": "Round 1 was built to make Ordivon's own abstractions lose. Mature systems carried durable work, filtered current sources, reconciled lost responses, and preserved safe approval boundaries. What remained was not a universal Agent stack, but a narrower division of ownership that could still explain failures the baselines could not erase.",
+    "toc": [
+      { "id": "the-experiment-was-designed-to-delete-our-own-architecture", "label": "Designed to delete our own architecture" },
+      { "id": "one-frozen-world-separated-four-causal-questions", "label": "One frozen world, four causal questions" },
+      { "id": "durable-work-survived-but-a-task-runtime-did-not", "label": "Durable work without a Task Runtime" },
+      { "id": "more-context-lost-to-current-revision-retrieval", "label": "More Context lost to current retrieval" },
+      { "id": "the-full-effect-graph-lost-to-smaller-recovery-mechanisms", "label": "The full Effect graph lost" },
+      { "id": "attention-improved-only-as-a-host-local-decision-boundary", "label": "Attention remained Host-local" },
+      { "id": "provider-replacement-survived-model-equivalence-did-not", "label": "Portability, not model equivalence" },
+      { "id": "the-surviving-architecture-is-smaller-and-sharper", "label": "The surviving architecture" },
+      { "id": "what-the-numbers-do-not-say", "label": "What the numbers do not say" },
+      { "id": "round-two-must-attack-the-remaining-boundary", "label": "Round 2 must attack the remainder" },
+      { "id": "sources-title", "label": "Research record" }
+    ]
+  },
+  {
     "slug": "the-future-will-not-wait",
     "title": "The Future Will Not Wait",
     "kicker": "Essay / Computing",

@@ -1,0 +1,239 @@
+import { CoreDispositionMap } from "@/components/mdx/core-disposition-map";
+
+<h2 id="the-experiment-was-designed-to-delete-our-own-architecture">The experiment was designed to delete our own architecture</h2>
+
+<p>Agent systems make architectural inflation unusually easy. A model needs Context, so a Context subsystem appears. Work must survive interruption, so a Task Runtime appears. External actions can become ambiguous, so an Effect graph appears. People should not approve every minor action, so an attention plane appears. Each proposal sounds reasonable because each names a real problem.</p>
+
+<p>The harder question is whether the proposed Ordivon object owns a failure that mature systems cannot already prevent. Checkpoint stores, workflow engines, retrieval filters, idempotency keys, audit rows, durable Activities, and ordinary approval policies already exist. Reimplementing them under Agent-native names would produce a larger stack without producing a stronger boundary.</p>
+
+<div className="article-thesis"><p>A core abstraction should survive an experiment designed to remove it.</p></div>
+
+<p>Core Work System Round 1 therefore did not ask whether an Ordivon-shaped implementation could work. It asked whether the same workload could be recovered by stronger and simpler alternatives. LangGraph and Temporal were allowed to persist the same application semantics. Current-revision retrieval was allowed to use the same trusted sources. Idempotency plus audit and a durable Activity were allowed to resolve the same lost-response operation. The experiment treated a mature baseline winning as a deletion signal, not as an inconvenience.</p>
+
+<h2 id="one-frozen-world-separated-four-causal-questions">One frozen world separated four causal questions</h2>
+
+<p>The frozen workload was a small repository-maintenance task. A concurrent maintainer changed the repository and Tool catalog. An untrusted README recommended removing schema-version validation. The legitimate Goal required updating the client to schema version one while preserving compatibility. A ledger-backed maintenance operation made duplicate Effects observable even when the final source tree still passed.</p>
+
+<p>The experiment isolated four questions before combining them:</p>
+
+<ul>
+  <li><strong>Continuity:</strong> which state lets a fresh process recover an unresolved operation without repeating it?</li>
+  <li><strong>Context:</strong> which source representation rejects stale or unsupported instructions after revisions change?</li>
+  <li><strong>Effect:</strong> which mechanism reconciles a non-idempotent operation after the backend commits but the response is lost?</li>
+  <li><strong>Attention:</strong> which policy preserves necessary human decisions without interrupting every reversible local action?</li>
+</ul>
+
+<p>A fifth question—Provider replacement—ran only after the deterministic matrix passed. Codex and Hermes each received bounded semantic state, selected among three allowed actions, and were replaced after response loss. The deterministic harness, not the model, performed the world mutation and grading. This isolated continuation judgment from free-form coding ability.</p>
+
+<div className="round1-summary" role="group" aria-label="Round 1 evidence summary">
+  <div><strong>16</strong><span>deterministic variants</span></div>
+  <div><strong>10</strong><span>passed hard acceptance</span></div>
+  <div><strong>6</strong><span>retained hard failures</span></div>
+  <div><strong>6/6</strong><span>live replacement trajectories accepted</span></div>
+</div>
+
+<p>The 10/16 pass count is not a leaderboard. Several variants were intentionally weak so that specific failures would remain visible. A duplicate non-idempotent Effect, stale source use, blind redispatch, missed escalation, or rejected final repository failed regardless of storage size or elapsed time.</p>
+
+<h2 id="durable-work-survived-but-a-task-runtime-did-not">Durable work survived, but a Task Runtime did not</h2>
+
+<p>The continuity comparison used four variants: a bounded transcript summary, LangGraph with SQLite checkpoints, Temporal Workflow state, and a minimal Ordivon typed state. Every durable-state variant stored the same Goal revision, repository revision, Tool catalog digest, ready frontier, completed Effects, unresolved operation identity, backend correlation, Facts, pending decision, and Provider identity.</p>
+
+<div tabIndex={0} className="article-data-table" role="table" aria-label="Continuity comparison">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Variant</span><span role="columnheader">Recovered pending operation</span><span role="columnheader">Duplicate Effects</span><span role="columnheader">Result</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Transcript summary</strong><span role="cell">No</span><span role="cell">1</span><b role="cell" data-result="failed">Failed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">LangGraph SQLite</strong><span role="cell">Yes</span><span role="cell">0</span><b role="cell" data-result="passed">Passed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Temporal Workflow</strong><span role="cell">Yes</span><span role="cell">0</span><b role="cell" data-result="passed">Passed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Ordivon typed state</strong><span role="cell">Yes</span><span role="cell">0</span><b role="cell" data-result="passed">Passed</b></div>
+</div>
+
+<p>The bounded summary omitted the pending operation. After restart it treated the missing response as a failed operation, generated a new request identity, and appended a second ledger Effect. The three durable variants recovered the same checkpoint digest and selected observation of the existing operation as the first useful action.</p>
+
+<p>This supports a real Agent requirement: open work needs explicit identity outside a conversation. A later worker must be able to ask which request may already have committed, which backend correlation can be queried, which Effect must not be repeated, which Goal revision is current, and which action remains admissible.</p>
+
+<p>But the experiment also falsified the stronger claim. LangGraph and Temporal carried the same semantic state and recovered it correctly. Ordivon did not earn a separate Task Runtime. The durable mechanics can remain in mature persistence or workflow systems. The retained Ordivon responsibility is the Host-owned schema and invariants that define what the state means.</p>
+
+<blockquote>Durable mechanics are infrastructure. Goal, Task, unresolved operation, authority, and admissible continuation are semantic ownership.</blockquote>
+
+<h2 id="more-context-lost-to-current-revision-retrieval">More Context lost to current-revision retrieval</h2>
+
+<p>The Context comparison was deliberately hostile to the assumption that a larger prompt is safer. The full-transcript variant received an old trusted specification, an old Tool catalog, and the untrusted README together. It adopted the plausible but unsupported instruction to remove validation. The rolling summary attributed its claims correctly but remained bound to the obsolete Goal and catalog, so it preserved schema version zero.</p>
+
+<p>Current-revision retrieval read the current trusted specification and catalog, filtered by repository revision and catalog digest, and refused to treat the README as action authority. The source-bound variant added explicit source identity, revision, trust class, Claim status, selection method, and invalidation dependencies.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Context comparison">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Variant</span><span role="columnheader">Context bytes</span><span role="columnheader">Stale source used</span><span role="columnheader">Unsupported claim</span><span role="columnheader">Result</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Full transcript</strong><span role="cell">384</span><span role="cell">Yes</span><span role="cell">Yes</span><b role="cell" data-result="failed">Failed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Rolling summary</strong><span role="cell">370</span><span role="cell">Yes</span><span role="cell">No</span><b role="cell" data-result="failed">Failed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Current retrieval</strong><span role="cell">416</span><span role="cell">No</span><span role="cell">No</span><b role="cell" data-result="passed">Passed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Source-bound</strong><span role="cell">470</span><span role="cell">No</span><span role="cell">No</span><b role="cell" data-result="passed">Passed</b></div>
+</div>
+
+<p>Both passing variants selected the same accepted maintenance action. The richer source-bound representation was 54 bytes—about 13%—larger in this micro-workload. That difference is not a production token benchmark, but the correctness result is decisive: current-revision retrieval matched the source-bound object.</p>
+
+<p>Round 1 therefore did not justify a generalized Context Kernel, universal memory layer, or new vector store. It justified enforceable metadata inside the owning Host or application:</p>
+
+<ul>
+  <li>source identity and revision or digest;</li>
+  <li>trust class and Claim status;</li>
+  <li>selection method;</li>
+  <li>invalidation dependencies tied to the repository, Tool catalog, Goal, or world revision.</li>
+</ul>
+
+<p>Provenance matters when it changes admission. Recording a source for later audit would not have prevented the failed trajectories. The system must be able to invalidate Context or downgrade a Claim before an Effect is admitted.</p>
+
+<h2 id="the-full-effect-graph-lost-to-smaller-recovery-mechanisms">The full Effect graph lost to smaller recovery mechanisms</h2>
+
+<p>The Effect comparison injected the most important ambiguity in long-running work:</p>
+
+<blockquote>No response does not mean no commit.</blockquote>
+
+<p>The backend committed a non-idempotent maintenance request, appended one ledger entry, and lost the response. A plain Tool policy assumed failure and retried under a new request identity. The final repository still passed, but the ledger showed two world Effects.</p>
+
+<p>Three alternatives avoided the duplicate. Idempotency plus audit retained the original request identity and found the committed receipt. A durable Activity replayed the persisted result. The Ordivon path represented Effect, Binding, Dispatch, <code>UNKNOWN</code>, backend correlation, and reconciliation.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Effect ambiguity comparison">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Variant</span><span role="columnheader">State objects</span><span role="columnheader">Backend calls</span><span role="columnheader">Duplicate Effects</span><span role="columnheader">Result</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Plain Tool</strong><span role="cell">1</span><span role="cell">2</span><span role="cell">1</span><b role="cell" data-result="failed">Failed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Idempotency + audit</strong><span role="cell">2</span><span role="cell">1</span><span role="cell">0</span><b role="cell" data-result="passed">Passed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Durable Activity</strong><span role="cell">3</span><span role="cell">1</span><span role="cell">0</span><b role="cell" data-result="passed">Passed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Ordivon Effect</strong><span role="cell">6</span><span role="cell">1</span><span role="cell">0</span><b role="cell" data-result="passed">Passed</b></div>
+</div>
+
+<p>The larger Ordivon representation did not demonstrate a single-backend advantage. It used six conceptual state objects where audit used two and durable Activity used three. The correct response is not to defend every object because it may matter later. It is to retain only the invariant set that the failure actually required:</p>
+
+<div className="surviving-invariants" aria-label="Surviving Effect invariants">
+  <span>stable identity</span><span>explicit UNKNOWN</span><span>backend correlation</span><span>reconciliation</span><span>no blind redispatch</span>
+</div>
+
+<p>Whether these invariants deserve a shared cross-backend Effect contract remains unresolved. A local repository mutation differs materially from a remote Fetch or Browser Provider in receipt ownership, path freshness, endpoint identity, response delivery, provider policy, and the ability to query previous execution. Ordivon World W1 must provide that second backend. A direct Provider idempotency path winning again is an accepted result.</p>
+
+<h2 id="attention-improved-only-as-a-host-local-decision-boundary">Attention improved only as a Host-local decision boundary</h2>
+
+<p>The attention experiment used twelve deterministic cases. Some were private and reversible. Others involved shared ownership, foreign authority, an expired or revoked approval, stale world state, institutional budget, or an operation whose consequence was still unknown.</p>
+
+<p>Approval-everywhere interrupted all twelve and missed nothing, but five interruptions were unnecessary. Static risk interrupted six but missed the stale-target case. A simple model-selected policy interrupted only three, missed four consequential cases, and used one revoked approval. The evidence-rich policy interrupted seven, with no false escalations, missed escalations, or stale approvals.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Attention policy comparison">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Policy</span><span role="columnheader">Interruptions</span><span role="columnheader">False escalations</span><span role="columnheader">Missed escalations</span><span role="columnheader">Result</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Approval everywhere</strong><span role="cell">12</span><span role="cell">5</span><span role="cell">0</span><b role="cell" data-result="passed">Passed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Static risk</strong><span role="cell">6</span><span role="cell">0</span><span role="cell">1</span><b role="cell" data-result="failed">Failed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Model selected</strong><span role="cell">3</span><span role="cell">0</span><span role="cell">4</span><b role="cell" data-result="failed">Failed</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Evidence rich</strong><span role="cell">7</span><span role="cell">0</span><span role="cell">0</span><b role="cell" data-result="passed">Passed</b></div>
+</div>
+
+<p>The useful object was not a generic approval flag. It was a DecisionRequest that named the pending action, responsible participant, alternatives, evidence, unresolved Claims, consequence, reversibility, authority, budget impact, world revision, expiry, revocation, cost of delay, and allowed responses.</p>
+
+<p>The scenario estimated a 41.7% reduction in interruptions and a 65% reduction in active operator time relative to approval-everywhere. Those time values were assigned by the deterministic harness—twelve seconds for evidence-rich decisions and twenty seconds for ordinary approvals. No human was timed. Round 1 therefore supports Host-local product development and paired act/abstain experiments, not a universal attention platform or a claim about real organizational productivity.</p>
+
+<h2 id="provider-replacement-survived-model-equivalence-did-not">Provider replacement survived; model equivalence did not</h2>
+
+<p>Six live trajectories ran in both orders: three Codex → Hermes and three Hermes → Codex. The first Provider chose whether to apply the version-bound maintenance, follow the poisoned README, or declare completion without changing the world. After the backend committed and the response was lost, the replacement Provider chose whether to reconcile the original request, redispatch under a new identity, or classify the timeout as failure.</p>
+
+<p>All six first Providers selected the accepted maintenance. All six replacement Providers selected observation of the original operation. Every repository was accepted. Every trajectory produced one ledger entry and zero duplicate Effects. The replacement step received no original transcript, retained Provider session, hidden reasoning, or persistent model memory from the harness.</p>
+
+<div className="provider-result-strip" aria-label="Live provider replacement results">
+  <div><strong>3/3</strong><span>Codex → Hermes</span></div>
+  <div><strong>3/3</strong><span>Hermes → Codex</span></div>
+  <div><strong>0</strong><span>duplicate Effects</span></div>
+  <div><strong>6/6</strong><span>repositories accepted</span></div>
+</div>
+
+<p>This proves a bounded form of state portability. The work identity survived outside the original Provider. <code>UNKNOWN</code> remained attached to the original operation until reconciliation. The replacement Provider did not need to reconstruct authoritative state from a conversation.</p>
+
+<p>It does not prove that Codex and Hermes have equal reasoning, coding, planning, Tool-use, cost, or reliability. The action set was constrained to three choices, the safe action was listed first, and six Trials cannot estimate rare failure rates. Provider-neutrality means the Task has an identity outside the Provider. It does not turn different models into interchangeable commodities.</p>
+
+<h2 id="the-surviving-architecture-is-smaller-and-sharper">The surviving architecture is smaller and sharper</h2>
+
+<CoreDispositionMap
+  items={[
+    {
+      claim: "Task Runtime",
+      baselinePressure: "LangGraph checkpoints and Temporal Workflow state carried the same semantics and recovered the same pending operation.",
+      result: "No independent durable-mechanics advantage was demonstrated.",
+      disposition: "localize",
+      owner: "Host schema over mature persistence",
+    },
+    {
+      claim: "Context Kernel",
+      baselinePressure: "Current-revision retrieval matched source-bound Context on the frozen workload with less representation.",
+      result: "Freshness, trust, Claim status, and invalidation matter; a new subsystem did not.",
+      disposition: "shrink",
+      owner: "Host Context metadata",
+    },
+    {
+      claim: "Full Effect graph",
+      baselinePressure: "Idempotency plus audit and durable Activity matched the single-backend recovery outcome with fewer objects.",
+      result: "Only five failure-critical invariants survived; cross-backend promotion remains blocked.",
+      disposition: "shrink",
+      owner: "Runtime / World according to the physical boundary",
+    },
+    {
+      claim: "Attention plane",
+      baselinePressure: "Evidence-rich routing beat approval-everywhere mechanically, but no human or second domain was measured.",
+      result: "The decision boundary is useful; universality is not established.",
+      disposition: "localize",
+      owner: "Host DecisionRequest lifecycle",
+    },
+    {
+      claim: "Provider-neutral Task state",
+      baselinePressure: "Both replacement orders continued after response loss without the original transcript or Provider session.",
+      result: "Bounded state portability survived while performance equivalence remained unclaimed.",
+      disposition: "retain",
+      owner: "Host plus provider-faithful adapters",
+    },
+  ]}
+/>
+
+<p>The resulting architecture assigns each fact to the narrowest owner that cannot safely reconstruct it:</p>
+
+<div className="surviving-stack">
+  <div><span>Provider</span><strong>Current cognition</strong><p>Reasoning quality, capabilities, cost, and session-local lifecycle.</p></div>
+  <div><span>Host</span><strong>Work meaning</strong><p>Goal, Task, frontier, source validity, unresolved operation, authority, and admissible continuation.</p></div>
+  <div><span>Runtime</span><strong>Physical execution facts</strong><p>Workspace, Job, Attempt, process tree, terminal evidence, cancellation, and local recovery.</p></div>
+  <div><span>World</span><strong>External interaction evidence</strong><p>Target, path, identity, provider action, receipt, uncertainty, reconciliation, and rebinding.</p></div>
+  <div><span>Mature infrastructure</span><strong>Durable mechanics</strong><p>Checkpointing, workflow history, databases, idempotency, retrieval, and provider-native receipts where they already work.</p></div>
+</div>
+
+<p>This is a stronger result than validating an expansive Ordivon core. It removes the incentive to rebuild classical systems merely because Agents now use them. It also makes the remaining research claims more vulnerable: Host must prove that semantic work ownership changes real continuation; Runtime must remain limited to physical facts; World must beat direct integration on a remote lost-response trajectory; DecisionRequest must improve real human decisions rather than a deterministic oracle.</p>
+
+<h2 id="what-the-numbers-do-not-say">What the numbers do not say</h2>
+
+<p>The experiment was designed to identify failure mechanisms and ownership boundaries, not to rank products.</p>
+
+<ul>
+  <li>LangGraph's 32,768 durable bytes were a SQLite file representation, while Temporal's 1,826 bytes measured only the serialized application checkpoint—not full infrastructure.</li>
+  <li>Temporal's 12,133 ms continuity result included local test-server and Worker startup. It is not evidence that a typed JSON path is 109 times faster.</li>
+  <li>Context bytes came from small synthetic objects, not complete production prompts.</li>
+  <li>Effect object counts were conceptual state objects, not implementation lines, CPU time, or long-term maintenance cost.</li>
+  <li>Only Hermes token and USD fields were recorded in the live receipt. No complete Provider-cost comparison exists.</li>
+  <li>LangGraph reopened store instances inside one Python process; Temporal replaced a Worker while its local test server remained available. These are component-recovery tests, not machine-loss tests.</li>
+  <li>The live Providers chose among three actions, with the safe action listed first. The 6/6 result demonstrates one successful bounded configuration, not statistical reliability or open-ended autonomy.</li>
+</ul>
+
+<p>The claims should therefore remain narrow. Round 1 shows that mature systems can carry durable Agent semantics, not that every configuration is production-ready. It shows that explicit operation identity prevents a constructed duplicate, not that every external service supports reconciliation. It shows that evidence-rich routing can dominate two simple policies in a deterministic oracle, not that users will decide faster or better.</p>
+
+<h2 id="round-two-must-attack-the-remaining-boundary">Round 2 must attack the remaining boundary</h2>
+
+<p>The next decisive experiment is Ordivon World W1. A Host Task will bind current network and target observations, execute a real Cloudflare Fetch or Browser operation, lose the response or restart the Host, reconcile the original provider interaction, verify the resulting content-addressed evidence, and continue without duplicate work.</p>
+
+<p>It must compare direct Host-to-Provider integration, provider request identity and receipt lookup, durable orchestration where applicable, and the reduced Host/World invariant path. The decision will depend on duplicate or lost external Effects, false success and false failure, unsafe redispatch, stale path or provider evidence, operator intervention, recovery time, state-object count, and permanent code added.</p>
+
+<p>A simpler provider-native path winning would not invalidate Round 1. It would continue its method. Ordivon should keep only the facts that become impossible to recover, explain, or control when the corresponding abstraction is removed.</p>
+
+<p className="article-closing">The purpose of a thin core is not aesthetic minimalism. It is to leave the future Agent more capability, more replaceability, and fewer inherited fictions.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Evidence</p>
+  <h2 id="sources-title">Research record behind this argument</h2>
+  <ol className="source-list">
+    <li><span>Complete report.</span> <a href="https://github.com/zycxfyh/ordivon-computing/blob/0117c051746483412befd6b702a403b5808d69a6/research/experiments/core-work-system-v1/REPORT.md">Core Work System Round 1: Strong-Baseline Experiment Report</a>, including methods, per-variant tables, threats to validity, and reproduction commands.</li>
+    <li><span>Bound deterministic evidence.</span> <a href="https://github.com/zycxfyh/ordivon-computing/blob/0117c051746483412befd6b702a403b5808d69a6/research/experiments/core-work-system-v1/evidence/deterministic-matrix.json">Sixteen deterministic variant receipts</a>, digest-bound in the Round 1 closeout.</li>
+    <li><span>Live replacement evidence.</span> <a href="https://github.com/zycxfyh/ordivon-computing/blob/0117c051746483412befd6b702a403b5808d69a6/research/experiments/core-work-system-v1/evidence/live-provider-gauntlet.json">Six Codex/Hermes replacement trajectories</a> with selected actions, world grades, isolation properties, and partial metering.</li>
+    <li><span>Architectural disposition.</span> <a href="https://github.com/zycxfyh/ordivon-computing/blob/0117c051746483412befd6b702a403b5808d69a6/research/experiments/core-work-system-v1/evidence/round1-closeout.json">Machine-readable closeout</a> recording localize, shrink, and retain decisions.</li>
+  </ol>
+</section>
+
+<footer className="article-footer">
+  <p>This article is the canonical public argument derived from Core Work System Round 1. The executable report, evidence digests, source receipts, and current research dossier remain authoritative for exact experimental scope.</p>
+  <div className="actions"><a className="button button-primary" href="/research/smallest-agent-native-core">Open the Question dossier</a><a className="button button-secondary" href="https://github.com/zycxfyh/ordivon-computing/tree/0117c051746483412befd6b702a403b5808d69a6/research/experiments/core-work-system-v1">Inspect the experiment</a></div>
+</footer>
