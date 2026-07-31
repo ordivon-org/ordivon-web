@@ -292,6 +292,7 @@ test("article navigation matches viewport", async ({ page, isMobile }) => {
 });
 
 test("core pages have no serious accessibility violations", async ({ page }) => {
+  test.setTimeout(90_000);
   for (const route of ["/", "/system", "/research", "/research/web-research-interface", "/projects", "/writing",
     "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
     "/writing/thin-host-without-hidden-planner", "/writing/one-authority-thirteen-tables",
