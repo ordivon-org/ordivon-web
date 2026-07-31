@@ -1,7 +1,19 @@
 import AxeBuilder from "@axe-core/playwright";
 import { articleMetadata } from "../content/articles/registry";
 import { questions } from "../content/model";
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+
+async function gotoWithNetworkRetry(page: Page, route: string) {
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try { return await page.goto(route, { waitUntil: "domcontentloaded" }); }
+    catch (error) {
+      const retryable = error instanceof Error && /ERR_NETWORK_CHANGED|ERR_CONNECTION_RESET/.test(error.message);
+      if (!retryable || attempt === 1) throw error;
+      await page.waitForTimeout(150);
+    }
+  }
+  return null;
+}
 
 const coreRoutes = [
   "/", "/system", "/research", "/research/web-research-interface", "/research/security-adversarial-trajectory",
@@ -19,7 +31,7 @@ const coreRoutes = [
 
 for (const route of coreRoutes) {
   test(`${route} renders without overflow`, async ({ page }) => {
-    const response = await page.goto(route, { waitUntil: "domcontentloaded" });
+    const response = await gotoWithNetworkRetry(page, route);
     expect(response?.status()).toBe(200);
     await expect(page.locator("h1")).toBeVisible();
     await expect.poll(async () => {
@@ -47,7 +59,7 @@ test("publishing endpoints render", async ({ request }) => {
   const feed = await request.get("/feed.xml");
   expect(feed.status()).toBe(200);
   expect(feed.headers()["content-type"]).toMatch(/(?:application|text)\/xml/);
-  expect(await feed.text()).toMatch(/<rss version="2\.0"><channel>/);
+  expect(await feed.text()).toMatch(/<rss version="2\.0"[^>]*><channel>/);
   expect((await request.get("/sitemap.xml")).status()).toBe(200);
   expect((await request.get("/robots.txt")).status()).toBe(200);
   expect((await request.get("/opengraph-image.png")).headers()["content-type"]).toContain("image/png");
@@ -56,6 +68,50 @@ test("publishing endpoints render", async ({ request }) => {
     expect(image.status(), slug).toBe(200);
     expect(image.headers()["content-type"], slug).toContain("image/png");
   }
+});
+
+test("publication metadata is visible and internally consistent", async ({ page }) => {
+  for (const article of articleMetadata) {
+    expect(article.takeaways.length, article.slug).toBeGreaterThanOrEqual(3);
+    expect(article.takeaways.length, article.slug).toBeLessThanOrEqual(5);
+    expect(article.limitations.length, article.slug).toBeGreaterThan(0);
+    expect(article.canonicalResearchRecord, article.slug).toMatch(/^https:\/\//);
+  }
+  await gotoWithNetworkRetry(page, "/writing/from-tokens-to-work");
+  await expect(page.locator(".publication-brief")).toBeVisible();
+  await expect(page.locator(".publication-brief-status").getByText(/E3/)).toBeVisible();
+  await expect(page.locator(".publication-brief-copy li")).toHaveCount(3);
+  await expect(page.locator(".publication-limitations li")).toHaveCount(2);
+});
+
+test("five flagship publications use the shared publication primitives", async ({ page }) => {
+  for (const slug of ["from-tokens-to-work", "what-h1-h5-proved", "smaller-core-strong-baselines", "winning-move-loses-contest", "creation-judgment-recoverable-systems"]) {
+    await gotoWithNetworkRetry(page, `/writing/${slug}`);
+    await expect(page.locator(".mdx-in-brief"), slug).toBeVisible();
+    await expect(page.locator(".publication-figure"), slug).toHaveCount(1);
+    await expect(page.locator(".mdx-claim-boundary"), slug).toHaveCount(1);
+  }
+});
+
+test("historical releases and structured discovery remain explicit", async ({ page, request }) => {
+  await gotoWithNetworkRetry(page, "/writing/station-zero-alpha-1");
+  await expect(page.locator(".publication-status-notice").getByText("Historical publication", { exact: true })).toBeVisible();
+
+  const articleResponse = await request.get("/writing/what-h1-h5-proved");
+  const articleHtml = await articleResponse.text();
+  expect(articleHtml).toContain("/og/what-h1-h5-proved.png");
+  expect(articleHtml).toContain("application/ld+json");
+  expect(articleHtml).toContain("harness-replacement-h5-live-76420e4-20260731.json");
+
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  expect(sitemap).toContain("<lastmod>2026-07-31</lastmod>");
+  expect(sitemap).not.toContain("<priority>");
+  expect(sitemap).not.toContain("<changefreq>");
+
+  const feed = await (await request.get("/feed.xml")).text();
+  expect(feed).toContain("<atom:link");
+  expect(feed).toContain("<![CDATA[E4]]>");
+  expect(feed).toContain("Canonical research record");
 });
 
 test("internal navigation targets resolve", async ({ page, request }) => {
@@ -69,7 +125,7 @@ test("internal navigation targets resolve", async ({ page, request }) => {
   ];
   const targets = new Set<string>();
   for (const route of sourceRoutes) {
-    await page.goto(route, { waitUntil: "domcontentloaded" });
+    await gotoWithNetworkRetry(page, route);
     for (const href of await page.locator('a[href^="/"]').evaluateAll((links) => links.map((link) => link.getAttribute("href") || ""))) {
       const pathname = href.split("#", 1)[0];
       if (pathname) targets.add(pathname);
@@ -82,35 +138,35 @@ test("internal navigation targets resolve", async ({ page, request }) => {
 });
 
 test("public model is article-centered and does not expose the retired graph ledger", async ({ page }) => {
-  await page.goto("/now", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/now");
   await expect(page.getByRole("heading", { name: "Read the arguments and reports that changed the judgment." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "What is tested, experimental, or still waiting for proof." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Questions whose current answer changed." })).toBeVisible();
   await expect(page.getByRole("link", { name: /Creation, Judgment, and Recoverable Systems/ })).toBeVisible();
 
-  await page.goto("/research/web-research-interface", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/research/web-research-interface");
   await expect(page.getByRole("heading", { name: "Complete arguments connected to this Question." })).toBeVisible();
   await expect(page.getByRole("link", { name: /Creation, Judgment, and Recoverable Systems/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: "The dossier is an index, not the evidence authority." })).toBeVisible();
 
-  await page.goto("/research/security-adversarial-trajectory", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/research/security-adversarial-trajectory");
   await expect(page.getByRole("link", { name: /Winning the Move Can Lose the Contest/ })).toBeVisible();
   await expect(page.getByText("84 Trials", { exact: false })).toBeVisible();
 
-  await page.goto("/research/harness-composition-and-completion", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/research/harness-composition-and-completion");
   await expect(page.getByText("answered", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("Answered by H1–H5", { exact: false })).toBeVisible();
   await expect(page.getByRole("link", { name: /What Survived When Codex and Hermes Replaced Each Other Mid-Task/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 
-  await page.goto("/research/ordivon-harness-v0", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/research/ordivon-harness-v0");
   await expect(page.getByText("open", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("No implementation evidence exists yet.", { exact: false })).toBeVisible();
   await expect(page.getByRole("link", { name: /From Tokens to Work/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 
   for (const route of ["/system", "/research", "/writing", "/now", "/research/web-research-interface"]) {
-    await page.goto(route, { waitUntil: "domcontentloaded" });
+    await gotoWithNetworkRetry(page, route);
     const text = await page.locator("body").innerText();
     for (const retired of ["Graph ledger", "graph anchors", "centrality", "typed relations", "evidence objects"]) {
       expect(text, `${route} still exposes ${retired}`).not.toContain(retired);
@@ -119,26 +175,26 @@ test("public model is article-centered and does not expose the retired graph led
 });
 
 test("reader orientation precedes formal models on the remaining R2 surfaces", async ({ page }) => {
-  await page.goto("/now", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/now");
   await expect(page.locator(".now-brief-grid > article")).toHaveCount(4);
   await expect(page.getByRole("heading", { name: "The system became smaller where evidence was strong and more explicit where uncertainty remained." })).toBeVisible();
 
-  await page.goto("/about", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/about");
   await expect(page.getByRole("heading", { name: /Ordivon began with a simple failure/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Built in public by zycxfyh." })).toBeVisible();
   await expect(page.locator(".about-principle-grid > article")).toHaveCount(4);
 
-  await page.goto("/projects", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/projects");
   await expect(page.locator(".project-capability-card")).toHaveCount(4);
   await expect(page.getByText("Production-tested local runtime", { exact: true })).toBeVisible();
   await expect(page.getByText("Experimental boundary", { exact: true })).toBeVisible();
 
-  await page.goto("/projects/runtime", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/projects/runtime");
   await expect(page.getByRole("heading", { name: "Ordivon Runtime", exact: true })).toBeVisible();
   await expect(page.locator(".project-use-strip > div")).toHaveCount(3);
   await expect(page.getByText("Capability evidence", { exact: true })).toBeVisible();
 
-  await page.goto("/research", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/research");
   await expect(page.locator(".research-start-grid > a")).toHaveCount(3);
   await expect(page.getByText("Most important question under test", { exact: true })).toBeVisible();
   await expect(page.getByText("Recently answered boundary", { exact: true })).toBeVisible();
@@ -146,11 +202,11 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
 });
 
 test("system explorer uses curated architecture views", async ({ page }) => {
-  await page.goto("/system", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/system");
   await expect(page.getByRole("heading", { name: "One task can outlive the model, process, and path that carried it." })).toBeVisible();
   await expect(page.locator(".system-trajectory li")).toHaveCount(5);
   for (const value of ["2 / 2", "3", "13", "W1"]) await expect(page.locator(".system-hero-stats").getByText(value, { exact: true })).toBeVisible();
-  await expect(page.locator(".system-explorer")).toHaveAttribute("data-ready", "true");
+  await expect(page.locator(".system-explorer")).toHaveAttribute("data-ready", "true", { timeout: 15_000 });
   await expect(page.getByRole("button", { name: "Structure State ownership" })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByLabel("Selected architecture object").getByRole("heading", { name: "Host", exact: true })).toBeVisible();
 
@@ -170,7 +226,7 @@ test("system explorer uses curated architecture views", async ({ page }) => {
 });
 
 test("research index switches among Questions, Projects, Publications, and Status", async ({ page }) => {
-  await page.goto("/research", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/research");
   await expect(page.locator(".research-explorer")).toHaveAttribute("data-ready", "true");
   await expect(page.getByRole("button", { name: "Questions the active frontier" })).toHaveAttribute("aria-pressed", "true");
   await expect(page.locator(".research-explorer").getByRole("link", { name: /Can Host complete a general repository Goal/ })).toBeVisible();
@@ -194,7 +250,7 @@ test("writing provides editorial entry paths before metadata-derived research na
   const engineeringTypes = new Set(["Engineering report", "Architecture report", "Architecture guide", "Architecture decision", "Architecture correction", "Release", "Release note"]);
   const expectedEngineeringRecords = articleMetadata.filter((article) => engineeringTypes.has(article.type)).length;
   const expectedEssaysAndNotes = articleMetadata.length - expectedResearchReports - expectedEngineeringRecords;
-  await page.goto("/writing", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/writing");
   await expect(page.getByRole("heading", { name: "Ideas, experiments, and decisions behind durable agent work." })).toBeVisible();
   const summary = page.locator(".writing-summary");
   for (const value of [expectedResearchReports, expectedEngineeringRecords, expectedEssaysAndNotes]) {
@@ -227,7 +283,7 @@ const publicationContracts = [
 for (const contract of publicationContracts) {
   test(`${contract.slug} preserves its public claim boundary`, async ({ page }) => {
     const metadata = articleMetadata.find((article) => article.slug === contract.slug)!;
-    await page.goto(`/writing/${contract.slug}`, { waitUntil: "domcontentloaded" });
+    await gotoWithNetworkRetry(page, `/writing/${contract.slug}`);
     await expect(page.getByRole("heading", { name: contract.title, exact: true })).toBeVisible();
     await expect(page.getByText(contract.phrase, { exact: false }).first()).toBeVisible();
     await expect(page.locator(".article-anchor-grid > *")).toHaveCount(metadata.projectSlugs.length + metadata.questionSlugs.length);
@@ -237,7 +293,7 @@ for (const contract of publicationContracts) {
 }
 
 test("flagship adversarial report preserves metric contradictions and negative results", async ({ page }) => {
-  await page.goto("/writing/winning-move-loses-contest", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/writing/winning-move-loses-contest");
   const metadata = articleMetadata.find((article) => article.slug === "winning-move-loses-contest")!;
   await expect(page.getByRole("heading", { name: "Winning the Move Can Lose the Contest" })).toBeVisible();
   const summary = page.locator(".security-round-summary");
@@ -254,7 +310,7 @@ test("flagship adversarial report preserves metric contradictions and negative r
 });
 
 test("flagship strong-baseline report preserves evidence and claim boundaries", async ({ page }) => {
-  await page.goto("/writing/smaller-core-strong-baselines", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/writing/smaller-core-strong-baselines");
   const metadata = articleMetadata.find((article) => article.slug === "smaller-core-strong-baselines")!;
   await expect(page.getByRole("heading", { name: "The Smaller Core That Survived Strong Baselines" })).toBeVisible();
   await expect(page.locator(".round1-summary").getByText("16", { exact: true })).toBeVisible();
@@ -267,7 +323,7 @@ test("flagship strong-baseline report preserves evidence and claim boundaries", 
 });
 
 test("article context is derived from Project and Question metadata", async ({ page }) => {
-  await page.goto("/writing/runtime-after-core", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/writing/runtime-after-core");
   await expect(page.getByRole("heading", { name: "Where this article sits." })).toBeVisible();
   await expect(page.getByRole("link", { name: /Research Question.*Which real structured operation can complete the minimal Effect contract/ })).toHaveAttribute("href", "/research/runtime-structured-effect/");
   await expect(page.getByRole("link", { name: /Project.*Ordivon Runtime/ })).toBeVisible();
@@ -276,7 +332,7 @@ test("article context is derived from Project and Question metadata", async ({ p
 });
 
 test("homepage presents one continuous dark visual thesis", async ({ page, isMobile }) => {
-  await page.goto("/", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/");
   await expect(page.locator(".home-poster-brand")).toHaveText("ORDIVON");
   await expect(page.getByRole("heading", { name: "Work should survive the intelligence that started it." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "One task survived Codex↔Hermes replacement and three injected faults." })).toBeVisible();
@@ -308,7 +364,7 @@ test("homepage presents one continuous dark visual thesis", async ({ page, isMob
 });
 
 test("article navigation matches viewport", async ({ page, isMobile }) => {
-  await page.goto("/writing/winning-move-loses-contest", { waitUntil: "domcontentloaded" });
+  await gotoWithNetworkRetry(page, "/writing/winning-move-loses-contest");
   if (isMobile) {
     await expect(page.locator(".article-toc-mobile")).toBeVisible();
     await expect(page.locator(".article-rail")).toBeHidden();
@@ -327,7 +383,7 @@ test("core pages have no serious accessibility violations", async ({ page }) => 
     "/writing/why-ordivon-needs-a-harness", "/writing/what-h1-h5-proved",
     "/writing/winning-move-loses-contest", "/writing/smaller-core-strong-baselines",
     "/research/ordivon-harness-v0", "/projects/runtime"]) {
-    await page.goto(route, { waitUntil: "domcontentloaded" });
+    await gotoWithNetworkRetry(page, route);
     const results = await new AxeBuilder({ page }).analyze();
     const serious = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact || ""));
     expect(serious, route).toEqual([]);

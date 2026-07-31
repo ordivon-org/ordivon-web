@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArticleToc } from "@/components/article-toc";
 import { ReadingProgress } from "@/components/reading-progress";
+import { PublicationBrief, PublicationStatusNotice } from "@/components/publication-brief";
 import { articles, formatDate, getArticle } from "@/lib/content";
 import { getArticleContext } from "@/lib/writing";
 
@@ -32,11 +33,22 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const next = articles[index - 1];
   const related = context.related.slice(0, 3);
   const questionCount = context.anchors.filter((anchor) => anchor.kind === "question").length;
-  const schema = { "@context": "https://schema.org", "@type": "Article", headline: article.title, description: article.description, datePublished: article.date, dateModified: article.modifiedDate || article.date, author: { "@type": "Person", name: article.author }, publisher: { "@type": "Organization", name: "Ordivon" }, mainEntityOfPage: `https://ordivon.com/writing/${article.slug}` };
+  const replacement = article.supersededBy ? getArticle(article.supersededBy) : undefined;
+  const schema = {
+    "@context": "https://schema.org", "@type": "Article", headline: article.title, description: article.description,
+    image: `https://ordivon.com/og/${article.slug}.png`, datePublished: article.date, dateModified: article.modifiedDate || article.date,
+    author: { "@type": "Person", name: article.author, url: "https://github.com/zycxfyh" },
+    publisher: { "@type": "Organization", name: "Ordivon", url: "https://ordivon.com" },
+    mainEntityOfPage: `https://ordivon.com/writing/${article.slug}`,
+    isPartOf: { "@type": "Blog", name: "Ordivon Writing", url: "https://ordivon.com/writing" },
+    about: [...article.projectSlugs, ...article.questionSlugs],
+    citation: article.canonicalResearchRecord,
+  };
 
   return (
     <article className={`article-page article-${article.slug}`} id="top">
       <ReadingProgress />
+      <PublicationStatusNotice article={article} replacementTitle={replacement?.title} />
       <header className="article-hero page-shell page-top">
         <div className="article-kicker"><span>{article.type}</span><span>{article.project}</span></div>
         <h1>{article.title}</h1><p className="article-deck">{article.deck}</p>
@@ -45,6 +57,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <span>{questionCount ? `${questionCount} research Question${questionCount === 1 ? "" : "s"}` : `${article.projectSlugs.length} project area${article.projectSlugs.length === 1 ? "" : "s"}`}</span>
         </div>
       </header>
+      <PublicationBrief article={article} />
       <div className="article-layout page-shell">
         <ArticleToc entries={article.toc} />
         <div className="article-column">

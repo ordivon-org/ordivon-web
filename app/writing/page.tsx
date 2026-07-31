@@ -4,6 +4,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { WritingFilter } from "@/components/writing-filter";
 import { articles, getArticle } from "@/lib/content";
 import { getWritingTopics } from "@/lib/writing";
+import { editorialSelections } from "@/content/editorial/selections";
 
 export const metadata: Metadata = {
   title: "Writing",
@@ -11,31 +12,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/writing" },
 };
 
-const readingPaths = [
-  {
-    label: "Start with Ordivon",
-    title: "Why durable agent work matters",
-    description: "Begin with the practical failure, the project intent, and the larger future Ordivon is trying to make possible.",
-    slugs: ["why-ordivon", "creation-judgment-recoverable-systems", "the-future-will-not-wait"],
-  },
-  {
-    label: "Agent architecture",
-    title: "From model output to completed work",
-    description: "Follow the execution stack, the Harness boundary, and the experiments that made the surviving architecture smaller.",
-    slugs: ["from-tokens-to-work", "why-ordivon-needs-a-harness", "what-h1-h5-proved"],
-  },
-  {
-    label: "Experiments and failures",
-    title: "What changed under real pressure",
-    description: "Read the reports where tactical success, duplicate authority, response loss, and strong baselines forced a different judgment.",
-    slugs: ["winning-move-loses-contest", "one-authority-thirteen-tables", "unknown-is-operational-state"],
-  },
-] as const;
-
 export default function WritingPage() {
   const topics = getWritingTopics();
-  const flagship = getArticle("from-tokens-to-work");
-  const evidenceReports = [getArticle("what-h1-h5-proved"), getArticle("winning-move-loses-contest")];
+  const flagship = getArticle(editorialSelections.writing.startHere);
+  const evidenceReports = editorialSelections.writing.evidenceReports.map(getArticle);
   if (!flagship || evidenceReports.some((article) => !article)) throw new Error("writing editorial selection is incomplete");
   const summaries = articles.map(({ slug, title, description, type, project, date, readMinutes }) => ({ slug, title, description, type, project, date, readMinutes }));
   const researchReports = articles.filter((article) => article.type === "Research report").length;
@@ -75,7 +55,7 @@ export default function WritingPage() {
         <section className="writing-paths" aria-labelledby="writing-paths-title">
           <SectionHeading eyebrow="Reading paths" title="Choose the question you want the work to answer." description="Each path begins with a clear problem and moves toward the experiments, decisions, or long-form argument behind it." />
           <div className="writing-path-grid">
-            {readingPaths.map((path, index) => (
+            {editorialSelections.writing.readingPaths.map((path, index) => (
               <article key={path.label}>
                 <div><span>{String(index + 1).padStart(2, "0")}</span><b>{path.label}</b></div>
                 <h3>{path.title}</h3><p>{path.description}</p>

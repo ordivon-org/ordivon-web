@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import { validatePublications } from "@/lib/publication";
 import FromTokensToWork from "@/content/articles/from-tokens-to-work.mdx";
 import WhyOrdivonNeedsAHarness from "@/content/articles/why-ordivon-needs-a-harness.mdx";
 import WhatH1H5Proved from "@/content/articles/what-h1-h5-proved.mdx";
@@ -45,6 +46,8 @@ const articleComponents: Record<ArticleSlug, ComponentType> = {
   "ordivon-runtime-release": RuntimeRelease,
   "why-ordivon": WhyOrdivon,
 };
+
+validatePublications(articleMetadata);
 
 export const articles: Article[] = articleMetadata.map((article) => {
   if (!articleComponents[article.slug]) throw new Error(`missing MDX component for ${article.slug}`);

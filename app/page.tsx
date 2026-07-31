@@ -3,6 +3,7 @@ import { ContinuitySignal } from "@/components/home/continuity-signal";
 import { systems, siteUpdatedAt, getQuestionBySlug } from "@/content/model";
 import { formatDate, getArticle } from "@/lib/content";
 import { getResearchQuestionSummaries } from "@/lib/research";
+import { editorialSelections } from "@/content/editorial/selections";
 import { getFeaturedWriting } from "@/lib/writing";
 import { getLatestPublicUpdate } from "@/lib/updates";
 
@@ -20,7 +21,7 @@ export default function HomePage() {
     .sort((left, right) => right.articleCount - left.articleCount || (right.latestPublicationDate || "").localeCompare(left.latestPublicationDate || ""));
   const frontier = testing[0] || research[0];
   const featured = getFeaturedWriting(3);
-  const proofArticle = getArticle("what-h1-h5-proved");
+  const proofArticle = getArticle(editorialSelections.homeProof);
   const proofQuestion = getQuestionBySlug("harness-composition-and-completion");
   if (!proofArticle || !proofQuestion) throw new Error("homepage replacement proof is incomplete");
   const latestUpdate = getLatestPublicUpdate();
