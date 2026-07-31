@@ -40,3 +40,9 @@ pnpm deploy
 - `components/` owns reusable interfaces and visualizations.
 - Project repositories remain authoritative for live source, tests, implementation state, and operational receipts.
 - This site provides orientation, dated interpretation, and navigable relationships between those sources.
+
+## Editorial system
+
+`content/editorial/` defines the public positioning, audiences, voice, vocabulary, publication types, claim discipline, and dated interface-copy audits. Start with [`content/editorial/README.md`](content/editorial/README.md).
+
+The editorial layer may frame and interpret the work, but it does not replace repository source, tests, releases, receipts, or operational state.
