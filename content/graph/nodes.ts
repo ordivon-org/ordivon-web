@@ -80,7 +80,7 @@ export const projectNodes: ProjectNode[] = [
     label: "Research as an explorable system", publicPage: false,
     summary: "The public interface that connects projects, research questions, experiments, findings, decisions, and writing without duplicating repository truth.",
     state: "Web V2 is closed around static delivery, one typed graph, durable Question dossiers, an argument network, and a continuity-led visual thesis. Current work moves from interface reconstruction to research publication.",
-    evidence: [{ value: "15", label: "research dossiers" }, { value: "7", label: "argument nodes" }, { value: "1", label: "typed public graph" }],
+    evidence: [{ value: "15", label: "research dossiers" }, { value: "8", label: "argument nodes" }, { value: "1", label: "typed public graph" }],
     repository: "https://github.com/zycxfyh/ordivon-web", updatedAt: graphUpdatedAt,
   },
   {

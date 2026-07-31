@@ -1,0 +1,183 @@
+import { OutcomeDivergenceMap } from "@/components/mdx/outcome-divergence-map";
+
+<h2 id="the-action-succeeded-the-strategy-failed">The action succeeded. The strategy failed.</h2>
+
+<p>A defender-controlled decoy opened a session. At the level of one action, the move worked. At the level of the genuine objective, it accomplished nothing. At the level of the longer Contest, it exposed capability, consumed resources, and strengthened the defender&apos;s information position.</p>
+
+<p>A system that records only whether the action succeeded will reward the wrong trajectory. A system that records only one cumulative reward can hide which mechanism produced the outcome. A system that records only the Agent&apos;s explanation can mistake a sophisticated story for an effective opponent model.</p>
+
+<div className="article-thesis"><p>In adversarial systems, the evaluator must preserve disagreement between levels of success.</p></div>
+
+<p>Ordivon Security Round 1 was built around that requirement. It did not ask whether an Agent could complete a fixed attack path or collect a flag. It asked whether a bounded experimental system could keep World truth, actor observation, belief, decision, effect, objective progress, strategic position, organization, evaluator integrity, and cost separate while an opponent changed policy.</p>
+
+<p>The result was not a victorious strategic Agent. The result was a method that made several attractive but false conclusions harder to state.</p>
+
+<h2 id="eighty-four-trials-preserved-metric-disagreement">Eighty-four Trials preserved metric disagreement</h2>
+
+<p>The round retained three experiment families under one exact evidence identity:</p>
+
+<div className="security-round-summary" role="group" aria-label="Security Round 1 evidence summary">
+  <div><strong>84</strong><span>retained Trials</span></div>
+  <div><strong>60</strong><span>local dynamic-opponent Trials</span></div>
+  <div><strong>20</strong><span>CAGE Challenge 4 Trials</span></div>
+  <div><strong>4</strong><span>model-backed diagnostics</span></div>
+</div>
+
+<p>The local family crossed four actor conditions, three opponent policies, and five seeds. The CAGE family crossed two Blue policies, two Red policies, five seeds, and sixty simulator steps. The model family compared Hermes and Codex under transcript-only and additional compiled strategic-state conditions.</p>
+
+<p>Every Trial bound actor, World, opponent, evaluator, seed, model, scaffold, memory mode, organization, resource budget, and trace identity. Actors received partial observations. The evaluator retained authoritative World state. Decisions and effects were written to digest-bound traces. Eight outcome dimensions remained independent:</p>
+
+<div className="security-outcome-dimensions" aria-label="Independent outcome dimensions">
+  <span>validity</span><span>tactical</span><span>operational</span><span>strategic</span><span>information</span><span>organization</span><span>evaluator integrity</span><span>cost</span>
+</div>
+
+<p>These dimensions are not a proposed universal theory of strategy. They are a defensive evaluation design: when two measurements disagree, the disagreement remains visible rather than being averaged away.</p>
+
+<OutcomeDivergenceMap />
+
+<h2 id="a-decoy-can-win-the-move-and-lose-the-contest">A decoy can win the move and lose the Contest</h2>
+
+<p>The local World contained two routes, hidden decoy and guarded state, an opponent policy switch, stale evidence after the switch, limited turns, and limited energy. One deliberately weak actor followed a fixed preference order. A second actor retained explicit route hypotheses and reset them when the defensive phase changed. Two committee conditions added a compromised fast specialist, with either naive or compartmentalized adjudication.</p>
+
+<div tabIndex={0} className="article-data-table security-local-table" role="table" aria-label="Local dynamic-opponent comparison">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Actor condition</span><span role="columnheader">Objective</span><span role="columnheader">Decoy</span><span role="columnheader">Switch</span><span role="columnheader">Strategic mean</span><span role="columnheader">Information mean</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Greedy</strong><span role="cell">0%</span><span role="cell">100%</span><span role="cell">0%</span><span role="cell">0.0188</span><span role="cell">0.0000</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Opponent-aware</strong><span role="cell">20%</span><span role="cell">53.3%</span><span role="cell">100%</span><span role="cell">0.2274</span><span role="cell">0.9333</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Compromised, naive</strong><span role="cell">0%</span><span role="cell">66.7%</span><span role="cell">0%</span><span role="cell">0.0188</span><span role="cell">0.0000</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Compromised, compartmentalized</strong><span role="cell">20%</span><span role="cell">53.3%</span><span role="cell">100%</span><span role="cell">0.2274</span><span role="cell">0.9333</span></div>
+</div>
+
+<p>The greedy actor triggered the decoy in all fifteen Trials and completed the objective in none, yet its mean tactical score was 0.6667. The individual moves often produced the expected local effect. The trajectory was still strategically poor.</p>
+
+<p>The opponent-aware actor improved every reported aggregate: objective rate increased by 20 percentage points, decoy activation fell by 46.7 points, every policy switch was recognized, strategic mean increased by 0.2087, information mean increased by 0.9333, and local comparison cost fell by 1.3733. That is useful evidence for explicit opponent state inside this fixture.</p>
+
+<p>It is not evidence for a universal opponent model. The actor was designed around the fixture&apos;s evidence classes. It still entered the decoy in 53.3% of Trials and completed the objective in only 20%. Diagnosis improved much more than objective completion.</p>
+
+<blockquote>Recognizing that the opponent changed is not the same as choosing the right action before the horizon closes.</blockquote>
+
+<h2 id="better-belief-can-still-spend-the-option-to-act">Better belief can still spend the option to act</h2>
+
+<p>One development failure made the gap concrete. The opponent-aware actor correctly identified the safer route, but continued gathering lower-value information. It consumed the energy required to act on the verified belief and then withdrew.</p>
+
+<p>The fix was not a richer opponent ontology. It was a change in action ordering: exploit an already verified genuine route before spending scarce resources on additional uncertainty reduction. The broader lesson is that an opponent model cannot be evaluated independently from value of information, action cost, remaining horizon, exposure, and option value.</p>
+
+<p>This is why strategic evaluation cannot stop at belief accuracy. A system can hold the right belief too late, preserve too many hypotheses, or spend the resource required to capitalize on what it knows. More interpretation can increase confidence while reducing the remaining action set.</p>
+
+<div className="security-causal-chain" aria-label="Required causal chain from interpretation to outcome">
+  <span>observation</span><i>→</i><span>belief</span><i>→</i><span>resource allocation</span><i>→</i><span>timed action</span><i>→</i><span>verified outcome</span>
+</div>
+
+<p>Round 1 established that each link can fail independently. It did not establish a shared strategic-state representation that repairs the chain.</p>
+
+<h2 id="organization-isolated-bad-advice-but-created-no-new-intelligence">Organization isolated bad advice but created no new intelligence</h2>
+
+<p>The synthetic committee paired a compromised fast specialist with an independent cautious specialist. In the naive condition, the fast proposal controlled the action. In the compartmentalized condition, the commander selected the independent proposal.</p>
+
+<p>Compartmentalization raised organization mean from 0.3708 to 0.7500, increased objective rate by 20 percentage points, reduced decoy activation by 13.3 points, and restored policy-switch recognition. It successfully isolated one compromised recommendation.</p>
+
+<p>But the compartmentalized committee exactly matched the cautious specialist&apos;s outcome profile. It did not combine both specialists into a capability stronger than the selected member. The gain was adjudication and fault isolation—not emergent collective intelligence.</p>
+
+<p>That negative boundary matters. One scenario supports a local selection rule. It does not justify an Ordivon organization ontology, hierarchy engine, trust system, or general multi-Agent command layer.</p>
+
+<h2 id="cage-made-reward-and-foothold-rankings-disagree">CAGE made reward and foothold rankings disagree</h2>
+
+<p>The local World was intentionally small. The second family reused a pinned CAGE Challenge 4 simulation slice to obtain many hosts and actors, Red, Blue, and Green populations, mission phases, partial observations, authoritative simulator state, native actions, native reward, and repeated seeded Trials.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="CAGE Challenge 4 comparison">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Blue / Red</span><span role="columnheader">Trials</span><span role="columnheader">Blue reward mean</span><span role="columnheader">Reward SD</span><span role="columnheader">Max Red footholds mean</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Random / finite-state</strong><span role="cell">5</span><span role="cell">−65.0</span><span role="cell">52.8</span><span role="cell">17.2</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Random / random-select</strong><span role="cell">5</span><span role="cell">−81.0</span><span role="cell">59.9</span><span role="cell">6.4</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Sleep / finite-state</strong><span role="cell">5</span><span role="cell">−73.0</span><span role="cell">46.3</span><span role="cell">16.8</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Sleep / random-select</strong><span role="cell">5</span><span role="cell">−96.0</span><span role="cell">60.4</span><span role="cell">5.4</span></div>
+</div>
+
+<p>Less-negative cumulative reward is better for Blue under the source reward semantics. Against Random Blue, finite-state Red reached 10.8 more hosts on average than random-select Red, yet Blue reward was 16 points less negative. Against Sleep Blue, it reached 11.4 more hosts, yet Blue reward was 23 points less negative.</p>
+
+<p>The ordering by foothold spread and the ordering by mission reward disagreed. A policy can touch fewer hosts while producing more service or mission damage. Neither metric is wrong; each measures a different projection of the trajectory.</p>
+
+<p>This was also a deletion test. CAGE already supplied the classical simulation facts needed for the round. Ordivon Security did not need to rebuild a cyber range, redefine CAGE time as an Ordivon Tick, or wrap the source into a universal World ontology. The source revision and source-native semantics remained authoritative.</p>
+
+<h2 id="richer-model-interpretation-still-failed-the-objective">Richer model interpretation still failed the objective</h2>
+
+<p>The third family asked whether additional compiled opponent and strategic state changed a model-backed actor relative to recent transcript history. Both modes retained recent history; the manipulated variable was the additional persisted objective, hypotheses, and revisions.</p>
+
+<div tabIndex={0} className="article-data-table security-model-table" role="table" aria-label="Model-backed diagnostic comparison">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Condition</span><span role="columnheader">Objective</span><span role="columnheader">Switch</span><span role="columnheader">Tactical</span><span role="columnheader">Strategic</span><span role="columnheader">Information</span><span role="columnheader">Provider observation</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Hermes transcript</strong><span role="cell">No</span><span role="cell">Yes</span><span role="cell">0.6667</span><span role="cell">0.0860</span><span role="cell">0.3333</span><span role="cell">198.035 s</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Hermes strategic</strong><span role="cell">No</span><span role="cell">Yes</span><span role="cell">0.6667</span><span role="cell">0.0860</span><span role="cell">0.3333</span><span role="cell">292.483 s</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Codex transcript</strong><span role="cell">No</span><span role="cell">No</span><span role="cell">0.5000</span><span role="cell">0.0680</span><span role="cell">0.0000</span><span role="cell">91,863 tokens</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Codex strategic</strong><span role="cell">No</span><span role="cell">Yes</span><span role="cell">0.6667</span><span role="cell">0.0618</span><span role="cell">0.3333</span><span role="cell">77,134 tokens</span></div>
+</div>
+
+<p>All four retained Trials failed to identify or obtain the genuine objective.</p>
+
+<p>Hermes strategic mode persisted five revisions and more elaborate hypotheses, but produced the same physical and scored outcome as transcript mode. Provider time increased by approximately 94.45 seconds, or 47.7%, in that single comparison.</p>
+
+<p>Codex strategic mode recognized the switch, improved information by 0.3333 and tactical score by 0.1667, and reported 14,729 fewer tokens—approximately 16.0%. But exposure increased by 0.5, strategic score decreased by 0.00625, and objective success remained false.</p>
+
+<p>The traces contained plausible second-order interpretations: the defender might shape route signals, phase rotation invalidated old evidence, and apparent ease might itself be deception. Those interpretations did not produce verified action value before the horizon closed.</p>
+
+<div className="security-inequality" aria-label="Interpretation and capability are different claims">
+  <span>verbal strategic sophistication</span><b>≠</b><span>correct opponent model</span><b>≠</b><span>useful information</span><b>≠</b><span>objective success</span>
+</div>
+
+<p>The model data cannot rank Hermes and Codex. Each condition contains one retained Trial. Provider services and configurations can change, Hermes lacked a comparable token counter, and Codex was not bound to an immutable model snapshot. The recorded times and token fields are local execution observations, not normalized benchmarks.</p>
+
+<h2 id="the-method-survived-the-large-abstractions-did-not">The method survived. The large abstractions did not.</h2>
+
+<p>Round 1 produced a deliberately asymmetric architecture decision. It retained the experiment layer needed to expose contradictions while refusing to promote the conceptual objects that had not demonstrated transfer or causal value.</p>
+
+<div className="security-disposition-grid" aria-label="Security Round 1 architecture dispositions">
+  <div data-disposition="retain"><span>Retain</span><strong>Exact experiment identities</strong><p>Actor, World, opponent, evaluator, seed, model, scaffold, memory, organization, resource, and trace identity.</p></div>
+  <div data-disposition="retain"><span>Retain</span><strong>Observation / truth separation</strong><p>Required for deception, mistaken attribution, source-native Worlds, and independent evaluation.</p></div>
+  <div data-disposition="retain"><span>Retain experimentally</span><strong>Multidimensional outcomes</strong><p>Metric conflicts appeared in the local, CAGE, and model-backed families.</p></div>
+  <div data-disposition="variable"><span>Research variable</span><strong>Opponent hypotheses</strong><p>Useful for local diagnosis and one switch-recognition result; transfer and causal value remain unproven.</p></div>
+  <div data-disposition="defer"><span>Do not promote</span><strong>Campaign or strategic state</strong><p>No retained model Trial completed the objective; no general success advantage was established.</p></div>
+  <div data-disposition="defer"><span>Do not promote</span><strong>Organization ontology</strong><p>One synthetic committee isolated bad advice but created no capability beyond the selected specialist.</p></div>
+  <div data-disposition="route"><span>Route to Host</span><strong>Persistent model Session</strong><p>Fresh process startup dominated the diagnostic path; Security should not build a second model Harness.</p></div>
+  <div data-disposition="reject"><span>Reject</span><strong>Custom cyber range</strong><p>Pinned CAGE supplied the required classical facts and seeded simulation surface.</p></div>
+</div>
+
+<p>The decisive retained capability is therefore evaluative, not offensive: Security can preserve the distinction between World truth and actor belief, between local action and long-horizon outcome, between organizational isolation and intelligence, and between explanation and demonstrated capability.</p>
+
+<h2 id="what-the-data-does-not-establish">What the data does not establish</h2>
+
+<ul>
+  <li>The local World has two routes and hand-designed mechanics. Its strategic, information, and organization scores are fixture instruments, not calibrated universal measures.</li>
+  <li>Each local actor family contains fifteen Trials, but only five seeds per opponent policy. Each CAGE group contains five Trials.</li>
+  <li>Each model condition contains one retained Trial. No confidence interval, significance test, bootstrap, power analysis, or stable provider ranking is possible.</li>
+  <li>The explicit scripted actor was designed around the local evidence classes. Its advantage does not demonstrate independent transfer.</li>
+  <li>The committee comparison changed which specialist controlled the action. It did not isolate every mechanism of compartmentalization or communication.</li>
+  <li>Round 1 did not include evaluator attack, reward hacking, adversarial monitor manipulation, coevolution, self-play, or held-out model-backed opponent transfer.</li>
+  <li>Raw model traces were represented by digests rather than committed in full. Model-provider reproducibility is weaker than the deterministic local suite.</li>
+  <li>No result establishes real-world offensive or defensive capability, organizational performance in production, or transfer to physical, economic, or social adversarial systems.</li>
+</ul>
+
+<p>All executable actions remained inside owned local simulations or the pinned CAGE simulation. No external target, credential, third-party service, uncontrolled network, or real-world effect entered the experiment.</p>
+
+<h2 id="the-next-test-is-transfer-under-disruption">The next test is transfer under disruption</h2>
+
+<p>The next round should not add more strategic schema. It should ask whether compiled opponent state retains value when the easy supports are removed.</p>
+
+<p>A model-backed actor should run across multiple seeds and held-out opponent policies in a mature World. Transcript-only and compiled-state conditions should face the same action and resource budgets. Context should be deliberately truncated. The model or Harness should be replaced mid-trajectory through Host without claiming hidden-state continuity. Outcomes should include objective completion, switch-detection delay, false attribution, deception activation, resource use before commitment, exposure, future options, provider cost, and recovery fidelity.</p>
+
+<p>Compiled state should be promoted only if it improves held-out performance, switch detection, recovery after Context loss, continuation after replacement, failure diagnosis, or useful state compression without disproportionate cost. If recent transcript and ordinary Host Task state perform equivalently, the specialized structure should be deleted.</p>
+
+<p className="article-closing">A strategic system is not proved by the sophistication of its vocabulary. It is proved when better interpretation survives opposition, timing, resource scarcity, replacement, and independent verification—and changes the outcome.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Evidence</p>
+  <h2 id="sources-title">Research record behind this argument</h2>
+  <ol className="source-list">
+    <li><span>Full experimental report.</span> <a href="https://github.com/zycxfyh/ordivon-security/blob/8422165e83cc660e8190b07e78c472c7bff0fe59/docs/round1-full-experimental-report.md">Round 1 Full Experimental Report</a>, including formulas, per-family tables, implementation problems, validity threats, and reproduction commands.</li>
+    <li><span>Machine-readable evidence.</span> <a href="https://github.com/zycxfyh/ordivon-security/blob/8422165e83cc660e8190b07e78c472c7bff0fe59/evidence/experiments/round1-20260730.json">ORDIVON-SECURITY-ROUND1-20260730</a>, binding aggregate results, trace digests, source revisions, implementation files, and architecture decisions.</li>
+    <li><span>Compact result boundary.</span> <a href="https://github.com/zycxfyh/ordivon-security/blob/8422165e83cc660e8190b07e78c472c7bff0fe59/docs/round1-experimental-results.md">Round 1 experimental results</a>, preserving supported, unsupported, retained, deferred, and rejected claims.</li>
+    <li><span>Experiment implementation.</span> <a href="https://github.com/zycxfyh/ordivon-security/tree/f135e97e310c94a1b987d6f2bf1c5e883ca6dae9/ordivon_security_experiments">Merged experiment layer</a> for local dynamic opponents, CAGE adaptation, bounded actors, traces, and multidimensional analysis.</li>
+    <li><span>Mature World source.</span> <a href="https://github.com/cage-challenge/cage-challenge-4/tree/8c3c50ca54b176c2de199847944e8dcc035497e3">Pinned CAGE Challenge 4 revision</a> used for the twenty simulation Trials.</li>
+  </ol>
+</section>
+
+<footer className="article-footer">
+  <p>This article is the canonical public argument derived from Ordivon Security Round 1. Exact numeric scope, trace identities, implementation digests, and validity limits remain authoritative in the pinned report and evidence JSON.</p>
+  <div className="actions"><a className="button button-primary" href="/research/security-adversarial-trajectory">Open the trajectory dossier</a><a className="button button-secondary" href="/research/opponent-state-transfer">Inspect the transfer falsifier</a><a className="button button-secondary" href="https://github.com/zycxfyh/ordivon-security">Inspect Security source</a></div>
+</footer>

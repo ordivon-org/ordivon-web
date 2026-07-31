@@ -125,6 +125,15 @@ const researchRelations: GraphRelation[] = [
 ];
 
 const articleRelations: GraphRelation[] = [
+  { id: "relation:article-winning-move-security", type: "documents", source: "article:winning-move-loses-contest", target: "project:security" },
+  { id: "relation:article-winning-move-trajectory-question", type: "documents", source: "article:winning-move-loses-contest", target: "question:security-adversarial-trajectory" },
+  { id: "relation:article-winning-move-transfer-question", type: "documents", source: "article:winning-move-loses-contest", target: "question:security-opponent-state-transfer" },
+  { id: "relation:article-winning-move-experiment", type: "documents", source: "article:winning-move-loses-contest", target: "experiment:security-round1" },
+  { id: "relation:article-winning-move-tactical-finding", type: "documents", source: "article:winning-move-loses-contest", target: "finding:tactical-not-strategic" },
+  { id: "relation:article-winning-move-interpretation-finding", type: "documents", source: "article:winning-move-loses-contest", target: "finding:interpretation-not-action" },
+  { id: "relation:article-winning-move-organization-finding", type: "documents", source: "article:winning-move-loses-contest", target: "finding:organization-isolation-not-intelligence" },
+  { id: "relation:article-winning-move-range-decision", type: "documents", source: "article:winning-move-loses-contest", target: "decision:no-custom-cyber-range" },
+  { id: "relation:article-winning-move-campaign-decision", type: "documents", source: "article:winning-move-loses-contest", target: "decision:no-campaign-promotion" },
   { id: "relation:article-smaller-core-computing", type: "documents", source: "article:smaller-core-strong-baselines", target: "project:computing" },
   { id: "relation:article-smaller-core-question", type: "documents", source: "article:smaller-core-strong-baselines", target: "question:computing-smallest-core" },
   { id: "relation:article-smaller-core-effect-question", type: "documents", source: "article:smaller-core-strong-baselines", target: "question:runtime-structured-effect" },
