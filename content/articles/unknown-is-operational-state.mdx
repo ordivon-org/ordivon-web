@@ -1,0 +1,70 @@
+<h2 id="no-response-is-not-no-commit">No response is not no commit</h2>
+
+<p>A Tool call times out. The model says it is uncertain. The process disappears. The tempting implementation marks the attempt failed and retries.</p>
+
+<p>If the backend already committed, that retry can duplicate money movement, publication, deployment, resource consumption, or any other non-idempotent Effect. The missing response is not merely a feeling inside the model. It is an unresolved relationship between an intended operation and external reality.</p>
+
+<div className="article-thesis"><p><code>UNKNOWN</code> is operational state when it is bound to a stable operation identity and a method for reconciling reality.</p></div>
+
+<h2 id="the-five-required-invariants">The five required invariants</h2>
+
+<div className="surviving-invariants" aria-label="UNKNOWN operational invariants">
+  <span>stable identity</span><span>explicit UNKNOWN</span><span>backend correlation</span><span>reconciliation</span><span>no blind redispatch</span>
+</div>
+
+<p>Without identity, a later process cannot know which operation to query. Without correlation, it cannot connect the intended Effect to a Provider request, Runtime Job, receipt, or ledger row. Without reconciliation, uncertainty never resolves. Without a redispatch prohibition, the state does not protect reality.</p>
+
+<h2 id="unknown-is-not-failure">UNKNOWN is not failure</h2>
+
+<p>Core Work System Round 1 injected a lost response after a non-idempotent backend had committed. The plain Tool path retried under a new request identity and produced a duplicate Effect. Idempotency plus audit, durable Activity, and the Ordivon path all preserved the original identity and observed the existing commit.</p>
+
+<p>The correct state machine is not:</p>
+
+<pre tabIndex={0}><code>{`request
+→ response or failure`}</code></pre>
+
+<p>It is:</p>
+
+<pre tabIndex={0}><code>{`intended operation
+→ dispatch
+→ confirmed success | confirmed failure | UNKNOWN
+→ reconcile external reality
+→ admit next action`}</code></pre>
+
+<h2 id="unknown-is-not-model-sentiment">UNKNOWN is not model sentiment</h2>
+
+<p>A model can say “I am not sure” even when the system has a complete receipt. It can sound confident while using stale evidence. Operational uncertainty must be computed from authoritative state, not inferred from tone.</p>
+
+<p>The model may propose a reconciliation method or interpret the resulting evidence. The owning layer decides whether the operation remains unresolved and which actions are forbidden until it is resolved.</p>
+
+<h2 id="where-the-state-belongs">Where the state belongs</h2>
+
+<ul>
+  <li><strong>Runtime</strong> owns UNKNOWN when the unresolved fact is a local Job or process Effect.</li>
+  <li><strong>World</strong> may own UNKNOWN when path, identity, Provider action, and response delivery must be correlated.</li>
+  <li><strong>Host</strong> owns what the unresolved operation means for the Task and whether continuation is admissible.</li>
+  <li><strong>Provider-native systems</strong> should retain idempotency and receipt lookup when they already provide it.</li>
+</ul>
+
+<p>This does not require one universal Effect database. It requires the stable intended identity and unresolved status to survive wherever the physical boundary lives.</p>
+
+<h2 id="waiting-can-be-the-correct-action">Waiting can be the correct action</h2>
+
+<p>Explicit UNKNOWN connects to calibrated non-action. The Agent may need to observe, wait for a receipt, request a decision, or refuse a new dispatch. Always acting is not capability when action can multiply an unresolved consequence.</p>
+
+<p>The cost of waiting also matters. A receipt can expire, a strategic window can close, or a resource can become unavailable. Future experiments must compare acting too early with abstaining too long under real deadlines and consequences.</p>
+
+<p className="article-closing">Uncertainty becomes useful when it constrains the next action and carries a path back to evidence.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Evidence</p>
+  <h2 id="sources-title">Related record</h2>
+  <ol className="source-list">
+<li><a href="/writing/smaller-core-strong-baselines">The Smaller Core That Survived Strong Baselines</a></li>
+    <li><a href="/research/runtime-structured-effect">Minimal Effect contract dossier</a></li>
+    <li><a href="/research/calibrated-non-action">Calibrated non-action dossier</a></li>
+  </ol>
+</section>
+<footer className="article-footer">
+  <p>This note isolates the surviving ambiguity invariant. World W1 remains the required second-backend test.</p>
+</footer>

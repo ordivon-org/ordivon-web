@@ -1,4 +1,5 @@
-import { getNode, getNodesByKind, getRelatedArticles, getSystemNode, graphRelations } from "@/lib/graph";
+import { articles } from "@/lib/content";
+import { getProjectBySlug, getProjectForQuestion, getSystemById, projects as projectDefinitions, questions } from "@/content/model";
 
 export type Project = {
   id: string;
@@ -20,16 +21,14 @@ export type Project = {
   relatedWriting: string[];
 };
 
-export const projects: Project[] = getNodesByKind("project")
+export const projects: Project[] = projectDefinitions
   .filter((project) => project.publicPage && project.systemNodeId)
   .map((project) => {
-    const system = getSystemNode(project.systemNodeId!);
+    const system = getSystemById(project.systemNodeId!);
     if (!system) throw new Error(`${project.id} references missing system ${project.systemNodeId}`);
-    const openQuestions = graphRelations
-      .filter((relation) => relation.source === project.id && relation.type === "raises")
-      .map((relation) => getNode(relation.target))
-      .filter((node) => node?.kind === "question")
-      .map((node) => ({ title: node.title, href: `/research/${node.slug}`, state: node.state }));
+    const openQuestions = questions
+      .filter((question) => getProjectForQuestion(question.id)?.id === project.id)
+      .map((question) => ({ title: question.title, href: `/research/${question.slug}`, state: question.state }));
     return {
       id: project.id,
       slug: project.slug,
@@ -47,11 +46,10 @@ export const projects: Project[] = getNodesByKind("project")
       evidence: [...project.evidence],
       openQuestions,
       repository: project.repository,
-      relatedWriting: getRelatedArticles(project.id).map((article) => article.slug),
+      relatedWriting: articles.filter((article) => article.projectSlugs.includes(project.slug)).map((article) => article.slug),
     };
   })
   .sort((a, b) => a.index.localeCompare(b.index));
 
-export function getProject(slug: string) {
-  return projects.find((project) => project.slug === slug);
-}
+export function getProject(slug: string) { return projects.find((project) => project.slug === slug); }
+export { getProjectBySlug };

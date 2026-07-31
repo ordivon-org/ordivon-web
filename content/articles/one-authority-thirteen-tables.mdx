@@ -1,0 +1,116 @@
+<h2 id="semantic-reuse-created-two-authorities">Semantic reuse created two authorities</h2>
+
+<p>Ordivon Game adopted the Host workload contract before it adopted one production authority. The P0–P2 adapters proved that Game's single-Agent and Team lifecycles could map into TaskDescriptor, Dispatch, Observation, VerificationReceipt, and TaskOutcome. They also left Game reconstructing the same generic truth through local tables and adapters.</p>
+
+<p>The next decision was not whether Host semantics were useful. It was whether Game should call the same Python implementation through a sidecar or embed one authority that implemented the same contract inside its existing TypeScript process.</p>
+
+<div className="article-thesis"><p>Reusing one implementation is not automatically cheaper than reusing one contract.</p></div>
+
+<h2 id="the-sidecar-worked">The sidecar worked</h2>
+
+<p>A minimal Python JSONL sidecar completed one real World Tick, including recovery after a World commit with a lost response. It did not require HTTP, MCP, Python-to-Node callbacks, or a cross-database transaction. It was not rejected because it was broken.</p>
+
+<p>It lost because the in-process Game workload did not need the process boundary it introduced.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Sidecar and embedded Host comparison">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Metric</span><span role="columnheader">Python sidecar</span><span role="columnheader">Embedded authority</span><span role="columnheader">Difference</span><span role="columnheader">Decision pressure</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Startup</strong><span role="cell">196.120 ms</span><span role="cell">36.896 ms</span><span role="cell">5.3× slower</span><b role="cell" data-result="failed">sidecar</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Lifecycle p50</strong><span role="cell">259.260 ms</span><span role="cell">96.567 ms</span><span role="cell">2.7× slower</span><b role="cell" data-result="failed">sidecar</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Lifecycle p95</strong><span role="cell">286.873 ms</span><span role="cell">111.843 ms</span><span role="cell">2.6× slower</span><b role="cell" data-result="failed">sidecar</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Production lines</strong><span role="cell">879</span><span role="cell">212</span><span role="cell">667 more</span><b role="cell" data-result="failed">sidecar</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Extra process</strong><span role="cell">yes</span><span role="cell">no</span><span role="cell">split deployment</span><b role="cell" data-result="failed">sidecar</b></div>
+</div>
+
+<p>The sidecar also divided startup, transport, packaging, evidence lookup, and recovery across two processes. None of those costs supplied a capability required by the three-specialist Scenario.</p>
+
+<h2 id="one-authority-replaced-reconstruction">One authority replaced reconstruction</h2>
+
+<p>The final boundary is:</p>
+
+<pre tabIndex={0}><code>{`Agent cognition or Team coordination
+→ EmbeddedHostAuthority
+→ TaskDescriptor
+→ Dispatch
+→ Observation
+→ VerificationReceipt
+→ TaskOutcome
+
+GameWorldExecutor
+→ authoritative World Command / Event / Snapshot`}</code></pre>
+
+<p>The generic Host lifecycle is stored only in immutable <code>host_artifacts</code> and one hash-chained <code>host_journal</code>. Game retains domain state that is not a second generic Host: cognition sessions, actor leases, profiles, Messages, authority decisions, Rounds, actor-visible Context references, Proposals, and TickPlans.</p>
+
+<h2 id="thirteen-duplicate-truth-tables-left">Thirteen duplicate truth tables left</h2>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Deleted duplicate Host tables">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Path</span><span role="columnheader">Deleted generic tables</span><span role="columnheader">Deleted adapters</span><span role="columnheader">Retained authority</span><span role="columnheader">Outcome</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Single Actor</strong><span role="cell">6</span><span role="cell">SingleActorHostContractAdapter</span><span role="cell">Host journal + Game cognition</span><b role="cell" data-result="passed">exact</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Team</strong><span role="cell">7</span><span role="cell">TeamHostContractAdapter</span><span role="cell">Host joint lifecycle + Team domain state</span><b role="cell" data-result="passed">exact</b></div>
+</div>
+
+<p>The migration removed:</p>
+
+<ul>
+  <li>13 generic duplicate truth tables;</li>
+  <li>two reconstruction adapters;</li>
+  <li>the duplicate execution store;</li>
+  <li>the temporary Python sidecar;</li>
+  <li>641 net implementation and test lines relative to the P0–P2 baseline.</li>
+</ul>
+
+<p>Deleting tables mattered more than deleting lines. The system no longer had to decide which copy of Goal, Task, Effect, Dispatch, Observation, or Verification truth would win after interruption.</p>
+
+<h2 id="world-results-did-not-move">World results did not move</h2>
+
+<p>The deterministic single-Agent workload preserved ten admitted Decisions, 25 primitive World Effects, 25 Host lifecycles, final revision 25, and the exact terminal digest. The Team workload preserved 18 Rounds, 54 actor Contexts, 54 Proposals, 18 joint Effects, 54 per-Actor result items, zero duplicate Ticks, final revision 18, and the exact terminal digest.</p>
+
+<p>A live Codex single-Agent Run also reached victory with verified replay after the cutover. The authority migration changed ownership and recovery, not the World rules or accepted outcome.</p>
+
+<h2 id="what-game-still-owns">What Game still owns</h2>
+
+<p>Unique authority does not mean flattening every domain object into Host. Game still owns the structures whose meaning is genuinely local:</p>
+
+<div className="surviving-invariants" aria-label="Retained Game domain state">
+  <span>cognition sessions</span><span>actor leases</span><span>profiles</span><span>messages</span><span>authority grants</span><span>rounds</span><span>proposals</span><span>tick plans</span>
+</div>
+
+<p>Host owns the generic work lifecycle. World owns physical Game state and replay. Mission Control derives a product projection from both. It does not become another authority store.</p>
+
+<h2 id="the-general-lesson">The general lesson</h2>
+
+<p>There are at least three different kinds of reuse:</p>
+
+<ul>
+  <li><strong>contract reuse</strong> — common identities, stages, invariants, and evidence;</li>
+  <li><strong>library reuse</strong> — shared code within a compatible process and language boundary;</li>
+  <li><strong>service reuse</strong> — one deployed process serving multiple consumers.</li>
+</ul>
+
+<p>Contract reuse was mandatory. Service reuse was not. Forcing every consumer through one process would have treated deployment topology as the architecture, even when the workload already shared a database, process, recovery boundary, and release unit.</p>
+
+<p>The correct test is not “can this be centralized?” It is:</p>
+
+<blockquote>Which authority must be unique, and what is the cheapest implementation that preserves that uniqueness for this workload?</blockquote>
+
+<h2 id="what-this-does-not-generalize">What this does not generalize</h2>
+
+<p>The result does not imply that sidecars or services are generally wrong. A separate process can be correct when consumers use different trust zones, machines, release cadences, languages, resource controls, or operational ownership. Historical databases containing removed tables were not migrated. Game-specific Actions and Ticks were not promoted into the shared protocol.</p>
+
+<p>The experiment establishes a local decision: in-process Game execution gained no capability from deploying Python Host as a sidecar, while it paid measurable transport, startup, code, and split-recovery cost.</p>
+
+<p className="article-closing">The architecture became more shared by deleting the shared-looking implementation path and preserving one semantic authority.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Evidence</p>
+  <h2 id="sources-title">Authority cutover record</h2>
+  <ol className="source-list">
+
+<li><span>Full report.</span> <a href="https://github.com/zycxfyh/ordivon-game/blob/7b44504da7a3467d65d6260d7cbc479b0fc971a8/docs/HOST-AUTHORITY-CUTOVER-P3-P6.md">Host authority cutover P3–P6</a>.</li>
+<li><span>Second workload context.</span> <a href="/research/contracts-across-a-second-workload">Contracts across a second workload</a>.</li>
+  </ol>
+</section>
+
+<footer className="article-footer">
+  <p>The report records both the working sidecar and the retained embedded path. Negative implementation evidence is part of the architectural result.</p>
+  <div className="actions"><a className="button button-primary" href="/research/contracts-across-a-second-workload">Open the contract dossier</a><a className="button button-secondary" href="/projects/host">Inspect Host ownership</a></div>
+</footer>

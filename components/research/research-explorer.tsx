@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
-import type { ResearchQuestionSummary } from "@/lib/graph/research";
+import type { ResearchQuestionSummary } from "@/lib/research";
 
 export type ResearchTimelineItem = {
   id: string;
@@ -34,8 +34,8 @@ function QuestionCard({ item, index }: { item: ResearchQuestionSummary; index: n
         <strong>{question.currentJudgment}</strong>
       </div>
       <footer>
-        <span>{item.evidenceCount} evidence objects</span>
-        <span>{item.articleCount} public records</span>
+        <span>{item.articleCount} supporting publications</span>
+        <span>{item.latestPublicationDate || question.updatedAt || "Unpublished"}</span>
         <b aria-hidden="true">↗</b>
       </footer>
     </Link>
@@ -61,7 +61,7 @@ export function ResearchExplorer({ questions, timeline }: { questions: ResearchQ
   const views: { id: ResearchView; label: string; detail: string }[] = [
     { id: "questions", label: "Questions", detail: "the active frontier" },
     { id: "projects", label: "Projects", detail: "where pressure accumulates" },
-    { id: "timeline", label: "Timeline", detail: "what changed the model" },
+    { id: "timeline", label: "Publications", detail: "dated complete arguments" },
     { id: "status", label: "Status", detail: "testing, open, resolved" },
   ];
 
@@ -108,7 +108,7 @@ export function ResearchExplorer({ questions, timeline }: { questions: ResearchQ
                   <div><span>{String(index + 1).padStart(2, "0")}</span><time dateTime={event.date}>{event.displayDate}</time><i>{event.type}</i></div>
                   <h3>{event.title}</h3>
                   <p>{event.summary}</p>
-                  {event.href && <b>Open related question ↗</b>}
+                  {event.href && <b>Open publication ↗</b>}
                 </>
               );
               return event.href

@@ -1,0 +1,58 @@
+<h2 id="the-same-message-produced-two-worlds">The same message produced two Worlds</h2>
+
+<p>Station Zero evaluated the same typed <code>task-offer</code> under two communication conditions. When the Actors shared a local channel, the assignment was delivered immediately and the Team reached verified victory at Tick 18. When the station radio was unavailable, the message remained pending until communications recovered. The Team exhausted power at Tick 20.</p>
+
+<div className="article-thesis"><p>Communication is gameplay state when reachability changes which information can arrive before an action window closes.</p></div>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Communication reachability comparison">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Channel</span><span role="columnheader">Initial delivery</span><span role="columnheader">Actor behavior</span><span role="columnheader">Terminal result</span><span role="columnheader">Tick</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">same-room local</strong><span role="cell">delivered</span><span role="cell">Security receives containment assignment</span><span role="cell">victory</span><b role="cell" data-result="passed">18</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">station radio unavailable</strong><span role="cell">pending</span><span role="cell">Security waits until delivery</span><span role="cell">power exhausted</span><b role="cell" data-result="failed">20</b></div>
+</div>
+
+<h2 id="a-message-needs-more-than-text">A message needs more than text</h2>
+
+<p>A persistent Agent communication object needs identity, sender, recipient, channel, creation time, delivery condition, status, and relation to Tasks or Proposals. The content can be identical while the operational meaning differs because one recipient has not yet received it.</p>
+
+<p>A shared transcript would erase the distinction. It would make information globally visible even when the World says the channel is unavailable. Decorative chat bubbles would preserve the wording but not the causal constraint.</p>
+
+<h2 id="reachability-creates-coordination-windows">Reachability creates coordination windows</h2>
+
+<p>Communication can be:</p>
+
+<ul>
+  <li>delivered now;</li>
+  <li>pending on a World condition;</li>
+  <li>expired after a useful window;</li>
+  <li>rejected by authority or policy;</li>
+  <li>visible only to one Actor;</li>
+  <li>superseded by newer verified information.</li>
+</ul>
+
+<p>These states influence which Tasks are ready and which Proposals are reasonable. A delayed task offer can be perfectly correct and still arrive too late to change the outcome.</p>
+
+<h2 id="the-world-remains-authoritative">The World remains authoritative</h2>
+
+<p>The Host stores Message identity and delivery status. The World determines whether the current channel condition permits delivery. The model cannot declare that a radio message arrived because it would be useful. Verification must bind the delivery transition to current World state.</p>
+
+<p>This separation also supports recovery. After process replacement, the Host can determine which Messages were delivered, which remain pending, and which coordination window has already closed without replaying a conversation.</p>
+
+<h2 id="communication-does-not-prove-multi-agent-superiority">Communication does not prove multi-Agent superiority</h2>
+
+<p>The experiment proves that communication reachability can materially change one multi-Agent trajectory. It does not prove that three Agents outperform one Agent, that natural-language negotiation is necessary, or that a general society layer should exist.</p>
+
+<p>A strong single-Agent or classical baseline may reproduce the same outcome with direct access to all information. That comparison remains part of the Game dossier's next falsifier.</p>
+
+<p className="article-closing">A message becomes part of the game when the World can delay it, the recipient can act without it, and the lost time cannot be reconstructed from text alone.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Evidence</p>
+  <h2 id="sources-title">Related record</h2>
+  <ol className="source-list">
+<li><a href="https://github.com/zycxfyh/ordivon-game/blob/7b44504da7a3467d65d6260d7cbc479b0fc971a8/docs/M3-RECEIPT.md">Station Zero M3 receipt</a></li>
+    <li><a href="/research/game-agent-native-mechanics">Agent-native game mechanics dossier</a></li>
+  </ol>
+</section>
+<footer className="article-footer">
+  <p>This note isolates one verified mechanic. The equal-budget single-Agent and classical baseline remain open.</p>
+</footer>

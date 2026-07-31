@@ -1,0 +1,64 @@
+<h2 id="a-transcript-can-explain-without-authorizing">A transcript can explain without authorizing</h2>
+
+<p>A conversation is useful evidence of how a model reached a proposal. It is not, by itself, a safe database of what work remains admissible.</p>
+
+<p>Core Work System Round 1 made the difference concrete. A bounded transcript summary preserved the broad story of a repository-maintenance task but omitted the pending operation identity after the backend had committed and the response was lost. A fresh process treated the operation as failed, created a new request identity, and produced a duplicate non-idempotent Effect.</p>
+
+<div className="article-thesis"><p>A summary can preserve narrative continuity while destroying operational continuity.</p></div>
+
+<h2 id="the-missing-facts">The missing facts</h2>
+
+<p>Safe continuation required facts that prose did not reliably retain:</p>
+
+<div className="surviving-invariants" aria-label="Task facts outside transcript authority">
+  <span>Goal revision</span><span>ready frontier</span><span>operation identity</span><span>backend correlation</span><span>completed Effects</span><span>pending decision</span><span>source revision</span><span>provider identity</span>
+</div>
+
+<p>These facts have different owners and lifetimes. Repository revision comes from source control. Process truth comes from Runtime. External receipts come from the Provider or World. Goal and Task commitments belong to Host. A transcript may cite them, but citation does not transfer authority.</p>
+
+<h2 id="more-transcript-can-be-less-safe">More transcript can be less safe</h2>
+
+<p>The full-transcript Context path also failed. It included an obsolete trusted specification, an old Tool catalog, and a plausible untrusted README that recommended removing validation. More text exposed the model to more stale and unsupported claims.</p>
+
+<p>Current-revision retrieval succeeded because selection was bound to present trusted sources. Source-bound Context added explicit identity, revision, trust class, Claim status, and invalidation dependencies. The lesson is not “use less Context.” It is:</p>
+
+<blockquote>Compile Context from separately owned current state instead of treating conversation accumulation as truth accumulation.</blockquote>
+
+<h2 id="what-a-transcript-is-good-for">What a transcript is good for</h2>
+
+<ul>
+  <li>preserving model rationale for later inspection;</li>
+  <li>recovering hypotheses that can be rechecked;</li>
+  <li>understanding failed reasoning patterns;</li>
+  <li>providing candidate language for a fresh cognitive episode;</li>
+  <li>retaining interaction history when its source and trust are explicit.</li>
+</ul>
+
+<p>It should not silently decide whether an external operation may be retried, whether an approval remains current, which source revision is authoritative, or whether a Task is complete.</p>
+
+<h2 id="the-thin-boundary">The thin boundary</h2>
+
+<p>Ordivon does not require eliminating transcripts. It requires a smaller separation:</p>
+
+<div className="provider-result-strip" aria-label="Transcript and Task boundary">
+  <div><strong>Transcript</strong><span>rationale and conversation</span></div>
+  <div><strong>Context</strong><span>bounded selected view</span></div>
+  <div><strong>Task</strong><span>durable purpose and commitment</span></div>
+  <div><strong>Evidence</strong><span>what reality established</span></div>
+</div>
+
+<p>A replacement Provider can receive a newly compiled Context and continue the same Task without inheriting the old Session. That is stronger continuity than preserving every token, because the work remains tied to current sources, current authority, and unresolved operations.</p>
+
+<p className="article-closing">A transcript remembers what was said. A Task database preserves what may still be done.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Evidence</p>
+  <h2 id="sources-title">Related record</h2>
+  <ol className="source-list">
+<li><a href="/writing/smaller-core-strong-baselines">The Smaller Core That Survived Strong Baselines</a></li>
+    <li><a href="/research/smallest-agent-native-core">Smallest Agent-native core dossier</a></li>
+  </ol>
+</section>
+<footer className="article-footer">
+  <p>This note isolates one finding from Core Work System Round 1. The flagship report remains the canonical complete argument.</p>
+</footer>

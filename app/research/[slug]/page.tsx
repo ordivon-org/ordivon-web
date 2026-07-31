@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { formatDate } from "@/lib/content";
-import { getNode } from "@/lib/graph";
-import { getResearchDossier, getResearchQuestions } from "@/lib/graph/research";
-import type { ResearchEvidenceNode } from "@/lib/graph/research";
+import { getResearchDossier, getResearchQuestions } from "@/lib/research";
 
 export const dynamicParams = false;
 
@@ -23,12 +21,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-function evidenceMeta(node: ResearchEvidenceNode) {
-  if (node.kind === "experiment") return `${node.state} experiment`;
-  if (node.kind === "finding") return `${node.confidence} confidence`;
-  return "structural decision";
-}
-
 export default async function ResearchDossierPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const dossier = getResearchDossier(slug);
@@ -38,8 +30,6 @@ export default async function ResearchDossierPage({ params }: { params: Promise<
   const index = allQuestions.findIndex((question) => question.id === dossier.question.id);
   const previous = allQuestions[index - 1];
   const next = allQuestions[index + 1];
-  const evidence = [...dossier.experiments, ...dossier.findings, ...dossier.decisions]
-    .sort((left, right) => right.date.localeCompare(left.date) || left.title.localeCompare(right.title));
 
   return (
     <article className={`research-dossier status-${dossier.question.status}`}>
@@ -66,8 +56,8 @@ export default async function ResearchDossierPage({ params }: { params: Promise<
         <section className="research-position" aria-labelledby="current-position-title">
           <div className="research-section-intro">
             <p className="section-index">01 / Current position</p>
-            <h2 id="current-position-title">A hypothesis is not a finding.</h2>
-            <p>The dossier keeps the proposed model separate from the judgment currently supported by evidence.</p>
+            <h2 id="current-position-title">A hypothesis is not the current judgment.</h2>
+            <p>The dossier preserves the live research position. Dated articles preserve the complete evidence and argument that changed it.</p>
           </div>
           <div className="research-position-grid">
             <article className="kind-question">
@@ -84,7 +74,7 @@ export default async function ResearchDossierPage({ params }: { params: Promise<
         <section className="research-test-boundary" aria-labelledby="test-boundary-title">
           <div className="research-section-intro">
             <p className="section-index">02 / Decision boundary</p>
-            <h2 id="test-boundary-title">What makes this Question worth keeping?</h2>
+            <h2 id="test-boundary-title">What keeps this Question alive?</h2>
           </div>
           <div className="research-boundary-grid">
             <article><span>Why it matters</span><p>{dossier.question.importance}</p></article>
@@ -93,81 +83,38 @@ export default async function ResearchDossierPage({ params }: { params: Promise<
           </div>
         </section>
 
-        <section className="research-evidence" aria-labelledby="evidence-title">
-          <div className="research-section-intro">
-            <p className="section-index">03 / Evidence trajectory</p>
-            <h2 id="evidence-title">Observed work, interpreted findings, and explicit decisions.</h2>
-            <p>{dossier.evidenceCount} evidence objects are currently admitted to this dossier.</p>
-          </div>
-          {evidence.length ? (
-            <div className="research-evidence-list">
-              {evidence.map((node, evidenceIndex) => (
-                <article className={`kind-${node.kind}`} key={node.id}>
-                  <div>
-                    <span>{String(evidenceIndex + 1).padStart(2, "0")}</span>
-                    <b>{node.kind}</b>
-                    <time dateTime={node.date}>{formatDate(node.date)}</time>
-                  </div>
-                  <h3>{node.title}</h3>
-                  <p>{node.summary}</p>
-                  <footer>{evidenceMeta(node)}</footer>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="research-empty-evidence">
-              <span>0 admitted evidence objects</span>
-              <h3>No experiment has earned entry into this dossier yet.</h3>
-              <p>The Question remains public because its uncertainty matters. The page does not convert a proposed experiment or confident explanation into evidence.</p>
-            </div>
-          )}
-        </section>
-
         <section className="research-records" aria-labelledby="records-title">
           <div className="research-section-intro">
-            <p className="section-index">04 / Public record</p>
-            <h2 id="records-title">Arguments and events connected to this judgment.</h2>
+            <p className="section-index">03 / Supporting publications</p>
+            <h2 id="records-title">Complete arguments connected to this Question.</h2>
+            <p>{dossier.articleCount} dated publication{dossier.articleCount === 1 ? "" : "s"} currently document this research line.</p>
           </div>
           <div className="research-record-grid">
             {dossier.articles.map((article) => (
-              <Link href={`/writing/${article.slug}`} key={article.id}>
-                <span>{article.articleType}</span>
+              <Link href={`/writing/${article.slug}`} key={article.slug}>
+                <span>{article.type}</span>
                 <h3>{article.title}</h3>
-                <p>{article.summary}</p>
-                <b>{formatDate(article.date)} ↗</b>
+                <p>{article.description}</p>
+                <b>{formatDate(article.modifiedDate || article.date)} ↗</b>
               </Link>
             ))}
-            {dossier.events.map((event) => (
-              <article key={event.id}>
-                <span>{event.type}</span>
-                <h3>{event.title}</h3>
-                <p>{event.summary}</p>
-                <b>{formatDate(event.date)}</b>
-              </article>
-            ))}
-            {!dossier.articles.length && !dossier.events.length && (
-              <div className="research-record-empty">No article or dated event has been attached to this Question.</div>
+            {!dossier.articles.length && (
+              <div className="research-record-empty">
+                No publication has earned attachment to this Question yet. The uncertainty remains visible without manufacturing an evidence summary.
+              </div>
             )}
           </div>
         </section>
 
-        <section className="research-ledger" aria-labelledby="ledger-title">
+        <section className="research-ledger" aria-labelledby="source-discipline-title">
           <div className="research-section-intro">
-            <p className="section-index">05 / Graph ledger</p>
-            <h2 id="ledger-title">The typed claims this dossier makes.</h2>
+            <p className="section-index">04 / Source discipline</p>
+            <h2 id="source-discipline-title">The dossier is an index, not the evidence authority.</h2>
           </div>
-          <div className="research-relation-list">
-            {dossier.relations.map((relation) => {
-              const source = getNode(relation.source);
-              const target = getNode(relation.target);
-              return (
-                <div key={relation.id}>
-                  <span>{source?.title || relation.source}</span>
-                  <b>{relation.label || relation.type.replaceAll("_", " ")}</b>
-                  <span>{target?.title || relation.target}</span>
-                </div>
-              );
-            })}
+          <div className="research-boundary-grid">
+            <article><span>Question metadata</span><p>Owns the current judgment, next test, and deletion condition.</p></article>
+            <article><span>Publications</span><p>Own complete dated arguments, limitations, comparisons, and source links.</p></article>
+            <article><span>Repositories</span><p>Own exact code, tests, releases, receipts, and machine evidence.</p></article>
           </div>
         </section>
 

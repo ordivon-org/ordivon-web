@@ -21,9 +21,7 @@
 .kind-system { --node-color: var(--node-system); }
 .kind-project { --node-color: var(--node-project); }
 .kind-question { --node-color: var(--node-question); }
-.kind-experiment { --node-color: var(--node-experiment); }
 .kind-finding { --node-color: var(--node-finding); }
-.kind-decision { --node-color: var(--node-decision); }
 .kind-article { --node-color: var(--node-article); }
 
 .status-active { --status-color: var(--status-active); }

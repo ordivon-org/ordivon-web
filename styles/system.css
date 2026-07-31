@@ -317,21 +317,12 @@
   clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
 }
 
-.graph-node-card.kind-experiment {
-  border-radius: 2rem;
-  padding-inline: 20px;
-}
 
 .graph-node-card.kind-finding {
   border-style: double;
   border-width: 3px;
 }
 
-.graph-node-card.kind-decision {
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--node-color) 14%, transparent), transparent 60%),
-    color-mix(in srgb, var(--ink-soft) 92%, transparent);
-}
 
 .graph-node-card.kind-article {
   border-left-width: 7px;

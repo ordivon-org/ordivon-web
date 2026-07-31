@@ -1,0 +1,102 @@
+<h2 id="the-model-did-not-need-more-history">The model did not need more history</h2>
+
+<p>Station Zero's first live single-Agent Host already preserved identity, candidate admission, deterministic Skill execution, verification, replay, recovery, and Provider replacement. It still failed strategically. Codex exhausted power. Hermes rushed communications and lost to reactor meltdown. A Codex-to-Hermes continuation preserved the Task and still ended with the Engineer incapacitated.</p>
+
+<p>The tempting response was to add a planner, longer transcript, unrestricted memory, or hidden rank-one policy. The implemented response was narrower: make the current Goal dependencies and consequences explicit enough that the Provider could choose with better information.</p>
+
+<div className="article-thesis"><p>A thin Host can improve strategy by compiling trustworthy decision semantics without becoming the decision-maker.</p></div>
+
+<h2 id="the-world-model-and-admission-rules-stayed-fixed">The World, model, and admission rules stayed fixed</h2>
+
+<p>M2.1 changed no World rule, model, Skill, admission rule, verification path, or replay contract. Providers still selected any exact current candidate. The Host added:</p>
+
+<ul>
+  <li>an explicit terminal Goal graph;</li>
+  <li>finite threat horizons for meltdown, asphyxiation, crew loss, incapacitation, battery exhaustion, and timeout;</li>
+  <li>persistent-regression annotations;</li>
+  <li>state-dependent power-control meaning;</li>
+  <li>an optimistic lower bound on remaining primitive steps;</li>
+  <li>a public strategic score and rank;</li>
+  <li>exactly one subsequent-operation lookahead.</li>
+</ul>
+
+<p>Full state search was measured and rejected after exceeding 20,000 nodes and one minute. The retained semantics remained bounded, inspectable, and recomputable from current verified state.</p>
+
+<h2 id="before-and-after">Before and after</h2>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="M2 to M2.1 live results">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Provider path</span><span role="columnheader">M2</span><span role="columnheader">M2.1</span><span role="columnheader">Calls</span><span role="columnheader">New score</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Codex</strong><span role="cell">power exhausted · 27</span><span role="cell">victory · 25</span><span role="cell">10</span><b role="cell" data-result="passed">2160</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Hermes</strong><span role="cell">reactor meltdown · 10</span><span role="cell">Engineer incapacitated · 25</span><span role="cell">9</span><b role="cell" data-result="failed">982</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Codex → Hermes</strong><span role="cell">Engineer incapacitated · 28</span><span role="cell">victory · 25</span><span role="cell">10</span><b role="cell" data-result="passed">2194</b></div>
+</div>
+
+<p>Codex reached verified rescue in ten Provider calls and 25 verified Effects. Codex-to-Hermes also reached victory after five decisions from each Provider, without transferring Codex transcript, Session, memory, or Tool history. Hermes-only survived far longer and followed the threat order more coherently, but repaired life support too late and still failed.</p>
+
+<h2 id="what-the-host-actually-compiled">What the Host actually compiled</h2>
+
+<p>Each candidate exposed changes to terminal requirements, persistent regressions, threat horizons, urgent mitigation, battery use, projected power draw, optimistic remaining steps, Tick slack, and whether one subsequent strategic operation could project victory.</p>
+
+<div className="surviving-stack">
+  <div><span>Goal graph</span><strong>What must become true</strong><p>Eight terminal requirements and active prerequisites replace reconstruction from scattered booleans.</p></div>
+  <div><span>Threat horizons</span><strong>What will fail first</strong><p>Current verified state becomes time-to-consequence rather than vague urgency prose.</p></div>
+  <div><span>Regression meaning</span><strong>What a candidate destroys</strong><p>Life-support shutdown remains harmful; cooling shutdown becomes safe only under explicit horizon conditions.</p></div>
+  <div><span>Lower bound</span><strong>Whether victory remains feasible</strong><p>Optimistic steps and Tick slack expose time infeasibility without full planning.</p></div>
+  <div><span>One-step lookahead</span><strong>What becomes possible next</strong><p>Bounded visibility replaces a hidden search tree.</p></div>
+</div>
+
+<h2 id="the-host-did-not-force-the-best-ranked-action">The Host did not force the best-ranked action</h2>
+
+<p>The strategic score and rank were public candidate semantics, not an admission override. The Provider remained free to choose any exact legal candidate. A separate rank-one baseline—using neither Fixture nor model—followed a different route and won in 26 Ticks. This proved that the ranking was executable and useful without making it the hidden policy behind the live runs.</p>
+
+<p>Codex explicitly cited the shortest threat horizon, safe cooling shutdown, and projected-victory requirement. The improvement is attributable to better current semantics, not to changing the World after seeing a failure or silently replacing the Provider's choice.</p>
+
+<h2 id="hermes-remained-a-required-counterexample">Hermes remained a required counterexample</h2>
+
+<p>Hermes no longer failed at Turn 10. It repaired and powered cooling first, sealed the breach, stabilized the crew, and survived until Turn 25. It still delayed life support until oxygen reached 15 and Engineer health reached zero.</p>
+
+<p>This retained failure prevents a false conclusion. Public decision semantics can materially improve policy while leaving Provider-specific planning variance intact. A Host can expose the dependency graph; it cannot guarantee that every model will allocate time and resources correctly.</p>
+
+<h2 id="why-not-a-planner">Why not a planner?</h2>
+
+<p>A hidden planner would make the model decorative. A complete state search was already too large for the workload's thin runtime budget. A forced rank-one action would erase useful Provider differences and make failure evidence less informative. Longer transcripts would preserve more old reasoning, not necessarily more current truth.</p>
+
+<p>The retained Host role is narrower:</p>
+
+<div className="surviving-invariants" aria-label="Thin Host strategic responsibilities">
+  <span>compile current truth</span><span>expose dependencies</span><span>project bounded consequences</span><span>retain alternatives</span><span>admit exact choice</span><span>verify reality</span>
+</div>
+
+<p>That boundary is compatible with stronger future models. Better cognition can use the same semantics without inheriting a hidden policy that assumes today's models are permanently weak.</p>
+
+<h2 id="what-this-experiment-proves">What this experiment proves</h2>
+
+<ul>
+  <li>Decision quality can improve when Goal structure and consequences become explicit without changing the model or World.</li>
+  <li>One bounded lookahead can be useful after full search is measured and rejected.</li>
+  <li>Provider replacement can preserve successful policy when the replacement receives durable Task state rather than prior transcript.</li>
+  <li>Host semantics can remain advisory and inspectable rather than becoming an opaque planner.</li>
+</ul>
+
+<h2 id="what-it-does-not-prove">What it does not prove</h2>
+
+<p>Three live paths on one deterministic World do not establish general planning superiority. The strategic score was designed for Station Zero. The rank-one baseline does not prove that fixed ranking beats models across changing Worlds. Hermes-only still failed. No human compared interpretability or intervention cost.</p>
+
+<p>The general claim is narrower: when a World already contains verified Goals, dependencies, resources, and time, compiling that structure into bounded candidate semantics can be more useful than adding transcript length or hidden planning machinery.</p>
+
+<p className="article-closing">The thin Host improves the conditions of judgment. It does not confiscate judgment from the Provider.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Evidence</p>
+  <h2 id="sources-title">M2.1 record</h2>
+  <ol className="source-list">
+
+<li><span>Receipt.</span> <a href="https://github.com/zycxfyh/ordivon-game/blob/7b44504da7a3467d65d6260d7cbc479b0fc971a8/docs/M21-RECEIPT.md">Goal-directed strategy semantics receipt</a>.</li>
+<li><span>Evaluation.</span> <a href="https://github.com/zycxfyh/ordivon-game/blob/7b44504da7a3467d65d6260d7cbc479b0fc971a8/docs/M21-EVALUATION.json">Machine-readable M2.1 evaluation</a>.</li>
+  </ol>
+</section>
+
+<footer className="article-footer">
+  <p>The receipt remains authoritative for exact live trajectories, digests, coverage, and bounded Context size.</p>
+  <div className="actions"><a className="button button-primary" href="/research/host-general-repository-goal">Open the Host dossier</a><a className="button button-secondary" href="/research/game-agent-native-mechanics">Open the Game dossier</a></div>
+</footer>
