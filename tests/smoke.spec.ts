@@ -192,7 +192,7 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
   await gotoWithNetworkRetry(page, "/projects");
   await expect(page.locator(".project-capability-card")).toHaveCount(4);
   await expect(page.getByText("Production-tested local runtime", { exact: true })).toBeVisible();
-  await expect(page.getByText("Experimental boundary", { exact: true })).toBeVisible();
+  await expect(page.getByText("Reduced operational carrier", { exact: true })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/projects/runtime");
   await expect(page.getByRole("heading", { name: "Ordivon Runtime", exact: true })).toBeVisible();

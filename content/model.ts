@@ -1,7 +1,7 @@
 import type { BoundaryDefinition, ProjectDefinition, QuestionDefinition, ResearchPlaneDefinition } from "@/lib/model/types";
 
-export const siteUpdatedAt = "2026-08-01";
-const portfolioUpdatedAt = "2026-07-31";
+export const siteUpdatedAt = "2026-08-02";
+const portfolioUpdatedAt = "2026-08-02";
 
 export const researchPlanes: ResearchPlaneDefinition[] = [
   {
@@ -35,12 +35,12 @@ export const boundaries: BoundaryDefinition[] = [
     href: "/projects/runtime", updatedAt: portfolioUpdatedAt,
   },
   {
-    id: "system:world", kind: "boundary", slug: "world", index: "03", title: "World", maturity: "experimental",
-    summary: "The experimental continuity boundary for paths, identities, authority, provider actions, receipts, and external uncertainty.",
-    thesis: "Let a Task reach and act through a changing external world without rebuilding the world beneath it.",
-    question: "What must remain continuous when connection and external action fail together?",
-    owns: ["World Interaction bindings", "Conditioned observations", "External evidence", "Reconciliation and rebinding"],
-    boundary: ["No universal proxy or transport", "No provider reimplementation", "No Goal, Task, or local process ownership"],
+    id: "system:world", kind: "boundary", slug: "world", index: "03", title: "World", maturity: "tested",
+    summary: "A carrier for provider-native external adapters and private network operator tools, not an independent semantic authority.",
+    thesis: "Keep external truth in providers and source-native observations; add no shared World state without a reproduced unowned failure.",
+    question: "Which adapter-local facts prevent duplicate external effects or workstation path damage?",
+    owns: ["Cloudflare adapter code", "Provider-native receipts and artifacts", "Private VPN operator tools"],
+    boundary: ["No World service or database", "No universal interaction schema", "No Task or provider authority"],
     href: "/projects/world", updatedAt: portfolioUpdatedAt,
   },
 ];
@@ -92,16 +92,16 @@ export const projects: ProjectDefinition[] = [
   },
   {
     id: "project:world", kind: "project", slug: "world", title: "Ordivon World", lifecycle: "active", group: "World interaction",
-    label: "Conditioned external interaction", architectureRoleId: "system:world", publicPage: true,
-    problem: "An external action can lose its response while paths, identities, and provider conditions change, making a blind retry unsafe.",
-    capability: "Correlates target, path, identity, authority, provider execution, receipts, observations, uncertainty, reconciliation, and rebinding around one external interaction.",
-    maturity: "Experimental boundary",
-    audience: "Developers connecting durable tasks to external services where delivery conditions and effect recovery must remain verifiable.",
-    latestProof: "The former Link and Edge projects were unified and retired; the boundary now faces one decisive lost-response comparison against direct Host integration.",
+    label: "Provider-native external capability", architectureRoleId: "system:world", publicPage: true,
+    problem: "External effects and workstation network changes need exact owner-native identity and recovery without another synchronized authority.",
+    capability: "Retains a Cloudflare Fetch/Browser adapter with receipts, artifacts, release and rollback, plus machine-specific VPN operator tools.",
+    maturity: "Reduced operational carrier",
+    audience: "Developers who need verifiable external adapters without a provider broker or World control plane.",
+    latestProof: "W1 and WCP-0 through WXP-2 found no benefit from a shared World authority; the active tree deleted the experiments and retained only owner-local capabilities.",
     flagshipSlug: "link-edge-boundary",
-    summary: "The task-to-external-world interaction boundary. World correlates target, path, identity, transport, provider execution, authority, receipt, artifact, conditioned evidence, uncertainty, reconciliation, and rebinding while mature systems retain their native mechanisms.",
-    state: "Former Link and Edge histories are unified and retired as separate projects. The next decision is empirical: compare one correlated lost-response recovery path against direct Host-to-provider integration.",
-    evidence: [{ value: "2", label: "retired prototype boundaries" }, { value: "1", label: "World Interaction question" }, { value: "W1", label: "next decisive experiment" }],
+    summary: "A repository carrier for two current capabilities whose authority remains in Cloudflare, network state, Host, and Runtime rather than in a new World database.",
+    state: "The shared World layer is rejected. Historical experiments remain in Git; current code is limited to the Cloudflare adapter and private WSL/VPN tools.",
+    evidence: [{ value: "0", label: "shared World authorities" }, { value: "2", label: "retained owner-local capabilities" }, { value: "W1+WCP", label: "negative architecture evidence" }],
     repository: "https://github.com/zycxfyh/ordivon-world", href: "/projects/world", updatedAt: portfolioUpdatedAt,
   },
   {

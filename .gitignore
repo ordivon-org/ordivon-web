@@ -9,3 +9,7 @@ coverage/
 .DS_Store
 *.tsbuildinfo
 out/
+
+# Build-time article projections; MDX frontmatter remains authoritative.
+/content/articles/generated-metadata.ts
+/content/articles/generated-manifest.ts

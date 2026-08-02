@@ -7,7 +7,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev": "next dev --webpack",
+    "dev": "pnpm content:generate && next dev --webpack",
     "build": "pnpm content:generate && next build --webpack",
     "social:generate": "python3 scripts/generate-social-cards.py",
     "start": "python3 -m http.server 8788 --directory out",
@@ -16,11 +16,10 @@
     "lint": "eslint --no-error-on-unmatched-pattern app components content lib scripts tests eslint.config.mjs mdx-components.tsx next.config.ts playwright.config.ts",
     "test": "pnpm build && playwright test tests/smoke.spec.ts",
     "test:smoke": "pnpm build && playwright test tests/smoke.spec.ts",
-    "check": "pnpm content:check && pnpm publication:check && pnpm typecheck && pnpm lint && pnpm build && pnpm budget:report && playwright test tests/smoke.spec.ts",
+    "check": "pnpm content:generate && pnpm publication:check && next typegen && tsc --noEmit && pnpm lint && next build --webpack && pnpm budget:report && playwright test tests/smoke.spec.ts",
     "publication:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/validate-publications.mjs",
     "site:audit": "node scripts/site-audit.mjs",
     "content:generate": "node scripts/generate-article-manifest.mjs",
-    "content:check": "node scripts/generate-article-manifest.mjs --check",
     "pages:prepare": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/prepare-pages.mjs",
     "budget:report": "node scripts/report-static-budget.mjs"
   },
