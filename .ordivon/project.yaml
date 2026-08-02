@@ -1,0 +1,17 @@
+schema_version: 1
+id: ordivon-web
+name: Ordivon Web
+repository: https://github.com/zycxfyh/ordivon-web
+kind: publication
+default_profiles:
+  - publication
+  - engineering
+  - organization
+documentation_roots:
+  - README.md
+  - content
+managed_paths: []
+enforcement: advisory
+maintainers:
+  - zycxfyh
+description: Public research, engineering interpretation, project navigation, and dated editorial projections.
