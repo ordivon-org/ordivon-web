@@ -14,7 +14,7 @@ audience:
   - builder
   - publisher
   - agent
-updated: 2026-08-03
+updated: 2026-08-04
 summary: Canonical repository entry for the public Ordivon publication surface, static build, and source-of-truth boundary.
 evidence_status: not_applicable
 readiness: READY
@@ -85,3 +85,9 @@ The `Deploy Pages` workflow runs the complete check, materializes historical red
 `content/editorial/` defines the public positioning, audiences, voice, vocabulary, publication types, claim discipline, and dated interface-copy audits. Start with [`content/editorial/README.md`](content/editorial/README.md).
 
 The editorial layer may frame and interpret the work, but it does not replace repository source, tests, releases, receipts, or operational state.
+
+## Project family
+
+- [Public site](https://ordivon.com/) — current public orientation, project map, research dossiers, and dated publications.
+- [Cross-project map](https://github.com/zycxfyh/ordivon-computing/blob/main/projects/README.md) — stable roles, repository links, and authority entry points for all nine repositories.
+- [`content/editorial/information-architecture.md`](content/editorial/information-architecture.md) defines how Web summarizes repository facts without becoming a second implementation authority.
