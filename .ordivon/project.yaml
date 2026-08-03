@@ -10,8 +10,12 @@ default_profiles:
 documentation_roots:
   - README.md
   - content
-managed_paths: []
-enforcement: advisory
+managed_paths:
+  - README.md
+  - content/editorial/README.md
+  - content/editorial/publication-system.md
+  - content/editorial/authority.md
+enforcement: strict
 maintainers:
   - zycxfyh
 description: Public research, engineering interpretation, project navigation, and dated editorial projections.
