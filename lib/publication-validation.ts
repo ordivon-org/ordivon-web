@@ -11,12 +11,16 @@ export type EditorialArticleSelections = {
 };
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+const DOCUMENT_ID = /^[a-z0-9]+(?:[._-][a-z0-9]+)*$/;
 
 export function validatePublicationSystem(articles: readonly ArticleMetadata[], selections: EditorialArticleSelections) {
   const errors: string[] = [];
   const bySlug = new Map(articles.map((article) => [article.slug, article]));
 
   for (const article of articles) {
+    if (article.documentId && !DOCUMENT_ID.test(article.documentId)) errors.push(`${article.slug}: invalid documentId`);
+    if (article.documentId && article.sourceRole !== "derived") errors.push(`${article.slug}: identified Web articles must declare sourceRole derived`);
+    if (article.sourceRole && !article.documentId) errors.push(`${article.slug}: sourceRole requires documentId`);
     if (!ISO_DATE.test(article.publishedAt)) errors.push(`${article.slug}: publishedAt must be YYYY-MM-DD`);
     if (article.revisedAt && !ISO_DATE.test(article.revisedAt)) errors.push(`${article.slug}: revisedAt must be YYYY-MM-DD`);
     if (article.revisedAt && article.revisedAt < article.publishedAt) errors.push(`${article.slug}: revisedAt precedes publishedAt`);

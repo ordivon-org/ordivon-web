@@ -4,6 +4,8 @@ export type ClaimClass = "observed-fact" | "experimental-result" | "engineering-
 export type EvidenceLevel = "E0" | "E1" | "E2" | "E3" | "E4" | "E5";
 
 export type ArticleSourceMetadata = {
+  documentId?: string;
+  sourceRole?: "derived";
   slug: string;
   title: string;
   deck: string;

@@ -1,3 +1,29 @@
+---
+schema_version: 1
+id: web.editorial.start
+title: Ordivon Editorial System
+type: start
+profile: organization
+lifecycle: active
+source_role: canonical
+visibility: public
+owners:
+  - ordivon-web
+audience:
+  - writer
+  - editor
+  - reviewer
+  - agent
+updated: 2026-08-03
+summary: Canonical entry to public positioning, audiences, voice, vocabulary, publication types, claim discipline, and review boundaries.
+evidence_status: not_applicable
+readiness: READY
+applies_to:
+  - ordivon-web
+related:
+  - web.publication-system
+  - web.authority
+---
 # Ordivon Editorial System
 
 Status: canonical editorial guidance for `ordivon-web`  
@@ -17,7 +43,7 @@ The desired public standard is:
 
 > Bold in judgment. Precise in evidence. Plain before technical. Concrete before abstract.
 
-## Canonical files
+## Start here
 
 - [`positioning.md`](./positioning.md) — what Ordivon is, why it matters, and the message hierarchy.
 - [`audiences.md`](./audiences.md) — primary readers, their questions, and the appropriate entry path.
@@ -42,7 +68,7 @@ Every important public surface should answer these questions in order:
 
 Internal architecture may require additional precision. It should not replace this sequence.
 
-## Source-of-truth boundary
+## Current boundary
 
 Public copy may interpret and organize the work. It must not become a second technical authority.
 
@@ -56,6 +82,6 @@ Public copy may interpret and organize the work. It must not become a second tec
 
 A change to a public page or article should be reviewed against the relevant files above. The system is guidance, not a mandatory prose bureaucracy. Apply it where it improves comprehension, credibility, or reach; do not create process that costs more than the communication failure it prevents.
 
-- [`publication-system-2026-08-01.md`](./publication-system-2026-08-01.md) — implemented the publication schema, reusable primitives, flagship packages, revision semantics, and production audit.
+- [`publication-system.md`](./publication-system.md) — implemented the publication schema, reusable primitives, flagship packages, revision semantics, and production audit.
 
 - [`a-series-web-constraint-audit-2026-08-01.md`](./a-series-web-constraint-audit-2026-08-01.md) — applies Ordivon Computer A0–A16 to Web architecture, gates, and publication constraints.

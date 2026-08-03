@@ -1,8 +1,47 @@
+---
+schema_version: 1
+id: web.start
+title: Ordivon Web
+type: start
+profile: organization
+lifecycle: active
+source_role: canonical
+visibility: public
+owners:
+  - ordivon-web
+audience:
+  - reader
+  - builder
+  - publisher
+  - agent
+updated: 2026-08-03
+summary: Canonical repository entry for the public Ordivon publication surface, static build, and source-of-truth boundary.
+evidence_status: not_applicable
+readiness: READY
+applies_to:
+  - ordivon-web
+related:
+  - web.editorial.start
+  - web.publication-system
+  - web.authority
+---
 # Ordivon Web
+
+## Purpose
 
 The public research and engineering interface for Ordivon.
 
 The site is built with Next.js, React, TypeScript, and MDX, exported as static files, and published as a tested GitHub Pages Artifact from the exact `main` commit. Cloudflare remains the authoritative DNS provider; it is not an application runtime for this site.
+
+## Current boundary
+
+Ordivon Web owns public navigation, presentation, article publication metadata, and dated interpretation. Project repositories remain authoritative for implementation, research evidence, releases, tests, receipts, and live operational state.
+
+## Start here
+
+- Read [`content/editorial/README.md`](content/editorial/README.md) for editorial authority and review order.
+- Read [`content/editorial/publication-system.md`](content/editorial/publication-system.md) for the article build and publication contract.
+- Use `pnpm check` before treating a source revision as publishable.
 
 ## Runtime shape
 
