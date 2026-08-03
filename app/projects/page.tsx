@@ -6,44 +6,83 @@ import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Compare the problems, capabilities, maturity, latest evidence, and open questions across Ordivon Computing, Host, Runtime, and World.",
+  description: "A current map of Ordivon infrastructure, playable applications, operational capability, and bounded research—with explicit maturity and repository authority.",
   alternates: { canonical: "/projects" },
 };
+
+const groups = [
+  {
+    id: "core-system",
+    eyebrow: "Core work system",
+    title: "Three boundaries carry durable Agent work.",
+    description: "Host preserves the Task, Harness runs one replaceable Agent episode, and Runtime commits physical local execution. They cooperate without sharing one truth store.",
+  },
+  {
+    id: "application",
+    eyebrow: "Applications and capability",
+    title: "Products and adapters put the boundaries under real pressure.",
+    description: "Game owns a playable World. World retains provider-native and machine-local capability, not a shared semantic layer.",
+  },
+  {
+    id: "research",
+    eyebrow: "Research and specification",
+    title: "Research projects test what should remain, change, or disappear.",
+    description: "Computing governs shared contracts, Human studies practical human trajectories, and Security tests strategic agency under adaptive opposition.",
+  },
+] as const;
+
+const statusLabel = {
+  operational: "Usable now",
+  prototype: "Implemented prototype",
+  playable: "Playable now",
+  research: "Research",
+  internal: "Internal",
+} as const;
 
 export default function ProjectsPage() {
   return (
     <div className="page-shell page-top projects-page">
       <header className="index-hero projects-hero">
-        <p className="eyebrow">Projects</p>
-        <h1>Four projects preserve different parts of one durable work trajectory.</h1>
-        <p>Start from the failure each project prevents, the capability it currently provides, and the evidence that supports its maturity. Ownership details remain on the project page.</p>
+        <p className="eyebrow">Projects · current map</p>
+        <h1>Eight projects, three kinds of work, no single mandatory stack.</h1>
+        <p>Use this page to distinguish operational infrastructure, implemented prototypes, playable applications, retained capability, and research. Exact implementation facts remain in each repository.</p>
+        <div className="project-status-legend" aria-label="Project status legend">
+          {Object.entries(statusLabel).filter(([key]) => key !== "internal").map(([key, label]) => <span key={key} data-status={key}>{label}</span>)}
+        </div>
       </header>
 
-      <section className="project-capability-directory" aria-label="Ordivon project capabilities">
-        {projects.map((project) => {
-          const proofArticle = articles.find((article) => article.slug === project.flagshipSlug);
-          const openQuestion = project.openQuestions[0];
-          if (!proofArticle || !openQuestion) throw new Error(`${project.slug} is missing public proof or an open question`);
-          return (
-            <article className={`project-capability-card status-${project.lifecycle}`} key={project.slug}>
-              <header>
-                <div><span>{project.index}</span><b>{project.group}</b></div>
-                <i>{project.maturity}</i>
-              </header>
-              <h2><Link href={`/projects/${project.slug}`}>{project.title}</Link></h2>
-              <section><span>Problem</span><p>{project.problem}</p></section>
-              <section><span>What it does</span><p>{project.capability}</p></section>
-              <section className="project-card-proof"><span>Latest proof</span><p>{project.latestProof}</p><Link href={`/writing/${proofArticle.slug}`}>{proofArticle.title} ↗</Link></section>
-              <section className="project-card-question"><span>Open question · {openQuestion.state}</span><p>{openQuestion.title}</p><Link href={openQuestion.href}>See the next test ↗</Link></section>
-              <footer><Link href={`/projects/${project.slug}`}>Open project</Link><a href={project.repository}>Repository ↗</a></footer>
-            </article>
-          );
-        })}
-      </section>
+      {groups.map((group) => {
+        const members = projects.filter((project) => project.category === group.id);
+        return (
+          <section className="project-group" key={group.id}>
+            <SectionHeading eyebrow={group.eyebrow} title={group.title} description={group.description} />
+            <div className="project-capability-directory">
+              {members.map((project) => {
+                const proofArticle = project.flagshipSlug ? articles.find((article) => article.slug === project.flagshipSlug) : undefined;
+                const nextQuestion = project.openQuestions.find((question) => question.state === "testing" || question.state === "open") || project.openQuestions[0];
+                return (
+                  <article className={`project-capability-card status-${project.lifecycle}`} data-availability={project.availability} key={project.slug}>
+                    <header>
+                      <div><span>{project.index}</span><b>{statusLabel[project.availability]}</b></div>
+                      <i>{project.maturity}</i>
+                    </header>
+                    <h2 id={`project-group-${group.id}-${project.slug}`}><Link href={`/projects/${project.slug}`}>{project.title}</Link></h2>
+                    <section><span>Role</span><p>{project.label}</p></section>
+                    <section><span>What exists</span><p>{project.capability}</p></section>
+                    <section className="project-card-proof"><span>Current evidence</span><p>{project.latestProof}</p>{proofArticle && <Link href={`/writing/${proofArticle.slug}`}>{proofArticle.status === "historical" ? "Historical evidence" : "Read the evidence"}: {proofArticle.title} ↗</Link>}</section>
+                    {nextQuestion && <section className="project-card-question"><span>Question · {nextQuestion.state}</span><p>{nextQuestion.title}</p><Link href={nextQuestion.href}>Open the research dossier ↗</Link></section>}
+                    <footer><Link href={`/projects/${project.slug}`}>Open project</Link><a href={project.repository}>Repository ↗</a></footer>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })}
 
       <section className="portfolio-boundary">
-        <SectionHeading eyebrow="How they connect" title="The projects cooperate without becoming one mandatory pipeline." description="A local Runtime job may never reach an external service. World can observe a path before Host admits a task. Computing can delete a proposed contract without owning production state." />
-        <div><p>Host owns the meaning and accepted progress of durable work. Runtime owns local execution facts. World owns conditioned external interaction. Computing tests which shared contracts remain necessary across those boundaries.</p><p>Source, tests, releases, receipts, and each repository&apos;s current documents remain the technical authority. This site provides orientation, evidence paths, and dated judgment.</p></div>
+        <SectionHeading eyebrow="Authority" title="The website explains the map; repositories own the facts." description="Public status is an authored orientation at a date. Source, tests, releases, receipts, research methods, and operational truth remain with the project that produced them." />
+        <div><p>Start with <Link href="/system">How it works</Link> when you need the core execution path. Start with <Link href="/research">Research</Link> when the useful unit is an unresolved question. Use the repository link whenever exact capability, installation, or evidence matters.</p><p>A project can be useful without becoming a shared layer: Game owns its World, World retains two owner-local capability families, and Human and Security publish conditional research without claiming a universal product.</p></div>
       </section>
     </div>
   );

@@ -55,7 +55,7 @@ structured content + React components
       GitHub Pages + custom domain
 ```
 
-There is no request-time application server, database, CMS, ISR cache, Worker, D1, KV, R2, Queue, or service binding.
+There is no request-time application server, database, CMS, ISR cache, Worker, D1 database, KV storage, Cloudflare object storage, Queue, or service binding.
 
 ## Commands
 

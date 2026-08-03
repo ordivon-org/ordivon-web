@@ -5,6 +5,7 @@ export const metadata = {
   "description": "How one task remained coherent through Codex→Hermes and Hermes→Codex replacement, three injected faults, and materially different provider lifecycles.",
   "projectSlugs": [
     "host",
+    "harness",
     "runtime",
     "computing"
   ],
@@ -15,6 +16,7 @@ export const metadata = {
   "type": "Research report",
   "project": "Ordivon Host",
   "publishedAt": "2026-07-31",
+  "revisedAt": "2026-08-04",
   "readMinutes": 12,
   "author": "zycxfyh",
   "lead": "H1–H5 did not prove that Codex and Hermes were interchangeable. It proved that one Task could remain coherent while their Sessions, event protocols, Tool semantics, final responses, and accepted source implementations remained different.",
@@ -34,7 +36,7 @@ export const metadata = {
 };
 
 <InBrief claim="One task survived both tested Codex↔Hermes replacement orders without making provider output task truth." evidence="E4 · exact source, retained receipts, live runs, and injected faults" scope="One bounded repository task across Codex App Server and Hermes ACP">
-  <p>Replacement succeeded because Host-owned identity, generation, artifacts, and completion admission remained durable while provider sessions and lifecycles stayed different.</p>
+  <p>Replacement succeeded because Host Task continuity and verification remained durable while Harness-owned Assignment and Run evidence fenced execution and Provider Sessions stayed different.</p>
 </InBrief>
 
 <PublicationFigure title="Two replacement orders, one durable task" caption="Four real provider runs completed Codex→Hermes and Hermes→Codex. Stale completion, missing artifacts, and response loss were contained without blind redispatch.">
@@ -155,7 +157,7 @@ responseLost = true`}</code></pre>
 <div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="H5 architecture disposition">
   <div className="article-data-row article-data-head" role="row"><span role="columnheader">Candidate</span><span role="columnheader">Disposition</span><span role="columnheader">Reason</span><span role="columnheader">Owner</span></div>
   <div className="article-data-row" role="row"><strong role="cell">Task Attempt role</strong><span role="cell">retain thinly</span><span role="cell">one semantic path survived two Harnesses</span><span role="cell">Host</span></div>
-  <div className="article-data-row" role="row"><strong role="cell">Assignment generation</strong><span role="cell">retain</span><span role="cell">prevented stale completion</span><span role="cell">Host</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Assignment generation</strong><span role="cell">retain</span><span role="cell">prevented stale completion</span><span role="cell">Harness</span></div>
   <div className="article-data-row" role="row"><strong role="cell">HarnessRunReceipt</strong><span role="cell">retain</span><span role="cell">links Provider, Context, Runtime, Artifact, usage, stop</span><span role="cell">Host boundary</span></div>
   <div className="article-data-row" role="row"><strong role="cell">CompletionProposal/Decision</strong><span role="cell">retain</span><span role="cell">prevented false completion</span><span role="cell">Host</span></div>
   <div className="article-data-row" role="row"><strong role="cell">Provider Session</strong><span role="cell">localize</span><span role="cell">useful Run evidence, not Task identity</span><span role="cell">Harness</span></div>
@@ -175,11 +177,11 @@ responseLost = true`}</code></pre>
   <li>It did not test a first-party Ordivon Agent Loop over a bare model API.</li>
 </ul>
 
-<h2 id="the-new-question" data-toc="The new question">The new question</h2>
+<h2 id="the-new-question" data-toc="The question after extraction">The question after extraction</h2>
 
-<p>The shared Provider-lifecycle question is closed. A distinct construction question is now ready: build the smallest Ordivon Harness that owns a raw model/Tool Loop without copying Host or Runtime.</p>
+<p>The shared Provider-lifecycle question remains closed. Ordivon subsequently implemented and extracted an independent Harness with Provider-faithful Codex and Hermes adapters, a bounded DeepSeek model–Tool loop, Tool-step checkpoints, recovery, and completion proposals.</p>
 
-<p>Version zero will compete against the one-shot gateway and mature Provider Harness, and it carries a deletion condition. If it produces no real capability or strategic model path at acceptable permanent cost, it should not survive merely because the architecture diagram has a place for it.</p>
+<p>The current question is no longer whether version zero can be built. It is whether the thin boundary transfers to another adapter or workload with enough recurring capability and recovery value to justify its permanent cost. See <a href="/projects/harness">the current Harness project page</a>.</p>
 
 <p className="article-closing">H1–H5 retained a boundary, not a platform. The next experiment must earn the first-party Loop.</p>
 

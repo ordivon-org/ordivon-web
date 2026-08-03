@@ -6,6 +6,7 @@ export const metadata = {
   "projectSlugs": [
     "computing",
     "host",
+    "harness",
     "runtime"
   ],
   "questionSlugs": [
@@ -15,6 +16,7 @@ export const metadata = {
   "type": "Architecture guide",
   "project": "Ordivon Computing",
   "publishedAt": "2026-07-31",
+  "revisedAt": "2026-08-04",
   "readMinutes": 12,
   "author": "zycxfyh",
   "lead": "The path from a prompt to completed work is not one model call. It is a stack of nested loops, authority boundaries, physical execution, evidence, and semantic decisions—and each layer fails differently when its owner is unclear.",
@@ -23,12 +25,12 @@ export const metadata = {
   "evidenceLevel": "E3",
   "takeaways": [
     "A model call is only one layer in a complete work system.",
-    "Harness, Host, Runtime, and World fail differently and should not share one authority.",
+    "Harness, Host, Runtime, and the owning domain fail differently and should not share one authority.",
     "Durable progress is a graph of admitted work and evidence, not a long conversation."
   ],
   "limitations": [
     "The architecture combines public provider behavior with Ordivon experiments; it does not establish every provider's private implementation.",
-    "World remains less experimentally mature than Host and Runtime."
+    "The guide describes logical roles across heterogeneous systems; it does not require every application or Provider path to use the full Ordivon core."
   ],
   "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-computing/tree/c8ad154329a67344e772119ae3288eafce9fe62f/studies/2026-model-to-work-and-ordivon-harness"
 };
@@ -77,7 +79,7 @@ export const metadata = {
   <li><strong>Goal interpretation:</strong> intent becomes an objective, constraints, risks, preferences, and success conditions.</li>
   <li><strong>Workload Contract:</strong> source revision, allowed operations, required Artifacts, acceptance criteria, Effect boundaries, budget, and dependencies become explicit.</li>
   <li><strong>Task graph:</strong> Host represents ready, blocked, branching, waiting, replacement, and verification work.</li>
-  <li><strong>Task Attempt and Assignment:</strong> one current Harness receives versioned authority, exact Context, Tool catalog, source binding, prior Artifacts, and budget.</li>
+  <li><strong>Task Attempt and Assignment:</strong> Harness owns the versioned execution commitment, exact authority, Tool catalog, source binding, prior Artifacts, and budget for one Agent Run.</li>
   <li><strong>Semantic Context compilation:</strong> Host selects the smallest current set of durable facts that the Run needs.</li>
   <li><strong>Harness input compilation:</strong> the selected Harness turns those facts into model-specific messages, Tool schemas, and Provider options.</li>
   <li><strong>Model Adapter and serving:</strong> a raw API or local inference service performs one model call and returns content, Tool requests, usage, stop reason, or error.</li>
@@ -103,7 +105,7 @@ export const metadata = {
   <div className="article-data-row" role="row"><strong role="cell">Model parameters</strong><span role="cell">Model</span><span role="cell">Learned statistical structure</span><span role="cell">Current Task truth</span></div>
   <div className="article-data-row" role="row"><strong role="cell">Context window</strong><span role="cell">Harness / model call</span><span role="cell">Current working information</span><span role="cell">Durable work database</span></div>
   <div className="article-data-row" role="row"><strong role="cell">Provider Session</strong><span role="cell">Provider Harness</span><span role="cell">Provider-local conversation and Run continuity</span><span role="cell">Task identity</span></div>
-  <div className="article-data-row" role="row"><strong role="cell">Task state</strong><span role="cell">Host</span><span role="cell">Goal, Attempt, Assignment, evidence, decision, Outcome</span><span role="cell">Process state</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Task state</strong><span role="cell">Host</span><span role="cell">Task continuity, commitments, verification, Outcome</span><span role="cell">Run and process state</span></div>
   <div className="article-data-row" role="row"><strong role="cell">World and Artifacts</strong><span role="cell">Runtime / domain World</span><span role="cell">What physically or externally happened</span><span role="cell">Model narrative</span></div>
 </div>
 
@@ -112,7 +114,7 @@ export const metadata = {
 <h2 id="where-ordivon-draws-the-boundary" data-toc="Where Ordivon draws the boundary">Where Ordivon draws the boundary</h2>
 
 <div className="surviving-stack">
-  <div><span>Ordivon Host</span><strong>Durable work meaning</strong><p>Goal, Task, Attempt, Assignment generation, semantic Context, replacement, acceptance, completion, and recovery.</p></div>
+  <div><span>Ordivon Host</span><strong>Durable work meaning</strong><p>Generic Task continuity, commitments, verification records, participant decisions, and Outcome.</p></div>
   <div><span>Ordivon Harness</span><strong>One first-party Agent Run</strong><p>Raw model calls, Run-local Context, Tool Loop, budgets, interruption, stop classification, and Run evidence.</p></div>
   <div><span>External Harness</span><strong>Provider-optimized Agent Run</strong><p>Codex, Hermes, Claude, or another mature Harness keeps its native Session and lifecycle.</p></div>
   <div><span>Ordivon Runtime</span><strong>Physical execution truth</strong><p>Workspace, Job, Attempt, process tree, output, Artifact, cancellation, and reconciliation.</p></div>
@@ -141,9 +143,9 @@ Harness Run → CompletionProposal → CompletionDecision → TaskOutcome → ne
 
 <h2 id="what-remains-open" data-toc="What remains open">What remains open</h2>
 
-<p>The broad stack is now understood. The next question is empirical and deliberately smaller: how little code can implement Ordivon Harness for a bare model API while reusing Host and Runtime?</p>
+<p>The broad stack is now implemented across independent Host, Harness, and Runtime repositories. The next question is empirical: whether the thin Harness boundary transfers to another bare-model adapter or materially different workload without expanding into a daemon, scheduler, or second Task database.</p>
 
-<p>Version zero will not begin with compaction, persistent Sessions, parallel Tools, subagents, model routing, Skills, Plugins, or another database. It must first show one bounded multi-turn Tool Loop, one independently verified Artifact, explicit interruption and budget stops, and a measurable advantage over a one-shot call.</p>
+<p>The implemented first-party path remains deliberately austere: bounded sequential Tool use, explicit budgets and interruption, durable checkpoints, and independent verification. Parallel Tools, subagents, persistent Provider Sessions, automatic model routing, and another database remain outside the accepted boundary until repeated evidence earns them.</p>
 
 <p className="article-closing">The model is the source of intelligence. It is not the owner of work, execution history, or truth.</p>
 

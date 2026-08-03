@@ -9,13 +9,13 @@ export const editorialSelections = {
     readingPaths: [
       {
         label: "Start with Ordivon",
-        title: "Why durable agent work matters",
+        title: "Why durable Agent work matters",
         description: "Begin with the practical failure, the project intent, and the larger future Ordivon is trying to make possible.",
         slugs: ["why-ordivon", "creation-judgment-recoverable-systems", "the-future-will-not-wait"],
       },
       {
         label: "Agent architecture",
-        title: "From model output to completed work",
+        title: "From model output to durable work",
         description: "Follow the execution stack, the Harness boundary, and the experiments that made the surviving architecture smaller.",
         slugs: ["from-tokens-to-work", "why-ordivon-needs-a-harness", "what-h1-h5-proved"],
       },
@@ -34,8 +34,8 @@ export const editorialSelections = {
   },
   now: {
     judgmentChanges: [
-      "harness-composition-and-completion", "smallest-agent-native-core", "world-boundary-value",
-      "runtime-boundary-friction", "game-agent-native-mechanics", "security-adversarial-trajectory",
+      "ordivon-harness-v0", "host-general-repository-goal", "runtime-boundary-friction",
+      "game-agent-native-mechanics", "human-economic-autonomy", "security-adversarial-trajectory",
     ],
   },
 } as const;

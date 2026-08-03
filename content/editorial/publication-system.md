@@ -14,29 +14,28 @@ audience:
   - editor
   - builder
   - agent
-updated: 2026-08-03
-summary: Canonical architecture for authoring, validating, compiling, distributing, revising, and deploying Ordivon publications.
+updated: 2026-08-04
+summary: Canonical architecture for authoring, validating, compiling, distributing, revising, correcting, and deploying Ordivon publications.
 evidence_status: verified
 readiness: READY
 applies_to:
   - ordivon-web
 related:
   - web.editorial.start
-  - web.article.the-future-will-not-wait
+  - web.information-architecture
   - web.authority
 ---
 # Ordivon Publication System
 
-Date: 1 August 2026  
 Original baseline: `5d0f28af04787f84261c6038d3ac407bb46221e1`
 
 ## Purpose
 
-Publish durable research and engineering arguments that remain scannable, evidence-bounded, revisable, and independently distributable without a CMS or second fact database.
+Publish durable research and engineering arguments that remain scannable, evidence-bounded, revisable, historically legible, and independently distributable without a CMS or second fact database.
 
 ## Boundaries
 
-Article source files own publication identity, argument, limitations, and dated status. Project repositories and research records own the underlying technical and evidentiary facts. Generated manifests, feeds, cards, and page metadata are projections and may not become independent authorities.
+Article source files own publication identity, argument, limitations, dated status, and explicit revisions. Project repositories and research records own the underlying technical and evidentiary facts. Current project summaries may point to articles, but an article cannot freeze a superseded project status as current truth.
 
 ## Components
 
@@ -59,7 +58,14 @@ The MDX file is the authoring authority. Generated TypeScript files are committe
 
 ## Publication contract
 
-Each article declares publication status, claim class, evidence level, at least one takeaway, at least one limitation, and temporal identity. E3–E5 publications require a canonical research record. `publishedAt` orders publication history; `revisedAt` records only substantive argument changes.
+Each article declares publication status, claim class, evidence level, at least one takeaway, at least one limitation, and temporal identity. Publications making strong empirical or reproduced claims require a canonical research record. `publishedAt` orders publication history; `revisedAt` records a substantive correction or argument change.
+
+Status has temporal meaning:
+
+- `current` means the article still describes the current argument within its limits;
+- `historical` means the article is retained as evidence or context but no longer describes current capability or direction.
+
+A historical article should display the reason for supersession and point to the current project or research owner. Do not silently rewrite the original argument.
 
 ## Reusable expression
 
@@ -75,18 +81,18 @@ Other proposed primitives remain deleted until repeated use earns them.
 
 - Atom separates `published` and `updated` and uses related links for canonical evidence.
 - Article JSON-LD and independent social images derive from the same article metadata.
-- Sitemap last-modified values follow real article or Question dates.
+- Sitemap last-modified values follow real article, Project, or Question dates.
 - GitHub Pages receives a tested static Artifact rather than a generated production branch.
 - `deploy-manifest.json` binds live output to the full source commit.
 
 ## Failure modes
 
-The system fails when generated output diverges from article source, an article overstates its evidence, a current selection points to superseded material, publication metadata loses temporal identity, a public argument becomes a second technical authority, or deployment cannot be bound to an exact tested source revision.
+The system fails when generated output diverges from source, an article overstates evidence, a current selection points to superseded material without labeling it, publication metadata loses temporal identity, a project summary copies technical truth, or deployment cannot be bound to an exact tested source revision.
 
 ## Verification
 
-Deterministic source, type, lint, build, browser, mobile, and serious/critical accessibility checks run before deployment. Bundle size remains an advisory report until real performance evidence justifies a blocking threshold.
+Deterministic source, type, lint, build, browser, mobile, navigation, and serious/critical accessibility checks run before deployment. Bundle size remains advisory until real performance evidence justifies a blocking threshold.
 
 ## Deferred
 
-CMS, comments, analytics, multilingual governance, series pages, and full-body normalization remain deferred until actual publication or reader friction supplies a concrete consumer.
+CMS, comments, analytics, multilingual governance, automated repository synchronization, series pages, and full-body normalization remain deferred until actual publication or reader friction supplies a concrete consumer.

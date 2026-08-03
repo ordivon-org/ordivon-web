@@ -131,10 +131,11 @@ Capitalize names of Ordivon projects and formal schema objects only when referri
 
 Capitalize:
 
-- Ordivon Host, Ordivon Runtime, Ordivon World, Ordivon Computing;
-- Host, Runtime, World when used as those named state owners;
-- Task, Assignment, Effect, Observation, Artifact, HarnessRunReceipt when referring to exact model objects;
-- Codex App Server, Hermes ACP, Station Zero.
+- Ordivon Host, Ordivon Harness, Ordivon Runtime, Ordivon Game, Ordivon World, Ordivon Computing, Ordivon Human, Ordivon Security, and Ordivon Web;
+- Host, Harness, and Runtime when used as the named owners of Task continuity, Agent Run semantics, and physical execution;
+- World only when naming the Ordivon World repository or a formal domain World such as the Station Zero simulation;
+- Task, Assignment, Effect, Observation, Artifact, and HarnessRunReceipt when referring to exact model objects;
+- Codex App Server, Hermes ACP, and Station Zero.
 
 Lowercase in ordinary prose:
 

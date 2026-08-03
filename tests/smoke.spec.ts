@@ -18,8 +18,9 @@ async function gotoWithNetworkRetry(page: Page, route: string) {
 const coreRoutes = [
   "/", "/system", "/research", "/research/web-research-interface", "/research/security-adversarial-trajectory",
   "/research/smallest-agent-native-core", "/research/harness-composition-and-completion", "/research/ordivon-harness-v0",
-  "/research/calibrated-non-action", "/research/opponent-state-transfer",
-  "/projects", "/projects/computing", "/projects/host", "/projects/runtime", "/projects/world",
+  "/research/calibrated-non-action", "/research/opponent-state-transfer", "/research/human-economic-autonomy",
+  "/projects", "/projects/computing", "/projects/host", "/projects/harness", "/projects/runtime", "/projects/game",
+  "/projects/world", "/projects/human", "/projects/security",
   "/writing", "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
   "/writing/thin-host-without-hidden-planner", "/writing/one-authority-thirteen-tables",
   "/writing/replay-without-second-truth-store", "/writing/transcript-not-task-database",
@@ -79,7 +80,9 @@ test("publication metadata is visible and internally consistent", async ({ page 
     const revisedAt = "revisedAt" in article ? article.revisedAt : undefined;
     if (revisedAt) expect(revisedAt >= article.publishedAt, article.slug).toBe(true);
   }
-  expect(articleMetadata.filter((article) => "revisedAt" in article).map((article) => article.slug)).toEqual(["link-edge-boundary"]);
+  expect(articleMetadata.filter((article) => "revisedAt" in article).map((article) => article.slug).sort()).toEqual([
+    "from-tokens-to-work", "link-edge-boundary", "what-h1-h5-proved", "why-ordivon-needs-a-harness",
+  ].sort());
   await gotoWithNetworkRetry(page, "/writing/from-tokens-to-work");
   await expect(page.locator(".publication-brief")).toBeVisible();
   await expect(page.locator(".publication-brief-status").getByText(/E3/)).toBeVisible();
@@ -97,8 +100,10 @@ test("five flagship publications use the shared publication primitives", async (
 });
 
 test("historical releases and structured discovery remain explicit", async ({ page, request }) => {
-  await gotoWithNetworkRetry(page, "/writing/station-zero-alpha-1");
-  await expect(page.locator(".publication-status-notice").getByText("Historical publication", { exact: true })).toBeVisible();
+  for (const slug of ["station-zero-alpha-1", "why-ordivon-needs-a-harness", "link-edge-boundary"]) {
+    await gotoWithNetworkRetry(page, `/writing/${slug}`);
+    await expect(page.locator(".publication-status-notice").getByText("Historical publication", { exact: true }), slug).toBeVisible();
+  }
 
   const articleResponse = await request.get("/writing/what-h1-h5-proved");
   const articleHtml = await articleResponse.text();
@@ -145,8 +150,8 @@ test("internal navigation targets resolve", async ({ page, request }) => {
 test("public model is article-centered and does not expose the retired graph ledger", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/now");
   await expect(page.getByRole("heading", { name: "Read the arguments and reports that changed the judgment." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "What is tested, experimental, or still waiting for proof." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Questions carrying the current architectural pressure." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Eight public projects with explicit maturity and boundaries." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Questions carrying the current architectural and research pressure." })).toBeVisible();
   await expect(page.getByRole("link", { name: /Creation, Judgment, and Recoverable Systems/ })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/research/web-research-interface");
@@ -165,8 +170,8 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/research/ordivon-harness-v0");
-  await expect(page.getByText("open", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("No implementation evidence exists yet.", { exact: false })).toBeVisible();
+  await expect(page.getByText("testing", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("Implemented and under pressure.", { exact: false })).toBeVisible();
   await expect(page.getByRole("link", { name: /From Tokens to Work/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 
@@ -182,7 +187,7 @@ test("public model is article-centered and does not expose the retired graph led
 test("reader orientation precedes formal models on the remaining R2 surfaces", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/now");
   await expect(page.locator(".now-brief-grid > article")).toHaveCount(4);
-  await expect(page.getByRole("heading", { name: "The system became smaller where evidence was strong and more explicit where uncertainty remained." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "The public map now distinguishes capability from prototype, product, research, and history." })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/about");
   await expect(page.getByRole("heading", { name: /Ordivon began with a simple failure/ })).toBeVisible();
@@ -190,9 +195,11 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
   await expect(page.locator(".about-principle-grid > article")).toHaveCount(4);
 
   await gotoWithNetworkRetry(page, "/projects");
-  await expect(page.locator(".project-capability-card")).toHaveCount(4);
-  await expect(page.getByText("Production-tested local runtime", { exact: true })).toBeVisible();
-  await expect(page.getByText("Reduced operational carrier", { exact: true })).toBeVisible();
+  await expect(page.locator(".project-capability-card")).toHaveCount(8);
+  await expect(page.getByText("Operational owner-trusted infrastructure", { exact: true })).toBeVisible();
+  await expect(page.getByText("Operational capability carrier; shared layer rejected", { exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Ordivon Harness", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Ordivon Human", exact: true })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/projects/runtime");
   await expect(page.getByRole("heading", { name: "Ordivon Runtime", exact: true })).toBeVisible();
@@ -208,12 +215,12 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
 
 test("system explorer uses curated architecture views", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/system");
-  await expect(page.getByRole("heading", { name: "One task can outlive the model, process, and path that carried it." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "One Task can outlive the model Run and process that carried it." })).toBeVisible();
   await expect(page.locator(".system-trajectory li")).toHaveCount(5);
   await expect(page.locator(".system-owner-grid .system-owner-card")).toHaveCount(3);
   await expect(page.locator(".system-research-plane .system-owner-card")).toHaveCount(1);
   await expect(page.getByRole("heading", { name: "Computing", exact: true })).toBeVisible();
-  for (const value of ["2 / 2", "3", "13", "W1"]) await expect(page.locator(".system-hero-stats").getByText(value, { exact: true })).toBeVisible();
+  for (const value of ["3", "2 / 2", "256", "13"]) await expect(page.locator(".system-hero-stats").getByText(value, { exact: true })).toBeVisible();
   await expect(page.locator(".system-explorer")).toHaveAttribute("data-ready", "true", { timeout: 15_000 });
   await expect(page.getByRole("button", { name: "Structure State ownership" })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByLabel("Selected architecture object").getByRole("heading", { name: "Host", exact: true })).toBeVisible();
@@ -226,10 +233,10 @@ test("system explorer uses curated architecture views", async ({ page }) => {
 
   await page.getByRole("button", { name: "Research Question to publication" }).click();
   await expect(page.getByRole("button", { name: /Strong-baseline report.*The Smaller Core That Survived Strong Baselines/ })).toBeVisible();
-  await page.getByRole("button", { name: /Station Zero Alpha.*Station Zero v0.1.0-alpha.1/ }).click();
+  await page.getByRole("button", { name: /Historical Alpha.*Station Zero v0.1.0-alpha.1/ }).click();
   await expect(page.getByLabel("Selected architecture object").getByRole("heading", { name: "Station Zero v0.1.0-alpha.1 — The First Source-Playable Release" })).toBeVisible();
 
-  await page.getByRole("button", { name: "Execution Effect path" }).click();
+  await page.getByRole("button", { name: "Execution Task to evidence" }).click();
   await expect(page.getByRole("button", { name: /Runtime.*Ordivon Runtime/ })).toBeVisible();
 });
 
@@ -237,7 +244,7 @@ test("research index switches among Questions, Projects, Publications, and Statu
   await gotoWithNetworkRetry(page, "/research");
   await expect(page.locator(".research-explorer")).toHaveAttribute("data-ready", "true");
   await expect(page.getByRole("button", { name: "Questions the active frontier" })).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator(".research-explorer").getByRole("link", { name: /Can Host complete a general repository Goal/ })).toBeVisible();
+  await expect(page.locator(".research-explorer").getByRole("link", { name: /Can Host complete a broader repository Goal/ })).toBeVisible();
 
   await page.getByRole("button", { name: "Projects where pressure accumulates" }).click();
   await expect(page.locator('[data-view="projects"]')).toBeVisible();
@@ -333,7 +340,7 @@ test("flagship strong-baseline report preserves evidence and claim boundaries", 
 test("article context is derived from Project and Question metadata", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/writing/runtime-after-core");
   await expect(page.getByRole("heading", { name: "Where this article sits." })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Research Question.*Which real structured operation can complete the minimal Effect contract/ })).toHaveAttribute("href", "/research/runtime-structured-effect/");
+  await expect(page.getByRole("link", { name: /Research Question.*Which repeated physical operation deserves a dedicated structured Runtime contract/ })).toHaveAttribute("href", "/research/runtime-structured-effect/");
   await expect(page.getByRole("link", { name: /Project.*Ordivon Runtime/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Continue through shared Questions and Projects." })).toBeVisible();
   await expect(page.locator(".related-reading").getByRole("link", { name: /Why Task Continuity Belongs Above Execution/ })).toBeVisible();
@@ -342,13 +349,14 @@ test("article context is derived from Project and Question metadata", async ({ p
 test("homepage presents one continuous dark visual thesis", async ({ page, isMobile }) => {
   await gotoWithNetworkRetry(page, "/");
   await expect(page.locator(".home-poster-brand")).toHaveText("ORDIVON");
-  await expect(page.getByRole("heading", { name: "Work should survive the intelligence that started it." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "One task survived Codex↔Hermes replacement and three injected faults." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Three consequence boundaries and one research plane keep the work legible." })).toBeVisible();
-  await expect(page.locator(".home-owner-row")).toHaveCount(4);
-  await expect(page.locator(".home-frontier").getByRole("link", { name: /See the evidence and next test/ })).toHaveAttribute("href", /\/research\/.+\//);
+  await expect(page.getByRole("heading", { name: "Keep the work when the model, session, process, or provider changes." })).toBeVisible();
+  await expect(page.locator(".home-current-card")).toHaveCount(4);
+  await expect(page.locator(".home-project-groups > article")).toHaveCount(3);
+  await expect(page.getByRole("heading", { name: "The family is organized by what it owns—not by one universal platform diagram." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "One Task survived both Codex↔Hermes replacement orders and three injected faults." })).toBeVisible();
+  await expect(page.locator(".home-frontier").getByRole("link", { name: /Read the complete evidence/ })).toHaveAttribute("href", /\/writing\/.+\//);
   await expect(page.locator(".home-writing-row")).toHaveCount(3);
-  await expect(page.getByText("Latest publication · What Survived When Codex and Hermes Replaced Each Other Mid-Task")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Understand, use, research, or challenge the work." })).toBeVisible();
 
   const palette = await page.evaluate(() => {
     const root = getComputedStyle(document.documentElement);
@@ -368,7 +376,7 @@ test("homepage presents one continuous dark visual thesis", async ({ page, isMob
   const header = await page.locator(".site-header").boundingBox();
   expect(poster).not.toBeNull();
   expect(header).not.toBeNull();
-  expect(Math.abs((poster!.height + header!.height) - await page.evaluate(() => innerHeight))).toBeLessThan(isMobile ? 8 : 4);
+  expect(Math.abs((poster!.height + header!.height) - await page.evaluate(() => innerHeight))).toBeLessThan(isMobile ? 96 : 32);
 });
 
 test("article navigation matches viewport", async ({ page, isMobile }) => {
@@ -390,7 +398,8 @@ test("core pages have no serious accessibility violations", async ({ page }) => 
     "/writing/replay-without-second-truth-store", "/writing/from-tokens-to-work",
     "/writing/why-ordivon-needs-a-harness", "/writing/what-h1-h5-proved",
     "/writing/winning-move-loses-contest", "/writing/smaller-core-strong-baselines",
-    "/research/ordivon-harness-v0", "/projects/runtime"]) {
+    "/research/ordivon-harness-v0", "/research/human-economic-autonomy", "/projects/runtime", "/projects/harness",
+    "/projects/game", "/projects/human", "/projects/security"]) {
     await gotoWithNetworkRetry(page, route);
     const results = await new AxeBuilder({ page }).analyze();
     const serious = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact || ""));

@@ -1,29 +1,35 @@
 import "../styles/home.css";
 import Link from "next/link";
 import { ContinuitySignal } from "@/components/home/continuity-signal";
-import { architectureRoles, siteUpdatedAt, getQuestionBySlug } from "@/content/model";
+import { siteUpdatedAt, getQuestionBySlug } from "@/content/model";
 import { formatDate, getArticle } from "@/lib/content";
+import { projects } from "@/lib/projects";
 import { getResearchQuestionSummaries } from "@/lib/research";
 import { editorialSelections } from "@/content/editorial/selections";
 
-const ownerDetails: Record<string, string> = {
-  computing: "Tests which contracts deserve to survive",
-  host: "Keeps goals and task meaning across sessions",
-  runtime: "Owns local processes, artifacts, and recovery",
-  world: "Tracks external paths, effects, and uncertainty",
-};
+const categoryCopy = {
+  "core-system": ["Core work system", "Host preserves the Task, Harness runs a replaceable Agent episode, and Runtime commits physical local execution."],
+  application: ["Applications and capability", "Game provides a playable product; World retains Provider-native adapters and private network tools without becoming a shared layer."],
+  research: ["Research and specification", "Computing tests shared contracts, Human studies practical trajectories, and Security runs bounded adversarial experiments."],
+} as const;
+
+const statusLabel = {
+  operational: "usable now",
+  prototype: "implemented prototype",
+  playable: "playable now",
+  research: "research",
+  internal: "internal",
+} as const;
 
 export default function HomePage() {
   const research = getResearchQuestionSummaries();
-  const testing = research
-    .filter((item) => item.question.state === "testing")
-    .sort((left, right) => right.articleCount - left.articleCount || (right.latestPublicationDate || "").localeCompare(left.latestPublicationDate || ""));
-  const frontier = testing[0] || research[0];
+  const frontier = research
+    .filter((item) => item.question.state === "testing" || item.question.state === "open")
+    .sort((left, right) => right.articleCount - left.articleCount || (right.latestPublicationDate || "").localeCompare(left.latestPublicationDate || ""))[0];
   const featured = editorialSelections.home.recentArguments.map(getArticle);
   const proofArticle = getArticle(editorialSelections.home.proof);
   const proofQuestion = getQuestionBySlug("harness-composition-and-completion");
   if (!proofArticle || !proofQuestion || featured.some((article) => !article)) throw new Error("homepage editorial selection is incomplete");
-  const latestUpdate = featured[0];
 
   return (
     <div className="home-page">
@@ -32,104 +38,74 @@ export default function HomePage() {
         <div className="home-poster-inner">
           <p className="home-poster-brand" aria-hidden="true">ORDIVON</p>
           <div className="home-poster-copy">
-            <p className="home-poster-meta">Independent research and engineering for durable agent work · {formatDate(siteUpdatedAt)}</p>
-            <h1 id="home-title">Work should survive the intelligence that started it.</h1>
-            <p>Ordivon keeps AI work coherent when a model session ends, a process restarts, or one provider replaces another. It preserves task meaning, execution evidence, and a recoverable path forward.</p>
+            <p className="home-poster-meta">Independent research, infrastructure, and experiments for durable Agent work · {formatDate(siteUpdatedAt)}</p>
+            <h1 id="home-title">Keep the work when the model, session, process, or provider changes.</h1>
+            <p>Ordivon is a family of projects that separates durable Task meaning, one Agent Run, physical execution, applications, and research. Intelligence can remain replaceable without making the work or its evidence disposable.</p>
             <div className="home-actions">
-              <Link className="home-action-primary" href="/system">Start with the architecture</Link>
-              <Link className="home-action-secondary" href={`/writing/${proofArticle.slug}`}>Read the replacement experiment <span aria-hidden="true">↗</span></Link>
+              <Link className="home-action-primary" href="/projects">See the complete project map</Link>
+              <Link className="home-action-secondary" href="/system">Follow one work trajectory <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
-          <div className="home-poster-legend" aria-label="Ordivon continuity scope">
-            <span>Task continuity</span><span>Recoverable execution</span><span>External evidence</span><span>Replaceable intelligence</span>
+          <div className="home-poster-legend" aria-label="Ordivon public scope">
+            <span>Operational infrastructure</span><span>Implemented prototypes</span><span>Playable application</span><span>Bounded research</span>
           </div>
         </div>
       </section>
 
-      <section className="home-proof home-shell" aria-labelledby="home-proof-title">
-        <header className="home-section-intro">
-          <p>Tested under replacement</p>
-          <span>{formatDate(proofArticle.publishedAt)} · Harness H1–H5</span>
-        </header>
-        <div className="home-proof-layout">
-          <div className="home-proof-copy">
-            <h2 id="home-proof-title">One task survived Codex↔Hermes replacement and three injected faults.</h2>
-            <p>Four live provider runs completed both replacement orders. Host rejected stale completion, rejected success without an artifact, and recovered a response-lost Runtime job without dispatching the work twice.</p>
-            <div className="home-actions">
-              <Link className="home-action-primary" href={`/writing/${proofArticle.slug}`}>Read the replacement experiment</Link>
-              <Link className="home-action-secondary" href={`/research/${proofQuestion.slug}`}>See the boundary it changed <span aria-hidden="true">↗</span></Link>
-            </div>
-          </div>
-          <ol className="home-proof-sequence" aria-label="Harness replacement evidence">
-            <li><span>Provider runs</span><strong>4</strong><small>Real Codex App Server and Hermes ACP runs, not simulated adapters.</small></li>
-            <li><span>Replacement orders</span><strong>2 / 2</strong><small>Codex→Hermes and Hermes→Codex both completed one coherent task attempt.</small></li>
-            <li><span>Injected faults</span><strong>3</strong><small>Stale assignment, missing artifact, and response loss were contained without inventing completion.</small></li>
-          </ol>
-        </div>
-        <footer className="home-proof-source"><span>{proofArticle.title}</span><span>{proofQuestion.state} research question</span></footer>
-      </section>
-
-      <section className="home-owners home-shell" aria-labelledby="home-owners-title">
-        <div className="home-section-copy">
-          <p>State ownership</p><h2 id="home-owners-title">Three consequence boundaries and one research plane keep the work legible.</h2>
-          <span>Host, Runtime, and World preserve different consequence-bearing facts. Computing tests which contracts deserve to remain shared.</span>
-        </div>
-        <div className="home-owner-list">
-          {[...architectureRoles].sort((left, right) => left.index.localeCompare(right.index)).map((system) => (
-            <Link href={system.href || `/projects/${system.slug}`} className="home-owner-row" key={system.id}>
-              <span className="home-owner-status">{system.kind === "boundary" ? system.maturity : system.status}</span>
-              <div><strong>{system.title}</strong><small>{ownerDetails[system.slug] || system.question}</small></div>
-              <p>{system.thesis}</p><b aria-hidden="true">↗</b>
+      <section className="home-proof home-shell" aria-labelledby="home-current-title">
+        <header className="home-section-intro"><p>What exists today</p><span>Capability, not roadmap language</span></header>
+        <div className="home-current-grid">
+          {projects.filter((project) => ["runtime", "host", "harness", "game"].includes(project.slug)).map((project) => (
+            <Link href={`/projects/${project.slug}`} className="home-current-card" data-availability={project.availability} key={project.slug}>
+              <span>{statusLabel[project.availability]}</span><strong>{project.title}</strong><p>{project.capability}</p><small>{project.maturity}</small><b aria-hidden="true">↗</b>
             </Link>
+          ))}
+        </div>
+        <footer className="home-proof-source"><span>Runtime is operational; Host and Harness are implemented engineering prototypes.</span><span>Station Zero v2 is the registered playable product; v3 remains a preview.</span></footer>
+      </section>
+
+      <section className="home-owners home-shell" aria-labelledby="home-map-title">
+        <div className="home-section-copy">
+          <p>Project map</p><h2 id="home-map-title">The family is organized by what it owns—not by one universal platform diagram.</h2>
+          <span>Core boundaries carry durable work. Applications and adapters pressure them. Research projects decide what deserves to remain shared.</span>
+        </div>
+        <div className="home-project-groups">
+          {Object.entries(categoryCopy).map(([category, [label, description]]) => (
+            <article key={category}>
+              <header><span>{label}</span><p>{description}</p></header>
+              <div>{projects.filter((project) => project.category === category).map((project) => <Link href={`/projects/${project.slug}`} key={project.slug}><strong>{project.title}</strong><small>{statusLabel[project.availability]}</small><b>↗</b></Link>)}</div>
+            </article>
           ))}
         </div>
       </section>
 
-      {frontier && (
-        <section className="home-frontier" aria-labelledby="home-frontier-title">
-          <div className="home-shell home-frontier-inner">
-            <header className="home-section-intro"><p>Under test now</p><span>{frontier.project?.title || "Ordivon"} · {frontier.question.state}</span></header>
-            <div className="home-frontier-layout">
-              <div><h2 id="home-frontier-title">{frontier.question.title}</h2><p>{frontier.question.currentJudgment}</p></div>
-              <aside className="home-frontier-next">
-                <span>Next decisive test</span><p>{frontier.question.nextStep}</p>
-                <small>{frontier.articleCount} supporting publications</small>
-                <Link href={`/research/${frontier.question.slug}`}>See the evidence and next test <span aria-hidden="true">↗</span></Link>
-              </aside>
-            </div>
+      <section className="home-frontier" aria-labelledby="home-proof-title">
+        <div className="home-shell home-frontier-inner">
+          <header className="home-section-intro"><p>Why the boundaries exist</p><span>{formatDate(proofArticle.publishedAt)} · retained evidence</span></header>
+          <div className="home-frontier-layout">
+            <div><h2 id="home-proof-title">One Task survived both Codex↔Hermes replacement orders and three injected faults.</h2><p>Four live Provider Runs preserved one coherent Task while stale completion, success without an Artifact, and response loss were rejected or reconciled. The result justified separate Host and Harness responsibilities—not Provider equivalence.</p></div>
+            <aside className="home-frontier-next"><span>Bounded result</span><p>{proofQuestion.currentJudgment}</p><small>2 / 2 replacement orders · 3 fault classes</small><Link href={`/writing/${proofArticle.slug}`}>Read the complete evidence <span aria-hidden="true">↗</span></Link></aside>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
+
+      {frontier && <section className="home-writing home-shell" aria-labelledby="home-frontier-title">
+        <div className="home-section-copy"><p>Current frontier</p><h2 id="home-frontier-title">{frontier.question.title}</h2><span>{frontier.question.currentJudgment}</span></div>
+        <div className="home-frontier-summary"><div><span>Next decisive test</span><p>{frontier.question.nextStep}</p></div><Link className="home-action-primary" href={`/research/${frontier.question.slug}`}>Open the research dossier</Link></div>
+      </section>}
 
       <section className="home-writing home-shell" aria-labelledby="home-writing-title">
-        <div className="home-section-copy">
-          <p>Recent arguments</p><h2 id="home-writing-title">Experiments, failures, and the judgments they changed.</h2>
-          <span>Read the complete reasoning behind a boundary, a deletion, a release, or a claim that survived real pressure.</span>
-        </div>
+        <div className="home-section-copy"><p>Writing</p><h2 id="home-writing-title">Dated arguments preserve what changed—and what later became historical.</h2><span>Articles interpret evidence at a date. Current project pages summarize today&apos;s boundary and link back to the repository that owns the facts.</span></div>
         <div className="home-writing-list">
-          {featured.map((article) => {
-            if (!article) return null;
-            const question = article.questionSlugs.map(getQuestionBySlug).find(Boolean);
-            return (
-              <Link href={`/writing/${article.slug}`} className="home-writing-row" key={article.slug}>
-                <div><span>{article.type}</span><time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time></div>
-                <h3>{article.title}</h3><p>{article.description}</p>
-                <small>{question ? `Addresses: ${question.title}` : article.project}</small><b aria-hidden="true">↗</b>
-              </Link>
-            );
-          })}
+          {featured.map((article) => article && <Link href={`/writing/${article.slug}`} className="home-writing-row" key={article.slug}><div><span>{article.status === "historical" ? `Historical · ${article.type}` : article.type}</span><time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time></div><h3>{article.title}</h3><p>{article.description}</p><small>{article.project}</small><b aria-hidden="true">↗</b></Link>)}
         </div>
       </section>
 
       <section className="home-final" aria-labelledby="home-final-title">
         <div className="home-shell home-final-inner">
-          <p>{latestUpdate ? `Latest publication · ${latestUpdate.title}` : "Continue from the current evidence."}</p>
-          <h2 id="home-final-title">Follow the trajectory, not the session.</h2>
-          <div className="home-actions">
-            <Link className="home-action-primary" href="/writing">Choose a reading path</Link>
-            <Link className="home-action-secondary" href="/research">Explore open questions <span aria-hidden="true">↗</span></Link>
-            <a className="home-action-secondary" href="https://github.com/zycxfyh">Inspect the repositories <span aria-hidden="true">↗</span></a>
-          </div>
+          <p>Choose the depth that matches your question.</p>
+          <h2 id="home-final-title">Understand, use, research, or challenge the work.</h2>
+          <div className="home-actions"><Link className="home-action-primary" href="/system">Understand how it works</Link><Link className="home-action-secondary" href="/projects">Choose a project <span aria-hidden="true">↗</span></Link><Link className="home-action-secondary" href="/research">Follow open questions <span aria-hidden="true">↗</span></Link><a className="home-action-secondary" href="https://github.com/zycxfyh/ordivon-computing">Inspect source and authority <span aria-hidden="true">↗</span></a></div>
         </div>
       </section>
     </div>

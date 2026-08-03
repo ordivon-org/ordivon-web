@@ -658,3 +658,21 @@
     grid-column: auto;
   }
 }
+
+
+/* Task F: explicit public project maturity and grouped directory. */
+.project-status-legend { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: 1.6rem; }
+.project-status-legend span, .project-availability { display: inline-flex; width: fit-content; padding: .42rem .62rem; border: 1px solid var(--line-strong); color: var(--muted); font: .61rem var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.project-status-legend span[data-status="operational"], .project-status-legend span[data-status="playable"], .project-availability[data-status="operational"], .project-availability[data-status="playable"] { color: var(--success); border-color: color-mix(in srgb, var(--success) 48%, var(--line-strong)); }
+.project-status-legend span[data-status="prototype"], .project-availability[data-status="prototype"] { color: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 55%, var(--line-strong)); }
+.project-group { margin-top: clamp(5rem, 9vw, 8rem); }
+.project-group + .project-group { padding-top: clamp(4rem, 8vw, 7rem); border-top: 1px solid var(--line-strong); }
+.project-group .project-capability-directory { margin-top: clamp(2rem, 4vw, 3.5rem); }
+.project-capability-card[data-availability="operational"] > header i, .project-capability-card[data-availability="playable"] > header i { color: var(--success); }
+.project-capability-card[data-availability="prototype"] > header i { color: var(--accent-soft); }
+.project-availability { margin: 1.25rem 0 0; }
+@media (max-width: 720px) { .project-status-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); } .project-status-legend span { width: auto; } }
+
+.project-mechanism .world-model small {
+  color: var(--paper-soft);
+}
