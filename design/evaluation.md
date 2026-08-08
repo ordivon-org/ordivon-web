@@ -163,10 +163,15 @@ The repository tools support:
 
 ```text
 node scripts/prepare-design-comparisons.mjs <spec.json> <rater-id> <rater-class> [seed]
-node scripts/rank-design-preferences.mjs <votes.json>
+node scripts/blind-design-ballot.mjs <prepared.json> <public.json> <private-key.json>
+node scripts/render-blind-design-review.mjs <public.json> <review.html>
+node scripts/resolve-design-ballot.mjs <private-key.json> <side-responses.json>
+node scripts/rank-design-preferences.mjs <resolved-votes.json>
 ```
 
-The pairing generator randomizes left/right order deterministically from a seed. The ranker reports global and sliced Bradley–Terry ratings, direct head-to-head records, empirical win rates, and Wilson 95% intervals.
+The pairing generator randomizes left/right order deterministically from a seed. Before an evaluator sees the ballot, the blinding step separates a public ballot containing only comparison identity/surface from a private left/right→variant key. The review renderer consumes only that public ballot. Evaluator export contains only `left`/`right` choices; the private key resolves those choices after ballot closure. The ranker then reports global and sliced Bradley–Terry ratings, direct head-to-head records, empirical win rates, and Wilson 95% intervals.
+
+For any formal ballot, precommit the private-key digest and exact public review-asset digests before collecting responses. Do not publish the seed or private mapping until that ballot is closed.
 
 When the claim is specifically “candidate X is preferred to the current baseline on surface Y,” inspect the direct X-versus-baseline slice rather than inferring that claim from the global ranking. A strong preference claim requires the candidate's direct 95% Wilson interval to exclude `0.5`; otherwise the comparison remains inconclusive even if its point estimate or Bradley–Terry rank is higher.
 

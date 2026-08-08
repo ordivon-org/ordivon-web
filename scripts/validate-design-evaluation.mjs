@@ -11,6 +11,9 @@ const temp = mkdtempSync(join(tmpdir(), "ordivon-design-eval-"));
 try {
   const prepare = join(root, "scripts/prepare-design-comparisons.mjs");
   const rank = join(root, "scripts/rank-design-preferences.mjs");
+  const blind = join(root, "scripts/blind-design-ballot.mjs");
+  const resolve = join(root, "scripts/resolve-design-ballot.mjs");
+  const renderReview = join(root, "scripts/render-blind-design-review.mjs");
   const spec = join(root, "design/evaluation-spec.example.json");
 
   const ballotA = execFileSync(process.execPath, [prepare, spec, "expert-1", "expert", "42"], { encoding: "utf8" });
@@ -23,6 +26,26 @@ try {
   assert.equal(parsedBallot.comparisons.length, 9, "3 variants × 3 surfaces should create 9 comparisons per evaluator");
   assert.deepEqual(new Set(parsedBallot.comparisons.map((item) => item.surface)), new Set(["home", "project", "long-form"]));
   assert.ok(parsedBallot.comparisons.every((item) => item.winner === null), "prepared ballots must not contain a winner");
+
+  const preparedPath = join(temp, "prepared.json");
+  const publicPath = join(temp, "public.json");
+  const keyPath = join(temp, "private-key.json");
+  const reviewPath = join(temp, "review.html");
+  writeFileSync(preparedPath, ballotA);
+  execFileSync(process.execPath, [blind, preparedPath, publicPath, keyPath], { encoding: "utf8" });
+  execFileSync(process.execPath, [renderReview, publicPath, reviewPath], { encoding: "utf8" });
+  const publicText = readFileSync(publicPath, "utf8");
+  const reviewText = readFileSync(reviewPath, "utf8");
+  for (const identity of ["baseline", "candidate-a", "candidate-b"]) {
+    assert.ok(!publicText.includes(identity), `public ballot leaked ${identity}`);
+    assert.ok(!reviewText.includes(identity), `review HTML leaked ${identity}`);
+  }
+  const publicBallot = JSON.parse(publicText);
+  const sideResponsesPath = join(temp, "side-responses.json");
+  writeFileSync(sideResponsesPath, `${JSON.stringify({ responses: publicBallot.comparisons.map((item, index) => ({ comparisonId: item.comparisonId, choice: index % 2 === 0 ? "left" : "right" })) }, null, 2)}\n`);
+  const resolved = JSON.parse(execFileSync(process.execPath, [resolve, keyPath, sideResponsesPath], { encoding: "utf8" }));
+  assert.equal(resolved.comparisons.length, parsedBallot.comparisons.length);
+  assert.ok(resolved.comparisons.every((item) => [item.left, item.right].includes(item.winner)));
 
   const votes = [];
   for (const [raterId, raterClass] of [["expert-1", "expert"], ["expert-2", "expert"], ["lay-1", "lay"], ["agent-1", "agent"]]) {
@@ -59,7 +82,7 @@ try {
 
   const example = JSON.parse(readFileSync(spec, "utf8"));
   assert.equal(example.schemaVersion, 1);
-  console.log("design_evaluation=passed pairings=9 synthetic_votes=36 slices=surface,raterClass");
+  console.log("design_evaluation=passed pairings=9 blinded=true synthetic_votes=36 slices=surface,raterClass");
 } finally {
   rmSync(temp, { recursive: true, force: true });
 }

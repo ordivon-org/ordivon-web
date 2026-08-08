@@ -26,7 +26,10 @@
     "pages:prepare": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/prepare-pages.mjs",
     "budget:report": "node scripts/report-static-budget.mjs",
     "design:pairings": "node scripts/prepare-design-comparisons.mjs",
-    "design:rank": "node scripts/rank-design-preferences.mjs"
+    "design:rank": "node scripts/rank-design-preferences.mjs",
+    "design:blind": "node scripts/blind-design-ballot.mjs",
+    "design:review": "node scripts/render-blind-design-review.mjs",
+    "design:resolve": "node scripts/resolve-design-ballot.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.1",
