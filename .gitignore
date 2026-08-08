@@ -15,4 +15,4 @@ out/
 /content/articles/generated-manifest.ts
 
 # Build-time project projection; owner snapshot + Web publication remain the committed inputs.
-/content/projects/generated-harness.ts
+/content/projects/generated-*.ts

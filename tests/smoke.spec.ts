@@ -161,7 +161,8 @@ test("public model is article-centered and does not expose the retired graph led
 
   await gotoWithNetworkRetry(page, "/research/security-adversarial-trajectory");
   await expect(page.getByRole("link", { name: /Winning the Move Can Lose the Contest/ })).toBeVisible();
-  await expect(page.getByText("84 Trials", { exact: false })).toBeVisible();
+  await expect(page.getByText("C1–C1F", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("84 Trials", { exact: false })).toHaveCount(0);
 
   await gotoWithNetworkRetry(page, "/research/harness-composition-and-completion");
   await expect(page.getByText("answered", { exact: true }).first()).toBeVisible();
@@ -325,7 +326,7 @@ test("flagship adversarial report preserves metric contradictions and negative r
   await expect(page.getByRole("heading", { name: "What the data does not establish" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "The next test is transfer under disruption" })).toBeVisible();
   await expect(page.locator(".article-anchor-grid > *")).toHaveCount(metadata.projectSlugs.length + metadata.questionSlugs.length);
-  await expect(page.getByRole("link", { name: /Research Question.*Can strategic adversarial trajectories be evaluated/ })).toHaveAttribute("href", "/research/security-adversarial-trajectory/");
+  await expect(page.getByRole("link", { name: /Research Question.*Which Agent-native laws survive in persistent adversarial worlds/ })).toHaveAttribute("href", "/research/security-adversarial-trajectory/");
 });
 
 test("flagship strong-baseline report preserves evidence and claim boundaries", async ({ page }) => {

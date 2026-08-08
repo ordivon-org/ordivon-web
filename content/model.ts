@@ -1,5 +1,6 @@
 import type { BoundaryDefinition, ProjectDefinition, QuestionDefinition, ResearchPlaneDefinition } from "@/lib/model/types";
 import { harnessBoundary, harnessProject } from "./projects/generated-harness.ts";
+import { securityProject } from "./projects/generated-security.ts";
 
 export const siteUpdatedAt = "2026-08-08";
 const portfolioUpdatedAt = "2026-08-04";
@@ -126,22 +127,7 @@ export const projects: ProjectDefinition[] = [
     evidence: [{ value: "E0–E9", label: "practical path" }, { value: "6", label: "structural cases" }, { value: "1", label: "completed research cycle" }],
     repository: "https://github.com/zycxfyh/ordivon-human", href: "/projects/human", updatedAt: portfolioUpdatedAt,
   },
-  {
-    id: "project:security", kind: "project", slug: "security", title: "Ordivon Security", lifecycle: "active", group: "Research and specification",
-    label: "Strategic adversarial experiments", category: "research", availability: "research", publicPage: true, index: "08",
-    thesis: "Evaluate strategic trajectories under adaptive opposition without collapsing truth, observation, action, interpretation, and outcome into one reward or success flag.",
-    question: "Which Agent-native strategic distinctions survive bounded adversarial experiments above mature classical security mechanisms?",
-    owns: ["Adversarial experiment design", "Actor/world observation separation", "Immutable traces and independent scoring", "Multidimensional strategic evaluation"],
-    boundary: ["No production attack platform", "No active Campaign engine", "No shared security infrastructure authority"],
-    problem: "Tactical success, reward, interpretation, and long-horizon objective completion can disagree when opponents adapt to observation and intervention.",
-    capability: "Provides bounded executable experiments with exact Trial identity, hidden evaluation, adaptive opponents, immutable traces, and separate outcome dimensions.",
-    maturity: "Executable bounded research", audience: "Security and Agent researchers studying adaptive opposition, deception, evaluator integrity, transfer, and strategic non-action.",
-    latestProof: "Round 1 completed 84 bounded Trials; the experimental method survived while the Campaign engine and strategic ontology were removed.", flagshipSlug: "winning-move-loses-contest",
-    summary: "A strategic adversarial research line above mature classical mechanisms. It preserves metric disagreement and negative results rather than promoting an attack platform.",
-    state: "The experiment layer and bounded evaluations are active. Campaign machinery is archived; no production attack system or general strategic Agent capability is claimed.",
-    evidence: [{ value: "84", label: "bounded Trials" }, { value: "3", label: "experiment families" }, { value: "0", label: "strategic layers promoted" }],
-    repository: "https://github.com/zycxfyh/ordivon-security", href: "/projects/security", updatedAt: portfolioUpdatedAt,
-  },
+  securityProject,
   {
     id: "project:web", kind: "project", slug: "web", title: "Ordivon Web", lifecycle: "active", group: "Publication",
     label: "Public orientation and dated interpretation", category: "publication", availability: "internal", publicPage: false,
@@ -305,13 +291,13 @@ export const questions: QuestionDefinition[] = [
   },
   {
     id: "question:security-adversarial-trajectory", kind: "question", slug: "security-adversarial-trajectory", projectSlug: "security",
-    title: "Can strategic adversarial trajectories be evaluated without collapsing them into one reward or success flag?",
-    summary: "Model adaptive opposition through separate World truth, actor observation, decisions, effects, and multidimensional outcomes.",
-    importance: "An adaptive subject can change policy, timing, explanation, and observable behavior. One action success or reward can hide deception, exposure, resource loss, mission damage, or strategic failure.",
-    hypothesis: "A thin experiment layer with exact identities, observation/truth separation, digest-bound traces, dynamic opponents, and independent tactical, operational, strategic, information, organization, evaluator, and cost outcomes is sufficient to test candidate Agent-native distinctions before promoting shared architecture.",
-    currentJudgment: "Testing with executable evidence. Round 1 completed 84 Trials and showed that tactical success can be strategically harmful, CAGE reward and foothold spread can conflict, richer model interpretation need not improve action, and organization can isolate compromised advice without creating new capability. The method survived; no Campaign engine or strategic ontology was promoted.",
-    nextStep: "Run the next bounded experiment across multiple seeds, held-out opponent policies, compiled opponent state, and deliberate Host Session disruption while retaining multidimensional evidence.",
-    falsifier: "Classical authorization, simulation, ordinary Goal/Task state, source-native metrics, and reactive policies explain the same failures and comparisons with fewer Security-specific objects.", state: "testing", href: "/research/security-adversarial-trajectory", updatedAt: portfolioUpdatedAt,
+    title: "Which Agent-native laws survive in persistent adversarial worlds?",
+    summary: "Separate actor intent and observation, exact authority, physical consequence, sensor evidence, world truth, recovery ownership, and evaluation while autonomous opponents change the world over time.",
+    importance: "Once actors can adapt, deceive, request consequential effects, and outlive one controller, one reward or action-success flag is not merely incomplete—it can collapse distinct authorities and make interruption or recovery unsafe.",
+    hypothesis: "A thin Security domain layer for contested-world identity, asymmetric observation, exact RangeAuthority, independent truth/evidence, and adversarial evaluation remains necessary above mature simulation, hypervisor, Host, Harness, and Runtime mechanisms; broader Campaign, Organization, and distributed recovery structure should be admitted only after experiments force it.",
+    currentJudgment: "Reframed by later physical experiments. Round 1 established metric disagreement, but S0–S6 and C1–C1F shifted the active pressure to persistent contested worlds and consequential authority. Accepted evidence now separates intent, admission, backend receipt, sensor observation, Host/world truth, interrupted physical progress, continuation, successor ownership, and recovery lineage. C1-F further proved one non-mutating loser, later adoption of an already-materialized consequence without replay, and explicit predecessor-claim history. No general Campaign engine, distributed lease, consensus layer, or universal fidelity framework has been justified.",
+    nextStep: "Kill a winning successor midway through its own continuation—after physical progress but before stable generation publication—and require another successor to infer and complete only the remaining suffix from current world truth plus recovery lineage.",
+    falsifier: "Mature range/simulation authority plus ordinary Host, Harness, Runtime, and source-native evidence express the same contested-world identity, consequence, recovery, and evaluation distinctions with fewer Security-specific contracts.", state: "testing", href: "/research/security-adversarial-trajectory", updatedAt: "2026-08-08",
   },
   {
     id: "question:security-opponent-state-transfer", kind: "question", slug: "opponent-state-transfer", projectSlug: "security",

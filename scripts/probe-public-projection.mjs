@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { existsSync, readFileSync, statSync } from "node:fs";
+import { dirname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import process from "node:process";
 
@@ -61,6 +61,14 @@ function section(source, heading) {
   return source.slice(bodyStart, next < 0 ? undefined : next).trim();
 }
 
+function firstSection(source, headings) {
+  for (const heading of headings) {
+    const body = section(source, heading);
+    if (body) return { heading, body };
+  }
+  return { heading: undefined, body: "" };
+}
+
 function markdownTableRows(body) {
   return body.split("\n")
     .filter((line) => line.startsWith("|") && !line.includes("---"))
@@ -74,20 +82,47 @@ function markdownBullets(body) {
   return body.split("\n").filter((line) => line.startsWith("- ")).map((line) => line.slice(2).trim());
 }
 
-function findStatusDocument(repo) {
-  for (const relative of ["docs/STATUS.md", "docs/status.md", "STATUS.md", "status.md"]) {
-    if (existsSync(resolve(repo, relative))) return relative;
-  }
-  return undefined;
-}
-
 function firstParagraph(body) {
   return body.split(/\n\s*\n/).map((item) => item.replace(/\s+/g, " ").trim()).find(Boolean) || undefined;
 }
 
+function findAuthorityDocument(repo, projectSource) {
+  const managed = topLevelList(projectSource, "managed_paths");
+  const declared = managed.find((item) => /(^|\/)authority\.md$/i.test(item));
+  if (declared && existsSync(resolve(repo, declared))) return declared;
+  for (const candidate of ["docs/authority.md", "authority.md"]) {
+    if (existsSync(resolve(repo, candidate))) return candidate;
+  }
+  throw new Error(`${repo}: no authority document found`);
+}
+
+function localMarkdownLinks(repo, authorityDocument, body) {
+  const authorityDir = dirname(resolve(repo, authorityDocument));
+  const paths = new Set();
+  for (const match of body.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
+    let target = match[1].trim().replace(/^<|>$/g, "");
+    if (!target || target.startsWith("#") || /^[a-z][a-z0-9+.-]*:/i.test(target)) continue;
+    target = target.split("#", 1)[0];
+    if (!target) continue;
+    const absolute = resolve(authorityDir, target);
+    const repoRelative = relative(repo, absolute).replaceAll("\\", "/");
+    if (!repoRelative || repoRelative.startsWith("../") || repoRelative === "..") continue;
+    if (!existsSync(absolute) || !statSync(absolute).isFile()) continue;
+    paths.add(repoRelative);
+  }
+  return [...paths];
+}
+
 function publicDocuments(repo, projectSource) {
-  return topLevelList(projectSource, "managed_paths")
-    .filter((relativePath) => existsSync(resolve(repo, relativePath)))
+  const authorityDocument = findAuthorityDocument(repo, projectSource);
+  const authoritySource = readFileSync(resolve(repo, authorityDocument), "utf8");
+  const authorityMeta = frontmatter(authoritySource);
+  const authoritySection = firstSection(authoritySource, ["Current authority", "Decision"]);
+  if (!authoritySection.body) throw new Error(`${repo}: authority document does not declare current sources`);
+
+  const candidates = [authorityDocument, ...localMarkdownLinks(repo, authorityDocument, authoritySection.body)];
+  const unique = [...new Set(candidates)];
+  const documents = unique
     .map((relativePath) => {
       const content = readFileSync(resolve(repo, relativePath), "utf8");
       const meta = frontmatter(content);
@@ -107,10 +142,25 @@ function publicDocuments(repo, projectSource) {
     .filter((document) =>
       document.lifecycle === "active" &&
       document.sourceRole === "canonical" &&
-      document.visibility === "public" &&
-      document.readiness === "READY"
+      document.visibility === "public"
     )
     .sort((left, right) => left.path.localeCompare(right.path));
+
+  return {
+    authorityDocument,
+    authorityDigest: sha256(authoritySource),
+    authorityMeta,
+    authoritySection: authoritySection.heading,
+    documents,
+  };
+}
+
+function chooseAnchorDocument(documents) {
+  for (const preferred of ["docs/STATUS.md", "docs/status.md", "STATUS.md", "status.md", "README.md"]) {
+    const match = documents.find((document) => document.path === preferred);
+    if (match) return match;
+  }
+  return documents.find((document) => document.type === "start") || documents[0];
 }
 
 export function probePublicProjection(repoArg) {
@@ -120,19 +170,21 @@ export function probePublicProjection(repoArg) {
   if (!existsSync(projectPath)) throw new Error(`${repo}: missing .ordivon/project.yaml`);
 
   const projectSource = readFileSync(projectPath, "utf8");
-  const statusDocument = findStatusDocument(repo);
-  if (!statusDocument) throw new Error(`${repo}: no status document found`);
-  const statusSource = readFileSync(resolve(repo, statusDocument), "utf8");
-  const statusMeta = frontmatter(statusSource);
-  const documents = publicDocuments(repo, projectSource);
-  const publicPaths = [projectRelativePath, ...documents.map((document) => document.path)];
+  const envelope = publicDocuments(repo, projectSource);
+  const anchor = chooseAnchorDocument(envelope.documents);
+  if (!anchor) throw new Error(`${repo}: authority map produced no active canonical public document`);
+  const anchorSource = readFileSync(resolve(repo, anchor.path), "utf8");
+  const anchorMeta = frontmatter(anchorSource);
+
+  const publicPaths = [projectRelativePath, ...envelope.documents.map((document) => document.path)];
   const revision = git(repo, ["log", "-1", "--format=%H", "--", ...publicPaths]) || git(repo, ["rev-parse", "HEAD"]);
   const projectManifestDigest = sha256(projectSource);
   const publicSourceDigest = sha256(JSON.stringify({
     projectManifest: { path: projectRelativePath, digest: projectManifestDigest },
-    documents: documents.map(({ path, digest }) => ({ path, digest })),
+    authority: { path: envelope.authorityDocument, digest: envelope.authorityDigest, section: envelope.authoritySection },
+    documents: envelope.documents.map(({ path, digest }) => ({ path, digest })),
   }));
-  const updated = documents.map((document) => document.updated).filter(Boolean).sort().at(-1) || statusMeta.updated;
+  const updated = envelope.documents.map((document) => document.updated).filter(Boolean).sort().at(-1) || anchorMeta.updated;
 
   const project = {
     id: topLevelScalar(projectSource, "id"),
@@ -147,48 +199,55 @@ export function probePublicProjection(repoArg) {
     dirty: Boolean(git(repo, ["status", "--porcelain"])),
     publicSourceDigest,
     projectManifestDigest,
-    documents,
-    statusDocument,
-    statusDigest: sha256(statusSource),
-    statusId: statusMeta.id,
-    statusUpdated: statusMeta.updated,
-    lifecycle: statusMeta.lifecycle,
-    sourceRole: statusMeta.source_role,
-    visibility: statusMeta.visibility,
+    authorityDocument: envelope.authorityDocument,
+    authorityDigest: envelope.authorityDigest,
+    authoritySection: envelope.authoritySection,
+    documents: envelope.documents,
+    anchorDocument: anchor.path,
+    anchorDigest: anchor.digest,
+    anchorId: anchorMeta.id,
+    anchorUpdated: anchorMeta.updated,
+    lifecycle: anchorMeta.lifecycle,
+    sourceRole: anchorMeta.source_role,
+    visibility: anchorMeta.visibility,
     updated,
-    summary: statusMeta.summary,
-    evidenceStatus: statusMeta.evidence_status,
-    readiness: statusMeta.readiness,
+    summary: anchorMeta.summary,
+    evidenceStatus: anchorMeta.evidence_status,
+    readiness: anchorMeta.readiness,
   };
 
   const admission = {
     projectionTarget: project.publicProjection === "ordivon-web",
-    canonicalStatus: source.sourceRole === "canonical",
-    publicStatus: source.visibility === "public",
-    readyStatus: source.readiness === "READY",
+    activeAuthority: envelope.authorityMeta.lifecycle === "active",
+    canonicalAuthority: envelope.authorityMeta.source_role === "canonical",
+    publicAuthority: envelope.authorityMeta.visibility === "public",
+    activeAnchor: source.lifecycle === "active",
+    canonicalAnchor: source.sourceRole === "canonical",
+    publicAnchor: source.visibility === "public",
     publicDocumentSet: source.documents.length > 0,
     clean: !source.dirty,
   };
   admission.accepted = Object.values(admission).every(Boolean);
 
-  const capabilityBody = section(statusSource, "Proven capabilities") || section(statusSource, "Current capabilities");
-  const operationalBody = section(statusSource, "Operational");
-  const currentStateBody = section(statusSource, "Current state");
-  const maturityBody = section(statusSource, "Maturity");
-  const removedHeadings = [...statusSource.matchAll(/^## (Removed[^\n]*)$/gm)].map((match) => match[1]);
+  const capabilitySection = firstSection(anchorSource, ["Proven capabilities", "Current capabilities", "Current capability"]);
+  const operationalSection = firstSection(anchorSource, ["Operational"]);
+  const currentStateSection = firstSection(anchorSource, ["Current state", "Current boundary"]);
+  const maturitySection = firstSection(anchorSource, ["Maturity"]);
+  const removedHeadings = [...anchorSource.matchAll(/^## (Removed[^\n]*)$/gm)].map((match) => match[1]);
 
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     project,
     source,
     admission,
     candidate: {
-      maturity: firstParagraph(maturityBody),
-      currentState: firstParagraph(currentStateBody),
-      capabilities: markdownTableRows(capabilityBody),
-      operational: markdownBullets(operationalBody),
+      maturity: firstParagraph(maturitySection.body),
+      currentState: firstParagraph(currentStateSection.body),
+      capabilities: markdownTableRows(capabilitySection.body),
+      capabilityBullets: markdownBullets(capabilitySection.body),
+      operational: markdownBullets(operationalSection.body),
       removed: removedHeadings.flatMap((heading) => {
-        const body = section(statusSource, heading);
+        const body = section(anchorSource, heading);
         const bullets = markdownBullets(body);
         return bullets.length ? bullets : [firstParagraph(body)].filter(Boolean);
       }),
@@ -202,7 +261,7 @@ if (fileURLToPath(import.meta.url) === resolve(process.argv[1] || "")) {
 
   try {
     const projections = repos.map(probePublicProjection);
-    console.log(JSON.stringify({ schemaVersion: 1, projections }, null, 2));
+    console.log(JSON.stringify({ schemaVersion: 2, projections }, null, 2));
   } catch (error) {
     fail(error instanceof Error ? error.message : String(error));
   }

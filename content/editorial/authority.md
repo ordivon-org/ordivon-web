@@ -40,7 +40,7 @@ Ordivon Web contains current editorial guidance, a public project map, research 
 
 Each article MDX source owns its published argument, publication status, claim class, evidence level, takeaways, limitations, and revision identity. A historical article may preserve a superseded judgment when it displays a visible update and links to the current owner.
 
-Generated metadata, manifests, project modules, feeds, JSON-LD, social cards, sitemap data, static output, and deployment manifests are derived projections. A committed owner snapshot is also derived: it is acceptable only when it records the admitted public source envelope—the project manifest plus active canonical public READY managed documents—together with the latest revision touching that envelope and its aggregate digest. It must remain reproducible from those owner sources. Project repositories own implementation, current boundaries, operations, and release facts. Research records own methods and evidence. Dated audits and phase reports are historical unless a current canonical policy incorporates them.
+Generated metadata, manifests, project modules, feeds, JSON-LD, social cards, sitemap data, static output, and deployment manifests are derived projections. A committed owner snapshot is also derived: it is acceptable only when it records the project manifest plus the active canonical public documents declared by the owner's current authority map, together with the latest revision touching that envelope and its aggregate digest. Document `readiness` remains part of the captured semantics but is not an admission gate: an authoritative current source may itself be `EXPERIMENTAL` or `CANDIDATE`. The snapshot must remain reproducible from those owner sources. Project repositories own implementation, current boundaries, operations, and release facts. Research records own methods and evidence. Dated audits and phase reports are historical unless a current canonical policy incorporates them.
 
 ## Consequences
 
@@ -54,4 +54,4 @@ Generated metadata, manifests, project modules, feeds, JSON-LD, social cards, si
 
 ## Status
 
-Accepted and active. Harness is the first source-bound project projection. Reopen when the source format changes, the pattern earns or fails reuse across other projects, a CMS or external publication owner is introduced, or generated output begins to carry facts not reconstructable from its committed inputs and owner binding.
+Accepted and active. Harness and Security are source-bound project projections with different owner document shapes. Reopen when another project breaks the authority-map model, a CMS or external publication owner is introduced, or generated output begins to carry facts not reconstructable from its committed inputs and owner binding.

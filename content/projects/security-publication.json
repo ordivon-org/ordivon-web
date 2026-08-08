@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "projectId": "ordivon-security",
+  "sourceRevision": "e1465e88afb0d07295ac318d5395403bf1c526ec",
+  "sourceDigest": "sha256:3765c9ee52c3b0ef6775c06057ab38bad3bedf6b274034c713e5668febc83b11",
+  "project": {
+    "id": "project:security",
+    "kind": "project",
+    "slug": "security",
+    "group": "Research and specification",
+    "label": "Authorized adversarial-Agent laboratory",
+    "category": "research",
+    "availability": "research",
+    "publicPage": true,
+    "index": "08",
+    "thesis": "Study autonomous opposition by keeping actor intent and observation, authority, physical consequence, sensor evidence, world truth, and evaluation as distinct facts.",
+    "question": "Which Agent-native laws remain necessary when autonomous actors can adapt, deceive, request consequential in-range effects, and continue across controller failure?",
+    "owns": [
+      "Contest and RangeSession domain semantics",
+      "Actor-specific observation and communication policy",
+      "Range authority and adversarial effect admission",
+      "Independent world truth, evidence, replay, and closure",
+      "Strategic and adversarial evaluation"
+    ],
+    "boundary": [
+      "Authorized owned or explicitly delegated ranges only",
+      "No generic Host, Harness, Runtime, hypervisor, or security-tool ownership",
+      "No unrestricted external targets or production attack-platform claim"
+    ],
+    "problem": "Classical security mechanisms can execute, observe, and contain effects, but they do not by themselves define the experiment when autonomous opponents hold different observations, authority, objectives, and interpretations of the same changing world.",
+    "capability": "Runs bounded adversarial experiments through a stable synchronous Contest profile and an experimental persistent RangeSession spine, composing model Actors, CAGE, isolated Windows/Linux range materializations, exact RangeAuthority, independent truth, interruption recovery, and residual closure without turning receipts or actor claims into world truth.",
+    "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
+    "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
+    "latestProof": "The current authority map records accepted S0–S6 persistent-range work and C1–C1F effect/recovery experiments. C1-F admitted exactly one of two successor candidates, proved the loser non-mutating, allowed later adoption of an already-materialized consequence without replay, and added archived predecessor-claim lineage without promoting distributed consensus.",
+    "flagshipSlug": "winning-move-loses-contest",
+    "summary": "An authorized adversarial-Agent research laboratory. Security owns contested-world semantics and evidence interpretation while mature hypervisors, ranges, model Harnesses, process runtimes, and security tools retain their own authority.",
+    "state": "The 0.8 research core is active. Contest remains the reproducible synchronous profile; RangeSession is the experimental persistent-world spine. S0–S6 and C1–C1F have produced accepted bounded evidence, while Campaign and Organization remain evolving research contracts rather than promoted general engines.",
+    "evidence": [
+      {
+        "value": "0.8",
+        "label": "active research core"
+      },
+      {
+        "value": "S0–S6",
+        "label": "persistent-range progression"
+      },
+      {
+        "value": "C1–C1F",
+        "label": "authority/recovery progression"
+      }
+    ],
+    "repository": "https://github.com/zycxfyh/ordivon-security",
+    "href": "/projects/security"
+  }
+}

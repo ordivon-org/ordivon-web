@@ -2,9 +2,10 @@ import process from "node:process";
 import { boundaries, projects } from "../content/model.ts";
 import { probePublicProjection } from "./probe-public-projection.mjs";
 
-function removedTerms(items) {
+function removedTerms(projection) {
+  if (projection.project?.id !== "ordivon-harness") return [];
   const terms = new Set();
-  for (const item of items) {
+  for (const item of projection.candidate.removed || []) {
     for (const match of item.matchAll(/`([^`]+)`/g)) terms.add(match[1]);
     for (const phrase of ["Host-backed Runner", "TaskContract", "Assignment", "Host compatibility package", "Host dependency", "host CLI namespace", "cutover", "rollback", "Codex/Hermes execution drivers"]) {
       if (item.toLowerCase().includes(phrase.toLowerCase())) terms.add(phrase);
@@ -35,7 +36,7 @@ function compare(repoPath) {
   };
 
   const stale = Boolean(projection.source.updated && web.updatedAt && projection.source.updated > web.updatedAt);
-  const retiredTerms = removedTerms(projection.candidate.removed || []);
+  const retired = removedTerms(projection);
   const currentClaims = {
     project: {
       capability: web.capability,
@@ -47,7 +48,7 @@ function compare(repoPath) {
   };
   const retiredCurrentClaims = [];
   for (const { path, value } of allStrings(currentClaims)) {
-    for (const term of retiredTerms) {
+    for (const term of retired) {
       if (value.toLowerCase().includes(term.toLowerCase())) retiredCurrentClaims.push({ path, term });
     }
   }
@@ -55,14 +56,18 @@ function compare(repoPath) {
   return {
     project: slug,
     sourceRevision: projection.source.revision,
-    sourceStatus: {
-      document: projection.source.statusDocument,
-      digest: projection.source.statusDigest,
+    sourceEnvelope: {
+      digest: projection.source.publicSourceDigest,
+      authorityDocument: projection.source.authorityDocument,
+      authoritySection: projection.source.authoritySection,
+      anchorDocument: projection.source.anchorDocument,
+      anchorDigest: projection.source.anchorDigest,
       updated: projection.source.updated,
       sourceRole: projection.source.sourceRole,
       visibility: projection.source.visibility,
       evidenceStatus: projection.source.evidenceStatus,
       readiness: projection.source.readiness,
+      documents: projection.source.documents.length,
     },
     mechanical,
     stale,
@@ -93,7 +98,7 @@ if (!repos.length) {
 
 const comparisons = repos.map(compare);
 console.log(JSON.stringify({
-  schemaVersion: 1,
+  schemaVersion: 2,
   summary: {
     projects: comparisons.length,
     staleProjects: comparisons.filter((item) => item.stale).map((item) => item.project),

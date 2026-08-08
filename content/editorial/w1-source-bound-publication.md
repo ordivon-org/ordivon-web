@@ -11,7 +11,7 @@ W1 uses Harness because W0 reproduced both timestamp drift and a semantic contra
 W1 separates three objects:
 
 1. **Owner reality** — the canonical Harness repository and status document.
-2. **Derived source snapshot** — `content/projects/harness-source.json`, captured only from an admitted clean owner repository and bound to the project manifest plus its active canonical public READY managed-document envelope, the latest revision touching that envelope, and an aggregate source digest.
+2. **Derived source snapshot** — `content/projects/harness-source.json`, captured from an admitted clean owner repository and bound to a public semantic envelope, the latest revision touching that envelope, and an aggregate source digest. W2 later corrected how the envelope is discovered: owner authority declarations, not `READY managed_paths`, define membership.
 3. **Web publication judgment** — `content/projects/harness-publication.json`, containing reader-facing Boundary and Project synthesis and explicitly bound to the exact captured revision/digest.
 
 The build-local `generated-harness.ts` is disposable. `content/model.ts` imports the generated Harness Boundary and Project rather than carrying another manually maintained Harness state object.
@@ -51,7 +51,7 @@ This is intentionally different from a CMS or public project database. The snaps
 
 A concurrent Harness change during W1 provided the failure case. Two new commits implemented P-C1.2a privacy authority. `docs/STATUS.md` did not change, but `ARCHITECTURE.md` and `docs/DATA_AND_PRIVACY.md` changed materially: metadata-only became the default durable-content authority, exact model/Tool retention requires explicit permission, and omitted content may require fail-closed rehydration without authorizing redispatch of an already completed effect.
 
-Binding raw repository HEAD would have made every code-only commit a publication invalidation. Binding only STATUS would have missed this public semantic change. W1 therefore binds the explicit managed public document envelope. The current Harness envelope resolves to public-source revision `a8a6a2f14d2c1d8fe1e09a5f4f79daa026f8c31f` and aggregate digest `sha256:9f2f516e70bf6f5090cb86595a889b1485fadeab3ca65bb6765e5a74e891a89f`; the later evidence-record commit does not perturb that envelope.
+Binding raw repository HEAD would have made every code-only commit a publication invalidation. Binding only STATUS would have missed this public semantic change. W1 therefore established the need for an explicit public semantic envelope; W2 later refined its discovery from managed-path heuristics to owner authority declarations. The current Harness envelope resolves to public-source revision `a8a6a2f14d2c1d8fe1e09a5f4f79daa026f8c31f` and aggregate digest `sha256:9f2f516e70bf6f5090cb86595a889b1485fadeab3ca65bb6765e5a74e891a89f`; the later evidence-record commit does not perturb that envelope.
 
 The real three-revision comparison confirmed the intended selectivity:
 
@@ -70,10 +70,10 @@ The captured source is accepted only when:
 - `public_projection: ordivon-web`;
 - `source_role: canonical`;
 - `visibility: public`;
-- `readiness: READY`;
+- the anchor and authority sources are active, canonical, and public; document readiness is captured rather than used as a universal admission gate (W2 correction);
 - the owner worktree is clean.
 
-The publication synthesis must then name the same project and bind to the exact captured public-source revision and aggregate source digest. The status digest remains a secondary anchor for status-derived capability fields.
+The publication synthesis must then name the same project and bind to the exact captured public-source revision and aggregate source digest. Harness still uses STATUS as its preferred anchor, but the binding contract no longer requires every project to have one.
 
 Two deliberate failures passed:
 

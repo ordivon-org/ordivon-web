@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "project": {
     "id": "ordivon-harness",
     "name": "Ordivon Harness",
@@ -9,14 +9,17 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "a8a6a2f14d2c1d8fe1e09a5f4f79daa026f8c31f",
+    "revision": "fd13fabae6f26154b4c2fd2e7735313091ee0580",
     "dirty": false,
-    "publicSourceDigest": "sha256:9f2f516e70bf6f5090cb86595a889b1485fadeab3ca65bb6765e5a74e891a89f",
+    "publicSourceDigest": "sha256:bc16881041d0131c45f93a3e51b0fba672042ca0d0817df5e1ab655863b28aaf",
     "projectManifestDigest": "sha256:df992f1ff26bcd1f2f9571a0e7f31e091ea7d8c4c71cfdedff2841b69a00f576",
+    "authorityDocument": "docs/authority.md",
+    "authorityDigest": "sha256:697386a85cbd945c544e6d1cf5f2f07e34aaa64d477a4eb35d5227c1730ed08c",
+    "authoritySection": "Decision",
     "documents": [
       {
         "path": "ARCHITECTURE.md",
-        "digest": "sha256:67afd3222adff2c22aebb84195fc9828a5b964c7ad07df1ad0b94a7a7fe66360",
+        "digest": "sha256:e398b8e3ab23daa4314f57f92e4f5d840462d58b2945798d6872b1f3341c47dc",
         "id": "harness.architecture",
         "type": "architecture",
         "lifecycle": "active",
@@ -52,7 +55,7 @@
       },
       {
         "path": "docs/DATA_AND_PRIVACY.md",
-        "digest": "sha256:0d5e1d14fd463df197d124d578aa7f8feaddcef23817860bec6e6e2c14083f02",
+        "digest": "sha256:8a5a891dfde73fa71ee4790d1f84524c9ca896a27de36e09d26b4c7bb53d2627",
         "id": "harness.data-privacy",
         "type": "policy",
         "lifecycle": "active",
@@ -147,10 +150,10 @@
         "readiness": "READY"
       }
     ],
-    "statusDocument": "docs/STATUS.md",
-    "statusDigest": "sha256:a2f4854322f9bdb0f73d4995d41eb5ab90fbde683ba1584c2c8cd461440ddfe6",
-    "statusId": "harness.status",
-    "statusUpdated": "2026-08-08",
+    "anchorDocument": "docs/STATUS.md",
+    "anchorDigest": "sha256:a2f4854322f9bdb0f73d4995d41eb5ab90fbde683ba1584c2c8cd461440ddfe6",
+    "anchorId": "harness.status",
+    "anchorUpdated": "2026-08-08",
     "lifecycle": "active",
     "sourceRole": "canonical",
     "visibility": "public",
@@ -161,9 +164,12 @@
   },
   "admission": {
     "projectionTarget": true,
-    "canonicalStatus": true,
-    "publicStatus": true,
-    "readyStatus": true,
+    "activeAuthority": true,
+    "canonicalAuthority": true,
+    "publicAuthority": true,
+    "activeAnchor": true,
+    "canonicalAnchor": true,
+    "publicAnchor": true,
     "publicDocumentSet": true,
     "clean": true,
     "accepted": true
@@ -171,6 +177,7 @@
   "candidate": {
     "currentState": "Ordivon Harness is an independent caller-neutral Run system. The current writer is the Harness SQLite Journal/CAS; the default and only CLI authority is `independent-harness-run`.",
     "capabilities": [],
+    "capabilityBullets": [],
     "operational": [
       "caller-delegated `HarnessExecutionMandate`, receipt-derived `HarnessMandateConsumption`, selectable `HarnessExecutionProfile` / `HarnessExecutionStrategy`, and pure `compile_harness_attempt()` into exact `HarnessRunContract` attempt authority;",
       "`HarnessRunContract` with exact execution-bound authority;",

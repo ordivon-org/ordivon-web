@@ -32,7 +32,7 @@ const authoredSummary = [
   {
     label: "What remains research",
     title: "Computing, Human, and Security publish bounded judgments—not universal products.",
-    body: "Computing tests shared contracts. Human completed one conditional economic-autonomy cycle. Security retains executable adversarial experiments after 84 Trials without promoting a Campaign engine or attack platform.",
+    body: "__SECURITY_PROJECT_STATE__",
   },
 ] as const;
 
@@ -49,7 +49,12 @@ export default function NowPage() {
   const publications = getRecentPublications(8);
   const projects = getCurrentProjects();
   const harnessProject = getProjectBySlug("harness")!;
-  const summary = authoredSummary.map((item) => item.body === "__HARNESS_PROJECT_STATE__" ? { ...item, body: `Host preserves durable Task continuity above replaceable execution. ${harnessProject.state}` } : item);
+  const securityProject = getProjectBySlug("security")!;
+  const summary = authoredSummary.map((item) => {
+    if (item.body === "__HARNESS_PROJECT_STATE__") return { ...item, body: `Host preserves durable Task continuity above replaceable execution. ${harnessProject.state}` };
+    if (item.body === "__SECURITY_PROJECT_STATE__") return { ...item, body: `Computing tests shared contracts. Human retains bounded conditional research. ${securityProject.state}` };
+    return item;
+  });
   const revisedQuestions = editorialSelections.now.judgmentChanges.map(getQuestionBySlug).filter((question): question is NonNullable<typeof question> => Boolean(question));
 
   return (

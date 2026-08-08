@@ -58,11 +58,11 @@ The MDX file is the article authoring authority. Generated TypeScript files are 
 
 ## Source-bound current project projection
 
-W1 introduced one deliberately narrow production slice for Harness. `content/projects/harness-source.json` is a deterministic snapshot of the owner public source envelope: `.ordivon/project.yaml` plus active canonical public READY documents declared through `managed_paths`. It records the latest revision touching that envelope and an aggregate digest over the manifest and selected documents. `content/projects/harness-publication.json` is the Web-owned editorial judgment reviewed against exactly that envelope. `generate-project-projections.mjs` refuses a revision/digest mismatch and rejects retired concepts when they are asserted as current capability or ownership.
+W1 introduced the first source-bound slice with Harness; W2 generalized discovery through owner authority. A `*-source.json` snapshot contains `.ordivon/project.yaml` plus the active canonical public documents linked from the owner's current authority section (`Current authority` or `Decision`). It records the latest revision touching that envelope and an aggregate digest over the manifest, authority declaration, and selected documents. The paired `*-publication.json` contains Web-owned editorial judgment reviewed against exactly that envelope. `generate-project-projections.mjs` refuses revision/digest mismatch. Harness additionally retains its H3 retired-current-claim guard; that project-specific semantic check is not treated as a universal parser.
 
-The source snapshot is not a second project database. It exists because a reproducible static GitHub Pages build cannot assume sibling repositories are present. An Agent with local access can re-run the capture in `--check` mode against the owner repository; the static build consumes the committed source-bound snapshot. The generated Harness module is disposable.
+The source snapshot is not a second project database. It exists because a reproducible static GitHub Pages build cannot assume sibling repositories are present. An Agent with local access can re-run the capture in `--check` mode against the owner repository; the static build consumes the committed source-bound snapshot. Generated project modules are disposable.
 
-This pattern is not yet a universal project schema. It is retained only because W0 reproduced real drift and W1 showed that one owner source can constrain multiple public views without making Web authoritative for implementation truth.
+This pattern is still not a universal project schema. W2 proved transfer from an engineering Harness with `STATUS.md`/READY sources to a research Security project with no `STATUS.md` and a mixed READY/EXPERIMENTAL/CANDIDATE authority set. The reusable contract is therefore source identity and authority declaration, not one shared project-document shape.
 
 ## Publication contract
 
