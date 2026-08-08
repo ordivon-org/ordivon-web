@@ -14,9 +14,30 @@ function git(repo, args) {
   return execFileSync("git", ["-C", repo, ...args], { encoding: "utf8" }).trim();
 }
 
+function sha256(source) {
+  return `sha256:${createHash("sha256").update(source).digest("hex")}`;
+}
+
 function topLevelScalar(source, key) {
   const match = source.match(new RegExp(`^${key}:\\s*(.+)$`, "m"));
   return match ? match[1].trim() : undefined;
+}
+
+function topLevelList(source, key) {
+  const lines = source.split("\n");
+  const start = lines.findIndex((line) => line.trim() === `${key}:`);
+  if (start < 0) return [];
+  const result = [];
+  for (const line of lines.slice(start + 1)) {
+    const match = line.match(/^\s{2}-\s+(.+)$/);
+    if (match) {
+      result.push(match[1].trim());
+      continue;
+    }
+    if (line.trim() === "") continue;
+    break;
+  }
+  return result;
 }
 
 function frontmatter(source) {
@@ -64,16 +85,54 @@ function firstParagraph(body) {
   return body.split(/\n\s*\n/).map((item) => item.replace(/\s+/g, " ").trim()).find(Boolean) || undefined;
 }
 
+function publicDocuments(repo, projectSource) {
+  return topLevelList(projectSource, "managed_paths")
+    .filter((relativePath) => existsSync(resolve(repo, relativePath)))
+    .map((relativePath) => {
+      const content = readFileSync(resolve(repo, relativePath), "utf8");
+      const meta = frontmatter(content);
+      return {
+        path: relativePath,
+        digest: sha256(content),
+        id: meta.id,
+        type: meta.type,
+        lifecycle: meta.lifecycle,
+        sourceRole: meta.source_role,
+        visibility: meta.visibility,
+        updated: meta.updated,
+        evidenceStatus: meta.evidence_status,
+        readiness: meta.readiness,
+      };
+    })
+    .filter((document) =>
+      document.lifecycle === "active" &&
+      document.sourceRole === "canonical" &&
+      document.visibility === "public" &&
+      document.readiness === "READY"
+    )
+    .sort((left, right) => left.path.localeCompare(right.path));
+}
+
 export function probePublicProjection(repoArg) {
   const repo = resolve(repoArg);
-  const projectPath = resolve(repo, ".ordivon/project.yaml");
+  const projectRelativePath = ".ordivon/project.yaml";
+  const projectPath = resolve(repo, projectRelativePath);
   if (!existsSync(projectPath)) throw new Error(`${repo}: missing .ordivon/project.yaml`);
 
   const projectSource = readFileSync(projectPath, "utf8");
   const statusDocument = findStatusDocument(repo);
   if (!statusDocument) throw new Error(`${repo}: no status document found`);
   const statusSource = readFileSync(resolve(repo, statusDocument), "utf8");
-  const meta = frontmatter(statusSource);
+  const statusMeta = frontmatter(statusSource);
+  const documents = publicDocuments(repo, projectSource);
+  const publicPaths = [projectRelativePath, ...documents.map((document) => document.path)];
+  const revision = git(repo, ["log", "-1", "--format=%H", "--", ...publicPaths]) || git(repo, ["rev-parse", "HEAD"]);
+  const projectManifestDigest = sha256(projectSource);
+  const publicSourceDigest = sha256(JSON.stringify({
+    projectManifest: { path: projectRelativePath, digest: projectManifestDigest },
+    documents: documents.map(({ path, digest }) => ({ path, digest })),
+  }));
+  const updated = documents.map((document) => document.updated).filter(Boolean).sort().at(-1) || statusMeta.updated;
 
   const project = {
     id: topLevelScalar(projectSource, "id"),
@@ -84,25 +143,30 @@ export function probePublicProjection(repoArg) {
     publicProjection: topLevelScalar(projectSource, "public_projection"),
   };
   const source = {
-    revision: git(repo, ["rev-parse", "HEAD"]),
+    revision,
     dirty: Boolean(git(repo, ["status", "--porcelain"])),
+    publicSourceDigest,
+    projectManifestDigest,
+    documents,
     statusDocument,
-    statusDigest: `sha256:${createHash("sha256").update(statusSource).digest("hex")}`,
-    statusId: meta.id,
-    lifecycle: meta.lifecycle,
-    sourceRole: meta.source_role,
-    visibility: meta.visibility,
-    updated: meta.updated,
-    summary: meta.summary,
-    evidenceStatus: meta.evidence_status,
-    readiness: meta.readiness,
+    statusDigest: sha256(statusSource),
+    statusId: statusMeta.id,
+    statusUpdated: statusMeta.updated,
+    lifecycle: statusMeta.lifecycle,
+    sourceRole: statusMeta.source_role,
+    visibility: statusMeta.visibility,
+    updated,
+    summary: statusMeta.summary,
+    evidenceStatus: statusMeta.evidence_status,
+    readiness: statusMeta.readiness,
   };
 
   const admission = {
     projectionTarget: project.publicProjection === "ordivon-web",
-    canonical: source.sourceRole === "canonical",
-    public: source.visibility === "public",
-    ready: source.readiness === "READY",
+    canonicalStatus: source.sourceRole === "canonical",
+    publicStatus: source.visibility === "public",
+    readyStatus: source.readiness === "READY",
+    publicDocumentSet: source.documents.length > 0,
     clean: !source.dirty,
   };
   admission.accepted = Object.values(admission).every(Boolean);

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "projectId": "ordivon-harness",
+  "sourceRevision": "a8a6a2f14d2c1d8fe1e09a5f4f79daa026f8c31f",
+  "statusDigest": "sha256:a2f4854322f9bdb0f73d4995d41eb5ab90fbde683ba1584c2c8cd461440ddfe6",
+  "boundary": {
+    "id": "system:harness",
+    "kind": "boundary",
+    "slug": "harness",
+    "index": "02",
+    "title": "Harness",
+    "maturity": "tested",
+    "summary": "The caller-neutral Agent execution boundary for immutable Run attempts, privacy-bounded durable continuity, Provider and Tool recovery, receipts, and completion proposals.",
+    "thesis": "One bounded Agent Run may be replaced without becoming the owner of durable work or caller-domain truth.",
+    "question": "Which Run-local facts must survive interruption while execution policy and Task meaning remain outside the Harness authority?",
+    "owns": [
+      "Run contracts and execution attempts",
+      "Provider-call continuity",
+      "Tool-step fencing and recovery",
+      "Run-scoped durable content authority",
+      "Run receipts and completion proposals"
+    ],
+    "boundary": [
+      "No generic Task database",
+      "No Runtime process ownership",
+      "No final caller or domain authority"
+    ],
+    "href": "/projects/harness"
+  },
+  "project": {
+    "id": "project:harness",
+    "kind": "project",
+    "slug": "harness",
+    "group": "Core work system",
+    "label": "Caller-neutral Agent execution",
+    "category": "core-system",
+    "availability": "prototype",
+    "architectureRoleId": "system:harness",
+    "publicPage": true,
+    "problem": "Agent execution needs durable Run-local authority and recovery without making a Provider session, Host, or caller-domain state the owner of the Run.",
+    "capability": "Compiles caller-delegated execution mandates with a chosen strategy into immutable Run contracts, then executes bounded Agent attempts with durable Provider and Tool continuity, privacy-authorized persistence, pause/resume, recovery, receipts, and completion proposals.",
+    "maturity": "Operational pre-1.0 engineering prototype",
+    "audience": "Agent builders who need caller-neutral Run execution, bounded authority, explicit Provider and Tool recovery, and completion handoff without a Host dependency.",
+    "latestProof": "Current canonical public sources verify caller-neutral independent Runs and P-C1.2a privacy authority: metadata-only is the default durable-content policy, exact model or Tool content requires explicit authority, and omitted result bytes never authorize redispatch of an already completed effect.",
+    "flagshipSlug": "what-h1-h5-proved",
+    "summary": "The independent execution authority for bounded Agent Runs. Harness owns how an admitted attempt executes and what Run content it may durably retain, while callers retain Task meaning, domain commitments, and final verification.",
+    "state": "Operational pre-1.0 for caller-neutral independent Runs. Durable continuity is metadata-only by default and exact private content requires explicit Run authority; the former Host-backed Runner and persisted Task/Assignment compatibility line remain removed.",
+    "evidence": [
+      {
+        "value": "independent",
+        "label": "Run authority"
+      },
+      {
+        "value": "metadata-only",
+        "label": "default retention"
+      },
+      {
+        "value": "Host-free",
+        "label": "dependency boundary"
+      }
+    ],
+    "href": "/projects/harness"
+  },
+  "sourceDigest": "sha256:9f2f516e70bf6f5090cb86595a889b1485fadeab3ca65bb6765e5a74e891a89f"
+}

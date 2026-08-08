@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { formatDate } from "@/lib/content";
 import { editorialSelections } from "@/content/editorial/selections";
-import { getQuestionBySlug } from "@/content/model";
+import { getProjectBySlug, getQuestionBySlug } from "@/content/model";
 import { getResearchQuestionSummaries } from "@/lib/research";
 import { currentUpdatedAt, getCurrentProjects, getRecentPublications } from "@/lib/updates";
 
@@ -21,8 +21,8 @@ const authoredSummary = [
   },
   {
     label: "What is implemented",
-    title: "Host and Harness are independent engineering prototypes.",
-    body: "Host owns durable Task continuity and outcomes. Harness now owns Assignment-bound Runs, Provider adapters, Tool-step checkpoints, recovery, and completion proposals. The earlier plan to build Harness v0 is no longer a future claim.",
+    title: "Host and Harness are independent pre-1.0 work authorities.",
+    body: "__HARNESS_PROJECT_STATE__",
   },
   {
     label: "What was removed",
@@ -48,6 +48,8 @@ export default function NowPage() {
   const frontier = getResearchQuestionSummaries().filter((item) => item.question.state === "testing" || item.question.state === "open").slice(0, 6);
   const publications = getRecentPublications(8);
   const projects = getCurrentProjects();
+  const harnessProject = getProjectBySlug("harness")!;
+  const summary = authoredSummary.map((item) => item.body === "__HARNESS_PROJECT_STATE__" ? { ...item, body: `Host preserves durable Task continuity above replaceable execution. ${harnessProject.state}` } : item);
   const revisedQuestions = editorialSelections.now.judgmentChanges.map(getQuestionBySlug).filter((question): question is NonNullable<typeof question> => Boolean(question));
 
   return (
@@ -60,7 +62,7 @@ export default function NowPage() {
 
       <section className="now-brief" aria-labelledby="now-brief-title">
         <div className="now-brief-intro"><p className="section-index">Current synthesis</p><h2 id="now-brief-title">The public map now distinguishes capability from prototype, product, research, and history.</h2></div>
-        <div className="now-brief-grid">{authoredSummary.map((item, index) => <article key={item.label}><span>{String(index + 1).padStart(2, "0")} / {item.label}</span><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
+        <div className="now-brief-grid">{summary.map((item, index) => <article key={item.label}><span>{String(index + 1).padStart(2, "0")} / {item.label}</span><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
       </section>
 
       <section className="now-frontier" aria-labelledby="now-frontier-title">

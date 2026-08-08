@@ -77,7 +77,7 @@ const definitions: PerspectiveDefinition[] = [
       { id: "structure-host", type: "implements", source: "project:host", target: "system:host" },
       { id: "structure-harness", type: "implements", source: "project:harness", target: "system:harness" },
       { id: "structure-runtime", type: "implements", source: "project:runtime", target: "system:runtime" },
-      { id: "structure-host-harness", type: "depends_on", source: "system:host", target: "system:harness", label: "assigns Runs" },
+      { id: "structure-host-harness", type: "depends_on", source: "system:host", target: "system:harness", label: "may delegate Runs" },
       { id: "structure-harness-runtime", type: "depends_on", source: "system:harness", target: "system:runtime", label: "dispatches Tools" },
       { id: "structure-host-computing", type: "depends_on", source: "system:host", target: "system:computing", label: "implements contracts" },
     ],
@@ -97,7 +97,7 @@ const definitions: PerspectiveDefinition[] = [
     ],
     edges: [
       { id: "execution-computing-host", type: "implements", source: "project:computing", target: "project:host", label: "promotes contracts" },
-      { id: "execution-host-harness", type: "depends_on", source: "project:host", target: "project:harness", label: "assigns work" },
+      { id: "execution-host-harness", type: "depends_on", source: "project:host", target: "project:harness", label: "delegates execution" },
       { id: "execution-harness-runtime", type: "depends_on", source: "project:harness", target: "project:runtime", label: "dispatches Tools" },
       { id: "execution-host-question", type: "explores", source: "project:host", target: "question:host-general-goal" },
       { id: "execution-harness-question", type: "explores", source: "project:harness", target: "question:ordivon-harness-v0" },

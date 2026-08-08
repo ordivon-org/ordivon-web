@@ -1,12 +1,6 @@
 import process from "node:process";
-import { projects } from "../content/model.ts";
+import { boundaries, projects } from "../content/model.ts";
 import { probePublicProjection } from "./probe-public-projection.mjs";
-
-function textFields(project) {
-  return Object.fromEntries([
-    "label", "problem", "capability", "maturity", "latestProof", "summary", "state",
-  ].map((key) => [key, typeof project[key] === "string" ? project[key] : ""]));
-}
 
 function removedTerms(items) {
   const terms = new Set();
@@ -19,10 +13,18 @@ function removedTerms(items) {
   return [...terms].filter((term) => term.length >= 5);
 }
 
+function allStrings(value, path = "root", result = []) {
+  if (typeof value === "string") result.push({ path, value });
+  else if (Array.isArray(value)) value.forEach((item, index) => allStrings(item, `${path}[${index}]`, result));
+  else if (value && typeof value === "object") Object.entries(value).forEach(([key, item]) => allStrings(item, `${path}.${key}`, result));
+  return result;
+}
+
 function compare(repoPath) {
   const projection = probePublicProjection(repoPath);
   const slug = projection.project.id?.replace(/^ordivon-/, "");
   const web = projects.find((item) => item.slug === slug);
+  const boundary = boundaries.find((item) => item.slug === slug);
   if (!web) throw new Error(`${projection.project.id}: no Web project entry`);
 
   const mechanical = {
@@ -33,12 +35,20 @@ function compare(repoPath) {
   };
 
   const stale = Boolean(projection.source.updated && web.updatedAt && projection.source.updated > web.updatedAt);
-  const fields = textFields(web);
   const retiredTerms = removedTerms(projection.candidate.removed || []);
-  const retiredReferences = [];
-  for (const [field, value] of Object.entries(fields)) {
+  const currentClaims = {
+    project: {
+      capability: web.capability,
+      latestProof: web.latestProof,
+      summary: web.summary,
+      evidence: web.evidence,
+    },
+    boundary: boundary ? { summary: boundary.summary, owns: boundary.owns } : undefined,
+  };
+  const retiredCurrentClaims = [];
+  for (const { path, value } of allStrings(currentClaims)) {
     for (const term of retiredTerms) {
-      if (value.toLowerCase().includes(term.toLowerCase())) retiredReferences.push({ field, term });
+      if (value.toLowerCase().includes(term.toLowerCase())) retiredCurrentClaims.push({ path, term });
     }
   }
 
@@ -56,17 +66,21 @@ function compare(repoPath) {
     },
     mechanical,
     stale,
-    retiredReferences,
+    retiredCurrentClaims,
     candidate: projection.candidate,
-    editorial: {
-      label: web.label,
-      problem: web.problem,
-      capability: web.capability,
-      maturity: web.maturity,
-      audience: web.audience,
-      latestProof: web.latestProof,
-      summary: web.summary,
-      state: web.state,
+    publicSynthesis: {
+      boundary: boundary ? { summary: boundary.summary, thesis: boundary.thesis, question: boundary.question, owns: boundary.owns, boundary: boundary.boundary, updatedAt: boundary.updatedAt } : undefined,
+      project: {
+        label: web.label,
+        problem: web.problem,
+        capability: web.capability,
+        maturity: web.maturity,
+        audience: web.audience,
+        latestProof: web.latestProof,
+        summary: web.summary,
+        state: web.state,
+        updatedAt: web.updatedAt,
+      },
     },
   };
 }
@@ -83,7 +97,7 @@ console.log(JSON.stringify({
   summary: {
     projects: comparisons.length,
     staleProjects: comparisons.filter((item) => item.stale).map((item) => item.project),
-    retiredReferenceProjects: comparisons.filter((item) => item.retiredReferences.length).map((item) => item.project),
+    retiredCurrentClaimProjects: comparisons.filter((item) => item.retiredCurrentClaims.length).map((item) => item.project),
   },
   comparisons,
 }, null, 2));

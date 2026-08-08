@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
 import { SystemExplorer } from "@/components/system/system-explorer";
-import { boundaries, researchPlanes, siteUpdatedAt } from "@/content/model";
+import { boundaries, getProjectBySlug, researchPlanes, siteUpdatedAt } from "@/content/model";
 import { formatDate } from "@/lib/content";
 import { systemPerspectives } from "@/lib/system-views";
 
@@ -11,21 +11,6 @@ export const metadata: Metadata = {
   description: "Follow durable Agent work through Host Task continuity, a replaceable Harness Run, Runtime physical execution, verification, and the owning application or external system.",
   alternates: { canonical: "/system" },
 };
-
-const trajectory = [
-  ["01", "A participant or application defines the work", "A real goal, repository, game state, external service, budget, or human decision creates work whose meaning belongs to its domain."],
-  ["02", "Host preserves the Task and commitment", "Generic Task continuity, accepted decisions, unresolved commitments, evidence admission, and outcomes remain durable above one conversation or model Run."],
-  ["03", "Harness runs replaceable intelligence", "An Assignment binds one Codex, Hermes, bare-model, or future Agent Run to exact Context, Tools, budgets, checkpoints, and recovery semantics."],
-  ["04", "Runtime commits local physical work", "Exact source and request identity become observable Jobs, process state, structured patches, Artifacts, cancellation, and reconciliation evidence."],
-  ["05", "Verification returns authority to the owner", "Host and the domain evaluate evidence, accept or reject completion, and decide which work becomes ready next. External providers keep their own truth."],
-] as const;
-
-const evidence = [
-  ["3", "current core boundaries"],
-  ["2 / 2", "Provider-replacement orders completed"],
-  ["256", "Harness tests against exact Host pin"],
-  ["13", "public Runtime tools"],
-] as const;
 
 const objectKinds = [
   ["boundary", "Core boundary", "A durable responsibility whose facts cannot safely be reconstructed by another layer."],
@@ -45,6 +30,21 @@ const connectionKinds = [
 export default function SystemPage() {
   const boundaryNodes = [...boundaries].sort((a, b) => a.index.localeCompare(b.index));
   const researchPlane = researchPlanes[0];
+  const harnessProject = getProjectBySlug("harness")!;
+  const runtimeProject = getProjectBySlug("runtime")!;
+  const trajectory = [
+    ["01", "A participant or application defines the work", "A real goal, repository, game state, external service, budget, or human decision creates work whose meaning belongs to its domain."],
+    ["02", "Host preserves the Task and commitment", "Generic Task continuity, accepted decisions, unresolved commitments, evidence admission, and outcomes remain durable above one conversation or model Run."],
+    ["03", "Harness runs replaceable intelligence", harnessProject.capability],
+    ["04", "Runtime commits local physical work", "Exact source and request identity become observable Jobs, process state, structured patches, Artifacts, cancellation, and reconciliation evidence."],
+    ["05", "Verification returns authority to the owner", "The caller or owning domain evaluates evidence, accepts or rejects completion, and decides what work means next. External providers keep their own truth."],
+  ] as const;
+  const evidence = [
+    [String(boundaryNodes.length), "current core boundaries"],
+    [harnessProject.evidence[0].value, `Harness ${harnessProject.evidence[0].label}`],
+    [harnessProject.evidence[2].value, `Harness ${harnessProject.evidence[2].label}`],
+    [runtimeProject.evidence[0].value, `Runtime ${runtimeProject.evidence[0].label}`],
+  ] as const;
 
   return (
     <div className="system-page">
@@ -70,7 +70,7 @@ export default function SystemPage() {
         </section>
 
         <section className="system-owners" aria-labelledby="system-owners-title">
-          <SectionHeading eyebrow="Core work system" title="Three boundaries preserve facts interruption makes expensive to reconstruct." description="Host owns generic Task continuity, Harness owns Assignment-bound Agent Runs, and Runtime owns physical execution truth." />
+          <SectionHeading eyebrow="Core work system" title="Three boundaries preserve facts interruption makes expensive to reconstruct." description="Host, Harness, and Runtime preserve different interruption-sensitive facts while leaving caller and domain authority outside the execution layers." />
           <div className="system-owner-grid">{boundaryNodes.map((node) => <article className={`system-owner-card status-${node.maturity}`} key={node.id}><div><span>{node.index}</span><i>{node.maturity}</i></div><h3>{node.title}</h3><p>{node.summary}</p><dl><div><dt>Preserves</dt><dd>{node.owns.join(" · ")}</dd></div><div><dt>Leaves elsewhere</dt><dd>{node.boundary.join(" · ")}</dd></div></dl></article>)}</div>
         </section>
 

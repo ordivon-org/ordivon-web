@@ -1,6 +1,7 @@
 import type { BoundaryDefinition, ProjectDefinition, QuestionDefinition, ResearchPlaneDefinition } from "@/lib/model/types";
+import { harnessBoundary, harnessProject } from "./projects/generated-harness.ts";
 
-export const siteUpdatedAt = "2026-08-04";
+export const siteUpdatedAt = "2026-08-08";
 const portfolioUpdatedAt = "2026-08-04";
 
 export const researchPlanes: ResearchPlaneDefinition[] = [
@@ -25,15 +26,7 @@ export const boundaries: BoundaryDefinition[] = [
     boundary: ["No model–Tool loop", "No process ownership", "No domain-world truth"],
     href: "/projects/host", updatedAt: portfolioUpdatedAt,
   },
-  {
-    id: "system:harness", kind: "boundary", slug: "harness", index: "02", title: "Harness", maturity: "tested",
-    summary: "The replaceable Agent execution boundary for Assignment-scoped Runs, Provider adapters, Tool steps, recovery, and completion proposals.",
-    thesis: "One bounded Agent Run may be replaced without becoming the owner of durable work.",
-    question: "Which Run-local facts must survive interruption without creating another Task database or scheduler?",
-    owns: ["Assignments and Runs", "Provider adapters", "Model–Tool loop", "Run recovery and completion proposals"],
-    boundary: ["No generic Task database", "No Runtime supervision", "No final domain authority"],
-    href: "/projects/harness", updatedAt: portfolioUpdatedAt,
-  },
+  harnessBoundary,
   {
     id: "system:runtime", kind: "boundary", slug: "runtime", index: "03", title: "Runtime", maturity: "tested",
     summary: "The physical execution boundary that owns durable local operation identity, process state, retained evidence, cancellation, and reconciliation.",
@@ -60,18 +53,7 @@ export const projects: ProjectDefinition[] = [
     evidence: [{ value: "167", label: "deterministic tests" }, { value: "v3", label: "operational state schema" }, { value: "0", label: "Harness tables owned" }],
     repository: "https://github.com/zycxfyh/ordivon-host", href: "/projects/host", updatedAt: portfolioUpdatedAt,
   },
-  {
-    id: "project:harness", kind: "project", slug: "harness", title: "Ordivon Harness", lifecycle: "active", group: "Core work system",
-    label: "Replaceable Agent execution", category: "core-system", availability: "prototype", architectureRoleId: "system:harness", publicPage: true,
-    problem: "A model API or Provider Agent product can perform one cognitive episode, but its Session, transcript, and hidden state cannot own durable Task continuity.",
-    capability: "Runs Assignment-bound Agents through Provider-faithful Codex and Hermes adapters or a first-party bounded DeepSeek model–Tool loop, with durable Tool-step recovery and completion proposals.",
-    maturity: "Implemented engineering prototype", audience: "Agent builders who need explicit Run state, Provider replacement, bounded Tool authority, interruption, recovery, and semantic handoff.",
-    latestProof: "The independent repository passes 256 tests against its exact Host dependency and supports status, run, resume, cancel, recover, and doctor operations.", flagshipSlug: "what-h1-h5-proved",
-    summary: "The replaceable execution layer between Host Tasks and Runtime operations. It owns Runs and Provider behavior without creating another database, daemon, or scheduler.",
-    state: "Implemented as an independent package. Codex App Server, Hermes ACP, and one first-party bare-model path are retained; broader orchestration remains outside the accepted boundary.",
-    evidence: [{ value: "256", label: "deterministic tests" }, { value: "3", label: "execution paths" }, { value: "0", label: "separate databases" }],
-    repository: "https://github.com/zycxfyh/ordivon-harness", href: "/projects/harness", updatedAt: portfolioUpdatedAt,
-  },
+  harnessProject,
   {
     id: "project:runtime", kind: "project", slug: "runtime", title: "Ordivon Runtime", lifecycle: "active", group: "Core work system",
     label: "Recoverable physical execution", category: "core-system", availability: "operational", architectureRoleId: "system:runtime", publicPage: true,
@@ -243,13 +225,13 @@ export const questions: QuestionDefinition[] = [
   },
   {
     id: "question:ordivon-harness-v0", kind: "question", slug: "ordivon-harness-v0", projectSlug: "harness",
-    title: "Does the implemented thin Harness remain valuable beyond its first bare-model and Provider paths?",
-    summary: "Pressure the independent Harness without expanding it into a daemon, scheduler, second database, or universal Provider lifecycle.",
-    importance: "The first-party loop now exists; retention depends on repeated capability and recovery value rather than architectural symmetry.",
-    hypothesis: "Assignment-scoped Run state, bounded model–Tool execution, and active-step-first recovery will transfer to another bare-model adapter or workload with small permanent cost.",
-    currentJudgment: "Implemented and under pressure. The independent repository includes Codex and Hermes adapters, a DeepSeek bare-model loop, durable Tool-step recovery, public Runner and CLI operations, and 256 passing tests against its exact Host dependency.",
-    nextStep: "Add a materially different bare-model adapter or workload and compare correctness, recovery, capability, and maintenance cost against one-shot and mature Provider-Harness paths.",
-    falsifier: "The first-party path supplies no recurring capability or recovery advantage over one-shot calls and mature Provider Harnesses.", state: "testing", href: "/research/ordivon-harness-v0", updatedAt: portfolioUpdatedAt,
+    title: "Does the caller-neutral Harness boundary remain valuable across different workloads and execution strategies?",
+    summary: "Pressure immutable Run contracts, delegated execution mandates, Provider and Tool recovery, and completion proposals without reintroducing caller-specific persistence or a universal planner.",
+    importance: "H3 removed the Host-backed product line, so Harness retention now depends on recurring caller-neutral execution and recovery value rather than compatibility with one upstream owner.",
+    hypothesis: "Mandate-to-strategy-to-Run-contract compilation plus durable Provider and Tool continuity will transfer to another materially different caller or workload with small permanent cost.",
+    currentJudgment: "Implemented and under pressure after H3 and P-C1.2a. The current Harness is caller-neutral and Host-free, with immutable Run attempt authority, durable Provider and Tool recovery, structured-result completion, and Run-contract privacy authority. Metadata-only continuity can preserve execution identity and effect fencing without retaining exact model or Tool content; when omitted content is needed later, continuation fails closed rather than inventing content or redispatching a completed effect. Earlier Assignment/Host-backed evidence no longer describes the current architecture.",
+    nextStep: "Run a materially different caller or workload through multiple execution strategies and compare correctness, recovery, capability, and maintenance cost against direct Provider/Runtime integration.",
+    falsifier: "Direct Provider and Runtime integration matches the same interruption recovery, evidence, bounded authority, and completion handoff with less permanent Harness machinery.", state: "testing", href: "/research/ordivon-harness-v0", updatedAt: "2026-08-08",
   },
   {
     id: "question:runtime-structured-effect", kind: "question", slug: "runtime-structured-effect", projectSlug: "runtime",

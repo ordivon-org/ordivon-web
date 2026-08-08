@@ -14,7 +14,7 @@ audience:
   - editor
   - builder
   - agent
-updated: 2026-08-04
+updated: 2026-08-08
 summary: Canonical architecture for authoring, validating, compiling, distributing, revising, correcting, and deploying Ordivon publications.
 evidence_status: verified
 readiness: READY
@@ -39,7 +39,7 @@ Article source files own publication identity, argument, limitations, dated stat
 
 ## Components
 
-The system consists of MDX article sources, exported publication metadata, the build-local metadata compiler, generated TypeScript review surfaces, validation, reusable article components, static Next.js output, and receipt-bound deployment.
+The system consists of MDX article sources, source-bound current-project publication inputs, build-local compilers, validation, reusable article components, static Next.js output, and receipt-bound deployment.
 
 ## Data flow
 
@@ -54,7 +54,15 @@ content/articles/<slug>.mdx
  pages, Atom, sitemap, JSON-LD, social cards, validation
 ```
 
-The MDX file is the authoring authority. Generated TypeScript files are committed review surfaces and build inputs, not independent facts.
+The MDX file is the article authoring authority. Generated TypeScript files are build-local and ignored; they are disposable projections of committed inputs, not review authority or independent facts.
+
+## Source-bound current project projection
+
+W1 introduced one deliberately narrow production slice for Harness. `content/projects/harness-source.json` is a deterministic snapshot of the owner public source envelope: `.ordivon/project.yaml` plus active canonical public READY documents declared through `managed_paths`. It records the latest revision touching that envelope and an aggregate digest over the manifest and selected documents. `content/projects/harness-publication.json` is the Web-owned editorial judgment reviewed against exactly that envelope. `generate-project-projections.mjs` refuses a revision/digest mismatch and rejects retired concepts when they are asserted as current capability or ownership.
+
+The source snapshot is not a second project database. It exists because a reproducible static GitHub Pages build cannot assume sibling repositories are present. An Agent with local access can re-run the capture in `--check` mode against the owner repository; the static build consumes the committed source-bound snapshot. The generated Harness module is disposable.
+
+This pattern is not yet a universal project schema. It is retained only because W0 reproduced real drift and W1 showed that one owner source can constrain multiple public views without making Web authoritative for implementation truth.
 
 ## Publication contract
 
@@ -87,7 +95,7 @@ Other proposed primitives remain deleted until repeated use earns them.
 
 ## Failure modes
 
-The system fails when generated output diverges from source, an article overstates evidence, a current selection points to superseded material without labeling it, publication metadata loses temporal identity, a project summary copies technical truth, or deployment cannot be bound to an exact tested source revision.
+The system fails when generated output diverges from committed inputs, an article overstates evidence, a current selection points to superseded material without labeling it, publication metadata loses temporal identity, a projected project snapshot is no longer bound to its owner public-source revision/digest, current synthesis reasserts an explicitly retired owner concept, a project summary becomes implementation authority, or deployment cannot be bound to an exact tested source revision.
 
 ## Verification
 

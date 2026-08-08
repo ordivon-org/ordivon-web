@@ -19,7 +19,7 @@
     "check": "pnpm content:generate && pnpm publication:check && next typegen && tsc --noEmit && pnpm lint && next build --webpack && pnpm budget:report && playwright test tests/smoke.spec.ts",
     "publication:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/validate-publications.mjs",
     "site:audit": "node scripts/site-audit.mjs",
-    "content:generate": "node scripts/generate-article-manifest.mjs",
+    "content:generate": "node scripts/generate-project-projections.mjs && node scripts/generate-article-manifest.mjs",
     "pages:prepare": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/prepare-pages.mjs",
     "budget:report": "node scripts/report-static-budget.mjs"
   },

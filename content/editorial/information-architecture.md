@@ -14,7 +14,7 @@ audience:
   - writer
   - builder
   - agent
-updated: 2026-08-04
+updated: 2026-08-08
 summary: Canonical public hierarchy for explaining the Ordivon project family, current maturity, research status, and next destinations without copying repository authority.
 evidence_status: verified
 readiness: READY
@@ -56,7 +56,7 @@ The primary hierarchy is:
 ### Core work system
 
 - **Host** preserves generic Task continuity, commitments, verification, and outcomes.
-- **Harness** owns Assignment-bound Agent Runs, Provider adapters, Tool steps, recovery, and completion proposals.
+- **Harness** owns caller-neutral Agent Run execution: immutable Run attempts, Provider and Tool continuity, recovery, receipts, and completion proposals. Caller Task meaning, domain commitments, and final verification remain outside Harness.
 - **Runtime** owns physical local execution, Workspaces, Jobs, process trees, Artifacts, cancellation, and reconciliation.
 
 These are distinct owners, not three names for one platform. Applications may use them selectively.
@@ -125,4 +125,4 @@ A publication remains a record of its date. When later work changes a material f
 
 ## Authority
 
-Current project summaries are authored projections at `siteUpdatedAt`. The owning repositories remain authoritative for code, tests, releases, operations, and current technical boundaries. Research records remain authoritative for setup and evidence. Articles remain authoritative for their dated argument. Generated manifests and pages remain rebuildable projections.
+Current project summaries are public projections at `siteUpdatedAt`. Some remain directly authored; the Harness slice is compiled from a source-bound owner snapshot plus Web editorial judgment. The owning repositories remain authoritative for code, tests, releases, operations, and current technical boundaries. Research records remain authoritative for setup and evidence. Articles remain authoritative for their dated argument. Generated modules, manifests, and pages remain rebuildable projections.

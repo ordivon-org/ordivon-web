@@ -220,7 +220,11 @@ test("system explorer uses curated architecture views", async ({ page }) => {
   await expect(page.locator(".system-owner-grid .system-owner-card")).toHaveCount(3);
   await expect(page.locator(".system-research-plane .system-owner-card")).toHaveCount(1);
   await expect(page.getByRole("heading", { name: "Computing", exact: true })).toBeVisible();
-  for (const value of ["3", "2 / 2", "256", "13"]) await expect(page.locator(".system-hero-stats").getByText(value, { exact: true })).toBeVisible();
+  await expect(page.locator(".system-hero-stats > div")).toHaveCount(4);
+  await expect(page.locator(".system-hero-stats").getByText("independent", { exact: true })).toBeVisible();
+  await expect(page.locator(".system-hero-stats").getByText("Host-free", { exact: true })).toBeVisible();
+  await expect(page.getByText("Harness tests against exact Host pin", { exact: true })).toHaveCount(0);
+  await expect(page.getByText("An Assignment binds", { exact: false })).toHaveCount(0);
   await expect(page.locator(".system-explorer")).toHaveAttribute("data-ready", "true", { timeout: 15_000 });
   await expect(page.getByRole("button", { name: "Structure State ownership" })).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByLabel("Selected architecture object").getByRole("heading", { name: "Host", exact: true })).toBeVisible();
