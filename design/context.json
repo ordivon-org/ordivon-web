@@ -8,7 +8,8 @@
     "agentWeb": "content/editorial/agent-web-system.md",
     "informationArchitecture": "content/editorial/information-architecture.md",
     "publication": "content/editorial/publication-system.md",
-    "evaluation": "design/evaluation.md"
+    "evaluation": "design/evaluation.md",
+    "expressionProfile": "design/expression-profile.md"
   },
   "primitives": [
     {
@@ -96,5 +97,11 @@
       "primaryTask": "Separate usable, implemented, research, removed, and historical states.",
       "visualConcerns": ["temporal hierarchy", "comparison", "editorial pacing", "status clarity"]
     }
-  ]
+  ],
+  "upstreamExpressionResearch": {
+    "repository": "/root/projects/ordivon-studio",
+    "revision": "dcd711889f968ede0d3545a31a16bac2012ee9b5",
+    "path": "research/expression/",
+    "role": "cross-medium aesthetic, narrative, rhetoric, motion, sound, style, and computational-aesthetics priors"
+  }
 }

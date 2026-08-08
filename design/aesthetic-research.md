@@ -15,7 +15,7 @@ audience:
   - builder
   - agent
 updated: 2026-08-08
-summary: Research method for generating and comparing human-facing visual alternatives without collapsing aesthetics, usability, accessibility, and visual stability into one score.
+summary: Web-specific research method for applying cross-medium expression priors to visual alternatives without collapsing aesthetics, usability, accessibility, and visual stability into one score.
 evidence_status: not_applicable
 readiness: CANDIDATE
 applies_to:
@@ -29,7 +29,9 @@ related:
 
 ## Question
 
-How should an Agent-first project improve a human-facing Web interface when neither “the Agent likes it” nor one automated design score is evidence that people will find it clear, distinctive, coherent, or beautiful?
+How should Web apply cross-medium aesthetic and expressive knowledge to a human-facing interface while preserving reading, trust, navigation, accessibility, and source-bound public truth?
+
+The broader question — what structures tend to create beauty, interest, expression, narrative force, rhythm, memory, or attraction across media — is now owned by Ordivon Studio's Art & Expression Laboratory. Web consumes the exact upstream research revision declared in [`expression-profile.md`](./expression-profile.md) rather than maintaining a second theory of beauty.
 
 ## First principle
 
@@ -43,7 +45,7 @@ Do people experience the interface as good design?
 
 Accessibility, responsive integrity, link correctness, content provenance, and rendering stability can be tested mechanically to a useful degree. Aesthetic experience is perceptual, contextual, and partly subjective.
 
-An Agent may generate aesthetic candidates and reject mechanically broken ones. It must not treat its own preference as human aesthetic evidence.
+An Agent may generate, critique, select, and promote aesthetic candidates when its decision is supported by source constraints, mature craft priors, relevant research, and rendered evidence. It must not misdescribe its own preference as a measured claim about human population preference.
 
 ## External research we retain
 
@@ -60,9 +62,9 @@ Moshagen and Thielsch (2010), *Facets of visual aesthetics*, validated the VisAW
 
 The later VisAWI-S showed that shorter perception measures can still be useful when evaluation time is limited.
 
-UI-Bench and Design Arena add a practical modern result for AI-generated UI: the primary aesthetic endpoint should be blinded pairwise preference, aggregated statistically, while automated visual metrics and facet ratings remain explanatory evidence. The 2026 Visual Aesthetic Benchmark independently finds that direct comparative judgment is more reliable than converting absolute scores into rankings, and that current multimodal aesthetic judges remain substantially below expert consensus.
+UI-Bench, Design Arena, and the 2026 Visual Aesthetic Benchmark provide a narrower lesson: when the claim under test is **comparative human preference**, direct blinded comparison is more defensible than pretending an absolute aesthetic score is ground truth. They do not imply that every creative decision requires a vote.
 
-We therefore use VisAWI facets to explain preference, not to replace preference with a scalar objective function. Reading success, task success, accessibility, perceived usability, and aesthetic preference remain separable evidence. The stable protocol is owned by [`evaluation.md`](./evaluation.md).
+We therefore use empirical literature and the Studio expression context as generative priors, mechanical and task evidence as constraints, Agent critique as the normal operating loop, and human/expert preference as an occasional calibration channel when a durable decision depends on uncertain human response. Reading success, task success, accessibility, perceived usability, and aesthetic preference remain separable evidence. The stable comparison protocol is owned by [`evaluation.md`](./evaluation.md).
 
 ## Experiment loop
 
@@ -79,20 +81,19 @@ mechanical preflight
   accessibility
   obvious visual regression
         ↓
-human-facing evaluation
-  blinded pairwise preference (primary)
-  simplicity
-  diversity
-  colorfulness
-  craftsmanship
-  reading/task comments
+evidence-based critique
+  intended experiential outcomes
+  expression tension profile
+  simplicity / diversity / craft diagnostics
+  reading/task consequences
+  human/expert calibration only if needed
         ↓
 interpretation
         ↓
 promote / retain as experiment / reject
 ```
 
-Exploratory experiments may begin with one evaluator, but a known-label preference is pilot evidence rather than a blinded ranking vote. Sample size, evaluator identity, evaluator class, randomization, and blinding are part of the evidence boundary; a single preference must never be narrated as universal taste.
+A local preference observation may be useful evidence about one observer in one context, but it is not a universal taste law. When Web makes a real population-preference claim, sample independence, evaluator class, randomization, blinding, and context remain part of the evidence boundary.
 
 ## Benchmark surfaces
 
@@ -141,7 +142,7 @@ These can reject a candidate before aesthetic preference matters:
 
 ### Perceived aesthetics
 
-For formal human aesthetic evaluation, use a blinded forced-choice pairwise judgment as the primary response. When useful, ask separately about:
+For a formal claim about human comparative preference, use a blinded forced-choice pairwise judgment as the primary direct response. Routine Web composition does not require this procedure. When calibration is useful, ask separately about:
 
 - **simplicity** — does the composition feel understandable rather than visually confused?
 - **diversity** — is there enough visual variation to make hierarchy and identity legible without chaos?
@@ -157,7 +158,7 @@ Evaluate separately:
 - can a reader find the current research judgment?
 - can a reader complete a long article without excessive visual fatigue?
 
-Do not average these into one “Web quality” number. Pairwise aesthetic preference is ranked separately; UX/task evidence and aesthetic facets explain tradeoffs.
+Do not average these into one “Web quality” number. If pairwise human preference is collected, rank it separately; UX/task evidence, aesthetic facets, and the Web expression profile explain tradeoffs.
 
 ## Minimal experiment record
 
@@ -213,7 +214,7 @@ Ordivon should reuse their ideas before reimplementing them, but a tool enters t
 
 ## Current research pressure
 
-A0 has now supplied the first real bounded experiment and browser capture path. The next pressure is evaluation rather than more styling: anonymize the A0 candidates, collect pairwise votes across evaluator classes, rank them by surface and globally, and compare those results with the earlier unblinded pilot preference. Only then should a visual direction be promoted.
+A0/A2 supplied the first bounded visual experiment and, more importantly, falsified the idea that one exposed observer's momentary preference should become design authority. The current pressure is no longer to collect votes until a theme wins. It is to apply [`expression-profile.md`](./expression-profile.md) to a real Web composition, state the intended experiential outcomes and tension profile before implementation, and test whether those concepts actually improve Agent creative judgment. Human/expert comparison remains available when the residual uncertainty is specifically about human response.
 
 ## References
 

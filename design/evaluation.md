@@ -9,7 +9,7 @@ visibility: public
 owners:
   - ordivon-web
 updated: 2026-08-08
-summary: Layered evaluation contract separating correctness, objective diagnostics, task UX, blinded aesthetic preference, and calibrated Agent judges.
+summary: Layered evaluation contract separating correctness, diagnostics, task UX, Agent creative judgment, optional human-preference calibration, and calibrated multimodal judges.
 evidence_status: verified
 readiness: READY
 applies_to:
@@ -33,7 +33,7 @@ The current evidence base points in the same direction:
 - UEQ separates attractiveness from perspicuity, efficiency, dependability, stimulation, and novelty.
 - WCAG provides normative accessibility constraints that are not aesthetic preferences.
 
-The contract therefore uses **several evidence layers with different authority**.
+The contract therefore uses **several evidence layers with different authority**. Direct human comparison is the strongest direct evidence for a claim about human comparative preference; it is not a mandatory approval mechanism for every visual decision.
 
 ## Evaluation stack
 
@@ -79,11 +79,11 @@ For interfaces with concrete user goals, record task evidence separately from ae
 
 Ordivon benchmark surfaces should use task-specific questions. For example, a Project page should be tested on whether a reader can distinguish current product truth, target state, evidence, and ownership.
 
-### Layer 3 — blinded pairwise aesthetic preference
+### Layer 3 — blinded human-preference calibration
 
-This is the **primary aesthetic endpoint**.
+This is the **primary direct endpoint when the claim is specifically comparative human preference**. It is a calibration instrument, not the default creative-control loop.
 
-For the same content/state and same benchmark surface, compare two variants anonymously and ask a forced-choice question. Recommended default:
+When that evidence is needed, compare the same content/state and same benchmark surface anonymously and ask a forced-choice question. Recommended default:
 
 > Which version is more publication-ready for Ordivon?
 
@@ -100,19 +100,20 @@ Protocol:
 
 When the claim is specifically professional visual craft, expert UI/UX evaluators carry more evidential weight than a convenience sample. Lay users remain valuable for audience preference and comprehension, but should not be silently pooled with expert judgment.
 
-### Layer 4 — facet explanation
+### Layer 4 — evidence-informed creative judgment and facet explanation
 
-Pairwise preference tells us **which wins**, not why.
+Most routine design decisions stop here rather than opening a human ballot. The Agent should state the intended experiential outcomes, relevant tension profile from [`expression-profile.md`](./expression-profile.md), mature research/craft priors used, and whether the rendered result actually implements them. A design judgment may be promoted without a population-preference claim when correctness/task obligations hold and the change is bounded, inspectable, reversible, and consistent with the selected expression profile.
 
-After or independently from the forced choice, optional facet evidence can explain the result:
+
+When pairwise preference is collected, it tells us **which was selected**, not why. Independent of whether a ballot exists, facet evidence can explain the likely strengths and failures of a rendered design:
 
 - VisAWI: simplicity, diversity, colorfulness, craftsmanship;
 - UI-Bench-style failure labels: typography, spacing, hierarchy, color/contrast, detail work, responsiveness, brief adherence, resonance;
 - Ordivon-specific task observations: evidence scanability, reading rhythm, temporal-state clarity, identity.
 
-Facet scores or comments do not override the pairwise result; they diagnose the direction of improvement.
+Facet scores or comments diagnose the direction of improvement. When a formal human-preference claim is being made, they explain rather than override the direct comparative evidence.
 
-### Layer 5 — Agent / VLM judges
+### Layer 5 — calibrated Agent / VLM comparative judges
 
 Agents are useful because they are cheap, repeatable, and can inspect many variants, but they are not yet aesthetic authority.
 
@@ -194,14 +195,16 @@ Do not treat a ranking as stable when independent evaluators are sparse or confi
 A visual change may enter stable design authority when:
 
 1. all Layer-0 gates pass;
-2. objective diagnostics confirm the intended manipulation and reveal no unacceptable regression;
+2. diagnostics confirm the intended manipulation and reveal no unacceptable regression;
 3. relevant task/UX evidence is non-degrading;
-4. blinded pairwise preference supports the candidate on the surfaces it claims to improve, with the direct candidate-versus-baseline comparison reported explicitly;
-5. a strong “preferred to baseline” claim has a direct 95% Wilson interval excluding `0.5`; otherwise the aesthetic result is labeled inconclusive rather than promoted by point estimate alone;
-6. the result remains legible when sliced by surface and evaluator class;
-7. the exact promoted changes are smaller than or equal to the evidence supporting them.
+4. the intended experiential outcomes and Web tension profile are explicit enough to explain why the concrete change belongs;
+5. rendered inspection shows the implementation actually expresses that rationale rather than merely describing it;
+6. the exact promoted change is smaller than or equal to the evidence and craft judgment supporting it;
+7. any stronger claim about **human population preference** is backed by the appropriate human/expert calibration rather than inferred from Agent judgment.
 
-A candidate that wins only Home must not silently rewrite the long-form design system. A candidate preferred only by Agents must not be described as proven human taste.
+When Web does make a strong “humans prefer X to baseline on surface Y” claim, the direct surface-specific evaluator-level 95% Wilson interval must exclude `0.5`; otherwise that population-preference claim remains inconclusive. This statistical threshold governs the claim, not whether Web is allowed to make a bounded design decision.
+
+A candidate that only works on Home must not silently rewrite the long-form design system. A candidate selected by Agents may become a design decision, but it must not be narrated as proven human taste without corresponding evidence.
 
 ## Sources retained by this contract
 

@@ -50,6 +50,8 @@ const output = {
     tokens: collectTokenPaths(tokens),
     primitives: design.primitives,
     benchmarkSurfaces: design.benchmarkSurfaces,
+    expressionProfile: design.authority.expressionProfile,
+    upstreamExpressionResearch: design.upstreamExpressionResearch,
   },
 };
 

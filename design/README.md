@@ -51,11 +51,14 @@ The current design authority is deliberately small:
 - [`tokens.json`](./tokens.json) owns the root color, layout, and font-family tokens already used by the live site;
 - [`context.json`](./context.json) identifies the reusable primitives and benchmark surfaces an Agent should inspect before inventing another pattern;
 - component source files own exact markup, behavior, and local implementation;
-- [`aesthetic-research.md`](./aesthetic-research.md) owns how visual alternatives are generated and studied;
+- [`expression-profile.md`](./expression-profile.md) owns the Web-specific application of cross-medium aesthetic and narrative priors;
+- [`aesthetic-research.md`](./aesthetic-research.md) owns how Web visual alternatives are generated and studied;
 - [`evaluation.md`](./evaluation.md) owns the stable evidence hierarchy, blinded preference protocol, and quantitative ranking contract;
 - public information hierarchy remains owned by [`../content/editorial/information-architecture.md`](../content/editorial/information-architecture.md).
 
 `styles/generated-design-tokens.css` is a build-local translation of `tokens.json`. It is not an authoring authority.
+
+Cross-medium theory is deliberately **not** owned here. Ordivon Studio `research/expression/` owns the Art & Expression Laboratory; `expression-profile.md` binds the exact upstream revision currently used by Web and specializes it for reading, navigation, trust, evidence, and accessibility.
 
 ## Why structured tokens now
 

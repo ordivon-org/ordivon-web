@@ -57,6 +57,13 @@ for (const surface of context.benchmarkSurfaces || []) {
 }
 if (surfaceIds.size < 3) fail("benchmark set is too narrow to compare unlike page tasks");
 
+const expression = context.upstreamExpressionResearch;
+if (!expression || typeof expression !== "object") fail("missing upstream expression research binding");
+if (typeof expression.repository !== "string" || !expression.repository) fail("upstream expression research lacks repository");
+if (typeof expression.revision !== "string" || !/^[0-9a-f]{40}$/.test(expression.revision)) fail("upstream expression research lacks exact Git revision");
+if (typeof expression.path !== "string" || !expression.path) fail("upstream expression research lacks path");
+if (typeof expression.role !== "string" || !expression.role) fail("upstream expression research lacks role");
+
 const tokenList = collectTokens(tokens);
 const variables = new Set();
 for (const token of tokenList) {
@@ -66,4 +73,4 @@ for (const token of tokenList) {
 }
 if (!tokenList.length) fail("token source is empty");
 
-console.log(`design_context=passed tokens=${tokenList.length} primitives=${primitiveIds.size} surfaces=${surfaceIds.size}`);
+console.log(`design_context=passed tokens=${tokenList.length} primitives=${primitiveIds.size} surfaces=${surfaceIds.size} expression_revision=${expression.revision.slice(0, 8)}`);
