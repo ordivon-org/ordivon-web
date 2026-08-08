@@ -68,11 +68,24 @@ try {
   assert.equal(ranked.bySurface.home[0].variant, "candidate-a");
   assert.equal(ranked.bySurface.project[0].variant, "candidate-a");
   assert.equal(ranked.bySurface["long-form"][0].variant, "candidate-b");
+  const overallBaselineVsA = ranked.headToHead.find((item) => [item.variantA, item.variantB].includes("baseline") && [item.variantA, item.variantB].includes("candidate-a"));
+  assert.equal(overallBaselineVsA.games, 12);
+  assert.equal(overallBaselineVsA.raters, 4);
+  assert.equal(overallBaselineVsA.surfaces, 3);
+  assert.equal(overallBaselineVsA.maxVotesPerRater, 3);
+  assert.equal(overallBaselineVsA.independentEvaluatorVotes, false);
+  assert.equal(overallBaselineVsA.intervalUnit, "comparison");
   const homeBaselineVsA = ranked.headToHeadBySurface.home.find((item) => [item.variantA, item.variantB].includes("baseline") && [item.variantA, item.variantB].includes("candidate-a"));
   assert.equal(homeBaselineVsA.games, 4);
+  assert.equal(homeBaselineVsA.raters, 4);
+  assert.equal(homeBaselineVsA.surfaces, 1);
+  assert.equal(homeBaselineVsA.maxVotesPerRater, 1);
+  assert.equal(homeBaselineVsA.independentEvaluatorVotes, true);
+  assert.equal(homeBaselineVsA.intervalUnit, "evaluator");
   assert.equal(homeBaselineVsA.preferred, "candidate-a");
   assert.ok(homeBaselineVsA.winRateA95[0] >= 0 && homeBaselineVsA.winRateA95[1] <= 1);
-  assert.ok(ranked.overall.every((item) => item.winRate95[0] >= 0 && item.winRate95[1] <= 1));
+  assert.ok(ranked.overall.every((item) => item.winRate95[0] >= 0 && item.winRate95[1] <= 1 && item.winRate95Unit === "comparison"));
+  assert.equal(ranked.inference.populationUnit, "evaluator");
 
   const invalidPath = join(temp, "invalid.json");
   writeFileSync(invalidPath, '[{"surface":"home","raterId":"x","raterClass":"expert","left":"a","right":"b","winner":"c"}]\n');
@@ -82,7 +95,7 @@ try {
 
   const example = JSON.parse(readFileSync(spec, "utf8"));
   assert.equal(example.schemaVersion, 1);
-  console.log("design_evaluation=passed pairings=9 blinded=true synthetic_votes=36 slices=surface,raterClass");
+  console.log("design_evaluation=passed pairings=9 blinded=true inference_unit=evaluator synthetic_votes=36 slices=surface,raterClass");
 } finally {
   rmSync(temp, { recursive: true, force: true });
 }

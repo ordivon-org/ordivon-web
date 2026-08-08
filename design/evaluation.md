@@ -173,9 +173,21 @@ The pairing generator randomizes left/right order deterministically from a seed.
 
 For any formal ballot, precommit the private-key digest and exact public review-asset digests before collecting responses. Do not publish the seed or private mapping until that ballot is closed.
 
-When the claim is specifically “candidate X is preferred to the current baseline on surface Y,” inspect the direct X-versus-baseline slice rather than inferring that claim from the global ranking. A strong preference claim requires the candidate's direct 95% Wilson interval to exclude `0.5`; otherwise the comparison remains inconclusive even if its point estimate or Bradley–Terry rank is higher.
+### Statistical unit: evaluator, not click
 
-Do not treat a ranking as stable when comparisons are sparse or confidence intervals overlap materially.
+A single evaluator normally contributes several pairwise decisions across surfaces. Those decisions are repeated measures from one person; they are not independent human samples. Therefore:
+
+- overall Bradley–Terry ratings and overall win-rate intervals are useful descriptive summaries of recorded comparisons;
+- cross-surface wins from one evaluator measure within-evaluator coverage/consistency, not population preference;
+- for a human-preference claim on one specific surface, each independent evaluator contributes at most one direct vote for a candidate pair;
+- a Wilson interval may be interpreted at evaluator level only when the reported slice has one vote per evaluator for that pair;
+- if a slice contains repeated votes from the same evaluator, use its interval only as comparison-level description or apply an explicitly cluster-aware/hierarchical analysis before population inference.
+
+The ranker exposes `raters`, `surfaces`, `maxVotesPerRater`, `independentEvaluatorVotes`, and `intervalUnit` on direct head-to-head rows so an Agent does not need to infer this boundary from counts.
+
+When the claim is specifically “candidate X is preferred to the current baseline on surface Y,” inspect the direct X-versus-baseline **surface slice** rather than inferring that claim from the global ranking. A strong human-preference claim requires an evaluator-level direct 95% Wilson interval excluding `0.5`; otherwise the comparison remains inconclusive even if its point estimate, cross-surface coverage, or Bradley–Terry rank is higher.
+
+Do not treat a ranking as stable when independent evaluators are sparse or confidence intervals overlap materially.
 
 ## Promotion rule
 

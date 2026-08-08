@@ -39,9 +39,24 @@ function headToHead(segment) {
   }
 
   return [...pairs.values()].map((pair) => {
+    const pairVotes = segment.filter((vote) => {
+      const [variantA, variantB] = [vote.left, vote.right].sort();
+      return variantA === pair.variantA && variantB === pair.variantB;
+    });
+    const votesPerRater = new Map();
+    for (const vote of pairVotes) votesPerRater.set(vote.raterId, (votesPerRater.get(vote.raterId) || 0) + 1);
+    const raters = votesPerRater.size;
+    const surfaces = new Set(pairVotes.map((vote) => vote.surface)).size;
+    const maxVotesPerRater = Math.max(...votesPerRater.values());
+    const independentEvaluatorVotes = maxVotesPerRater === 1;
     const winRateA = pair.winsA / pair.games;
     return {
       ...pair,
+      raters,
+      surfaces,
+      maxVotesPerRater,
+      independentEvaluatorVotes,
+      intervalUnit: independentEvaluatorVotes ? "evaluator" : "comparison",
       winRateA,
       winRateA95: wilson(pair.winsA, pair.games),
       preferred: pair.winsA > pair.winsB ? pair.variantA : pair.winsB > pair.winsA ? pair.variantB : null,
@@ -100,6 +115,7 @@ function rank(segment) {
       wins: wins[i],
       winRate: matches[i] ? wins[i] / matches[i] : 0,
       winRate95: [low, high],
+      winRate95Unit: "comparison",
       btStrength: strength[i],
       btRating: 1000 + 400 * Math.log10(strength[i]),
     };
@@ -115,6 +131,11 @@ const result = {
   schemaVersion: 1,
   comparisons: votes.length,
   raters: new Set(votes.map((vote) => vote.raterId)).size,
+  inference: {
+    populationUnit: "evaluator",
+    overallIntervals: "comparison-level descriptive only",
+    directSurfacePairIntervals: "evaluator-level only when independentEvaluatorVotes=true",
+  },
   overall: rank(votes),
   headToHead: headToHead(votes),
   bySurface: slicesBy("surface", rank),
