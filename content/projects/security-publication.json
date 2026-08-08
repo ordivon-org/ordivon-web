@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-security",
-  "sourceRevision": "b5fdc0e500ee1e2555d0c963dc348c30009cc2ee",
-  "sourceDigest": "sha256:f9979202e910322488a5c3e567be58997a3c3ad78162c8070066f336c8b40435",
+  "sourceRevision": "e194419ddad005fc9bc3bf03ffab126b011600f0",
+  "sourceDigest": "sha256:935811bb63611b8d8d657bc0d1c532fe63bc2454cdd2debc0415c9143d1d3591",
   "project": {
     "id": "project:security",
     "kind": "project",
@@ -31,10 +31,10 @@
     "capability": "Runs bounded adversarial experiments through a stable synchronous Contest profile and an experimental persistent RangeSession spine, composing model Actors, CAGE, isolated Windows/Linux range materializations, exact RangeAuthority, independent truth, interruption recovery, and residual closure without turning receipts or actor claims into world truth.",
     "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
     "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
-    "latestProof": "C1-M made compensation progress itself observationally ambiguous to the caller: repaired and unrepaired downstream-private histories produced byte-equivalent sender state and caller views, so caller history remained UNKNOWN and naive compensation replay could overrepair. A distinct convergent ensure-repaired compensation contract safely mapped hidden repaired state to no-op and hidden unrepaired state to one repair, converging both histories without exposing private truth or adding a sidecar receipt.",
+    "latestProof": "C1-N broke the truth assumption underneath convergent compensation: missing, malformed, and fork-conflicting downstream predicate state made the owning ensure-repaired authority fail closed with zero mutation because idempotency cannot reconstruct missing truth. A distinct digest-bound state witness restored exact pre-fault state in the tested static single-host faults and rejected tampering, but witness freshness and atomic consequence/witness publication remain unproved.",
     "flagshipSlug": "winning-move-loses-contest",
     "summary": "An authorized adversarial-Agent research laboratory. Security owns contested-world semantics and evidence interpretation while mature hypervisors, ranges, model Harnesses, process runtimes, and security tools retain their own authority.",
-    "state": "The 0.8 research core is active. Contest remains the reproducible synchronous profile; RangeSession is the experimental persistent-world spine. S0–S6 and C1–C1M have produced accepted bounded evidence. The recovery line now shows that caller uncertainty need not be eliminated centrally: intrinsic idempotency and convergent compensation can keep retry safety inside the effect boundary that owns and can verify the consequence, even when downstream repair truth is private. The next pressure is loss, corruption, or fork of that downstream truth itself.",
+    "state": "The 0.8 research core is active. S0–S6 and C1–C1N have produced accepted bounded evidence. The recovery line now reaches the truth substrate itself: caller uncertainty can remain authority-local and convergent effects can absorb replay, but when the effect owner loses trustworthy predicate truth, safe recovery must stop rather than infer. A separate integrity-bound witness can restore targeted static truth, while freshness and independent failure-domain questions remain open.",
     "evidence": [
       {
         "value": "0.8",
@@ -45,7 +45,7 @@
         "label": "persistent-range progression"
       },
       {
-        "value": "C1–C1M",
+        "value": "C1–C1N",
         "label": "authority/recovery progression"
       }
     ],

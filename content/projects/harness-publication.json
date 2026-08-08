@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-harness",
-  "sourceRevision": "9e65feb5045aa64ab2da69dc2645bb80bfa93866",
-  "sourceDigest": "sha256:5e23ae2ad2daaefc6b43bc9a3daacfa0ee8754decced6b2eaf3a96bff59d6d3f",
+  "sourceRevision": "5a0530a247acdd2a8695643d65b9f5609bb4ef09",
+  "sourceDigest": "sha256:131719a0d0e2c39055e78071b1cd20807d2e2314f35703e45308d94c5464dabe",
   "boundary": {
     "id": "system:harness",
     "kind": "boundary",
@@ -38,13 +38,13 @@
     "architectureRoleId": "system:harness",
     "publicPage": true,
     "problem": "Agent execution needs durable Run-local authority and recovery without making a Provider session, Host, or caller-domain state the owner of the Run.",
-    "capability": "Compiles caller-delegated execution mandates with a chosen strategy into immutable Run contracts, then executes bounded Agent attempts with durable Provider and Tool recovery, privacy-authorized persistence, Agent-selected WorkingSet transitions, Provider-faithful transient Tool-exchange continuity, explicit per-turn execution-control metadata, pause/resume, receipts, and completion proposals.",
+    "capability": "Compiles caller-delegated execution mandates with a chosen strategy into immutable Run contracts, then executes bounded Agent attempts with durable Provider and Tool recovery, privacy-authorized persistence, Agent-selected WorkingSet transitions, cross-process reconstruction of authorized attempt-local Provider/Tool cognition, explicit per-turn execution-control metadata, pause/resume, receipts, and completion proposals.",
     "maturity": "Operational pre-1.0 engineering prototype",
     "audience": "Agent builders who need caller-neutral Run execution, bounded authority, explicit Provider and Tool recovery, and completion handoff without a Host dependency.",
-    "latestProof": "Current public evidence now extends Agent-owned cognition beyond selected WorkingSet state: the Loop preserves complete Provider-authored Tool exchanges for the current attempt, exposes exact per-turn Runtime Tool capability and remaining-budget control separately from task Context, and treats observation/no-progress/tool-budget limits as effect gates that still leave the Agent a cognition/closure turn over evidence already seen.",
+    "latestProof": "Current public evidence now proves fresh-process recovery of attempt-local cognition when exact model and Tool content are authorized: the current committed WorkingSet defines the attempt boundary, later Provider-authored Tool exchanges are reconstructed from Journal/CAS and terminal Tool evidence, active effects are reconciled without redispatch, and clean pause/resume follows the same rule. Materialized source bytes do not become durable cognition unless the Agent explicitly selects their exact pin into a successor WorkingSet.",
     "flagshipSlug": "what-h1-h5-proved",
     "summary": "The independent execution authority for bounded Agent Runs. Harness owns how an admitted attempt executes and what Run content it may durably retain, while callers retain Task meaning, domain commitments, and final verification.",
-    "state": "Operational pre-1.0 for caller-neutral independent Runs. Durable selected Context remains explicit and privacy-bounded; transient Provider-authored Tool exchanges provide current-attempt cognition continuity without becoming selected WorkingSet state. Per-turn execution-control metadata tells the Agent which Tools and budget remain available, while closed observation/effect gates still permit an Agent-owned closure or cognition transition. Arbitrary cross-process reconstruction of unfinished transient Tool exchanges is not yet claimed.",
+    "state": "Operational pre-1.0 for caller-neutral independent Runs. Selected Context, attempt-local Tool cognition, execution-control metadata, and physical source materialization are distinct authorities. Authorized transient Tool exchanges can now survive process replacement without becoming selected knowledge; durable cognition promotion remains an Agent-owned WorkingSet choice rather than a Harness memory policy. Semantic taint tracking and generic memory ranking remain outside the claim.",
     "evidence": [
       {
         "value": "independent",

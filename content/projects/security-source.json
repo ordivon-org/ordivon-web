@@ -9,12 +9,12 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "b5fdc0e500ee1e2555d0c963dc348c30009cc2ee",
+    "revision": "e194419ddad005fc9bc3bf03ffab126b011600f0",
     "dirty": false,
-    "publicSourceDigest": "sha256:f9979202e910322488a5c3e567be58997a3c3ad78162c8070066f336c8b40435",
+    "publicSourceDigest": "sha256:935811bb63611b8d8d657bc0d1c532fe63bc2454cdd2debc0415c9143d1d3591",
     "projectManifestDigest": "sha256:7f1d76fd006f3b9b8e9af473004954fd0f9776c598acb0e5209b4071819ef7de",
     "authorityDocument": "docs/authority.md",
-    "authorityDigest": "sha256:8a27b21b8091f5a3d705adaae9e4f6e5a041d4c092fe7cbc22532cadad9fde77",
+    "authorityDigest": "sha256:6e4210101b9d47789e95e97058e96d917132c8b7c2e0f45bf66579be0d3671e1",
     "authoritySection": "Current authority",
     "documents": [
       {
@@ -43,7 +43,7 @@
       },
       {
         "path": "docs/architecture.md",
-        "digest": "sha256:18280dd7a22315b775b669659fc605e9f6575236e4133f8d4726021f0164d702",
+        "digest": "sha256:40f14cc61785effb34144fa2d66749828b36d25d02cc70072a2ca0e32dc19912",
         "id": "security.architecture",
         "type": "architecture",
         "lifecycle": "active",
@@ -55,7 +55,7 @@
       },
       {
         "path": "docs/authority.md",
-        "digest": "sha256:8a27b21b8091f5a3d705adaae9e4f6e5a041d4c092fe7cbc22532cadad9fde77",
+        "digest": "sha256:6e4210101b9d47789e95e97058e96d917132c8b7c2e0f45bf66579be0d3671e1",
         "id": "security.authority",
         "type": "decision",
         "lifecycle": "active",
@@ -103,8 +103,20 @@
       },
       {
         "path": "docs/COMPENSATION-INFORMATION-LOSS-C1M.md",
-        "digest": "sha256:64160da5af837f95a49a03415efaad868edbddc0b5e045fabb5b2ceaa4a692e9",
+        "digest": "sha256:26682e460186ddd71135b503d4ab4cd1c00d988377f7c0d931bad706403c394c",
         "id": "security.compensation-information-loss-c1m",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
+        "path": "docs/DOWNSTREAM-TRUTH-FAILURE-C1N.md",
+        "digest": "sha256:5a4e43913b41998a9bc1a79f82bc9b755ce4fc86468631b5def0ee464994e565",
+        "id": "security.downstream-truth-failure-c1n",
         "type": "experiment",
         "lifecycle": "active",
         "sourceRole": "canonical",
@@ -199,7 +211,7 @@
       },
       {
         "path": "docs/LAW-PROFILES-C0.md",
-        "digest": "sha256:d49362b56fc603a2767021da9cc922e798b4ba9e8f532b0c99ff4f491e342817",
+        "digest": "sha256:1ceacfe92cfc6e132d90ccd1019cf850bb4eefd0b84ae77e978a539aeb67c20d",
         "id": "security.law-profiles-c0",
         "type": "decision",
         "lifecycle": "active",
@@ -331,7 +343,7 @@
       },
       {
         "path": "docs/research-agenda.md",
-        "digest": "sha256:c2b735e4dda8578b8166a064ac9d8ccea91b93a9410153f061847290d0000eb7",
+        "digest": "sha256:2f0fbc90fc4fcd2d368b54751f60aeb1ead2984de6f0c8c9bb1607ea5cb72119",
         "id": "security.research-agenda",
         "type": "research-proposal",
         "lifecycle": "active",
@@ -427,7 +439,7 @@
       },
       {
         "path": "docs/WINDOWS-KVM-INSTALLER-P1.md",
-        "digest": "sha256:133cbedbbbb7037b8c68288c84eddf7e8db68424176e327740ef6a6aea120a54",
+        "digest": "sha256:c0e76f1782c4613aacce5b3749187bfab0e867dcefbbaeef9eaaec04a339372f",
         "id": "security.windows-kvm-installer-p1",
         "type": "specification",
         "lifecycle": "active",
@@ -475,7 +487,7 @@
       },
       {
         "path": "docs/WORLD-ENTITY-MIGRATION-RECOVERY.md",
-        "digest": "sha256:2b8fc28a9660edafae70fc014377019d633cba37088fefcc0af36e35b520811c",
+        "digest": "sha256:792c63d9bf362216784d76adf624b303fed1012bc33c5cf3439096576efde070",
         "id": "security.world-entity-migration-recovery",
         "type": "experiment",
         "lifecycle": "active",
@@ -487,7 +499,7 @@
       },
       {
         "path": "evidence/README.md",
-        "digest": "sha256:ca037346157abf8b6d934149d61e57efcc055e2b739b2a27b5d578a75513dc7e",
+        "digest": "sha256:75e1ebfd0da70ca4a173ee9393261eb867d2556ff8f4405daf11aaa08b980084",
         "id": "security.evidence",
         "type": "reference",
         "lifecycle": "active",
@@ -499,7 +511,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:5984928e867b5be80d4fb1edb5addb530c962144bb3c53aebf72e5c26f97ba14",
+        "digest": "sha256:e832ebe9a9e6b7454c268964a9230a9fc8b72dc92d2c63811bf0df2511a33c25",
         "id": "security.start",
         "type": "start",
         "lifecycle": "active",
@@ -511,7 +523,7 @@
       }
     ],
     "anchorDocument": "README.md",
-    "anchorDigest": "sha256:5984928e867b5be80d4fb1edb5addb530c962144bb3c53aebf72e5c26f97ba14",
+    "anchorDigest": "sha256:e832ebe9a9e6b7454c268964a9230a9fc8b72dc92d2c63811bf0df2511a33c25",
     "anchorId": "security.start",
     "anchorUpdated": "2026-08-07",
     "lifecycle": "active",
@@ -579,6 +591,7 @@
       "an accepted C1-K intrinsic-idempotency profile where an exact ensure-state world consequence survives ACK loss and safe retry: two physical invocations produce one request-owned mutation and one semantic consequence, crash-before-apply uses the same retry policy, and preexisting exact state requires no request-owned mutation;",
       "an accepted C1-L compensation profile where a non-idempotent +1 consequence duplicates to balance 2, naive blind compensation retry overcompensates to 0, while sound recovery re-observes the exact repair invariant: balance 2 authorizes one compensation to 1 and balance 1 proves already-repaired so only publication is repaired;",
       "an accepted C1-M compensation-information-loss profile where repaired and unrepaired downstream-private histories are byte-indistinguishable to the caller and therefore historically `UNKNOWN`; naive compensation replay is unsound, while a distinctly identified `ensure-repaired` compensation contract safely converges both hidden histories without caller read authority or a sidecar receipt;",
+      "an accepted C1-N downstream-truth-failure profile where missing, corrupt, and forked private predicate truth make the owning `ensure-repaired` authority fail closed with zero mutation; a distinct digest-bound state witness outside that private boundary restores exact truth in the tested static faults, while tampered witness data is rejected and freshness remains unproved;",
       "a P0 Windows Evaluation adapter that remains restricted to the exact maintained benign fixture;",
       "a DeepSeek Flash `NativeHarnessActorBackend` with exact Provider, Harness, Host, Runtime, Protocol, prompt, budget, and credential-scope identity;",
       "a P0-A CAGE path where Harness is consumed while Host and Runtime non-consumption remain explicit experimental facts;",
