@@ -9,12 +9,12 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "4db127d0a9352857d58cc6aae8c7b20e9090f09c",
+    "revision": "b5fdc0e500ee1e2555d0c963dc348c30009cc2ee",
     "dirty": false,
-    "publicSourceDigest": "sha256:3c8dcf74e5f3af57294fdec521ca6e21dc66142ab26df287ff8a4e5c2a2bb574",
+    "publicSourceDigest": "sha256:f9979202e910322488a5c3e567be58997a3c3ad78162c8070066f336c8b40435",
     "projectManifestDigest": "sha256:7f1d76fd006f3b9b8e9af473004954fd0f9776c598acb0e5209b4071819ef7de",
     "authorityDocument": "docs/authority.md",
-    "authorityDigest": "sha256:7e62ec6bef55cff5d75662596d78d9ecabe5f3ab15e9e77decb9e67b8cba36fa",
+    "authorityDigest": "sha256:8a27b21b8091f5a3d705adaae9e4f6e5a041d4c092fe7cbc22532cadad9fde77",
     "authoritySection": "Current authority",
     "documents": [
       {
@@ -43,7 +43,7 @@
       },
       {
         "path": "docs/architecture.md",
-        "digest": "sha256:33260b733a1503038683dd5e2a771dadc2f709720df9304c00b95fdeee89d0fb",
+        "digest": "sha256:18280dd7a22315b775b669659fc605e9f6575236e4133f8d4726021f0164d702",
         "id": "security.architecture",
         "type": "architecture",
         "lifecycle": "active",
@@ -55,7 +55,7 @@
       },
       {
         "path": "docs/authority.md",
-        "digest": "sha256:7e62ec6bef55cff5d75662596d78d9ecabe5f3ab15e9e77decb9e67b8cba36fa",
+        "digest": "sha256:8a27b21b8091f5a3d705adaae9e4f6e5a041d4c092fe7cbc22532cadad9fde77",
         "id": "security.authority",
         "type": "decision",
         "lifecycle": "active",
@@ -91,8 +91,20 @@
       },
       {
         "path": "docs/COMPENSATION-C1L.md",
-        "digest": "sha256:f214410abd04b48998f9913fd0261be745d7cc25dcbc0e6b8725dbd9d74c1099",
+        "digest": "sha256:cf02ce758427f2ea75d8bb497f2935628cb17276e1e4198961d9f893c67780a4",
         "id": "security.compensation-c1l",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
+        "path": "docs/COMPENSATION-INFORMATION-LOSS-C1M.md",
+        "digest": "sha256:64160da5af837f95a49a03415efaad868edbddc0b5e045fabb5b2ceaa4a692e9",
+        "id": "security.compensation-information-loss-c1m",
         "type": "experiment",
         "lifecycle": "active",
         "sourceRole": "canonical",
@@ -187,7 +199,7 @@
       },
       {
         "path": "docs/LAW-PROFILES-C0.md",
-        "digest": "sha256:1b21519b961e681aaac43cd5e3859e60b0370cb5231f7963073875939ee0a259",
+        "digest": "sha256:d49362b56fc603a2767021da9cc922e798b4ba9e8f532b0c99ff4f491e342817",
         "id": "security.law-profiles-c0",
         "type": "decision",
         "lifecycle": "active",
@@ -319,7 +331,7 @@
       },
       {
         "path": "docs/research-agenda.md",
-        "digest": "sha256:2773a91d26abdd03b673ecc273a57b957a7fc2009d6562609ef8034bced046ee",
+        "digest": "sha256:c2b735e4dda8578b8166a064ac9d8ccea91b93a9410153f061847290d0000eb7",
         "id": "security.research-agenda",
         "type": "research-proposal",
         "lifecycle": "active",
@@ -475,7 +487,7 @@
       },
       {
         "path": "evidence/README.md",
-        "digest": "sha256:557797aac0faa02f9932a9a369c64f105f03099013df4b86744e6ec1696ecb07",
+        "digest": "sha256:ca037346157abf8b6d934149d61e57efcc055e2b739b2a27b5d578a75513dc7e",
         "id": "security.evidence",
         "type": "reference",
         "lifecycle": "active",
@@ -487,7 +499,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:9918b142ed28a61c538b38ace9c1f1529ecf458391dae735a225b285530daf47",
+        "digest": "sha256:5984928e867b5be80d4fb1edb5addb530c962144bb3c53aebf72e5c26f97ba14",
         "id": "security.start",
         "type": "start",
         "lifecycle": "active",
@@ -499,7 +511,7 @@
       }
     ],
     "anchorDocument": "README.md",
-    "anchorDigest": "sha256:9918b142ed28a61c538b38ace9c1f1529ecf458391dae735a225b285530daf47",
+    "anchorDigest": "sha256:5984928e867b5be80d4fb1edb5addb530c962144bb3c53aebf72e5c26f97ba14",
     "anchorId": "security.start",
     "anchorUpdated": "2026-08-07",
     "lifecycle": "active",
@@ -566,6 +578,7 @@
       "an accepted C1-J recipient-commit-gap profile where faulting both orderings between the same non-idempotent pulse and a separate durable dedup marker produces either duplicate-on-retry or lost consequence; an explicit durable `reserved` inbox then proves byte-identical recipient recovery state can still hide whether the pulse occurred, so reservation preserves `UNKNOWN` but cannot make two independent commits atomic;",
       "an accepted C1-K intrinsic-idempotency profile where an exact ensure-state world consequence survives ACK loss and safe retry: two physical invocations produce one request-owned mutation and one semantic consequence, crash-before-apply uses the same retry policy, and preexisting exact state requires no request-owned mutation;",
       "an accepted C1-L compensation profile where a non-idempotent +1 consequence duplicates to balance 2, naive blind compensation retry overcompensates to 0, while sound recovery re-observes the exact repair invariant: balance 2 authorizes one compensation to 1 and balance 1 proves already-repaired so only publication is repaired;",
+      "an accepted C1-M compensation-information-loss profile where repaired and unrepaired downstream-private histories are byte-indistinguishable to the caller and therefore historically `UNKNOWN`; naive compensation replay is unsound, while a distinctly identified `ensure-repaired` compensation contract safely converges both hidden histories without caller read authority or a sidecar receipt;",
       "a P0 Windows Evaluation adapter that remains restricted to the exact maintained benign fixture;",
       "a DeepSeek Flash `NativeHarnessActorBackend` with exact Provider, Harness, Host, Runtime, Protocol, prompt, budget, and credential-scope identity;",
       "a P0-A CAGE path where Harness is consumed while Host and Runtime non-consumption remain explicit experimental facts;",
