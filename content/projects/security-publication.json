@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-security",
-  "sourceRevision": "91d54653fabe86abbc6fd904cde64f007485e88a",
-  "sourceDigest": "sha256:d77d8bee00078986cf483e060e4a3d68e796cf89315ef5e4d363e61a82714f3a",
+  "sourceRevision": "fd17d5e3021ca4939bc12ed46a6d6263238a3b8a",
+  "sourceDigest": "sha256:d98163843e1fe040a653766b2ee63f7681832d2a33fb1ac81f08bef35f5b8e90",
   "project": {
     "id": "project:security",
     "kind": "project",
@@ -31,10 +31,10 @@
     "capability": "Runs bounded adversarial experiments through a stable synchronous Contest profile and an experimental persistent RangeSession spine, composing model Actors, CAGE, isolated Windows/Linux range materializations, exact RangeAuthority, independent truth, interruption recovery, and residual closure without turning receipts or actor claims into world truth.",
     "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
     "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
-    "latestProof": "C1-H established completed-but-unpublished Range recovery without replay. The World Entity consumer now transfers that completion/publication/executor separation to publication-only KVM recovery: a fresh publisher re-observes an unchanged live carrier, competing publishers converge on one durable publication, and publisher death after ledger write reconstructs only the missing receipt without replaying the physical body.",
+    "latestProof": "C1-I produced byte-identical durable sender state and successor views for delivered and undelivered non-idempotent pulse histories, forcing UNKNOWN and showing that blind retry can physically duplicate a completed effect. Recipient-private exact-effect dedup made retry safe. C1-J then faulted both orderings between effect and durable marker and showed they select duplicate-versus-loss failure modes rather than atomicity; an explicit reserved inbox preserves uncertainty but still cannot resolve the recipient commit gap.",
     "flagshipSlug": "winning-move-loses-contest",
     "summary": "An authorized adversarial-Agent research laboratory. Security owns contested-world semantics and evidence interpretation while mature hypervisors, ranges, model Harnesses, process runtimes, and security tools retain their own authority.",
-    "state": "The 0.8 research core is active. Contest remains the reproducible synchronous profile; RangeSession is the experimental persistent-world spine. S0–S6 and C1–C1H have produced accepted bounded evidence. World Entity KVM controller-loss now has publication-only recovery for independently complete carriers: predecessor ownership remains provenance, concurrent publishers serialize to one publication, and no durable Entity successor claim has yet been forced for this narrower repair.",
+    "state": "The 0.8 research core is active. Contest remains the reproducible synchronous profile; RangeSession is the experimental persistent-world spine. S0–S6 and C1–C1J have produced accepted bounded evidence. Recovery now distinguishes publication, observable completion, executor liveness, information loss, and recipient commit boundaries. World Entity has publication-only carrier recovery, while C1-I/C1-J pressure intrinsic downstream idempotency or a genuinely shared atomic consequence/completion boundary rather than a generic exactly-once framework.",
     "evidence": [
       {
         "value": "0.8",
@@ -45,7 +45,7 @@
         "label": "persistent-range progression"
       },
       {
-        "value": "C1–C1H",
+        "value": "C1–C1J",
         "label": "authority/recovery progression"
       }
     ],
