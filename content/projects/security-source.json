@@ -9,10 +9,10 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "01d773edf2d6db5e9591f064cde25cc7bd0a4cce",
+    "revision": "072ef473cea7e51c2347ef387b20fbd12b39f23d",
     "dirty": false,
-    "publicSourceDigest": "sha256:308644904e8a9a9c18bb4c5c6e3b9cc08f5bffdd90cf86bc9e9c846fc2e12931",
-    "projectManifestDigest": "sha256:945f987357f5cf0157e1ee4d29439a62d27c31113e13620126527797e190dd66",
+    "publicSourceDigest": "sha256:eefcbb7bd5f7f8df86bc58f0b820b3415db45648b0a2ad23609f38f307f27db9",
+    "projectManifestDigest": "sha256:69a3b81cfc1d774688d305edaefe74030448aeb7ea8a13a06db8157568c996ce",
     "authorityDocument": "docs/authority.md",
     "authorityDigest": "sha256:6e4210101b9d47789e95e97058e96d917132c8b7c2e0f45bf66579be0d3671e1",
     "authoritySection": "Current authority",
@@ -343,7 +343,7 @@
       },
       {
         "path": "docs/research-agenda.md",
-        "digest": "sha256:2f0fbc90fc4fcd2d368b54751f60aeb1ead2984de6f0c8c9bb1607ea5cb72119",
+        "digest": "sha256:03869e90a70dc9492e0c8a96e79da54fb1c6a094209eadce1c1369d83b0f5c60",
         "id": "security.research-agenda",
         "type": "research-proposal",
         "lifecycle": "active",
@@ -499,7 +499,7 @@
       },
       {
         "path": "evidence/README.md",
-        "digest": "sha256:75e1ebfd0da70ca4a173ee9393261eb867d2556ff8f4405daf11aaa08b980084",
+        "digest": "sha256:fc499ff2eb221f0ce5c35960c6feeca198685f4231b0ab01a0d15cedd55b82c7",
         "id": "security.evidence",
         "type": "reference",
         "lifecycle": "active",
@@ -511,7 +511,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:6137008ab2b7f8d18a57cab54b829bc2f1c97cf4e8724d8c791996613067f108",
+        "digest": "sha256:c36fd60fef81811c0a2ab0a0f5c238ba4ebb65f036b1b23f3bbc9161cb827ab3",
         "id": "security.start",
         "type": "start",
         "lifecycle": "active",
@@ -523,7 +523,7 @@
       }
     ],
     "anchorDocument": "README.md",
-    "anchorDigest": "sha256:6137008ab2b7f8d18a57cab54b829bc2f1c97cf4e8724d8c791996613067f108",
+    "anchorDigest": "sha256:c36fd60fef81811c0a2ab0a0f5c238ba4ebb65f036b1b23f3bbc9161cb827ab3",
     "anchorId": "security.start",
     "anchorUpdated": "2026-08-08",
     "lifecycle": "active",
@@ -547,7 +547,7 @@
     "accepted": true
   },
   "candidate": {
-    "maturity": "- **Constitution / reusable substrate:** C0 law distinctions, `RangeSession`, exact `RangeAuthority` actor/zone/capability grants, separated evidence planes, independent world-truth verification, and the recovery laws repeatedly forced by C1 experiments. - **Profiles:** `SynchronousContestProfile`, CAGE team-plan control, software Evaluation/SampleVault/Guardian, Windows KVM ranges, and World destination adapters. A profile may be accepted and useful without defining universal Agent behavior. - **Research apparatus:** S/C acceptance runners, P0/P1 probes, fault injectors, Host/Runtime integration variants, and physical receipts. Accepted evidence remains canonical history; the apparatus itself is not automatically a stable API. - **Open research:** persistent Agent-native intent beyond per-tick action menus; deception, trust, collusion, organization, infection and strategic conflict; effect-contract reuse beyond current experiments; witness freshness; and any stronger transaction/replication mechanism only if a real consumer forces it.",
+    "maturity": "- **Constitution / reusable substrate:** C0 law distinctions, `RangeSession`, exact `RangeAuthority` actor/zone/capability grants, separated evidence planes, independent world-truth verification, and the recovery laws repeatedly forced by C1 experiments. [`docs/AGENT-FIRST-STRUCTURE-AF1.md`](docs/AGENT-FIRST-STRUCTURE-AF1.md) records the current structural classification. - **Profiles:** `SynchronousContestProfile`, CAGE team-plan control, software Evaluation/SampleVault/Guardian, Windows KVM ranges, and World destination adapters. A profile may be accepted and useful without defining universal Agent behavior. - **Research apparatus:** S/C acceptance runners, P0/P1 probes, fault injectors, Host/Runtime integration variants, and physical receipts. Accepted evidence remains canonical history; the apparatus itself is not automatically a stable API. - **Open research:** AF2 provides a physically consumed zero-or-more Range-intent surface without Contest ticks. AF3 separates communicated claim from complete independent truth. AE0 advances to an autonomous deceiver plus initially byte-identical partial evidence: the Defender preserves `UNKNOWN`, autonomously purchases inspection, and only then diverges into hold versus quarantine. This still does not force Trust/Reputation/Organization or a new communication core. Delayed/conflicting truth, repeated interaction, collusion, infection and strategic conflict remain higher-order consumers; witness freshness and stronger transaction/replication mechanisms stay parked until such a consumer forces them. [`docs/AGENT-FIRST-INTENT-AF2.md`](docs/AGENT-FIRST-INTENT-AF2.md), [`docs/AGENT-FIRST-DECEPTION-AF3.md`](docs/AGENT-FIRST-DECEPTION-AF3.md), and [`docs/ADVERSARIAL-EPISTEMICS-AE0.md`](docs/ADVERSARIAL-EPISTEMICS-AE0.md) define the accepted boundary.",
     "capabilities": [],
     "capabilityBullets": [],
     "operational": [],

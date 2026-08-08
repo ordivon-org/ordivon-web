@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-harness",
-  "sourceRevision": "5a0530a247acdd2a8695643d65b9f5609bb4ef09",
-  "sourceDigest": "sha256:131719a0d0e2c39055e78071b1cd20807d2e2314f35703e45308d94c5464dabe",
+  "sourceRevision": "8b0f0252cef1597a13be06adccea86fd63b5ce0f",
+  "sourceDigest": "sha256:49b46cbea77e4f2b11e7cc211688488ccb56e844bd20d87b87d2ba1980114628",
   "boundary": {
     "id": "system:harness",
     "kind": "boundary",
@@ -41,10 +41,10 @@
     "capability": "Compiles caller-delegated execution mandates with a chosen strategy into immutable Run contracts, then executes bounded Agent attempts with durable Provider and Tool recovery, privacy-authorized persistence, Agent-selected WorkingSet transitions, cross-process reconstruction of authorized attempt-local Provider/Tool cognition, explicit per-turn execution-control metadata, pause/resume, receipts, and completion proposals.",
     "maturity": "Operational pre-1.0 engineering prototype",
     "audience": "Agent builders who need caller-neutral Run execution, bounded authority, explicit Provider and Tool recovery, and completion handoff without a Host dependency.",
-    "latestProof": "Current public evidence now proves fresh-process recovery of attempt-local cognition when exact model and Tool content are authorized: the current committed WorkingSet defines the attempt boundary, later Provider-authored Tool exchanges are reconstructed from Journal/CAS and terminal Tool evidence, active effects are reconciled without redispatch, and clean pause/resume follows the same rule. Materialized source bytes do not become durable cognition unless the Agent explicitly selects their exact pin into a successor WorkingSet.",
+    "latestProof": "The cognition line now includes bounded Agent-owned historical recall and a stricter progress boundary. An explicitly granted history control exposes only earlier committed WorkingSet identities and exact pins, never semantic search or unselected CAS material; the Agent may re-select a historical pin through the existing WorkingSet transition. Attempt reset can discard transient Tool cognition without counting as structural progress, so it cannot reset progress counters or reopen a closed soft effect gate unless selected cognition actually changes.",
     "flagshipSlug": "what-h1-h5-proved",
     "summary": "The independent execution authority for bounded Agent Runs. Harness owns how an admitted attempt executes and what Run content it may durably retain, while callers retain Task meaning, domain commitments, and final verification.",
-    "state": "Operational pre-1.0 for caller-neutral independent Runs. Selected Context, attempt-local Tool cognition, execution-control metadata, and physical source materialization are distinct authorities. Authorized transient Tool exchanges can now survive process replacement without becoming selected knowledge; durable cognition promotion remains an Agent-owned WorkingSet choice rather than a Harness memory policy. Semantic taint tracking and generic memory ranking remain outside the claim.",
+    "state": "Operational pre-1.0 for caller-neutral independent Runs. Durable selected cognition, attempt-local Tool exchange, historical WorkingSet identity recall, execution-control metadata, and physical source materialization remain distinct. Historical recall is Agent-invoked exact-pin recovery rather than a Harness Memory/search service. Progress authority is durable: merely starting a new attempt with identical pins clears transient cognition but does not revive effect budget; an actual selected-context mutation may reset only the soft progress counters while the hard Tool budget remains global.",
     "evidence": [
       {
         "value": "independent",

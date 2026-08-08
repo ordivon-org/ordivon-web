@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-security",
-  "sourceRevision": "01d773edf2d6db5e9591f064cde25cc7bd0a4cce",
-  "sourceDigest": "sha256:308644904e8a9a9c18bb4c5c6e3b9cc08f5bffdd90cf86bc9e9c846fc2e12931",
+  "sourceRevision": "072ef473cea7e51c2347ef387b20fbd12b39f23d",
+  "sourceDigest": "sha256:eefcbb7bd5f7f8df86bc58f0b820b3415db45648b0a2ad23609f38f307f27db9",
   "project": {
     "id": "project:security",
     "kind": "project",
@@ -32,22 +32,22 @@
     "capability": "Runs bounded adversarial-autonomy experiments over a reusable RangeSession/RangeAuthority substrate and scoped profiles such as synchronous Contest, CAGE, software Evaluation, and Windows KVM. It composes Host, Harness, Runtime, World, hypervisors, ranges, and security tools while keeping principal information, authority, consequence, truth, recovery, and evaluation distinct.",
     "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
     "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
-    "latestProof": "C1-N broke the truth assumption underneath convergent compensation: missing, malformed, and fork-conflicting downstream predicate state made the owning ensure-repaired authority fail closed with zero mutation because idempotency cannot reconstruct missing truth. A distinct digest-bound state witness restored exact pre-fault state in the tested static single-host faults and rejected tampering, but witness freshness and atomic consequence/witness publication remain unproved.",
+    "latestProof": "AE0 now demonstrates autonomous deception under partial truth. A real model Deceiver publishes the same receiver-visible compromise claim in healthy and compromised worlds; the Defender receives byte-identical pre-inspection context, preserves UNKNOWN, autonomously requests inspection in both, and only after an independent world-truth event diverges into no-quarantine versus quarantine. The inspection receipt itself remains non-truth.",
     "flagshipSlug": "winning-move-loses-contest",
     "summary": "An Agent-first adversarial-autonomy laboratory. Security owns the minimum semantics required for contested authority, information asymmetry, verified consequence, uncertainty, recovery, and evaluation; cyber is the first high-fidelity domain rather than the project definition.",
-    "state": "The 0.8 research core is active, but its public maturity map now separates reusable constitutional substrate from scoped profiles and research apparatus. S0–S6 and C1–C1N remain accepted bounded evidence. The current recovery frontier still reaches predicate-truth failure and witness freshness; broader campaign, organization, transaction, or replication structures are not admitted without new pressure.",
+    "state": "The 0.8 Agent-first research core now has accepted AF2/AF3/AE0 evidence above the earlier S/C recovery line. A reusable zero-or-more Range-intent surface exists without Contest ticks, communicated claims are separated from independent truth, and UNKNOWN can rationally authorize information acquisition without authorizing the hidden-world consequence. One autonomous deception consumer still does not force Trust, Reputation, Organization, a generic communication core, or stronger transaction machinery; delayed/conflicting/priced truth and repeated interaction remain the next pressure.",
     "evidence": [
       {
-        "value": "0.8",
-        "label": "active research core"
+        "value": "AF2",
+        "label": "Agent-native Range intent"
       },
       {
-        "value": "S0–S6",
-        "label": "persistent-range progression"
+        "value": "AF3",
+        "label": "deception consumer"
       },
       {
-        "value": "C1–C1N",
-        "label": "authority/recovery progression"
+        "value": "AE0",
+        "label": "partial-truth epistemics"
       }
     ],
     "repository": "https://github.com/zycxfyh/ordivon-security",
