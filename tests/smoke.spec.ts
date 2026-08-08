@@ -159,9 +159,23 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByRole("link", { name: /Creation, Judgment, and Recoverable Systems/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: "The dossier is an index, not the evidence authority." })).toBeVisible();
 
+  await gotoWithNetworkRetry(page, "/projects/game");
+  await expect(page.getByText("Registered playable v2 product plus accepted, implemented, unregistered v3 first-playable target", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("v2", { exact: true })).toBeVisible();
+  await expect(page.getByText("registered current product", { exact: true })).toBeVisible();
+  await expect(page.getByText("P0–P3", { exact: true })).toBeVisible();
+  await expect(page.getByText("accepted v3 target", { exact: true })).toBeVisible();
+  await expect(page.getByText("/v3", { exact: true })).toBeVisible();
+  await expect(page.getByText("separate first-playable", { exact: true })).toBeVisible();
+
+  await gotoWithNetworkRetry(page, "/research/game-agent-native-mechanics");
+  await expect(page.getByText("registered playable product", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("P0–P3", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("before registering v3 or deleting the v2 approval loop", { exact: false })).toBeVisible();
+
   await gotoWithNetworkRetry(page, "/research/security-adversarial-trajectory");
   await expect(page.getByRole("link", { name: /Winning the Move Can Lose the Contest/ })).toBeVisible();
-  await expect(page.getByText("C1–C1F", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("C1–C1G", { exact: false }).first()).toBeVisible();
   await expect(page.getByText("84 Trials", { exact: false })).toHaveCount(0);
 
   await gotoWithNetworkRetry(page, "/research/harness-composition-and-completion");

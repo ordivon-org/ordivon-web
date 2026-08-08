@@ -17,7 +17,7 @@ const authoredSummary = [
   {
     label: "What is usable",
     title: "Runtime is operational; Station Zero v2 is the registered playable product.",
-    body: "Runtime provides thirteen owner-trusted local execution tools with recovery and operational gates. Game runs Station Zero v2 locally with SQLite; v3 exists as an implemented preview rather than the current registered target.",
+    body: "__GAME_PROJECT_STATE__",
   },
   {
     label: "What is implemented",
@@ -49,8 +49,10 @@ export default function NowPage() {
   const publications = getRecentPublications(8);
   const projects = getCurrentProjects();
   const harnessProject = getProjectBySlug("harness")!;
+  const gameProject = getProjectBySlug("game")!;
   const securityProject = getProjectBySlug("security")!;
   const summary = authoredSummary.map((item) => {
+    if (item.body === "__GAME_PROJECT_STATE__") return { ...item, body: `Runtime remains the operational local execution boundary. ${gameProject.state}` };
     if (item.body === "__HARNESS_PROJECT_STATE__") return { ...item, body: `Host preserves durable Task continuity above replaceable execution. ${harnessProject.state}` };
     if (item.body === "__SECURITY_PROJECT_STATE__") return { ...item, body: `Computing tests shared contracts. Human retains bounded conditional research. ${securityProject.state}` };
     return item;

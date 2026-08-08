@@ -7,6 +7,7 @@ const ROOT = process.cwd();
 const CONFIGS = [
   { slug: "harness", projectExport: "harnessProject", boundaryExport: "harnessBoundary", receiptExport: "harnessProjectionReceipt" },
   { slug: "security", projectExport: "securityProject", receiptExport: "securityProjectionReceipt" },
+  { slug: "game", projectExport: "gameProject", receiptExport: "gameProjectionReceipt" },
 ];
 
 function fail(slug, message) {
@@ -28,14 +29,14 @@ function validateSnapshot(slug, source) {
   if (!source.admission?.accepted) fail(slug, "captured source is not admitted");
   if (!Array.isArray(source.source?.documents) || source.source.documents.length === 0) fail(slug, "captured public envelope is empty");
   for (const document of source.source.documents) {
-    if (document.lifecycle !== "active" || document.sourceRole !== "canonical" || document.visibility !== "public") {
+    if (document.sourceRole !== "canonical" || document.visibility !== "public") {
       fail(slug, `captured envelope contains inadmissible document ${document.path}`);
     }
   }
   const recomputed = sha256(JSON.stringify({
     projectManifest: { path: ".ordivon/project.yaml", digest: source.source.projectManifestDigest },
     authority: { path: source.source.authorityDocument, digest: source.source.authorityDigest, section: source.source.authoritySection },
-    documents: source.source.documents.map(({ path, digest }) => ({ path, digest })),
+    documents: source.source.documents.map(({ path, digest, id, type, lifecycle, sourceRole, visibility, updated, evidenceStatus, readiness }) => ({ path, digest, id, type, lifecycle, sourceRole, visibility, updated, evidenceStatus, readiness })),
   }));
   if (recomputed !== source.source.publicSourceDigest) fail(slug, "captured public-source digest is internally inconsistent");
 }
@@ -119,7 +120,7 @@ async function generate(config) {
     authoritySection: source.source.authoritySection,
     anchorDocument: source.source.anchorDocument,
     anchorDigest: source.source.anchorDigest,
-    publicDocuments: source.source.documents.map(({ path, digest, readiness }) => ({ path, digest, readiness })),
+    publicDocuments: source.source.documents.map(({ path, digest, lifecycle, readiness }) => ({ path, digest, lifecycle, readiness })),
     sourceUpdatedAt: source.source.updated,
     evidenceStatus: source.source.evidenceStatus,
     readiness: source.source.readiness,

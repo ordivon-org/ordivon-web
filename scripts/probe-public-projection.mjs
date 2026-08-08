@@ -140,7 +140,6 @@ function publicDocuments(repo, projectSource) {
       };
     })
     .filter((document) =>
-      document.lifecycle === "active" &&
       document.sourceRole === "canonical" &&
       document.visibility === "public"
     )
@@ -182,7 +181,7 @@ export function probePublicProjection(repoArg) {
   const publicSourceDigest = sha256(JSON.stringify({
     projectManifest: { path: projectRelativePath, digest: projectManifestDigest },
     authority: { path: envelope.authorityDocument, digest: envelope.authorityDigest, section: envelope.authoritySection },
-    documents: envelope.documents.map(({ path, digest }) => ({ path, digest })),
+    documents: envelope.documents.map(({ path, digest, id, type, lifecycle, sourceRole, visibility, updated, evidenceStatus, readiness }) => ({ path, digest, id, type, lifecycle, sourceRole, visibility, updated, evidenceStatus, readiness })),
   }));
   const updated = envelope.documents.map((document) => document.updated).filter(Boolean).sort().at(-1) || anchorMeta.updated;
 

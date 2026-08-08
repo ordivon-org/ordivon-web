@@ -1,7 +1,7 @@
 import "../styles/home.css";
 import Link from "next/link";
 import { ContinuitySignal } from "@/components/home/continuity-signal";
-import { siteUpdatedAt, getQuestionBySlug } from "@/content/model";
+import { siteUpdatedAt, getProjectBySlug, getQuestionBySlug } from "@/content/model";
 import { formatDate, getArticle } from "@/lib/content";
 import { projects } from "@/lib/projects";
 import { getResearchQuestionSummaries } from "@/lib/research";
@@ -29,7 +29,8 @@ export default function HomePage() {
   const featured = editorialSelections.home.recentArguments.map(getArticle);
   const proofArticle = getArticle(editorialSelections.home.proof);
   const proofQuestion = getQuestionBySlug("harness-composition-and-completion");
-  if (!proofArticle || !proofQuestion || featured.some((article) => !article)) throw new Error("homepage editorial selection is incomplete");
+  const gameProject = getProjectBySlug("game");
+  if (!proofArticle || !proofQuestion || !gameProject || featured.some((article) => !article)) throw new Error("homepage editorial selection is incomplete");
 
   return (
     <div className="home-page">
@@ -61,7 +62,7 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
-        <footer className="home-proof-source"><span>Runtime is operational; Host and Harness are implemented engineering prototypes.</span><span>Station Zero v2 is the registered playable product; v3 remains a preview.</span></footer>
+        <footer className="home-proof-source"><span>Runtime is operational; Host and Harness are implemented engineering prototypes.</span><span>{gameProject.state}</span></footer>
       </section>
 
       <section className="home-owners home-shell" aria-labelledby="home-map-title">

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-harness",
-  "sourceRevision": "fd13fabae6f26154b4c2fd2e7735313091ee0580",
-  "sourceDigest": "sha256:bc16881041d0131c45f93a3e51b0fba672042ca0d0817df5e1ab655863b28aaf",
+  "sourceRevision": "fa23bfc817ce4c63fc5eadc398d044eb6817b7ae",
+  "sourceDigest": "sha256:caedc3c851bcf3ce6d8c4eeafef01776dc790537a6d89a0aa6fcfb07f4e568d7",
   "boundary": {
     "id": "system:harness",
     "kind": "boundary",
@@ -46,9 +46,18 @@
     "summary": "The independent execution authority for bounded Agent Runs. Harness owns how an admitted attempt executes and what Run content it may durably retain, while callers retain Task meaning, domain commitments, and final verification.",
     "state": "Operational pre-1.0 for caller-neutral independent Runs. Durable continuity is metadata-only by default and exact private content requires explicit Run authority; the former Host-backed Runner and persisted Task/Assignment compatibility line remain removed.",
     "evidence": [
-      { "value": "independent", "label": "Run authority" },
-      { "value": "metadata-only", "label": "default retention" },
-      { "value": "Host-free", "label": "dependency boundary" }
+      {
+        "value": "independent",
+        "label": "Run authority"
+      },
+      {
+        "value": "metadata-only",
+        "label": "default retention"
+      },
+      {
+        "value": "Host-free",
+        "label": "dependency boundary"
+      }
     ],
     "href": "/projects/harness"
   }

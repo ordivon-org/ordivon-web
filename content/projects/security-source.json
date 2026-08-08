@@ -9,12 +9,12 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "e1465e88afb0d07295ac318d5395403bf1c526ec",
+    "revision": "efffb9f82a49cb7e46591a2a2c245cf9064e4266",
     "dirty": false,
-    "publicSourceDigest": "sha256:3765c9ee52c3b0ef6775c06057ab38bad3bedf6b274034c713e5668febc83b11",
+    "publicSourceDigest": "sha256:b068efed63a827b668c2b4d2e49c5585a4bc82688ac8b9ae3f7619adfeb6fa7f",
     "projectManifestDigest": "sha256:7f1d76fd006f3b9b8e9af473004954fd0f9776c598acb0e5209b4071819ef7de",
     "authorityDocument": "docs/authority.md",
-    "authorityDigest": "sha256:e123d03fb1ad4dc990c26450fd5cf951539cf68848ae59f1a4dc4b0e2f1a9516",
+    "authorityDigest": "sha256:4dfa917b16b90bfdfee3c592122d83fabd8462c1c47896c9ccb815bc03a830de",
     "authoritySection": "Current authority",
     "documents": [
       {
@@ -43,7 +43,7 @@
       },
       {
         "path": "docs/architecture.md",
-        "digest": "sha256:843ee15779c473b2bf97a44c8edfb8123a0d3461d80a8db61497fb428c9e6610",
+        "digest": "sha256:6cfea0382b9f182f67f38ea6c87d51aa6821f086163d6cc8ab0d58b51d899894",
         "id": "security.architecture",
         "type": "architecture",
         "lifecycle": "active",
@@ -55,7 +55,7 @@
       },
       {
         "path": "docs/authority.md",
-        "digest": "sha256:e123d03fb1ad4dc990c26450fd5cf951539cf68848ae59f1a4dc4b0e2f1a9516",
+        "digest": "sha256:4dfa917b16b90bfdfee3c592122d83fabd8462c1c47896c9ccb815bc03a830de",
         "id": "security.authority",
         "type": "decision",
         "lifecycle": "active",
@@ -151,7 +151,7 @@
       },
       {
         "path": "docs/LAW-PROFILES-C0.md",
-        "digest": "sha256:b45afcaf7ace4bd9c24d353c62ce0e92504d72404558a3687a9ec415e607713e",
+        "digest": "sha256:1bb1445984fa777d5c1e231cfb89f4f9cefb1eeed1b4741b66b9d92e8391d67d",
         "id": "security.law-profiles-c0",
         "type": "decision",
         "lifecycle": "active",
@@ -160,6 +160,18 @@
         "updated": "2026-08-08",
         "evidenceStatus": "verified",
         "readiness": "READY"
+      },
+      {
+        "path": "docs/MID-SUCCESSOR-RECOVERY-C1G.md",
+        "digest": "sha256:e9b172728af763a4957249031370668ab58e52fbc2bd19140ecf9abd04cc3c24",
+        "id": "security.mid-successor-recovery-c1g",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
       },
       {
         "path": "docs/MIGRATION-ROUND-1.md",
@@ -199,7 +211,7 @@
       },
       {
         "path": "docs/MULTIPLE-SUCCESSORS-C1F.md",
-        "digest": "sha256:d65ec947663a3ee7456b9e6a0ff6d0f1dbed697d989c5f39698eb34665593909",
+        "digest": "sha256:9ef6c1520a2955197df1164a6f0295c137b167021237019e5d531e458997d94c",
         "id": "security.multiple-successors-c1f",
         "type": "experiment",
         "lifecycle": "active",
@@ -259,7 +271,7 @@
       },
       {
         "path": "docs/research-agenda.md",
-        "digest": "sha256:bc01f21cd000625f9f110c0ffc42396665e3be3423ab8c0de6b7a1412cb75f9f",
+        "digest": "sha256:e50f53c2ebeee4b48acfbecc9dd4a39c8bd372470af6a34ae729937347d4925e",
         "id": "security.research-agenda",
         "type": "research-proposal",
         "lifecycle": "active",
@@ -391,7 +403,7 @@
       },
       {
         "path": "evidence/README.md",
-        "digest": "sha256:96cb394cf35dd7929ed798947a004a1f9451711b33f262efa983b4efa1c51d77",
+        "digest": "sha256:79367824248e65e8d9d77a2de9c184930666f0dffc81440715f460ed6e68e395",
         "id": "security.evidence",
         "type": "reference",
         "lifecycle": "active",
@@ -403,7 +415,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:e1efe12f56f2e3ff162e5ad8577908dbe8b6876288732751c03e8fa7c5b5ab06",
+        "digest": "sha256:214bffde7c6d0008cefcb9ea73dabb32c0fceb7ebd2a8808ae2c71b17c86dfcb",
         "id": "security.start",
         "type": "start",
         "lifecycle": "active",
@@ -415,7 +427,7 @@
       }
     ],
     "anchorDocument": "README.md",
-    "anchorDigest": "sha256:e1efe12f56f2e3ff162e5ad8577908dbe8b6876288732751c03e8fa7c5b5ab06",
+    "anchorDigest": "sha256:214bffde7c6d0008cefcb9ea73dabb32c0fceb7ebd2a8808ae2c71b17c86dfcb",
     "anchorId": "security.start",
     "anchorUpdated": "2026-08-07",
     "lifecycle": "active",
@@ -476,6 +488,7 @@
       "an accepted C1-D fresh-controller continuation profile where the Windows Guest itself consumes peer A, the original controller dies during peer-B materialization, and a fresh process continues from durable effect/resource identity plus Host placement to peer-b-present without restoring the old Range object/event stream or first closing the world;",
       "an accepted C1-E successor-ownership profile where an unarbitrated successor/reconciler race physically destroys a preflight-valid continuation, then an exact ledger-generation successor claim plus per-Run kernel recovery gate makes continuation and orphan reconciliation mutually exclusive without rewriting predecessor identity or requiring a wall-clock lease; successor SIGKILL releases the gate and allows clean reconciliation;",
       "an accepted C1-F multiple-successor profile where two successor candidates over the same exact generation produce one non-mutating loser and one winner; after the winner advances the world and dies, the loser re-observes the newer ledger generation, adopts the already-materialized consequence without replay, and links its new claim to an archived exact predecessor claim so repeated recovery succession does not erase history;",
+      "an accepted C1-G mid-successor recovery profile where one successor changes q/w physical placement and dies before publishing a new ledger state; a second successor claims the unchanged durable ledger digest, preserves predecessor-claim lineage, re-observes the changed Host world, completes only the missing suffix, and lets the same Windows Guest finish across two controller deaths; this proves ledger digest is a durable publication fence, not a physical-world progress version;",
       "a P0 Windows Evaluation adapter that remains restricted to the exact maintained benign fixture;",
       "a DeepSeek Flash `NativeHarnessActorBackend` with exact Provider, Harness, Host, Runtime, Protocol, prompt, budget, and credential-scope identity;",
       "a P0-A CAGE path where Harness is consumed while Host and Runtime non-consumption remain explicit experimental facts;",

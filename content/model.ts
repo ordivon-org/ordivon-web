@@ -1,6 +1,7 @@
 import type { BoundaryDefinition, ProjectDefinition, QuestionDefinition, ResearchPlaneDefinition } from "@/lib/model/types";
 import { harnessBoundary, harnessProject } from "./projects/generated-harness.ts";
 import { securityProject } from "./projects/generated-security.ts";
+import { gameProject } from "./projects/generated-game.ts";
 
 export const siteUpdatedAt = "2026-08-08";
 const portfolioUpdatedAt = "2026-08-04";
@@ -67,22 +68,7 @@ export const projects: ProjectDefinition[] = [
     evidence: [{ value: "13", label: "public Runtime tools" }, { value: "110", label: "core tests per feature gate" }, { value: "43", label: "operational script tests" }],
     repository: "https://github.com/zycxfyh/ordivon-runtime", href: "/projects/runtime", updatedAt: portfolioUpdatedAt,
   },
-  {
-    id: "project:game", kind: "project", slug: "game", title: "Ordivon Game", lifecycle: "active", group: "Applications and capability",
-    label: "Playable intervention-driven worlds", category: "application", availability: "playable", publicPage: true, index: "04",
-    thesis: "Use playable worlds to test persistent Agent participation, communication, authority, replay, and human intervention as mechanics rather than decoration.",
-    question: "Which forms of play become possible when people and replaceable Agents act through one persistent World history?",
-    owns: ["Station Zero product", "Game rules and World state", "Player interventions", "Replay and comparison"],
-    boundary: ["No Host or Runtime ownership", "No claim of general multi-Agent superiority", "No hidden live service"],
-    problem: "Most Agent games attach probabilistic dialogue to classical mechanics instead of making persistence, partial knowledge, communication, and intervention part of play.",
-    capability: "Runs Station Zero as a deterministic multi-Agent mission game where the player changes doctrine and intervention rather than moving every unit directly.",
-    maturity: "Playable current product with an experimental v3 preview", audience: "Players, game designers, and Agent researchers examining persistent roles, communication, replay, and recoverable simulation.",
-    latestProof: "The registered Station Zero v2 product runs locally with SQLite; the implemented v3 preview adds adversarial roles and broader play but remains unregistered pending evaluation.", flagshipSlug: "station-zero-alpha-1",
-    summary: "Intervention-driven worlds for people and Agents. Game is both a playable product line and a pressure source for Host, Harness, Security, and World research.",
-    state: "Station Zero v2 is the registered current product. V3 is an implemented preview, not yet the replacement target; the earlier alpha remains historical evidence.",
-    evidence: [{ value: "v2", label: "registered product" }, { value: "v3", label: "implemented preview" }, { value: "SQLite", label: "local durable World" }],
-    repository: "https://github.com/zycxfyh/ordivon-game", href: "/projects/game", updatedAt: portfolioUpdatedAt,
-  },
+  gameProject,
   {
     id: "project:world", kind: "project", slug: "world", title: "Ordivon World", lifecycle: "active", group: "Applications and capability",
     label: "Provider-native adapters and private network tools", category: "application", availability: "operational", publicPage: true, index: "05",
@@ -275,9 +261,9 @@ export const questions: QuestionDefinition[] = [
     summary: "Separate genuinely Agent-native mechanics from classical systems with probabilistic dialogue attached.",
     importance: "Without a falsifiable distinction, Agent-native game design becomes a marketing label.",
     hypothesis: "Persistent roles, actor-local knowledge, typed communication, player doctrine, and recoverable commitments enable distinct play.",
-    currentJudgment: "Testing with a current product. Station Zero v2 is registered and playable; v3 is implemented as an unregistered preview with broader adversarial roles and still requires playtesting and Provider evaluation.",
-    nextStep: "Evaluate v3 against the registered product, deterministic baselines, and equal-budget Agent conditions before changing the product target.",
-    falsifier: "The same player experience and mechanics can be reproduced by a simpler deterministic or single-Agent system with lower cost.", state: "testing", href: "/research/game-agent-native-mechanics", updatedAt: portfolioUpdatedAt,
+    currentJudgment: "Testing across two explicitly different product states. Station Zero v2 remains the registered playable product. V3 is now an accepted, implemented first-playable replacement target with P0–P3 complete, a separate `/v3` surface, deterministic fixture cognition, and process-restart recovery; it is still unregistered and has not passed repeated human playtesting or live-Provider evaluation.",
+    nextStep: "Compare the v3 first-playable against registered v2 and deterministic/equal-budget baselines under repeated human play and live-Provider runs before registering v3 or deleting the v2 approval loop.",
+    falsifier: "The same player experience and mechanics can be reproduced by a simpler deterministic or single-Agent system with lower cost.", state: "testing", href: "/research/game-agent-native-mechanics", updatedAt: "2026-08-08",
   },
   {
     id: "question:human-economic-autonomy", kind: "question", slug: "human-economic-autonomy", projectSlug: "human",
@@ -295,8 +281,8 @@ export const questions: QuestionDefinition[] = [
     summary: "Separate actor intent and observation, exact authority, physical consequence, sensor evidence, world truth, recovery ownership, and evaluation while autonomous opponents change the world over time.",
     importance: "Once actors can adapt, deceive, request consequential effects, and outlive one controller, one reward or action-success flag is not merely incomplete—it can collapse distinct authorities and make interruption or recovery unsafe.",
     hypothesis: "A thin Security domain layer for contested-world identity, asymmetric observation, exact RangeAuthority, independent truth/evidence, and adversarial evaluation remains necessary above mature simulation, hypervisor, Host, Harness, and Runtime mechanisms; broader Campaign, Organization, and distributed recovery structure should be admitted only after experiments force it.",
-    currentJudgment: "Reframed by later physical experiments. Round 1 established metric disagreement, but S0–S6 and C1–C1F shifted the active pressure to persistent contested worlds and consequential authority. Accepted evidence now separates intent, admission, backend receipt, sensor observation, Host/world truth, interrupted physical progress, continuation, successor ownership, and recovery lineage. C1-F further proved one non-mutating loser, later adoption of an already-materialized consequence without replay, and explicit predecessor-claim history. No general Campaign engine, distributed lease, consensus layer, or universal fidelity framework has been justified.",
-    nextStep: "Kill a winning successor midway through its own continuation—after physical progress but before stable generation publication—and require another successor to infer and complete only the remaining suffix from current world truth plus recovery lineage.",
+    currentJudgment: "Reframed by later physical experiments. Round 1 established metric disagreement, but S0–S6 and C1–C1G shifted the active pressure to persistent contested worlds and consequential authority. Accepted evidence now separates intent, admission, backend receipt, sensor observation, Host/world truth, interrupted physical progress, continuation, successor ownership, and recovery lineage. C1-F proved one non-mutating loser, later adoption of an already-materialized consequence without replay, and explicit predecessor-claim history. C1-G then proved that the same durable ledger digest can correspond to materially different physical progress, requiring post-acquisition world re-observation before choosing the remaining recovery suffix. No general Campaign engine, distributed lease, consensus layer, or universal fidelity framework has been justified.",
+    nextStep: "Pressure unpublished completion: let peer B and its one-shot consequence be consumed before stable publication, kill the successor, and test whether persistent topology plus independent consequence evidence can distinguish completed-but-unpublished from still-partial without replay.",
     falsifier: "Mature range/simulation authority plus ordinary Host, Harness, Runtime, and source-native evidence express the same contested-world identity, consequence, recovery, and evaluation distinctions with fewer Security-specific contracts.", state: "testing", href: "/research/security-adversarial-trajectory", updatedAt: "2026-08-08",
   },
   {

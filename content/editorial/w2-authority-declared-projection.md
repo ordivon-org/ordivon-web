@@ -43,8 +43,8 @@ The probe now:
 1. reads `.ordivon/project.yaml` and the declared authority document;
 2. reads only the authority section that defines current sources (`Current authority`, falling back to `Decision`);
 3. resolves local document links from that section;
-4. admits linked documents only when their own frontmatter says `lifecycle: active`, `source_role: canonical`, and `visibility: public`;
-5. records readiness for each document without requiring READY;
+4. initially admitted linked documents only when their own frontmatter said `lifecycle: active`, `source_role: canonical`, and `visibility: public`; W3 later falsified the lifecycle part with Game, where accepted target specifications are current authority dependencies;
+5. records lifecycle and readiness for each document without treating either as a universal dependency-admission gate;
 6. chooses an anchor only for convenient current-summary extraction (`STATUS.md` when the owner has one, otherwise `README.md`/start document);
 7. binds the project manifest, authority declaration, selected documents, latest revision touching that envelope, and aggregate digest.
 
