@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-security",
-  "sourceRevision": "fd17d5e3021ca4939bc12ed46a6d6263238a3b8a",
-  "sourceDigest": "sha256:d98163843e1fe040a653766b2ee63f7681832d2a33fb1ac81f08bef35f5b8e90",
+  "sourceRevision": "4db127d0a9352857d58cc6aae8c7b20e9090f09c",
+  "sourceDigest": "sha256:3c8dcf74e5f3af57294fdec521ca6e21dc66142ab26df287ff8a4e5c2a2bb574",
   "project": {
     "id": "project:security",
     "kind": "project",
@@ -31,10 +31,10 @@
     "capability": "Runs bounded adversarial experiments through a stable synchronous Contest profile and an experimental persistent RangeSession spine, composing model Actors, CAGE, isolated Windows/Linux range materializations, exact RangeAuthority, independent truth, interruption recovery, and residual closure without turning receipts or actor claims into world truth.",
     "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
     "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
-    "latestProof": "C1-I produced byte-identical durable sender state and successor views for delivered and undelivered non-idempotent pulse histories, forcing UNKNOWN and showing that blind retry can physically duplicate a completed effect. Recipient-private exact-effect dedup made retry safe. C1-J then faulted both orderings between effect and durable marker and showed they select duplicate-versus-loss failure modes rather than atomicity; an explicit reserved inbox preserves uncertainty but still cannot resolve the recipient commit gap.",
+    "latestProof": "C1-K showed that an exact declarative ensure-state consequence can tolerate ACK loss and repeated physical invocation while producing one semantic consequence: already-satisfied exact state is a successful recovery result. C1-L then showed compensation is a separate recovery primitive for non-idempotent effects when repair progress remains independently observable; blind compensation retry can overcompensate, so recovery must re-observe the repair invariant before acting.",
     "flagshipSlug": "winning-move-loses-contest",
     "summary": "An authorized adversarial-Agent research laboratory. Security owns contested-world semantics and evidence interpretation while mature hypervisors, ranges, model Harnesses, process runtimes, and security tools retain their own authority.",
-    "state": "The 0.8 research core is active. Contest remains the reproducible synchronous profile; RangeSession is the experimental persistent-world spine. S0–S6 and C1–C1J have produced accepted bounded evidence. Recovery now distinguishes publication, observable completion, executor liveness, information loss, and recipient commit boundaries. World Entity has publication-only carrier recovery, while C1-I/C1-J pressure intrinsic downstream idempotency or a genuinely shared atomic consequence/completion boundary rather than a generic exactly-once framework.",
+    "state": "The 0.8 research core is active. Contest remains the reproducible synchronous profile; RangeSession is the experimental persistent-world spine. S0–S6 and C1–C1L have produced accepted bounded evidence. The recovery line now distinguishes information loss, intrinsic idempotency, and compensation: exactly-once invocation is unnecessary for some declarative effects, while non-idempotent consequences can sometimes be repaired without a transaction manager when repair progress is independently observable. The next pressure is compensation whose own progress becomes observationally ambiguous.",
     "evidence": [
       {
         "value": "0.8",
@@ -45,7 +45,7 @@
         "label": "persistent-range progression"
       },
       {
-        "value": "C1–C1J",
+        "value": "C1–C1L",
         "label": "authority/recovery progression"
       }
     ],

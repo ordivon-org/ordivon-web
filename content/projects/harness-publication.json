@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-harness",
-  "sourceRevision": "55cfe64197f2605a9db26776d4b5cf7112e6267b",
-  "sourceDigest": "sha256:f9340532ba5b012b99135576e1eaec65156a33600bb746af6d6fff92d46aa544",
+  "sourceRevision": "9e65feb5045aa64ab2da69dc2645bb80bfa93866",
+  "sourceDigest": "sha256:5e23ae2ad2daaefc6b43bc9a3daacfa0ee8754decced6b2eaf3a96bff59d6d3f",
   "boundary": {
     "id": "system:harness",
     "kind": "boundary",
@@ -38,13 +38,13 @@
     "architectureRoleId": "system:harness",
     "publicPage": true,
     "problem": "Agent execution needs durable Run-local authority and recovery without making a Provider session, Host, or caller-domain state the owner of the Run.",
-    "capability": "Compiles caller-delegated execution mandates with a chosen strategy into immutable Run contracts, then executes bounded Agent attempts with durable Provider and Tool continuity, privacy-authorized persistence, pause/resume, recovery, receipts, and completion proposals.",
+    "capability": "Compiles caller-delegated execution mandates with a chosen strategy into immutable Run contracts, then executes bounded Agent attempts with durable Provider and Tool recovery, privacy-authorized persistence, Agent-selected WorkingSet transitions, Provider-faithful transient Tool-exchange continuity, explicit per-turn execution-control metadata, pause/resume, receipts, and completion proposals.",
     "maturity": "Operational pre-1.0 engineering prototype",
     "audience": "Agent builders who need caller-neutral Run execution, bounded authority, explicit Provider and Tool recovery, and completion handoff without a Host dependency.",
-    "latestProof": "Current canonical public sources verify caller-neutral independent Runs and P-C1.2a privacy authority: metadata-only is the default durable-content policy, exact model or Tool content requires explicit authority, and omitted result bytes never authorize redispatch of an already completed effect.",
+    "latestProof": "Current public evidence now extends Agent-owned cognition beyond selected WorkingSet state: the Loop preserves complete Provider-authored Tool exchanges for the current attempt, exposes exact per-turn Runtime Tool capability and remaining-budget control separately from task Context, and treats observation/no-progress/tool-budget limits as effect gates that still leave the Agent a cognition/closure turn over evidence already seen.",
     "flagshipSlug": "what-h1-h5-proved",
     "summary": "The independent execution authority for bounded Agent Runs. Harness owns how an admitted attempt executes and what Run content it may durably retain, while callers retain Task meaning, domain commitments, and final verification.",
-    "state": "Operational pre-1.0 for caller-neutral independent Runs. Durable continuity is metadata-only by default and exact private content requires explicit Run authority; the former Host-backed Runner and persisted Task/Assignment compatibility line remain removed.",
+    "state": "Operational pre-1.0 for caller-neutral independent Runs. Durable selected Context remains explicit and privacy-bounded; transient Provider-authored Tool exchanges provide current-attempt cognition continuity without becoming selected WorkingSet state. Per-turn execution-control metadata tells the Agent which Tools and budget remain available, while closed observation/effect gates still permit an Agent-owned closure or cognition transition. Arbitrary cross-process reconstruction of unfinished transient Tool exchanges is not yet claimed.",
     "evidence": [
       {
         "value": "independent",
