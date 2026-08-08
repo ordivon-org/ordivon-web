@@ -20,6 +20,7 @@ managed_paths:
   - content/editorial/authority.md
   - design/README.md
   - design/aesthetic-research.md
+  - design/evaluation.md
 enforcement: strict
 maintainers:
   - zycxfyh

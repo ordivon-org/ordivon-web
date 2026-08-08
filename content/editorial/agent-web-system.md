@@ -90,6 +90,7 @@ VERIFY
   type/lint/build
   navigation/accessibility/responsive checks
   visual or aesthetic evidence when relevant
+  (blinded pairwise preference is the primary aesthetic endpoint)
         ↓
 PROMOTE
   commit + tested deployment artifact
@@ -246,7 +247,7 @@ The new Web needs both.
 - reading/task performance;
 - aesthetic preference and qualitative facets.
 
-Do not collapse these layers into one score.
+Do not collapse these layers into one score. `design/evaluation.md` owns the stable evaluation hierarchy and pairwise ranking protocol.
 
 ## Relationship to external mature systems
 

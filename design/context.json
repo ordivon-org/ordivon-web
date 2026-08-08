@@ -7,7 +7,8 @@
     "aestheticResearch": "design/aesthetic-research.md",
     "agentWeb": "content/editorial/agent-web-system.md",
     "informationArchitecture": "content/editorial/information-architecture.md",
-    "publication": "content/editorial/publication-system.md"
+    "publication": "content/editorial/publication-system.md",
+    "evaluation": "design/evaluation.md"
   },
   "primitives": [
     {

@@ -23,6 +23,7 @@ applies_to:
 related:
   - web.design-system
   - web.agent-web-system
+  - web.design-evaluation
 ---
 # Aesthetic Research Program
 
@@ -46,7 +47,7 @@ An Agent may generate aesthetic candidates and reject mechanically broken ones. 
 
 ## External research we retain
 
-The visual-aesthetics literature provides useful dimensions without giving us a universal formula for beauty.
+The visual-aesthetics literature provides useful dimensions without giving us a universal formula for beauty. Later Agent-design benchmarks strengthen the same conclusion: automated image proxies and absolute aesthetic scores are useful diagnostics but are not reliable primary rankings for original UI design.
 
 Lavie and Tractinsky (2004), *Assessing dimensions of perceived visual aesthetics of web sites*, established that perceived web aesthetics is multidimensional rather than one obvious property.
 
@@ -59,7 +60,9 @@ Moshagen and Thielsch (2010), *Facets of visual aesthetics*, validated the VisAW
 
 The later VisAWI-S showed that shorter perception measures can still be useful when evaluation time is limited.
 
-We use these as prompts for observation, not as a scalar objective function. Reading success, task success, accessibility, perceived usability, and aesthetic preference remain separable evidence.
+UI-Bench and Design Arena add a practical modern result for AI-generated UI: the primary aesthetic endpoint should be blinded pairwise preference, aggregated statistically, while automated visual metrics and facet ratings remain explanatory evidence. The 2026 Visual Aesthetic Benchmark independently finds that direct comparative judgment is more reliable than converting absolute scores into rankings, and that current multimodal aesthetic judges remain substantially below expert consensus.
+
+We therefore use VisAWI facets to explain preference, not to replace preference with a scalar objective function. Reading success, task success, accessibility, perceived usability, and aesthetic preference remain separable evidence. The stable protocol is owned by [`evaluation.md`](./evaluation.md).
 
 ## Experiment loop
 
@@ -77,7 +80,7 @@ mechanical preflight
   obvious visual regression
         ↓
 human-facing evaluation
-  pairwise preference
+  blinded pairwise preference (primary)
   simplicity
   diversity
   colorfulness
@@ -89,7 +92,7 @@ interpretation
 promote / retain as experiment / reject
 ```
 
-The evaluator may be one person in early experiments. Sample size and evaluator identity are part of the evidence boundary; a single preference must never be narrated as universal taste.
+Exploratory experiments may begin with one evaluator, but a known-label preference is pilot evidence rather than a blinded ranking vote. Sample size, evaluator identity, evaluator class, randomization, and blinding are part of the evidence boundary; a single preference must never be narrated as universal taste.
 
 ## Benchmark surfaces
 
@@ -138,7 +141,7 @@ These can reject a candidate before aesthetic preference matters:
 
 ### Perceived aesthetics
 
-For human evaluation, record at least a pairwise or ordinal judgment and comments. When useful, ask separately about:
+For formal human aesthetic evaluation, use a blinded forced-choice pairwise judgment as the primary response. When useful, ask separately about:
 
 - **simplicity** — does the composition feel understandable rather than visually confused?
 - **diversity** — is there enough visual variation to make hierarchy and identity legible without chaos?
@@ -154,7 +157,7 @@ Evaluate separately:
 - can a reader find the current research judgment?
 - can a reader complete a long article without excessive visual fatigue?
 
-Do not average these into one “Web quality” number.
+Do not average these into one “Web quality” number. Pairwise aesthetic preference is ranked separately; UX/task evidence and aesthetic facets explain tradeoffs.
 
 ## Minimal experiment record
 
@@ -174,7 +177,7 @@ promotion / rejection decision
 limitations
 ```
 
-If repeated experiments need structured aggregation, the experiments themselves should force the schema.
+Pairwise vote aggregation now has one proven repeated consumer and is handled by the lightweight scripts defined in `evaluation.md`. More elaborate experiment state should still be forced by practice rather than introduced pre-emptively.
 
 ## Agent role
 
@@ -193,6 +196,7 @@ The Agent should not:
 - silently mutate production styling while exploring;
 - invent quantitative meaning for decorative dimensions;
 - infer universal aesthetic preference from its own critique;
+- treat an uncalibrated VLM/Agent judge as equivalent to expert human aesthetic preference;
 - keep every generated variation as permanent design-system surface area.
 
 ## Human role
@@ -207,11 +211,9 @@ Design-token standards, Figma/Builder/v0 design context, Storybook component sta
 
 Ordivon should reuse their ideas before reimplementing them, but a tool enters the permanent stack only when a real experiment needs its capability. N0 therefore creates token/context authority and benchmark surfaces without yet adding Storybook, Chromatic, Figma, or another hosting runtime.
 
-## Initial research pressure
+## Current research pressure
 
-The first aesthetic experiment should not be a full redesign. It should choose one visible hypothesis, generate two or three bounded variants, and compare them across at least Home, Game Project, and long-form Writing.
-
-That experiment will tell us which next equipment is actually missing: browser capture, isolated component stories, richer tokens, design-to-code context, or something else.
+A0 has now supplied the first real bounded experiment and browser capture path. The next pressure is evaluation rather than more styling: anonymize the A0 candidates, collect pairwise votes across evaluator classes, rank them by surface and globally, and compare those results with the earlier unblinded pilot preference. Only then should a visual direction be promoted.
 
 ## References
 
@@ -219,3 +221,6 @@ That experiment will tell us which next equipment is actually missing: browser c
 - Moshagen, M. & Thielsch, M. T. (2010). *Facets of visual aesthetics*. International Journal of Human-Computer Studies. DOI: 10.1016/j.ijhcs.2010.05.006.
 - Moshagen, M. & Thielsch, M. T. (2013). *A short version of the visual aesthetics of websites inventory*. Behaviour & Information Technology. DOI: 10.1080/0144929X.2012.694910.
 - Design Tokens Community Group, Design Tokens Format Module 2025.10.
+- Jung, S., Garcinuno, A. & Mateega, S. (2025). *UI-Bench: A Benchmark for Evaluating Design Capabilities of AI Text-to-App Tools*.
+- Feng, Y. et al. (2026). *Visual Aesthetic Benchmark: Can Frontier Models Judge Beauty?*.
+- Design Arena, public pairwise-comparison methodology.
