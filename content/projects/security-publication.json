@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-security",
-  "sourceRevision": "a89a853d9a0e767b5748aba922726bb01c8bf28a",
-  "sourceDigest": "sha256:08b10758a434d0eddf05b0db10e7ec5eea9b7c67936091d7e6d49740c818ad4c",
+  "sourceRevision": "91d54653fabe86abbc6fd904cde64f007485e88a",
+  "sourceDigest": "sha256:d77d8bee00078986cf483e060e4a3d68e796cf89315ef5e4d363e61a82714f3a",
   "project": {
     "id": "project:security",
     "kind": "project",
@@ -31,10 +31,10 @@
     "capability": "Runs bounded adversarial experiments through a stable synchronous Contest profile and an experimental persistent RangeSession spine, composing model Actors, CAGE, isolated Windows/Linux range materializations, exact RangeAuthority, independent truth, interruption recovery, and residual closure without turning receipts or actor claims into world truth.",
     "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
     "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
-    "latestProof": "The current authority map records accepted S0–S6 persistent-range work and C1–C1H effect/recovery experiments. C1-H distinguished completed-but-unpublished from still-partial by combining persistent Host topology, completed Guest evidence, and read-only packet-sensor evidence, then repaired only durable publication without restarting the transient service or replaying the Range effect.",
+    "latestProof": "C1-H established completed-but-unpublished Range recovery without replay. The World Entity consumer now transfers that completion/publication/executor separation to publication-only KVM recovery: a fresh publisher re-observes an unchanged live carrier, competing publishers converge on one durable publication, and publisher death after ledger write reconstructs only the missing receipt without replaying the physical body.",
     "flagshipSlug": "winning-move-loses-contest",
     "summary": "An authorized adversarial-Agent research laboratory. Security owns contested-world semantics and evidence interpretation while mature hypervisors, ranges, model Harnesses, process runtimes, and security tools retain their own authority.",
-    "state": "The 0.8 research core is active. Contest remains the reproducible synchronous profile; RangeSession is the experimental persistent-world spine. S0–S6 and C1–C1H have produced accepted bounded evidence. Observation-only World Entity materialization now also records native controller-loss states as UNKNOWN without rewriting predecessor ownership; Entity successor continuation remains unproven.",
+    "state": "The 0.8 research core is active. Contest remains the reproducible synchronous profile; RangeSession is the experimental persistent-world spine. S0–S6 and C1–C1H have produced accepted bounded evidence. World Entity KVM controller-loss now has publication-only recovery for independently complete carriers: predecessor ownership remains provenance, concurrent publishers serialize to one publication, and no durable Entity successor claim has yet been forced for this narrower repair.",
     "evidence": [
       {
         "value": "0.8",

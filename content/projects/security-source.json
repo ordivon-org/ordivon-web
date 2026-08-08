@@ -9,12 +9,12 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "a89a853d9a0e767b5748aba922726bb01c8bf28a",
+    "revision": "91d54653fabe86abbc6fd904cde64f007485e88a",
     "dirty": false,
-    "publicSourceDigest": "sha256:08b10758a434d0eddf05b0db10e7ec5eea9b7c67936091d7e6d49740c818ad4c",
+    "publicSourceDigest": "sha256:d77d8bee00078986cf483e060e4a3d68e796cf89315ef5e4d363e61a82714f3a",
     "projectManifestDigest": "sha256:7f1d76fd006f3b9b8e9af473004954fd0f9776c598acb0e5209b4071819ef7de",
     "authorityDocument": "docs/authority.md",
-    "authorityDigest": "sha256:d88acf558f1fffb4f9c263901c71bcd3b723d32e8a6f3d66f96ecaa76ee7cf51",
+    "authorityDigest": "sha256:4bd2c338405a617ea000bd73804c1bdcacc25d1a2f216ea457e0efddfa211006",
     "authoritySection": "Current authority",
     "documents": [
       {
@@ -43,7 +43,7 @@
       },
       {
         "path": "docs/architecture.md",
-        "digest": "sha256:abfaa029e7f0cee3f5b2de5161edfcba170ffbec709edd1c8941922c22b0d830",
+        "digest": "sha256:1a950bc6123fc11b369a9b26d27d9a6ba3a32cffff270f289b28d5779f0000bd",
         "id": "security.architecture",
         "type": "architecture",
         "lifecycle": "active",
@@ -55,7 +55,7 @@
       },
       {
         "path": "docs/authority.md",
-        "digest": "sha256:d88acf558f1fffb4f9c263901c71bcd3b723d32e8a6f3d66f96ecaa76ee7cf51",
+        "digest": "sha256:4bd2c338405a617ea000bd73804c1bdcacc25d1a2f216ea457e0efddfa211006",
         "id": "security.authority",
         "type": "decision",
         "lifecycle": "active",
@@ -151,7 +151,7 @@
       },
       {
         "path": "docs/LAW-PROFILES-C0.md",
-        "digest": "sha256:3b573c584342710d0f414d145258fc05339a897367caa24525bb6f59e7f7db9b",
+        "digest": "sha256:034e64ce885fc6eee3c7b97f95ccc0814fbfd1dd4754c554740703624e23513d",
         "id": "security.law-profiles-c0",
         "type": "decision",
         "lifecycle": "active",
@@ -415,7 +415,7 @@
       },
       {
         "path": "docs/WORLD-ENTITY-MIGRATION-RECOVERY.md",
-        "digest": "sha256:d53edaecafd22294b8bf72213ed0232b4669199d608f891dc9bceed82753941e",
+        "digest": "sha256:2b8fc28a9660edafae70fc014377019d633cba37088fefcc0af36e35b520811c",
         "id": "security.world-entity-migration-recovery",
         "type": "experiment",
         "lifecycle": "active",
@@ -427,7 +427,7 @@
       },
       {
         "path": "evidence/README.md",
-        "digest": "sha256:210dad49ac2913aa0b4cf84fca39a2fa367831436645e707c5804c8bad4d48c5",
+        "digest": "sha256:bcceab82304e7ab8191c3168f9d97d0f3670320ca3e8c8886c6d002716ad10b8",
         "id": "security.evidence",
         "type": "reference",
         "lifecycle": "active",
