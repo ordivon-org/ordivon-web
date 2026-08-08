@@ -39,7 +39,7 @@ Article source files own publication identity, argument, limitations, dated stat
 
 ## Components
 
-The system consists of MDX article sources, source-bound current-project publication inputs, build-local compilers, validation, reusable article components, static Next.js output, and receipt-bound deployment.
+The system consists of MDX article sources, source-bound current-project publication inputs, machine-readable design context, build-local compilers, validation, reusable article components, static Next.js output, and receipt-bound deployment. Agent observation/composition and aesthetic experiments are defined by their own authorities rather than hidden inside the article compiler.
 
 ## Data flow
 
@@ -54,7 +54,7 @@ content/articles/<slug>.mdx
  pages, Atom, sitemap, JSON-LD, social cards, validation
 ```
 
-The MDX file is the article authoring authority. Generated TypeScript files are build-local and ignored; they are disposable projections of committed inputs, not review authority or independent facts.
+The MDX file is the article authoring authority. Generated TypeScript files and generated design-token CSS are build-local and ignored; they are disposable projections of committed inputs, not review authority or independent facts.
 
 ## Source-bound current project projection
 
@@ -84,6 +84,10 @@ Five flagship publications proved three reusable MDX structures:
 - `ClaimBoundary`
 
 Other proposed primitives remain deleted until repeated use earns them.
+
+## Design context in publication
+
+`design/tokens.json` is translated into build-local CSS before Next.js compilation, and `design/context.json` identifies reusable primitives and benchmark surfaces for Agent generation and aesthetic experiments. Publication checks validate that this context still resolves to real source. The design layer may change presentation but cannot change owner facts or article claim boundaries.
 
 ## Discovery and deployment
 

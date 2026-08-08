@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "kind": "ordivon.web.design-context",
+  "authority": {
+    "design": "design/README.md",
+    "tokens": "design/tokens.json",
+    "aestheticResearch": "design/aesthetic-research.md",
+    "agentWeb": "content/editorial/agent-web-system.md",
+    "informationArchitecture": "content/editorial/information-architecture.md",
+    "publication": "content/editorial/publication-system.md"
+  },
+  "primitives": [
+    {
+      "id": "site-header",
+      "source": "components/site-header.tsx",
+      "exports": ["SiteHeader"],
+      "role": "global navigation shell"
+    },
+    {
+      "id": "site-footer",
+      "source": "components/site-footer.tsx",
+      "exports": ["SiteFooter"],
+      "role": "global destination and identity shell"
+    },
+    {
+      "id": "section-heading",
+      "source": "components/section-heading.tsx",
+      "exports": ["SectionHeading"],
+      "role": "repeated editorial section hierarchy"
+    },
+    {
+      "id": "project-mechanism",
+      "source": "components/project-mechanism.tsx",
+      "exports": ["ProjectMechanism"],
+      "role": "project-specific mechanism explanation"
+    },
+    {
+      "id": "publication-brief",
+      "source": "components/publication-brief.tsx",
+      "exports": ["PublicationBrief", "PublicationStatusNotice"],
+      "role": "publication status, retained conclusions, and limitations"
+    },
+    {
+      "id": "publication-primitives",
+      "source": "components/mdx/publication-primitives.tsx",
+      "exports": ["InBrief", "ClaimBoundary", "PublicationFigure"],
+      "role": "evidence-bounded long-form expression"
+    },
+    {
+      "id": "system-explorer",
+      "source": "components/system/system-explorer.tsx",
+      "exports": ["SystemExplorer"],
+      "role": "interactive architecture perspectives"
+    },
+    {
+      "id": "research-explorer",
+      "source": "components/research/research-explorer.tsx",
+      "exports": ["ResearchExplorer"],
+      "role": "interactive research navigation"
+    }
+  ],
+  "benchmarkSurfaces": [
+    {
+      "id": "orientation",
+      "route": "/",
+      "role": "brand and first-time orientation",
+      "primaryTask": "Understand Ordivon and choose a next destination.",
+      "visualConcerns": ["identity", "hierarchy", "attention", "motion restraint"]
+    },
+    {
+      "id": "product-state",
+      "route": "/projects/game",
+      "role": "project and temporal product-state explanation",
+      "primaryTask": "Distinguish current product, target, evidence, ownership, and next research pressure.",
+      "visualConcerns": ["status hierarchy", "evidence density", "scanability", "semantic emphasis"]
+    },
+    {
+      "id": "research-atlas",
+      "route": "/research",
+      "role": "dense interactive research navigation",
+      "primaryTask": "Find the question, project, publication, or state relevant to the reader.",
+      "visualConcerns": ["information density", "interaction legibility", "comparison", "focus"]
+    },
+    {
+      "id": "long-form",
+      "route": "/writing/creation-judgment-recoverable-systems",
+      "role": "evidence-bounded long-form reading",
+      "primaryTask": "Read and retain a complete argument without losing claim boundaries.",
+      "visualConcerns": ["reading rhythm", "typography", "figure integration", "fatigue"]
+    },
+    {
+      "id": "current-synthesis",
+      "route": "/now",
+      "role": "dated cross-project synthesis",
+      "primaryTask": "Separate usable, implemented, research, removed, and historical states.",
+      "visualConcerns": ["temporal hierarchy", "comparison", "editorial pacing", "status clarity"]
+    }
+  ]
+}

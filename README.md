@@ -14,7 +14,7 @@ audience:
   - builder
   - publisher
   - agent
-updated: 2026-08-04
+updated: 2026-08-08
 summary: Canonical repository entry for the public Ordivon publication surface, static build, and source-of-truth boundary.
 evidence_status: not_applicable
 readiness: READY
@@ -23,34 +23,43 @@ applies_to:
 related:
   - web.editorial.start
   - web.publication-system
+  - web.agent-web-system
+  - web.design-system
+  - web.aesthetic-research
   - web.authority
 ---
 # Ordivon Web
 
 ## Purpose
 
-The public research and engineering interface for Ordivon.
+The public research, engineering, and design interface for Ordivon—and the static publication target of an Agent-native Web workflow.
 
-The site is built with Next.js, React, TypeScript, and MDX, exported as static files, and published as a tested GitHub Pages Artifact from the exact `main` commit. Cloudflare remains the authoritative DNS provider; it is not an application runtime for this site.
+The site is built with Next.js, React, TypeScript, MDX, and machine-readable design context, exported as static files, and published as a tested GitHub Pages Artifact from the exact `main` commit. Cloudflare remains the authoritative DNS provider; it is not an application runtime for this site.
 
 ## Current boundary
 
-Ordivon Web owns public navigation, presentation, article publication metadata, and dated interpretation. Project repositories remain authoritative for implementation, research evidence, releases, tests, receipts, and live operational state.
+Ordivon Web owns public navigation, presentation, dated interpretation, publication policy, and the design context used to generate the human-facing site. Project repositories remain authoritative for implementation, research evidence, releases, tests, receipts, registration, and live operational state. Agent generation may propose or compose public changes, but it cannot overwrite those owner boundaries.
 
 ## Start here
 
+- Read [`content/editorial/agent-web-system.md`](content/editorial/agent-web-system.md) for the Agent-native observe → judge → generate → preview → verify → promote loop.
 - Read [`content/editorial/README.md`](content/editorial/README.md) for editorial authority and review order.
-- Read [`content/editorial/publication-system.md`](content/editorial/publication-system.md) for the article build and publication contract.
+- Read [`design/README.md`](design/README.md) for design authority and [`design/aesthetic-research.md`](design/aesthetic-research.md) for visual experiments.
+- Run `pnpm agent:context` for the current machine-readable Web/design entry context.
 - Use `pnpm check` before treating a source revision as publishable.
 
 ## Runtime shape
 
 ```text
-structured content + React components
+owner/publication sources + design context
                 ↓
-          Next.js build
+        Agent judgment / composition
                 ↓
-          out/ static export
+     deterministic local generation
+                ↓
+       Next.js static candidate
+                ↓
+       verification + promotion
                 ↓
       GitHub Pages + custom domain
 ```
@@ -64,6 +73,8 @@ pnpm install --frozen-lockfile
 pnpm dev
 pnpm build
 pnpm preview
+pnpm agent:context
+pnpm design:check
 pnpm check
 pnpm pages:prepare
 ```
@@ -74,11 +85,12 @@ The `Deploy Pages` workflow runs the complete check, materializes historical red
 
 ## Content and source of truth
 
-- `content/` owns public structured content and research relationships.
+- `content/` owns public structured content, editorial policy, source-bound publication judgment, and research relationships.
+- `design/` owns machine-readable root tokens, Agent design context, benchmark surfaces, and aesthetic research method.
 - `app/` owns routes and page composition.
-- `components/` owns reusable interfaces and visualizations.
-- Project repositories remain authoritative for live source, tests, implementation state, and operational receipts.
-- This site provides orientation, dated interpretation, and navigable relationships between those sources.
+- `components/` owns reusable interface implementation and visualizations.
+- Project repositories remain authoritative for live source, tests, implementation state, registration, and operational receipts.
+- Generated CSS, TypeScript projections, manifests, static pages, and Agent context reports remain rebuildable projections of those committed inputs.
 
 ## Editorial system
 

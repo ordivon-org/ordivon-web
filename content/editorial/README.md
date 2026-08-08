@@ -14,8 +14,8 @@ audience:
   - editor
   - reviewer
   - agent
-updated: 2026-08-04
-summary: Canonical entry to public information architecture, positioning, audiences, voice, vocabulary, publication types, claim discipline, and review boundaries.
+updated: 2026-08-08
+summary: Canonical entry to Agent-native Web management, public information architecture, positioning, publication discipline, design authority, and review boundaries.
 evidence_status: not_applicable
 readiness: READY
 applies_to:
@@ -23,6 +23,9 @@ applies_to:
 related:
   - web.information-architecture
   - web.publication-system
+  - web.agent-web-system
+  - web.design-system
+  - web.aesthetic-research
   - web.authority
 ---
 # Ordivon Editorial System
@@ -44,6 +47,7 @@ The editorial system prevents three failures:
 
 ## Start here
 
+- [`agent-web-system.md`](./agent-web-system.md) — Agent-native observation, judgment, generation, preview, verification, and promotion.
 - [`information-architecture.md`](./information-architecture.md) — page hierarchy, project map, maturity language, linking, and historical corrections.
 - [`positioning.md`](./positioning.md) — what Ordivon is, why it matters, and the message hierarchy.
 - [`audiences.md`](./audiences.md) — primary readers, their questions, and appropriate entry paths.
@@ -52,7 +56,9 @@ The editorial system prevents three failures:
 - [`article-types.md`](./article-types.md) — publication taxonomy, required structure, and selection rules.
 - [`claim-policy.md`](./claim-policy.md) — evidence obligations, limitations, corrections, and marketing boundaries.
 - [`publication-system.md`](./publication-system.md) — implemented authoring, validation, distribution, and deployment architecture.
-- [`authority.md`](./authority.md) — ownership of current summaries, dated articles, repository facts, research evidence, and generated projections.
+- [`authority.md`](./authority.md) — ownership of current summaries, dated articles, repository facts, research evidence, design context, and generated projections.
+- [`../../design/README.md`](../../design/README.md) — machine-readable design context and reusable visual primitives.
+- [`../../design/aesthetic-research.md`](../../design/aesthetic-research.md) — method for bounded human-facing visual experiments.
 
 Dated audits and phase reports remain historical evidence. They are not part of the current reading order unless a new review explicitly needs their baseline.
 
@@ -70,7 +76,7 @@ Every important public surface should answer these questions in order:
 
 ## Current boundary
 
-Public copy may interpret and organize the work. It must not become a second technical authority.
+Agents may observe, interpret, compose, and manage public changes. Neither their generated copy nor their design output may become a second technical authority.
 
 - Repositories own source, tests, releases, operations, receipts, and current implementation boundaries.
 - Research records own experimental setup, methods, and evidence.

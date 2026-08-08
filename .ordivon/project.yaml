@@ -10,13 +10,17 @@ default_profiles:
 documentation_roots:
   - README.md
   - content
+  - design
 managed_paths:
   - README.md
   - content/editorial/README.md
   - content/editorial/information-architecture.md
   - content/editorial/publication-system.md
+  - content/editorial/agent-web-system.md
   - content/editorial/authority.md
+  - design/README.md
+  - design/aesthetic-research.md
 enforcement: strict
 maintainers:
   - zycxfyh
-description: Public orientation, project navigation, research interpretation, and dated publication across the Ordivon project family.
+description: Agent-operated public judgment, design context, research interpretation, and static publication across the Ordivon project family.

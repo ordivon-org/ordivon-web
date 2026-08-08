@@ -15,7 +15,7 @@ audience:
   - builder
   - agent
 updated: 2026-08-08
-summary: Decision separating current Web orientation from project implementation, research evidence, dated publications, generated projections, and historical records.
+summary: Decision separating current Web judgment and design context from project implementation, research evidence, dated publications, generated projections, aesthetic experiments, and historical records.
 evidence_status: not_applicable
 readiness: READY
 applies_to:
@@ -34,13 +34,13 @@ Ordivon Web contains current editorial guidance, a public project map, research 
 
 ## Decision
 
-[`../../README.md`](../../README.md) is the canonical repository entry. [`README.md`](README.md) owns the editorial entry and review order. [`information-architecture.md`](information-architecture.md) owns the public hierarchy, project classification, maturity language, linking rules, and historical-correction policy. [`publication-system.md`](publication-system.md) owns the article pipeline.
+[`../../README.md`](../../README.md) is the canonical repository entry. [`README.md`](README.md) owns the editorial entry and review order. [`agent-web-system.md`](agent-web-system.md) owns the Agent-native generation/management loop. [`information-architecture.md`](information-architecture.md) owns the public hierarchy, project classification, maturity language, linking rules, and historical-correction policy. [`publication-system.md`](publication-system.md) owns the article pipeline. [`../../design/README.md`](../../design/README.md) owns design context; [`../../design/aesthetic-research.md`](../../design/aesthetic-research.md) owns aesthetic experiment method.
 
 `content/model.ts` owns Web-authored current orientation that is not source-projected: research Question judgment, remaining editorial project records, and navigation relationships. For a source-projected project, committed inputs under `content/projects/` separate a derived owner snapshot from Web publication judgment. The generated module is build-local and disposable. None of these Web files is authoritative for exact code, tests, release identity, operations, research setup, or raw evidence.
 
-Each article MDX source owns its published argument, publication status, claim class, evidence level, takeaways, limitations, and revision identity. A historical article may preserve a superseded judgment when it displays a visible update and links to the current owner.
+Each article MDX source owns its published argument, publication status, claim class, evidence level, takeaways, limitations, and revision identity. A historical article may preserve a superseded judgment when it displays a visible update and links to the current owner. `design/tokens.json` owns the extracted root design tokens; `design/context.json` owns only Agent navigation among design authorities, reusable primitives, and benchmark surfaces. Component source owns implementation. Aesthetic experiment records may support or reject a visual direction but do not silently redefine stable design context.
 
-Generated metadata, manifests, project modules, feeds, JSON-LD, social cards, sitemap data, static output, and deployment manifests are derived projections. A committed owner snapshot is also derived: it is acceptable only when it records the project manifest plus the canonical public documents declared as dependencies by the owner's current authority map, together with the latest revision touching that envelope and its aggregate digest. Document `lifecycle` and `readiness` remain captured semantics, not generic admission gates: a current authority may intentionally depend on an `accepted` target specification, an `EXPERIMENTAL` architecture, or another non-current document whose relation matters to the current public judgment. The snapshot must remain reproducible from those owner sources. Project repositories own implementation, current boundaries, operations, registration, and release facts. Research records own methods and evidence. Dated audits and phase reports are historical unless a current canonical policy incorporates them.
+Generated design-token CSS, Agent context reports, metadata, manifests, project modules, feeds, JSON-LD, social cards, sitemap data, static output, and deployment manifests are derived projections. A committed owner snapshot is also derived: it is acceptable only when it records the project manifest plus the canonical public documents declared as dependencies by the owner's current authority map, together with the latest revision touching that envelope and its aggregate digest. Document `lifecycle` and `readiness` remain captured semantics, not generic admission gates: a current authority may intentionally depend on an `accepted` target specification, an `EXPERIMENTAL` architecture, or another non-current document whose relation matters to the current public judgment. The snapshot must remain reproducible from those owner sources. Project repositories own implementation, current boundaries, operations, registration, and release facts. Research records own methods and evidence. Dated audits and phase reports are historical unless a current canonical policy incorporates them.
 
 ## Consequences
 
@@ -49,6 +49,8 @@ Generated metadata, manifests, project modules, feeds, JSON-LD, social cards, si
 - Current Project pages may change with the repositories; dated articles retain temporal identity.
 - A deleted or rejected layer may remain visible as historical research but cannot appear in the current execution stack.
 - Generated output must remain reconstructable from committed source.
+- Agent generation is broad and reversible before promotion; publication consequence remains bound to exact committed inputs and verification.
+- Human perception is evidence for human-facing aesthetic claims, not a universal approval requirement for every Web mutation.
 - Updating a projected owner snapshot without re-binding the Web publication judgment to its exact revision and digest must fail generation.
 - Historical or removal language may name retired concepts; current capability and ownership claims may not silently reassert them.
 

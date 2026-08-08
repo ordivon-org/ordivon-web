@@ -9,12 +9,12 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "efffb9f82a49cb7e46591a2a2c245cf9064e4266",
+    "revision": "a89a853d9a0e767b5748aba922726bb01c8bf28a",
     "dirty": false,
-    "publicSourceDigest": "sha256:b068efed63a827b668c2b4d2e49c5585a4bc82688ac8b9ae3f7619adfeb6fa7f",
+    "publicSourceDigest": "sha256:08b10758a434d0eddf05b0db10e7ec5eea9b7c67936091d7e6d49740c818ad4c",
     "projectManifestDigest": "sha256:7f1d76fd006f3b9b8e9af473004954fd0f9776c598acb0e5209b4071819ef7de",
     "authorityDocument": "docs/authority.md",
-    "authorityDigest": "sha256:4dfa917b16b90bfdfee3c592122d83fabd8462c1c47896c9ccb815bc03a830de",
+    "authorityDigest": "sha256:d88acf558f1fffb4f9c263901c71bcd3b723d32e8a6f3d66f96ecaa76ee7cf51",
     "authoritySection": "Current authority",
     "documents": [
       {
@@ -43,7 +43,7 @@
       },
       {
         "path": "docs/architecture.md",
-        "digest": "sha256:6cfea0382b9f182f67f38ea6c87d51aa6821f086163d6cc8ab0d58b51d899894",
+        "digest": "sha256:abfaa029e7f0cee3f5b2de5161edfcba170ffbec709edd1c8941922c22b0d830",
         "id": "security.architecture",
         "type": "architecture",
         "lifecycle": "active",
@@ -55,7 +55,7 @@
       },
       {
         "path": "docs/authority.md",
-        "digest": "sha256:4dfa917b16b90bfdfee3c592122d83fabd8462c1c47896c9ccb815bc03a830de",
+        "digest": "sha256:d88acf558f1fffb4f9c263901c71bcd3b723d32e8a6f3d66f96ecaa76ee7cf51",
         "id": "security.authority",
         "type": "decision",
         "lifecycle": "active",
@@ -151,7 +151,7 @@
       },
       {
         "path": "docs/LAW-PROFILES-C0.md",
-        "digest": "sha256:1bb1445984fa777d5c1e231cfb89f4f9cefb1eeed1b4741b66b9d92e8391d67d",
+        "digest": "sha256:3b573c584342710d0f414d145258fc05339a897367caa24525bb6f59e7f7db9b",
         "id": "security.law-profiles-c0",
         "type": "decision",
         "lifecycle": "active",
@@ -163,7 +163,7 @@
       },
       {
         "path": "docs/MID-SUCCESSOR-RECOVERY-C1G.md",
-        "digest": "sha256:e9b172728af763a4957249031370668ab58e52fbc2bd19140ecf9abd04cc3c24",
+        "digest": "sha256:a8b199ad2161b8ceb20355a9188dc158fd967bc36eb51dcd4107e3cae769d385",
         "id": "security.mid-successor-recovery-c1g",
         "type": "experiment",
         "lifecycle": "active",
@@ -271,7 +271,7 @@
       },
       {
         "path": "docs/research-agenda.md",
-        "digest": "sha256:e50f53c2ebeee4b48acfbecc9dd4a39c8bd372470af6a34ae729937347d4925e",
+        "digest": "sha256:8c31e456b6e35c0bcd6536d40351b99ece0c36fef978ce031eba0b2b223fb862",
         "id": "security.research-agenda",
         "type": "research-proposal",
         "lifecycle": "active",
@@ -354,8 +354,20 @@
         "readiness": "EXPERIMENTAL"
       },
       {
+        "path": "docs/UNPUBLISHED-COMPLETION-C1H.md",
+        "digest": "sha256:4d4abb750871e3e46fb80e8d1ebec2a9a608b12a3f78d02028abe921ef3ff203",
+        "id": "security.unpublished-completion-c1h",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
         "path": "docs/WINDOWS-KVM-INSTALLER-P1.md",
-        "digest": "sha256:314850316b1c27e84afda0b41efb7d65156d4940241324639f097b018f884739",
+        "digest": "sha256:2eb233927913f26f182ef608d95b68246f57d87d1d8bd1b2bd1dcd0ca503132c",
         "id": "security.windows-kvm-installer-p1",
         "type": "specification",
         "lifecycle": "active",
@@ -402,20 +414,32 @@
         "readiness": "EXPERIMENTAL"
       },
       {
+        "path": "docs/WORLD-ENTITY-MIGRATION-RECOVERY.md",
+        "digest": "sha256:d53edaecafd22294b8bf72213ed0232b4669199d608f891dc9bceed82753941e",
+        "id": "security.world-entity-migration-recovery",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "EXPERIMENTAL"
+      },
+      {
         "path": "evidence/README.md",
-        "digest": "sha256:79367824248e65e8d9d77a2de9c184930666f0dffc81440715f460ed6e68e395",
+        "digest": "sha256:210dad49ac2913aa0b4cf84fca39a2fa367831436645e707c5804c8bad4d48c5",
         "id": "security.evidence",
         "type": "reference",
         "lifecycle": "active",
         "sourceRole": "canonical",
         "visibility": "public",
-        "updated": "2026-08-07",
+        "updated": "2026-08-08",
         "evidenceStatus": "verified",
         "readiness": "READY"
       },
       {
         "path": "README.md",
-        "digest": "sha256:214bffde7c6d0008cefcb9ea73dabb32c0fceb7ebd2a8808ae2c71b17c86dfcb",
+        "digest": "sha256:b58cbe00664c14c2558ba90a9a88ff94233bc3f1b24da094a310028d3ed5270f",
         "id": "security.start",
         "type": "start",
         "lifecycle": "active",
@@ -427,7 +451,7 @@
       }
     ],
     "anchorDocument": "README.md",
-    "anchorDigest": "sha256:214bffde7c6d0008cefcb9ea73dabb32c0fceb7ebd2a8808ae2c71b17c86dfcb",
+    "anchorDigest": "sha256:b58cbe00664c14c2558ba90a9a88ff94233bc3f1b24da094a310028d3ed5270f",
     "anchorId": "security.start",
     "anchorUpdated": "2026-08-07",
     "lifecycle": "active",
@@ -489,6 +513,7 @@
       "an accepted C1-E successor-ownership profile where an unarbitrated successor/reconciler race physically destroys a preflight-valid continuation, then an exact ledger-generation successor claim plus per-Run kernel recovery gate makes continuation and orphan reconciliation mutually exclusive without rewriting predecessor identity or requiring a wall-clock lease; successor SIGKILL releases the gate and allows clean reconciliation;",
       "an accepted C1-F multiple-successor profile where two successor candidates over the same exact generation produce one non-mutating loser and one winner; after the winner advances the world and dies, the loser re-observes the newer ledger generation, adopts the already-materialized consequence without replay, and links its new claim to an archived exact predecessor claim so repeated recovery succession does not erase history;",
       "an accepted C1-G mid-successor recovery profile where one successor changes q/w physical placement and dies before publishing a new ledger state; a second successor claims the unchanged durable ledger digest, preserves predecessor-claim lineage, re-observes the changed Host world, completes only the missing suffix, and lets the same Windows Guest finish across two controller deaths; this proves ledger digest is a durable publication fence, not a physical-world progress version;",
+      "an accepted C1-H unpublished-completion profile where peer B is fully materialized and consumed, the one-shot service and Guest finish, and the successor dies before stable publication; a later successor combines persistent Host topology, completed Guest evidence, and read-only packet-sensor evidence to classify completed-but-unpublished and repair only durable publication without restarting the transient service or replaying the Range effect;",
       "a P0 Windows Evaluation adapter that remains restricted to the exact maintained benign fixture;",
       "a DeepSeek Flash `NativeHarnessActorBackend` with exact Provider, Harness, Host, Runtime, Protocol, prompt, budget, and credential-scope identity;",
       "a P0-A CAGE path where Harness is consumed while Host and Runtime non-consumption remain explicit experimental facts;",

@@ -175,7 +175,7 @@ test("public model is article-centered and does not expose the retired graph led
 
   await gotoWithNetworkRetry(page, "/research/security-adversarial-trajectory");
   await expect(page.getByRole("link", { name: /Winning the Move Can Lose the Contest/ })).toBeVisible();
-  await expect(page.getByText("C1–C1G", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("C1–C1H", { exact: false }).first()).toBeVisible();
   await expect(page.getByText("84 Trials", { exact: false })).toHaveCount(0);
 
   await gotoWithNetworkRetry(page, "/research/harness-composition-and-completion");
