@@ -28,7 +28,7 @@ Cross-medium aesthetic, narrative, rhetorical, motion, sound, style, and computa
 
 ```text
 repository: /root/projects/ordivon-studio
-revision: dcd711889f968ede0d3545a31a16bac2012ee9b5
+revision: 76c7c168b89f1e75946cc2b6ffd1c6db363befcb
 path: research/expression/
 ```
 
