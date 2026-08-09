@@ -63,6 +63,15 @@ if (typeof expression.repository !== "string" || !expression.repository) fail("u
 if (typeof expression.revision !== "string" || !/^[0-9a-f]{40}$/.test(expression.revision)) fail("upstream expression research lacks exact Git revision");
 if (typeof expression.path !== "string" || !expression.path) fail("upstream expression research lacks path");
 if (typeof expression.role !== "string" || !expression.role) fail("upstream expression research lacks role");
+for (const field of ["protocol", "knowledgeModel", "profileBaseline"]) {
+  if (typeof expression[field] !== "string" || !expression[field]) fail(`upstream expression research lacks ${field}`);
+}
+
+const consumption = context.expressionConsumption;
+if (!consumption || typeof consumption !== "object") fail("missing expression consumption contract");
+if (consumption.knowledgeLayer !== "medium_prior") fail("Web expression profile must remain a medium prior");
+if (JSON.stringify(consumption.coreLoop) !== JSON.stringify(["frame", "bind", "express", "render", "audit", "decide"])) fail("Web expression loop drifted from Studio core");
+for (const outcome of ["revise", "no-op", "promote"]) if (!consumption.decisionOutcomes?.includes(outcome)) fail(`missing expression decision outcome ${outcome}`);
 
 const tokenList = collectTokens(tokens);
 const variables = new Set();

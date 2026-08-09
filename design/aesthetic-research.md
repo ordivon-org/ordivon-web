@@ -214,7 +214,7 @@ Ordivon should reuse their ideas before reimplementing them, but a tool enters t
 
 ## Current research pressure
 
-A0/A2 supplied the first bounded visual experiment and, more importantly, falsified the idea that one exposed observer's momentary preference should become design authority. The current pressure is no longer to collect votes until a theme wins. It is to apply [`expression-profile.md`](./expression-profile.md) to a real Web composition, state the intended experiential outcomes and tension profile before implementation, and test whether those concepts actually improve Agent creative judgment. Human/expert comparison remains available when the residual uncertainty is specifically about human response.
+A0/A2 supplied the first bounded visual experiment and, more importantly, falsified the idea that one exposed observer's momentary preference should become design authority. A3-1 through A3-3 then established that rendered artifacts can falsify expressive reasoning through causal, epistemic, and spatial-semantic leaks. Those results now feed ordinary production through Studio's shared protocol. Further Web aesthetic research is conditional: begin an experiment only when a repeated or materially important uncertainty survives normal source binding, browser rendering, semantic/accessibility audit, and mature Web craft. Human/expert comparison remains available when the residual uncertainty is specifically about human response.
 
 ## References
 

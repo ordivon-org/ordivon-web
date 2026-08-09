@@ -53,12 +53,14 @@ The current design authority is deliberately small:
 - component source files own exact markup, behavior, and local implementation;
 - [`expression-profile.md`](./expression-profile.md) owns the Web-specific application of cross-medium aesthetic and narrative priors;
 - [`aesthetic-research.md`](./aesthetic-research.md) owns how Web visual alternatives are generated and studied;
-- [`evaluation.md`](./evaluation.md) owns the stable evidence hierarchy, blinded preference protocol, and quantitative ranking contract;
+- [`evaluation.md`](./evaluation.md) owns bounded comparison and calibration methods used when a real design uncertainty earns an experiment; it is not the default production gate;
 - public information hierarchy remains owned by [`../content/editorial/information-architecture.md`](../content/editorial/information-architecture.md).
 
 `styles/generated-design-tokens.css` is a build-local translation of `tokens.json`. It is not an authoring authority.
 
 Cross-medium theory is deliberately **not** owned here. Ordivon Studio `research/expression/` owns the Art & Expression Laboratory; `expression-profile.md` binds the exact upstream revision currently used by Web and specializes it for reading, navigation, trust, evidence, and accessibility.
+
+Web also does not own a duplicate creative loop. Studio's `FRAME → BIND → EXPRESS → RENDER → AUDIT → DECIDE` protocol is the shared cognitive core. Web contributes medium-specific hard constraints and craft priors, then returns rendered browser evidence and local observations.
 
 ## Why structured tokens now
 
@@ -90,7 +92,7 @@ The benchmark surface set exists so an aesthetic or design-system change is test
 
 ### 4. Aesthetic experiments
 
-Aesthetic alternatives remain cheap and reversible until evidence earns promotion. Variants may change typography, density, rhythm, geometry, color, motion, or composition without immediately redefining the stable design context.
+Aesthetic experiments are a conditional research branch, not the normal path for every design change. Use them when rendered browser evidence and ordinary craft judgment leave a durable uncertainty worth isolating. Variants may change typography, density, rhythm, geometry, color, motion, or composition without immediately redefining the stable design context.
 
 The design system is **context for generation, not a cage around exploration**.
 

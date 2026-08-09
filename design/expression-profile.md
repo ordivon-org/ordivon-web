@@ -28,11 +28,13 @@ Cross-medium aesthetic, narrative, rhetorical, motion, sound, style, and computa
 
 ```text
 repository: /root/projects/ordivon-studio
-revision: 7796af0ee0a30c4cf166b98354c200b62699b86a
+revision: 56cbe0f8c23a135fa1c41c09e781f9adb015dc7e
 path: research/expression/
+protocol: research/expression/protocol.md
+knowledge model: research/expression/knowledge-model.md
 ```
 
-Web does not copy that research into a second theory of beauty. This profile records how Web applies it under Web-specific obligations.
+Web does not copy that research into a second theory of beauty or a second production loop. This document is a **medium profile**: it records Web-specific affordances, hard constraints, craft priors, semantic failure modes, and encounter assumptions downstream from the Studio core.
 
 ## Intended experience
 
@@ -163,25 +165,35 @@ Desired feel: change, consequence, and current judgment.
 
 The reader should perceive what moved and why. Visual continuity should preserve the Ordivon grammar while temporal discontinuities become legible.
 
-## Agent decision rule
+## Studio protocol specialization
 
-Before a meaningful visual change, an Agent should reason in this order:
+Web consumes the Studio production protocol rather than defining another one. For Web work, the six stages specialize as follows:
 
 ```text
-What human experience is this surface trying to create?
+FRAME
+reader task + intended experience + encounter mode
         ↓
-Which Web obligations cannot be traded away?
+BIND
+publication authority + owner truth + current/target/historical state
         ↓
-Which Studio expression priors are relevant?
+EXPRESS
+Web hierarchy + typography + interaction + responsive composition + relevant priors
         ↓
-What tension profile should this surface occupy?
+RENDER
+real browser surfaces, including materially different viewport / interaction states
         ↓
-Which concrete composition / type / color / motion choices express that profile?
+AUDIT
+explicit claims + implicit visual semantics + navigation + accessibility + responsive behavior
         ↓
-Does the rendered result actually implement the stated rationale?
+DECIDE
+revise / no-op / promote, with upstream-currentness recheck before promotion
 ```
 
-Do not begin from “which fashionable style should we use?”
+Web-specific hard constraints include semantic HTML, keyboard operability, contrast and reduced-motion obligations where applicable, responsive integrity, navigation legibility, source-bound publication state, and generated-output reproducibility. These are not aesthetic preferences.
+
+Web-specific craft priors include reading measure, hierarchy, grouping, scan paths, progressive disclosure, interaction affordance, scroll rhythm, responsive composition, and stable navigation grammar. They are defaults to pressure-test, not laws.
+
+Current platform aesthetics, fashionable layouts, browser/device mix, and distribution-specific attention patterns are context signals. They should be retrieved near the work rather than promoted into the cross-medium core.
 
 ## When external human evidence is useful
 
@@ -217,4 +229,4 @@ A3-3 still does not prove that a population felt the intended emotions. It prove
 
 ## Current pressure
 
-Stop accumulating bespoke showcase sections as the default research method. A3-1 through A3-3 now provide enough contrasting pressure to consolidate a compact reusable **Expression Decision Protocol** for Web and Studio Agents: experiential target → focalization/authority → tension profile → medium translation → rendered semantic audit → claim boundary. The next experiment should test that protocol on an unrelated real production rather than extending the numbered aesthetic loop indefinitely.
+Stop extending the numbered A3 showcase loop. The production protocol now lives upstream in Studio. Web's next job is to use it during ordinary Home, Project, Research, Writing, and Now work, and to discover which Web-specific priors actually deserve to remain in this profile. New aesthetic experiments should begin only when a durable uncertainty survives normal browser rendering, semantic audit, and mature Web craft.
