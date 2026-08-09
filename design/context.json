@@ -100,11 +100,12 @@
   ],
   "upstreamExpressionResearch": {
     "repository": "/root/projects/ordivon-studio",
-    "revision": "56cbe0f8c23a135fa1c41c09e781f9adb015dc7e",
+    "revision": "c27275c84d559b3446d6fac1d3c4635710f3286d",
     "path": "research/expression/",
     "protocol": "research/expression/protocol.md",
     "knowledgeModel": "research/expression/knowledge-model.md",
-    "profileBaseline": "research/expression/profiles/medium-baseline.json",
+    "profileRegistry": "research/expression/profiles/index.json",
+    "writingProfile": "research/expression/profiles/writing.md",
     "role": "cross-medium creative core and evidence; Web remains the medium-specific consumer"
   },
   "expressionConsumption": {
@@ -113,6 +114,10 @@
     "coreLoop": ["frame", "bind", "express", "render", "audit", "decide"],
     "webHardConstraints": ["publication-authority", "semantic-accessibility", "keyboard-operability", "responsive-integrity", "navigation-legibility", "reproducible-static-output"],
     "renderEvidence": ["browser-surface", "responsive-state", "interaction-state"],
-    "decisionOutcomes": ["revise", "no-op", "promote"]
+    "decisionOutcomes": ["revise", "no-op", "promote"],
+    "surfaceProfiles": {
+      "default": ["web"],
+      "long-form": ["web", "writing"]
+    }
   }
 }

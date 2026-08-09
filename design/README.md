@@ -61,6 +61,7 @@ The current design authority is deliberately small:
 Cross-medium theory is deliberately **not** owned here. Ordivon Studio `research/expression/` owns the Art & Expression Laboratory; `expression-profile.md` binds the exact upstream revision currently used by Web and specializes it for reading, navigation, trust, evidence, and accessibility.
 
 Web also does not own a duplicate creative loop. Studio's `FRAME → BIND → EXPRESS → RENDER → AUDIT → DECIDE` protocol is the shared cognitive core. Web contributes medium-specific hard constraints and craft priors, then returns rendered browser evidence and local observations.
+Long-form publication is the first explicit multi-profile composition: Studio's Writing Profile governs the semantic written artifact while Web governs the browser publication and reading surface. Composition does not merge their authorities.
 
 ## Why structured tokens now
 

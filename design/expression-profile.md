@@ -28,10 +28,12 @@ Cross-medium aesthetic, narrative, rhetorical, motion, sound, style, and computa
 
 ```text
 repository: /root/projects/ordivon-studio
-revision: 56cbe0f8c23a135fa1c41c09e781f9adb015dc7e
+revision: c27275c84d559b3446d6fac1d3c4635710f3286d
 path: research/expression/
 protocol: research/expression/protocol.md
 knowledge model: research/expression/knowledge-model.md
+profile registry: research/expression/profiles/index.json
+writing profile: research/expression/profiles/writing.md
 ```
 
 Web does not copy that research into a second theory of beauty or a second production loop. This document is a **medium profile**: it records Web-specific affordances, hard constraints, craft priors, semantic failure modes, and encounter assumptions downstream from the Studio core.
@@ -157,7 +159,19 @@ Density is legitimate. Use grouping, hierarchy, interaction, filtering, and spat
 
 Desired feel: calm reading substrate with enough rhythm and expressive contrast to sustain attention.
 
-Typography, paragraph measure, section cadence, figures, pull moments, and narrative ordering matter more than repeated interface framing.
+A long-form Web publication composes **two medium responsibilities** rather than collapsing them: Studio's Writing Profile owns argument order, voice, cadence, evidence placement, structural rhetoric, and writing-specific semantic failures; this Web Profile owns typography, responsive reading layout, TOC/navigation, interaction, accessibility, publication state, and the final browser reading surface.
+
+```text
+Writing Profile
+semantic text / argument
+        +
+Web Profile
+browser publication / reading surface
+        ↓
+one long-form artifact
+```
+
+Typography, paragraph measure, section cadence, figures, pull moments, and navigation must support the argument without becoming a second editorial authority.
 
 ### Now — temporal synthesis
 

@@ -63,7 +63,7 @@ if (typeof expression.repository !== "string" || !expression.repository) fail("u
 if (typeof expression.revision !== "string" || !/^[0-9a-f]{40}$/.test(expression.revision)) fail("upstream expression research lacks exact Git revision");
 if (typeof expression.path !== "string" || !expression.path) fail("upstream expression research lacks path");
 if (typeof expression.role !== "string" || !expression.role) fail("upstream expression research lacks role");
-for (const field of ["protocol", "knowledgeModel", "profileBaseline"]) {
+for (const field of ["protocol", "knowledgeModel", "profileRegistry", "writingProfile"]) {
   if (typeof expression[field] !== "string" || !expression[field]) fail(`upstream expression research lacks ${field}`);
 }
 
@@ -72,6 +72,8 @@ if (!consumption || typeof consumption !== "object") fail("missing expression co
 if (consumption.knowledgeLayer !== "medium_prior") fail("Web expression profile must remain a medium prior");
 if (JSON.stringify(consumption.coreLoop) !== JSON.stringify(["frame", "bind", "express", "render", "audit", "decide"])) fail("Web expression loop drifted from Studio core");
 for (const outcome of ["revise", "no-op", "promote"]) if (!consumption.decisionOutcomes?.includes(outcome)) fail(`missing expression decision outcome ${outcome}`);
+if (JSON.stringify(consumption.surfaceProfiles?.default) !== JSON.stringify(["web"])) fail("default Web surfaces must consume only the Web profile");
+if (JSON.stringify(consumption.surfaceProfiles?.["long-form"]) !== JSON.stringify(["web", "writing"])) fail("long-form surfaces must compose Web and Writing profiles");
 
 const tokenList = collectTokens(tokens);
 const variables = new Set();
