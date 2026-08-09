@@ -9,9 +9,9 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "8b0f0252cef1597a13be06adccea86fd63b5ce0f",
+    "revision": "b640f2dbbd78cbd645f4adbedc9465fd2218876f",
     "dirty": false,
-    "publicSourceDigest": "sha256:49b46cbea77e4f2b11e7cc211688488ccb56e844bd20d87b87d2ba1980114628",
+    "publicSourceDigest": "sha256:9580b7d53275240cab9517f88e74bbdfd4016725f966528cc4de875092443e50",
     "projectManifestDigest": "sha256:df992f1ff26bcd1f2f9571a0e7f31e091ea7d8c4c71cfdedff2841b69a00f576",
     "authorityDocument": "docs/authority.md",
     "authorityDigest": "sha256:697386a85cbd945c544e6d1cf5f2f07e34aaa64d477a4eb35d5227c1730ed08c",
@@ -19,7 +19,7 @@
     "documents": [
       {
         "path": "ARCHITECTURE.md",
-        "digest": "sha256:8c74ba2a8f7d0ac14621c5953a541eca8ea51b2fd6792a3f3882178e0fb72da1",
+        "digest": "sha256:322c96c7f7868dbc92581e0cc0afb35c99ac8937e19ecb6655580e464a00b3c2",
         "id": "harness.architecture",
         "type": "architecture",
         "lifecycle": "active",
@@ -55,7 +55,7 @@
       },
       {
         "path": "docs/DATA_AND_PRIVACY.md",
-        "digest": "sha256:f0fdde012b6d4eafb0eb45886d3f6894ae75b64496c882bdcad3331a5b81411b",
+        "digest": "sha256:851146bcd0763f72907bf2c3d814c645256519b509ecaa74c09cc21614479a26",
         "id": "harness.data-privacy",
         "type": "policy",
         "lifecycle": "active",

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-harness",
-  "sourceRevision": "8b0f0252cef1597a13be06adccea86fd63b5ce0f",
-  "sourceDigest": "sha256:49b46cbea77e4f2b11e7cc211688488ccb56e844bd20d87b87d2ba1980114628",
+  "sourceRevision": "b640f2dbbd78cbd645f4adbedc9465fd2218876f",
+  "sourceDigest": "sha256:9580b7d53275240cab9517f88e74bbdfd4016725f966528cc4de875092443e50",
   "boundary": {
     "id": "system:harness",
     "kind": "boundary",
@@ -41,10 +41,10 @@
     "capability": "Compiles caller-delegated execution mandates with a chosen strategy into immutable Run contracts, then executes bounded Agent attempts with durable Provider and Tool recovery, privacy-authorized persistence, Agent-selected WorkingSet transitions, cross-process reconstruction of authorized attempt-local Provider/Tool cognition, explicit per-turn execution-control metadata, pause/resume, receipts, and completion proposals.",
     "maturity": "Operational pre-1.0 engineering prototype",
     "audience": "Agent builders who need caller-neutral Run execution, bounded authority, explicit Provider and Tool recovery, and completion handoff without a Host dependency.",
-    "latestProof": "The cognition line now includes bounded Agent-owned historical recall and a stricter progress boundary. An explicitly granted history control exposes only earlier committed WorkingSet identities and exact pins, never semantic search or unselected CAS material; the Agent may re-select a historical pin through the existing WorkingSet transition. Attempt reset can discard transient Tool cognition without counting as structural progress, so it cannot reset progress counters or reopen a closed soft effect gate unless selected cognition actually changes.",
+    "latestProof": "Projected Runs now admit a separate caller-owned cognition ingress after needs_input. Exact plain caller user messages enter the effective model view without becoming Agent-selected WorkingSet pins, remain visible across WorkingSet transitions for that interaction, and are consumed at the next needs_input boundary. Recovery reconstructs their exact chronology around Tool exchanges from Snapshot/Journal authority; unbound or role-shaped caller injection is rejected.",
     "flagshipSlug": "what-h1-h5-proved",
     "summary": "The independent execution authority for bounded Agent Runs. Harness owns how an admitted attempt executes and what Run content it may durably retain, while callers retain Task meaning, domain commitments, and final verification.",
-    "state": "Operational pre-1.0 for caller-neutral independent Runs. Durable selected cognition, attempt-local Tool exchange, historical WorkingSet identity recall, execution-control metadata, and physical source materialization remain distinct. Historical recall is Agent-invoked exact-pin recovery rather than a Harness Memory/search service. Progress authority is durable: merely starting a new attempt with identical pins clears transient cognition but does not revive effect budget; an actual selected-context mutation may reset only the soft progress counters while the hard Tool budget remains global.",
+    "state": "Operational pre-1.0 for caller-neutral independent Runs. The effective model suffix now distinguishes caller interaction ingress from attempt-local Tool cognition and from durable Agent-selected WorkingSet pins. Caller ingress is genuine model-visible progress and may reset soft progress counters, but it does not change Agent-owned selection and cannot revive the global hard Tool budget. Exact recovery requires model-content authority; Tool-content authority is needed only when Tool-channel cognition is present.",
     "evidence": [
       {
         "value": "independent",
