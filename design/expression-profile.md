@@ -28,7 +28,7 @@ Cross-medium aesthetic, narrative, rhetorical, motion, sound, style, and computa
 
 ```text
 repository: /root/projects/ordivon-studio
-revision: 39153c98ad4823758c814ef0e1da18c336be769c
+revision: 7796af0ee0a30c4cf166b98354c200b62699b86a
 path: research/expression/
 ```
 
@@ -211,6 +211,10 @@ A3-2 changed the target from clarity to lawful uncertainty using Security AE0. W
 
 Neither result is a universal aesthetic law or a human-preference claim. They are local production evidence that the expression model changes real composition decisions and can be falsified by rendered artifacts.
 
+A3-3 then removed most explanatory branching and targeted isolation, latent dread, and fragile hope from Station Zero v3 Genesis. Web used a small known-island / large unresolved-field ratio; Motion used slow visibility changes without changing any World value. The first composition incorrectly placed a non-localized report on one side, which could imply a bearing; both media were corrected to keep it outside map coordinates. The strongest local result is: **absence becomes expressive only when the audience can distinguish “not present” from “not known,” and spatial placement itself can become an unintended factual claim.**
+
+A3-3 still does not prove that a population felt the intended emotions. It proves that the laboratory can derive a materially different, source-disciplined strategy when affect — rather than explanation — is the target.
+
 ## Current pressure
 
-Do not repeat another technical explainer merely to accumulate examples. The next useful pressure should test affect with much less explicit factual branching — isolation, awe, dread, intimacy, loss, relief, or another felt state — while keeping truth and medium constraints intact. That will test whether the laboratory can guide emotional expression rather than only epistemically disciplined explanation.
+Stop accumulating bespoke showcase sections as the default research method. A3-1 through A3-3 now provide enough contrasting pressure to consolidate a compact reusable **Expression Decision Protocol** for Web and Studio Agents: experiential target → focalization/authority → tension profile → medium translation → rendered semantic audit → claim boundary. The next experiment should test that protocol on an unrelated real production rather than extending the numbered aesthetic loop indefinitely.

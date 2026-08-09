@@ -988,3 +988,69 @@
   .security-truth-branches article + article { border-left:0; }
   .security-truth-branches article { min-height:21rem; }
 }
+
+
+/* A3-3 Game affect trial: source-bound absence and scale, not a dashboard skin. */
+.game-affect-expression {
+  margin: clamp(2rem,5vw,4rem) 0 clamp(7rem,12vw,11rem);
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-strong);
+}
+.game-affect-head { display:flex; justify-content:space-between; gap:2rem; align-items:baseline; }
+.game-affect-kicker { margin:0; color:var(--muted); font:.62rem var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+.game-affect-thesis { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(18rem,.6fr); gap:clamp(2rem,6vw,7rem); align-items:end; margin:clamp(3rem,7vw,6rem) 0 clamp(4rem,8vw,7rem); }
+.game-affect-thesis h2 { max-width:14ch; margin:0; font:450 clamp(3.2rem,7.4vw,7.7rem)/.88 var(--serif); letter-spacing:-.066em; }
+.game-affect-thesis h2 em { color:var(--accent-soft); font-weight:420; }
+.game-affect-thesis > p { max-width:32rem; margin:0; color:var(--paper-soft); line-height:1.75; }
+.game-affect-field { position:relative; min-height:clamp(47rem,76vw,70rem); overflow:hidden; border-block:1px solid var(--line); background:radial-gradient(circle at 13% 76%,color-mix(in srgb,var(--accent) 8%,transparent),transparent 31%); }
+.game-affect-field::before { content:""; position:absolute; inset:0; background:linear-gradient(128deg,color-mix(in srgb,var(--paper) 1.5%,transparent),transparent 24%,transparent 82%,color-mix(in srgb,var(--paper) 1%,transparent)); pointer-events:none; }
+.game-affect-known { position:absolute; left:clamp(1rem,4vw,4rem); bottom:clamp(4rem,8vw,8rem); width:min(43rem,55%); height:29rem; }
+.game-affect-known-label { position:absolute; left:0; bottom:-1.7rem; color:var(--muted); font:.6rem var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+.game-affect-room { position:absolute; border:1px solid color-mix(in srgb,var(--paper) 20%,transparent); background:color-mix(in srgb,var(--paper) 1.4%,transparent); }
+.game-affect-room small { position:absolute; left:.75rem; top:.65rem; color:var(--muted); font:.58rem var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+.game-affect-command { left:0; bottom:0; width:39%; height:43%; }
+.game-affect-command i { position:absolute; right:-12%; top:49%; width:12%; height:1px; background:var(--line-strong); }
+.game-affect-power { left:44%; bottom:31%; width:29%; height:31%; }
+.game-affect-med { left:48%; bottom:0; width:32%; height:27%; }
+.game-affect-contact { position:absolute; z-index:2; display:grid; grid-template-columns:.6rem 1fr; column-gap:.55rem; align-items:center; }
+.game-affect-contact b { width:.52rem; height:.52rem; border-radius:50%; background:var(--accent); box-shadow:0 0 1rem color-mix(in srgb,var(--accent) 45%,transparent); grid-row:1 / 3; }
+.game-affect-contact span { font-size:.77rem; font-weight:560; }
+.game-affect-contact small { color:var(--muted); font:.53rem var(--mono); letter-spacing:.04em; text-transform:uppercase; }
+.game-affect-imani { left:2rem; bottom:2.3rem; }
+.game-affect-reyes { left:2rem; bottom:5.1rem; }
+.game-affect-chen { left:2rem; bottom:8.2rem; }
+.game-affect-report { position:absolute; left:33%; right:clamp(1rem,4vw,4rem); top:22%; min-height:9.5rem; display:grid; place-content:center; padding:1rem 2rem; border-block:1px solid color-mix(in srgb,var(--paper) 10%,transparent); text-align:center; }
+.game-affect-report::after { content:""; display:block; width:84%; height:1px; margin:2.4rem auto 0; background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--paper-soft) 38%,transparent),transparent); opacity:.5; }
+.game-affect-report span, .game-affect-objective span, .game-affect-telemetry span { color:var(--muted); font:.58rem var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+.game-affect-report strong { display:block; margin-top:.8rem; font-size:clamp(1.5rem,2.6vw,2.8rem); font-weight:520; }
+.game-affect-report p { margin:.65rem 0 0; color:var(--muted); font-size:.75rem; }
+.game-affect-telemetry { position:absolute; right:clamp(1rem,4vw,4rem); bottom:clamp(3rem,5vw,5rem); width:min(31rem,40%); display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+.game-affect-telemetry > div { padding-top:.7rem; border-top:1px solid var(--line); }
+.game-affect-telemetry strong { display:block; margin-top:.45rem; font-size:clamp(1.2rem,2vw,2rem); font-weight:500; }
+.game-affect-objective { position:absolute; left:clamp(1rem,4vw,4rem); top:11%; max-width:24rem; padding-left:1rem; border-left:1px solid var(--accent); }
+.game-affect-objective strong { display:block; margin-top:.45rem; font:450 clamp(1.25rem,2.1vw,2rem)/1.1 var(--serif); font-style:italic; }
+.game-affect-objective strong + strong { color:var(--paper-soft); }
+.game-affect-unknown-boundary { position:absolute; left:50%; top:50%; translate:-35% -50%; width:min(23rem,28%); margin:0; color:color-mix(in srgb,var(--muted) 66%,transparent); font:.63rem/1.6 var(--mono); letter-spacing:.03em; }
+.game-affect-boundary { max-width:58rem; margin:1.7rem 0 0 auto; color:var(--muted); font-size:.75rem; line-height:1.65; }
+.game-affect-boundary strong { color:var(--paper-soft); }
+@media (max-width:860px) {
+  .game-affect-thesis { grid-template-columns:1fr; }
+  .game-affect-field { min-height:61rem; }
+  .game-affect-known { width:72%; height:27rem; }
+  .game-affect-report { left:31%; right:2rem; top:18%; }
+  .game-affect-telemetry { width:54%; }
+  .game-affect-unknown-boundary { left:58%; width:30%; }
+}
+@media (max-width:620px) {
+  .game-affect-head { display:block; }
+  .game-affect-kicker { margin-top:.65rem; }
+  .game-affect-field { min-height:75rem; }
+  .game-affect-objective { top:5%; max-width:18rem; }
+  .game-affect-report { left:1rem; right:1rem; top:27%; min-height:10rem; }
+  .game-affect-unknown-boundary { left:auto; right:1rem; top:49%; translate:0 -50%; width:63%; text-align:right; }
+  .game-affect-known { left:1rem; bottom:12rem; width:calc(100% - 2rem); height:24rem; }
+  .game-affect-command { width:47%; }
+  .game-affect-power { left:52%; width:38%; }
+  .game-affect-med { left:54%; width:40%; }
+  .game-affect-telemetry { left:1rem; right:1rem; bottom:2rem; width:auto; grid-template-columns:repeat(2,1fr); }
+}
