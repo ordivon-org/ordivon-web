@@ -28,7 +28,7 @@ Cross-medium aesthetic, narrative, rhetorical, motion, sound, style, and computa
 
 ```text
 repository: /root/projects/ordivon-studio
-revision: 76c7c168b89f1e75946cc2b6ffd1c6db363befcb
+revision: 39153c98ad4823758c814ef0e1da18c336be769c
 path: research/expression/
 ```
 
@@ -205,6 +205,12 @@ The lesson is not “editorial is objectively beautiful.” It is:
 
 A2 therefore calibrates our confidence in local preference evidence. It does not justify turning Web design into permanent polling infrastructure.
 
+A3-1 then tested the profile on Runtime recovery. The same evidence-bound proposition became spatial continuity on Web and a temporal rupture/recovery trajectory in Motion. Real rendering exposed one spatial causal-link defect before promotion. The strongest retained result is that **event model, focal authority, and expressive tension transfer more reliably than component geometry**.
+
+A3-2 changed the target from clarity to lawful uncertainty using Security AE0. Web stayed close to the Defender information surface while Motion temporarily gave the audience privileged private-world knowledge, then closed that view before the Agent decision. Two render corrections mattered: equal visual balance could imply an unsupported probability prior, and outcome-colored `UNKNOWN` could imply likelihood/severity before truth. This yields a second local result: **visual semantics can function as implicit evidence and must respect the same information boundary as text and data**.
+
+Neither result is a universal aesthetic law or a human-preference claim. They are local production evidence that the expression model changes real composition decisions and can be falsified by rendered artifacts.
+
 ## Current pressure
 
-Use this profile on the next real Web composition change and record whether its tension language helps an Agent make a better concrete decision. In parallel, apply the upstream Studio laboratory to one temporal production. Cross-medium transfer — not another theme tournament — is the next test of whether the research has practical value.
+Do not repeat another technical explainer merely to accumulate examples. The next useful pressure should test affect with much less explicit factual branching — isolation, awe, dread, intimacy, loss, relief, or another felt state — while keeping truth and medium constraints intact. That will test whether the laboratory can guide emotional expression rather than only epistemically disciplined explanation.

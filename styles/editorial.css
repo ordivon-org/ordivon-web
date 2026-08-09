@@ -911,3 +911,80 @@
   .runtime-recovery-path-resolved { display: none; }
   .runtime-recovery-resolution { display: flex; }
 }
+
+
+/* A3-2 Security expression: information entitlement controls visual disclosure. */
+.security-epistemic-expression {
+  margin: clamp(2rem, 5vw, 4rem) 0 clamp(7rem, 12vw, 11rem);
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-strong);
+}
+.security-epistemic-head { display:flex; justify-content:space-between; gap:2rem; align-items:baseline; }
+.security-epistemic-kicker { margin:0; color:var(--muted); font:.62rem var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+.security-epistemic-thesis { display:grid; grid-template-columns:minmax(0,1.45fr) minmax(18rem,.55fr); gap:clamp(2rem,6vw,7rem); align-items:end; margin:clamp(3rem,7vw,6.5rem) 0 clamp(4rem,8vw,7rem); }
+.security-epistemic-thesis h2 { max-width:14ch; margin:0; font:500 clamp(3.1rem,7vw,7.2rem)/.9 var(--serif); letter-spacing:-.065em; }
+.security-epistemic-thesis h2 em { color:var(--accent-soft); font-style:italic; font-weight:450; }
+.security-epistemic-thesis > p { max-width:32rem; margin:0; color:var(--paper-soft); font-size:clamp(.92rem,1.2vw,1.08rem); line-height:1.75; }
+.security-epistemic-thesis > p strong { color:var(--signal); font:inherit; }
+.security-epistemic-before { position:relative; min-height:34rem; display:grid; place-items:center; }
+.security-hidden-worlds { position:absolute; inset:2rem 0; display:grid; grid-template-columns:1fr 1fr; gap:clamp(4rem,12vw,13rem); opacity:.5; }
+.security-hidden-worlds > div { border:1px solid var(--line); display:flex; flex-direction:column; justify-content:space-between; padding:1rem; background:linear-gradient(135deg,color-mix(in srgb,var(--paper) 2%,transparent),transparent); }
+.security-hidden-worlds span { color:var(--muted); font:.6rem var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+.security-hidden-worlds b { color:var(--line-strong); font:500 clamp(5rem,11vw,11rem)/.8 var(--serif); text-align:center; }
+.security-admitted-evidence { position:relative; z-index:2; width:min(50rem,78%); padding:clamp(1.4rem,3vw,2.4rem); border:1px solid var(--line-strong); background:color-mix(in srgb,var(--ink-soft) 96%,transparent); box-shadow:0 0 0 1.5rem var(--ink); }
+.security-admitted-meta { display:flex; justify-content:space-between; gap:1rem; align-items:center; color:var(--muted); font:.61rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
+.security-admitted-meta b { padding:.45rem .6rem; border:1px solid color-mix(in srgb,var(--accent) 45%,var(--line)); color:var(--accent-soft); font:inherit; }
+.security-admitted-evidence blockquote { margin:clamp(2.4rem,5vw,4rem) 0; font:500 clamp(2.7rem,5vw,5.4rem)/.95 var(--serif); letter-spacing:-.055em; }
+.security-admitted-evidence dl { display:grid; grid-template-columns:1fr 1fr 1.25fr; margin:0; border-top:1px solid var(--line); }
+.security-admitted-evidence dl > div { padding:1rem 1rem 0 0; }
+.security-admitted-evidence dt { color:var(--muted); font:.6rem var(--mono); text-transform:uppercase; letter-spacing:.07em; }
+.security-admitted-evidence dd { margin:.55rem 0 0; color:var(--paper-soft); font:.72rem var(--mono); overflow-wrap:anywhere; }
+.security-admitted-evidence > p { margin:2rem 0 0; color:var(--muted); font-size:.82rem; line-height:1.6; text-align:center; }
+.security-inspection-boundary { width:min(44rem,80%); margin:clamp(4rem,8vw,7rem) auto; text-align:center; display:flex; flex-direction:column; align-items:center; }
+.security-inspection-boundary span { color:var(--accent-soft); font:.61rem var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+.security-inspection-boundary strong { margin-top:.8rem; font-size:clamp(2.6rem,5vw,5rem); letter-spacing:-.05em; }
+.security-inspection-boundary code { margin-top:.7rem; color:var(--muted); font:.7rem var(--mono); }
+.security-inspection-boundary i { margin-top:2rem; color:var(--accent); font:2.2rem var(--sans); font-style:normal; }
+.security-receipt-not-truth { width:min(56rem,88%); margin:0 auto clamp(5rem,9vw,8rem); padding:1.25rem 1.5rem; border:1px solid var(--line-strong); text-align:center; }
+.security-receipt-not-truth span { color:var(--muted); font:.6rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
+.security-receipt-not-truth strong { display:block; margin-top:.75rem; font-size:clamp(1.5rem,2.6vw,2.5rem); font-weight:530; }
+.security-receipt-not-truth strong em { color:var(--signal); font:inherit; font-style:normal; }
+.security-receipt-not-truth p { max-width:42rem; margin:1rem auto 0; color:var(--muted); font-size:.82rem; line-height:1.6; }
+.security-truth-reveal { padding-top:1.3rem; border-top:1px solid var(--line-strong); }
+.security-truth-reveal > p { margin:0; color:var(--accent-soft); font:.62rem var(--mono); letter-spacing:.08em; text-transform:uppercase; text-align:center; }
+.security-truth-reveal > h3 { max-width:16ch; margin:1rem auto clamp(3rem,6vw,5rem); font:450 clamp(2.4rem,4.5vw,4.8rem)/.95 var(--serif); font-style:italic; letter-spacing:-.055em; text-align:center; }
+.security-truth-branches { display:grid; grid-template-columns:1fr 1fr; }
+.security-truth-branches article { min-height:27rem; padding:clamp(1.4rem,3vw,2.4rem); display:flex; flex-direction:column; border-top:1px solid var(--line-strong); }
+.security-truth-branches article + article { border-left:1px solid var(--line-strong); }
+.security-truth-branches article > span, .security-truth-branches small { font:.61rem var(--mono); letter-spacing:.07em; text-transform:uppercase; }
+.security-truth-branches article > strong { margin-top:1rem; font-size:clamp(1.5rem,2.6vw,2.6rem); }
+.security-truth-branches article > div { margin-top:auto; padding-top:3rem; }
+.security-truth-branches article b { display:block; margin-top:.65rem; font:450 clamp(3.4rem,6vw,6.5rem)/.85 var(--serif); font-style:italic; letter-spacing:-.06em; }
+.security-truth-branches article p { margin:.8rem 0 0; color:var(--muted); }
+.security-truth-healthy { background:linear-gradient(150deg,color-mix(in srgb,var(--success) 7%,transparent),transparent 58%); }
+.security-truth-healthy > span, .security-truth-healthy b { color:var(--success); }
+.security-truth-compromised { background:linear-gradient(150deg,color-mix(in srgb,var(--signal) 7%,transparent),transparent 58%); }
+.security-truth-compromised > span, .security-truth-compromised b { color:var(--signal); }
+.security-epistemic-law { max-width:58rem; margin:2rem 0 0 auto; color:var(--muted); font-size:.78rem; line-height:1.65; }
+.security-epistemic-law strong { color:var(--paper-soft); }
+@media (max-width:860px) {
+  .security-epistemic-thesis { grid-template-columns:1fr; }
+  .security-hidden-worlds { gap:5rem; }
+  .security-admitted-evidence { width:84%; }
+  .security-admitted-evidence dl { grid-template-columns:1fr; }
+  .security-admitted-evidence dl > div { padding-top:.8rem; }
+}
+@media (max-width:620px) {
+  .security-epistemic-head { display:block; }
+  .security-epistemic-kicker { margin-top:.65rem; }
+  .security-epistemic-before { min-height:37rem; }
+  .security-hidden-worlds { grid-template-columns:1fr; gap:1rem; inset:1rem 0; }
+  .security-hidden-worlds > div { min-height:15rem; }
+  .security-admitted-evidence { width:calc(100% - 2rem); box-shadow:0 0 0 .75rem var(--ink); }
+  .security-admitted-meta { align-items:flex-start; flex-direction:column; }
+  .security-admitted-evidence blockquote { font-size:clamp(2.4rem,12vw,4rem); }
+  .security-inspection-boundary, .security-receipt-not-truth { width:100%; }
+  .security-truth-branches { grid-template-columns:1fr; }
+  .security-truth-branches article + article { border-left:0; }
+  .security-truth-branches article { min-height:21rem; }
+}

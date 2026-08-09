@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProjectMechanism } from "@/components/project-mechanism";
 import { RuntimeRecoveryExpression } from "@/components/runtime-recovery-expression";
+import { SecurityEpistemicExpression } from "@/components/security-epistemic-expression";
 import { articles } from "@/lib/content";
 import { getProject, projects } from "@/lib/projects";
 
@@ -45,6 +46,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </header>
       <section className="project-question page-shell"><p>Question this project must answer</p><h2>{project.question}</h2></section>
       {project.slug === "runtime" && <div className="page-shell"><RuntimeRecoveryExpression /></div>}
+      {project.slug === "security" && <div className="page-shell"><SecurityEpistemicExpression /></div>}
       <section className="project-model-wrap page-shell"><ProjectMechanism project={project} /></section>
       <section className="project-facts page-shell">
         <div className="project-fact-copy"><p className="section-index">Where it stands now</p><h2>{project.maturity}</h2><p>{project.state}</p></div>
