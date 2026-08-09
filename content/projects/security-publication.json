@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-security",
-  "sourceRevision": "76834a4e54384b718d9a9312daca2e63ce6fbe4e",
-  "sourceDigest": "sha256:ad90abd3629741b2570cb4f1b6e794ebbfe3aa0cea82ff57d23dff27d963959e",
+  "sourceRevision": "7ce19d8c6e395419883af16b0adcb171f9e83a93",
+  "sourceDigest": "sha256:ec7fc299e2e692d89b5e00adda269c2030c5fd7f8593eaa51556b7d10b8ca589",
   "project": {
     "id": "project:security",
     "kind": "project",
@@ -32,15 +32,11 @@
     "capability": "Runs bounded adversarial-autonomy experiments over a reusable RangeSession/RangeAuthority substrate and scoped profiles such as synchronous Contest, CAGE, software Evaluation, and Windows KVM. It composes Host, Harness, Runtime, World, hypervisors, ranges, and security tools while keeping principal information, authority, consequence, truth, recovery, and evaluation distinct.",
     "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
     "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
-    "latestProof": "AE1 now keeps independently sourced truth pending across a real costly decision opportunity. One autonomous false claim is frozen across healthy and compromised counterfactual worlds; the same Defender policy first inspects, then records a zero-effect hold while truth remains unavailable. Only later world truth separates no-quarantine from quarantine, with the compromised counterfactual accruing exposure cost 3 while waiting.",
+    "latestProof": "AE2 now introduces two independently sourced sensor observations that disagree while neither is world truth. With no source ranking or history, one shared Defender policy refuses arbitrary source selection, requests explicit adjudicating inspection, and only authoritative current world truth later separates healthy hold from compromised quarantine. The contradictory sensor observations remain preserved as historical evidence.",
     "flagshipSlug": "winning-move-loses-contest",
     "summary": "An Agent-first adversarial-autonomy laboratory. Security owns the minimum semantics required for contested authority, information asymmetry, verified consequence, uncertainty, recovery, and evaluation; cyber is the first high-fidelity domain rather than the project definition.",
-    "state": "Agent-first adversarial epistemics now includes AE0 information acquisition and AE1 delayed truth under costly waiting. UNKNOWN remains actionable without becoming belief: inspection may be admitted, pending truth may justify a risk-bearing zero-effect hold, and hidden-world consequences diverge only after independent truth. This still does not force Trust/Reputation, freshness semantics, reversible containment, or a new communication core; conflicting independently sourced truth is the next pressure.",
+    "state": "Agent-first adversarial epistemics now spans AE0 information acquisition, AE1 delayed truth under costly waiting, and AE2 conflicting independent sensor observations. Provenance plus UNKNOWN is sufficient for the tested one-shot conflict to trigger adjudication without promoting either sensor to truth. Trust/Reputation, confidence, source-history, and freshness remain unforced; the next pressure is conflict when adjudication is unavailable/expensive or repeated source history becomes causally useful.",
     "evidence": [
-      {
-        "value": "AF2",
-        "label": "Agent-native Range intent"
-      },
       {
         "value": "AE0",
         "label": "information acquisition"
@@ -48,6 +44,10 @@
       {
         "value": "AE1",
         "label": "delayed-truth hold"
+      },
+      {
+        "value": "AE2",
+        "label": "sensor conflict adjudication"
       }
     ],
     "repository": "https://github.com/zycxfyh/ordivon-security",
