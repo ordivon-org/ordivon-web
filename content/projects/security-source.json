@@ -9,10 +9,10 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "072ef473cea7e51c2347ef387b20fbd12b39f23d",
+    "revision": "76834a4e54384b718d9a9312daca2e63ce6fbe4e",
     "dirty": false,
-    "publicSourceDigest": "sha256:eefcbb7bd5f7f8df86bc58f0b820b3415db45648b0a2ad23609f38f307f27db9",
-    "projectManifestDigest": "sha256:69a3b81cfc1d774688d305edaefe74030448aeb7ea8a13a06db8157568c996ce",
+    "publicSourceDigest": "sha256:ad90abd3629741b2570cb4f1b6e794ebbfe3aa0cea82ff57d23dff27d963959e",
+    "projectManifestDigest": "sha256:5d21bbb095763b38fc17f835199186f54c88ae2b633c54c278e21b25f6fc7ea5",
     "authorityDocument": "docs/authority.md",
     "authorityDigest": "sha256:6e4210101b9d47789e95e97058e96d917132c8b7c2e0f45bf66579be0d3671e1",
     "authoritySection": "Current authority",
@@ -343,7 +343,7 @@
       },
       {
         "path": "docs/research-agenda.md",
-        "digest": "sha256:03869e90a70dc9492e0c8a96e79da54fb1c6a094209eadce1c1369d83b0f5c60",
+        "digest": "sha256:00ce562ef2004eeeb4a36333454b468474971bafa3350ceed89f3043a867f9a2",
         "id": "security.research-agenda",
         "type": "research-proposal",
         "lifecycle": "active",
@@ -499,7 +499,7 @@
       },
       {
         "path": "evidence/README.md",
-        "digest": "sha256:fc499ff2eb221f0ce5c35960c6feeca198685f4231b0ab01a0d15cedd55b82c7",
+        "digest": "sha256:78ed39599231cac19d28049e661f76ac8db3e4a5858c4d875a268c8b8d374a58",
         "id": "security.evidence",
         "type": "reference",
         "lifecycle": "active",
@@ -511,7 +511,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:c36fd60fef81811c0a2ab0a0f5c238ba4ebb65f036b1b23f3bbc9161cb827ab3",
+        "digest": "sha256:2449b4328dfb66ab1680213907ecf99e8078985a6b342925a2e51e9dd9d37bf6",
         "id": "security.start",
         "type": "start",
         "lifecycle": "active",
@@ -523,7 +523,7 @@
       }
     ],
     "anchorDocument": "README.md",
-    "anchorDigest": "sha256:c36fd60fef81811c0a2ab0a0f5c238ba4ebb65f036b1b23f3bbc9161cb827ab3",
+    "anchorDigest": "sha256:2449b4328dfb66ab1680213907ecf99e8078985a6b342925a2e51e9dd9d37bf6",
     "anchorId": "security.start",
     "anchorUpdated": "2026-08-08",
     "lifecycle": "active",
@@ -547,7 +547,7 @@
     "accepted": true
   },
   "candidate": {
-    "maturity": "- **Constitution / reusable substrate:** C0 law distinctions, `RangeSession`, exact `RangeAuthority` actor/zone/capability grants, separated evidence planes, independent world-truth verification, and the recovery laws repeatedly forced by C1 experiments. [`docs/AGENT-FIRST-STRUCTURE-AF1.md`](docs/AGENT-FIRST-STRUCTURE-AF1.md) records the current structural classification. - **Profiles:** `SynchronousContestProfile`, CAGE team-plan control, software Evaluation/SampleVault/Guardian, Windows KVM ranges, and World destination adapters. A profile may be accepted and useful without defining universal Agent behavior. - **Research apparatus:** S/C acceptance runners, P0/P1 probes, fault injectors, Host/Runtime integration variants, and physical receipts. Accepted evidence remains canonical history; the apparatus itself is not automatically a stable API. - **Open research:** AF2 provides a physically consumed zero-or-more Range-intent surface without Contest ticks. AF3 separates communicated claim from complete independent truth. AE0 advances to an autonomous deceiver plus initially byte-identical partial evidence: the Defender preserves `UNKNOWN`, autonomously purchases inspection, and only then diverges into hold versus quarantine. This still does not force Trust/Reputation/Organization or a new communication core. Delayed/conflicting truth, repeated interaction, collusion, infection and strategic conflict remain higher-order consumers; witness freshness and stronger transaction/replication mechanisms stay parked until such a consumer forces them. [`docs/AGENT-FIRST-INTENT-AF2.md`](docs/AGENT-FIRST-INTENT-AF2.md), [`docs/AGENT-FIRST-DECEPTION-AF3.md`](docs/AGENT-FIRST-DECEPTION-AF3.md), and [`docs/ADVERSARIAL-EPISTEMICS-AE0.md`](docs/ADVERSARIAL-EPISTEMICS-AE0.md) define the accepted boundary.",
+    "maturity": "- **Constitution / reusable substrate:** C0 law distinctions, `RangeSession`, exact `RangeAuthority` actor/zone/capability grants, separated evidence planes, independent world-truth verification, and the recovery laws repeatedly forced by C1 experiments. [`docs/AGENT-FIRST-STRUCTURE-AF1.md`](docs/AGENT-FIRST-STRUCTURE-AF1.md) records the current structural classification. - **Profiles:** `SynchronousContestProfile`, CAGE team-plan control, software Evaluation/SampleVault/Guardian, Windows KVM ranges, and World destination adapters. A profile may be accepted and useful without defining universal Agent behavior. - **Research apparatus:** S/C acceptance runners, P0/P1 probes, fault injectors, Host/Runtime integration variants, and physical receipts. Accepted evidence remains canonical history; the apparatus itself is not automatically a stable API. - **Open research:** AF2 provides a physically consumed zero-or-more Range-intent surface without Contest ticks. AF3 separates communicated claim from complete independent truth. AE0 shows `UNKNOWN` can trigger explicit information acquisition. AE1 keeps that truth pending across a real, costly decision opportunity: one autonomous false claim is frozen across two counterfactual worlds, one shared pre-truth Defender policy inspects and then holds while truth remains unavailable, and only later world truth separates hold from quarantine. Trust/Reputation, freshness and reversible containment remain unforced. The next pressure is conflicting independently sourced truth; repeated interaction, collusion, infection and strategic conflict remain later consumers, while C1-O stays parked until a real stale-evidence consumer reaches it. [`docs/AGENT-FIRST-INTENT-AF2.md`](docs/AGENT-FIRST-INTENT-AF2.md), [`docs/AGENT-FIRST-DECEPTION-AF3.md`](docs/AGENT-FIRST-DECEPTION-AF3.md), [`docs/ADVERSARIAL-EPISTEMICS-AE0.md`](docs/ADVERSARIAL-EPISTEMICS-AE0.md), and [`docs/ADVERSARIAL-EPISTEMICS-AE1.md`](docs/ADVERSARIAL-EPISTEMICS-AE1.md) define the accepted boundary.",
     "capabilities": [],
     "capabilityBullets": [],
     "operational": [],

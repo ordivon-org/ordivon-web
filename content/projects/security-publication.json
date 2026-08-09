@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-security",
-  "sourceRevision": "072ef473cea7e51c2347ef387b20fbd12b39f23d",
-  "sourceDigest": "sha256:eefcbb7bd5f7f8df86bc58f0b820b3415db45648b0a2ad23609f38f307f27db9",
+  "sourceRevision": "76834a4e54384b718d9a9312daca2e63ce6fbe4e",
+  "sourceDigest": "sha256:ad90abd3629741b2570cb4f1b6e794ebbfe3aa0cea82ff57d23dff27d963959e",
   "project": {
     "id": "project:security",
     "kind": "project",
@@ -32,22 +32,22 @@
     "capability": "Runs bounded adversarial-autonomy experiments over a reusable RangeSession/RangeAuthority substrate and scoped profiles such as synchronous Contest, CAGE, software Evaluation, and Windows KVM. It composes Host, Harness, Runtime, World, hypervisors, ranges, and security tools while keeping principal information, authority, consequence, truth, recovery, and evaluation distinct.",
     "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
     "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
-    "latestProof": "AE0 now demonstrates autonomous deception under partial truth. A real model Deceiver publishes the same receiver-visible compromise claim in healthy and compromised worlds; the Defender receives byte-identical pre-inspection context, preserves UNKNOWN, autonomously requests inspection in both, and only after an independent world-truth event diverges into no-quarantine versus quarantine. The inspection receipt itself remains non-truth.",
+    "latestProof": "AE1 now keeps independently sourced truth pending across a real costly decision opportunity. One autonomous false claim is frozen across healthy and compromised counterfactual worlds; the same Defender policy first inspects, then records a zero-effect hold while truth remains unavailable. Only later world truth separates no-quarantine from quarantine, with the compromised counterfactual accruing exposure cost 3 while waiting.",
     "flagshipSlug": "winning-move-loses-contest",
     "summary": "An Agent-first adversarial-autonomy laboratory. Security owns the minimum semantics required for contested authority, information asymmetry, verified consequence, uncertainty, recovery, and evaluation; cyber is the first high-fidelity domain rather than the project definition.",
-    "state": "The 0.8 Agent-first research core now has accepted AF2/AF3/AE0 evidence above the earlier S/C recovery line. A reusable zero-or-more Range-intent surface exists without Contest ticks, communicated claims are separated from independent truth, and UNKNOWN can rationally authorize information acquisition without authorizing the hidden-world consequence. One autonomous deception consumer still does not force Trust, Reputation, Organization, a generic communication core, or stronger transaction machinery; delayed/conflicting/priced truth and repeated interaction remain the next pressure.",
+    "state": "Agent-first adversarial epistemics now includes AE0 information acquisition and AE1 delayed truth under costly waiting. UNKNOWN remains actionable without becoming belief: inspection may be admitted, pending truth may justify a risk-bearing zero-effect hold, and hidden-world consequences diverge only after independent truth. This still does not force Trust/Reputation, freshness semantics, reversible containment, or a new communication core; conflicting independently sourced truth is the next pressure.",
     "evidence": [
       {
         "value": "AF2",
         "label": "Agent-native Range intent"
       },
       {
-        "value": "AF3",
-        "label": "deception consumer"
+        "value": "AE0",
+        "label": "information acquisition"
       },
       {
-        "value": "AE0",
-        "label": "partial-truth epistemics"
+        "value": "AE1",
+        "label": "delayed-truth hold"
       }
     ],
     "repository": "https://github.com/zycxfyh/ordivon-security",
