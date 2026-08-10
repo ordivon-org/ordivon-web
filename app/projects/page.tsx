@@ -49,6 +49,9 @@ export default function ProjectsPage() {
         <div className="project-status-legend" aria-label="Project status legend">
           {Object.entries(statusLabel).filter(([key]) => key !== "internal").map(([key, label]) => <span key={key} data-status={key}>{label}</span>)}
         </div>
+        <nav className="project-quick-index" aria-label="Open a project">
+          {projects.map((project) => <Link href={`/projects/${project.slug}`} key={project.slug}><span>{project.index}</span><strong>{project.title}</strong></Link>)}
+        </nav>
       </header>
 
       {groups.map((group) => {

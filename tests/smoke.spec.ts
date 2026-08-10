@@ -199,6 +199,21 @@ test("public model is article-centered and does not expose the retired graph led
   }
 });
 
+test("projects directory exposes project identity in the initial encounter", async ({ page }) => {
+  for (const viewport of [{ width: 1440, height: 1000 }, { width: 412, height: 915 }]) {
+    await page.setViewportSize(viewport);
+    await gotoWithNetworkRetry(page, "/projects");
+    const links = page.locator(".project-quick-index a");
+    await expect(links).toHaveCount(8);
+    const first = await links.first().boundingBox();
+    const last = await links.last().boundingBox();
+    expect(first).not.toBeNull();
+    expect(last).not.toBeNull();
+    expect(first!.y, `${viewport.width}px project index begins below the initial viewport`).toBeLessThan(viewport.height);
+    expect(last!.y + last!.height, `${viewport.width}px project index extends below the initial viewport`).toBeLessThanOrEqual(viewport.height);
+  }
+});
+
 test("reader orientation precedes formal models on the remaining R2 surfaces", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/now");
   await expect(page.locator(".now-brief-grid > article")).toHaveCount(4);
