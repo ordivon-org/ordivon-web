@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import process from "node:process";
 
 function usage() {
-  console.error("usage: node scripts/prepare-design-comparisons.mjs <spec.json> <rater-id> <rater-class> [seed]");
+  console.error("usage: node design/archive/preference-calibration/prepare-design-comparisons.mjs <spec.json> <rater-id> <rater-class> [seed]");
   process.exit(2);
 }
 

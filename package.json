@@ -20,19 +20,14 @@
     "check": "pnpm content:generate && pnpm design:check && pnpm publication:check && next typegen && tsc --noEmit && pnpm lint && next build --webpack && pnpm budget:report && playwright test tests/smoke.spec.ts",
     "publication:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/validate-publications.mjs",
     "design:generate": "node scripts/generate-design-tokens.mjs",
-    "design:check": "pnpm design:generate && node scripts/generate-design-tokens.mjs --check && node scripts/validate-design-context.mjs && node scripts/validate-design-evaluation.mjs",
+    "design:check": "pnpm design:generate && node scripts/generate-design-tokens.mjs --check && node scripts/validate-design-context.mjs",
     "agent:context": "node scripts/report-agent-web-context.mjs",
     "browser:review": "pnpm build && node scripts/review-browser-surfaces.mjs",
     "browser:review:current": "node scripts/review-browser-surfaces.mjs",
     "site:audit": "node scripts/site-audit.mjs",
     "content:generate": "node scripts/generate-design-tokens.mjs && node scripts/generate-project-projections.mjs && node scripts/generate-article-manifest.mjs",
     "pages:prepare": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/prepare-pages.mjs",
-    "budget:report": "node scripts/report-static-budget.mjs",
-    "design:pairings": "node scripts/prepare-design-comparisons.mjs",
-    "design:rank": "node scripts/rank-design-preferences.mjs",
-    "design:blind": "node scripts/blind-design-ballot.mjs",
-    "design:review": "node scripts/render-blind-design-review.mjs",
-    "design:resolve": "node scripts/resolve-design-ballot.mjs"
+    "budget:report": "node scripts/report-static-budget.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "3.1.1",

@@ -175,7 +175,7 @@ test("public model is article-centered and does not expose the retired graph led
 
   await gotoWithNetworkRetry(page, "/research/security-adversarial-trajectory");
   await expect(page.getByRole("link", { name: /Winning the Move Can Lose the Contest/ })).toBeVisible();
-  await expect(page.getByText("C1–C1H", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("accepted AE0–AE2 adversarial-epistemics line", { exact: false }).first()).toBeVisible();
   await expect(page.getByText("84 Trials", { exact: false })).toHaveCount(0);
 
   await gotoWithNetworkRetry(page, "/research/harness-composition-and-completion");
@@ -186,7 +186,7 @@ test("public model is article-centered and does not expose the retired graph led
 
   await gotoWithNetworkRetry(page, "/research/ordivon-harness-v0");
   await expect(page.getByText("testing", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("Implemented and under pressure.", { exact: false })).toBeVisible();
+  await expect(page.getByText("caller interaction ingress after needs_input", { exact: false }).first()).toBeVisible();
   await expect(page.getByRole("link", { name: /From Tokens to Work/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 

@@ -263,7 +263,7 @@ The new Web needs both.
 - reading/task performance;
 - aesthetic preference and qualitative facets.
 
-Do not collapse these layers into one score. `design/evaluation.md` owns the stable evaluation hierarchy and pairwise ranking protocol.
+Do not collapse these layers into one score. `design/evaluation.md` owns the stable evaluation hierarchy. Blinded pairwise preference is conditional calibration for an explicit human-preference claim; its historical executable apparatus is archived and is not an ordinary Agent production dependency.
 
 ## Relationship to external mature systems
 

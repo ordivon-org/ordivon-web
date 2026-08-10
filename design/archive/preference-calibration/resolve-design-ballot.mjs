@@ -3,7 +3,7 @@ import process from "node:process";
 
 const [, , keyPath, responsesPath] = process.argv;
 if (!keyPath || !responsesPath) {
-  console.error("usage: node scripts/resolve-design-ballot.mjs <private-key.json> <responses.json>");
+  console.error("usage: node design/archive/preference-calibration/resolve-design-ballot.mjs <private-key.json> <responses.json>");
   process.exit(2);
 }
 

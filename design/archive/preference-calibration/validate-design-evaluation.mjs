@@ -6,15 +6,16 @@ import { join } from "node:path";
 import process from "node:process";
 
 const root = process.cwd();
+const apparatus = join(root, "design", "archive", "preference-calibration");
 const temp = mkdtempSync(join(tmpdir(), "ordivon-design-eval-"));
 
 try {
-  const prepare = join(root, "scripts/prepare-design-comparisons.mjs");
-  const rank = join(root, "scripts/rank-design-preferences.mjs");
-  const blind = join(root, "scripts/blind-design-ballot.mjs");
-  const resolve = join(root, "scripts/resolve-design-ballot.mjs");
-  const renderReview = join(root, "scripts/render-blind-design-review.mjs");
-  const spec = join(root, "design/evaluation-spec.example.json");
+  const prepare = join(apparatus, "prepare-design-comparisons.mjs");
+  const rank = join(apparatus, "rank-design-preferences.mjs");
+  const blind = join(apparatus, "blind-design-ballot.mjs");
+  const resolve = join(apparatus, "resolve-design-ballot.mjs");
+  const renderReview = join(apparatus, "render-blind-design-review.mjs");
+  const spec = join(apparatus, "evaluation-spec.example.json");
 
   const ballotA = execFileSync(process.execPath, [prepare, spec, "expert-1", "expert", "42"], { encoding: "utf8" });
   const ballotB = execFileSync(process.execPath, [prepare, spec, "expert-1", "expert", "42"], { encoding: "utf8" });

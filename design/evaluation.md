@@ -160,15 +160,7 @@ comparisons per evaluator = s × k × (k - 1) / 2
 
 For three variants over three surfaces, that is nine pairwise decisions per evaluator.
 
-The repository tools support:
-
-```text
-node scripts/prepare-design-comparisons.mjs <spec.json> <rater-id> <rater-class> [seed]
-node scripts/blind-design-ballot.mjs <prepared.json> <public.json> <private-key.json>
-node scripts/render-blind-design-review.mjs <public.json> <review.html>
-node scripts/resolve-design-ballot.mjs <private-key.json> <side-responses.json>
-node scripts/rank-design-preferences.mjs <resolved-votes.json>
-```
+The executable ballot apparatus is archived under [`archive/preference-calibration/`](./archive/preference-calibration/) and is intentionally absent from ordinary package commands and `design:check`. Restore/use it only when the active claim is specifically comparative human preference. The evaluation principles below remain active even when the apparatus is dormant.
 
 The pairing generator randomizes left/right order deterministically from a seed. Before an evaluator sees the ballot, the blinding step separates a public ballot containing only comparison identity/surface from a private left/right→variant key. The review renderer consumes only that public ballot. Evaluator export contains only `left`/`right` choices; the private key resolves those choices after ballot closure. The ranker then reports global and sliced Bradley–Terry ratings, direct head-to-head records, empirical win rates, and Wilson 95% intervals.
 

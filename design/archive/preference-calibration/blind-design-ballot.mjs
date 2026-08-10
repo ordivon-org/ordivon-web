@@ -3,7 +3,7 @@ import process from "node:process";
 
 const [, , ballotPath, publicPath, keyPath] = process.argv;
 if (!ballotPath || !publicPath || !keyPath) {
-  console.error("usage: node scripts/blind-design-ballot.mjs <prepared-ballot.json> <public-ballot.json> <private-key.json>");
+  console.error("usage: node design/archive/preference-calibration/blind-design-ballot.mjs <prepared-ballot.json> <public-ballot.json> <private-key.json>");
   process.exit(2);
 }
 

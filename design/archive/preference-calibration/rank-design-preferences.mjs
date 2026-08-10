@@ -3,7 +3,7 @@ import process from "node:process";
 
 const [, , votesPath] = process.argv;
 if (!votesPath) {
-  console.error("usage: node scripts/rank-design-preferences.mjs <votes.json>");
+  console.error("usage: node design/archive/preference-calibration/rank-design-preferences.mjs <votes.json>");
   process.exit(2);
 }
 
