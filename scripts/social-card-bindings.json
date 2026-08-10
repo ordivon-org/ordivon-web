@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "kind": "ordivon.web-social-card-bindings",
+  "rendererDigest": "sha256:b08740a08b0f5f9187a81773207669633d1c0fb1e161663cf92c235134cf60be",
+  "cards": [
+    {
+      "slug": "communication-is-gameplay-state",
+      "sourceDigest": "sha256:c360b04d72d774d914841bd9e962ef5a4db02c110bd9dff6bdf90012afb13908",
+      "blobDigest": "sha256:8ba2c97e701655edec289ae29a8c0bab1062ede744f49cb05d7b431c371697a6",
+      "sizeBytes": 154491
+    },
+    {
+      "slug": "creation-judgment-recoverable-systems",
+      "sourceDigest": "sha256:4e52086ab05bc73eb52d580cd5bbb346aba038f04a4cb45f1d45652034badf29",
+      "blobDigest": "sha256:b7970a7ee6550746e60b3f0e1f2cfa1fec129245318c549cf92653e0694682c1",
+      "sizeBytes": 179139
+    },
+    {
+      "slug": "from-tokens-to-work",
+      "sourceDigest": "sha256:8b4db92d71d112acfdd909827869dc5af21fc2d4962c56bda932375cd032e3fb",
+      "blobDigest": "sha256:4e23cb6c5e89d98663bed0dc3f7935b045df8bdd8f180bf9d5c6c5be00909cee",
+      "sizeBytes": 167475
+    },
+    {
+      "slug": "host-task-continuity",
+      "sourceDigest": "sha256:c258c6146df6b78d0ad237aaac84eafdd3c8cdece84926d29f39b34e209b4232",
+      "blobDigest": "sha256:c44f1e666908dcb47662f6470beb6ba9ea51d57bc8a9d3940abb0043a6b22ee4",
+      "sizeBytes": 165902
+    },
+    {
+      "slug": "link-edge-boundary",
+      "sourceDigest": "sha256:22cf1dd3844a1468a5156a85d11ddbaadf8ca01a3c3e9273a47a99d4b9904487",
+      "blobDigest": "sha256:153e1cf6bdecebc3f285812958de170704c9dfdb5c61a4b5b77215fde1a8e5f5",
+      "sizeBytes": 173875
+    },
+    {
+      "slug": "one-authority-thirteen-tables",
+      "sourceDigest": "sha256:02c7c61e911dc2f955f1f2cc4d28a91791e242b06367938956a614f155a8099e",
+      "blobDigest": "sha256:92418c89ccd8647a4c17d9f668d1edee4b1117fa2400b967b4ab9f1c5dd8a7a4",
+      "sizeBytes": 166844
+    },
+    {
+      "slug": "ordivon-runtime-release",
+      "sourceDigest": "sha256:67334f8a6432d10c8b587b8647c2990d4ff52d73af68647354ae673b14cfaedf",
+      "blobDigest": "sha256:3d4761874bd77f89151b609dfe257e171432170ce94e052d4cdea1f5667fb70a",
+      "sizeBytes": 160620
+    },
+    {
+      "slug": "replay-without-second-truth-store",
+      "sourceDigest": "sha256:a910137b74512cefe030a1ed381fbf2b5c9b3d64a4c932f1b3ae5b2835455f17",
+      "blobDigest": "sha256:a06776521703bee3902984f35b57f0233d1ffabd1c59e35bf12aefb10b7cee92",
+      "sizeBytes": 172067
+    },
+    {
+      "slug": "runtime-after-core",
+      "sourceDigest": "sha256:d9dd34a898097dd9c3320526cb5bf3624ce578b37dd171f72e7cefcd1526e52a",
+      "blobDigest": "sha256:8b258e6f79eabda002d15c9a92ce592c8a7083eb35931d850f51192515f63d08",
+      "sizeBytes": 169255
+    },
+    {
+      "slug": "smaller-core-strong-baselines",
+      "sourceDigest": "sha256:50209ac827e16ac78bde95f00e14714620c6d095bb0c8516869efa29b2802627",
+      "blobDigest": "sha256:7d991ab38eb8c5168a2a9d06f7e3874d4ad0901208b1e33b91f6585ca0962e8c",
+      "sizeBytes": 173909
+    },
+    {
+      "slug": "station-zero-alpha-1",
+      "sourceDigest": "sha256:f5f89290d1d24286ed83a07ffd90d92d31a59cf78a7aee0be5290814fd2e5e39",
+      "blobDigest": "sha256:deacf494383765a6dee5dea0223c8d567456d504f61b4f0dbf314d65041a2285",
+      "sizeBytes": 173026
+    },
+    {
+      "slug": "the-future-will-not-wait",
+      "sourceDigest": "sha256:af32c2f163514bd40da7c9de86be24f35c13f686d272c3ba6bd489507420b549",
+      "blobDigest": "sha256:1159a3ffd0ded674e5c07cf40e4fe7033996fe4e755660d313ad68acc4d07276",
+      "sizeBytes": 143604
+    },
+    {
+      "slug": "thin-host-without-hidden-planner",
+      "sourceDigest": "sha256:b60b2592c03ccaf6185ebab34552178188b73b3a4b7224c44502d94032e8ff7f",
+      "blobDigest": "sha256:49495cbce78957ff108d8ef83ff150567d1343067ee57efdd0a744745fbb01fb",
+      "sizeBytes": 179493
+    },
+    {
+      "slug": "transcript-not-task-database",
+      "sourceDigest": "sha256:d15e79af8f446258e6e6b370bc3bd0cb3121fb1ca26e0e8dfea8291c0945b7b0",
+      "blobDigest": "sha256:564a7db11ea643b9a51fff48fc36a070b209d09263e08242ce12f7f78456e719",
+      "sizeBytes": 160215
+    },
+    {
+      "slug": "unknown-is-operational-state",
+      "sourceDigest": "sha256:303dc1d38166cb09bb3f90fd1b66047518d8ebd639df9edf62b3cc7de3eab968",
+      "blobDigest": "sha256:3b8168e9087b0498d2d41d78d0bf7b05560ec944f181001bbba1a47b0b0da6f0",
+      "sizeBytes": 168855
+    },
+    {
+      "slug": "what-h1-h5-proved",
+      "sourceDigest": "sha256:b3446f0e04cfd8a3b555e9b611e2f672e22467e1a2dfd4db261d6f9a80a59f5c",
+      "blobDigest": "sha256:5717e884c9e0ca992b897c0cceec5fc01a12a4bb0db0a613d8943df5783c94f2",
+      "sizeBytes": 164789
+    },
+    {
+      "slug": "why-ordivon-needs-a-harness",
+      "sourceDigest": "sha256:d9875b924f024b5df7556b760738b25a3b102df06970f396559ce52000299439",
+      "blobDigest": "sha256:b1f210884b145a7165e1fd1a33df346de50e6f4f664d3b9d63fc0343828743ca",
+      "sizeBytes": 162614
+    },
+    {
+      "slug": "why-ordivon",
+      "sourceDigest": "sha256:469a936748d57e6e96c9b50a43c1e5ff5471992e66bbe218215f4fc1b4a34a51",
+      "blobDigest": "sha256:714dfc3c2d0e1382180693ce536823354aa74665fa4d1b1e3c269fb98c643279",
+      "sizeBytes": 158850
+    },
+    {
+      "slug": "winning-move-loses-contest",
+      "sourceDigest": "sha256:5de22864c968d29d097482acc3d97571281c970f53a38d2a9519a53b42e9ddf4",
+      "blobDigest": "sha256:41e35be6ab899b4c863e1052738536c33bc29e763caa7d90466f2625b29b310f",
+      "sizeBytes": 172583
+    }
+  ]
+}

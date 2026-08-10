@@ -8,7 +8,10 @@ static hosting without request-time image generation.
 
 from __future__ import annotations
 
+import hashlib
 import html
+import inspect
+import json
 import re
 import subprocess
 import tempfile
@@ -18,11 +21,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ARTICLE_DIRECTORY = ROOT / "content/articles"
 OUTPUT = ROOT / "public/og"
+BINDINGS = ROOT / "scripts/social-card-bindings.json"
 SIZE = (1200, 630)
 
 
 def extract_articles() -> list[dict[str, str]]:
-    import json
     articles: list[dict[str, str]] = []
     prefix = "export const metadata = "
     for path in sorted(ARTICLE_DIRECTORY.glob("*.mdx")):
@@ -97,6 +100,56 @@ def render_svg(article: dict[str, str]) -> str:
 </svg>'''
 
 
+def sha256_bytes(value: bytes) -> str:
+    return "sha256:" + hashlib.sha256(value).hexdigest()
+
+
+def article_source_digest(article: dict[str, str]) -> str:
+    canonical = json.dumps(article, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return sha256_bytes(canonical)
+
+
+def renderer_digest() -> str:
+    source = "\n".join(
+        [
+            repr(SIZE),
+            inspect.getsource(wrap),
+            inspect.getsource(compact),
+            inspect.getsource(tspans),
+            inspect.getsource(render_svg),
+        ]
+    ).encode("utf-8")
+    return sha256_bytes(source)
+
+
+def bindings_document(articles: list[dict[str, str]], output: Path) -> dict[str, object]:
+    cards = []
+    for article in articles:
+        path = output / f"{article['slug']}.png"
+        payload = path.read_bytes()
+        cards.append(
+            {
+                "slug": article["slug"],
+                "sourceDigest": article_source_digest(article),
+                "blobDigest": sha256_bytes(payload),
+                "sizeBytes": len(payload),
+            }
+        )
+    return {
+        "schemaVersion": 1,
+        "kind": "ordivon.web-social-card-bindings",
+        "rendererDigest": renderer_digest(),
+        "cards": cards,
+    }
+
+
+def write_bindings(articles: list[dict[str, str]], output: Path) -> None:
+    BINDINGS.write_text(
+        json.dumps(bindings_document(articles, output), indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+
+
 def generate_cards(output: Path, *, prune_stale: bool, announce: bool) -> list[Path]:
     output.mkdir(parents=True, exist_ok=True)
     articles = extract_articles()
@@ -120,29 +173,82 @@ def generate_cards(output: Path, *, prune_stale: bool, announce: bool) -> list[P
             generated.append(png_path)
             if announce:
                 print(f"generated {png_path.relative_to(ROOT)}")
+    if output == OUTPUT:
+        write_bindings(articles, output)
     return generated
 
 
+def read_bindings() -> dict[str, object]:
+    if not BINDINGS.is_file():
+        raise SystemExit(f"social card check failed:\n- missing binding receipt: {BINDINGS.relative_to(ROOT)}")
+    try:
+        document = json.loads(BINDINGS.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as error:
+        raise SystemExit(f"social card check failed:\n- unreadable binding receipt: {error}") from error
+    if document.get("schemaVersion") != 1 or document.get("kind") != "ordivon.web-social-card-bindings":
+        raise SystemExit("social card check failed:\n- unsupported binding receipt identity")
+    return document
+
+
 def check_cards() -> None:
-    with tempfile.TemporaryDirectory(prefix="ordivon-og-check-") as temporary:
+    articles = extract_articles()
+    document = read_bindings()
+    failures: list[str] = []
+    if document.get("rendererDigest") != renderer_digest():
+        failures.append("social card renderer changed without regenerating bindings")
+
+    raw_cards = document.get("cards")
+    if not isinstance(raw_cards, list):
+        failures.append("binding receipt cards must be an array")
+        raw_cards = []
+    bindings = {item.get("slug"): item for item in raw_cards if isinstance(item, dict) and isinstance(item.get("slug"), str)}
+    if len(bindings) != len(raw_cards):
+        failures.append("binding receipt contains duplicate or malformed card entries")
+    articles_by_slug = {article["slug"]: article for article in articles}
+    expected_names = {f"{slug}.png" for slug in articles_by_slug}
+    actual_names = {path.name for path in OUTPUT.glob("*.png")}
+    failures += [f"missing committed card: {name}" for name in sorted(expected_names - actual_names)]
+    failures += [f"stale committed card: {name}" for name in sorted(actual_names - expected_names)]
+    failures += [f"missing binding: {slug}" for slug in sorted(set(articles_by_slug) - set(bindings))]
+    failures += [f"stale binding: {slug}" for slug in sorted(set(bindings) - set(articles_by_slug))]
+
+    for slug, article in articles_by_slug.items():
+        binding = bindings.get(slug)
+        if not isinstance(binding, dict):
+            continue
+        expected_source = article_source_digest(article)
+        if binding.get("sourceDigest") != expected_source:
+            failures.append(f"article metadata changed without regenerating social card: {slug}.png")
+        path = OUTPUT / f"{slug}.png"
+        if path.is_file():
+            payload = path.read_bytes()
+            if binding.get("blobDigest") != sha256_bytes(payload) or binding.get("sizeBytes") != len(payload):
+                failures.append(f"committed card bytes do not match binding: {slug}.png")
+    if failures:
+        raise SystemExit("social card check failed:\n- " + "\n- ".join(failures))
+    print(f"social_card_check=passed cards={len(articles)} renderer=bound")
+
+
+def verify_rendered_cards() -> None:
+    with tempfile.TemporaryDirectory(prefix="ordivon-og-verify-") as temporary:
         generated_root = Path(temporary) / "generated"
         generated = generate_cards(generated_root, prune_stale=False, announce=False)
-        expected_names = {path.name for path in generated}
-        actual_names = {path.name for path in OUTPUT.glob("*.png")}
-        failures = [f"missing committed card: {name}" for name in sorted(expected_names - actual_names)]
-        failures += [f"stale committed card: {name}" for name in sorted(actual_names - expected_names)]
+        failures = []
         for generated_path in generated:
             committed_path = OUTPUT / generated_path.name
-            if committed_path.is_file() and generated_path.read_bytes() != committed_path.read_bytes():
-                failures.append(f"card bytes do not match current article metadata: {generated_path.name}")
+            if not committed_path.is_file():
+                failures.append(f"missing committed card: {generated_path.name}")
+            elif generated_path.read_bytes() != committed_path.read_bytes():
+                failures.append(f"rendered bytes differ from committed card: {generated_path.name}")
         if failures:
-            raise SystemExit("social card check failed:\n- " + "\n- ".join(failures))
-        print(f"social_card_check=passed cards={len(generated)}")
+            raise SystemExit("social card render verification failed:\n- " + "\n- ".join(failures))
+        print(f"social_card_render_verify=passed cards={len(generated)}")
 
 
 def write_review_sheets(output: Path) -> None:
     import base64
 
+    check_cards()
     cards = [ROOT / "public" / "opengraph-image.png", *sorted(OUTPUT.glob("*.png"))]
     missing = [path for path in cards if not path.is_file()]
     if missing:
@@ -183,11 +289,14 @@ def main() -> None:
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
-    mode.add_argument("--check", action="store_true", help="re-render in a temporary directory and verify committed cards are exact")
-    mode.add_argument("--review-dir", type=Path, help="write 400x210 contact sheets for Agent perceptual review; does not make a semantic judgment")
+    mode.add_argument("--check", action="store_true", help="verify source, renderer identity, binding receipt, and committed PNG bytes without rendering")
+    mode.add_argument("--verify-render", action="store_true", help="re-render every card and exact-compare committed PNG bytes; requires rsvg-convert")
+    mode.add_argument("--review-dir", type=Path, help="write 400x210 contact sheets for Agent perceptual review; requires rsvg-convert and makes no semantic judgment")
     args = parser.parse_args()
     if args.check:
         check_cards()
+    elif args.verify_render:
+        verify_rendered_cards()
     elif args.review_dir:
         write_review_sheets(args.review_dir)
     else:

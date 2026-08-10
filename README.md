@@ -75,11 +75,17 @@ pnpm build
 pnpm preview
 pnpm agent:context
 pnpm design:check
+pnpm publication:check
+pnpm social:generate
+pnpm social:verify-render
+pnpm social:review
 pnpm check
 pnpm pages:prepare
 ```
 
-`pnpm check` runs TypeScript, ESLint, a production build, and the Chromium desktop/mobile smoke suite.
+`pnpm publication:check` validates article/publication contracts plus the tracked social-card source/renderer/blob bindings using Node and Python only; it does not invoke an image renderer. `pnpm social:generate` regenerates article PNGs and their mechanical binding receipt. `pnpm social:verify-render` re-renders every article card for exact byte comparison, and `pnpm social:review` writes 400×210 contact sheets for Agent perception. The three rendering/review commands require `rsvg-convert`; the default publication check does not. The binding receipt stores only identities and byte facts, not a second copy of article metadata.
+
+`pnpm check` runs publication/design validation, TypeScript, ESLint, a production build, budget reporting, and the Chromium desktop/mobile smoke suite.
 
 The `Deploy Pages` workflow runs the complete check, materializes historical redirects and the custom-domain files, writes `deploy-manifest.json`, uploads the static Artifact, and deploys it through the protected `github-pages` environment. Recovery is a Git revert or a workflow dispatch for a chosen source revision, followed by the same verified deployment path.
 
