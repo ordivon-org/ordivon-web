@@ -18,7 +18,7 @@
     "test": "pnpm build && playwright test tests/smoke.spec.ts",
     "test:smoke": "pnpm build && playwright test tests/smoke.spec.ts",
     "check": "pnpm content:generate && pnpm design:check && pnpm publication:check && next typegen && tsc --noEmit && pnpm lint && next build --webpack && pnpm budget:report && playwright test tests/smoke.spec.ts",
-    "publication:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/validate-publications.mjs",
+    "publication:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/validate-publications.mjs && python3 scripts/generate-social-cards.py --check",
     "design:generate": "node scripts/generate-design-tokens.mjs",
     "design:check": "pnpm design:generate && node scripts/generate-design-tokens.mjs --check && node scripts/validate-design-context.mjs",
     "agent:context": "node scripts/report-agent-web-context.mjs",
