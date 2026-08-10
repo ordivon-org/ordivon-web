@@ -140,13 +140,56 @@ def check_cards() -> None:
         print(f"social_card_check=passed cards={len(generated)}")
 
 
+def write_review_sheets(output: Path) -> None:
+    import base64
+
+    cards = [ROOT / "public" / "opengraph-image.png", *sorted(OUTPUT.glob("*.png"))]
+    missing = [path for path in cards if not path.is_file()]
+    if missing:
+        raise SystemExit("social card review failed: missing input: " + ", ".join(str(path.relative_to(ROOT)) for path in missing))
+
+    output.mkdir(parents=True, exist_ok=True)
+    for stale in output.glob("sheet-*.png"):
+        stale.unlink()
+    cell_width, image_height, label_height, gap, columns, per_sheet = 400, 210, 28, 16, 2, 10
+    with tempfile.TemporaryDirectory(prefix="ordivon-og-review-") as temporary:
+        temporary_path = Path(temporary)
+        for sheet_number, start in enumerate(range(0, len(cards), per_sheet), 1):
+            group = cards[start : start + per_sheet]
+            rows = (len(group) + columns - 1) // columns
+            width = columns * cell_width + (columns + 1) * gap
+            height = rows * (image_height + label_height) + (rows + 1) * gap
+            parts = [
+                f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
+                '<rect width="100%" height="100%" fill="#080b10"/>',
+            ]
+            for index, card in enumerate(group):
+                row, column = divmod(index, columns)
+                x = gap + column * (cell_width + gap)
+                y = gap + row * (image_height + label_height + gap)
+                encoded = base64.b64encode(card.read_bytes()).decode("ascii")
+                label = "root" if card.name == "opengraph-image.png" and card.parent.name == "public" else card.stem
+                parts.append(f'<image x="{x}" y="{y}" width="{cell_width}" height="{image_height}" href="data:image/png;base64,{encoded}"/>')
+                parts.append(f'<text x="{x}" y="{y + image_height + 19}" fill="#d7dce5" font-family="Adwaita Mono, monospace" font-size="13">{html.escape(label)}</text>')
+            parts.append("</svg>")
+            svg_path = temporary_path / f"sheet-{sheet_number}.svg"
+            png_path = output / f"sheet-{sheet_number}.png"
+            svg_path.write_text("".join(parts), encoding="utf-8")
+            subprocess.run(["rsvg-convert", "--output", str(png_path), str(svg_path)], check=True)
+    print(f"social_card_review=ready cards={len(cards)} sheets={(len(cards) + per_sheet - 1) // per_sheet} scale=400x210 output={output}")
+
+
 def main() -> None:
     import argparse
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--check", action="store_true", help="re-render in a temporary directory and verify committed cards are exact")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--check", action="store_true", help="re-render in a temporary directory and verify committed cards are exact")
+    mode.add_argument("--review-dir", type=Path, help="write 400x210 contact sheets for Agent perceptual review; does not make a semantic judgment")
     args = parser.parse_args()
     if args.check:
         check_cards()
+    elif args.review_dir:
+        write_review_sheets(args.review_dir)
     else:
         generate_cards(OUTPUT, prune_stale=True, announce=True)
 

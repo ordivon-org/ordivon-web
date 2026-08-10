@@ -11,6 +11,7 @@
     "dev": "pnpm content:generate && next dev --webpack",
     "build": "pnpm content:generate && next build --webpack",
     "social:generate": "python3 scripts/generate-social-cards.py",
+    "social:review": "python3 scripts/generate-social-cards.py --review-dir out/social-review",
     "start": "python3 -m http.server 8788 --directory out",
     "preview": "pnpm build && pnpm start",
     "typecheck": "pnpm content:generate && next typegen && tsc --noEmit",
