@@ -9,7 +9,7 @@ source_role: canonical
 visibility: public
 owners:
   - ordivon-web
-updated: 2026-08-08
+updated: 2026-08-10
 summary: Web-specific application of Ordivon Studio's cross-medium Art & Expression Laboratory, defining which experiential outcomes and expressive tensions matter under reading, trust, navigation, and accessibility constraints.
 evidence_status: testing
 readiness: CANDIDATE
@@ -240,6 +240,8 @@ Neither result is a universal aesthetic law or a human-preference claim. They ar
 A3-3 then removed most explanatory branching and targeted isolation, latent dread, and fragile hope from Station Zero v3 Genesis. Web used a small known-island / large unresolved-field ratio; Motion used slow visibility changes without changing any World value. The first composition incorrectly placed a non-localized report on one side, which could imply a bearing; both media were corrected to keep it outside map coordinates. The strongest local result is: **absence becomes expressive only when the audience can distinguish “not present” from “not known,” and spatial placement itself can become an unintended factual claim.**
 
 A3-3 still does not prove that a population felt the intended emotions. It proves that the laboratory can derive a materially different, source-disciplined strategy when affect — rather than explanation — is the target.
+
+The first **ordinary-production** use of the shared protocol then exercised an existing long-form Writing surface rather than another showcase. Exact browser review of `creation-judgment-recoverable-systems` showed a desktop-only orientation defect: the expressive title and generous top interval pushed author/date/read-time/Question identity below the initial 1440×1000 viewport, while the 412×915 mobile surface already exposed that publication identity. A bounded desktop-only hero spacing/type-scale revision brought the metadata into the initial viewport; mechanical browser checks remained clean and the mobile PNG stayed byte-identical. Retain this only as a local Writing/Web observation: **on evidence-bound long-form pages, expressive entry should not hide the publication identity needed to orient the argument.** It is not a universal title-size rule and has not earned promotion outside this surface class.
 
 ## Current pressure
 
