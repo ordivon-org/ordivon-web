@@ -14,7 +14,7 @@ audience:
   - publisher
   - editor
   - agent
-updated: 2026-08-08
+updated: 2026-08-10
 summary: Architecture for letting Agents observe source authority, make public judgments, compose with design context, verify previews, and promote static Web changes without acting like human CMS operators.
 evidence_status: verified
 readiness: CANDIDATE
@@ -89,8 +89,8 @@ VERIFY
   publication contract
   type/lint/build
   navigation/accessibility/responsive checks
-  visual or aesthetic evidence when relevant
-  (blinded pairwise preference is the primary aesthetic endpoint)
+  rendered Agent audit when expression is relevant
+  targeted human/expert comparison only when a residual human-response claim requires it
         ↓
 PROMOTE
   commit + tested deployment artifact
@@ -177,6 +177,22 @@ For N0, a preview is the static build of the candidate revision plus its verific
 - Vercel preview deployment.
 
 The hosting mechanism is replaceable. The invariant is that an Agent can inspect the candidate **before promotion** and production remains bound to a tested source revision.
+
+## Browser perception as Agent evidence
+
+Functional browser checks are necessary but not sufficient for `RENDER → AUDIT`. Web therefore materializes disposable browser-review packets rather than asking an Agent to infer the final surface from JSX, CSS, DOM state, or Playwright pass/fail alone.
+
+`pnpm browser:review` builds the current static candidate and captures the benchmark routes at deterministic desktop and mobile viewports. `pnpm browser:review:current --route /projects/game` skips rebuilding and captures a selected route from an already-built candidate. The packet records:
+
+- exact candidate Git HEAD plus a content digest over the non-ignored source tree;
+- digests of the canonical Agent, design-context, and expression-profile decision context;
+- exact PNG viewport bytes and SHA-256 identity;
+- HTTP/browser/overflow mechanical facts separately from semantic judgment;
+- `semanticAudit.status = pending-agent-inspection` until a vision-capable Agent actually inspects those pixels.
+
+The initial viewport is intentionally the cheap default. Scroll, focus, menu, filter, hover, animation, or other interaction states are requested only when the current work leaves a material uncertainty. Web owns browser-state selection; Runtime owns generic exact-byte/native-image transport; the Agent owns interpretation.
+
+The full Playwright/Axe suite remains the publication gate. The browser-review path is the faster inner loop for rendered observation and bounded correction; it does not weaken deployment verification or create a permanent screenshot baseline.
 
 ## Who may promote
 
@@ -281,8 +297,14 @@ It deliberately does **not** add:
 - a universal page schema;
 - an Agent self-score for beauty.
 
-## Next pressure
+## Current pressure
 
-After N0 proves that the structured design context produces the same current site, the next experiment should use it to create a bounded aesthetic variant across several benchmark surfaces.
+N0 and the A3-1 through A3-3 expression trials are complete enough to stop numbered showcase expansion. The active pressure is **ordinary production consumption**:
 
-That is where the missing equipment—browser capture, component isolation, richer tokens, or preview hosting—should be discovered by practice rather than assumed in advance.
+1. choose a normal Home, Project, Research, Writing, or Now change whose source truth is already owned;
+2. use the shared Studio `FRAME → BIND → EXPRESS → RENDER → AUDIT → DECIDE` protocol rather than opening another Web-only creative loop;
+3. inspect exact browser pixels through the browser-review packet when expression or responsive state matters;
+4. retain a Web-local prior only when materially different ordinary work repeats the same finding;
+5. open a new aesthetic experiment only when a durable uncertainty survives source binding, mature Web craft, browser rendering, semantic/accessibility audit, and ordinary production.
+
+The next Web milestone is therefore not a richer design showcase. It is proving that a fresh Agent can make bounded ordinary public changes, see their real browser consequence quickly, and leave behind only the learning that repeated production actually earns.
