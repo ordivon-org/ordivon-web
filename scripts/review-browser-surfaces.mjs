@@ -129,6 +129,21 @@ async function resolveBrowserExecutable() {
   throw new Error(`No provisioned Chromium executable was found. Tried ${directCandidates.join(", ")} and cache roots ${searchRoots.join(", ")}. Set ORDIVON_WEB_BROWSER to an exact executable when using another workstation.`);
 }
 
+async function resolveBrowserTempRoot() {
+  const explicit = process.env.ORDIVON_WEB_BROWSER_TMPDIR;
+  const ambient = explicit || process.env.TMPDIR || process.env.TMP || process.env.TEMP || "/tmp";
+  const chromiumSocketSuffixBudget = 48;
+  const unixSocketBudget = 100;
+  if (Buffer.byteLength(ambient) + chromiumSocketSuffixBudget <= unixSocketBudget) return ambient;
+  await access("/tmp", fsConstants.W_OK).catch(() => {
+    throw new Error(`browser temporary root is too long for Chromium Unix sockets (${ambient}); set ORDIVON_WEB_BROWSER_TMPDIR to a short writable path`);
+  });
+  process.env.TMPDIR = "/tmp";
+  process.env.TMP = "/tmp";
+  process.env.TEMP = "/tmp";
+  return "/tmp";
+}
+
 const { routes: requestedRoutes, outputDirectory } = parseArgs(process.argv.slice(2));
 await access(resolve(STATIC_ROOT, "index.html"), fsConstants.R_OK).catch(() => { throw new Error("static candidate is missing: run `pnpm build` first, or use `pnpm browser:review`"); });
 const designContext = JSON.parse(await readFile(resolve(ROOT, "design/context.json"), "utf8"));
@@ -139,6 +154,7 @@ const decisionContext = await Promise.all(["content/editorial/agent-web-system.m
 await mkdir(join(outputDirectory, "model-views"), { recursive: true });
 const { server, baseUrl } = await startStaticServer();
 const browserExecutable = await resolveBrowserExecutable();
+const browserTempRoot = await resolveBrowserTempRoot();
 const browser = await chromium.launch({ headless: true, executablePath: browserExecutable, args: ["--disable-dev-shm-usage"] });
 const profiles = [
   { id: "desktop", viewport: { width: 1440, height: 1000 }, isMobile: false, hasTouch: false },
@@ -186,7 +202,7 @@ const packet = {
   candidate: { gitHead: sourceHead, sourceTreeDigest: sourceState.digest, sourceFileCount: sourceState.fileCount },
   decisionContext,
   routes,
-  browser: { executable: browserExecutable, profiles: profiles.map(({ id, viewport }) => ({ id, viewport })) },
+  browser: { executable: browserExecutable, tempRoot: browserTempRoot, profiles: profiles.map(({ id, viewport }) => ({ id, viewport })) },
   surfaces,
   mechanicalAudit: { status: failures.length ? "failed" : "passed", failures, boundary: "HTTP status, browser exceptions, console errors and horizontal overflow are mechanical browser facts; they do not establish semantic, aesthetic or human-experience correctness." },
   semanticAudit: { status: "pending-agent-inspection", note: "Inspect the exact model-view pixels against the digest-bound decision context. Source code, DOM checks and mechanical browser success do not substitute for rendered semantic judgment." },
