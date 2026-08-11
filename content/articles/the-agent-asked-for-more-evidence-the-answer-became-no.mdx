@@ -1,0 +1,207 @@
+export const metadata = {
+  "slug": "the-agent-asked-for-more-evidence-the-answer-became-no",
+  "title": "The Agent Asked for More Evidence. The Answer Became No.",
+  "deck": "A QQQ exposure looked reasonable in isolation. The Agent refused to turn that into a capital transition, asked for one read-only venue probe, and learned that the smallest contract would consume 32.9% of owner equity while the allowed target was at most 10%. The second answer was no-op.",
+  "description": "Finance QB6 as a concrete example of evidence-driven non-action: an Agent requests missing read-only evidence, updates its judgment, and terminates before simulation, Decision, Proposal, or financial effect.",
+  "projectSlugs": ["finance", "computing", "runtime"],
+  "questionSlugs": ["finance-real-capital-agent", "calibrated-non-action"],
+  "type": "Research report",
+  "project": "Ordivon Finance",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 8,
+  "author": "zycxfyh",
+  "lead": "The first Agent answer was not buy, sell, or reject. It was: I am missing evidence. That sounds like indecision until the requested evidence arrives and makes the desired action physically impossible at the intended size.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E2",
+  "takeaways": [
+    "More research is a real semantic action when the Agent names the missing evidence and the system can collect it without crossing the effect boundary.",
+    "In QB6 the Agent moved from more_research to no_op after a read-only probe showed the minimum contract consumed 32.9% of owner equity, above both the frozen 10% target bound and the existing 25% canary bound.",
+    "The path terminated before capital-transition simulation, Decision evaluation, Proposal/Order creation, or any external financial write."
+  ],
+  "limitations": [
+    "This is one two-turn Agent dogfood on one owner snapshot and one QQQ wrapper; it is not a recommendation about QQQ or passive growth exposure.",
+    "The exact Finance owner records are retained locally but are not currently available through a public canonical repository URL, so this public summary is E2 rather than E4."
+  ]
+};
+
+<InBrief claim="Sometimes the most informative result of additional research is that the action path should end." evidence="E2 public · exact owner-conditioned QB6 evidence retained privately by Finance" scope="One two-turn QQQ transition judgment under a bounded owner state">
+  <p>The Agent did not need a live trade to learn whether the proposed small allocation was physically expressible.</p>
+</InBrief>
+
+<h2 id="the-candidate-looked-fine-until-we-asked-fine-for-whom" data-toc="Fine for whom?">The candidate looked fine until we asked: fine for whom?</h2>
+
+<p>The carrier was intentionally boring: QQQ buy-and-hold.</p>
+
+<p>On the bounded research series its standalone numbers looked respectable:</p>
+
+<ul>
+  <li>about <strong>7.1%</strong> cumulative return;</li>
+  <li>about <strong>1.02</strong> annualized Sharpe;</li>
+  <li>about <strong>18.5%</strong> annualized volatility.</li>
+</ul>
+
+<p>If the research question were only “did this series go up with a positive Sharpe?”, the answer would already be available.</p>
+
+<p>Finance was asking something else:</p>
+
+<blockquote>Does this evidence justify authoring a new capital-transition intent for this owner now?</blockquote>
+
+<h2 id="good-exposure-was-not-new-alpha" data-toc="Good exposure was not new alpha">Good exposure was not new alpha</h2>
+
+<p>The point-in-time attribution gave the first reason not to promote automatically.</p>
+
+<p>A simple market/growth/gold proxy explained almost all of the return series: descriptive <code>R² ≈ 0.99993</code>, with annualized residual alpha around <code>−0.003</code>.</p>
+
+<p>That was expected. The candidate had been chosen precisely as a known passive growth exposure to falsify the idea that owner usefulness must imply novel alpha.</p>
+
+<p>The owner-conditioned marginal calculation could still be favorable from the observed zero-current-notional baseline.</p>
+
+<p>Both statements can be true:</p>
+
+<pre tabIndex={0}><code>{`useful addition for this owner state
+≠ novel alpha discovery`}</code></pre>
+
+<p>That distinction stopped the Agent from turning “positive owner marginal” into a research breakthrough.</p>
+
+<h2 id="the-first-agent-turn-refused-to-fill-in-the-blanks" data-toc="The first turn refused to guess">The first Agent turn refused to fill in the blanks</h2>
+
+<p>The first QB6 packet exposed the candidate, the bounded owner evidence, the existing research-only simulation, and the actions the Agent was allowed to choose:</p>
+
+<pre tabIndex={0}><code>{`more_research
+no_op
+risk_increase`}</code></pre>
+
+<p>A <code>risk_increase</code> answer would only author a semantic intent for a new independent simulation. It still would not be an Order, Proposal, authorization, or financial write.</p>
+
+<p>The Agent chose <strong>more_research</strong>.</p>
+
+<p>Its rationale was specific. The existing simulation was indeterminate and research-only. There was no fresh execution-suitability/minimum-notional evidence. There was no qualifying live execution receipt. The owner currently had zero notional, so “funded reallocation” could not simply be assumed from a portfolio formula.</p>
+
+<p>Most importantly, it did not invent the missing facts.</p>
+
+<h2 id="we-did-not-give-it-more-context-we-gave-it-one-observation" data-toc="One targeted observation">We did not give it more context. We gave it one observation.</h2>
+
+<p>The follow-up did not dump another research dossier into the prompt.</p>
+
+<p>It ran a read-only suitability probe against the current QQQ wrapper and account state.</p>
+
+<p>The probe observed:</p>
+
+<ul>
+  <li>instrument state live;</li>
+  <li>spread about 0.139 bps;</li>
+  <li>open interest around $15.6 million;</li>
+  <li>100 observations of tracking with about 1.35% annualized tracking error;</li>
+  <li>minimum contract notional of about $7.19.</li>
+</ul>
+
+<p>The decisive fact was not liquidity.</p>
+
+<p>It was granularity.</p>
+
+<div className="article-thesis"><p>The smallest physically expressible contract represented about <strong>32.9%</strong> of current owner equity.</p></div>
+
+<p>QB6 had frozen the allowed candidate weight at no more than <strong>10%</strong>. The existing minimum-notional canary bound was <strong>25%</strong>.</p>
+
+<p>The desired small position simply did not exist in the current physical action space.</p>
+
+<h2 id="ten-percent-was-a-semantic-number-not-an-executable-number" data-toc="10% was not executable">Ten percent was a semantic number, not an executable number</h2>
+
+<p>This is a subtle failure mode in Agent systems.</p>
+
+<p>A model can propose a perfectly coherent number—“allocate 10%”—and every arithmetic check can pass.</p>
+
+<p>But markets, robots, filesystems, APIs, and machines do not execute abstract real numbers. They execute discrete operations under current constraints.</p>
+
+<pre tabIndex={0}><code>{`desired target weight
+≠ available contract granularity
+≠ executable consequence`}</code></pre>
+
+<p>In this world, the smallest contract overshot the Agent's entire allowed range.</p>
+
+<h2 id="the-second-answer-was-no-op" data-toc="The second answer was no-op">The second answer was no-op</h2>
+
+<p>The same Agent then received the exact follow-up evidence it had requested.</p>
+
+<p>It changed its disposition from <strong>more_research</strong> to <strong>no_op</strong>.</p>
+
+<p>No transition intent was authored.</p>
+
+<p>No capital-transition simulation was created for QB6.</p>
+
+<p>No Decision evaluation was required.</p>
+
+<p>No Proposal or Order was created.</p>
+
+<p>No external financial write was attempted.</p>
+
+<div tabIndex={0} className="article-data-table" role="table" aria-label="QB6 two-turn agent sequence">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Turn</span><span role="columnheader">New evidence</span><span role="columnheader">Disposition</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">1</strong><span role="cell">Owner-conditioned research packet</span><span role="cell">more_research</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">2</strong><span role="cell">Read-only execution suitability</span><span role="cell">no_op</span></div>
+</div>
+
+<h2 id="more-research-is-not-a-promise-to-act-later" data-toc="Research does not promise action">More research is not a promise to act later</h2>
+
+<p>Many workflows accidentally treat “need more information” as an intermediate state whose purpose is to eventually unlock the original action.</p>
+
+<p>That creates a bias:</p>
+
+<pre tabIndex={0}><code>{`action proposed
+→ missing evidence
+→ collect evidence
+→ eventually act`}</code></pre>
+
+<p>QB6 preserved a different topology:</p>
+
+<pre tabIndex={0}><code>{`candidate considered
+→ evidence insufficient
+→ targeted observation
+→ world model changes
+→ no-op closes branch`}</code></pre>
+
+<p>The evidence-gathering loop is allowed to destroy the branch that requested it.</p>
+
+<h2 id="we-refused-to-manufacture-the-evidence-the-agent-mentioned" data-toc="Do not manufacture requested evidence">We refused to manufacture the evidence the Agent mentioned</h2>
+
+<p>The first turn listed a live execution receipt among the missing evidence.</p>
+
+<p>There was one retained receipt in the system, but it was cancelled before dispatch and explicitly recorded that no external financial write was attempted.</p>
+
+<p>It was not relabeled as “close enough.”</p>
+
+<p>Nor did the system create a live trade simply to satisfy the Agent's checklist.</p>
+
+<p>A requested evidence class is not an instruction to manufacture the event that would produce it.</p>
+
+<h2 id="no-op-can-be-a-positive-research-result" data-toc="No-op is a result">No-op can be a positive research result</h2>
+
+<p>The two turns produced no portfolio change. They still produced useful knowledge.</p>
+
+<p>We learned that:</p>
+
+<ul>
+  <li>the candidate's apparent quality was mostly known exposure, not new alpha;</li>
+  <li>the current owner state could make the exposure marginally useful without making it novel;</li>
+  <li>the desired small allocation was not physically expressible under current contract granularity;</li>
+  <li>a read-only observation was sufficient to close the action path.</li>
+</ul>
+
+<p>That is not an Agent failing to act.</p>
+
+<p>It is an Agent using evidence to remove an action from the current world.</p>
+
+<h2 id="what-would-reopen-the-branch" data-toc="What would reopen the branch">What would reopen the branch</h2>
+
+<p>The no-op is explicitly state-dependent.</p>
+
+<p>A different owner equity level, contract size, instrument wrapper, allowed risk bound, or future execution evidence can change physical expressibility. A future world can therefore reopen the question without rewriting this result.</p>
+
+<p className="article-closing">Good research does not always tell an Agent what to do. Sometimes it tells the Agent that the action it imagined is not actually in the world.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Owner-record boundary</p>
+  <h2 id="sources-title" data-toc="Owner-record boundary">Why this public article is E2</h2>
+  <p>The exact QB5/QB6 owner-conditioned reports remain retained by Finance and deliberately omit the private raw owner snapshot from repository-safe summaries. Finance does not currently expose a public canonical URL for these exact records, so Web publishes the bounded causal result without pretending that this page is the underlying owner evidence.</p>
+</section>

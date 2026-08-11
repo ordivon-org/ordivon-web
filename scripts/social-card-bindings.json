@@ -88,10 +88,22 @@
       "sizeBytes": 173026
     },
     {
+      "slug": "the-agent-asked-for-more-evidence-the-answer-became-no",
+      "sourceDigest": "sha256:d22fac894f2e6c49ca7dc10fda9fb7d322f091f700154fc455d8e0c9d856f9b4",
+      "blobDigest": "sha256:aef9cb8b59e8b23c5f13b620cdbd9746be88bdc4ec314cac087143d2953cc87e",
+      "sizeBytes": 180518
+    },
+    {
       "slug": "the-command-succeeded-did-anything-happen",
       "sourceDigest": "sha256:3e7eed2584eb13277b4641192521a45f6f85862eaa662b99dc35b223376d462f",
       "blobDigest": "sha256:5be2a3117b987012dcb2906882fbf66de7f617faecc8bb043a2ef094ec47ec0c",
       "sizeBytes": 177551
+    },
+    {
+      "slug": "the-constitution-changed-the-agent-that-wasnt-enough",
+      "sourceDigest": "sha256:9e18606c71dc6cd553688be8b3b667ba016f361b84e76ba0837d8c70e4c04673",
+      "blobDigest": "sha256:6eea9ad86caf449021f56811d54555609c9e015de3fc6a86488d8cdf99b5cbd8",
+      "sizeBytes": 175122
     },
     {
       "slug": "the-evidence-is-real-it-is-still-too-old",
@@ -104,6 +116,12 @@
       "sourceDigest": "sha256:af32c2f163514bd40da7c9de86be24f35c13f686d272c3ba6bd489507420b549",
       "blobDigest": "sha256:1159a3ffd0ded674e5c07cf40e4fe7033996fe4e755660d313ad68acc4d07276",
       "sizeBytes": 143604
+    },
+    {
+      "slug": "the-model-finished-the-protocol-wasnt-done",
+      "sourceDigest": "sha256:218b2ea3ccdad4f0d19f57a7791222ecad0bde7a88fa4674d003da788b21d3d3",
+      "blobDigest": "sha256:a43f0e63aa49656b19cdb3c495d18d1248c51647c23df6044beca9492bcdf006",
+      "sizeBytes": 169327
     },
     {
       "slug": "the-shorter-explanation-won",
@@ -128,6 +146,12 @@
       "sourceDigest": "sha256:303dc1d38166cb09bb3f90fd1b66047518d8ebd639df9edf62b3cc7de3eab968",
       "blobDigest": "sha256:3b8168e9087b0498d2d41d78d0bf7b05560ec944f181001bbba1a47b0b0da6f0",
       "sizeBytes": 168855
+    },
+    {
+      "slug": "we-sorted-the-evidence-accuracy-got-worse",
+      "sourceDigest": "sha256:fd6e7c09033db8706689b9bb7ac9dbd028429c35f932fade3eb81086df7f6fa1",
+      "blobDigest": "sha256:1c4763e3d2662562eeae57e67c6975a44c1c75cdc6c3566344144eaae9a5b237",
+      "sizeBytes": 181342
     },
     {
       "slug": "what-h1-h5-proved",

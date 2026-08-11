@@ -23,10 +23,13 @@ const coreRoutes = [
   "/research/calibrated-non-action", "/research/opponent-state-transfer", "/research/human-economic-autonomy",
   "/research/causal-responsibility-explanation", "/research/world-minimal-boundary", "/research/finance-real-capital-agent", "/research/creative-empirical-validity",
   "/research/evidence-current-applicability", "/research/historical-world-model-dogfood",
+  "/research/context-treatment-replication", "/research/provider-protocol-continuation", "/research/semantic-order-and-canonicalization",
   "/projects", "/projects/computing", "/projects/host", "/projects/harness", "/projects/runtime", "/projects/game",
   "/projects/world", "/projects/finance", "/projects/human", "/projects/security", "/projects/studio",
   "/writing", "/writing/why-ordivon", "/writing/the-shorter-explanation-won", "/writing/world-got-smaller-and-got-clearer", "/writing/a-better-looking-result-can-still-be-noise",
   "/writing/the-evidence-is-real-it-is-still-too-old", "/writing/the-command-succeeded-did-anything-happen", "/writing/correctness-is-not-isolation", "/writing/history-did-not-prove-us-right",
+  "/writing/the-constitution-changed-the-agent-that-wasnt-enough", "/writing/the-agent-asked-for-more-evidence-the-answer-became-no",
+  "/writing/the-model-finished-the-protocol-wasnt-done", "/writing/we-sorted-the-evidence-accuracy-got-worse",
   "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
   "/writing/thin-host-without-hidden-planner", "/writing/one-authority-thirteen-tables",
   "/writing/replay-without-second-truth-store", "/writing/transcript-not-task-database",
@@ -112,6 +115,8 @@ test("Feynman reconstruction keeps concise orientation and explicit evidence bou
   for (const slug of [
     "why-ordivon", "from-tokens-to-work", "the-shorter-explanation-won", "world-got-smaller-and-got-clearer", "a-better-looking-result-can-still-be-noise",
     "the-evidence-is-real-it-is-still-too-old", "the-command-succeeded-did-anything-happen", "correctness-is-not-isolation", "history-did-not-prove-us-right",
+    "the-constitution-changed-the-agent-that-wasnt-enough", "the-agent-asked-for-more-evidence-the-answer-became-no",
+    "the-model-finished-the-protocol-wasnt-done", "we-sorted-the-evidence-accuracy-got-worse",
   ]) {
     const metadata = articleMetadata.find((article) => article.slug === slug)!;
     await gotoWithNetworkRetry(page, `/writing/${slug}`);
@@ -174,7 +179,7 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByRole("heading", { name: "Read the arguments and reports that changed the judgment." })).toBeVisible();
   await expect(page.getByRole("heading", { name: `${publicProjects.length} public projects with explicit maturity and boundaries.` })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Questions carrying the current architectural and research pressure." })).toBeVisible();
-  await expect(page.getByRole("link", { name: /History Did Not Prove Us Right/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /The Agent Asked for More Evidence\. The Answer Became No\./ })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/research/web-research-interface");
   await expect(page.getByRole("heading", { name: "Complete arguments connected to this Question." })).toBeVisible();
@@ -268,7 +273,9 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
   await expect(page.getByText("60", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("156", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("Recently answered boundary", { exact: true })).toBeVisible();
+  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "Does canonical evidence order make an Agent understand the evidence better?" })).toBeVisible();
   await expect(page.getByText("Experiment that most changed the architecture", { exact: true })).toBeVisible();
+  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "The Model Finished. The Protocol Wasn't Done." })).toBeVisible();
 });
 
 test("system explorer uses curated architecture views", async ({ page }) => {
@@ -361,6 +368,10 @@ const publicationContracts = [
   { slug: "the-command-succeeded-did-anything-happen", title: "The Command Succeeded. Did Anything Happen?", tables: 1, phrase: "At-most-once physical dispatch is a local execution property" },
   { slug: "correctness-is-not-isolation", title: "Correctness Is Not Isolation", tables: 2, phrase: "Remote location is one way to buy stronger credential/admin independence" },
   { slug: "history-did-not-prove-us-right", title: "History Did Not Prove Us Right", tables: 2, phrase: "Classifier convergence is not Reality convergence" },
+  { slug: "the-constitution-changed-the-agent-that-wasnt-enough", title: "The Constitution Changed the Agent. That Wasn't Enough.", tables: 1, phrase: "A rulebook becomes dangerous when its plausibility is allowed to substitute for its replication history." },
+  { slug: "the-agent-asked-for-more-evidence-the-answer-became-no", title: "The Agent Asked for More Evidence. The Answer Became No.", tables: 1, phrase: "More research is not a promise to act later" },
+  { slug: "the-model-finished-the-protocol-wasnt-done", title: "The Model Finished. The Protocol Wasn't Done.", tables: 2, phrase: "Not every byte required to continue an Agent turn belongs in the Agent's semantic history." },
+  { slug: "we-sorted-the-evidence-accuracy-got-worse", title: "We Sorted the Evidence. Accuracy Got Worse.", tables: 1, phrase: "A representation can become mechanically perfect and semantically no better." },
   { slug: "why-ordivon-needs-a-harness", title: "Why Ordivon Needs a Harness—but Not a Universal Harness", tables: 1, phrase: "selective ownership" },
   { slug: "what-h1-h5-proved", title: "What Survived When Codex and Hermes Replaced Each Other Mid-Task", tables: 3, phrase: "H1–H5 retained a boundary, not a platform." },
 ] as const;
@@ -477,7 +488,10 @@ test("core pages have no serious accessibility violations", async ({ page }) => 
     "/writing/why-ordivon-needs-a-harness", "/writing/what-h1-h5-proved",
     "/writing/winning-move-loses-contest", "/writing/smaller-core-strong-baselines",
     "/writing/the-evidence-is-real-it-is-still-too-old", "/writing/history-did-not-prove-us-right",
-    "/research/evidence-current-applicability", "/research/historical-world-model-dogfood", "/research/ordivon-harness-v0", "/research/human-economic-autonomy", "/projects/runtime", "/projects/harness",
+    "/writing/the-constitution-changed-the-agent-that-wasnt-enough", "/writing/the-agent-asked-for-more-evidence-the-answer-became-no",
+    "/writing/the-model-finished-the-protocol-wasnt-done", "/writing/we-sorted-the-evidence-accuracy-got-worse",
+    "/research/evidence-current-applicability", "/research/historical-world-model-dogfood",
+  "/research/context-treatment-replication", "/research/provider-protocol-continuation", "/research/semantic-order-and-canonicalization", "/research/ordivon-harness-v0", "/research/human-economic-autonomy", "/projects/runtime", "/projects/harness",
     "/projects/game", "/projects/human", "/projects/security"]) {
     await gotoWithNetworkRetry(page, route);
     const results = await new AxeBuilder({ page }).analyze();
