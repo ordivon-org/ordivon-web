@@ -14,8 +14,8 @@ audience:
   - builder
   - publisher
   - agent
-updated: 2026-08-08
-summary: Canonical repository entry for the public Ordivon publication surface, static build, and source-of-truth boundary.
+updated: 2026-08-12
+summary: Canonical entry for source-bound public orientation, editorial judgment, static publication, and the boundary between encounter evidence and human understanding.
 evidence_status: not_applicable
 readiness: READY
 applies_to:
@@ -24,88 +24,82 @@ related:
   - web.editorial.start
   - web.publication-system
   - web.agent-web-system
-  - web.design-system
-  - web.aesthetic-research
   - web.authority
 ---
 # Ordivon Web
 
+An owner repository changes. Must the public page change too?
+
+No. The change creates a **review obligation**, not an automatic copy mutation. Web may correct, rebind, add context, or make a deliberate public no-op when nothing changed that a public reader should believe or do.
+
+**Ordivon Web is the public orientation, encounter, and publication layer for Ordivon.** Owner repositories keep technical and research truth; Web decides how source-bound facts and dated arguments should be encountered publicly.
+
 ## Purpose
 
-The public research, engineering, and design interface for Ordivon—and the static publication target of an Agent-native Web workflow.
+Exact repository documentation is not automatically a good first encounter. A visitor does not arrive knowing which project matters, what exists now, which historical result changed the system, or where exact proof lives.
 
-The site is built with Next.js, React, TypeScript, MDX, and machine-readable design context, exported as static files, and published as a tested GitHub Pages Artifact from the exact `main` commit. Cloudflare remains the authoritative DNS provider; it is not an application runtime for this site.
+```text
+owner-native facts + dated arguments
+→ judge public consequence
+→ explain and navigate
+→ static candidate
+→ publication + browser verification
+→ publish / correct / rebind / no-op
+```
+
+**Exposure is not comprehension.** Rendering, viewport coverage, accessibility checks, or an encounter receipt can prove that information was available. They cannot prove that a person understood, remembered, trusted, preferred, or agreed with it.
 
 ## Current boundary
 
-Ordivon Web owns public navigation, presentation, dated interpretation, publication policy, and the design context used to generate the human-facing site. Project repositories remain authoritative for implementation, research evidence, releases, tests, receipts, registration, and live operational state. Agent generation may propose or compose public changes, but it cannot overwrite those owner boundaries.
+Web owns public navigation, source-bound orientation, dated arguments, editorial public-consequence judgment, design context, static publication, and correction policy. Owner repositories keep implementation/research/live-state authority; Web may summarize them but cannot replace them.
+
+## One publication journey
+
+For one owner change:
+
+1. bind the exact owner revision/envelope relevant to the public judgment;
+2. decide whether the change has a public consequence;
+3. update or deliberately preserve the short public explanation while linking exact detail back to the owner;
+4. generate and verify the static candidate;
+5. separate mechanical encounter evidence from factual and human-response claims;
+6. publish the tested committed Artifact—or record a public no-op.
+
+Dated articles may retain older judgments when their temporal context is explicit. Current Project pages must rebind or correct when a relevant owner fact changes.
 
 ## Start here
 
-- Read [`content/editorial/agent-web-system.md`](content/editorial/agent-web-system.md) for the Agent-native observe → judge → generate → preview → verify → promote loop.
-- Read [`content/editorial/README.md`](content/editorial/README.md) for editorial authority and review order.
-- Read [`design/README.md`](design/README.md) for design authority and [`design/aesthetic-research.md`](design/aesthetic-research.md) for visual experiments.
-- Run `pnpm agent:context` for the current machine-readable Web/design entry context.
-- Use `pnpm check` before treating a source revision as publishable.
+- [`content/editorial/README.md`](content/editorial/README.md) — editorial entry and review order;
+- [`content/editorial/feynman-explanation.md`](content/editorial/feynman-explanation.md) — causal explanation contract;
+- [`content/editorial/narrative-patterns.md`](content/editorial/narrative-patterns.md) — alternative story forms;
+- [`content/editorial/agent-web-system.md`](content/editorial/agent-web-system.md) — observe → judge → generate → preview → verify → promote;
+- [`content/editorial/information-architecture.md`](content/editorial/information-architecture.md) — hierarchy, owner linking, maturity language, corrections;
+- [`content/editorial/authority.md`](content/editorial/authority.md) — source snapshots, current summaries, dated articles, and generated projections;
+- [`content/editorial/publication-system.md`](content/editorial/publication-system.md) — exact authoring/validation/deployment mechanics;
+- [`design/README.md`](design/README.md) — design authority and machine-readable context.
 
 ## Runtime shape
 
-```text
-owner/publication sources + design context
-                ↓
-        Agent judgment / composition
-                ↓
-     deterministic local generation
-                ↓
-       Next.js static candidate
-                ↓
-       verification + promotion
-                ↓
-      GitHub Pages + custom domain
-```
-
-There is no request-time application server, database, CMS, ISR cache, Worker, D1 database, KV storage, Cloudflare object storage, Queue, or service binding.
+Web is a deterministic static publication system: committed sources → Agent composition → Next.js static candidate → verification → GitHub Pages. There is no request-time application server, CMS, database, Worker, D1, KV, Queue, or service binding. Cloudflare owns DNS, not site runtime.
 
 ## Commands
 
 ```bash
 pnpm install --frozen-lockfile
-pnpm dev
-pnpm build
-pnpm preview
 pnpm agent:context
-pnpm design:check
-pnpm publication:check
-pnpm social:generate
-pnpm social:verify-render
-pnpm social:review
 pnpm check
 pnpm pages:prepare
 ```
 
-`pnpm publication:check` validates article/publication contracts plus the tracked social-card source/renderer/blob bindings using Node and Python only; it does not invoke an image renderer. `pnpm social:generate` regenerates article PNGs and their mechanical binding receipt. `pnpm social:verify-render` re-renders every article card for exact byte comparison, and `pnpm social:review` writes 400×210 contact sheets for Agent perception. The three rendering/review commands require `rsvg-convert`; the default publication check does not. The binding receipt stores only identities and byte facts, not a second copy of article metadata.
-
-`pnpm check` runs publication/design validation, TypeScript, ESLint, a production build, budget reporting, and the Chromium desktop/mobile smoke suite.
-
-The `Deploy Pages` workflow runs the complete check, materializes historical redirects and the custom-domain files, writes `deploy-manifest.json`, uploads the static Artifact, and deploys it through the protected `github-pages` environment. Recovery is a Git revert or a workflow dispatch for a chosen source revision, followed by the same verified deployment path.
-
 ## Content and source of truth
 
-- `content/` owns public structured content, editorial policy, source-bound publication judgment, and research relationships.
-- `design/` owns machine-readable root tokens, Agent design context, benchmark surfaces, and aesthetic research method.
-- `app/` owns routes and page composition.
-- `components/` owns reusable interface implementation and visualizations.
-- Project repositories remain authoritative for live source, tests, implementation state, registration, and operational receipts.
-- Generated CSS, TypeScript projections, manifests, static pages, and Agent context reports remain rebuildable projections of those committed inputs.
+`content/` owns public content/judgment, `design/` owns design context, and `app/`/`components/` own the rendered interface. Generated projections are rebuildable. An owner snapshot records one exact observed source envelope, not floating latest truth.
 
 ## Editorial system
 
-`content/editorial/` defines the public positioning, audiences, voice, vocabulary, publication types, claim discipline, and dated interface-copy audits. Start with [`content/editorial/README.md`](content/editorial/README.md).
+> **Bold in judgment. Precise in evidence. Plain before technical. Current status before historical detail.**
 
-The editorial layer may frame and interpret the work, but it does not replace repository source, tests, releases, receipts, or operational state.
+A page that renders correctly can still leave human understanding unknown. Human-facing comprehension, trust, recall, or preference claims require appropriately scoped human evidence when they materially matter.
 
-## Project family
+## License
 
-- [Public site](https://ordivon.com/) — current public orientation, project map, research dossiers, and dated publications.
-- [Cross-project map](https://github.com/zycxfyh/ordivon-computing/blob/main/projects/README.md) — stable roles, repository links, and authority entry points for all nine repositories.
-- [`content/editorial/information-architecture.md`](content/editorial/information-architecture.md) defines how Web summarizes repository facts without becoming a second implementation authority.
+Apache License 2.0.
