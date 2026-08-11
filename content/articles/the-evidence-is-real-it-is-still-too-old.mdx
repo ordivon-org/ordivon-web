@@ -1,0 +1,183 @@
+export const metadata = {
+  "slug": "the-evidence-is-real-it-is-still-too-old",
+  "title": "The Evidence Is Real. It Is Still Too Old.",
+  "deck": "A receipt can remain byte-for-byte authentic while the decision it once supported becomes unsafe. Security EC1 changed the source without changing the old evidence and forced a cleaner distinction between integrity and current applicability.",
+  "description": "Why authentic evidence can become stale without becoming false, how Security EC1 and World experiments tested current applicability, and why TTLs or generation numbers are weaker than exact dependency revalidation for the tested cases.",
+  "projectSlugs": ["computing", "security", "world", "web"],
+  "questionSlugs": ["evidence-current-applicability", "world-minimal-boundary", "web-research-interface"],
+  "type": "Research report",
+  "project": "Ordivon Computing / Security",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 8,
+  "author": "zycxfyh",
+  "lead": "Imagine finding yesterday's signed test receipt. Its digest matches. The file was never edited. The process really ran, and the result really passed. The uncomfortable question is whether any of that means you may act on it today.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "Evidence integrity and current applicability are separate facts: a valid old projection can become STALE_NOT_APPLICABLE without changing a byte.",
+    "A newer source generation does not automatically stale every derivation; only a changed dependency that the derivation actually used did so in Security EC1.",
+    "When current authority cannot be observed, the tested rule returns UNKNOWN rather than inferring freshness or staleness from age."
+  ],
+  "limitations": [
+    "EC1 tests one explicit derivation-dependency consumer; it does not prove that every domain can avoid clocks, leases, TTLs, or richer freshness semantics.",
+    "World capability-expiry and Web source-binding examples support the same causal distinction, but their owner-native currentness contracts remain different."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-security/blob/f109cb8cc548479e852c8a4dbc914bd7d3e22ce0/docs/EVIDENCE-FRESHNESS-EC1.md"
+};
+
+<InBrief claim="A piece of evidence can remain perfectly authentic while losing authority over the current decision." evidence="E4 · physical source-evolution experiment plus independent owner-currentness cases" scope="Security EC1, World capability currentness, and source-bound Web projection">
+  <p>The useful question is not merely “is this evidence real?” but “are the exact facts it depended on still the facts that govern this decision now?”</p>
+</InBrief>
+
+<h2 id="the-receipt-did-not-lie" data-toc="The receipt did not lie">The receipt did not lie</h2>
+
+<p>Suppose a test produces a digest-bound result on Monday. On Tuesday the repository changes. The Monday receipt still verifies.</p>
+
+<p>There are two tempting reactions:</p>
+
+<ul>
+  <li><strong>Keep trusting it</strong>, because the receipt is authentic.</li>
+  <li><strong>Discard it as false</strong>, because the world moved on.</li>
+</ul>
+
+<p>Both reactions collapse two questions into one.</p>
+
+<blockquote>Did this evidence truthfully describe what happened then? And may this evidence govern what we do now?</blockquote>
+
+<p>The first question is about <strong>integrity</strong>. The second is about <strong>current applicability</strong>.</p>
+
+<h2 id="security-made-the-old-evidence-stay-exactly-the-same" data-toc="Security kept the old evidence identical">Security made the old evidence stay exactly the same</h2>
+
+<p>Security EC1 was designed so the stale object could not quietly mutate during the experiment.</p>
+
+<p>It retained one exact derived projection from the earlier EC0 experiment. Its complete file bytes and projection digest stayed fixed. The projection declared the two exact inputs it had used:</p>
+
+<pre tabIndex={0}><code>{`historyDigest
+currentSensorSetDigest`}</code></pre>
+
+<p>Then the authoritative source was advanced in three phases.</p>
+
+<h3>Phase 1: the dependencies match</h3>
+
+<p>The original source and the projection referred to the same history and the same sensor set.</p>
+
+<p>Result:</p>
+
+<pre tabIndex={0}><code>{`projection integrity = valid
+current dependencies = match
+→ APPLICABLE`}</code></pre>
+
+<h3>Phase 2: the source is newer, but the facts used by the projection are unchanged</h3>
+
+<p>The source envelope changed. Its generation changed. Its file digest changed. But the history and sensor dependencies used by the projection remained byte-identical.</p>
+
+<p>The old projection stayed <strong>APPLICABLE</strong>.</p>
+
+<div className="article-thesis"><p>A newer publication is not enough to prove an older derivation stale.</p></div>
+
+<p>This is where a simple “generation changed, invalidate everything” rule lost.</p>
+
+<h3>Phase 3: one semantic dependency changes</h3>
+
+<p>The sensor set remained identical, but the authoritative history changed. The old projection itself was still perfectly intact.</p>
+
+<p>Now the classification changed:</p>
+
+<pre tabIndex={0}><code>{`projection integrity = valid
+history dependency = changed
+sensor dependency = unchanged
+→ STALE_NOT_APPLICABLE`}</code></pre>
+
+<p>A fresh projection built from the new history returned <strong>APPLICABLE</strong>.</p>
+
+<h2 id="stale-is-not-corrupt" data-toc="Stale is not corrupt">Stale is not corrupt</h2>
+
+<p>This distinction matters because “invalid” and “stale” imply different repairs.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Evidence integrity and applicability states">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Evidence state</span><span role="columnheader">What it means</span><span role="columnheader">Next action</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">APPLICABLE</strong><span role="cell">Evidence is intact and its declared dependencies match current authority</span><span role="cell">May be used inside its original claim scope</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">STALE_NOT_APPLICABLE</strong><span role="cell">Evidence remains intact, but a dependency it relied on has changed</span><span role="cell">Recompute or reacquire current evidence</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">UNKNOWN</strong><span role="cell">Current authority cannot be observed</span><span role="cell">Do not infer currentness from age or confidence</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">INVALID</strong><span role="cell">Evidence fails its own integrity contract</span><span role="cell">Do not use it as the claimed evidence at all</span></div>
+</div>
+
+<p>The same bytes can move from the first row to the second row because the <em>world around the evidence</em> changed.</p>
+
+<h2 id="age-was-not-the-deciding-variable" data-toc="Age was not the deciding variable">Age was not the deciding variable</h2>
+
+<p>EC1 deliberately did not consult wall-clock age, TTL, Git generation, source-envelope digest, Workspace digest, or a confidence score.</p>
+
+<p>That is not a claim that time never matters. It is a narrower result: for this derivation, the exact dependencies were already known, and those identities were enough to answer the tested question more precisely than age.</p>
+
+<p>A five-minute-old projection can be stale if its dependency changed one second ago. A month-old projection can still be applicable if the exact facts it used remain current and the domain permits that horizon.</p>
+
+<h2 id="when-current-authority-disappeared-the-answer-became-unknown" data-toc="Unavailable authority becomes UNKNOWN">When current authority disappeared, the answer became UNKNOWN</h2>
+
+<p>EC1 also removed access to the current authoritative source.</p>
+
+<p>The checker still knew that the old projection was internally valid. What it could no longer establish was whether the declared dependencies remained current.</p>
+
+<p>It returned:</p>
+
+<pre tabIndex={0}><code>{`projection integrity = valid
+current authority = unavailable
+→ UNKNOWN`}</code></pre>
+
+<p>It did not guess “probably fresh” because the receipt was recent. It did not guess “probably stale” because the source might have moved.</p>
+
+<p>This is a useful Agent behavior: preserve what is known, preserve what is not known, and do not let confidence repair a missing owner observation.</p>
+
+<h2 id="world-found-the-same-pressure-through-a-network-path" data-toc="World found the same pressure">World found the same pressure through a network path</h2>
+
+<p>World reached the same causal distinction through a very different system.</p>
+
+<p>A previously successful Surfpath capability reference still existed, with exact digests for the capability, path, and observation. Hours later the Workstation owner rejected an attempted use because the observation was far outside its 180-second execution horizon. The historical record remained true: that path had worked. It simply no longer established that the path was usable now.</p>
+
+<p>A new observation produced a new path and a new capability identity. The old evidence was not edited to look young again.</p>
+
+<pre tabIndex={0}><code>{`historical capability evidence
+≠ current applicability
+≠ action authority`}</code></pre>
+
+<h2 id="this-website-has-the-same-problem" data-toc="This website has the same problem">This website has the same problem</h2>
+
+<p>Web is a useful mundane example.</p>
+
+<p>A browser test can prove that a project page rendered correctly. A social card can have the correct digest. A publication can be historically accurate. None of those facts makes the page current if the owning repository has since changed its responsibility boundary.</p>
+
+<p>That is why Ordivon Web binds public interpretation to owner revisions and uses visible revised/historical states instead of turning a passing build into product truth.</p>
+
+<p>The browser owns encounter evidence. The repository owner owns the underlying current fact.</p>
+
+<h2 id="why-not-build-a-universal-freshness-service" data-toc="Why not a freshness service?">Why not build a universal Freshness service?</h2>
+
+<p>Because the experiments did not require one.</p>
+
+<p>Security could compare exact derivation dependencies. Workstation could enforce its own path-observation horizon. Web could compare its bound owner source. Each owner had different currentness semantics.</p>
+
+<p>A global “fresh=true” bit would have hidden those differences.</p>
+
+<p>The transferable law is smaller:</p>
+
+<blockquote>Integrity answers whether the evidence is what it claims to be. Current applicability answers whether its declared dependencies still govern the decision being made.</blockquote>
+
+<p>How each owner proves applicability can remain local.</p>
+
+<h2 id="what-would-reopen-this-judgment" data-toc="What would reopen this judgment">What would reopen this judgment</h2>
+
+<p>A generic freshness mechanism becomes more plausible if materially different consumers repeatedly need the same additional fact that exact dependency comparison and owner-native currentness cannot express—for example, bounded leases whose meaning genuinely depends on synchronized time, or a cross-owner revocation contract that cannot be localized.</p>
+
+<p>Until then, the smaller rule is sufficient for the tested worlds.</p>
+
+<p className="article-closing">Evidence does not become false when the world changes. What changes is the question we are still allowed to ask it.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Primary records</p>
+  <h2 id="sources-title" data-toc="Primary records">Current-applicability evidence</h2>
+  <ol className="source-list">
+    <li><a href="https://github.com/zycxfyh/ordivon-security/blob/f109cb8cc548479e852c8a4dbc914bd7d3e22ce0/docs/EVIDENCE-FRESHNESS-EC1.md">Security EC1 — Evidence Freshness</a></li>
+    <li><a href="https://github.com/zycxfyh/ordivon-world/blob/8ddbb6a646a77a9180f4d988a23ccbf314aef044/docs/archive/research/w5-external-commitment-continuity.md">World W5-E — External Commitment Continuity</a></li>
+  </ol>
+</section>

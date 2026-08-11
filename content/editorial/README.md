@@ -14,7 +14,7 @@ audience:
   - editor
   - reviewer
   - agent
-updated: 2026-08-08
+updated: 2026-08-12
 summary: Canonical entry to Agent-native Web management, public information architecture, positioning, publication discipline, design authority, and review boundaries.
 evidence_status: not_applicable
 readiness: READY
@@ -49,6 +49,7 @@ The editorial system prevents three failures:
 
 - [`agent-web-system.md`](./agent-web-system.md) — Agent-native observation, judgment, generation, preview, verification, and promotion.
 - [`feynman-explanation.md`](./feynman-explanation.md) — default causal explanation contract: concrete consequence, smallest mechanism, exact evidence, then formal vocabulary and proof boundary.
+- [`narrative-patterns.md`](./narrative-patterns.md) — alternative story shapes for mystery, one-action trajectories, falsification, and long research campaigns without weakening the evidence contract.
 - [`information-architecture.md`](./information-architecture.md) — page hierarchy, project map, maturity language, linking, and historical corrections.
 - [`positioning.md`](./positioning.md) — what Ordivon is, why it matters, and the message hierarchy.
 - [`audiences.md`](./audiences.md) — primary readers, their questions, and appropriate entry paths.

@@ -1,0 +1,213 @@
+export const metadata = {
+  "slug": "the-command-succeeded-did-anything-happen",
+  "title": "The Command Succeeded. Did Anything Happen?",
+  "deck": "A process can exit zero while the external consequence is unknown. Or the consequence can be complete while the success response is missing. Runtime and Security experiments forced these into different states instead of one success flag.",
+  "description": "A concrete guide to the boundary between local execution, external consequence, and semantic completion, using Runtime's effect kernel and Security's interrupted-consequence experiment.",
+  "projectSlugs": ["runtime", "world", "security", "finance", "computing"],
+  "questionSlugs": ["runtime-structured-effect", "world-minimal-boundary", "finance-real-capital-agent"],
+  "type": "Architecture guide",
+  "project": "Ordivon Runtime / World",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 8,
+  "author": "zycxfyh",
+  "lead": "A deployment script prints exit code 0 after calling an external API. The connection drops before the response reaches you. One fact is clear: the local process finished successfully. Almost everything you actually care about is still unanswered.",
+  "status": "current",
+  "claimClass": "engineering-inference",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "Process success is execution evidence; it is not automatically an external-effect receipt or a semantic completion claim.",
+    "At-most-once local dispatch does not imply exactly-once external effect because the dispatched process may itself perform zero, one, or many external mutations.",
+    "After response loss, the safe next action depends on owner-native effect identity and reconciliation; blind retry can duplicate a consequence that already happened."
+  ],
+  "limitations": [
+    "Runtime cannot infer arbitrary external effects performed inside opaque commands; structured effect guarantees require an owner that implements the full identity/receipt/reconciliation contract.",
+    "Security C1-B proves classification for one deterministic typed Range effect, not automatic exactly-once continuation across arbitrary concurrent external operations."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-runtime/blob/dabb7b328c84288de2ec94e45a9299307f3491c7/docs/effect-kernel.md"
+};
+
+<InBrief claim="A successful command proves less than most systems want it to prove." evidence="E4 · Runtime effect contract plus physical interrupted-consequence experiment" scope="Local execution and bounded structured external effects">
+  <p>The machine can prove that it launched and finished a process. The external owner must prove what consequence occurred. The domain must still decide what that consequence means for the larger task.</p>
+</InBrief>
+
+<h2 id="start-with-one-http-call" data-toc="Start with one HTTP call">Start with one HTTP call</h2>
+
+<p>Imagine an Agent asks a local tool to create something through a remote API.</p>
+
+<pre tabIndex={0}><code>{`Agent proposes CREATE
+→ local process sends POST
+→ remote system may commit
+→ response travels back
+→ local process exits`}</code></pre>
+
+<p>Now remove the response after the remote system receives the request.</p>
+
+<p>The local process might:</p>
+
+<ul>
+  <li>exit non-zero because its connection broke;</li>
+  <li>time out;</li>
+  <li>be killed by the controller;</li>
+  <li>or even exit zero after delegating the operation elsewhere.</li>
+</ul>
+
+<p>None of those outcomes alone tells you whether the remote object exists.</p>
+
+<h2 id="three-questions-hide-inside-one-word-success" data-toc="Three meanings of success">Three questions hide inside one word: success</h2>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Execution consequence and semantic completion">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Question</span><span role="columnheader">Strongest owner</span><span role="columnheader">Typical evidence</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Did the local operation run?</strong><span role="cell">Runtime / execution substrate</span><span role="cell">Attempt identity, process tree, exit/result evidence</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Did the external consequence occur?</strong><span role="cell">External effect owner / provider</span><span role="cell">Receipt, state query, deduplication identity, owner observation</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Is the larger work complete?</strong><span role="cell">Owning domain / Task authority</span><span role="cell">Current acceptance conditions and semantic outcome evidence</span></div>
+</div>
+
+<p>Ordivon Runtime compresses the distinction into one deliberately boring statement:</p>
+
+<pre tabIndex={0}><code>{`Execution Result
+≠ External Effect Receipt
+≠ Semantic Completion Claim`}</code></pre>
+
+<h2 id="runtime-can-make-the-dispatch-identifiable-without-knowing-the-consequence" data-toc="Runtime identifies dispatch">Runtime can make the dispatch identifiable without knowing the consequence</h2>
+
+<p>Runtime can bind an admitted operation to an exact Workspace, executable, arguments, environment, provider, budgets, and immutable inputs. It can prove one Attempt crossed its physical dispatch boundary at most once.</p>
+
+<p>That is valuable—but narrower than exactly-once external behavior.</p>
+
+<p>A process launched exactly once can itself:</p>
+
+<ul>
+  <li>perform no external mutation;</li>
+  <li>perform one mutation;</li>
+  <li>perform several mutations;</li>
+  <li>delegate mutation to another service after the process exits.</li>
+</ul>
+
+<p>Therefore:</p>
+
+<blockquote>At-most-once physical dispatch is a local execution property. Exactly-once external consequence is an effect-owner contract.</blockquote>
+
+<h2 id="security-killed-the-controller-at-two-different-moments" data-toc="Security killed the controller twice">Security killed the controller at two different moments</h2>
+
+<p>Security C1-B made this distinction physical instead of philosophical.</p>
+
+<p>The tested effect replaced peer A with peer B inside a deterministic Range. The controller was killed with <code>SIGKILL</code> at two different boundaries.</p>
+
+<h3>Case A: the effect stopped halfway</h3>
+
+<pre tabIndex={0}><code>{`request admitted
+→ effect identity bound
+→ peer A removed
+→ durable phase = peer-a-removed
+→ controller dies
+→ peer B does not exist`}</code></pre>
+
+<p>The surviving physical ledger showed the world had changed, but the original baseline did not durably preserve <em>which admitted Actor effect</em> had caused that intermediate world.</p>
+
+<p>This gave the first result:</p>
+
+<blockquote>Physical recovery is not semantic recovery.</blockquote>
+
+<p>The system could clean resources safely. It could not reconstruct the meaning of the interrupted consequence from resource state alone.</p>
+
+<h3>Case B: the effect finished, but the completion event disappeared</h3>
+
+<p>The second kill happened later:</p>
+
+<pre tabIndex={0}><code>{`request admitted
+→ A removed
+→ B created
+→ durable phase = peer-b-present
+→ controller dies
+→ normal completion event never publishes`}</code></pre>
+
+<p>After the owner died, independent Host observation found peer B present and live. The consequence already existed even though the normal success publication was missing.</p>
+
+<p>This is the mirror image of the first case:</p>
+
+<blockquote>Missing completion event is not missing physical consequence.</blockquote>
+
+<p>Blindly replaying the entire A→B mutation would have been unjustified.</p>
+
+<h2 id="the-minimal-recovery-object-was-not-a-transaction-engine" data-toc="The minimal recovery object">The minimal recovery object was not a transaction engine</h2>
+
+<p>The experiment did not respond by inventing a generic transaction DAG.</p>
+
+<p>The smallest missing fact was the exact immutable binding that already existed while the controller was alive:</p>
+
+<pre tabIndex={0}><code>{`request identity
++ admission identity
++ authority identity
++ effect identity`}</code></pre>
+
+<p>Persist that binding, combine it with the durable physical phase, and ask an independent owner what the world currently contains.</p>
+
+<pre tabIndex={0}><code>{`durable effect identity
++ durable physical phase
++ independent owner truth
+→ classify interrupted consequence
+→ do not guess
+→ do not blindly replay`}</code></pre>
+
+<h2 id="unknown-is-a-consequence-state-not-a-transport-error" data-toc="UNKNOWN is a consequence state">UNKNOWN is a consequence state, not a transport error</h2>
+
+<p>If the request may have committed but the system cannot yet prove occurrence or non-occurrence, the external-effect state is <strong>UNKNOWN</strong>.</p>
+
+<p>That is different from “the HTTP client failed.”</p>
+
+<p>A transport error says something about the path by which evidence returned. UNKNOWN says something about what the system can currently establish about reality.</p>
+
+<p>The safe next action depends on the effect contract:</p>
+
+<ul>
+  <li><strong>READ_ONLY</strong> operations may often be repeated.</li>
+  <li><strong>IDEMPOTENT</strong> effects may be repeated only under the same owner-recognized deduplication identity.</li>
+  <li><strong>RECONCILABLE</strong> effects require an owner receipt or state query before a new dispatch.</li>
+  <li><strong>OPAQUE</strong> effects must not be automatically repeated after ambiguity.</li>
+</ul>
+
+<p>These are not labels the caller may simply assert. The structured adapter has to own and test the contract.</p>
+
+<h2 id="why-workspace-exec-remains-opaque" data-toc="Why arbitrary execution stays opaque">Why arbitrary execution stays opaque</h2>
+
+<p>An arbitrary command can do almost anything. Runtime cannot inspect a shell script and prove how many external writes it performs under every branch, library, subprocess, or network condition.</p>
+
+<p>So <code>workspace.exec</code> remains effect-opaque even when the Agent says “this command is idempotent.”</p>
+
+<p>Runtime currently has structured effect semantics only where the implementation owns the complete contract, such as self-release and Workspace Patch. Conceptual similarity is not enough to create a generic Effect framework.</p>
+
+<h2 id="finance-is-where-this-distinction-becomes-expensive" data-toc="Finance makes the distinction expensive">Finance is where this distinction becomes expensive</h2>
+
+<p>A financial order makes the same boundary obvious.</p>
+
+<p>A local executor process exiting successfully is not proof that an exchange accepted exactly one order. A lost response cannot be repaired by a second POST unless the venue contract and exact order identity make that safe. A model conclusion that a trade is desirable is weaker still: it is not execution admission.</p>
+
+<p>That is why Finance separates proposal, decision, request, effect admission, one durable dispatch permission, venue evidence, and reconciliation.</p>
+
+<h2 id="what-this-does-not-require" data-toc="What this does not require">What this does not require</h2>
+
+<p>The lesson is not “put every consequence into one global transaction manager.”</p>
+
+<p>Runtime can own physical execution. Providers can own their receipts. Finance can own order semantics. Security can own Range effects. World can preserve the cross-owner relationship when controller replacement would otherwise break correlation.</p>
+
+<p>The shared law is causal, not organizational:</p>
+
+<blockquote>The owner that proves execution is not automatically the owner that proves consequence.</blockquote>
+
+<h2 id="what-would-change-the-runtime-boundary" data-toc="What would change the Runtime boundary">What would change the Runtime boundary</h2>
+
+<p>A new Runtime structured effect earns admission only when a repeated physical operation has stable identity, enforceable preconditions, one commit owner, identity-bound evidence, exact replay, reconciliation, and a concrete ambiguity policy—and generic execution plus owner-local receipts cannot preserve those facts more simply.</p>
+
+<p>Until then, process success remains exactly what it is: strong evidence about a process.</p>
+
+<p className="article-closing">The dangerous bug is not losing a success message. It is letting one kind of success silently impersonate another.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Primary records</p>
+  <h2 id="sources-title" data-toc="Primary records">Execution and consequence evidence</h2>
+  <ol className="source-list">
+    <li><a href="https://github.com/zycxfyh/ordivon-runtime/blob/dabb7b328c84288de2ec94e45a9299307f3491c7/docs/effect-kernel.md">Runtime Effect Commit Kernel</a></li>
+    <li><a href="https://github.com/zycxfyh/ordivon-security/blob/f109cb8cc548479e852c8a4dbc914bd7d3e22ce0/docs/INTERRUPTED-CONSEQUENCE-C1B.md">Security C1-B — Interrupted Consequence</a></li>
+    <li><a href="https://github.com/zycxfyh/ordivon-world/blob/8ddbb6a646a77a9180f4d988a23ccbf314aef044/docs/archive/research/w5-external-commitment-continuity.md">World W5-E — Commitment Continuity</a></li>
+  </ol>
+</section>

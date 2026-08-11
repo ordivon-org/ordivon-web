@@ -22,9 +22,11 @@ const coreRoutes = [
   "/research/smallest-agent-native-core", "/research/harness-composition-and-completion", "/research/ordivon-harness-v0",
   "/research/calibrated-non-action", "/research/opponent-state-transfer", "/research/human-economic-autonomy",
   "/research/causal-responsibility-explanation", "/research/world-minimal-boundary", "/research/finance-real-capital-agent", "/research/creative-empirical-validity",
+  "/research/evidence-current-applicability", "/research/historical-world-model-dogfood",
   "/projects", "/projects/computing", "/projects/host", "/projects/harness", "/projects/runtime", "/projects/game",
   "/projects/world", "/projects/finance", "/projects/human", "/projects/security", "/projects/studio",
   "/writing", "/writing/why-ordivon", "/writing/the-shorter-explanation-won", "/writing/world-got-smaller-and-got-clearer", "/writing/a-better-looking-result-can-still-be-noise",
+  "/writing/the-evidence-is-real-it-is-still-too-old", "/writing/the-command-succeeded-did-anything-happen", "/writing/correctness-is-not-isolation", "/writing/history-did-not-prove-us-right",
   "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
   "/writing/thin-host-without-hidden-planner", "/writing/one-authority-thirteen-tables",
   "/writing/replay-without-second-truth-store", "/writing/transcript-not-task-database",
@@ -80,7 +82,10 @@ test("publication metadata is visible and internally consistent", async ({ page 
     expect(article.publishedAt, article.slug).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     expect(article.takeaways.length, article.slug).toBeGreaterThanOrEqual(1);
     expect(article.limitations.length, article.slug).toBeGreaterThan(0);
-    if (["E3", "E4", "E5"].includes(article.evidenceLevel)) expect(article.canonicalResearchRecord, article.slug).toMatch(/^https:\/\//);
+    if (["E3", "E4", "E5"].includes(article.evidenceLevel)) {
+      expect("canonicalResearchRecord" in article, `${article.slug} is ${article.evidenceLevel} without a public canonical record`).toBe(true);
+      if ("canonicalResearchRecord" in article) expect(article.canonicalResearchRecord, article.slug).toMatch(/^https:\/\//);
+    }
     const revisedAt = "revisedAt" in article ? article.revisedAt : undefined;
     if (revisedAt) expect(revisedAt >= article.publishedAt, article.slug).toBe(true);
   }
@@ -104,7 +109,10 @@ test("previously earned publication primitives remain intact", async ({ page }) 
 });
 
 test("Feynman reconstruction keeps concise orientation and explicit evidence boundaries", async ({ page }) => {
-  for (const slug of ["why-ordivon", "from-tokens-to-work", "the-shorter-explanation-won", "world-got-smaller-and-got-clearer", "a-better-looking-result-can-still-be-noise"]) {
+  for (const slug of [
+    "why-ordivon", "from-tokens-to-work", "the-shorter-explanation-won", "world-got-smaller-and-got-clearer", "a-better-looking-result-can-still-be-noise",
+    "the-evidence-is-real-it-is-still-too-old", "the-command-succeeded-did-anything-happen", "correctness-is-not-isolation", "history-did-not-prove-us-right",
+  ]) {
     const metadata = articleMetadata.find((article) => article.slug === slug)!;
     await gotoWithNetworkRetry(page, `/writing/${slug}`);
     await expect(page.locator(".mdx-in-brief"), slug).toBeVisible();
@@ -166,7 +174,7 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByRole("heading", { name: "Read the arguments and reports that changed the judgment." })).toBeVisible();
   await expect(page.getByRole("heading", { name: `${publicProjects.length} public projects with explicit maturity and boundaries.` })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Questions carrying the current architectural and research pressure." })).toBeVisible();
-  await expect(page.getByRole("link", { name: /The Shorter Explanation Won/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /History Did Not Prove Us Right/ })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/research/web-research-interface");
   await expect(page.getByRole("heading", { name: "Complete arguments connected to this Question." })).toBeVisible();
@@ -255,6 +263,10 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
   await gotoWithNetworkRetry(page, "/research");
   await expect(page.locator(".research-start-grid > a")).toHaveCount(3);
   await expect(page.getByText("Most important question under test", { exact: true })).toBeVisible();
+  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "Which Agent-era world-model laws survive historical out-of-distribution pressure?" })).toBeVisible();
+  await expect(page.getByText("200", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("60", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("156", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("Recently answered boundary", { exact: true })).toBeVisible();
   await expect(page.getByText("Experiment that most changed the architecture", { exact: true })).toBeVisible();
 });
@@ -318,9 +330,9 @@ test("writing provides editorial entry paths before metadata-derived research na
   await gotoWithNetworkRetry(page, "/writing");
   await expect(page.getByRole("heading", { name: "Understand the work before learning the vocabulary." })).toBeVisible();
   const summary = page.locator(".writing-summary");
-  for (const value of [expectedResearchReports, expectedEngineeringRecords, expectedEssaysAndNotes]) {
-    await expect(summary.getByText(String(value), { exact: true })).toBeVisible();
-  }
+  expect(await summary.locator("dd").allTextContents()).toEqual([
+    String(expectedResearchReports), String(expectedEngineeringRecords), String(expectedEssaysAndNotes),
+  ]);
   await expect(page.locator(".writing-featured-main").getByRole("heading", { name: "Why Ordivon Exists" })).toBeVisible();
   await expect(page.locator(".writing-featured-evidence > a")).toHaveCount(2);
   await expect(page.getByRole("heading", { name: "Choose the question you want the work to answer." })).toBeVisible();
@@ -345,6 +357,10 @@ const publicationContracts = [
   { slug: "the-shorter-explanation-won", title: "The Shorter Explanation Won", tables: 1, phrase: "adding more explanatory structure did not improve" },
   { slug: "world-got-smaller-and-got-clearer", title: "World Got Smaller—and Got Clearer", tables: 1, phrase: "retained evidence is not the same thing as default context" },
   { slug: "a-better-looking-result-can-still-be-noise", title: "A Better-Looking Result Can Still Be Noise", tables: 0, phrase: "search history is part of the evidence" },
+  { slug: "the-evidence-is-real-it-is-still-too-old", title: "The Evidence Is Real. It Is Still Too Old.", tables: 1, phrase: "Integrity answers whether the evidence is what it claims to be" },
+  { slug: "the-command-succeeded-did-anything-happen", title: "The Command Succeeded. Did Anything Happen?", tables: 1, phrase: "At-most-once physical dispatch is a local execution property" },
+  { slug: "correctness-is-not-isolation", title: "Correctness Is Not Isolation", tables: 2, phrase: "Remote location is one way to buy stronger credential/admin independence" },
+  { slug: "history-did-not-prove-us-right", title: "History Did Not Prove Us Right", tables: 2, phrase: "Classifier convergence is not Reality convergence" },
   { slug: "why-ordivon-needs-a-harness", title: "Why Ordivon Needs a Harness—but Not a Universal Harness", tables: 1, phrase: "selective ownership" },
   { slug: "what-h1-h5-proved", title: "What Survived When Codex and Hermes Replaced Each Other Mid-Task", tables: 3, phrase: "H1–H5 retained a boundary, not a platform." },
 ] as const;
@@ -403,7 +419,7 @@ test("article context is derived from Project and Question metadata", async ({ p
   await expect(page.locator(".related-reading a").first()).toBeVisible();
 });
 
-test("homepage presents one continuous dark visual thesis", async ({ page, isMobile }) => {
+test("homepage presents one continuous dark visual thesis", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/");
   await expect(page.locator(".home-poster-brand")).toHaveText("ORDIVON");
   await expect(page.getByRole("heading", { name: "Keep the work when the model, session, process, or provider changes." })).toBeVisible();
@@ -460,7 +476,8 @@ test("core pages have no serious accessibility violations", async ({ page }) => 
     "/writing/replay-without-second-truth-store", "/writing/from-tokens-to-work",
     "/writing/why-ordivon-needs-a-harness", "/writing/what-h1-h5-proved",
     "/writing/winning-move-loses-contest", "/writing/smaller-core-strong-baselines",
-    "/research/ordivon-harness-v0", "/research/human-economic-autonomy", "/projects/runtime", "/projects/harness",
+    "/writing/the-evidence-is-real-it-is-still-too-old", "/writing/history-did-not-prove-us-right",
+    "/research/evidence-current-applicability", "/research/historical-world-model-dogfood", "/research/ordivon-harness-v0", "/research/human-economic-autonomy", "/projects/runtime", "/projects/harness",
     "/projects/game", "/projects/human", "/projects/security"]) {
     await gotoWithNetworkRetry(page, route);
     const results = await new AxeBuilder({ page }).analyze();
