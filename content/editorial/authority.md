@@ -51,6 +51,7 @@ Generated design-token CSS, Agent context reports, metadata, manifests, project 
 - Generated output must remain reconstructable from committed source.
 - Agent generation is broad and reversible before promotion; publication consequence remains bound to exact committed inputs and verification.
 - Human perception is evidence for human-facing aesthetic claims, not a universal approval requirement for every Web mutation.
+- Successful rendering, accessibility checks, viewport exposure, or an encounter Receipt do not establish human comprehension, recall, trust, preference, or factual authority over the underlying owner claim.
 - Updating a projected owner snapshot without re-binding the Web publication judgment to its exact revision and digest must fail generation.
 - Historical or removal language may name retired concepts; current capability and ownership claims may not silently reassert them.
 
