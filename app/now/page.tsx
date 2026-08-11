@@ -26,12 +26,12 @@ const authoredSummary = [
   },
   {
     label: "What was removed",
-    title: "The shared World layer and duplicate authority did not survive evidence.",
-    body: "World now retains only a Cloudflare adapter and private network operator tools. It is not a service, database, provider router, execution layer, or semantic authority. Game and Security also removed structures that failed their admission tests.",
+    title: "World became smaller after stale authority and research-only machinery failed deletion pressure.",
+    body: "World now keeps only the cross-owner external relationships that survived HP0–HP8. Historical studies remain retrievable, while provider truth, Runtime execution, Workstation networking, and domain meaning stay with their native owners.",
   },
   {
     label: "What remains research",
-    title: "Computing, Human, and Security publish bounded judgments—not universal products.",
+    title: "Computing, Finance, Studio, Human, and Security keep major questions explicitly bounded.",
     body: "__SECURITY_PROJECT_STATE__",
   },
 ] as const;
@@ -54,7 +54,7 @@ export default function NowPage() {
   const summary = authoredSummary.map((item) => {
     if (item.body === "__GAME_PROJECT_STATE__") return { ...item, body: `Runtime remains the operational local execution boundary. ${gameProject.state}` };
     if (item.body === "__HARNESS_PROJECT_STATE__") return { ...item, body: `Host preserves durable Task continuity above replaceable execution. ${harnessProject.state}` };
-    if (item.body === "__SECURITY_PROJECT_STATE__") return { ...item, body: `Computing tests shared contracts. Human retains bounded conditional research. ${securityProject.state}` };
+    if (item.body === "__SECURITY_PROJECT_STATE__") return { ...item, body: `Computing tests cross-project laws without becoming product authority. Finance keeps live submission disabled while effect preparation remains incomplete. Studio has Agent-observer evidence but no human-response claim. Human retains bounded conditional research. ${securityProject.state}` };
     return item;
   });
   const revisedQuestions = editorialSelections.now.judgmentChanges.map(getQuestionBySlug).filter((question): question is NonNullable<typeof question> => Boolean(question));
@@ -83,7 +83,7 @@ export default function NowPage() {
       </section>
 
       <section className="now-exits" aria-labelledby="now-projects-title">
-        <SectionHeading eyebrow="Current project map" title="Eight public projects with explicit maturity and boundaries." description="Open the project page for orientation; follow the repository for exact implementation, operation, release, or research authority." />
+        <SectionHeading eyebrow="Current project map" title={`${projects.length} public projects with explicit maturity and boundaries.`} description="Open the project page for orientation; follow the repository for exact implementation, operation, release, or research authority." />
         <div className="now-exit-grid">{projects.map((project) => <article className={`kind-project status-${project.lifecycle}`} key={project.id}><span>{availabilityLabel[project.availability]}</span><h3>{project.title}</h3><p>{project.state}</p><Link href={`/projects/${project.slug}`}>Open project ↗</Link></article>)}</div>
       </section>
 

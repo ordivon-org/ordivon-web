@@ -18,7 +18,7 @@ Ordivon Web is the public orientation and editorial layer. It is not a SaaS land
 
 ## Extended position
 
-Ordivon asks one practical question: how can increasingly capable Agents perform real work without making one model Session, process, machine, provider, interface, or research prototype the permanent owner of that work? The current core separates Host Task continuity, Harness Run semantics, and Runtime physical execution. Game, World, Human, and Security pressure or apply those ideas through playable systems, retained adapters, practical research, and bounded adversarial experiments. Computing owns shared theory, promoted protocol, and conformance. Web explains the map and preserves dated judgment.
+Ordivon asks one practical question: how can increasingly capable Agents perform real work without making one model Session, process, machine, provider, interface, or research prototype the permanent owner of that work? The current core separates Host Task continuity, Harness Run semantics, and Runtime physical execution. World preserves narrow cross-owner relationships to external reality; Game, Finance, Human, Security, and Studio pressure the system through playable worlds, capital effects, human research, adversarial experiments, and creative production. Computing owns cross-project scientific synthesis rather than current product truth. Web explains the map, tests the real public encounter, and preserves dated judgment.
 
 ## Core problem
 

@@ -48,6 +48,7 @@ The editorial system prevents three failures:
 ## Start here
 
 - [`agent-web-system.md`](./agent-web-system.md) — Agent-native observation, judgment, generation, preview, verification, and promotion.
+- [`feynman-explanation.md`](./feynman-explanation.md) — default causal explanation contract: concrete consequence, smallest mechanism, exact evidence, then formal vocabulary and proof boundary.
 - [`information-architecture.md`](./information-architecture.md) — page hierarchy, project map, maturity language, linking, and historical corrections.
 - [`positioning.md`](./positioning.md) — what Ordivon is, why it matters, and the message hierarchy.
 - [`audiences.md`](./audiences.md) — primary readers, their questions, and appropriate entry paths.

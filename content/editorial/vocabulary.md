@@ -57,11 +57,13 @@ A formal term should not be the only explanation of a public result.
 | Ordivon Harness | Replaceable Agent execution layer for Assignments, Runs, Provider adapters, model–Tool loops, Tool-step recovery, and completion proposals. |
 | Ordivon Runtime | Owner-trusted physical execution layer for Workspaces, Jobs, Runtime Attempts, process trees, Artifacts, cancellation, and reconciliation. |
 | Ordivon Game | Playable application and game-research repository, currently centered on Station Zero. |
-| Ordivon World | Carrier for a Cloudflare adapter and private network operator tools; not a shared semantic or execution layer. |
-| Ordivon Computing | Research synthesis, specification, promoted protocol, and conformance root for shared contracts. |
+| Ordivon World | Narrow cross-owner relationship layer for external observation, transfer, currentness, and uncertain consequence; native truth remains with native owners. |
+| Ordivon Finance | Agent-first capital research and bounded financial-effect system; separates quantitative evidence, capital judgment, execution authority, and venue consequence. |
+| Ordivon Computing | Cross-project research synthesis, falsification, historical dogfood, and promoted world-model knowledge; not current product authority. |
 | Ordivon Human | Bounded human research and practical paths with explicit conditions, limitations, ethics, and privacy boundaries. |
 | Ordivon Security | Strategic adversarial research through bounded experiments and multidimensional evaluation; not a production attack platform. |
-| Ordivon Web | Public orientation, project navigation, and dated publication layer; not a technical truth store. |
+| Ordivon Studio | Cross-medium production cognition and empirical expression research; owns creative evidence and artifact interpretation, not domain truth or universal taste. |
+| Ordivon Web | Public orientation, project navigation, encounter surface, and dated publication layer; not a technical truth store. |
 
 ## Public-first definitions
 

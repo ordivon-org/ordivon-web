@@ -9,8 +9,8 @@ import { editorialSelections } from "@/content/editorial/selections";
 
 const categoryCopy = {
   "core-system": ["Core work system", "Host preserves the Task, Harness runs a replaceable Agent episode, and Runtime commits physical local execution."],
-  application: ["Applications and capability", "Game provides a playable product; World retains Provider-native adapters and private network tools without becoming a shared layer."],
-  research: ["Research and specification", "Computing tests shared contracts, Human studies practical trajectories, and Security runs bounded adversarial experiments."],
+  application: ["Applications and capability", "Game, World, Finance, and Studio pressure the system through play, external reality, capital effects, and human-facing expression."],
+  research: ["Research and specification", "Computing tests cross-project laws, Human studies practical trajectories, and Security runs bounded adversarial experiments."],
 } as const;
 
 const statusLabel = {
@@ -28,7 +28,7 @@ export default function HomePage() {
     .sort((left, right) => right.articleCount - left.articleCount || (right.latestPublicationDate || "").localeCompare(left.latestPublicationDate || ""))[0];
   const featured = editorialSelections.home.recentArguments.map(getArticle);
   const proofArticle = getArticle(editorialSelections.home.proof);
-  const proofQuestion = getQuestionBySlug("harness-composition-and-completion");
+  const proofQuestion = getQuestionBySlug("causal-responsibility-explanation");
   const gameProject = getProjectBySlug("game");
   if (!proofArticle || !proofQuestion || !gameProject || featured.some((article) => !article)) throw new Error("homepage editorial selection is incomplete");
 
@@ -84,8 +84,8 @@ export default function HomePage() {
         <div className="home-shell home-frontier-inner">
           <header className="home-section-intro"><p>Why the boundaries exist</p><span>{formatDate(proofArticle.publishedAt)} · retained evidence</span></header>
           <div className="home-frontier-layout">
-            <div><h2 id="home-proof-title">One Task survived both Codex↔Hermes replacement orders and three injected faults.</h2><p>Four live Provider Runs preserved one coherent Task while stale completion, success without an Artifact, and response loss were rejected or reconciled. The result justified separate Host and Harness responsibilities—not Provider equivalence.</p></div>
-            <aside className="home-frontier-next"><span>Bounded result</span><p>{proofQuestion.currentJudgment}</p><small>2 / 2 replacement orders · 3 fault classes</small><Link href={`/writing/${proofArticle.slug}`}>Read the complete evidence <span aria-hidden="true">↗</span></Link></aside>
+            <div><h2 id="home-proof-title">We made the explanation richer. The decisions did not improve.</h2><p>Across five frozen surfaces and 1,326 accepted Agent decisions, compact causal prose matched causal cards, typed relations, and explicit question grammars on exact action while using fewer Provider tokens. The result supports a smaller default explanation—not a claim that diagrams or structure are never useful.</p></div>
+            <aside className="home-frontier-next"><span>Bounded result</span><p>{proofQuestion.currentJudgment}</p><small>1,326 / 1,326 exact actions · 17 responsibility families · 5 surfaces</small><Link href={`/writing/${proofArticle.slug}`}>Read the complete evidence <span aria-hidden="true">↗</span></Link></aside>
           </div>
         </div>
       </section>

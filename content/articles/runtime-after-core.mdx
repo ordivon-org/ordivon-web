@@ -15,10 +15,11 @@ export const metadata = {
   "type": "Engineering report",
   "project": "Ordivon Runtime",
   "publishedAt": "2026-07-28",
+  "revisedAt": "2026-08-12",
   "readMinutes": 10,
   "author": "zycxfyh",
   "lead": "The 23 July release established exact Git Workspaces, durable Jobs and Attempts, owned process trees, bounded output, cancellation, Artifacts, and restart recovery. Sustained Agent work then exposed two further questions: what exactly is committed when a nondeterministic Agent crosses into reality, and what operational machinery lets the Runtime itself remain clean and recoverable?",
-  "status": "current",
+  "status": "historical",
   "claimClass": "engineering-inference",
   "evidenceLevel": "E4",
   "takeaways": [
@@ -32,6 +33,8 @@ export const metadata = {
   ],
   "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-runtime/blob/d13be899329c5564643abb10a701a55ad8c39153/docs/effect-kernel.md"
 };
+
+<div className="article-thesis"><p><strong>Editorial update · 12 August 2026:</strong> this report remains accurate for the July Runtime it measured, but it no longer describes the current operational surface. Provider commitments, immutable inputs, Windows-native execution, structured self-release, TOCTOU hardening, and HP0 compositional pressure have since moved Runtime materially beyond the thirteen-tool phase. The article is retained as historical engineering evidence; use <a href="/projects/runtime">the current Runtime project page</a> for today's boundary.</p></div>
 
 <h2 id="the-historical-release-remains-ten-tools" data-toc="The historical release remains ten tools">The historical release remains ten tools</h2>
           <p>The original release should not be rewritten simply because the protocol later grew. It proved the first execution boundary and closed M0–M7. Four later tools entered only after repeated work showed universal gaps:</p>

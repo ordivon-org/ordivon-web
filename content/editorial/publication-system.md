@@ -77,11 +77,13 @@ A historical article should display the reason for supersession and point to the
 
 ## Reusable expression
 
-Five flagship publications proved three reusable MDX structures:
+Five earlier flagship publications proved three reusable MDX structures:
 
 - `InBrief`
 - `PublicationFigure`
 - `ClaimBoundary`
+
+The 2026-08-12 explanation reconstruction adds a content-level contract rather than another component: [`feynman-explanation.md`](./feynman-explanation.md). Computing EX3–EX7 found no Agent-action gain from mandatory causal cards, typed relations, or question grammars over compact owner-native causal prose on the tested surfaces. Studio R4–R6 independently supports progressive disclosure: more observable structure is not automatically more explanatory, grounded propositions should point to exact evidence, and encounter facts must be inspected at the rendered surface.
 
 Other proposed primitives remain deleted until repeated use earns them.
 

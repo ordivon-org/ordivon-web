@@ -1,6 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { articleMetadata } from "../content/articles/generated-metadata";
-import { questions } from "../content/model";
+import { projects, questions } from "../content/model";
 import { expect, test, type Page } from "@playwright/test";
 
 async function gotoWithNetworkRetry(page: Page, route: string) {
@@ -15,13 +15,17 @@ async function gotoWithNetworkRetry(page: Page, route: string) {
   return null;
 }
 
+const publicProjects = projects.filter((project) => project.publicPage);
+
 const coreRoutes = [
   "/", "/system", "/research", "/research/web-research-interface", "/research/security-adversarial-trajectory",
   "/research/smallest-agent-native-core", "/research/harness-composition-and-completion", "/research/ordivon-harness-v0",
   "/research/calibrated-non-action", "/research/opponent-state-transfer", "/research/human-economic-autonomy",
+  "/research/causal-responsibility-explanation", "/research/world-minimal-boundary", "/research/finance-real-capital-agent", "/research/creative-empirical-validity",
   "/projects", "/projects/computing", "/projects/host", "/projects/harness", "/projects/runtime", "/projects/game",
-  "/projects/world", "/projects/human", "/projects/security",
-  "/writing", "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
+  "/projects/world", "/projects/finance", "/projects/human", "/projects/security", "/projects/studio",
+  "/writing", "/writing/why-ordivon", "/writing/the-shorter-explanation-won", "/writing/world-got-smaller-and-got-clearer", "/writing/a-better-looking-result-can-still-be-noise",
+  "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
   "/writing/thin-host-without-hidden-planner", "/writing/one-authority-thirteen-tables",
   "/writing/replay-without-second-truth-store", "/writing/transcript-not-task-database",
   "/writing/unknown-is-operational-state", "/writing/communication-is-gameplay-state",
@@ -81,21 +85,31 @@ test("publication metadata is visible and internally consistent", async ({ page 
     if (revisedAt) expect(revisedAt >= article.publishedAt, article.slug).toBe(true);
   }
   expect(articleMetadata.filter((article) => "revisedAt" in article).map((article) => article.slug).sort()).toEqual([
-    "from-tokens-to-work", "link-edge-boundary", "what-h1-h5-proved", "why-ordivon-needs-a-harness",
+    "from-tokens-to-work", "link-edge-boundary", "runtime-after-core", "what-h1-h5-proved", "why-ordivon", "why-ordivon-needs-a-harness",
   ].sort());
   await gotoWithNetworkRetry(page, "/writing/from-tokens-to-work");
   await expect(page.locator(".publication-brief")).toBeVisible();
-  await expect(page.locator(".publication-brief-status").getByText(/E3/)).toBeVisible();
+  await expect(page.locator(".publication-brief-status").getByText(/E4/)).toBeVisible();
   await expect(page.locator(".publication-brief-copy li")).toHaveCount(3);
   await expect(page.locator(".publication-limitations li")).toHaveCount(2);
 });
 
-test("five flagship publications use the shared publication primitives", async ({ page }) => {
-  for (const slug of ["from-tokens-to-work", "what-h1-h5-proved", "smaller-core-strong-baselines", "winning-move-loses-contest", "creation-judgment-recoverable-systems"]) {
+test("previously earned publication primitives remain intact", async ({ page }) => {
+  for (const slug of ["what-h1-h5-proved", "smaller-core-strong-baselines", "winning-move-loses-contest", "creation-judgment-recoverable-systems"]) {
     await gotoWithNetworkRetry(page, `/writing/${slug}`);
     await expect(page.locator(".mdx-in-brief"), slug).toBeVisible();
     await expect(page.locator(".publication-figure"), slug).toHaveCount(1);
     await expect(page.locator(".mdx-claim-boundary"), slug).toHaveCount(1);
+  }
+});
+
+test("Feynman reconstruction keeps concise orientation and explicit evidence boundaries", async ({ page }) => {
+  for (const slug of ["why-ordivon", "from-tokens-to-work", "the-shorter-explanation-won", "world-got-smaller-and-got-clearer", "a-better-looking-result-can-still-be-noise"]) {
+    const metadata = articleMetadata.find((article) => article.slug === slug)!;
+    await gotoWithNetworkRetry(page, `/writing/${slug}`);
+    await expect(page.locator(".mdx-in-brief"), slug).toBeVisible();
+    await expect(page.locator(".publication-limitations li"), slug).toHaveCount(metadata.limitations.length);
+    await expect(page.locator(".article-anchor-grid > *"), slug).toHaveCount(metadata.projectSlugs.length + metadata.questionSlugs.length);
   }
 });
 
@@ -150,9 +164,9 @@ test("internal navigation targets resolve", async ({ page, request }) => {
 test("public model is article-centered and does not expose the retired graph ledger", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/now");
   await expect(page.getByRole("heading", { name: "Read the arguments and reports that changed the judgment." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Eight public projects with explicit maturity and boundaries." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: `${publicProjects.length} public projects with explicit maturity and boundaries.` })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Questions carrying the current architectural and research pressure." })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Creation, Judgment, and Recoverable Systems/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /The Shorter Explanation Won/ })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/research/web-research-interface");
   await expect(page.getByRole("heading", { name: "Complete arguments connected to this Question." })).toBeVisible();
@@ -187,13 +201,13 @@ test("public model is article-centered and does not expose the retired graph led
   await gotoWithNetworkRetry(page, "/research/ordivon-harness-v0");
   await expect(page.getByText("testing", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("caller interaction ingress after needs_input", { exact: false }).first()).toBeVisible();
-  await expect(page.getByRole("link", { name: /From Tokens to Work/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /What Survived When Codex and Hermes Replaced Each Other Mid-Task/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 
   for (const route of ["/system", "/research", "/writing", "/now", "/research/web-research-interface"]) {
     await gotoWithNetworkRetry(page, route);
     const text = await page.locator("body").innerText();
-    for (const retired of ["Graph ledger", "graph anchors", "centrality", "typed relations", "evidence objects"]) {
+    for (const retired of ["Graph ledger", "graph anchors", "centrality", "evidence objects"]) {
       expect(text, `${route} still exposes ${retired}`).not.toContain(retired);
     }
   }
@@ -204,7 +218,7 @@ test("projects directory exposes project identity in the initial encounter", asy
     await page.setViewportSize(viewport);
     await gotoWithNetworkRetry(page, "/projects");
     const links = page.locator(".project-quick-index a");
-    await expect(links).toHaveCount(8);
+    await expect(links).toHaveCount(publicProjects.length);
     const first = await links.first().boundingBox();
     const last = await links.last().boundingBox();
     expect(first).not.toBeNull();
@@ -225,10 +239,12 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
   await expect(page.locator(".about-principle-grid > article")).toHaveCount(4);
 
   await gotoWithNetworkRetry(page, "/projects");
-  await expect(page.locator(".project-capability-card")).toHaveCount(8);
-  await expect(page.getByText("Operational owner-trusted infrastructure", { exact: true })).toBeVisible();
-  await expect(page.getByText("Operational capability carrier; shared layer rejected", { exact: true })).toBeVisible();
+  await expect(page.locator(".project-capability-card")).toHaveCount(publicProjects.length);
+  await expect(page.getByText("Operational owner-trusted infrastructure under active high-pressure validation", { exact: true })).toBeVisible();
+  await expect(page.getByText("Operational minimal boundary after HP0–HP8 survival audit", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Harness", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Ordivon Finance", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Ordivon Studio", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Human", exact: true })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/projects/runtime");
@@ -300,12 +316,12 @@ test("writing provides editorial entry paths before metadata-derived research na
   const expectedEngineeringRecords = articleMetadata.filter((article) => engineeringTypes.has(article.type)).length;
   const expectedEssaysAndNotes = articleMetadata.length - expectedResearchReports - expectedEngineeringRecords;
   await gotoWithNetworkRetry(page, "/writing");
-  await expect(page.getByRole("heading", { name: "Ideas, experiments, and decisions behind durable agent work." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Understand the work before learning the vocabulary." })).toBeVisible();
   const summary = page.locator(".writing-summary");
   for (const value of [expectedResearchReports, expectedEngineeringRecords, expectedEssaysAndNotes]) {
     await expect(summary.getByText(String(value), { exact: true })).toBeVisible();
   }
-  await expect(page.locator(".writing-featured-main").getByRole("heading", { name: "From Tokens to Work: The Complete Agent Execution Stack" })).toBeVisible();
+  await expect(page.locator(".writing-featured-main").getByRole("heading", { name: "Why Ordivon Exists" })).toBeVisible();
   await expect(page.locator(".writing-featured-evidence > a")).toHaveCount(2);
   await expect(page.getByRole("heading", { name: "Choose the question you want the work to answer." })).toBeVisible();
   await expect(page.locator(".writing-path-grid > article")).toHaveCount(3);
@@ -324,7 +340,11 @@ const publicationContracts = [
   { slug: "transcript-not-task-database", title: "A Transcript Is Not a Task Database", tables: 0, phrase: "A summary can preserve narrative continuity while destroying operational continuity." },
   { slug: "unknown-is-operational-state", title: "UNKNOWN Is an Operational State, Not a Model Feeling", tables: 0, phrase: "No response does not imply no commit." },
   { slug: "communication-is-gameplay-state", title: "Communication Is Gameplay State", tables: 1, phrase: "Communication is gameplay state when reachability changes" },
-  { slug: "from-tokens-to-work", title: "From Tokens to Work: The Complete Agent Execution Stack", tables: 1, phrase: "The model is the source of intelligence." },
+  { slug: "why-ordivon", title: "Why Ordivon Exists", tables: 1, phrase: "different kinds of truth" },
+  { slug: "from-tokens-to-work", title: "From Tokens to Work: Five Questions an Agent System Must Answer", tables: 1, phrase: "The path from model output to dependable work is a chain of proof" },
+  { slug: "the-shorter-explanation-won", title: "The Shorter Explanation Won", tables: 1, phrase: "adding more explanatory structure did not improve" },
+  { slug: "world-got-smaller-and-got-clearer", title: "World Got Smaller—and Got Clearer", tables: 1, phrase: "retained evidence is not the same thing as default context" },
+  { slug: "a-better-looking-result-can-still-be-noise", title: "A Better-Looking Result Can Still Be Noise", tables: 0, phrase: "search history is part of the evidence" },
   { slug: "why-ordivon-needs-a-harness", title: "Why Ordivon Needs a Harness—but Not a Universal Harness", tables: 1, phrase: "selective ownership" },
   { slug: "what-h1-h5-proved", title: "What Survived When Codex and Hermes Replaced Each Other Mid-Task", tables: 3, phrase: "H1–H5 retained a boundary, not a platform." },
 ] as const;
@@ -372,12 +392,15 @@ test("flagship strong-baseline report preserves evidence and claim boundaries", 
 });
 
 test("article context is derived from Project and Question metadata", async ({ page }) => {
-  await gotoWithNetworkRetry(page, "/writing/runtime-after-core");
+  const metadata = articleMetadata.find((article) => article.slug === "world-got-smaller-and-got-clearer")!;
+  await gotoWithNetworkRetry(page, "/writing/world-got-smaller-and-got-clearer");
   await expect(page.getByRole("heading", { name: "Where this article sits." })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Research Question.*Which repeated physical operation deserves a dedicated structured Runtime contract/ })).toHaveAttribute("href", "/research/runtime-structured-effect/");
-  await expect(page.getByRole("link", { name: /Project.*Ordivon Runtime/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Project.*Ordivon World/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Project.*Ordivon Computing/ })).toBeVisible();
+  await expect(page.getByRole("link", { name: /Research Question.*Which World responsibilities still earn permanent ownership/ })).toBeVisible();
+  await expect(page.locator(".article-anchor-grid > *")).toHaveCount(metadata.projectSlugs.length + metadata.questionSlugs.length);
   await expect(page.getByRole("heading", { name: "Continue through shared Questions and Projects." })).toBeVisible();
-  await expect(page.locator(".related-reading").getByRole("link", { name: /Why Task Continuity Belongs Above Execution/ })).toBeVisible();
+  await expect(page.locator(".related-reading a").first()).toBeVisible();
 });
 
 test("homepage presents one continuous dark visual thesis", async ({ page, isMobile }) => {
@@ -387,7 +410,7 @@ test("homepage presents one continuous dark visual thesis", async ({ page, isMob
   await expect(page.locator(".home-current-card")).toHaveCount(4);
   await expect(page.locator(".home-project-groups > article")).toHaveCount(3);
   await expect(page.getByRole("heading", { name: "The family is organized by what it owns—not by one universal platform diagram." })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "One Task survived both Codex↔Hermes replacement orders and three injected faults." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "We made the explanation richer. The decisions did not improve." })).toBeVisible();
   await expect(page.locator(".home-frontier").getByRole("link", { name: /Read the complete evidence/ })).toHaveAttribute("href", /\/writing\/.+\//);
   await expect(page.locator(".home-writing-row")).toHaveCount(3);
   await expect(page.getByRole("heading", { name: "Understand, use, research, or challenge the work." })).toBeVisible();

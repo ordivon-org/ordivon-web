@@ -64,11 +64,13 @@ These are distinct owners, not three names for one platform. Applications may us
 ### Applications and capability
 
 - **Game** owns Station Zero and its domain World, rules, player interventions, replay, and comparison.
-- **World** retains a Cloudflare adapter and private network operator tools. The broader shared World service, database, router, and semantic layer were rejected.
+- **World** owns only the narrow cross-owner relationships to external reality that survived HP0–HP8 deletion pressure: observation availability, provider/consequence binding, unresolved-consequence reconciliation, and related typed relations. Provider, Runtime, Workstation, Host, and domain truth remain with their native owners.
+- **Finance** owns capital-domain proposals, quantitative research, financial-effect admission, and venue reconciliation. A backtest, model conclusion, API permission, and committed financial consequence are not treated as the same fact.
+- **Studio** owns cross-medium production cognition, rendered-artifact perception, grounded creative experiments, and scoped expression priors. It does not own domain truth or a universal taste/reward model.
 
 ### Research and specification
 
-- **Computing** owns shared theory, research synthesis, promoted protocol, and conformance.
+- **Computing** owns cross-project falsification, research synthesis, historical dogfood, promoted world-model knowledge, and conformance; it does not own current product truth.
 - **Human** owns bounded human research, practical paths, methods, conditions, and privacy boundaries.
 - **Security** owns bounded strategic adversarial experiments and multidimensional evaluation, not a production attack platform.
 

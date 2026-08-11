@@ -37,7 +37,7 @@ export default function SystemPage() {
     ["02", "Host preserves the Task and commitment", "Generic Task continuity, accepted decisions, unresolved commitments, evidence admission, and outcomes remain durable above one conversation or model Run."],
     ["03", "Harness runs replaceable intelligence", harnessProject.capability],
     ["04", "Runtime commits local physical work", "Exact source and request identity become observable Jobs, process state, structured patches, Artifacts, cancellation, and reconciliation evidence."],
-    ["05", "Verification returns authority to the owner", "The caller or owning domain evaluates evidence, accepts or rejects completion, and decides what work means next. External providers keep their own truth."],
+    ["05", "Current consequence returns to the owner", "External providers keep native truth; World preserves only the cross-owner relation when needed. The caller or domain then revalidates current applicability, accepts or rejects completion, and decides what the evidence means next."],
   ] as const;
   const evidence = [
     [String(boundaryNodes.length), "current core boundaries"],
@@ -60,7 +60,7 @@ export default function SystemPage() {
 
       <div className="page-shell system-main">
         <section className="system-trajectory" aria-labelledby="system-trajectory-title">
-          <SectionHeading eyebrow="End-to-end trajectory" title="The work moves; ownership does not blur." description="The domain begins and ends the trajectory. Host, Harness, and Runtime own different failure classes in the middle. World is a repository for retained adapters and network tools, not a fourth execution layer." />
+          <SectionHeading eyebrow="End-to-end trajectory" title="The work moves; ownership does not blur." description="The domain begins and ends the trajectory. Host, Harness, and Runtime own different failure classes in the middle. World appears only when a cross-owner relationship to external reality cannot be reconstructed safely by either endpoint alone." />
           <ol>{trajectory.map(([index, title, description]) => <li key={title} className="tested"><span>{index}</span><div><b>Current boundary</b><h3>{title}</h3><p>{description}</p></div></li>)}</ol>
         </section>
 

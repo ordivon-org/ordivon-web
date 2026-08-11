@@ -20,14 +20,14 @@ const groups = [
   {
     id: "application",
     eyebrow: "Applications and capability",
-    title: "Products and adapters put the boundaries under real pressure.",
-    description: "Game owns a playable World. World retains provider-native and machine-local capability, not a shared semantic layer.",
+    title: "Domain systems test whether the boundaries survive real consequences.",
+    description: "Game tests agency, World tests cross-owner reality relations, Finance tests capital judgment and effects, and Studio tests creation, perception, and expression.",
   },
   {
     id: "research",
     eyebrow: "Research and specification",
     title: "Research projects test what should remain, change, or disappear.",
-    description: "Computing governs shared contracts, Human studies practical human trajectories, and Security tests strategic agency under adaptive opposition.",
+    description: "Computing tests cross-project world-model laws, Human studies practical human trajectories, and Security tests strategic agency under adaptive opposition.",
   },
 ] as const;
 
@@ -44,7 +44,7 @@ export default function ProjectsPage() {
     <div className="page-shell page-top projects-page">
       <header className="index-hero projects-hero">
         <p className="eyebrow">Projects · current map</p>
-        <h1>Eight projects, three kinds of work, no single mandatory stack.</h1>
+        <h1>{projects.length} projects, three kinds of work, no single mandatory stack.</h1>
         <p>Use this page to distinguish operational infrastructure, implemented prototypes, playable applications, retained capability, and research. Exact implementation facts remain in each repository.</p>
         <div className="project-status-legend" aria-label="Project status legend">
           {Object.entries(statusLabel).filter(([key]) => key !== "internal").map(([key, label]) => <span key={key} data-status={key}>{label}</span>)}
@@ -85,7 +85,7 @@ export default function ProjectsPage() {
 
       <section className="portfolio-boundary">
         <SectionHeading eyebrow="Authority" title="The website explains the map; repositories own the facts." description="Public status is an authored orientation at a date. Source, tests, releases, receipts, research methods, and operational truth remain with the project that produced them." />
-        <div><p>Start with <Link href="/system">How it works</Link> when you need the core execution path. Start with <Link href="/research">Research</Link> when the useful unit is an unresolved question. Use the repository link whenever exact capability, installation, or evidence matters.</p><p>A project can be useful without becoming a shared layer: Game owns its World, World retains two owner-local capability families, and Human and Security publish conditional research without claiming a universal product.</p></div>
+        <div><p>Start with <Link href="/system">How it works</Link> when you need the core work trajectory. Start with <Link href="/research">Research</Link> when the useful unit is an uncertainty that can still change the architecture. Use the repository link whenever exact capability, installation, or evidence matters.</p><p>A project can be valuable without becoming universal infrastructure: Game owns its game semantics, Finance owns capital meaning, Studio owns creative evidence, World owns only the cross-owner reality relations that survived deletion, and Human and Security retain bounded research scopes.</p></div>
       </section>
     </div>
   );

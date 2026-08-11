@@ -1,0 +1,129 @@
+export const metadata = {
+  "slug": "the-shorter-explanation-won",
+  "title": "The Shorter Explanation Won",
+  "deck": "We tested causal cards, typed relations, and explicit question grammars against compact prose across 1,326 Agent decisions. The richer representations never improved the answer.",
+  "description": "How EX3–EX7 tested five ways of explaining Ordivon responsibility boundaries and selected compact owner-native causal prose as the smallest non-inferior representation.",
+  "projectSlugs": ["computing", "web", "studio"],
+  "questionSlugs": ["causal-responsibility-explanation"],
+  "type": "Research report",
+  "project": "Ordivon Computing",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 7,
+  "author": "zycxfyh",
+  "lead": "Ordivon had accumulated enough precise language that explanation itself became a research question: do Agents understand the system better when we give them a richer ontology, or when we state the causal boundary in ordinary language?",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "Compact owner-native causal prose matched richer representations on every accepted decision in the bounded EX3–EX7 program.",
+    "Typed relations, causal cards, and question grammars increased token burden without improving exact action on the tested surfaces.",
+    "The result supports progressive disclosure, not the claim that structure or diagrams are never useful."
+  ],
+  "limitations": [
+    "The experiments used bounded multiple-choice Agent action surfaces and reached a ceiling; harder open-ended tasks may reveal differences.",
+    "The study tested Agent decisions, not human comprehension, memory, trust, or preference."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-computing/blob/3885544abf6fa02b710fbe7f365f2fd283a9b06d/research/experiments/ex3-ex7-causal-comprehension-v0/EX3-EX7-FINAL-REPORT.md"
+};
+
+<InBrief claim="On the tested Agent surfaces, adding more explanatory structure did not improve the decision." evidence="E4 · preregistered EX3–EX7, exact source and retained evidence" scope="1,326 accepted DeepSeek Flash action decisions across 17 responsibility families and five frozen surfaces">
+  <p>The smallest non-inferior representation was ordinary causal prose: say who can prove what, who owns the meaning, what changed in reality, and what the evidence does not prove.</p>
+</InBrief>
+
+<h2 id="the-problem-was-not-missing-terminology" data-toc="The problem was not terminology">The problem was not missing terminology</h2>
+
+<p>Imagine explaining a failed deployment to a new Agent. You could hand it a typed graph containing every relation between source, execution, receipt, Task, provider, and external effect. Or you could say:</p>
+
+<blockquote>The command ran locally. That proves local execution. It does not prove the external service changed. Check the external owner before treating the deployment as current.</blockquote>
+
+<p>Both descriptions can be correct. The research question was whether the richer representation actually helps the Agent make the right next decision.</p>
+
+<p>This mattered because Ordivon had accumulated many useful distinctions—authority, persistence, currentness, capability, consequence, selection, recovery. A project can become difficult to understand when every distinction is promoted into a mandatory schema or vocabulary.</p>
+
+<h2 id="we-froze-the-test-before-asking-the-model" data-toc="The test was frozen first">We froze the test before asking the model</h2>
+
+<p>EX3–EX7 preregistered seventeen owner-native responsibility families and five independent test surfaces before the live Provider calls. Later stages were not allowed to rewrite the correct actions to fit earlier results.</p>
+
+<p>The program compared several representations:</p>
+
+<ul>
+  <li><strong>compact causal prose</strong> — the minimum owner-native explanation;</li>
+  <li><strong>causal cards</strong> — a more explicit structured summary;</li>
+  <li><strong>typed relations</strong> — formal relations such as proof, persistence, and non-implication;</li>
+  <li><strong>seven-question grammar</strong> — an explicit diagnostic checklist;</li>
+  <li><strong>four-question grammar</strong> — a shorter checklist tested on the final untouched surface.</li>
+</ul>
+
+<p>The primary outcome was not whether the prose sounded elegant. It was whether the Agent selected the exact frozen action.</p>
+
+<h2 id="every-representation-hit-the-same-ceiling" data-toc="Every representation hit the same ceiling">Every representation hit the same ceiling</h2>
+
+<p>Across EX3–EX7, the accepted semantic decisions totaled <strong>1,326 / 1,326 exact actions</strong>. That creates an important limitation—the task was easy enough for all retained treatments to reach the ceiling—but it also makes the cost comparison clean.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="EX7 explanation comparison">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">EX7 representation</span><span role="columnheader">Exact actions</span><span role="columnheader">Provider tokens</span><span role="columnheader">Cost versus compact</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Compact prose</strong><span role="cell">102 / 102</span><span role="cell">68,677</span><b role="cell" data-result="passed">baseline</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Typed relations</strong><span role="cell">102 / 102</span><span role="cell">73,960</span><span role="cell">+7.69%</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Seven questions</strong><span role="cell">102 / 102</span><span role="cell">76,480</span><span role="cell">+11.36%</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Four questions</strong><span role="cell">102 / 102</span><span role="cell">77,536</span><span role="cell">+12.90%</span></div>
+</div>
+
+<p>The preregistered rule was to choose the smallest representation that was not worse on the action outcome. Compact prose won mechanically.</p>
+
+<h2 id="what-compact-prose-actually-means" data-toc="What compact prose means">What compact prose actually means</h2>
+
+<p>Compact does not mean vague. A useful explanation still names the distinctions that change the next action.</p>
+
+<p>For Ordivon, that usually means answering only the relevant subset of these questions:</p>
+
+<ol>
+  <li>What happened?</li>
+  <li>Who can prove it?</li>
+  <li>Who decides what it means?</li>
+  <li>What state must survive interruption?</li>
+  <li>Who merely carried or executed the work?</li>
+  <li>What does the evidence <em>not</em> prove?</li>
+  <li>What would break if this distinction were removed?</li>
+</ol>
+
+<p>The experiment did <strong>not</strong> support injecting this checklist into every Agent turn. The checklist remains a debugging method. Once the boundary is understood, it should be compressed back into normal language.</p>
+
+<h2 id="negative-statements-did-most-of-the-work" data-toc="Negative statements matter">Negative statements did most of the work</h2>
+
+<p>Many of the most transferable explanations were simple non-implications:</p>
+
+<div className="surviving-invariants" aria-label="Causal non-implications">
+  <span>execution ≠ consequence</span><span>persistence ≠ ownership</span><span>Run completion ≠ Task completion</span><span>history ≠ currentness</span><span>capability ≠ authority</span><span>exposure ≠ understanding</span>
+</div>
+
+<p>These statements are valuable because they stop one layer from claiming more than its evidence can support. They also translate well across Finance, Security, Game, Studio, World, Host, Harness, and Runtime without requiring every project to share one object model.</p>
+
+<h2 id="what-this-changes-on-the-public-site" data-toc="What changes on the site">What this changes on the public site</h2>
+
+<p>Ordivon Web now treats formal vocabulary as the third layer of explanation, not the first:</p>
+
+<pre tabIndex={0}><code>{`concrete situation
+→ one-sentence causal distinction
+→ smallest mechanism
+→ exact evidence
+→ formal term when useful
+→ what the result does not imply`}</code></pre>
+
+<p>This is also consistent with Studio R4–R6. More features did not automatically produce more understanding; evidence-addressed propositions were more stable than fine labels; and the real encounter mattered more than source structure alone.</p>
+
+<h2 id="what-the-result-does-not-prove" data-toc="What this does not prove">What this does not prove</h2>
+
+<p>The experiment does not show that diagrams, schemas, relation types, or checklists are useless. They remain valuable for implementation, evidence design, debugging, and hard cases. It shows something narrower: on these bounded Agent decision surfaces, making the explanation structurally richer did not improve the action.</p>
+
+<p>It also says nothing direct about human readers. A person may benefit from a diagram, progressive disclosure, animation, or a different reveal order. Those are human-facing expression questions and need their own evidence.</p>
+
+<p className="article-closing">A good explanation is not the one that contains the whole system. It is the one that leaves the reader with exactly the distinctions required to make the next correct judgment.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Primary record</p>
+  <h2 id="sources-title" data-toc="Primary record">EX3–EX7 and the retained explanation method</h2>
+  <ol className="source-list">
+    <li><a href="https://github.com/zycxfyh/ordivon-computing/blob/3885544abf6fa02b710fbe7f365f2fd283a9b06d/research/experiments/ex3-ex7-causal-comprehension-v0/EX3-EX7-FINAL-REPORT.md">EX3–EX7 final report</a></li>
+    <li><a href="https://github.com/zycxfyh/ordivon-computing/blob/3885544abf6fa02b710fbe7f365f2fd283a9b06d/knowledge/agents/causal-responsibility-explanation.md">Causal responsibility explanation knowledge page</a></li>
+  </ol>
+</section>

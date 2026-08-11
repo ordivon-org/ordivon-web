@@ -4,6 +4,12 @@
   "rendererDigest": "sha256:b08740a08b0f5f9187a81773207669633d1c0fb1e161663cf92c235134cf60be",
   "cards": [
     {
+      "slug": "a-better-looking-result-can-still-be-noise",
+      "sourceDigest": "sha256:34c2210b998f707b259b2f1e47916b3804522254b93483ca76932761408000d7",
+      "blobDigest": "sha256:8db02253baadf87c2c6ad546d22f04a2559251d629ffa15767a4260f9eee653f",
+      "sizeBytes": 167544
+    },
+    {
       "slug": "communication-is-gameplay-state",
       "sourceDigest": "sha256:c360b04d72d774d914841bd9e962ef5a4db02c110bd9dff6bdf90012afb13908",
       "blobDigest": "sha256:8ba2c97e701655edec289ae29a8c0bab1062ede744f49cb05d7b431c371697a6",
@@ -17,9 +23,9 @@
     },
     {
       "slug": "from-tokens-to-work",
-      "sourceDigest": "sha256:8b4db92d71d112acfdd909827869dc5af21fc2d4962c56bda932375cd032e3fb",
-      "blobDigest": "sha256:4e23cb6c5e89d98663bed0dc3f7935b045df8bdd8f180bf9d5c6c5be00909cee",
-      "sizeBytes": 167475
+      "sourceDigest": "sha256:0f94fb529dedd98f4043168140a4a6c6b852961e61a841bf5340ec623db19562",
+      "blobDigest": "sha256:e8a189de0cca85ee64c9a6f96f99409f0a823821996534271c1365b290ac338e",
+      "sizeBytes": 180310
     },
     {
       "slug": "host-task-continuity",
@@ -76,6 +82,12 @@
       "sizeBytes": 143604
     },
     {
+      "slug": "the-shorter-explanation-won",
+      "sourceDigest": "sha256:d77593c57ddc18ce1f07505e6c1a92799e9725dbd2bee0d92c7bf60d032a86ee",
+      "blobDigest": "sha256:d62189c88cddb82f31a8c7f877b1df87209029f6bf5693c7856a2e872d344755",
+      "sizeBytes": 154755
+    },
+    {
       "slug": "thin-host-without-hidden-planner",
       "sourceDigest": "sha256:b60b2592c03ccaf6185ebab34552178188b73b3a4b7224c44502d94032e8ff7f",
       "blobDigest": "sha256:49495cbce78957ff108d8ef83ff150567d1343067ee57efdd0a744745fbb01fb",
@@ -107,15 +119,21 @@
     },
     {
       "slug": "why-ordivon",
-      "sourceDigest": "sha256:469a936748d57e6e96c9b50a43c1e5ff5471992e66bbe218215f4fc1b4a34a51",
-      "blobDigest": "sha256:714dfc3c2d0e1382180693ce536823354aa74665fa4d1b1e3c269fb98c643279",
-      "sizeBytes": 158850
+      "sourceDigest": "sha256:e7070d833332e5557d986a370cc294697bc80241098814b2128514b662b01bd7",
+      "blobDigest": "sha256:6d2450e1231a891c1a9ef3d9e1ea823abdbdcd673877f4938618f4d9b538d47f",
+      "sizeBytes": 154279
     },
     {
       "slug": "winning-move-loses-contest",
       "sourceDigest": "sha256:5de22864c968d29d097482acc3d97571281c970f53a38d2a9519a53b42e9ddf4",
       "blobDigest": "sha256:41e35be6ab899b4c863e1052738536c33bc29e763caa7d90466f2625b29b310f",
       "sizeBytes": 172583
+    },
+    {
+      "slug": "world-got-smaller-and-got-clearer",
+      "sourceDigest": "sha256:47974df979d66f47fc487f78cc08536d6febb2d25595293ee18a35c1cb30c5bb",
+      "blobDigest": "sha256:785482ba71912dc004f1406a4c55add9535e9544cf03f64fe788ac410b12d415",
+      "sizeBytes": 166170
     }
   ]
 }
