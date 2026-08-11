@@ -208,3 +208,22 @@ A candidate that only works on Home must not silently rewrite the long-form desi
 - WCAG 2.2: normative accessibility gates.
 - Figma MCP / Code Connect: structured components, variables, annotations, and real code mappings as Agent design context.
 - Design Theater: stated design rationale must be checked against the actual rendered implementation.
+## R6 browser encounter evidence
+
+Creative Alpha R6 added a Web-local **encounter evidence** layer without turning Web into the owner of creative meaning or a general analytics platform. For bounded experiments, `scripts/run-r6-encounter.mjs` can now materialize:
+
+```text
+exact experiment manifest
+→ randomized assignment
+→ explicit assignment probability / propensity
+→ real Chromium render
+→ realized exposure
+→ optional typed outcome event
+→ representative screenshot / visible-text / viewport-evidence digests
+```
+
+This layer answers a question the ordinary browser review packet does not: **which exact variant was actually encountered, under what randomized assignment probability, and which evidence intersected the declared initial viewport?** The receipt does not decide whether the work was good, whether a person understood it, or whether a Provider answer is semantically correct. Those claims remain owned by the relevant experiment and observer evidence.
+
+R6 dogfood also established two operational details that are now part of the harness rather than caller folklore: Chromium receives a bounded temporary root when Runtime workspace paths would exceed Unix-socket limits, and async outcome handlers freeze the event target before awaiting network emission.
+
+Assignment probability is retained even for simple equal randomization because future analysis must not reconstruct the exposure policy from memory. Adaptive allocation or off-policy evaluation is deliberately outside R6; trustworthy randomized exposure precedes any bandit.

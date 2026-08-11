@@ -26,6 +26,7 @@
     "agent:context": "node scripts/report-agent-web-context.mjs",
     "browser:review": "pnpm build && node scripts/review-browser-surfaces.mjs",
     "browser:review:current": "node scripts/review-browser-surfaces.mjs",
+    "research:r6:encounter": "node scripts/run-r6-encounter.mjs",
     "site:audit": "node scripts/site-audit.mjs",
     "content:generate": "node scripts/generate-design-tokens.mjs && node scripts/generate-project-projections.mjs && node scripts/generate-article-manifest.mjs",
     "pages:prepare": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types scripts/prepare-pages.mjs",
