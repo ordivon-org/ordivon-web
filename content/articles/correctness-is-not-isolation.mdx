@@ -1,0 +1,191 @@
+export const metadata = {
+  "slug": "correctness-is-not-isolation",
+  "title": "Correctness Is Not Isolation",
+  "deck": "Finance once treated an independently administered remote executor as a prerequisite for any real-capital effect. C2-L attacked that assumption and found two different assurance axes hiding inside one word: safety.",
+  "description": "How Finance C2-L separated effect correctness from credential and administrator isolation, falsified hostile-root isolation on one machine, and retained a disabled single-machine effect-correctness profile without authorizing live trading.",
+  "projectSlugs": ["finance", "runtime", "computing"],
+  "questionSlugs": ["finance-real-capital-agent", "runtime-boundary-friction"],
+  "type": "Research report",
+  "project": "Ordivon Finance",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 8,
+  "author": "zycxfyh",
+  "lead": "Put a financial executor on the same workstation as the Agent and give the Agent root. Root can replace the executor, its credentials, its policy, and its service unit. That destroys one security claim. It does not automatically answer whether the effect protocol itself can still prevent duplicate or ambiguous orders.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E2",
+  "takeaways": [
+    "C2-L falsified hostile-root credential/admin isolation for the current trusted-local single-machine profile.",
+    "The same experiment retained the tested effect-correctness properties—exact identity, one dispatch permission, replay discipline, raw evidence, and reconciliation—without requiring remote topology.",
+    "Remote independent administration remains a valuable higher-assurance profile for stronger threat models or larger consequences; it is no longer treated as a universal prerequisite merely because the effect is financial."
+  ],
+  "limitations": [
+    "C2-L performed no live financial write and kept local submission disabled; it does not establish production trading readiness.",
+    "The current disabled executor credential failed exact permission verification and local private signer authority remained unverified, so effect-correctness qualification did not authorize activation."
+  ]
+};
+
+<InBrief claim="A system can preserve effect-correctness rules without being isolated from a hostile administrator on the same machine." evidence="E2 public · exact local owner experiment retained; no public canonical Finance record is currently available" scope="Finance C2-L single-machine disabled staging profile">
+  <p>C2-L did not weaken the financial-effect protocol. It stopped using remote location as a proxy for two different assurances.</p>
+</InBrief>
+
+<h2 id="the-old-rule-sounded-safer" data-toc="The old rule sounded safer">The old rule sounded safer</h2>
+
+<p>The original instinct was simple:</p>
+
+<blockquote>Real money should only move through an independently administered remote executor.</blockquote>
+
+<p>That rule has obvious appeal. If the Agent workstation cannot read the trading credential, replace the signer, rewrite the executor, or alter its policy, a compromised Agent has fewer ways to seize authority.</p>
+
+<p>But the rule also smuggles in a stronger claim:</p>
+
+<blockquote>Without remote administration, the effect itself cannot be correct.</blockquote>
+
+<p>C2-L was designed to attack that second claim.</p>
+
+<h2 id="one-word-safety-was-hiding-two-axes" data-toc="Safety was hiding two axes">One word—safety—was hiding two axes</h2>
+
+<p>The experiment split the question into two independent assurances.</p>
+
+<h3>Axis 1: effect correctness</h3>
+
+<p>Can the system preserve:</p>
+
+<ul>
+  <li>the exact economic intent and world binding;</li>
+  <li>one durable dispatch permission;</li>
+  <li>no blind retry after ambiguity;</li>
+  <li>raw evidence and exact replay;</li>
+  <li>reconciliation before another consequence;</li>
+  <li>explicit separation between preparation and submission?</li>
+</ul>
+
+<h3>Axis 2: credential and administrator isolation</h3>
+
+<p>Can the Agent-admin principal read or replace:</p>
+
+<ul>
+  <li>venue credentials;</li>
+  <li>private signer authority;</li>
+  <li>TrustPolicy;</li>
+  <li>executor release bytes;</li>
+  <li>service configuration or ledger administration?</li>
+</ul>
+
+<p>These questions are related in a deployment threat model. They are not the same invariant.</p>
+
+<h2 id="the-root-probe-destroyed-the-isolation-claim" data-toc="Root destroyed the isolation claim">The root probe destroyed the isolation claim</h2>
+
+<p>The current Runtime <code>trusted_local</code> profile executes as root.</p>
+
+<p>C2-L performed a metadata-only authority probe and established that this principal could read or write the root-owned executor credential files, TrustPolicy, and systemd unit.</p>
+
+<p>Therefore the current single-machine profile cannot honestly claim protection from a malicious or compromised root Agent.</p>
+
+<div className="article-thesis"><p>Systemd hardening, read-only release bytes, DynamicUser, and LoadCredential can reduce accidental coupling. They cannot create an adversarial boundary against the same root authority.</p></div>
+
+<p>That part of the old safety story was falsified.</p>
+
+<h2 id="then-the-effect-protocol-refused-to-fail-with-it" data-toc="Effect correctness survived">Then the effect protocol refused to fail with it</h2>
+
+<p>The next question was whether losing hostile-root isolation also destroyed the effect-correctness properties.</p>
+
+<p>On the disabled C2/v3 staging surface, the retained protocol still enforced:</p>
+
+<ul>
+  <li>Package v3 / Grant v2 / EffectAdmission v2 / commit@5 version closure;</li>
+  <li>Decision, Proposal, Request, and world-gate identity before effect admission;</li>
+  <li>purpose-separated signer roles;</li>
+  <li>immutable versioned executor release with no historical executable fallback;</li>
+  <li>a loopback-only narrow HTTP surface;</li>
+  <li>exactly one durable dispatch permission;</li>
+  <li>exact replay before mutable venue reads;</li>
+  <li>no second POST after a consumed dispatch claim;</li>
+  <li>raw evidence retention and reconciliation-first ambiguous outcomes;</li>
+  <li>a disabled-first kill boundary.</li>
+</ul>
+
+<p>The focused evidence recorded:</p>
+
+<div tabIndex={0} className="article-data-table" role="table" aria-label="C2-L focused verification">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Verification group</span><span role="columnheader">Result</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">C2/v3 Node core</strong><b role="cell" data-result="passed">10 / 10</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">C2-L policy and packaging</strong><b role="cell" data-result="passed">41 / 41</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">Focused deployment verifier</strong><b role="cell" data-result="passed">3 / 3</b></div>
+  <div className="article-data-row" role="row"><strong role="cell">External financial writes</strong><b role="cell" data-result="passed">0</b></div>
+</div>
+
+<p>The correct conclusion became narrower:</p>
+
+<blockquote>Remote location is one way to buy stronger credential/admin independence. It is not itself a law of effect correctness.</blockquote>
+
+<h2 id="a-two-by-two-picture-is-more-useful-than-safe-unsafe" data-toc="A two-axis picture">A two-axis picture is more useful than safe/unsafe</h2>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Effect correctness and isolation matrix">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Profile</span><span role="columnheader">Effect correctness</span><span role="columnheader">Hostile-admin isolation</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Current single-machine disabled staging</strong><span role="cell">supported at tested boundary</span><span role="cell">explicitly not supported against root</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Independent-principal executor</strong><span role="cell">still required</span><span role="cell">can add stronger separation when physically verified</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Remote but badly designed effect protocol</strong><span role="cell">can still be wrong</span><span role="cell">location alone does not repair duplicate/reconciliation semantics</span></div>
+</div>
+
+<p>This is why “remote” and “safe” are poor synonyms.</p>
+
+<h2 id="the-experiment-also-found-two-real-blockers" data-toc="The experiment found real blockers">The experiment also found two real blockers</h2>
+
+<p>C2-L did not use the narrower architecture claim as permission to activate trading.</p>
+
+<p>The exact executor credential installed in the disabled staging profile did not match the separately valid canonical Read+Trade/no-Withdraw profile. A read-only account-config check using the executor credential returned <strong>401 Invalid OK-ACCESS-KEY</strong>.</p>
+
+<p>The experiment therefore refused to infer executor fitness from a different credential merely because that other credential belonged to the same account.</p>
+
+<p>Local private signer authority was also not provisioned or verified.</p>
+
+<p>These were not cosmetic checklist items. They were current deployment facts, and they remained blockers.</p>
+
+<h2 id="preparation-is-not-submission" data-toc="Preparation is not submission">Preparation is not submission</h2>
+
+<p>The current policy separates:</p>
+
+<pre tabIndex={0}><code>{`mechanically qualified preparation
+≠ authorization to submit a live effect`}</code></pre>
+
+<p>The disabled staging executor used an unreachable API base, exposed no raw authenticated write route, and returned <code>executor-disabled</code> before venue action. No financial write occurred during C2-L.</p>
+
+<p>Even if <code>localEffectCorrectnessQualified=true</code>, a live canary still requires a separate transition proving exact credential permissions, usable signers, real venue reachability, and live reconciliation.</p>
+
+<h2 id="why-this-matters-beyond-finance" data-toc="Why this matters beyond Finance">Why this matters beyond Finance</h2>
+
+<p>Engineering systems often collapse several assurances into one prestigious mechanism:</p>
+
+<ul>
+  <li>containerized → isolated;</li>
+  <li>remote → independent;</li>
+  <li>encrypted → authorized;</li>
+  <li>transactional → correct;</li>
+  <li>redundant → reliable.</li>
+</ul>
+
+<p>Sometimes the mechanism contributes to the assurance. The error is treating the mechanism's presence as proof of every property associated with it.</p>
+
+<p>C2-L's useful method is to name the assurance separately, attack it directly, and keep only the part the evidence actually supports.</p>
+
+<h2 id="when-remote-independence-is-still-worth-paying-for" data-toc="When remote independence is worth it">When remote independence is still worth paying for</h2>
+
+<p>Independent administration remains valuable when the threat model includes a hostile Agent with root on the workstation, when capital size makes workstation compromise unacceptable, when organizational separation is required, or when operational consequence justifies the extra substrate.</p>
+
+<p>The experiment removed a universal prerequisite. It did not remove the high-assurance profile.</p>
+
+<h2 id="the-surviving-rule" data-toc="The surviving rule">The surviving rule</h2>
+
+<p>After falsification, the Finance rule is smaller and more explicit:</p>
+
+<blockquote>Every deployment must prove effect correctness. Credential/admin isolation is an additional deployment assurance whose required strength depends on the threat model and consequence severity.</blockquote>
+
+<p className="article-closing">A stronger system is not one that calls every concern “safety.” It is one that can say exactly which safety property has been proved, which one has failed, and which one has not yet been attempted.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Owner-record boundary</p>
+  <h2 id="sources-title" data-toc="Owner-record boundary">Why this public article is E2, not E4</h2>
+  <p>The exact C2-L design and evidence remain retained by the Finance owner at local revision <code>391c11bb40f87a404a2d46463a1481beff9ab45e</code>. At publication time, that owner record does not have a publicly reachable canonical repository URL. Web therefore does not substitute its summary for the missing primary record and does not present this article as publicly reproducible E4 evidence.</p>
+  <p>If Finance publishes the exact owner record later, this article can be revised and its public evidence level reconsidered without changing the experiment that originally produced the result.</p>
+</section>

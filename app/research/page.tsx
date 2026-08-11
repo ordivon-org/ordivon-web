@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 };
 
 const evidence = [
-  ["1,326 / 1,326", "accepted explanation decisions exact"],
-  ["96 / 96", "minimal World mixed-failure replay"],
-  ["5,000", "zero-effect creative candidates searched"],
+  ["200", "source-locked historical trajectories through HD5"],
+  ["60", "historical Deep Anchors through 1969"],
+  ["156", "historical replay Provider calls through HD5"],
   [String(articles.length), "dated public arguments"],
 ] as const;
 
