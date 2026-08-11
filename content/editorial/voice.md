@@ -18,14 +18,16 @@ The voice is:
 
 > Give the reader the consequence before asking them to learn the architecture.
 
+The detailed default is the [`Feynman Explanation Contract`](./feynman-explanation.md), now backed by Computing EX3–EX7 and Studio R4–R6. Prefer the smallest causal explanation that preserves the next correct judgment; richer cards, labels, or checklists must earn their extra complexity.
+
 Preferred sequence:
 
 1. concrete event or tension;
-2. why it matters;
-3. Ordivon's judgment;
-4. evidence and mechanism;
-5. formal terminology;
-6. limitation and next test.
+2. the one-sentence causal distinction;
+3. the smallest mechanism that explains it;
+4. exact evidence;
+5. formal terminology only when it compresses;
+6. what the evidence does not imply and what would reopen the judgment.
 
 ## Sentence construction
 
@@ -131,10 +133,11 @@ Capitalize names of Ordivon projects and formal schema objects only when referri
 
 Capitalize:
 
-- Ordivon Host, Ordivon Runtime, Ordivon World, Ordivon Computing;
-- Host, Runtime, World when used as those named state owners;
-- Task, Assignment, Effect, Observation, Artifact, HarnessRunReceipt when referring to exact model objects;
-- Codex App Server, Hermes ACP, Station Zero.
+- Ordivon Host, Ordivon Harness, Ordivon Runtime, Ordivon Game, Ordivon World, Ordivon Computing, Ordivon Human, Ordivon Security, and Ordivon Web;
+- Host, Harness, and Runtime when used as the named owners of Task continuity, Agent Run semantics, and physical execution;
+- World only when naming the Ordivon World repository or a formal domain World such as the Station Zero simulation;
+- Task, Assignment, Effect, Observation, Artifact, and HarnessRunReceipt when referring to exact model objects;
+- Codex App Server, Hermes ACP, and Station Zero.
 
 Lowercase in ordinary prose:
 

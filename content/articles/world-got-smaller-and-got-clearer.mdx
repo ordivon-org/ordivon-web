@@ -1,0 +1,129 @@
+export const metadata = {
+  "slug": "world-got-smaller-and-got-clearer",
+  "title": "World Got Smaller—and Got Clearer",
+  "deck": "We archived stale research, deleted two research-only APIs, and replayed the same 96 mixed-failure invocations. The smaller World passed all of them while Agent retrieval improved from 7/9 to 9/9.",
+  "description": "How the World HP6–HP8 survival audit treated every retained abstraction as guilty until a current workload proved its value—and why historical knowledge had to stop competing with current authority.",
+  "projectSlugs": ["world", "computing"],
+  "questionSlugs": ["world-minimal-boundary"],
+  "type": "Engineering report",
+  "project": "Ordivon World",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 7,
+  "author": "zycxfyh",
+  "lead": "The difficult part of a project is not adding one more useful idea. It is knowing which old ideas are still allowed to describe reality after the project has changed.",
+  "status": "current",
+  "claimClass": "engineering-inference",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "Historical research became a measurable retrieval hazard when it remained mixed with current authority.",
+    "World removed research-only ForeignEgress and EffectPath machinery without losing the tested production failure behavior.",
+    "A deleted capability can return only when a new current workload reproduces a failure that the remaining owners cannot handle cleanly."
+  ],
+  "limitations": [
+    "The 96-invocation pressure suite covers the current tested owner and provider families, not every future distributed or multi-node workload.",
+    "A true second independent execution authority may reopen part of the World boundary."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-world/blob/8ddbb6a646a77a9180f4d988a23ccbf314aef044/docs/high-pressure-survival-hp6-hp8.md"
+};
+
+<InBrief claim="World became easier for Agents to use after we removed historical and research-only structure from the current path." evidence="E4 · exact commit, acceptance evidence, repeated mixed-failure replay" scope="World HP6–HP8 at 8ddbb6a">
+  <p>The audit did not ask whether an abstraction had once been interesting. It asked whether deleting it now caused a current failure that another owner could not handle more cleanly.</p>
+</InBrief>
+
+<h2 id="history-was-correct-and-still-caused-errors" data-toc="Correct history still caused errors">History was correct and still caused errors</h2>
+
+<p>Suppose a new engineer joins a project and searches for “how external paths work.” The repository contains five generations of serious research. None of the old documents is fake. The problem is that several of them describe mechanisms that no longer own current behavior.</p>
+
+<p>That was the World HP6 problem. Eight W4/W5/Sense–Connect–Act studies were still easy for an Agent to retrieve alongside current documents. They preserved useful history, but their lifecycle labels and old architecture competed with the present boundary.</p>
+
+<p>The audit separated the two jobs:</p>
+
+<pre tabIndex={0}><code>{`history
+→ preserve what we learned and why we changed
+
+current authority
+→ tell the next Agent what governs today's decision`}</code></pre>
+
+<h2 id="the-retrieval-test-got-better-after-archiving" data-toc="Retrieval improved after archiving">Retrieval improved after archiving</h2>
+
+<p>Before the contraction, the deterministic retrieval test searched roughly 190.9 KB across 814 historical/current chunks and answered 7 of 9 current questions correctly.</p>
+
+<p>After moving the eight studies into an explicit archive and adding one compact current closeout, the active corpus fell to roughly 75.9 KB and 163 chunks. The same test answered <strong>9 of 9</strong>.</p>
+
+<div tabIndex={0} className="article-data-table" role="table" aria-label="World retrieval contraction">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Current retrieval surface</span><span role="columnheader">Before</span><span role="columnheader">After</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Bytes searched</strong><span role="cell">~190.9 KB</span><span role="cell">~75.9 KB</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Chunks</strong><span role="cell">814</span><span role="cell">163</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Current questions correct</strong><span role="cell">7 / 9</span><b role="cell" data-result="passed">9 / 9</b></div>
+</div>
+
+<p>This is a useful distinction for Agent systems: <strong>retained evidence is not the same thing as default context</strong>. Keeping history is good. Making every historical model equally easy to treat as current is not.</p>
+
+<h2 id="then-we-tried-to-delete-working-code" data-toc="Then we deleted working code">Then we tried to delete working code</h2>
+
+<p>HP8 attacked two pieces of World that had once been justified by research:</p>
+
+<ul>
+  <li><code>foreign_egress.py</code>;</li>
+  <li><code>effect_paths.py</code>;</li>
+  <li>their dedicated tests;</li>
+  <li>three packaged contracts that only those research paths consumed.</li>
+</ul>
+
+<p>No production consumer or fresh-Agent decision advantage remained. The files were deleted.</p>
+
+<p>Production Python fell from <strong>5,891 to 5,112 lines</strong>. Source files fell from 20 to 18. Packaged schemas fell from 28 to 25. Product tests fell from 139 to 121.</p>
+
+<p>Those numbers are not the proof. The proof is what happened next.</p>
+
+<h2 id="the-smaller-world-faced-the-same-pressure" data-toc="The smaller World faced the same pressure">The smaller World faced the same pressure</h2>
+
+<p>HP7 had already mixed concurrency, provider recovery, response ambiguity, stale conditions, same-Task inspection, and several NOT_COMMITTED families into twelve shuffled rounds: <strong>96 invocations</strong> in total.</p>
+
+<p>The pre-deletion World passed all 96. After HP8 removed the research-only APIs, the minimal World replayed the same 96-invocation mix and again passed all 96.</p>
+
+<div className="article-thesis"><p>If deleting a mechanism does not recreate the failure it was supposed to prevent, the mechanism has not earned permanent ownership.</p></div>
+
+<h2 id="what-world-still-owns" data-toc="What World still owns">What World still owns</h2>
+
+<p>The contraction did not delete the idea that Agents interact with external reality. It clarified where the irreducible cross-owner facts live.</p>
+
+<p>The current World keeps narrow responsibilities such as:</p>
+
+<ul>
+  <li>typed cross-owner resources, messages, and entities when their relation itself matters;</li>
+  <li>exact binding between a provider action and its consequence evidence;</li>
+  <li><code>UNKNOWN</code> plus exact-original reconciliation when an external result is unresolved;</li>
+  <li>time-of-availability provenance for delayed observations;</li>
+  <li>bounded Browser and provider integrity where multiple external objects must stay correlated.</li>
+</ul>
+
+<p>Provider-native truth remains with the provider. Physical execution remains with Runtime. Task meaning remains with Host or the owning domain. Network mechanics remain with Workstation. World survives only where the <em>relationship across those owners</em> cannot be reconstructed safely from either side alone.</p>
+
+<h2 id="deletion-is-not-a-ban" data-toc="Deletion is not a ban">Deletion is not a ban</h2>
+
+<p>A deleted abstraction is not forbidden forever. World records explicit reopening conditions.</p>
+
+<p>If a real multi-node workload later fails because direct owner adapters plus the retained World core cannot preserve a necessary cross-owner relation, the deleted capability can return. But history alone cannot resurrect it.</p>
+
+<p>This makes contraction reversible without making the active architecture ambiguous.</p>
+
+<h2 id="the-general-lesson" data-toc="The general lesson">The general lesson</h2>
+
+<p>Software projects often treat documentation, APIs, tests, and schemas as monotonic assets: once created, deleting them feels like losing capability. Agent-first systems have an additional cost. Every active concept competes for retrieval, interpretation, and decision authority.</p>
+
+<p>A mature repository therefore needs two forms of memory:</p>
+
+<blockquote>Keep the historical evidence. Keep the current authority small.</blockquote>
+
+<p className="article-closing">World did not become more coherent by discovering a larger definition of “world.” It became more coherent by making fewer things eligible to answer the question “what governs this decision now?”</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Primary record</p>
+  <h2 id="sources-title" data-toc="Primary record">World HP6–HP8</h2>
+  <ol className="source-list">
+    <li><a href="https://github.com/zycxfyh/ordivon-world/blob/8ddbb6a646a77a9180f4d988a23ccbf314aef044/docs/high-pressure-survival-hp6-hp8.md">HP6–HP8 survival report</a></li>
+    <li><a href="https://github.com/zycxfyh/ordivon-world/blob/8ddbb6a646a77a9180f4d988a23ccbf314aef044/docs/research-closeouts.md">Current research closeouts</a></li>
+    <li><a href="https://github.com/zycxfyh/ordivon-world/blob/8ddbb6a646a77a9180f4d988a23ccbf314aef044/evidence/acceptance/hp6-hp8-survival-20260810.json">Exact acceptance evidence</a></li>
+  </ol>
+</section>

@@ -2,7 +2,7 @@
 
 ## Principle
 
-Ordivon needs formal language because ownership and recovery fail when important states are ambiguous. Public communication should still introduce that language progressively.
+Ordivon needs formal language because ownership and recovery fail when consequential states are ambiguous. Public communication should still introduce that language progressively.
 
 > Plain first. Formal when useful. Exact when consequential.
 
@@ -10,219 +10,199 @@ Ordivon needs formal language because ownership and recovery fail when important
 
 ### Level 1: public entry language
 
-Use on Home, About, Writing, Now, metadata, social cards, and the first paragraph of most articles.
-
-- real agent work
-- accepted decisions
+- real Agent work
+- accepted commitments
 - unfinished work
-- execution evidence
-- session or process interruption
-- provider replacement
-- external action
+- physical evidence
+- Session or process interruption
+- Provider replacement
 - recovery
 - verification
-- current question
+- current status
 - experiment
 - result
 - project boundary
 
 ### Level 2: introduced technical language
 
-Use after a plain-language explanation or on Project and Research pages.
-
-- task continuity
+- Task continuity
 - state ownership
-- provider harness
-- agent loop
-- durable task state
-- committed effect
+- Provider Harness
+- Agent Run
+- model–Tool loop
 - reconciliation
-- evidence projection
+- evidence admission
 - source of truth
 - deletion condition
-- completion admission
+- completion proposal
 
 ### Level 3: formal model language
 
-Use in architecture guides, research reports, schemas, diagrams, and repository-facing material.
-
-- Goal, Task, TaskAttempt, Assignment
-- HarnessRunReceipt, CompletionProposal, TaskOutcome
+- Goal, Task, Task Attempt, Assignment
+- Agent Run, Tool Step, CompletionProposal, TaskOutcome
 - Effect, Observation, Artifact
 - generation fencing
 - foreign references
 - terminal evidence
 - Ready Frontier
-- provider Thread, Turn, Session, Prompt, Item, event lifecycle
+- Provider Thread, Turn, Session, Prompt, Item, and event lifecycle
 
-A Level 3 term should not be the only explanation of a public result.
+A formal term should not be the only explanation of a public result.
 
 ## Canonical project names
 
 | Name | Public definition |
 | --- | --- |
-| Ordivon Computing | Research and conformance root for contracts that must survive changing models and implementations. |
-| Ordivon Host | Durable owner of goals, tasks, accepted decisions, assignments, and semantic completion. |
-| Ordivon Runtime | Durable owner of local workspaces, processes, attempts, cancellation, artifacts, and execution evidence. |
-| Ordivon World | Owner of conditioned interaction with external systems, paths, identities, effects, and observations. |
-| Ordivon Web | Editorial and evidence-navigation layer around the projects; not a technical truth store. |
-| Ordivon Game | Agent-native workload and game research, including Station Zero. |
-| Ordivon Security | Adversarial agency research under bounded, evidence-preserving experiments. |
-| Ordivon Harness | Proposed thin first-party agent loop for bare model APIs; not a universal wrapper over mature provider harnesses. |
+| Ordivon Host | Persistent coordination and commitment plane for generic Tasks, Journal/CAS state, verification, and outcomes. |
+| Ordivon Harness | Replaceable Agent execution layer for Assignments, Runs, Provider adapters, model–Tool loops, Tool-step recovery, and completion proposals. |
+| Ordivon Runtime | Owner-trusted physical execution layer for Workspaces, Jobs, Runtime Attempts, process trees, Artifacts, cancellation, and reconciliation. |
+| Ordivon Game | Playable application and game-research repository, currently centered on Station Zero. |
+| Ordivon World | Narrow cross-owner relationship layer for external observation, transfer, currentness, and uncertain consequence; native truth remains with native owners. |
+| Ordivon Finance | Agent-first capital research and bounded financial-effect system; separates quantitative evidence, capital judgment, execution authority, and venue consequence. |
+| Ordivon Computing | Cross-project research synthesis, falsification, historical dogfood, and promoted world-model knowledge; not current product authority. |
+| Ordivon Human | Bounded human research and practical paths with explicit conditions, limitations, ethics, and privacy boundaries. |
+| Ordivon Security | Strategic adversarial research through bounded experiments and multidimensional evaluation; not a production attack platform. |
+| Ordivon Studio | Cross-medium production cognition and empirical expression research; owns creative evidence and artifact interpretation, not domain truth or universal taste. |
+| Ordivon Web | Public orientation, project navigation, encounter surface, and dated publication layer; not a technical truth store. |
 
 ## Public-first definitions
 
 ### Agent
 
-Public: a model operating through a loop that can inspect context, choose actions, use tools, observe results, and continue toward a goal.  
-Avoid: using “agent” as a synonym for any model response.
+Public: a model operating through a loop that can inspect Context, choose actions, use Tools, observe results, and continue toward a goal.
+
+Avoid: using “Agent” as a synonym for any model response.
 
 ### Harness
 
-Public: the bounded loop that turns model intelligence into one tool-using run.  
-Formal: model adapter, run-local context assembly, tool catalog, tool dispatch, observations, budgets, interruption, and run evidence.  
-Avoid: implying that all provider agent products share one lifecycle.
+Public: the bounded execution layer that turns model intelligence into one Assignment-scoped, Tool-using Agent Run.
+
+Formal: owner of Assignment and Run semantics, Provider adapters, Run-local Context, Tool catalog, Tool steps, budgets, interruption, recovery, and completion proposals.
+
+Avoid: implying that all Provider Agent products share one internal lifecycle or that Harness owns the durable Task.
 
 ### Host
 
-Public: the layer that preserves what the user is trying to accomplish and what has been accepted across model runs.  
-Formal: owner of Goal, Task, TaskAttempt, Assignment, candidate admission, completion adjudication, and TaskOutcome.  
-Avoid: describing Host as a generic server or UI container.
+Public: the layer that preserves intended work, accepted commitments, evidence admission, and outcomes across replaceable Runs.
+
+Formal: owner of generic Task continuity, Journal/CAS, commitment identity, verification records, and TaskOutcome.
+
+Avoid: assigning Provider loops, Assignment schemas, or process truth to Host.
 
 ### Runtime
 
-Public: the layer that turns admitted operations into observable local execution and durable artifacts.  
-Formal: owner of Workspace, Job, Attempt, process tree, cancellation, bounded output, Artifact, and restart recovery.  
-Avoid: giving Runtime semantic task completion.
+Public: the layer that turns admitted local operations into observable physical execution and durable Artifacts.
+
+Formal: owner of Workspace, Job, Runtime Attempt, process tree, cancellation, bounded output, Artifact, repair, and physical reconciliation.
+
+Avoid: giving Runtime Task meaning, Provider policy, or semantic completion.
 
 ### World
 
-Public: the layer through which work reaches external services, machines, identities, and changing paths.  
-Formal: owner of conditioned external interaction, effect correlation, observation, path and endpoint state.  
-Avoid: using “World” when “external service” or “environment” is clearer and no formal boundary is being discussed.
+Use **Ordivon World** only for the repository and its retained capabilities. Do not describe it as a fourth core execution layer, provider router, service, database, or owner of external truth. In ordinary prose, prefer the owning domain, external service, environment, game World, Provider, or machine network state.
 
 ### Task
 
-Public: a durable unit of intended work that can outlive one model run or process.  
-Formal: use `Task` only for the exact Host object.  
-Avoid: capitalizing every informal use of task.
+Public: a durable unit of intended work that can outlive one Agent Run or process.
 
-### Effect
+Formal: use `Task` for the exact Host object.
 
-Public: an operation that may change reality outside model reasoning.  
-Formal: an admitted, identifiable operation whose commit state may require evidence or reconciliation.  
-Avoid: treating every tool call as an effect.
+Avoid: capitalizing every informal task.
+
+### Assignment
+
+Public: one versioned commitment that authorizes a Harness to perform a bounded Agent Run.
+
+Formal: owned by Harness semantics and stored through Host generic persistence.
+
+Avoid: treating Assignment as the Task itself.
 
 ### Evidence
 
-Public: retained facts that allow a later reader or system to verify what happened.  
-Formal: receipts, source revisions, output, artifacts, observations, verification results, and provider provenance.  
+Public: retained facts that allow a later reader or system to verify what happened.
+
+Formal: receipts, revisions, output, Artifacts, observations, verification results, and Provider provenance.
+
 Avoid: calling a claim or summary itself evidence.
-
-### Continuity
-
-Public: the ability to continue the same intended work after interruption or replacement.  
-Avoid: using continuity without naming what persists and across which boundary.
-
-### Authority / source of truth
-
-Public: the place allowed to commit a class of facts.  
-Avoid: calling every database, component, or document an authority. State the exact facts it owns.
 
 ### UNKNOWN
 
-Public: an operation may have changed the external world, but current evidence cannot yet establish whether it committed.  
-Formal: an operational state requiring reconciliation before blind redispatch.  
-Always uppercase only when referring to the formal state.
+Public: an operation may have changed reality, but current evidence cannot establish whether it committed.
+
+Formal: an operational state requiring reconciliation before blind redispatch.
+
+Always uppercase only for the formal state.
 
 ### Deletion condition
 
-Public: the evidence that would make an abstraction, project, or boundary unnecessary.  
-On general pages prefer “what would make this unnecessary” until the formal term has been introduced.
+Public: the evidence that would make an abstraction, project, or boundary unnecessary.
+
+On entry pages prefer “what would make this unnecessary” until the term is introduced.
 
 ## Capitalization rules
-
-Use uppercase initial letters for exact project or schema identities. Use lowercase for generic concepts.
 
 | Formal | Generic |
 | --- | --- |
 | Ordivon Host / Host | a host process |
+| Ordivon Harness / Harness | a Provider harness |
 | Ordivon Runtime / Runtime | a runtime environment |
-| Ordivon World / World | the external world |
-| Ordivon Harness / Harness | a provider harness |
+| Ordivon World | the external world or a game World |
 | Task | a task |
 | Assignment | an assignment |
 | Artifact | an artifact |
-| Provider is not normally formal | provider |
-| Agent is not normally formal | agent |
-| Tool is not normally formal | tool |
-| Run is not normally formal | run |
+| Provider | a provider in ordinary non-formal prose |
+| Agent | an agent in ordinary non-formal prose |
+| Tool | a tool in ordinary non-formal prose |
+| Run | a run in ordinary non-formal prose |
 
-Do not capitalize a generic term to make it sound strategically important.
+Do not capitalize a generic term merely to make it sound strategically important.
 
 ## Navigation and section naming
 
-Canonical navigation label: **Now**, route `/now`. Do not alternate between “Current” and “Now” in primary navigation.
+Primary navigation uses:
 
-Canonical publication terms:
-
-- **Writing** — the complete editorial area.
-- **Publication** — any dated public article in the registry.
-- **Article** — acceptable in implementation and ordinary prose.
-- **Research report**, **Engineering report**, **Architecture decision**, **Research note**, **Release note**, **Essay** — reader-facing types.
-
-Avoid “public record” as the only label for Writing. It describes archival function but not reader value.
+- **How it works** — `/system`
+- **Projects** — `/projects`
+- **Research** — `/research`
+- **Writing** — `/writing`
+- **Now** — `/now`
+- **About** — `/about`
 
 ## Status language
 
-Use a small stable set:
+Keep lifecycle, maturity, availability, and research state separate.
 
-- **active** — receiving implementation or research effort;
+Public project availability:
+
+- **usable now** — operational under a current run or operations contract;
+- **implemented prototype** — executable and tested but not a general production product;
+- **playable now** — a current application can be run as documented;
+- **research** — bounded inquiry with conditional conclusions;
+- **historical** — retained evidence no longer describing current capability.
+
+Research Question state:
+
 - **testing** — a defined hypothesis is under real pressure;
-- **open** — admitted question without sufficient implementation evidence;
-- **answered** — current evidence supports closing the question within stated scope;
-- **historical** — retained for context, no longer a current frontier;
-- **released** — exact public release exists;
-- **prototype** — usable for investigation but not a stable release;
-- **retired** — intentionally removed or superseded.
+- **open** — admitted but insufficiently tested;
+- **answered** — closed within the stated scope;
+- **reframed** — the original question changed materially.
 
-Avoid mixing status, confidence, maturity, and priority in one word.
+Repository lifecycle such as `active` means only that work or maintenance continues. It does not imply maturity or priority.
 
-## Metrics and labels
+## Metrics
 
-Prefer measures that describe capability or evidence:
-
-- live provider runs;
-- replacement orders completed;
-- faults injected and handled;
-- exact outcomes preserved;
-- implementation lines deleted;
-- release artifacts verified;
-- active questions with publications.
-
-Avoid presenting content-model size as a primary achievement:
-
-- graph nodes;
-- relation count;
-- metadata objects;
-- internal anchors.
-
-Those may be useful diagnostics, not public proof.
+Prefer measures that describe capability or evidence: tests, real Runs, replacement orders, fault classes, exact outcomes, release identity, deleted implementation, or completed research cycles. Avoid presenting graph nodes, metadata objects, relation counts, or internal anchors as public achievement.
 
 ## Terms to reduce above the fold
 
 Use only after consequence is clear:
 
-- typed graph;
-- curated object model;
-- state owner;
-- question dossier;
-- deletion condition;
-- completion adjudication;
-- graph anchor;
-- provider lifecycle;
-- semantic authority;
-- task truth;
-- public model.
-
-These terms remain valid. Their placement, not their existence, is the issue.
+- typed graph
+- state owner
+- question dossier
+- deletion condition
+- completion adjudication
+- Provider lifecycle
+- semantic authority
+- Task truth
+- public model

@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 };
 
 const evidence = [
-  ["2 / 2", "replacement orders completed"],
-  ["13", "duplicate game tables deleted"],
-  ["84", "bounded adversarial trials"],
-  ["19", "dated public arguments"],
+  ["1,326 / 1,326", "accepted explanation decisions exact"],
+  ["96 / 96", "minimal World mixed-failure replay"],
+  ["5,000", "zero-effect creative candidates searched"],
+  [String(articles.length), "dated public arguments"],
 ] as const;
 
 const method = [
@@ -30,7 +30,7 @@ export default function ResearchPage() {
   const questions = getResearchQuestionSummaries();
   const current = getResearchDossier(editorialSelections.research.currentQuestion);
   const answered = getResearchDossier(editorialSelections.research.recentlyAnswered);
-  const changed = getResearchDossier("smallest-agent-native-core");
+  const changed = getResearchDossier("world-minimal-boundary");
   const changedArticle = getArticle(editorialSelections.research.architectureChangingExperiment);
   if (!current || !answered || !changed || !changedArticle) throw new Error("research editorial entry is incomplete");
   const timeline: ResearchTimelineItem[] = [...articles]

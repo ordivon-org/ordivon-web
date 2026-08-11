@@ -1,11 +1,14 @@
 import { articles } from "@/lib/content";
 import { getProjectBySlug, getProjectForQuestion, getArchitectureRoleById, projects as projectDefinitions, questions } from "@/content/model";
+import type { ProjectAvailability, ProjectCategory } from "@/lib/model/types";
 
 export type Project = {
   id: string;
   slug: string;
   index: string;
   group: string;
+  category: ProjectCategory;
+  availability: ProjectAvailability;
   title: string;
   label: string;
   thesis: string;
@@ -15,7 +18,7 @@ export type Project = {
   maturity: string;
   audience: string;
   latestProof: string;
-  flagshipSlug: string;
+  flagshipSlug?: string;
   question: string;
   state: string;
   lifecycle: "active" | "paused" | "retired" | "historical";
@@ -36,10 +39,10 @@ function required(value: string | undefined, project: string, field: string) {
 }
 
 export const projects: Project[] = projectDefinitions
-  .filter((project) => project.publicPage && project.architectureRoleId)
+  .filter((project) => project.publicPage)
   .map((project) => {
-    const role = getArchitectureRoleById(project.architectureRoleId!);
-    if (!role) throw new Error(`${project.id} references missing architecture role ${project.architectureRoleId}`);
+    const role = project.architectureRoleId ? getArchitectureRoleById(project.architectureRoleId) : undefined;
+    if (project.architectureRoleId && !role) throw new Error(`${project.id} references missing architecture role ${project.architectureRoleId}`);
     const openQuestions = questions
       .filter((question) => getProjectForQuestion(question.id)?.id === project.id)
       .sort((left, right) => questionPriority[left.state] - questionPriority[right.state])
@@ -47,23 +50,25 @@ export const projects: Project[] = projectDefinitions
     return {
       id: project.id,
       slug: project.slug,
-      index: role.index,
+      index: role?.index || required(project.index, project.id, "index"),
       group: project.group,
+      category: project.category || "research",
+      availability: project.availability || "research",
       title: project.title,
       label: project.label,
-      thesis: role.thesis,
+      thesis: role?.thesis || required(project.thesis, project.id, "thesis"),
       summary: project.summary,
       problem: required(project.problem, project.id, "problem"),
       capability: required(project.capability, project.id, "capability"),
       maturity: required(project.maturity, project.id, "maturity"),
       audience: required(project.audience, project.id, "audience"),
       latestProof: required(project.latestProof, project.id, "latestProof"),
-      flagshipSlug: required(project.flagshipSlug, project.id, "flagshipSlug"),
-      question: role.question,
+      flagshipSlug: project.flagshipSlug,
+      question: role?.question || required(project.question, project.id, "question"),
       state: project.state,
       lifecycle: project.lifecycle,
-      owns: [...role.owns],
-      boundary: [...role.boundary],
+      owns: [...(role?.owns || project.owns || [])],
+      boundary: [...(role?.boundary || project.boundary || [])],
       evidence: [...project.evidence],
       openQuestions,
       repository: project.repository,

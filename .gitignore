@@ -13,3 +13,9 @@ out/
 # Build-time article projections; MDX frontmatter remains authoritative.
 /content/articles/generated-metadata.ts
 /content/articles/generated-manifest.ts
+
+# Build-time project projection; owner snapshot + Web publication remain the committed inputs.
+/content/projects/generated-*.ts
+
+# Build-time design-token translation; design/tokens.json remains authoritative.
+/styles/generated-design-tokens.css

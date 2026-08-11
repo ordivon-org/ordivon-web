@@ -26,8 +26,8 @@ export default function WritingPage() {
     <div className="writing-page page-top">
       <header className="index-hero page-shell">
         <p className="eyebrow">Writing</p>
-        <h1>Ideas, experiments, and decisions behind durable agent work.</h1>
-        <p>Start with the architecture, follow the experiments that changed it, or browse the complete dated record.</p>
+        <h1>Understand the work before learning the vocabulary.</h1>
+        <p>Start with a concrete failure, follow the smallest mechanism that explains it, then descend into exact experiments, architecture, and the complete dated record.</p>
         <dl className="writing-summary" aria-label="Writing summary">
           <div><dt>Research reports</dt><dd>{researchReports}</dd></div>
           <div><dt>Engineering records</dt><dd>{engineeringRecords}</dd></div>
@@ -71,7 +71,7 @@ export default function WritingPage() {
           </div>
         </section>
 
-        <div className="writing-principle"><span>Publishing rule</span><p>Publish when an experiment, boundary, release, or judgment becomes worth preserving—not simply because another page can be filled.</p></div>
+        <div className="writing-principle"><span>Explanation rule</span><p>Start with what happened and why it matters. Add only the causal distinctions needed for the next judgment, bind strong claims to exact evidence, and state what the result does not prove.</p></div>
 
         <section className="writing-topics" aria-labelledby="writing-topics-title">
           <SectionHeading

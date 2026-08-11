@@ -14,74 +14,77 @@ audience:
   - editor
   - reviewer
   - agent
-updated: 2026-08-03
-summary: Canonical entry to public positioning, audiences, voice, vocabulary, publication types, claim discipline, and review boundaries.
+updated: 2026-08-08
+summary: Canonical entry to Agent-native Web management, public information architecture, positioning, publication discipline, design authority, and review boundaries.
 evidence_status: not_applicable
 readiness: READY
 applies_to:
   - ordivon-web
 related:
+  - web.information-architecture
   - web.publication-system
+  - web.agent-web-system
+  - web.design-system
+  - web.aesthetic-research
   - web.authority
 ---
 # Ordivon Editorial System
 
 Status: canonical editorial guidance for `ordivon-web`  
-Established: 31 July 2026  
-Applies to: interface copy, metadata, articles, release notes, research reports, diagrams, RSS summaries, social cards, and repository-facing publication copy.
+Applies to: interface copy, project summaries, metadata, articles, release notes, research reports, diagrams, feeds, social cards, and repository-facing publication copy.
 
 ## Purpose
 
-Ordivon Web is not only a renderer for repository state. It is the public editorial layer through which independent research, engineering results, project judgment, and long-term positions become understandable, memorable, and useful.
+Ordivon Web is the public orientation and publication layer for a family of infrastructure, application, capability, and research projects. It must make the whole map understandable without turning summaries into a second implementation authority.
 
-The editorial system exists to prevent two equal failures:
+The editorial system prevents three failures:
 
-1. reducing real research to vague promotion; and
-2. publishing correct internal language that requires readers to reconstruct the value themselves.
+1. vague promotion that hides maturity and limitations;
+2. technically correct internal language that makes readers reconstruct the value themselves; and
+3. current pages or old articles that drift from the owning repositories.
 
-The desired public standard is:
-
-> Bold in judgment. Precise in evidence. Plain before technical. Concrete before abstract.
+> Bold in judgment. Precise in evidence. Plain before technical. Current status before historical detail.
 
 ## Start here
 
+- [`agent-web-system.md`](./agent-web-system.md) — Agent-native observation, judgment, generation, preview, verification, and promotion.
+- [`feynman-explanation.md`](./feynman-explanation.md) — default causal explanation contract: concrete consequence, smallest mechanism, exact evidence, then formal vocabulary and proof boundary.
+- [`information-architecture.md`](./information-architecture.md) — page hierarchy, project map, maturity language, linking, and historical corrections.
 - [`positioning.md`](./positioning.md) — what Ordivon is, why it matters, and the message hierarchy.
-- [`audiences.md`](./audiences.md) — primary readers, their questions, and the appropriate entry path.
-- [`voice.md`](./voice.md) — sentence-level tone, rhythm, terminology, calls to action, and examples.
-- [`vocabulary.md`](./vocabulary.md) — public terminology, capitalization, definitions, and progressive disclosure.
+- [`audiences.md`](./audiences.md) — primary readers, their questions, and appropriate entry paths.
+- [`voice.md`](./voice.md) — sentence-level tone, rhythm, calls to action, and examples.
+- [`vocabulary.md`](./vocabulary.md) — current project definitions, ownership terms, capitalization, and status language.
 - [`article-types.md`](./article-types.md) — publication taxonomy, required structure, and selection rules.
-- [`claim-policy.md`](./claim-policy.md) — evidence obligations, claim classes, limitations, corrections, and marketing boundaries.
-- [`audit-2026-07-31.md`](./audit-2026-07-31.md) — R1 inventory and scored baseline of the current public copy.
-- [`r2-p0-2026-07-31.md`](./r2-p0-2026-07-31.md) — implemented high-leverage entry, title, metadata, and social-distribution changes.
-- [`r2-p1-p2-2026-07-31.md`](./r2-p1-p2-2026-07-31.md) — implemented reader orientation, progressive technical disclosure, and selected recovery improvements.
+- [`claim-policy.md`](./claim-policy.md) — evidence obligations, limitations, corrections, and marketing boundaries.
+- [`publication-system.md`](./publication-system.md) — implemented authoring, validation, distribution, and deployment architecture.
+- [`authority.md`](./authority.md) — ownership of current summaries, dated articles, repository facts, research evidence, design context, and generated projections.
+- [`../../design/README.md`](../../design/README.md) — machine-readable design context and reusable visual primitives.
+- [`../../design/aesthetic-research.md`](../../design/aesthetic-research.md) — method for bounded human-facing visual experiments.
+
+Dated audits and phase reports remain historical evidence. They are not part of the current reading order unless a new review explicitly needs their baseline.
 
 ## Editorial sequence
 
 Every important public surface should answer these questions in order:
 
-1. **What changed or what problem exists?**
-2. **Why does it matter outside Ordivon?**
-3. **What is Ordivon's judgment?**
-4. **What evidence supports that judgment?**
-5. **What remains uncertain?**
-6. **Where should the reader go next?**
-
-Internal architecture may require additional precision. It should not replace this sequence.
+1. **What is this and why does it matter?**
+2. **What exists today?**
+3. **What is its actual maturity or status?**
+4. **Which project owns the exact facts?**
+5. **What evidence supports the public judgment?**
+6. **What remains uncertain or historical?**
+7. **Where should the reader go next?**
 
 ## Current boundary
 
-Public copy may interpret and organize the work. It must not become a second technical authority.
+Agents may observe, interpret, compose, and manage public changes. Neither their generated copy nor their design output may become a second technical authority.
 
-- Repositories own source, tests, release identity, receipts, and live implementation state.
-- Research records own detailed experimental setup and raw evidence.
-- Dated articles own their published argument at that date.
-- Current Question and Project metadata own only the present public orientation.
-- Interface copy owns navigation and explanation, not technical truth.
+- Repositories own source, tests, releases, operations, receipts, and current implementation boundaries.
+- Research records own experimental setup, methods, and evidence.
+- Dated articles own their argument and declared limitations at a date.
+- Current Project and Question metadata own only public orientation at `siteUpdatedAt`.
+- Interface copy owns hierarchy, explanation, and navigation.
 
-## Use in review
+## Review
 
-A change to a public page or article should be reviewed against the relevant files above. The system is guidance, not a mandatory prose bureaucracy. Apply it where it improves comprehension, credibility, or reach; do not create process that costs more than the communication failure it prevents.
-
-- [`publication-system.md`](./publication-system.md) — implemented the publication schema, reusable primitives, flagship packages, revision semantics, and production audit.
-
-- [`a-series-web-constraint-audit-2026-08-01.md`](./a-series-web-constraint-audit-2026-08-01.md) — applies Ordivon Computer A0–A16 to Web architecture, gates, and publication constraints.
+Review public changes against the stable guidance above. Prefer a small accurate summary and a direct owner link over duplicated technical detail. Do not add governance, metadata, or page types unless a repeated communication failure justifies them.

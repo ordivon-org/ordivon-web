@@ -2,140 +2,119 @@
 
 ## Category
 
-Ordivon is an **independent research and engineering effort for durable agent work**.
+Ordivon is an **independent family of research, infrastructure, application, and publication projects for durable Agent work**.
 
-It studies and builds the layers that let capable models perform consequential work across sessions, processes, machines, providers, and changing implementations without losing task meaning, execution truth, or recoverability.
+It studies and builds the boundaries that let capable models perform consequential work across Runs, processes, machines, providers, and changing implementations without losing Task meaning, physical evidence, or recoverability.
 
-Ordivon Web is the public interface to that work. It is part research publication, part engineering record, and part project map. It is not a conventional SaaS landing page, a live product dashboard, or a public mirror of every internal object.
+Ordivon Web is the public orientation and editorial layer. It is not a SaaS landing page, a live product dashboard, or a mirror of every repository document.
 
 ## One-line position
 
-> Ordivon builds systems that let AI work continue, recover, and remain verifiable after the model or session that started it is gone.
+> Ordivon keeps real AI work durable while the intelligence and implementations remain replaceable.
 
 ## Short position
 
-> Models can reason, write code, and use tools, but real work often disappears with the conversation, process, machine, or provider that carried it. Ordivon builds and tests the thin state, execution, and evidence boundaries required for that work to survive replacement and interruption.
+> Models can reason, write code, and use Tools, but work often disappears with the Session, process, machine, or provider that carried it. Ordivon separates durable Task commitments, one replaceable Agent Run, physical execution, applications, and research so interruption does not force the next system to invent what happened.
 
 ## Extended position
 
-Ordivon is an independent collection of research and engineering projects concerned with one practical question: how can increasingly capable agents perform real work without making one model session, process, machine, provider, or interface the permanent owner of that work? Ordivon separates task meaning, physical execution, external interaction, and research contracts so each can remain durable where it matters and replaceable where it does not. The public site records the experiments, deletions, architecture decisions, releases, and long-term arguments that changed this system.
+Ordivon asks one practical question: how can increasingly capable Agents perform real work without making one model Session, process, machine, provider, interface, or research prototype the permanent owner of that work? The current core separates Host Task continuity, Harness Run semantics, and Runtime physical execution. World preserves narrow cross-owner relationships to external reality; Game, Finance, Human, Security, and Studio pressure the system through playable worlds, capital effects, human research, adversarial experiments, and creative production. Computing owns cross-project scientific synthesis rather than current product truth. Web explains the map, tests the real public encounter, and preserves dated judgment.
 
 ## Core problem
 
 The model is increasingly capable, but the surrounding work remains fragile.
 
-Common failure modes include:
+Common failures include:
 
-- a session ends and the next model cannot distinguish accepted decisions from discussion;
-- a process succeeds while the task remains semantically incomplete;
-- a response is lost after an external effect may already have committed;
-- a provider changes and the work must restart because its session was treated as the task database;
-- an interface creates a second truth store that later disagrees with source, execution, or world state;
-- governance and abstraction grow faster than the failure they were meant to prevent.
+- a Session ends and the next Agent cannot distinguish accepted commitments from discussion;
+- a Provider Run or transcript becomes an accidental Task database;
+- a process succeeds while semantic completion remains unverified;
+- a response is lost after an operation may already have committed;
+- a project summary or interface becomes a second truth store;
+- a research abstraction grows into infrastructure before a real workload earns it.
 
-Ordivon exists to identify the smallest durable boundaries that survive these failures.
+Ordivon identifies the smallest durable owner for each failure and removes boundaries that no longer justify themselves.
 
 ## Public promise
 
-Ordivon does not promise universal autonomy, model equivalence, or a complete agent platform.
+Ordivon does not promise universal autonomy, Provider equivalence, a complete Agent platform, or production maturity across every repository.
 
-It promises a more disciplined and testable contribution:
+It promises a disciplined contribution:
 
-> Preserve the facts required to continue real work; keep the intelligence and implementations replaceable; make failure recoverable; show the evidence that earned each boundary.
+> Preserve the facts required to continue real work; keep intelligence and implementations replaceable; make failure recoverable; identify current maturity; show the evidence that earned each boundary.
 
 ## Message hierarchy
 
-Public communication should normally follow this hierarchy.
+### 1. Consequence
 
-### 1. Human consequence
+Start with what continues, what failure is avoided, or what a reader can use.
 
-Start with what becomes possible or what failure is avoided:
+### 2. Current status
 
-- work continues after interruption;
-- a replacement agent can resume without inventing history;
-- an ambiguous external action is reconciled rather than blindly repeated;
-- a working abstraction can be deleted when evidence no longer supports it.
+State whether the subject is operational, an implemented prototype, playable, research, rejected, or historical.
 
-### 2. Concrete result
+### 3. Concrete result
 
-Show the event, workload, comparison, or release:
+Name the workload, release, test, comparison, deletion, or experiment.
 
-- both Codex-to-Hermes and Hermes-to-Codex replacement orders completed one task attempt;
-- three injected faults were handled without giving Runtime task semantics;
-- thirteen duplicate authority tables were deleted while exact world outcomes remained unchanged;
-- 84 adversarial trials separated tactical success from strategic outcome.
+### 4. General judgment
 
-### 3. General judgment
+Explain what ownership or investment changed.
 
-State what the result changed:
+### 5. Formal architecture
 
-- durable task state can cross materially different provider harnesses;
-- final assistant text is not portable completion evidence;
-- replay should be a projection of retained authority, not another database;
-- stronger baselines should reduce an agent-native core rather than decorate it.
-
-### 4. Formal architecture
-
-Only then introduce Host, Runtime, World, Harness, Assignment, Effect, Observation, or other formal objects.
+Only then introduce Host, Harness, Runtime, Assignment, Effect, Observation, or other exact objects.
 
 ## Differentiation
 
-Ordivon should be recognizable through the combination below, not through claims of being uniquely advanced.
-
-- **Real dogfood over imagined platform scope.** Boundaries are retained after use, replacement, faults, and comparison.
-- **Deletion as a research result.** A removed repository, table, abstraction, or process boundary may be more important than a feature addition.
-- **Thin permanent core, wide reversible exploration.** Strictness concentrates where consequences become difficult to recover.
-- **Provider-faithful integration.** Mature agent systems keep their useful native semantics rather than being flattened into a lowest-common-denominator lifecycle.
-- **Dated public judgment.** Articles preserve what was believed, what changed it, and what remains open.
-- **Independent scale.** The work does not pretend to be a finished company, institutional laboratory, or universal standard.
+- **Real use over imagined platform scope.** Boundaries survive replacement, faults, comparison, and operation.
+- **Deletion as a result.** Removing a repository, table, abstraction, or layer can be more important than adding a feature.
+- **Thin permanent core, wide reversible exploration.** Strictness concentrates where facts become expensive to reconstruct.
+- **Provider-faithful integration.** Mature Agent systems retain native semantics instead of being flattened.
+- **Dated public judgment.** Articles preserve the argument at a date; current pages state what changed later.
+- **Independent scale.** The work does not imply a company, customer base, institutional laboratory, or universal standard.
 
 ## Page roles
 
-Each page has a distinct rhetorical responsibility.
-
 | Page | Primary job | Must answer |
 | --- | --- | --- |
-| Home | Position and prove | What is Ordivon, why does it matter, and what has already survived? |
-| System | Explain ownership | Which facts belong to which layer, and how does work cross them? |
-| Projects | Show construction | What is each project building, how mature is it, and what did it prove recently? |
-| Research | Expose uncertainty | Which questions remain open, what evidence changed judgment, and what would falsify the current model? |
-| Writing | Curate arguments | What should a reader start with, which positions matter, and how do reports differ? |
-| Now | Summarize change | What changed, what was learned, what was removed, and what is next? |
-| About | Establish motive and trust | Why does this work exist, who maintains it, and how should its claims be evaluated? |
-| Colophon | Explain publication machinery | How is the site built and where does technical authority remain? |
+| Home | Orient and route | What is Ordivon, what exists today, and where should I begin? |
+| How it works | Explain ownership | How do Host, Harness, Runtime, and the owning domain divide responsibility? |
+| Projects | Map current work | Which project owns this, what is its maturity, and where is its repository? |
+| Research | Expose uncertainty | Which questions remain open or testing, and what would change the judgment? |
+| Writing | Curate dated arguments | Which report, decision, correction, or historical record should I read? |
+| Now | Summarize current status | What is usable, implemented, playable, research, removed, or historical? |
+| About | Establish motive and trust | Why does the work exist, who maintains it, and how should claims be evaluated? |
+| Colophon | Explain publication machinery | How is the site built and kept separate from technical authority? |
 
 ## Proof hierarchy
 
 Prefer proof in this order:
 
-1. independently verifiable release or repository state;
-2. reproducible test, receipt, artifact, or exact comparison;
+1. verifiable release, operational contract, or repository state;
+2. reproducible test, receipt, Artifact, or exact comparison;
 3. bounded experiment with explicit setup and limitations;
-4. observed dogfood behavior;
+4. observed use;
 5. reasoned architectural inference;
 6. thesis or forecast.
 
-A lower level may still justify publication, but the language must identify it correctly.
-
 ## What Ordivon should not become
 
-- A generic "AI agents platform" claim without a specific workload and boundary.
-- A company-shaped façade that implies team size, customer adoption, or production maturity that does not exist.
-- A graph ontology presented as the reason readers should care.
-- A sequence of changelogs with no judgment.
+- A generic Agent platform claim without a workload and owner.
+- A company-shaped façade implying adoption or maturity that does not exist.
+- A diagram that promotes every repository into one execution layer.
+- A changelog with no judgment or current status.
 - A manifesto without implementation pressure.
 - A research database whose object count substitutes for insight.
-- A marketing surface that hides failed experiments, unresolved questions, or deletion conditions.
+- A marketing surface that hides negative results, rejected layers, or deletion conditions.
 
 ## Stable brand lines
 
-Use these sparingly as recurring editorial assets:
+Use sparingly:
 
 - **Work should survive the intelligence that started it.**
-- **Persistent work. Recoverable execution. Durable evidence.**
-- **Questions are the durable unit of unfinished work.**
+- **Durable work. Replaceable intelligence. Recoverable execution.**
 - **Evidence may revise the map; the map may not revise the evidence.**
 - **Progress includes removing boundaries that no longer earn themselves.**
-- **The future will not wait.**
 
-A page should normally contain no more than one major aphoristic line above the fold. Strong lines need plain explanatory copy around them.
+A page should normally contain no more than one major aphoristic line above the fold.

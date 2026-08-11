@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 2,
+  "project": {
+    "id": "ordivon-harness",
+    "name": "Ordivon Harness",
+    "repository": "https://github.com/zycxfyh/ordivon-harness",
+    "kind": "engineering",
+    "description": "Independent Agent Run execution, Provider continuity, Tool checkpointing, evidence, resume, and recovery.",
+    "publicProjection": "ordivon-web"
+  },
+  "source": {
+    "revision": "b640f2dbbd78cbd645f4adbedc9465fd2218876f",
+    "dirty": false,
+    "publicSourceDigest": "sha256:9580b7d53275240cab9517f88e74bbdfd4016725f966528cc4de875092443e50",
+    "projectManifestDigest": "sha256:df992f1ff26bcd1f2f9571a0e7f31e091ea7d8c4c71cfdedff2841b69a00f576",
+    "authorityDocument": "docs/authority.md",
+    "authorityDigest": "sha256:697386a85cbd945c544e6d1cf5f2f07e34aaa64d477a4eb35d5227c1730ed08c",
+    "authoritySection": "Decision",
+    "documents": [
+      {
+        "path": "ARCHITECTURE.md",
+        "digest": "sha256:322c96c7f7868dbc92581e0cc0afb35c99ac8937e19ecb6655580e464a00b3c2",
+        "id": "harness.architecture",
+        "type": "architecture",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/authority.md",
+        "digest": "sha256:697386a85cbd945c544e6d1cf5f2f07e34aaa64d477a4eb35d5227c1730ed08c",
+        "id": "harness.authority",
+        "type": "decision",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-05",
+        "evidenceStatus": "not_applicable",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/COMPATIBILITY.md",
+        "digest": "sha256:ed21ad0b10d457c162e22378e8cdb72aa9c25f773b2a46c75d1ac1f915c7bbc7",
+        "id": "harness.compatibility",
+        "type": "policy",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-04",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/DATA_AND_PRIVACY.md",
+        "digest": "sha256:851146bcd0763f72907bf2c3d814c645256519b509ecaa74c09cc21614479a26",
+        "id": "harness.data-privacy",
+        "type": "policy",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/DOMAIN-TOOL-BRIDGE-P0.md",
+        "digest": "sha256:d55c0b52a224a53e76b92e92005077cb05345f092ac1a5b80b4b64b9fb86436d",
+        "id": "harness.domain-tool-bridge.p0",
+        "type": "architecture",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/OPERATIONS.md",
+        "digest": "sha256:102f577938b957c54bf8b9d1b18f628258413d3ccad9a2950224fe942bda014c",
+        "id": "harness.operations",
+        "type": "operations",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/QUICKSTART.md",
+        "digest": "sha256:e3b2d3f6534a1ee625785e48c147be224e9b73a347b9ecb6ae201e55922ababa",
+        "id": "harness.quickstart",
+        "type": "guide",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/RELEASES.md",
+        "digest": "sha256:7de017951c188093ff7be4bb35cd60a47e073f51118cba879db52558c212a548",
+        "id": "harness.releases",
+        "type": "policy",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-04",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/STATUS.md",
+        "digest": "sha256:a2f4854322f9bdb0f73d4995d41eb5ab90fbde683ba1584c2c8cd461440ddfe6",
+        "id": "harness.status",
+        "type": "status",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/VERIFICATION.md",
+        "digest": "sha256:158605e89dba445d83f6fd8df9351d61a85c9b835a77f26841f970361a4c2180",
+        "id": "harness.verification",
+        "type": "reference",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-06",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "README.md",
+        "digest": "sha256:6be1cf3cc58861b5de99af095926db28c57d350cbe39afad2875c90eb60127e4",
+        "id": "harness.start",
+        "type": "start",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-05",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      }
+    ],
+    "anchorDocument": "docs/STATUS.md",
+    "anchorDigest": "sha256:a2f4854322f9bdb0f73d4995d41eb5ab90fbde683ba1584c2c8cd461440ddfe6",
+    "anchorId": "harness.status",
+    "anchorUpdated": "2026-08-08",
+    "lifecycle": "active",
+    "sourceRole": "canonical",
+    "visibility": "public",
+    "updated": "2026-08-08",
+    "summary": "Stable maturity claim, proven capabilities, support boundary and known limits for Ordivon Harness.",
+    "evidenceStatus": "verified",
+    "readiness": "READY"
+  },
+  "admission": {
+    "projectionTarget": true,
+    "activeAuthority": true,
+    "canonicalAuthority": true,
+    "publicAuthority": true,
+    "activeAnchor": true,
+    "canonicalAnchor": true,
+    "publicAnchor": true,
+    "publicDocumentSet": true,
+    "clean": true,
+    "accepted": true
+  },
+  "candidate": {
+    "currentState": "Ordivon Harness is an independent caller-neutral Run system. The current writer is the Harness SQLite Journal/CAS; the default and only CLI authority is `independent-harness-run`.",
+    "capabilities": [],
+    "capabilityBullets": [],
+    "operational": [
+      "caller-delegated `HarnessExecutionMandate`, receipt-derived `HarnessMandateConsumption`, selectable `HarnessExecutionProfile` / `HarnessExecutionStrategy`, and pure `compile_harness_attempt()` into exact `HarnessRunContract` attempt authority;",
+      "`HarnessRunContract` with exact execution-bound authority;",
+      "SQLite Store creation, reopen, Doctor, lease/revision fencing, backup and restore;",
+      "durable Provider Call continuity and response-loss recovery;",
+      "durable Tool-step intents/fences/receipts and Runtime reconciliation;",
+      "Agent loop budgets, pause/resume and no-progress handling;",
+      "DeepSeek mixed Tool+conclusion turns are model-correctable before physical Tool dispatch: neither the ordinary Tool actions nor the simultaneous conclusion are admitted from the ambiguous turn;",
+      "no-Tool DeepSeek CLI profile;",
+      "caller-supplied Runtime client Python API for Tool-bearing Runs;",
+      "independent Run Receipt, CompletionProposal and recovery evidence;",
+      "caller-defined `structured-result-v1` completion schemas for DeepSeek, with exact completion-Contract binding and generic result decoding;",
+      "repository-repair read/edit bridge test surfaces;",
+      "Host-free external-executor adapter."
+    ],
+    "removed": [
+      "The old Host-backed Runner, TaskContract/Assignment persistence, Host compatibility package, Host dependency/extra, `host` CLI namespace, cutover/rollback machinery, and Host-coupled Codex/Hermes execution drivers are not supported current paths and have no compatibility aliases."
+    ]
+  }
+}

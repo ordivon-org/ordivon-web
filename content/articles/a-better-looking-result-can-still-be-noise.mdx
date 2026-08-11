@@ -1,0 +1,150 @@
+export const metadata = {
+  "slug": "a-better-looking-result-can-still-be-noise",
+  "title": "A Better-Looking Result Can Still Be Noise",
+  "deck": "Five thousand zero-effect creative candidates produced an apparently extraordinary winner. The winner disappeared when search history and a pristine holdout became part of the evidence.",
+  "description": "What Studio R4–R6 learned about richer perception, grounded meaning, search inflation, real Web encounters, and why no single score deserves creative authority.",
+  "projectSlugs": ["studio", "web"],
+  "questionSlugs": ["creative-empirical-validity"],
+  "type": "Research report",
+  "project": "Ordivon Studio / Web",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 9,
+  "author": "zycxfyh",
+  "lead": "Agent-scale creation changes the economics of experimentation. It also makes it cheap to search until something looks brilliant. Studio therefore had to learn how to distrust its own winners before it could learn from them.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "More perception is useful only when it reveals a previously unobservable intervention or reduces uncertainty at the tested scope.",
+    "Evidence-addressed propositions were more stable than fine semantic labels in R5.",
+    "Search history, realized Web encounter, typed consequence, and independent holdout must be visible before a creative-effect claim is meaningful."
+  ],
+  "limitations": [
+    "The real reveal-order intervention measured one DeepSeek Agent-observer class, not human comprehension or preference.",
+    "The pristine content holdout replicated direction but not a stable population effect size, and observer/time/device/medium OOS remain untested."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-studio/blob/e13540d9a289b4f94e04eb5079b03a478a5273a4/research/expression/experiments/r6-creative-alpha.md"
+};
+
+<InBrief claim="A creative winner is not evidence until the search that found it and the encounter that exposed it are part of the record." evidence="E4 · Studio R4–R6, Web Chromium encounter evidence, sealed holdout" scope="Owned Studio/Web research surfaces and one Agent-observer class">
+  <p>R4 tested whether richer perception actually saw more. R5 tested whether meaning could point back to evidence. R6 tested whether a creative intervention survived search inflation and an independent content holdout.</p>
+</InBrief>
+
+<h2 id="agents-can-search-faster-than-we-can-trust" data-toc="Search is faster than trust">Agents can search faster than we can trust</h2>
+
+<p>Imagine generating five thousand versions of a headline, layout, edit, or visual treatment. You score every version and publish the best one. The winner looks exceptional.</p>
+
+<p>There is a hidden problem: even if every candidate is pure noise, searching enough candidates will eventually find an extreme value.</p>
+
+<p>That problem becomes structural when Agents can generate, render, judge, and revise at machine speed. A fast creative loop is useful. A fast self-confirming loop can manufacture evidence for almost anything.</p>
+
+<h2 id="r4-first-asked-whether-we-could-see-the-artifact" data-toc="R4: can we see more?">R4 first asked whether we could actually see the artifact</h2>
+
+<p>Studio R4 deliberately avoided jumping straight to “quality.” It asked a simpler equipment question: does richer perception detect changes that shallow metadata cannot see?</p>
+
+<p>For video and audio, the answer was yes. The same owned 78-second production was cut into temporal chunks and reordered while duration, resolution, frame rate, sample rate, channels, and codec remained unchanged. Rich temporal measurements cleanly separated every tested reorder from the independent same-order control.</p>
+
+<p>For full Guardian articles, the result went the other way. Rich mechanical article features did <em>not</em> improve global held-out discrimination over the title-only baseline. Section-local directions even reversed.</p>
+
+<div className="article-thesis"><p>More observable structure is not automatically more explanatory power.</p></div>
+
+<p>R4 therefore retained shared measurement operators—position, variation, repetition, concentration, change—without pretending that one effect direction transfers across media or contexts.</p>
+
+<h2 id="r5-asked-whether-meaning-could-point-back-to-evidence" data-toc="R5: can meaning be grounded?">R5 asked whether meaning could point back to evidence</h2>
+
+<p>A model can produce a persuasive semantic label while citing the wrong part of the artifact. R5 separated those two things.</p>
+
+<p>Across writing, speech, video-event, and crossmodal probes, fine labels such as <code>CAUSES</code>, <code>ENABLES</code>, <code>CONDITION</code>, <code>CONTRASTS</code>, and <code>CONTRADICTS</code> often drifted between neighboring interpretations. But the model usually pointed to the correct evidence.</p>
+
+<p>The most revealing failure came from a video-event omission test. R5 removed the evidence that established exact request-identity recovery. The model still inferred a plausible recovery story from generic failure-boundary material. The grounding validator rejected it.</p>
+
+<blockquote>A coherent interpretation is not grounded merely because it sounds like what probably happened.</blockquote>
+
+<p>R5 therefore retained an object closer to “proposition + exact evidence locator + candidate relation + disagreement” than to one universal semantic class.</p>
+
+<h2 id="r6-attacked-the-research-process-itself" data-toc="R6 attacked the research process">R6 attacked the research process itself</h2>
+
+<p>Before testing a real creative intervention, R6 created a universe where the true creative effect was exactly zero.</p>
+
+<p>It then searched <strong>5,000 candidates</strong>.</p>
+
+<p>The best visible candidate reached <code>z = 4.0061</code> with a naive one-sided <code>p = 0.0000309</code>. If we had looked only at the winner, it would have appeared extraordinary.</p>
+
+<p>When the entire search process was replayed under the null, the corrected value became <code>p = 0.1404</code>. A pristine holdout returned <code>p = 0.3278</code>. The “breakthrough” disappeared.</p>
+
+<p>An adaptive search produced an even nastier case. Its search-aware corrected value was <code>p = 0.01998</code>—a legitimate false positive at a test that still has a nonzero Type-I error. The sealed holdout returned <code>p = 0.6287</code> and rejected the candidate.</p>
+
+<h2 id="search-history-is-part-of-the-evidence" data-toc="Search history is evidence">Search history is part of the evidence</h2>
+
+<p>R6's zero-effect calibration makes the point concrete. Across 800 adaptive zero-effect worlds with 5,000 attempts each:</p>
+
+<ul>
+  <li>the naive test falsely promoted a candidate in 100% of worlds;</li>
+  <li>the search-corrected evidence false-positive rate was 4.875%;</li>
+  <li>the pristine-holdout false-positive rate was 5.625%;</li>
+  <li>both independent evidence classes falsely promoted together in 0.125%.</li>
+</ul>
+
+<p>The lesson is not “use p-values.” It is that <strong>the path used to discover a candidate changes how much evidence the candidate carries</strong>.</p>
+
+<h2 id="then-we-used-a-real-web-encounter" data-toc="Then we used a real Web encounter">Then we used a real Web encounter</h2>
+
+<p>Only after attacking the research institution did Studio and Web run a controlled expressive intervention.</p>
+
+<p>Three variants contained the same seven factual blocks. Only reveal order changed:</p>
+
+<pre tabIndex={0}><code>{`explicit chain   → cause first, boundary visible early
+fragmented       → diagnostics and facts interleaved
+ evidence delayed → key causal trigger revealed late`}</code></pre>
+
+<p>Web owned the actual Chromium encounter: randomized assignment, exact propensity, rendered initial viewport, realized exposure event, screenshot identity, and visible evidence blocks. Studio owned the intervention and scoring. Harness owned Provider authority.</p>
+
+<p>This boundary matters because source code does not tell you what the observer actually encountered. The first planned viewport accidentally clipped the decisive boundary in the “explicit” variant. The experiment measured the rendered coordinates and fixed the viewport <em>before the first semantic Provider observation</em>.</p>
+
+<h2 id="answer-correctness-was-not-enough" data-toc="Correct answers were not enough">Answer correctness was not enough</h2>
+
+<p>On the visible experiment, the explicit-chain variant reached 100% adaptation, comprehension, perception, and grounding in the tested Agent-observer tasks. The fragmented version still reached 81.25% adaptation while grounding fell to 28.125% and unsupported assertions rose to 64.58%.</p>
+
+<p>That is a crucial result for publication work. A reader—or model—can sometimes arrive at the right answer for the wrong evidentiary reason.</p>
+
+<p>R6 therefore treated adaptation, comprehension, perception, grounding, and unsupported assertion as different consequences instead of compressing them into one “quality” number.</p>
+
+<h2 id="the-holdout-shrank-the-effect" data-toc="The holdout shrank the effect">The holdout shrank the effect</h2>
+
+<p>A physically sealed, never-before-seen mechanism supplied the content holdout. The explicit-minus-fragmented adaptation advantage remained positive, but it shrank from <strong>+18.75 percentage points</strong> on the visible content to <strong>+4.17 points</strong> on the pristine holdout.</p>
+
+<p>Post-freeze bootstrap uncertainty included zero on the holdout. R6 therefore recorded only directional artifact-content replication under one Agent-observer class. It did not promote a stable effect size.</p>
+
+<h2 id="what-this-means-for-ordivon-web" data-toc="What this means for Web">What this means for Ordivon Web</h2>
+
+<p>The publication loop now has a clearer hierarchy:</p>
+
+<pre tabIndex={0}><code>{`exact source claim
+→ real rendered artifact
+→ exact encounter
+→ grounded consequence
+→ search-aware comparison
+→ independent holdout
+→ scoped editorial prior`}</code></pre>
+
+<p>This does not mean every article needs a randomized experiment. It means Web should not turn its own generation speed, visual polish, model preference, or one judge score into authority.</p>
+
+<p>For ordinary writing, the practical version is simpler: inspect what the reader actually sees, keep claims bound to evidence, record why a variant was selected, and treat a beautiful internal consensus as weak evidence until an external consequence requires something stronger.</p>
+
+<h2 id="what-we-still-do-not-know" data-toc="What we still do not know">What we still do not know</h2>
+
+<p>R6 did not measure human comprehension, memory, preference, trust, or behavior. It did not establish cross-provider generalization, cross-device generalization, long-term effect, or a universal rule that causal order should always appear first.</p>
+
+<p>Those missing dimensions are not caveats to hide. They tell us exactly which claims the current evidence is allowed to support.</p>
+
+<p className="article-closing">Agent-scale creation makes it easier to find impressive artifacts. Scientific discipline is what stops “impressive” from becoming a synonym for “true.”</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Primary records</p>
+  <h2 id="sources-title" data-toc="Primary records">Studio R4–R6 and Web encounter evidence</h2>
+  <ol className="source-list">
+    <li><a href="https://github.com/zycxfyh/ordivon-studio/blob/e13540d9a289b4f94e04eb5079b03a478a5273a4/research/expression/experiments/r4-rich-perception.md">R4 Rich Perception</a></li>
+    <li><a href="https://github.com/zycxfyh/ordivon-studio/blob/e13540d9a289b4f94e04eb5079b03a478a5273a4/research/expression/experiments/r5-grounded-meaning.md">R5 Grounded Meaning</a></li>
+    <li><a href="https://github.com/zycxfyh/ordivon-studio/blob/e13540d9a289b4f94e04eb5079b03a478a5273a4/research/expression/experiments/r6-creative-alpha.md">R6 Creative Alpha Research</a></li>
+  </ol>
+</section>

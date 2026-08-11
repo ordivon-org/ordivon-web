@@ -36,7 +36,7 @@ export default function AboutPage() {
         <div><p className="section-index">Origin</p><h2 id="about-origin-title">Separate intelligence from the work that must endure.</h2></div>
         <div>
           <p>Ordivon grew from repeated attempts to continue real engineering work across session loss, model replacement, process restart, and changing external conditions. The recurring problem was not that models lacked intelligence. It was that the surrounding system gave transient cognition ownership over facts that needed to remain durable.</p>
-          <p>That failure connected what became Computing, Host, Runtime, and World: research the contracts, preserve task meaning, commit local work with evidence, and reconcile external action without blind repetition.</p>
+          <p>That failure produced the current project family: Computing tests shared contracts; Host preserves durable Tasks; Harness owns one replaceable Agent Run; Runtime commits physical local work; Game, Human, Security, and World pressure those ideas through products, research, adapters, and operator tools.</p>
         </div>
       </section>
 
@@ -61,7 +61,7 @@ export default function AboutPage() {
         <p className="section-index">Long-term ambition</p>
         <h2 id="about-ambition-title">AI work should become less session-bound, more recoverable, and easier to verify.</h2>
         <p>The long-term goal is not to force every agent through one stack. It is to identify the small set of durable responsibilities that let intelligence, tools, machines, providers, and human judgment change without destroying the work trajectory they are serving.</p>
-        <div className="actions"><Link className="button primary" href="/system">See the current architecture</Link><Link className="button text" href="/research">Follow what remains uncertain</Link></div>
+        <div className="actions"><Link className="button primary" href="/system">See how the core works</Link><Link className="button text" href="/research">Follow what remains uncertain</Link></div>
       </section>
 
       <section className="method-list" aria-labelledby="about-method-title">

@@ -12,11 +12,11 @@ export const metadata = {
   "type": "Architecture report",
   "project": "Ordivon World",
   "publishedAt": "2026-07-28",
-  "revisedAt": "2026-07-30",
+  "revisedAt": "2026-08-04",
   "readMinutes": 9,
   "author": "zycxfyh",
   "lead": "The original split solved a real problem. Network observation, routing, VPNs, transports, browsers, cloud providers, Sandboxes, and remote execution are mature technical domains with different mechanisms. Treating them as one undifferentiated “edge” would have encouraged Ordivon to rebuild infrastructure it should reuse.",
-  "status": "current",
+  "status": "historical",
   "claimClass": "architecture-decision",
   "evidenceLevel": "E2",
   "takeaways": [
@@ -25,13 +25,15 @@ export const metadata = {
     "Link and Edge were retired into the narrower World research boundary."
   ],
   "limitations": [
-    "World is still an experimental boundary and has not yet won against direct Host integration in W1.",
+    "Later W1 and follow-on comparisons rejected a shared World authority; the active repository retains only owner-local capabilities.",
     "The unification does not replace mature transport or provider-native mechanisms."
   ],
   "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-world"
 };
 
 import { DecisionComparison } from "@/components/mdx/decision-comparison";
+
+<div className="article-thesis"><p><strong>Editorial update · 4 August 2026:</strong> Later experiments did not justify the shared World boundary proposed here. The active repository now retains a Cloudflare adapter and private network operator tools; it owns no World service, database, router, workflow, or universal interaction schema. This report remains as historical evidence of the intermediate unification. See <a href="/projects/world">the current World project page</a>.</p></div>
 
 <h2 id="the-split-was-analytically-correct" data-toc="The split was analytically correct">The split was analytically correct</h2>
           <p>Link isolated facts about logical relationships, endpoints, paths, transports, identities, and network-conditioned observations. Edge isolated external capabilities, provider operations, bodies, Receipts, Artifacts, remote uncertainty, and residual state. That distinction remains useful inside the architecture.</p>
@@ -65,6 +67,6 @@ import { DecisionComparison } from "@/components/mdx/decision-comparison";
           <p>Architecture should follow the object that must remain continuous, not the repositories that happened to exist first. Edge and Link were useful prototypes. Deleting their project boundary preserves the useful code while removing the assumptions that the code had begun to impose on the research.</p>
 
 <footer className="article-footer">
-<p>This page preserves the original URL and publication date while recording the 30 July 2026 correction. Historical receipts still name the former repositories; current work and research live in Ordivon World.</p>
+<p>This page preserves the original URL, publication date, and the 30 July unification argument. The 4 August update records the later negative result: current work in Ordivon World is limited to retained owner-local capabilities, not the shared semantic boundary described above.</p>
           <div className="actions"><a className="button button-primary" href="/projects/world">Explore Ordivon World</a><a className="button button-secondary" href="https://github.com/zycxfyh/ordivon-world">Inspect the repository</a></div>
 </footer>

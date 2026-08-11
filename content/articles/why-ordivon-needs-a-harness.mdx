@@ -5,6 +5,7 @@ export const metadata = {
   "description": "Why H5 correctly rejected a common Codex/Hermes lifecycle while a separate Ordivon Harness remains strategically necessary for bare model APIs, local inference, and controlled agent-loop research.",
   "projectSlugs": [
     "host",
+    "harness",
     "computing"
   ],
   "questionSlugs": [
@@ -14,10 +15,11 @@ export const metadata = {
   "type": "Architecture decision",
   "project": "Ordivon Host",
   "publishedAt": "2026-07-31",
+  "revisedAt": "2026-08-04",
   "readMinutes": 10,
   "author": "zycxfyh",
   "lead": "The word Harness had been hiding two different decisions. Ordivon should not flatten mature Provider Agent systems into a lowest-common-denominator platform. It should still be able to turn a bare model API into one bounded, Tool-using, verifiable Agent Run.",
-  "status": "current",
+  "status": "historical",
   "claimClass": "architecture-decision",
   "evidenceLevel": "E4",
   "takeaways": [
@@ -27,10 +29,12 @@ export const metadata = {
   ],
   "limitations": [
     "The decision is grounded in Codex and Hermes plus current bare-API requirements, not every future provider.",
-    "The first-party harness has not yet earned a separate repository through broad production use."
+    "The article predates Harness extraction and the implemented DeepSeek path; current capability belongs to the Harness repository."
   ],
   "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-host/blob/4ac03b52322cb76ade8f2902ab5b08113141c3e7/docs/harness-boundary-h5-decision.md"
 };
+
+<div className="article-thesis"><p><strong>Editorial update · 4 August 2026:</strong> Ordivon Harness is now an independent implemented repository. It retains Codex App Server and Hermes ACP adapters, a first-party DeepSeek model–Tool loop, durable Tool-step recovery, and public Runner operations. This article remains historical because its core distinction survived, while its proposed location and construction status did not. See <a href="/projects/harness">the current Harness project page</a>.</p></div>
 
 <h2 id="the-word-harness-was-hiding-two-decisions" data-toc="Two decisions hidden in one word">The word Harness was hiding two decisions</h2>
 
@@ -95,7 +99,7 @@ export const metadata = {
 <p>Most general Agent frameworks are broad because they also own planning, workflows, sessions, memory, files, shell, approvals, hosting, observability, and deployment. Ordivon has already assigned the heaviest responsibilities elsewhere.</p>
 
 <div className="surviving-stack">
-  <div><span>Host already owns</span><strong>Task semantics</strong><p>Goal, Task, Attempt, Assignment generation, Context, Artifact provenance, recovery, completion, and Outcome.</p></div>
+  <div><span>Host already owns</span><strong>Task continuity</strong><p>Generic Task state, Journal/CAS, commitments, verification records, and Outcome.</p></div>
   <div><span>Runtime already owns</span><strong>Execution mechanics</strong><p>Workspace, Job, process, output, Artifact retention, cancellation, request identity, and response-loss reconciliation.</p></div>
   <div><span>Harness only needs</span><strong>The cognitive episode</strong><p>Model calls, Tool interpretation, bounded observations, Run-local Context, budget, interruption, stop, and receipt.</p></div>
 </div>
@@ -129,7 +133,7 @@ export const metadata = {
 
 <h2 id="when-ordivon-harness-becomes-a-repository" data-toc="Repository promotion gate">When Ordivon Harness becomes a repository</h2>
 
-<p>The project name is already Ordivon Harness. Its first implementation should remain inside Host. A standalone repository is eligible only after:</p>
+<p>At publication, the proposed first implementation was expected to remain inside Host until repeated use earned extraction. Subsequent implementation and boundary work did earn an independent Ordivon Harness repository. The original extraction criteria remain useful historical discipline:</p>
 
 <ul>
   <li>a working first-party model/Tool Loop exists;</li>

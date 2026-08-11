@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 2,
+  "projectId": "ordivon-security",
+  "sourceRevision": "7ce19d8c6e395419883af16b0adcb171f9e83a93",
+  "sourceDigest": "sha256:ec7fc299e2e692d89b5e00adda269c2030c5fd7f8593eaa51556b7d10b8ca589",
+  "project": {
+    "id": "project:security",
+    "kind": "project",
+    "slug": "security",
+    "group": "Research and specification",
+    "label": "Agent-first adversarial-autonomy laboratory",
+    "category": "research",
+    "availability": "research",
+    "publicPage": true,
+    "index": "08",
+    "thesis": "Study autonomous opposition by keeping actor intent and observation, authority, physical consequence, sensor evidence, world truth, and evaluation as distinct facts.",
+    "question": "Which minimal laws remain necessary when autonomous principals can hold different information, authority, goals, and interpretations while causing and recovering consequential effects?",
+    "owns": [
+      "Contested-Range and reusable adversarial substrate semantics",
+      "Principal/Actor information boundaries and domain effect admission",
+      "Independent truth, uncertainty, consequence verification, and recovery meaning",
+      "Raw metrics, scoring, and adversarial evaluation",
+      "Scoped profiles only where experiments prove domain-specific value"
+    ],
+    "boundary": [
+      "Authorized owned or explicitly delegated ranges only",
+      "No generic Agent cognition, Task continuity, physical runtime, World capability, hypervisor, or security-tool ownership",
+      "Campaign, coalition, organization, trust, infection, and stronger transaction/replication structures remain hypotheses until experiments force them",
+      "No unrestricted external targets or production attack-platform claim"
+    ],
+    "problem": "Classical security mechanisms can execute, observe, and contain effects, but they do not by themselves define the experiment when autonomous opponents hold different observations, authority, objectives, and interpretations of the same changing world.",
+    "capability": "Runs bounded adversarial-autonomy experiments over a reusable RangeSession/RangeAuthority substrate and scoped profiles such as synchronous Contest, CAGE, software Evaluation, and Windows KVM. It composes Host, Harness, Runtime, World, hypervisors, ranges, and security tools while keeping principal information, authority, consequence, truth, recovery, and evaluation distinct.",
+    "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
+    "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
+    "latestProof": "AE2 now introduces two independently sourced sensor observations that disagree while neither is world truth. With no source ranking or history, one shared Defender policy refuses arbitrary source selection, requests explicit adjudicating inspection, and only authoritative current world truth later separates healthy hold from compromised quarantine. The contradictory sensor observations remain preserved as historical evidence.",
+    "flagshipSlug": "winning-move-loses-contest",
+    "summary": "An Agent-first adversarial-autonomy laboratory. Security owns the minimum semantics required for contested authority, information asymmetry, verified consequence, uncertainty, recovery, and evaluation; cyber is the first high-fidelity domain rather than the project definition.",
+    "state": "Agent-first adversarial epistemics now spans AE0 information acquisition, AE1 delayed truth under costly waiting, and AE2 conflicting independent sensor observations. Provenance plus UNKNOWN is sufficient for the tested one-shot conflict to trigger adjudication without promoting either sensor to truth. Trust/Reputation, confidence, source-history, and freshness remain unforced; the next pressure is conflict when adjudication is unavailable/expensive or repeated source history becomes causally useful.",
+    "evidence": [
+      {
+        "value": "AE0",
+        "label": "information acquisition"
+      },
+      {
+        "value": "AE1",
+        "label": "delayed-truth hold"
+      },
+      {
+        "value": "AE2",
+        "label": "sensor conflict adjudication"
+      }
+    ],
+    "repository": "https://github.com/zycxfyh/ordivon-security",
+    "href": "/projects/security"
+  }
+}

@@ -1,77 +1,168 @@
 export const metadata = {
   "slug": "why-ordivon",
-  "title": "AI Agents Need More Than a Good Conversation",
-  "deck": "Models can reason, plan, and write code. Real work also needs task meaning, execution evidence, recovery, and responsibility that survive the conversation.",
-  "description": "Why capable AI agents need durable task and execution truth when work crosses into repositories, processes, credentials, machines, and consequential decisions.",
-  "projectSlugs": [
-    "computing",
-    "host"
-  ],
-  "questionSlugs": [],
+  "title": "Why Ordivon Exists",
+  "deck": "A capable Agent can lose a response, inherit stale context, finish a process without finishing the task, or act on evidence that was valid yesterday. Ordivon exists to keep those different facts from collapsing into one story.",
+  "description": "A first-principles explanation of Ordivon: why model intelligence, durable work responsibility, physical execution, external reality, domain meaning, research, and public expression need different owners.",
+  "projectSlugs": ["computing", "host", "harness", "runtime", "world", "studio", "web"],
+  "questionSlugs": ["causal-responsibility-explanation", "world-minimal-boundary"],
   "type": "Design argument",
-  "project": "Related to Ordivon Runtime",
+  "project": "Ordivon",
   "publishedAt": "2026-07-23",
-  "readMinutes": 6,
+  "revisedAt": "2026-08-12",
+  "readMinutes": 7,
   "author": "zycxfyh",
-  "lead": "Modern AI can produce explanations, plans, code, analysis, and recommendations with remarkable fluency. As agents gain tools and longer-running workflows, the decisive question moves beyond output quality: what must remain true when work crosses into processes, repositories, credentials, machines, and consequential decisions?",
-  "status": "current",
+  "lead": "Suppose an Agent edits a repository, starts a test, loses its connection, and another Agent returns later. Before doing anything else, the second Agent needs to know several things that no single transcript can safely answer.",
+  "status": "revised",
   "claimClass": "thesis",
-  "evidenceLevel": "E1",
+  "evidenceLevel": "E4",
   "takeaways": [
-    "Capable models do not by themselves preserve task meaning, execution evidence, or responsibility.",
-    "Real work crosses repositories, processes, credentials, machines, and consequential decisions.",
-    "Ordivon exists to make those trajectories durable while keeping intelligence replaceable."
+    "The model supplies intelligence; it is not automatically the owner of durable work, physical execution, external consequence, or current domain truth.",
+    "Ordivon separates responsibilities only where interruption or independent authority makes reconstruction unsafe.",
+    "The system is a family of experimentally challenged boundaries, not one mandatory Agent platform."
   ],
   "limitations": [
-    "The argument establishes a design problem, not that Ordivon is the only or final solution.",
-    "Several mature systems already carry parts of the responsibility and should remain strong baselines."
+    "The article explains the current Ordivon model; it does not claim that every application needs every Ordivon project.",
+    "Several cross-project laws are strongly supported only within the tested providers, workloads, machines, and observer classes, and retain explicit reopening conditions."
   ],
-  "canonicalResearchRecord": "https://github.com/zycxfyh/Ordivon"
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-computing/blob/3885544abf6fa02b710fbe7f365f2fd283a9b06d/knowledge/agents/causal-responsibility-explanation.md"
 };
 
-<h2 id="fluency-changes-the-social-meaning-of-output" data-toc="Fluency changes the social meaning of output">Fluency changes the social meaning of output</h2>
-          <p>A strong language model can compress uncertainty, missing context, disputed assumptions, and incomplete evidence into one coherent answer. The answer becomes more useful when the surrounding system keeps several layers visible:</p>
-          <ul>
-            <li>what was observed;</li>
-            <li>what evidence supports the observation;</li>
-            <li>what interpretation was applied;</li>
-            <li>what judgment was reached;</li>
-            <li>who is authorized to act;</li>
-            <li>what actually executed;</li>
-            <li>who reviews the outcome and carries responsibility.</li>
-          </ul>
-          <p>These distinctions give fluent output a dependable place inside a larger workflow. Persuasion remains one input to judgment, while execution state, evidence, authority, and review provide the structure for action.</p>
+<div className="article-thesis"><p><strong>Revised · 12 August 2026:</strong> the original article was written when Runtime was the clearest concrete product. Subsequent Host, Harness, World, Computing, Studio, Finance, Game, and Security experiments changed the system enough that the original explanation was no longer a good public entry point. This revision keeps the original question and replaces the outdated system description.</p></div>
 
-          <h2 id="dependable-work-needs-more-than-a-good-conversation" data-toc="Dependable work needs more than a good conversation">Dependable work needs more than a good conversation</h2>
-          <p>A conversation can explain a plan, but it does not automatically own the process tree that implements it. A client can disconnect. A command can time out. Output can exceed the context window. A machine can restart. A later agent may need to determine whether work finished, failed, was cancelled, or produced an artifact.</p>
-          <p>Useful autonomy therefore depends on a small durable layer. The reasoning system should remain free to adapt, while execution receives stable identity, bounded observation, explicit cancellation, and recoverable results.</p>
-          <blockquote>Reasoning may be reconstructed. Execution facts that cannot be reconstructed must be owned durably.</blockquote>
+<InBrief claim="Ordivon keeps different kinds of truth from silently becoming one another." evidence="E4 · owner-native implementation, cross-project falsification, exact experiment records" scope="Current Ordivon responsibility model">
+  <p>A model can propose. A machine can execute. An external service can change. A domain can decide what the change means. Research can generalize a pattern. A website can explain it. Those are different jobs.</p>
+</InBrief>
 
-          <h2 id="ordivon-began-as-a-method-problem-and-became-a-runtime-problem" data-toc="Ordivon began as a method problem—and became a runtime problem">Ordivon began as a method problem—and became a runtime problem</h2>
-          <p>Ordivon first explored how AI-generated work could remain connected to evidence, authority, verification, and durable receipts. Building real agent workflows exposed a more immediate engineering boundary: reasoning can be flexible, but execution state cannot disappear when a client disconnects, a process times out, or a machine restarts.</p>
-          <p>The current Ordivon project therefore concentrates on a thin local execution and recovery runtime. It gives agent work durable Job and Attempt identity, process ownership, bounded output, cancellation, artifacts, and restart recovery. The earlier governance ideas survive as engineering defaults: preserve the facts that matter, keep responsibility explicit, and avoid replacing live system truth with excessive prose or machinery.</p>
+<h2 id="start-with-one-interrupted-task" data-toc="Start with one interrupted task">Start with one interrupted task</h2>
 
-          <h2 id="thin-infrastructure-can-support-stronger-agents" data-toc="Thin infrastructure can support stronger agents">Thin infrastructure can support stronger agents</h2>
-          <p>Ordivon does not attempt to own every Agent loop. Mature Provider Harnesses retain their native Sessions and lifecycle; Ordivon Harness will own a deliberately thin first-party loop only when a Provider supplies model intelligence without a complete Agent system. The agent owns reasoning and operation. Git, source, tests, and live host state remain canonical engineering truth. The runtime owns the narrow execution facts required to observe, cancel, recover, or continue work.</p>
-          <p>This division reduces both fragility and governance overhead. A capable agent can use the host’s delegated tools directly in trusted-local mode, while explicit isolation remains available when input or authority should be reduced. The system constrains what must be constrained without turning every engineering action into a predeclared workflow.</p>
+<p>An Agent changes <code>policy.py</code> and starts the tests. The browser connection disappears before the result comes back. Five minutes later, another Agent takes over.</p>
 
-          <h2 id="a-public-domain-connects-the-work" data-toc="A public domain connects the work">A public domain connects the work</h2>
-          <p>A durable public domain can show how infrastructure, systems, and writing reinforce one another. Ordivon Runtime makes physical execution durable. Ordivon Host keeps Goals, Tasks, Context, and verification above replaceable model sessions and processes. Ordivon Computing tests which contracts survive across projects, while Ordivon Web makes the questions, implementation choices, and release records discoverable.</p>
-          <p>The result is a portfolio rather than a monolith: each project owns a different layer, while evidence and lessons can move between them without forcing one repository’s abstractions onto another.</p>
+<p>What should the new Agent ask?</p>
 
-          <h2 id="principles-that-travel-across-systems" data-toc="Principles that travel across systems">Principles that travel across systems</h2>
-          <p>Models, tools, and interfaces will continue to change. A small set of operating principles can travel across those changes:</p>
-          <ol>
-            <li>Keep live system truth closer than explanatory prose.</li>
-            <li>Persist only facts that cannot be reconstructed reliably.</li>
-            <li>Separate reasoning, execution identity, authority, and outcome review.</li>
-            <li>Match friction to actual consequence instead of hypothetical risk.</li>
-            <li>Leave durable artifacts for important work.</li>
-            <li>Keep human intent and institutional responsibility visible.</li>
-          </ol>
-          <p>Ordivon matters when these principles make capable agents easier to operate, recover, inspect, and improve—not when they merely add another vocabulary layer around the work.</p>
+<ol>
+  <li>What work had actually been accepted?</li>
+  <li>Did the test process run?</li>
+  <li>If something external was called, did that external action commit?</li>
+  <li>Does the old evidence still apply to the repository and environment that exist now?</li>
+  <li>Is the larger task complete, or did only one execution finish?</li>
+</ol>
 
-<footer className="article-footer">
-<p>This note explains the current shared discipline behind the Ordivon portfolio. The public repositories show how the ideas are implemented, tested, reviewed, and revised.</p>
-          <div className="actions"><a className="button button-primary" href="/projects">Explore the work</a><a className="button button-secondary" href="/writing">Read more notes</a></div>
-</footer>
+<p>A transcript may contain guesses about all five. It is not automatically authoritative for any of them.</p>
+
+<blockquote>The basic Ordivon problem is not that Agents forget words. It is that different facts survive and fail under different authorities.</blockquote>
+
+<h2 id="the-smallest-useful-picture" data-toc="The smallest useful picture">The smallest useful picture</h2>
+
+<p>The current system can be understood without learning the object model first:</p>
+
+<pre tabIndex={0}><code>{`domain / participant
+    decides what the work means
+          ↓
+Host
+    keeps durable responsibility across attempts
+          ↓
+Harness
+    runs one bounded episode of intelligence and Tools
+          ↓
+Runtime
+    proves what happened on the local machine
+          ↓
+external owners / World relations
+    establish what happened outside the machine
+          ↓
+domain / participant
+    re-evaluates the current consequence`}</code></pre>
+
+<p><strong>Computing</strong> stands beside that trajectory and asks which distinctions survive across projects. <strong>Studio</strong> and <strong>Web</strong> turn the work into human-facing artifacts and test what the rendered encounter actually communicates. Finance, Game, Security, and Human own their own domain meanings.</p>
+
+<p>No application is required to use every box. The point is the division of responsibility, not one universal deployment diagram.</p>
+
+<h2 id="why-the-model-is-not-the-owner" data-toc="Why the model is not the owner">Why the model is not the owner</h2>
+
+<p>A model is excellent at reconstructing plausible explanations. That is exactly why it should not silently become the authority for facts that already have a stronger owner.</p>
+
+<p>If Runtime has a recorded Job, the model should not infer from prose whether the process ran. If an exchange or cloud provider has a receipt, the model should not replace it with confidence. If the repository changed after an old experiment, the old experiment can remain historically valid while no longer governing the current decision.</p>
+
+<p>Ordivon therefore treats intelligence as replaceable. A stronger model can arrive tomorrow without requiring the system to rewrite yesterday's physical evidence or accepted responsibility.</p>
+
+<h2 id="the-boundaries-are-easier-to-see-as-non-implications" data-toc="The boundaries as non-implications">The boundaries are easier to see as non-implications</h2>
+
+<p>Much of Ordivon's recent research can be compressed into statements about what one true fact does <em>not</em> prove:</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Ordivon non-implications">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">True fact</span><span role="columnheader">Does not automatically prove</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">A process completed</strong><span role="cell">the domain task is complete</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">An object was persisted</strong><span role="cell">that store owns its meaning</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Evidence is authentic and historically valid</strong><span role="cell">it still applies to the current decision</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">An Agent can see an action</strong><span role="cell">the Agent has authority to cause its consequence</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">A local command was sent successfully</strong><span role="cell">an external system changed as intended</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">An Agent observer understood an artifact</strong><span role="cell">a human reader will understand it</span></div>
+</div>
+
+<p>These separations prevent a common class of Agent-system error: taking a fact that is genuinely known and extending it one step further than its evidence allows.</p>
+
+<h2 id="what-each-core-project-is-for" data-toc="What the core projects are for">What each core project is for</h2>
+
+<h3>Host: preserve responsibility</h3>
+
+<p>If the first Agent disappears, someone still needs to know what objective was accepted, what remains unresolved, and where the next continuation begins. Host keeps the smallest durable semantic state whose loss would change current or recoverable responsibility.</p>
+
+<h3>Harness: run one episode of intelligence</h3>
+
+<p>The Harness decides what one Agent Run sees, which Tools it can address, how Provider and Tool continuations are represented, and when the Run stops. It should not become the permanent Task database merely because the model interacted through it.</p>
+
+<h3>Runtime: preserve physical execution truth</h3>
+
+<p>Runtime owns exact Workspaces, Jobs, Attempts, immutable inputs, process state, Artifacts, cancellation, restart recovery, and reconciliation. A successful Runtime Job is strong evidence about the machine. It is deliberately weaker evidence about the meaning of the larger task.</p>
+
+<h3>World: preserve the relationship neither endpoint can reconstruct alone</h3>
+
+<p>World was once much broader. High-pressure deletion removed research-only routing and path abstractions that current owners did not need. What survives is narrow: external observation availability, provider/consequence binding, unresolved-consequence reconciliation, and other cross-owner relations whose loss would make continuation ambiguous.</p>
+
+<h2 id="the-domain-still-decides-meaning" data-toc="The domain still decides meaning">The domain still decides meaning</h2>
+
+<p>Infrastructure can tell Finance that one order request was admitted exactly once. It cannot decide whether the trade was a good capital decision. Runtime can prove that a Game simulation ran. It cannot decide what counts as strategic agency. Harness can preserve a Security Agent's unresolved unknown. It cannot decide what the adversarial evidence means.</p>
+
+<p>This is why Ordivon is a family rather than one giant schema. Finance, Game, Security, Human, and other domains retain meanings that cannot be inferred from generic execution machinery.</p>
+
+<h2 id="computing-tests-which-lessons-deserve-to-travel" data-toc="Computing tests what travels">Computing tests which lessons deserve to travel</h2>
+
+<p>Cross-project similarity is tempting. Two projects both have an <code>UNKNOWN</code>-like state; perhaps we should build a universal uncertainty service. Three projects persist state; perhaps they need one persistence framework.</p>
+
+<p>Computing's job is to resist that jump.</p>
+
+<p>A shared law is attacked through deletion, ablation, strong baselines, counterexamples, and independent domains. Even when a semantic distinction repeats, the implementation may remain owner-local. Recent EX3–EX7 work went one step further and tested how those laws should be explained: richer causal cards and relation grammars did not improve the bounded Agent decisions over compact causal prose.</p>
+
+<h2 id="studio-and-web-test-the-explanation-as-an-artifact" data-toc="Studio and Web test the artifact">Studio and Web test the explanation as an artifact</h2>
+
+<p>Correct source facts do not guarantee a correct public encounter.</p>
+
+<p>Studio R4–R6 showed three different failures: richer perception can add features without adding explanatory power; a plausible semantic statement can fail because it cannot point back to the evidence; and a searched creative winner can look statistically extraordinary under pure noise.</p>
+
+<p>Web therefore owns presentation and encounter evidence, not technical truth. It asks a different question: given the facts supplied by their owners, what does the actual rendered page make visible, imply, or hide?</p>
+
+<h2 id="what-ordivon-is-not" data-toc="What Ordivon is not">What Ordivon is not</h2>
+
+<p>Ordivon is not an attempt to put every Agent behind one workflow engine, one ontology, one world database, or one policy layer. Several of its strongest results are deletions or decisions to add nothing.</p>
+
+<p>The project family earns a shared mechanism only when a real failure survives stronger ordinary alternatives and materially different workloads.</p>
+
+<h2 id="the-current-thesis" data-toc="The current thesis">The current thesis</h2>
+
+<p>The current Ordivon thesis is narrower than “build an autonomous computer” and stronger than “save Agent memory”:</p>
+
+<blockquote>Give each consequential fact the smallest owner that can prove it, keep the Agent able to address the distinctions needed for its decision, and require fresh admission before evidence becomes current consequence.</blockquote>
+
+<p>Everything else remains negotiable.</p>
+
+<p className="article-closing">Work should be able to outlive the intelligence that started it without outliving the evidence that makes it true.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Continue</p>
+  <h2 id="sources-title" data-toc="Continue reading">Three routes into the evidence</h2>
+  <ol className="source-list">
+    <li><a href="/writing/from-tokens-to-work">From Tokens to Work</a> — follow one Agent action through the responsibility boundaries.</li>
+    <li><a href="/writing/the-shorter-explanation-won">The Shorter Explanation Won</a> — see how the explanation itself was experimentally tested.</li>
+    <li><a href="/writing/world-got-smaller-and-got-clearer">World Got Smaller—and Got Clearer</a> — see deletion used as an architectural falsifier.</li>
+  </ol>
+</section>

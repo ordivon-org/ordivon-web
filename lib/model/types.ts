@@ -3,6 +3,8 @@ export type BoundaryMaturity = "tested" | "experimental";
 export type ResearchPlaneStatus = "active" | "paused" | "retired";
 export type QuestionState = "open" | "testing" | "answered" | "reframed";
 export type EvidenceMetric = { value: string; label: string };
+export type ProjectCategory = "core-system" | "application" | "research" | "publication";
+export type ProjectAvailability = "operational" | "prototype" | "playable" | "research" | "internal";
 
 type ArchitectureRoleBase = {
   id: string; slug: string; index: string; title: string; summary: string;
@@ -14,7 +16,9 @@ export type ArchitectureRoleDefinition = BoundaryDefinition | ResearchPlaneDefin
 
 export type ProjectDefinition = {
   id: string; kind: "project"; slug: string; title: string; summary: string; lifecycle: ProjectLifecycle; group: string; label: string;
-  repository: string; state: string; evidence: EvidenceMetric[]; architectureRoleId?: string; publicPage: boolean; href?: string; updatedAt?: string;
+  repository: string; state: string; evidence: EvidenceMetric[]; publicPage: boolean; href?: string; updatedAt?: string;
+  architectureRoleId?: string; index?: string; thesis?: string; question?: string; owns?: string[]; boundary?: string[];
+  category?: ProjectCategory; availability?: ProjectAvailability;
   problem?: string; capability?: string; maturity?: string; audience?: string; latestProof?: string; flagshipSlug?: string;
 };
 

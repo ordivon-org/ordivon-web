@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "kind": "ordivon.web.r6-encounter-manifest",
+  "experimentId": "experiment:web:r6b:instrumentation-fixture",
+  "assignmentSalt": "r6b-instrumentation-assignment-20260811-v1",
+  "variants": [
+    {
+      "variantId": "instrumentation-a",
+      "probability": 0.5,
+      "title": "Instrumentation A",
+      "sections": [
+        {"evidenceId": "I1", "heading": "Observed fact", "text": "This synthetic page exists only to verify assignment, exposure, propensity, and outcome capture."},
+        {"evidenceId": "I2", "heading": "Boundary", "text": "A successful click is an instrumentation fact, not evidence that a human understood or preferred the page."}
+      ]
+    },
+    {
+      "variantId": "instrumentation-b",
+      "probability": 0.5,
+      "title": "Instrumentation B",
+      "sections": [
+        {"evidenceId": "I1", "heading": "Observed fact", "text": "This synthetic page exists only to verify assignment, exposure, propensity, and outcome capture."},
+        {"evidenceId": "I2", "heading": "Boundary", "text": "A successful click is an instrumentation fact, not evidence that a human understood or preferred the page."}
+      ]
+    }
+  ]
+}

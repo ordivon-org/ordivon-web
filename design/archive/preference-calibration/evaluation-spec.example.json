@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "id": "web.aesthetic.example",
+  "evaluationQuestion": "Which version is more publication-ready for Ordivon?",
+  "variants": ["baseline", "candidate-a", "candidate-b"],
+  "surfaces": ["home", "project", "long-form"]
+}

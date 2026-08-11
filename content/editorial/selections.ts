@@ -1,41 +1,42 @@
 export const editorialSelections = {
   home: {
-    proof: "what-h1-h5-proved",
-    recentArguments: ["what-h1-h5-proved", "smaller-core-strong-baselines", "winning-move-loses-contest"],
+    proof: "the-shorter-explanation-won",
+    recentArguments: ["the-shorter-explanation-won", "world-got-smaller-and-got-clearer", "a-better-looking-result-can-still-be-noise"],
   },
   writing: {
-    startHere: "from-tokens-to-work",
-    evidenceReports: ["what-h1-h5-proved", "winning-move-loses-contest"],
+    startHere: "why-ordivon",
+    evidenceReports: ["the-shorter-explanation-won", "world-got-smaller-and-got-clearer"],
     readingPaths: [
       {
-        label: "Start with Ordivon",
-        title: "Why durable agent work matters",
-        description: "Begin with the practical failure, the project intent, and the larger future Ordivon is trying to make possible.",
-        slugs: ["why-ordivon", "creation-judgment-recoverable-systems", "the-future-will-not-wait"],
+        label: "Start with one failure",
+        title: "Why capable Agents still need a system around them",
+        description: "Begin with an interrupted piece of real work, then follow the minimum responsibility boundaries that keep the next Agent from inventing what happened.",
+        slugs: ["why-ordivon", "from-tokens-to-work", "the-shorter-explanation-won"],
       },
       {
-        label: "Agent architecture",
-        title: "From model output to completed work",
-        description: "Follow the execution stack, the Harness boundary, and the experiments that made the surviving architecture smaller.",
-        slugs: ["from-tokens-to-work", "why-ordivon-needs-a-harness", "what-h1-h5-proved"],
+        label: "Boundaries that survived",
+        title: "What remains after ambiguity and deletion pressure",
+        description: "See why unknown consequence, unique authority, and a smaller World survived stronger alternatives while broader machinery was removed.",
+        slugs: ["unknown-is-operational-state", "one-authority-thirteen-tables", "world-got-smaller-and-got-clearer"],
       },
       {
-        label: "Experiments and failures",
-        title: "What changed under real pressure",
-        description: "Read the reports where tactical success, duplicate authority, response loss, and strong baselines forced a different judgment.",
-        slugs: ["winning-move-loses-contest", "one-authority-thirteen-tables", "unknown-is-operational-state"],
+        label: "How we test ourselves",
+        title: "Strong baselines, negative results, and creative falsifiers",
+        description: "Follow experiments designed to make Ordivon's own abstractions lose—from classical system baselines to searched creative winners manufactured by pure noise.",
+        slugs: ["smaller-core-strong-baselines", "a-better-looking-result-can-still-be-noise", "the-shorter-explanation-won"],
       },
     ],
   },
   research: {
-    currentQuestion: "host-general-repository-goal",
-    recentlyAnswered: "harness-composition-and-completion",
-    architectureChangingExperiment: "smaller-core-strong-baselines",
+    currentQuestion: "creative-empirical-validity",
+    recentlyAnswered: "causal-responsibility-explanation",
+    architectureChangingExperiment: "world-got-smaller-and-got-clearer",
   },
   now: {
     judgmentChanges: [
-      "harness-composition-and-completion", "smallest-agent-native-core", "world-boundary-value",
-      "runtime-boundary-friction", "game-agent-native-mechanics", "security-adversarial-trajectory",
+      "creative-empirical-validity", "finance-real-capital-agent", "world-minimal-boundary",
+      "ordivon-harness-v0", "runtime-boundary-friction", "game-agent-native-mechanics",
+      "security-adversarial-trajectory",
     ],
   },
 } as const;

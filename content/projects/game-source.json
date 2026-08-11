@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 2,
+  "project": {
+    "id": "ordivon-game",
+    "name": "Ordivon Game",
+    "repository": "https://github.com/zycxfyh/ordivon-game",
+    "kind": "research-engineering",
+    "description": "Intervention-driven game worlds, deterministic rules, Agent participation, replay, and player-facing evidence.",
+    "publicProjection": "ordivon-web"
+  },
+  "source": {
+    "revision": "6e8c668c29378b7707e099a39a3039f8fec42737",
+    "dirty": false,
+    "publicSourceDigest": "sha256:f7be9b567044112e0684fe53da3fd6d00c9103343f4993e8cc81a5d2343c28f5",
+    "projectManifestDigest": "sha256:fdffa15aff3f6aee2ad4d87f01fc01bb1da07f26d97cc2d55fe46ee22f6d23f5",
+    "authorityDocument": "docs/authority.md",
+    "authorityDigest": "sha256:5a7f8409826c60431fd96485afc10e7badd015fc2a464146cdeeeeef3c568ccc",
+    "authoritySection": "Decision",
+    "documents": [
+      {
+        "path": "docs/ARCHITECTURE.md",
+        "digest": "sha256:21e4e16abe5024ad34c6a634b8c7f7b92e558aac2293d9f4ce231f308edde6ba",
+        "id": "game.architecture",
+        "type": "architecture",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-03",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/authority.md",
+        "digest": "sha256:5a7f8409826c60431fd96485afc10e7badd015fc2a464146cdeeeeef3c568ccc",
+        "id": "game.authority",
+        "type": "decision",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "not_applicable",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/PRODUCT.md",
+        "digest": "sha256:2015c529af5ada49269cf21299491e5de97398a6e32f4779a7c944d014474c15",
+        "id": "game.product.station-zero",
+        "type": "concept",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-03",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/STATION_ZERO_V3_P0.md",
+        "digest": "sha256:944838ef129da50e63d560610b7399d4187b946112dea893da76a843b0b48c41",
+        "id": "game.station-zero-v3.encounter",
+        "type": "decision",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-03",
+        "evidenceStatus": "not_applicable",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/STATION_ZERO_V3_P1.md",
+        "digest": "sha256:a73a2b9bdcb09af26390fcdc7a5550f64b5a0dbedacb1f39bde5d0f9c01e6b97",
+        "id": "game.station-zero-v3.reducer",
+        "type": "reference",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-03",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/STATION_ZERO_V3_P2.md",
+        "digest": "sha256:d021e827265d471256306be8f60844bde6f4aa060177b6d92ff932c40fd0d11d",
+        "id": "game.station-zero-v3.execution",
+        "type": "architecture",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-03",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/STATION_ZERO_V3_P3.md",
+        "digest": "sha256:174f35ebe503a535fce5a37035d487e2a76eeaad04c364a1f45148d6fb3ff8e5",
+        "id": "game.station-zero-v3.planning",
+        "type": "architecture",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/VISION.md",
+        "digest": "sha256:50829b8232bea28f55c6ff5e9384599082301af4712d33cd1c9336a64cecd382",
+        "id": "game.vision",
+        "type": "concept",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-03",
+        "evidenceStatus": "not_applicable",
+        "readiness": "READY"
+      },
+      {
+        "path": "README.md",
+        "digest": "sha256:6e5f56719304ef33b2460800a1621fbcf65be14a091b03c5e0b1e8f87fa671db",
+        "id": "game.start",
+        "type": "start",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      }
+    ],
+    "anchorDocument": "README.md",
+    "anchorDigest": "sha256:6e5f56719304ef33b2460800a1621fbcf65be14a091b03c5e0b1e8f87fa671db",
+    "anchorId": "game.start",
+    "anchorUpdated": "2026-08-08",
+    "lifecycle": "active",
+    "sourceRole": "canonical",
+    "visibility": "public",
+    "updated": "2026-08-08",
+    "summary": "Canonical entry to Ordivon Game, the current Station Zero executable, the unregistered v3 target, and their authority boundaries.",
+    "evidenceStatus": "verified",
+    "readiness": "READY"
+  },
+  "admission": {
+    "projectionTarget": true,
+    "activeAuthority": true,
+    "canonicalAuthority": true,
+    "publicAuthority": true,
+    "activeAnchor": true,
+    "canonicalAnchor": true,
+    "publicAnchor": true,
+    "publicDocumentSet": true,
+    "clean": true,
+    "accepted": true
+  },
+  "candidate": {
+    "currentState": "The registered product remains Station Zero `station-zero@2` with Ruleset `station-zero-core@3`. The v3 encounter, reducer, durable execution, planning layer, dedicated API, and separate `/v3` first-playable are implemented as an accepted replacement target, but v3 remains unregistered and does not replace the root product. Replacement is deferred until repeated human playtesting and live-Provider evaluation justify deleting the v2 approval loop.",
+    "capabilities": [],
+    "capabilityBullets": [],
+    "operational": [],
+    "removed": []
+  }
+}
