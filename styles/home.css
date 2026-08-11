@@ -12,7 +12,7 @@
 
 .home-poster {
   position: relative;
-  min-height: calc(100svh - 4.4rem);
+  min-height: calc(100vh - 4.4rem);
   overflow: hidden;
   border-bottom: 1px solid var(--line-strong);
   background:
@@ -34,7 +34,7 @@
   position: relative;
   z-index: 2;
   width: var(--home-shell);
-  min-height: calc(100svh - 4.4rem);
+  min-height: calc(100vh - 4.4rem);
   margin-inline: auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(14rem, .28fr);
