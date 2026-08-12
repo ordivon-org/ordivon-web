@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useMemo, useState, useSyncExternalStore } from "react";
+import type { PublicationStatus } from "@/content/articles/schema";
 import { getHydrationSnapshot, getServerHydrationSnapshot, subscribeToHydration } from "@/lib/hydration";
 
-type WritingSummary = { slug: string; title: string; description: string; type: string; project: string; publishedAt: string; readMinutes: number };
+type WritingSummary = { slug: string; title: string; description: string; type: string; project: string; publishedAt: string; revisedAt?: string; readMinutes: number; status: PublicationStatus };
 
 export function WritingFilter({ articles }: { articles: WritingSummary[] }) {
   const types = ["All", ...new Set(articles.map((article) => article.type))];
@@ -20,8 +21,8 @@ export function WritingFilter({ articles }: { articles: WritingSummary[] }) {
         {filtered.map((article, index) => (
           <Link className="writing-row" href={`/writing/${article.slug}`} key={article.slug}>
             <span className="writing-number">{String(index + 1).padStart(2, "0")}</span>
-            <div className="writing-copy"><p>{article.type} · {article.project}</p><h2>{article.title}</h2><span>{article.description}</span></div>
-            <div className="writing-meta"><time dateTime={article.publishedAt}>{article.publishedAt}</time><span>{article.readMinutes} min</span><b aria-hidden="true">↗</b></div>
+            <div className="writing-copy"><p>{article.type} · {article.project}<span className={`writing-status status-${article.status}`}>{article.status}</span></p><h2>{article.title}</h2><span>{article.description}</span></div>
+            <div className="writing-meta"><time dateTime={article.revisedAt || article.publishedAt}>{article.revisedAt ? `Revised ${article.revisedAt}` : `Published ${article.publishedAt}`}</time><span>{article.readMinutes} min</span><b aria-hidden="true">↗</b></div>
           </Link>
         ))}
       </div>

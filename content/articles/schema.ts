@@ -19,6 +19,7 @@ export type ArticleSourceMetadata = {
   readMinutes: number;
   author: string;
   lead: string;
+  readerCodes?: readonly { code: string; meaning: string }[];
   status: PublicationStatus;
   claimClass: ClaimClass;
   evidenceLevel: EvidenceLevel;

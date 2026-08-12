@@ -51,11 +51,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
       <PublicationStatusNotice article={article} replacementTitle={replacement?.title} />
       <header className="article-hero page-shell page-top">
         <div className="article-kicker"><span>{article.type}</span><span>{article.project}</span></div>
+        {article.readerCodes?.length ? <aside className="article-code-decoder" aria-label="Experiment code decoder"><span>Code decoder</span><div>{article.readerCodes.map((entry) => <p key={entry.code}><b>{entry.code}</b>{entry.meaning}</p>)}</div></aside> : null}
         <h1>{article.title}</h1><p className="article-deck">{article.deck}</p>
         <div className="article-meta">
           <span>By {article.author}</span><time dateTime={article.publishedAt}>{formatDate(article.publishedAt)}</time><span>{article.readMinutes} min read</span>
           <span>{questionCount ? `${questionCount} research Question${questionCount === 1 ? "" : "s"}` : `${article.projectSlugs.length} project area${article.projectSlugs.length === 1 ? "" : "s"}`}</span>
         </div>
+        <nav className="article-entry-context" aria-label="Direct-entry article context">
+          <span>Article context</span>
+          <div>{context.anchors.slice(0, 3).map((anchor) => <Link href={anchor.href} key={anchor.id}><b>{anchor.kind === "question" ? "Research question" : "Project"}</b>{anchor.title}</Link>)}</div>
+        </nav>
       </header>
       <PublicationBrief article={article} />
       <div className="article-layout page-shell">
