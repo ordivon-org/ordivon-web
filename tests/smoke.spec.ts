@@ -30,6 +30,8 @@ const coreRoutes = [
   "/writing/the-evidence-is-real-it-is-still-too-old", "/writing/the-command-succeeded-did-anything-happen", "/writing/correctness-is-not-isolation", "/writing/history-did-not-prove-us-right",
   "/writing/the-constitution-changed-the-agent-that-wasnt-enough", "/writing/the-agent-asked-for-more-evidence-the-answer-became-no",
   "/writing/the-model-finished-the-protocol-wasnt-done", "/writing/we-sorted-the-evidence-accuracy-got-worse",
+  "/writing/the-patterns-recurred-our-taxonomy-got-worse", "/writing/we-cut-203-observations-to-8-and-still-didnt-edit",
+  "/writing/the-agent-knew-the-goal-it-still-wouldnt-do-it", "/writing/we-deleted-16-8-gb-not-because-it-was-old",
   "/writing/creation-judgment-recoverable-systems", "/writing/station-zero-alpha-1",
   "/writing/thin-host-without-hidden-planner", "/writing/one-authority-thirteen-tables",
   "/writing/replay-without-second-truth-store", "/writing/transcript-not-task-database",
@@ -117,6 +119,8 @@ test("Feynman reconstruction keeps concise orientation and explicit evidence bou
     "the-evidence-is-real-it-is-still-too-old", "the-command-succeeded-did-anything-happen", "correctness-is-not-isolation", "history-did-not-prove-us-right",
     "the-constitution-changed-the-agent-that-wasnt-enough", "the-agent-asked-for-more-evidence-the-answer-became-no",
     "the-model-finished-the-protocol-wasnt-done", "we-sorted-the-evidence-accuracy-got-worse",
+    "the-patterns-recurred-our-taxonomy-got-worse", "we-cut-203-observations-to-8-and-still-didnt-edit",
+    "the-agent-knew-the-goal-it-still-wouldnt-do-it", "we-deleted-16-8-gb-not-because-it-was-old",
   ]) {
     const metadata = articleMetadata.find((article) => article.slug === slug)!;
     await gotoWithNetworkRetry(page, `/writing/${slug}`);
@@ -196,9 +200,10 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByText("separate first-playable", { exact: true })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/research/game-agent-native-mechanics");
-  await expect(page.getByText("registered playable product", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("P0–P3", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("before registering v3 or deleting the v2 approval loop", { exact: false })).toBeVisible();
+  await expect(page.getByText("36/36", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("0/6", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("GX2 pressure-versus-strategic-collapse", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("objective oracles", { exact: false }).first()).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/research/security-adversarial-trajectory");
   await expect(page.getByRole("link", { name: /Winning the Move Can Lose the Contest/ })).toBeVisible();
@@ -213,9 +218,10 @@ test("public model is article-centered and does not expose the retired graph led
 
   await gotoWithNetworkRetry(page, "/research/ordivon-harness-v0");
   await expect(page.getByText("testing", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("caller interaction ingress after needs_input", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("25.375×", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText("239,953", { exact: false }).first()).toBeVisible();
+  await expect(page.getByRole("link", { name: /We Cut 203 Observations to 8\. The Agent Still Refused to Edit\./ })).toBeVisible();
   await expect(page.getByRole("link", { name: /What Survived When Codex and Hermes Replaced Each Other Mid-Task/ })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 
   for (const route of ["/system", "/research", "/writing", "/now", "/research/web-research-interface"]) {
     await gotoWithNetworkRetry(page, route);
@@ -269,13 +275,13 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
   await expect(page.locator(".research-start-grid > a")).toHaveCount(3);
   await expect(page.getByText("Most important question under test", { exact: true })).toBeVisible();
   await expect(page.locator(".research-start-grid").getByRole("heading", { name: "Which Agent-era world-model laws survive historical out-of-distribution pressure?" })).toBeVisible();
-  await expect(page.getByText("200", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("60", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("156", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("240", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("72", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("192", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("Recently answered boundary", { exact: true })).toBeVisible();
   await expect(page.locator(".research-start-grid").getByRole("heading", { name: "Does canonical evidence order make an Agent understand the evidence better?" })).toBeVisible();
   await expect(page.getByText("Experiment that most changed the architecture", { exact: true })).toBeVisible();
-  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "The Model Finished. The Protocol Wasn't Done." })).toBeVisible();
+  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "We Cut 203 Observations to 8. The Agent Still Refused to Edit." })).toBeVisible();
 });
 
 test("system explorer uses curated architecture views", async ({ page }) => {
@@ -372,6 +378,10 @@ const publicationContracts = [
   { slug: "the-agent-asked-for-more-evidence-the-answer-became-no", title: "The Agent Asked for More Evidence. The Answer Became No.", tables: 1, phrase: "More research is not a promise to act later" },
   { slug: "the-model-finished-the-protocol-wasnt-done", title: "The Model Finished. The Protocol Wasn't Done.", tables: 2, phrase: "Not every byte required to continue an Agent turn belongs in the Agent's semantic history." },
   { slug: "we-sorted-the-evidence-accuracy-got-worse", title: "We Sorted the Evidence. Accuracy Got Worse.", tables: 1, phrase: "A representation can become mechanically perfect and semantically no better." },
+  { slug: "the-patterns-recurred-our-taxonomy-got-worse", title: "The Patterns Recurred. Our Taxonomy Got Worse.", tables: 2, phrase: "A pattern can recur in Reality while the vocabulary used to classify it becomes less trustworthy." },
+  { slug: "we-cut-203-observations-to-8-and-still-didnt-edit", title: "We Cut 203 Observations to 8. The Agent Still Refused to Edit.", tables: 1, phrase: "Minimizing observation count rewarded ignorance." },
+  { slug: "the-agent-knew-the-goal-it-still-wouldnt-do-it", title: "The Agent Knew the Goal. It Still Wouldn't Do It.", tables: 2, phrase: "Knowing the goal is not the same as owning the commitment that realizes it." },
+  { slug: "we-deleted-16-8-gb-not-because-it-was-old", title: "We Deleted 16.8 GB. Not Because It Was Old.", tables: 1, phrase: "Capacity pressure can demand a decision. It cannot decide who has authority to delete." },
   { slug: "why-ordivon-needs-a-harness", title: "Why Ordivon Needs a Harness—but Not a Universal Harness", tables: 1, phrase: "selective ownership" },
   { slug: "what-h1-h5-proved", title: "What Survived When Codex and Hermes Replaced Each Other Mid-Task", tables: 3, phrase: "H1–H5 retained a boundary, not a platform." },
 ] as const;
@@ -490,6 +500,8 @@ test("core pages have no serious accessibility violations", async ({ page }) => 
     "/writing/the-evidence-is-real-it-is-still-too-old", "/writing/history-did-not-prove-us-right",
     "/writing/the-constitution-changed-the-agent-that-wasnt-enough", "/writing/the-agent-asked-for-more-evidence-the-answer-became-no",
     "/writing/the-model-finished-the-protocol-wasnt-done", "/writing/we-sorted-the-evidence-accuracy-got-worse",
+  "/writing/the-patterns-recurred-our-taxonomy-got-worse", "/writing/we-cut-203-observations-to-8-and-still-didnt-edit",
+  "/writing/the-agent-knew-the-goal-it-still-wouldnt-do-it", "/writing/we-deleted-16-8-gb-not-because-it-was-old",
     "/research/evidence-current-applicability", "/research/historical-world-model-dogfood",
   "/research/context-treatment-replication", "/research/provider-protocol-continuation", "/research/semantic-order-and-canonicalization", "/research/ordivon-harness-v0", "/research/human-economic-autonomy", "/projects/runtime", "/projects/harness",
     "/projects/game", "/projects/human", "/projects/security"]) {

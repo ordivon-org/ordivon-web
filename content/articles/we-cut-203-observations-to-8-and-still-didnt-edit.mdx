@@ -1,0 +1,217 @@
+export const metadata = {
+  "slug": "we-cut-203-observations-to-8-and-still-didnt-edit",
+  "title": "We Cut 203 Observations to 8. The Agent Still Refused to Edit.",
+  "deck": "Harness P4 let an Agent inspect 203 repository observations. P5 reduced that to eight high-information observations—a 25.375× reduction—while giving the Agent exact external failure evidence. It investigated six real source/reference targets and still abstained because it could not prove a causal defect.",
+  "description": "How Harness P5 moved from exhaustive repository traversal toward Agent-owned high-information discovery, why minimizing observation count alone failed, and why the successful result was an evidence-backed refusal to mutate source.",
+  "projectSlugs": ["harness", "computing", "host", "world"],
+  "questionSlugs": ["ordivon-harness-v0", "calibrated-non-action"],
+  "type": "Research report",
+  "project": "Ordivon Harness",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 9,
+  "author": "zycxfyh",
+  "lead": "P4 proved that an Agent could choose its own repository observations instead of receiving caller-preselected source slices. It also produced an absurd traversal: 203 admitted observations over 204 rounds. P5 asked whether the Agent could become selective without becoming ignorant.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "P5 reduced admitted observations from 203 to 8 while preserving exact external failure evidence and Agent-owned selection of all repository observations.",
+    "A count-only negative control used one observation and abstained for the wrong reason; P5 therefore optimized decision value per observation, not the smallest context or fewest reads.",
+    "After six real source/reference investigations, the Agent still could not establish a causal baseline-red source defect and correctly did not invoke mutation, evaluation, or promotion authority."
+  ],
+  "limitations": [
+    "The accepted trajectory still used 12 Provider calls and 239,953 total tokens; P5 improved observation selection, not overall token or model-call efficiency.",
+    "This is one bounded recursive-improvement discovery workload. It does not establish indefinite autonomous RSI, repository-search optimality, or defect-freedom."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-harness/blob/1c3c834646e8fd12b58c196e417f01c48aae0315/evidence/harness-rsi-p5-high-information-discovery-999d753.json"
+};
+
+<InBrief claim="Better Agent discovery means spending observations where they can change the decision, not minimizing how much the Agent sees." evidence="E4 · exact Harness P5 discovery receipt and independent evaluation" scope="One bounded self-improvement discovery branch">
+  <p>The 25× reduction mattered because the Agent still investigated the real failure and preserved the right to say “not enough evidence to edit.”</p>
+</InBrief>
+
+<h2 id="p4-solved-the-wrong-bottleneck-by-brute-force" data-toc="203 observations">P4 solved the wrong bottleneck by brute force</h2>
+
+<p>Harness P4 was an important step.</p>
+
+<p>The caller stopped preselecting source slices and evaluator gates. The Agent itself chose what repository evidence to inspect.</p>
+
+<p>But the successful trajectory admitted <strong>203 observations over 204 rounds</strong>.</p>
+
+<p>That proved ownership of discovery.</p>
+
+<p>It did not prove good discovery.</p>
+
+<pre tabIndex={0}><code>{`caller chooses every source slice     — rejected
+Agent scans almost everything          — works, but weak
+Agent selects high-value observations  — P5 question`}</code></pre>
+
+<h2 id="the-obvious-optimization-was-also-wrong" data-toc="One observation was worse">The obvious optimization was also wrong</h2>
+
+<p>If 203 observations are expensive, the simplest metric is obvious: use fewer.</p>
+
+<p>P5 ran that negative control.</p>
+
+<p>The Agent saw one mechanical repository map, inspected zero source observations, and abstained.</p>
+
+<p>Observation count dropped from 203 to 1.</p>
+
+<p>The system got worse.</p>
+
+<div className="article-thesis"><p>Minimizing observation count rewarded ignorance.</p></div>
+
+<p>There was already exact external evidence that a World run had hit a no-Tool Harness failure. The one-observation Agent never inspected it.</p>
+
+<p>So P5 changed the objective:</p>
+
+<blockquote>Highest decision value per observation, not fewest observations.</blockquote>
+
+<h2 id="external-failure-evidence-came-first" data-toc="Start from the failure">External failure evidence came first</h2>
+
+<p>The accepted P5 branch began with two kinds of information:</p>
+
+<ul>
+  <li>a compact mechanical repository addressability map;</li>
+  <li>exact independent Host/World evidence describing the observed failure.</li>
+</ul>
+
+<p>The source target was not preselected.</p>
+
+<p>The source slice was not preselected.</p>
+
+<p>The evaluator gate was not preselected.</p>
+
+<p>The Agent had to decide what to inspect next.</p>
+
+<h2 id="eight-observations-were-enough-to-investigate" data-toc="Eight observations">Eight observations were enough to investigate</h2>
+
+<p>The accepted trajectory used eight admitted observations:</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Harness P5 observations">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Observation kind</span><span role="columnheader">Count</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Repository index</strong><span role="cell">1</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">External failure evidence</strong><span role="cell">1</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Read symbol</strong><span role="cell">4</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Search text</strong><span role="cell">1</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">References</strong><span role="cell">1</span></div>
+</div>
+
+<p>Six of those were real source/reference investigations.</p>
+
+<p>Compared with the P4 baseline:</p>
+
+<pre tabIndex={0}><code>{`203 observations → 8 observations
+reduction factor = 25.375×`}</code></pre>
+
+<p>The Agent was no longer traversing the repository because the repository existed.</p>
+
+<p>Each observation had to answer a live discriminator.</p>
+
+<h2 id="the-working-view-got-smaller-without-deleting-history" data-toc="History stayed durable">The Working View got smaller without deleting history</h2>
+
+<p>P5 also exposed a practical context problem.</p>
+
+<p>A full AST-style repository index plus duplicated recent exact observations exceeded the model-view boundary before Provider dispatch.</p>
+
+<p>The repair did not delete the durable repository map or evidence history.</p>
+
+<p>It separated:</p>
+
+<pre tabIndex={0}><code>{`durable exact history
+from
+current model-visible Working View`}</code></pre>
+
+<p>The full index remained durable. The next model request carried a compact addressability map plus only the exact current observation needed for the next decision.</p>
+
+<p>This is compression as navigation, not forgetting.</p>
+
+<h2 id="the-agent-found-a-guard-not-a-causal-defect" data-toc="The evidence stopped short">The Agent found a guard, not a causal defect</h2>
+
+<p>The source investigation reached the deliberate no-Tool guard in <code>SQLiteHarnessAgentBridge</code> and adjacent source/reference evidence.</p>
+
+<p>That looked suspiciously close to the external failure.</p>
+
+<p>But the missing causal chain still mattered.</p>
+
+<p>The Agent could not prove:</p>
+
+<ul>
+  <li>a real invocation path carrying the relevant non-empty Tool observation identities;</li>
+  <li>a failing unittest for that exact source path;</li>
+  <li>a reproducible baseline defect causally attributable to a reachable source target.</li>
+</ul>
+
+<p>The correlation was real.</p>
+
+<p>Mutation authority was not earned.</p>
+
+<h2 id="so-the-agent-did-nothing-to-the-source" data-toc="The result was abstention">So the Agent did nothing to the source</h2>
+
+<p>The accepted P5 result was:</p>
+
+<pre tabIndex={0}><code>{`status = accepted-abstain
+source mutation authority earned = false
+target = null`}</code></pre>
+
+<p>The source generator was not invoked.</p>
+
+<p>The source materializer was not invoked.</p>
+
+<p>The candidate evaluator was not invoked.</p>
+
+<p>The source promotion decision was not invoked.</p>
+
+<p>The canonical source promotion path was not invoked.</p>
+
+<p>Running those branches “to complete the loop” would have fabricated work.</p>
+
+<h2 id="the-real-defect-was-found-later-by-a-different-line" data-toc="Do not steal another experiment's credit">The real defect was found later by a different line</h2>
+
+<p>During independent release acceptance, a separate concurrency stress test exposed a real Provider outcome race.</p>
+
+<p>It was repaired and survived 100/100 official concurrency repetitions.</p>
+
+<p>P5's final acceptance record is explicit about provenance:</p>
+
+<blockquote>The discovery Agent did not find or authorize that defect.</blockquote>
+
+<p>This is important in self-improvement research. If a later human, test suite, or independent acceptance line finds a bug, we cannot retroactively credit the earlier Agent because the stories are adjacent.</p>
+
+<h2 id="twenty-five-times-fewer-observations-did-not-mean-cheap" data-toc="Fewer observations were not cheaper overall">Twenty-five times fewer observations did not mean cheap</h2>
+
+<p>P5 still made 12 Provider calls and consumed <strong>239,953 total tokens</strong>.</p>
+
+<p>Most of that cost came from reconstructing a large fresh one-decision Working View repeatedly.</p>
+
+<p>So another tempting equation is rejected:</p>
+
+<pre tabIndex={0}><code>{`fewer observations
+≠ fewer Provider calls
+≠ fewer tokens
+≠ cheaper cognition`}</code></pre>
+
+<p>P6 later targeted that different bottleneck.</p>
+
+<h2 id="what-p5-actually-earned" data-toc="What P5 earned">What P5 actually earned</h2>
+
+<p>P5 did not earn a repository RAG service, Context scheduler, goal stream, generic evaluator service, DAG, RSI controller, or second persistence layer.</p>
+
+<p>It earned something smaller:</p>
+
+<ul>
+  <li>external failure evidence should be addressable before broad source traversal;</li>
+  <li>the Agent can own subsequent repository observation choices;</li>
+  <li>durable history can remain exact while the next Working View stays compact;</li>
+  <li>failed or rejected discovery actions need not be replayed into cognition;</li>
+  <li>high-information discovery must preserve bounded abstention.</li>
+</ul>
+
+<p className="article-closing">The improvement was not that the Agent looked at less code. It was that every new look had to buy information—and when the evidence stopped buying causality, the Agent stopped spending authority.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Primary record</p>
+  <h2 id="sources-title" data-toc="Primary record">Harness P5 evidence</h2>
+  <ol className="source-list">
+    <li><a href="https://github.com/zycxfyh/ordivon-harness/blob/1c3c834646e8fd12b58c196e417f01c48aae0315/evidence/harness-rsi-p5-high-information-discovery-999d753.json">P5 high-information discovery acceptance</a></li>
+  </ol>
+</section>

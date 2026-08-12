@@ -1,0 +1,247 @@
+export const metadata = {
+  "slug": "the-agent-knew-the-goal-it-still-wouldnt-do-it",
+  "title": "The Agent Knew the Goal. It Still Wouldn't Do It.",
+  "deck": "In Station Zero GX1, the Engineer already carried the Research Core, knew the primary objective, and had a legal route toward extraction. DeepSeek chose to repair cooling 36/36 times. Across six live continuations it never completed the Core objective. Making the objective more structured either did nothing or made the answer presentation-order sensitive.",
+  "description": "Why Station Zero GX1 separated reachable strategy, policy accessibility, and model realization; how a model can articulate an objective yet fail to preserve the multi-turn commitment needed to realize it.",
+  "projectSlugs": ["game", "harness", "computing"],
+  "questionSlugs": ["game-agent-native-mechanics"],
+  "type": "Research report",
+  "project": "Ordivon Game",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 10,
+  "author": "zycxfyh",
+  "lead": "The cleanest way to misunderstand an Agent game is to ask whether the model knows the objective. GX1 constructed a state where the answer was obviously yes—and the strategy still failed.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E2",
+  "takeaways": [
+    "GX1 separates structural future space, policy-conditioned accessibility, and model-conditioned realization; proving a strategy exists does not prove the current model will sustain it.",
+    "At the frozen Core-carrier state, DeepSeek chose local cooling repair 36/36 across current/tag/order conditions, while a deterministic continuous-carrier commitment could complete the Core objective and a one-step deviation could not.",
+    "A generic structured primaryObjective representation failed presentation invariance: reversing Candidate order deterministically changed the chosen tactic, so the prototype was deleted rather than promoted."
+  ],
+  "limitations": [
+    "GX1 is a bounded Station Zero v3 research artifact and does not establish a general law about all models, objectives, games, or planning tasks.",
+    "The exact GX1 research commit is currently retained locally but is not reachable through a public canonical repository ref, so Web publishes this result as E2 rather than E4."
+  ]
+};
+
+<InBrief claim="Knowing the goal is not the same as owning the commitment that realizes it." evidence="E2 public · exact GX1 owner report retained by Game but not currently reachable through a public canonical ref" scope="Station Zero v3 GX1 Core-carrier and matched strategy falsifiers">
+  <p>The Game contained a reachable future. The current model repeatedly chose an intelligible local action that destroyed the time needed to reach it.</p>
+</InBrief>
+
+<h2 id="gx1-started-by-separating-three-claims" data-toc="Three different claims">GX1 started by separating three claims</h2>
+
+<p>Station Zero has policy, world, and model layers.</p>
+
+<p>Before GX1, it was too easy to collapse them into one question:</p>
+
+<blockquote>Does the Agent have strategy?</blockquote>
+
+<p>GX1 split that into three:</p>
+
+<pre tabIndex={0}><code>{`Game structural future space
+        ↓
+policy-conditioned strategy accessibility
+        ↓
+model-conditioned strategy realization`}</code></pre>
+
+<p>A strategy can exist in the Game while the current policy closes it.</p>
+
+<p>A policy can reopen it while the model chooses something else.</p>
+
+<p>A model can describe the objective correctly while failing to preserve the commitment long enough to realize it.</p>
+
+<h2 id="the-core-state-made-the-objective-obvious" data-toc="The objective was already obvious">The Core state made the objective obvious</h2>
+
+<p>The strongest GX1 falsifier begins at Turn 3.</p>
+
+<p>Engineer Imani is at the reactor console with:</p>
+
+<ul>
+  <li>90 health;</li>
+  <li>the Research Core already in inventory;</li>
+  <li>Spare Parts in inventory;</li>
+  <li>primary objective <code>recover-research-core</code>;</li>
+  <li>a known legal route toward the rescue airlock.</li>
+</ul>
+
+<p>The available Candidates include two Pirate attacks, two cooling repairs, guard, several moves, and wait.</p>
+
+<p>This is not a hidden-goal problem.</p>
+
+<p>The model can see the Core, the objective, and the route.</p>
+
+<h2 id="the-structural-counterfactual-proved-the-future-existed" data-toc="The future really existed">The structural counterfactual proved the future existed</h2>
+
+<p>The default deterministic policy repairs cooling.</p>
+
+<p>GX1 introduced a bounded counter-policy that activates only after legal Core possession and repeatedly converts that possession into known extraction progress.</p>
+
+<p>A one-step intervention was not enough.</p>
+
+<p>Change only the Turn 3 action, then return to default:</p>
+
+<pre tabIndex={0}><code>{`final outcome = failure
+Core           = 0/1
+Engineer       = dead`}</code></pre>
+
+<p>Maintain the commitment across subsequent eligible turns:</p>
+
+<pre tabIndex={0}><code>{`final outcome              = partial
+recover-research-core       = completed 1/1
+rescue-team-survives        = completed 1/1
+Engineer                    = extracted, 32 HP`}</code></pre>
+
+<div className="article-thesis"><p>Core agency was a multi-turn commitment structure, not a magic first move.</p></div>
+
+<h2 id="the-first-evaluator-had-lied-to-us" data-toc="The first evaluator was wrong">The first evaluator had lied to us</h2>
+
+<p>The first version of that experiment appeared to show that changing Turn 3 once was enough to complete the objective.</p>
+
+<p>It was wrong.</p>
+
+<p><code>providerFactory</code> created new Provider instances repeatedly. The experiment's <code>used</code> flag lived inside each instance, so the supposedly one-shot intervention silently re-enabled itself on later turns.</p>
+
+<p>GX1 moved the intervention state into a shared control object and reran the artifact.</p>
+
+<p>The “one good action solves the mission” result disappeared.</p>
+
+<p>This matters because strategic agency can be manufactured by experiment state just as easily as by model noise.</p>
+
+<h2 id="a-second-evaluator-manufactured-divergence-from-an-id" data-toc="Run identity is not strategy">A second evaluator manufactured divergence from an ID</h2>
+
+<p>Another comparison used an exact semantic action key for extraction that embedded a run-specific <code>extractionId</code>.</p>
+
+<p>Two otherwise identical extraction decisions in separate runs therefore looked different.</p>
+
+<p>GX1 normalized:</p>
+
+<pre tabIndex={0}><code>{`extract:<run-specific-id>
+→ extract`}</code></pre>
+
+<p>The false divergence disappeared.</p>
+
+<p>Again, the experiment became less impressive and more correct.</p>
+
+<h2 id="deepseek-preferred-a-locally-sensible-action" data-toc="The model chose something sensible">DeepSeek preferred a locally sensible action</h2>
+
+<p>At the frozen live Core-carrier state, DeepSeek did not behave randomly.</p>
+
+<p>It strongly preferred repairing cooling.</p>
+
+<pre tabIndex={0}><code>{`current Context                  12/12 repair cooling
++ truthful carrier-objective tag 12/12 repair cooling
++ same tag, reverse order         12/12 repair cooling
+
+36/36 Provider success
+~124k tokens`}</code></pre>
+
+<p>The rationales explicitly mentioned carrying the Research Core.</p>
+
+<p>They also explained the local plan:</p>
+
+<blockquote>Stabilize the dangerous system now, protect the team, and extract later.</blockquote>
+
+<p>The problem is not that the model forgot the objective.</p>
+
+<p>The deterministic long-horizon counterfactual shows that “later” is too late in this world.</p>
+
+<h2 id="six-live-continuations-made-the-gap-long-horizon" data-toc="The gap survived continuation">Six live continuations made the gap long-horizon</h2>
+
+<p>GX1 then let DeepSeek continue controlling the Engineer rather than freezing one decision.</p>
+
+<p>Across six live replicas:</p>
+
+<div tabIndex={0} className="article-data-table" role="table" aria-label="GX1 live Core continuation">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Outcome</span><span role="columnheader">Result</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Core completed</strong><span role="cell">0 / 6</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Partial or victory</strong><span role="cell">0 / 6</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Engineer extracted</strong><span role="cell">0 / 6</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Provider calls</strong><span role="cell">41 / 41 success</span></div>
+</div>
+
+<p>The model sometimes moved toward Command Deck.</p>
+
+<p>Then it turned back to repair, support, or local stabilization until oxygen, heat, and health pressure closed the future.</p>
+
+<blockquote>The model could articulate the objective and intermittently move toward it, but did not stably preserve the commitment needed to convert possession into extraction.</blockquote>
+
+<h2 id="so-we-tried-more-explicit-objective-semantics" data-toc="More objective structure did not fix it">So we tried more explicit objective semantics</h2>
+
+<p>Perhaps the Context was simply missing a legitimate fact: what does <code>recover-research-core</code> physically require?</p>
+
+<p>Game and Rescue are entitled to know that their own objective means extracting the carried item.</p>
+
+<p>A diagnostic Candidate presentation made that relationship explicit.</p>
+
+<p>DeepSeek changed dramatically:</p>
+
+<pre tabIndex={0}><code>{`current                 0/12 extraction-route first choice
+explicit Candidate text 12/12 move:command-deck`}</code></pre>
+
+<p>That looked like the fix.</p>
+
+<p>It was also too prescriptive.</p>
+
+<p>The Candidate text had started doing part of the planning.</p>
+
+<p>GX1 did not retain it.</p>
+
+<h2 id="the-cleaner-structured-objective-failed-its-own-falsifier" data-toc="Structured objective failed invariance">The cleaner structured objective failed its own falsifier</h2>
+
+<p>The next prototype added a generic structured <code>primaryObjective</code> with factual completion semantics but did not rewrite Candidate labels or scores.</p>
+
+<p>Then GX1 reversed Candidate presentation order—a field that is supposed to be presentation-only.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="GX1 primary objective presentation invariance">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Condition</span><span role="columnheader">DeepSeek</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">primaryObjective · canonical order</strong><span role="cell">8/8 repair cooling</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">primaryObjective · reversed order</strong><span role="cell">8/8 move reactor-entry</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">+ carrier tag · canonical order</strong><span role="cell">8/8 repair cooling</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">+ carrier tag · reversed order</strong><span role="cell">8/8 move command-deck</span></div>
+</div>
+
+<p>All 32 Provider decisions succeeded.</p>
+
+<p>The representation failed.</p>
+
+<p>A factual objective representation that lets presentation order deterministically choose a tactic has not demonstrated stable objective ownership.</p>
+
+<p>The prototype was deleted.</p>
+
+<h2 id="more-explicit-goals-are-not-the-same-as-agency" data-toc="Explicit goal ≠ agency">More explicit goals are not the same as agency</h2>
+
+<p>GX1 therefore rejected several shortcuts:</p>
+
+<pre tabIndex={0}><code>{`goal present in Context
+≠ goal understood
+≠ strategy reachable
+≠ strategy accessible under policy
+≠ model sustains commitment
+≠ objective completes`}</code></pre>
+
+<p>These claims can fail at different layers.</p>
+
+<p>Game needs to preserve those layers if it wants to study agency rather than merely reward the model for repeating objective text.</p>
+
+<h2 id="what-gx1-earned" data-toc="What GX1 earned">What GX1 earned</h2>
+
+<p>GX1 did not add a generic planner, MCTS, strategy router, objective oracle, persona engine, utility score, or dynamic policy switcher.</p>
+
+<p>It established something smaller:</p>
+
+<ul>
+  <li>selected Station Zero states contain materially different reachable futures;</li>
+  <li>access to those futures can depend on policy and world state;</li>
+  <li>one local action is not evidence of strategic commitment;</li>
+  <li>the current model can know a goal yet fail to preserve the commitment that realizes it;</li>
+  <li>objective representations must survive presentation falsifiers before becoming product Context.</li>
+</ul>
+
+<p className="article-closing">A goal written in the prompt is not a strategy. A strategy is what survives the locally sensible reasons to stop pursuing it.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Owner-record boundary</p>
+  <h2 id="sources-title" data-toc="Owner-record boundary">Why this public article is E2</h2>
+  <p>The exact GX1 strategic-agency report and live ablation artifacts are retained by the Game owner, but the final research commit is not currently reachable through a public canonical Git ref. Web therefore publishes the bounded result and its limitations without claiming public reproducibility authority.</p>
+</section>

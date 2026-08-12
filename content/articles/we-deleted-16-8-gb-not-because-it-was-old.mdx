@@ -1,0 +1,206 @@
+export const metadata = {
+  "slug": "we-deleted-16-8-gb-not-because-it-was-old",
+  "title": "We Deleted 16.8 GB. Not Because It Was Old.",
+  "deck": "Runtime had 16.8 GB of legacy source-build cache. Disk pressure alone did not authorize deletion, and an open repository falsely protected every byte. The real question was simpler: does any current execution path still consume this representation? The answer was no.",
+  "description": "Runtime HP0-C as a storage-authority experiment: why age, size, repository activity, and reconstructibility are insufficient deletion rules, and how current consumption relationships determined a safe 16.8 GB production reclaim.",
+  "projectSlugs": ["runtime", "computing"],
+  "questionSlugs": ["runtime-boundary-friction"],
+  "type": "Engineering record",
+  "project": "Ordivon Runtime",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 9,
+  "author": "zycxfyh",
+  "lead": "Storage cleanup sounds like a maintenance problem until the bytes you want to delete are also recovery evidence, rollback material, active workspace state, package-manager state, or reconstructible cache. Then 'old' and 'large' stop being deletion policies.",
+  "status": "current",
+  "claimClass": "engineering-inference",
+  "evidenceLevel": "E2",
+  "takeaways": [
+    "HP0-C found a stale retention rule: current execution had moved to Workspace-scoped build targets, while legacy source-scoped build caches were still protected merely because their repositories had open Workspaces.",
+    "After changing authority from repository activity to actual current consumption, production prune removed 11/11 legacy source-build candidates totaling 16,837,908,578 bytes, with zero failures and zero Workspace-cache selections.",
+    "Package-manager caches, durable Job/Attempt/Event/Artifact history, dirty/active Workspaces, current and previous release candidates, and deployment receipts remained outside the deletion authority."
+  ],
+  "limitations": [
+    "The exact production prune receipt is retained in Runtime's deployment/Host authority but is not currently exposed as a public canonical repository record, so this article is E2 even though the implementation commit is public.",
+    "The result establishes a retention boundary for the tested Runtime storage classes; it is not a universal garbage-collection policy for arbitrary systems."
+  ]
+};
+
+<InBrief claim="Deletion authority comes from what the bytes mean and who still consumes them—not from age, size, or the fact that storage pressure exists." evidence="E2 public · production owner evidence retained by Runtime/Host; implementation repair is public" scope="Runtime HP0-C storage and retention authority">
+  <p>The reclaim succeeded because the representation had become consumerless, not because 16.8 GB looked expensive.</p>
+</InBrief>
+
+<h2 id="disk-pressure-created-a-question-not-an-authority" data-toc="Pressure is not authority">Disk pressure created a question, not an authority</h2>
+
+<p>Runtime HP0-C started with a real capacity problem.</p>
+
+<p>The cache tree contained more than 49 GB before the decisive reclaim. One legacy subtree, <code>cache/build/sources/&lt;sha256&gt;</code>, accounted for:</p>
+
+<pre tabIndex={0}><code>{`16,837,908,578 bytes`}</code></pre>
+
+<p>The storage layer was above its 32 GiB high watermark.</p>
+
+<p>A traditional cleanup loop could stop there:</p>
+
+<blockquote>Find old large cache. Delete old large cache.</blockquote>
+
+<p>Runtime could not.</p>
+
+<p>Some old bytes are durable execution evidence. Some large bytes are active Workspace build state. Some reconstructible bytes are still required for rollback. Some caches are owned by package managers rather than Runtime.</p>
+
+<div className="article-thesis"><p>Capacity pressure can demand a decision. It cannot decide who has authority to delete.</p></div>
+
+<h2 id="the-old-rule-protected-by-repository" data-toc="The old rule protected the wrong thing">The old rule protected the wrong thing</h2>
+
+<p>The decisive falsifier was a stale retention relationship.</p>
+
+<p>Runtime's current execution model had already moved build targets to Workspace-scoped identities:</p>
+
+<pre tabIndex={0}><code>{`cache/build/<workspaceId>`}</code></pre>
+
+<p>But the cache operator still protected legacy source-scoped build state whenever the corresponding repository had an open Workspace:</p>
+
+<pre tabIndex={0}><code>{`cache/build/sources/<sourceKey>`}</code></pre>
+
+<p>That relationship used to make sense.</p>
+
+<p>It no longer described an execution dependency.</p>
+
+<p>The repository could be actively used while the old source-scoped representation had <strong>zero current consumers</strong>.</p>
+
+<h2 id="an-unused-write-path-made-the-problem-worse" data-toc="A retired write path still existed">An unused write path made the problem worse</h2>
+
+<p>The cache CLI still exposed a <code>migrate</code> command capable of moving Workspace build state into the retired source-scoped hierarchy.</p>
+
+<p>Nothing in current execution consumed that destination.</p>
+
+<p>So Runtime had both:</p>
+
+<ul>
+  <li>a stale protection rule for obsolete state;</li>
+  <li>a write path that could manufacture more of the obsolete state.</li>
+</ul>
+
+<p>HP0-C deleted the migrate path instead of building a better migration manager for a representation that had lost its consumer.</p>
+
+<h2 id="reconstructible-was-not-enough" data-toc="Reconstructible ≠ deletable">Reconstructible was not enough</h2>
+
+<p>It is tempting to define cache as “anything reconstructible.”</p>
+
+<p>That is also too broad.</p>
+
+<p>Runtime separated several retention classes:</p>
+
+<ul>
+  <li><strong>durable Runtime truth</strong> — Registry, Attempt, Event, Artifact, immutable admitted input evidence;</li>
+  <li><strong>Workspace state</strong> — governed by active, dirty, pinned, and retention state;</li>
+  <li><strong>Workspace-scoped build cache</strong> — reconstructible but protected while referenced;</li>
+  <li><strong>legacy source-build cache</strong> — reconstructible and no longer consumed;</li>
+  <li><strong>package-manager shared caches</strong> — physical pressure observed by Runtime, semantic deletion owned elsewhere;</li>
+  <li><strong>release material</strong> — current/previous candidates and receipts carry rollback/audit authority.</li>
+</ul>
+
+<p>The same property—reconstructible—does not imply the same deletion rule.</p>
+
+<h2 id="the-new-rule-followed-current-consumption" data-toc="Follow the consumer">The new rule followed current consumption</h2>
+
+<p>The repair aligned retention with the actual execution graph.</p>
+
+<p>Legacy <code>source_build</code> children became Runtime-reclaimable regardless of whether the same repository had an open Workspace, because no current execution plan consumed that hierarchy.</p>
+
+<p>Workspace-scoped caches remained protected while open or active.</p>
+
+<p>Shared package caches remained outside Runtime's semantic deletion authority.</p>
+
+<p>The cache inspector began projecting those distinctions explicitly instead of exposing the obsolete migration model.</p>
+
+<h2 id="the-counterfactual-selected-only-the-dead-representation" data-toc="The model selected 11 candidates">The counterfactual selected only the dead representation</h2>
+
+<p>Before touching production, the patched-source storage model selected exactly:</p>
+
+<pre tabIndex={0}><code>{`11 source_build candidates
+16,837,908,578 bytes
+0 protected Workspace caches`}</code></pre>
+
+<p>The modeled result dropped below the high watermark.</p>
+
+<p>Protected Workspace violation count was zero.</p>
+
+<p>That was the admission evidence for the production prune.</p>
+
+<h2 id="production-removed-16-8gb" data-toc="Production removed 16.8 GB">Production removed 16.8 GB</h2>
+
+<p>The production cache operator then executed the same authority model.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Runtime HP0-C production prune">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Production fact</span><span role="columnheader">Result</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Before</strong><span role="cell">49,796,648,363 bytes</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Removed</strong><span role="cell">16,837,908,578 bytes</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Candidates</strong><span role="cell">11 / 11 source_build</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Failures</strong><span role="cell">0</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Remaining Runtime-reclaimable candidates</strong><span role="cell">0</span></div>
+</div>
+
+<p>No Workspace cache was selected.</p>
+
+<p>The package-manager-owned shared cache was observed but untouched.</p>
+
+<p>The resulting cache state was within the high watermark.</p>
+
+<h2 id="we-checked-what-survived-not-just-what-disappeared" data-toc="The survival proof mattered">We checked what survived, not just what disappeared</h2>
+
+<p>A deletion receipt saying “16.8 GB removed” would be weak evidence by itself.</p>
+
+<p>HP0-C checked the retained responsibilities:</p>
+
+<ul>
+  <li>post-prune Doctor remained healthy with zero violations;</li>
+  <li>historical HP0-B Job artifacts remained digest-verifiable and readable;</li>
+  <li>current and previous release candidates were preserved;</li>
+  <li>canonical deployment receipts were preserved;</li>
+  <li>dirty and active Workspaces remained protected;</li>
+  <li>package-manager cache internals remained owned by their native managers.</li>
+</ul>
+
+<p>The proof of a retention policy is not only what it deletes.</p>
+
+<p>It is what it refuses to delete under the same pressure.</p>
+
+<h2 id="age-size-and-pressure-all-failed-as-policies" data-toc="Three rejected deletion rules">Age, size, and pressure all failed as policies</h2>
+
+<p>HP0-C explicitly rejected:</p>
+
+<pre tabIndex={0}><code>{`old       → delete
+large     → delete
+over quota → delete`}</code></pre>
+
+<p>Those are observations.</p>
+
+<p>The semantic decision needs more:</p>
+
+<pre tabIndex={0}><code>{`who owns these bytes?
+what current consumer can still name them?
+are they durable evidence?
+are they rollback authority?
+are they active or dirty state?
+can the owner reconstruct them safely?`}</code></pre>
+
+<p>Only after those questions were answered did the 16.8 GB become reclaimable.</p>
+
+<h2 id="what-hp0c-earned" data-toc="What HP0-C earned">What HP0-C earned</h2>
+
+<p>HP0-C did not create a universal GarbageCollector or age-based retention service.</p>
+
+<p>It earned a narrower storage law:</p>
+
+<blockquote>Retention authority follows current semantic/physical responsibility and live consumption. Reclaim only after the representation's owner can prove that the bytes no longer carry an active, durable-evidence, rollback, or external-owner role.</blockquote>
+
+<p className="article-closing">The safest delete command is not the one with the best age threshold. It is the one that can explain why every selected byte has lost the right to remain.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Evidence boundary</p>
+  <h2 id="sources-title" data-toc="Evidence boundary">Public implementation, retained production proof</h2>
+  <p>The Runtime implementation that aligned cache retention with execution authority is public at the exact owner commit below. The production prune receipt and retained post-prune authority evidence are currently held by Runtime/Host rather than exposed as a public canonical repository record, so Web classifies this article as E2.</p>
+  <ol className="source-list">
+    <li><a href="https://github.com/zycxfyh/ordivon-runtime/commit/a62d0b9d7c7d637ac738c3a58ae43369ea21238d">Runtime storage-authority implementation commit</a></li>
+  </ol>
+</section>
