@@ -1,0 +1,187 @@
+export const metadata = {
+  "slug": "the-model-finished-the-protocol-wasnt-done",
+  "title": "The Model Finished. The Protocol Wasn't Done.",
+  "deck": "Harness preserved the visible Tool call, Tool result, and semantic conversation—then removed one opaque 940-byte Provider continuation. Gemini rejected the next request with 400. Some durable state is necessary precisely because it is not Agent cognition.",
+  "description": "How a second native Provider forced Ordivon Harness to separate model-visible semantic history from Provider-required opaque continuation state, and why only one new primitive survived a five-frontier productization test.",
+  "projectSlugs": ["harness", "computing", "runtime"],
+  "questionSlugs": ["provider-protocol-continuation", "ordivon-harness-v0", "harness-composition-and-completion"],
+  "type": "Research report",
+  "project": "Ordivon Harness",
+  "publishedAt": "2026-08-12",
+  "readMinutes": 9,
+  "author": "zycxfyh",
+  "lead": "The transcript looked complete. The model had asked for a Tool. The Tool had returned. Every semantic message an Agent might care about was still present. The next Provider request failed anyway, because a 940-byte opaque signature had disappeared.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "A Provider can require opaque continuation state that must survive a Tool round without becoming model-visible Agent cognition.",
+    "In the live Gemini falsifier, preserving the exact signature returned HTTP 200 while stripping only that signature returned 400 INVALID_ARGUMENT; crash/reopen continuation then completed with zero Runtime redispatch.",
+    "Five Harness frontiers were pressured in the same round; only ProviderToolContinuation earned a product primitive, while repository maps, diagnostic planners, generic retry/idempotency machinery, and API contraction did not."
+  ],
+  "limitations": [
+    "The accepted primitive is a Provider-protocol continuation boundary, not a claim that Gemini thought signatures have universal semantics across Providers.",
+    "Harness does not expose opaque continuation bytes as Agent reasoning, add a built-in Gemini Adapter, or turn Provider continuation into Memory/RAG."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-harness/blob/9885f3dd04f0a4bee0761f362b5148c7d61f686e/evidence/harness-provider-tool-continuation-9087278.json"
+};
+
+<InBrief claim="Not every byte required to continue an Agent turn belongs in the Agent's semantic history." evidence="E4 · live second-Provider falsifier, crash/reopen recovery, exact Harness acceptance record" scope="Provider Tool continuation across the tested Harness boundary">
+  <p>Harness earned one new primitive by preserving opaque Provider protocol state separately from model-visible messages.</p>
+</InBrief>
+
+<h2 id="the-transcript-was-complete-and-the-request-still-failed" data-toc="The transcript looked complete">The transcript was complete—and the request still failed</h2>
+
+<p>Consider a familiar Agent turn:</p>
+
+<pre tabIndex={0}><code>{`User asks
+→ model emits Tool call
+→ Tool executes
+→ Tool result returns
+→ model continues`}</code></pre>
+
+<p>If you are building a Harness, it is natural to treat the semantic conversation as the thing that must survive interruption.</p>
+
+<p>User message. Assistant Tool call. Tool result. Maybe the raw Provider response digest for audit.</p>
+
+<p>That seems complete.</p>
+
+<p>The second-Provider experiment constructed exactly that falsifier with Gemini.</p>
+
+<p>One request preserved the semantic Tool call and the exact Provider continuation signature. The next preserved the same semantic content but stripped only the signature.</p>
+
+<div tabIndex={0} className="article-data-table" role="table" aria-label="Gemini continuation falsifier">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Next request</span><span role="columnheader">Provider result</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Signature preserved</strong><span role="cell">HTTP 200</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Only signature stripped</strong><span role="cell">HTTP 400 · INVALID_ARGUMENT</span></div>
+</div>
+
+<p>The missing state was not optional decoration.</p>
+
+<h2 id="the-missing-state-was-also-not-a-message" data-toc="The state was not a message">The missing state was also not a message</h2>
+
+<p>Google documents thought signatures as encrypted Provider state used to preserve reasoning context across multi-step interactions. For Gemini 3 function calling, manually managed histories must return the relevant signatures or the request can fail validation.</p>
+
+<p>That still does not make a signature a sentence the Agent should read.</p>
+
+<p>The Harness experiment retained a <strong>940-byte</strong> continuation with an exact digest. It deliberately kept those bytes hidden from Agent messages.</p>
+
+<pre tabIndex={0}><code>{`semantic Tool call
++ Tool result
++ opaque Provider continuation
+
+where:
+semantic history ≠ opaque continuation`}</code></pre>
+
+<p>This is an important kind of state: necessary for the protocol, meaningless as user-facing prose, and unsafe to let arbitrary callers forge.</p>
+
+<h2 id="why-not-just-put-the-bytes-in-history" data-toc="Why not put it in history?">Why not just put the bytes in history?</h2>
+
+<p>Because doing so collapses three different authorities.</p>
+
+<ul>
+  <li><strong>Agent cognition</strong> is the semantic material the model is allowed to reason over.</li>
+  <li><strong>Provider protocol continuation</strong> is opaque state required by the bound Adapter and Provider lineage.</li>
+  <li><strong>Caller input</strong> is new semantic material supplied by an upstream owner.</li>
+</ul>
+
+<p>If all three become “messages,” a caller can potentially inject reserved continuation-looking fields, Provider-specific bytes start polluting model-visible context, and privacy policy becomes difficult to state.</p>
+
+<p>Harness instead binds continuation authority to the exact prior Provider Tool result and completed-Provider lineage.</p>
+
+<p>Initial Run messages and resumed caller messages cannot mint that authority by copying a shape.</p>
+
+<h2 id="crash-reopen-was-the-real-test" data-toc="Crash/reopen was the real test">Crash/reopen was the real test</h2>
+
+<p>Passing one request in memory would only prove a serialization adapter.</p>
+
+<p>The useful question was whether the continuation could survive the kind of interruption Harness exists to handle.</p>
+
+<p>The live second-Provider run did this:</p>
+
+<pre tabIndex={0}><code>{`Gemini Tool response
+→ exact continuation retained under Run authority
+→ process boundary / reopen
+→ SQLite continuity reconstructs authority
+→ next Provider request receives continuation
+→ model completes`}</code></pre>
+
+<p>The reopened run finished with summary <code>LIVE_CONTINUATION_OK</code>.</p>
+
+<p>The Provider returned HTTP 200 before and after resume. The continuation remained hidden from Agent messages. Store Doctor remained healthy. Runtime redispatch count after reopen was <strong>0</strong>.</p>
+
+<p>The recovery therefore preserved Provider protocol continuity without replaying the physical Tool effect.</p>
+
+<h2 id="privacy-decided-whether-recovery-was-even-allowed" data-toc="Privacy still controls retention">Privacy decided whether recovery was even allowed</h2>
+
+<p>Durability is not automatically permission to retain content.</p>
+
+<p>Harness already had Runs whose privacy contract allowed metadata-only retention. Those Runs are not silently upgraded just because a Provider protocol would benefit from opaque continuation bytes.</p>
+
+<p>Exact crash/reopen recovery of Provider continuation is available only when the Run Contract already authorizes the necessary content retention.</p>
+
+<blockquote>A protocol need can justify a data type. It does not erase the authority that decides whether those bytes may be persisted.</blockquote>
+
+<h2 id="five-features-entered-one-left" data-toc="Five frontiers, one primitive">Five features entered. One left.</h2>
+
+<p>The Provider continuation experiment was part of a broader Harness cross-validation round. Five frontiers had to beat simpler controls before becoming product machinery.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Harness five frontier product decisions">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Frontier</span><span role="columnheader">Decision</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Provider protocol continuation</strong><span role="cell">One primitive earned</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Repository navigation map/ranker</strong><span role="cell">No primitive</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Generic retry/idempotency framework</strong><span role="cell">No primitive</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Diagnostic/planner service</strong><span role="cell">No primitive</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Public API contraction</strong><span role="cell">Not earned</span></div>
+</div>
+
+<p>This matters because a Provider-specific failure could easily have triggered a large “Provider State” subsystem.</p>
+
+<p>It did not.</p>
+
+<h2 id="the-new-primitive-is-deliberately-boring" data-toc="A deliberately boring primitive">The new primitive is deliberately boring</h2>
+
+<p>The product addition is named <code>ProviderToolContinuation</code>.</p>
+
+<p>It can carry one Tool-result continuation bound to:</p>
+
+<ul>
+  <li>an Adapter;</li>
+  <li>the source turn;</li>
+  <li>the source model call.</li>
+</ul>
+
+<p>The request projects ordered Provider continuations separately from model-visible messages. Harness-reserved continuation metadata is stripped from semantic messages. SQLite recovery independently reconstructs and verifies the authority before Provider claim.</p>
+
+<p>No new service was added. No new database schema was required. No built-in Gemini Adapter was promoted.</p>
+
+<h2 id="what-the-provider-knows-is-not-what-the-agent-knows" data-toc="Provider state is not Agent knowledge">What the Provider knows is not what the Agent knows</h2>
+
+<p>The broader lesson is easy to miss in Agent architecture diagrams.</p>
+
+<p>A model turn has more than one kind of continuity:</p>
+
+<pre tabIndex={0}><code>{`semantic continuity — what the Agent can reason about
+protocol continuity — what the Provider requires to accept the next request
+physical continuity — what Tools actually did
+Task continuity — what larger commitment is still open`}</code></pre>
+
+<p>Putting all four into one conversation log does not simplify the system. It hides who can prove each fact.</p>
+
+<h2 id="what-would-reopen-the-boundary" data-toc="What would reopen the boundary">What would reopen the boundary</h2>
+
+<p>The primitive should remain small unless another Provider or protocol exposes a materially different continuation fact that cannot fit the same authority model.</p>
+
+<p>Cross-Provider evidence may eventually justify a richer abstraction. One Provider's opaque bytes do not.</p>
+
+<p className="article-closing">The missing 940 bytes taught us something larger than how to satisfy one API: durable state can be necessary precisely because the Agent should never have to think about it.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Primary sources</p>
+  <h2 id="sources-title" data-toc="Primary sources">Provider continuation evidence</h2>
+  <ol className="source-list">
+    <li><a href="https://github.com/zycxfyh/ordivon-harness/blob/9885f3dd04f0a4bee0761f362b5148c7d61f686e/evidence/harness-provider-tool-continuation-9087278.json">Harness X2 Provider Tool Continuation acceptance</a></li>
+    <li><a href="https://ai.google.dev/gemini-api/docs/generate-content/thought-signatures">Google Gemini thought-signature documentation</a></li>
+    <li><a href="https://ai.google.dev/gemini-api/docs/generate-content/function-calling">Google Gemini function-calling documentation</a></li>
+  </ol>
+</section>
