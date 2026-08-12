@@ -94,6 +94,12 @@
       "sizeBytes": 180518
     },
     {
+      "slug": "the-agent-knew-the-goal-it-still-wouldnt-do-it",
+      "sourceDigest": "sha256:2000316358e3e7896357e3a09dc40e8a551b5af157bca888d865819233c9cb83",
+      "blobDigest": "sha256:cf57172e74659e57fd4246695521b20dc41256cff8febae929ac8664b593a431",
+      "sizeBytes": 172156
+    },
+    {
       "slug": "the-command-succeeded-did-anything-happen",
       "sourceDigest": "sha256:3e7eed2584eb13277b4641192521a45f6f85862eaa662b99dc35b223376d462f",
       "blobDigest": "sha256:5be2a3117b987012dcb2906882fbf66de7f617faecc8bb043a2ef094ec47ec0c",
@@ -124,6 +130,12 @@
       "sizeBytes": 169327
     },
     {
+      "slug": "the-patterns-recurred-our-taxonomy-got-worse",
+      "sourceDigest": "sha256:d95d5cedd86fcde12f4c3572673fdb6051f4c36142a26b471fe18adf7dad8891",
+      "blobDigest": "sha256:2a06815ac23a6e6ccda9d2faddb22cf27d44c94b91726e440c47be071a5dd1aa",
+      "sizeBytes": 178231
+    },
+    {
       "slug": "the-shorter-explanation-won",
       "sourceDigest": "sha256:d77593c57ddc18ce1f07505e6c1a92799e9725dbd2bee0d92c7bf60d032a86ee",
       "blobDigest": "sha256:d62189c88cddb82f31a8c7f877b1df87209029f6bf5693c7856a2e872d344755",
@@ -146,6 +158,18 @@
       "sourceDigest": "sha256:303dc1d38166cb09bb3f90fd1b66047518d8ebd639df9edf62b3cc7de3eab968",
       "blobDigest": "sha256:3b8168e9087b0498d2d41d78d0bf7b05560ec944f181001bbba1a47b0b0da6f0",
       "sizeBytes": 168855
+    },
+    {
+      "slug": "we-cut-203-observations-to-8-and-still-didnt-edit",
+      "sourceDigest": "sha256:0f152cb8effa7d7ac120ede46139f03f23372abae11a804bc709d272d6721319",
+      "blobDigest": "sha256:36e59a01839ba12961e3590fbb54b2f5af2f317f4246b35af556368e4e95630b",
+      "sizeBytes": 183006
+    },
+    {
+      "slug": "we-deleted-16-8-gb-not-because-it-was-old",
+      "sourceDigest": "sha256:468a5abe6922b49eda6f4f10fc2947ade0089026b3470bd5ec421b51d6ccee72",
+      "blobDigest": "sha256:fa2d0e25d02fa8c61362ae660940973ab07f71aac82d9fbda7abbcc219cef4e1",
+      "sizeBytes": 176803
     },
     {
       "slug": "we-sorted-the-evidence-accuracy-got-worse",

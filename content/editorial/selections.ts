@@ -1,43 +1,43 @@
 export const editorialSelections = {
   home: {
     proof: "the-shorter-explanation-won",
-    recentArguments: ["the-agent-asked-for-more-evidence-the-answer-became-no", "the-model-finished-the-protocol-wasnt-done", "we-sorted-the-evidence-accuracy-got-worse"],
+    recentArguments: ["the-patterns-recurred-our-taxonomy-got-worse", "we-cut-203-observations-to-8-and-still-didnt-edit", "the-agent-knew-the-goal-it-still-wouldnt-do-it"],
   },
   writing: {
     startHere: "why-ordivon",
-    evidenceReports: ["the-constitution-changed-the-agent-that-wasnt-enough", "we-sorted-the-evidence-accuracy-got-worse"],
+    evidenceReports: ["the-patterns-recurred-our-taxonomy-got-worse", "we-cut-203-observations-to-8-and-still-didnt-edit"],
     readingPaths: [
       {
-        label: "When rules deserve defaults",
-        title: "A cleaner rule or representation still has to beat the ugly baseline",
-        description: "Follow two interventions that looked architecturally attractive—a quantitative constitution and canonical evidence order—until sealed replication and a clearer oracle removed their default status.",
-        slugs: ["the-constitution-changed-the-agent-that-wasnt-enough", "we-sorted-the-evidence-accuracy-got-worse", "the-shorter-explanation-won"],
+        label: "More evidence, less certainty",
+        title: "When repeated evidence strengthens Reality and weakens the labels used to describe it",
+        description: "Follow historical recurrence, ambiguous evaluators, and canonical representations until the experiment separates what keeps recurring from the vocabulary that only seemed stable.",
+        slugs: ["the-patterns-recurred-our-taxonomy-got-worse", "history-did-not-prove-us-right", "we-sorted-the-evidence-accuracy-got-worse"],
       },
       {
-        label: "Non-action is a result",
-        title: "What happens when new evidence removes the action instead of authorizing it",
-        description: "Start with an Agent requesting missing evidence, watch a read-only observation change the available action space, then connect that no-op to UNKNOWN and consequence boundaries.",
-        slugs: ["the-agent-asked-for-more-evidence-the-answer-became-no", "unknown-is-operational-state", "the-command-succeeded-did-anything-happen"],
+        label: "Information must buy a decision",
+        title: "Seeing less is useful only when each observation can change what the Agent is entitled to do",
+        description: "Start with high-information repository discovery, then compare evidence that closes a capital path and UNKNOWN that preserves the right to keep observing.",
+        slugs: ["we-cut-203-observations-to-8-and-still-didnt-edit", "the-agent-asked-for-more-evidence-the-answer-became-no", "unknown-is-operational-state"],
       },
       {
-        label: "State the model should not see",
-        title: "Semantic history is only one continuity layer",
-        description: "See why opaque Provider continuation can be necessary across a Tool turn without becoming Agent cognition, then place that state beside Task and execution continuity rather than inside one universal transcript.",
-        slugs: ["the-model-finished-the-protocol-wasnt-done", "transcript-not-task-database", "from-tokens-to-work"],
+        label: "Goals, commitments, and remaining futures",
+        title: "An explicit goal is not yet a strategy, and a retained object is not yet entitled to remain",
+        description: "Compare a model that knows its objective but loses the multi-turn commitment with storage whose retention right depends on an actual current consumer rather than age or size.",
+        slugs: ["the-agent-knew-the-goal-it-still-wouldnt-do-it", "we-deleted-16-8-gb-not-because-it-was-old", "winning-move-loses-contest"],
       },
     ],
   },
   research: {
     currentQuestion: "historical-world-model-dogfood",
     recentlyAnswered: "semantic-order-and-canonicalization",
-    architectureChangingExperiment: "the-model-finished-the-protocol-wasnt-done",
+    architectureChangingExperiment: "we-cut-203-observations-to-8-and-still-didnt-edit",
   },
   now: {
     judgmentChanges: [
-      "historical-world-model-dogfood", "context-treatment-replication", "provider-protocol-continuation",
-      "semantic-order-and-canonicalization", "calibrated-non-action", "finance-real-capital-agent",
-      "evidence-current-applicability", "creative-empirical-validity", "world-minimal-boundary",
-      "ordivon-harness-v0", "runtime-boundary-friction", "game-agent-native-mechanics", "security-adversarial-trajectory",
+      "historical-world-model-dogfood", "ordivon-harness-v0", "game-agent-native-mechanics", "runtime-boundary-friction",
+      "context-treatment-replication", "provider-protocol-continuation", "semantic-order-and-canonicalization",
+      "calibrated-non-action", "finance-real-capital-agent", "evidence-current-applicability",
+      "creative-empirical-validity", "world-minimal-boundary", "security-adversarial-trajectory",
     ],
   },
 } as const;

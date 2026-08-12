@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 };
 
 const evidence = [
-  ["200", "source-locked historical trajectories through HD5"],
-  ["60", "historical Deep Anchors through 1969"],
-  ["156", "historical replay Provider calls through HD5"],
+  ["240", "source-locked historical trajectories through HD6"],
+  ["72", "historical Deep Anchors through 1999"],
+  ["192", "historical replay Provider calls through HD6"],
   [String(articles.length), "dated public arguments"],
 ] as const;
 
@@ -30,9 +30,8 @@ export default function ResearchPage() {
   const questions = getResearchQuestionSummaries();
   const current = getResearchDossier(editorialSelections.research.currentQuestion);
   const answered = getResearchDossier(editorialSelections.research.recentlyAnswered);
-  const changed = getResearchDossier("world-minimal-boundary");
   const changedArticle = getArticle(editorialSelections.research.architectureChangingExperiment);
-  if (!current || !answered || !changed || !changedArticle) throw new Error("research editorial entry is incomplete");
+  if (!current || !answered || !changedArticle) throw new Error("research editorial entry is incomplete");
   const timeline: ResearchTimelineItem[] = [...articles]
     .sort((left, right) => (right.revisedAt || right.publishedAt).localeCompare(left.revisedAt || left.publishedAt))
     .map((article) => ({ id: article.slug, date: article.revisedAt || article.publishedAt, displayDate: formatDate(article.revisedAt || article.publishedAt), type: article.type, title: article.title, summary: article.description, href: `/writing/${article.slug}` }));
@@ -61,7 +60,7 @@ export default function ResearchPage() {
               <span>Recently answered boundary</span><h2>{answered.question.title}</h2><p>{answered.question.currentJudgment}</p><b>Read the accepted answer ↗</b>
             </Link>
             <Link href={`/writing/${changedArticle.slug}`} className="kind-experiment">
-              <span>Experiment that most changed the architecture</span><h2>{changedArticle.title}</h2><p>{changed.question.currentJudgment}</p><b>{changedArticle.readMinutes} min research report ↗</b>
+              <span>Experiment that most changed the architecture</span><h2>{changedArticle.title}</h2><p>{changedArticle.description}</p><b>{changedArticle.readMinutes} min research report ↗</b>
             </Link>
           </div>
         </section>
