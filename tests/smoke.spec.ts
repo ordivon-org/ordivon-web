@@ -99,9 +99,16 @@ test("publication metadata is visible and internally consistent", async ({ page 
   ].sort());
   await gotoWithNetworkRetry(page, "/writing/from-tokens-to-work");
   await expect(page.locator(".publication-brief")).toBeVisible();
-  await expect(page.locator(".publication-brief-status").getByText(/E4/)).toBeVisible();
+  await expect(page.locator(".publication-brief-status > span").filter({ hasText: /^E4 · Reproducible engineering evidence$/ })).toBeVisible();
+  await expect(page.locator(".publication-label-decoder > summary")).toHaveText("How to read these labels");
+  await expect(page.locator(".publication-label-decoder")).toContainText("E2 may honestly rely on owner-retained primary records that are not public");
   await expect(page.locator(".publication-brief-copy li")).toHaveCount(3);
   await expect(page.locator(".publication-limitations li")).toHaveCount(2);
+
+  await gotoWithNetworkRetry(page, "/writing");
+  await expect(page.locator('a[href="/writing/link-edge-boundary/"] .writing-status')).toHaveText("historical");
+  await expect(page.locator('a[href="/writing/from-tokens-to-work/"] .writing-status')).toHaveText("revised");
+  await expect(page.locator('a[href="/writing/from-tokens-to-work/"] .writing-meta time')).toContainText("Revised 2026-08-12");
 });
 
 test("previously earned publication primitives remain intact", async ({ page }) => {
@@ -431,11 +438,16 @@ test("flagship strong-baseline report preserves evidence and claim boundaries", 
 test("article context is derived from Project and Question metadata", async ({ page }) => {
   const metadata = articleMetadata.find((article) => article.slug === "world-got-smaller-and-got-clearer")!;
   await gotoWithNetworkRetry(page, "/writing/world-got-smaller-and-got-clearer");
+  await expect(page.locator(".article-entry-context")).toBeVisible();
+  await expect(page.locator(".article-entry-context").getByRole("link", { name: /Project.*Ordivon World/ })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Where this article sits." })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Project.*Ordivon World/ })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Project.*Ordivon Computing/ })).toBeVisible();
-  await expect(page.getByRole("link", { name: /Research Question.*Which World responsibilities still earn permanent ownership/ })).toBeVisible();
+  await expect(page.locator(".article-anchor-grid").getByRole("link", { name: /Project.*Ordivon World/ })).toBeVisible();
+  await expect(page.locator(".article-anchor-grid").getByRole("link", { name: /Project.*Ordivon Computing/ })).toBeVisible();
+  await expect(page.locator(".article-anchor-grid").getByRole("link", { name: /Research Question.*Which World responsibilities still earn permanent ownership/ })).toBeVisible();
   await expect(page.locator(".article-anchor-grid > *")).toHaveCount(metadata.projectSlugs.length + metadata.questionSlugs.length);
+  const entryBottom = await page.locator(".article-entry-context").evaluate((node) => node.getBoundingClientRect().bottom + scrollY);
+  const briefTop = await page.locator(".publication-brief").evaluate((node) => node.getBoundingClientRect().top + scrollY);
+  expect(entryBottom).toBeLessThan(briefTop);
   await expect(page.getByRole("heading", { name: "Continue through shared Questions and Projects." })).toBeVisible();
   await expect(page.locator(".related-reading a").first()).toBeVisible();
 });
@@ -510,4 +522,19 @@ test("core pages have no serious accessibility violations", async ({ page }) => 
     const serious = results.violations.filter((violation) => ["serious", "critical"].includes(violation.impact || ""));
     expect(serious, route).toEqual([]);
   }
+});
+
+
+test("first-screen experiment codes are decoded before the deck", async ({ page }) => {
+  await gotoWithNetworkRetry(page, "/writing/the-agent-knew-the-goal-it-still-wouldnt-do-it");
+  const decoder = page.locator(".article-code-decoder");
+  await expect(decoder).toBeVisible();
+  await expect(decoder).toContainText("GX1");
+  await expect(decoder).toContainText("Station Zero v3 strategic-agency experiment");
+  const decoderBottom = await decoder.evaluate((node) => node.getBoundingClientRect().bottom + scrollY);
+  const deckTop = await page.locator(".article-deck").evaluate((node) => node.getBoundingClientRect().top + scrollY);
+  expect(decoderBottom).toBeLessThan(deckTop);
+
+  await gotoWithNetworkRetry(page, "/writing/why-ordivon");
+  await expect(page.locator(".article-code-decoder")).toHaveCount(0);
 });

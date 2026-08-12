@@ -9,6 +9,15 @@ export function PublicationBrief({ article }: { article: ArticleMetadata }) {
         <span>{article.status}</span>
         <span>{claimLabels[article.claimClass]}</span>
         <span>{article.evidenceLevel} · {evidenceLabels[article.evidenceLevel]}</span>
+        <details className="publication-label-decoder">
+          <summary>How to read these labels</summary>
+          <dl>
+            <div><dt>Status</dt><dd>Whether this dated publication is current, revised, superseded, or historical.</dd></div>
+            <div><dt>Claim class</dt><dd>What kind of statement is being made; an observation, experiment, inference, decision, thesis, forecast, or aspiration.</dd></div>
+            <div><dt>Evidence</dt><dd>E0 assertion · E1 reasoned argument · E2 observed dogfood · E3 bounded experiment · E4 reproducible engineering evidence · E5 external replication or sustained operation.</dd></div>
+          </dl>
+          <p>E2 may honestly rely on owner-retained primary records that are not public. It is a different evidence boundary, not a failed E4.</p>
+        </details>
       </div>
       <div className="publication-brief-copy">
         <p className="section-index">Publication brief</p>
