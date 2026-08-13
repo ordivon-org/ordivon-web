@@ -104,3 +104,5 @@
 .writing-topic-list>article>div{display:flex;flex-direction:column;border-top:1px solid var(--line)}.writing-topic-list>article>div>a{display:grid;grid-template-columns:8rem minmax(0,1fr) auto;gap:1rem;align-items:center;padding:1rem 0;border-bottom:1px solid var(--line);text-decoration:none}.writing-topic-list>article>div>a:hover strong{color:var(--accent-soft)}
 .writing-topic-list>article>div span,.writing-topic-list>article>div small{color:var(--muted);font:.62rem var(--mono);text-transform:uppercase}.writing-topic-list>article>div strong{font-size:.92rem;line-height:1.35;transition:.2s}
 @media(max-width:760px){.writing-summary{grid-template-columns:1fr}.writing-topic-list>article{grid-template-columns:1fr;gap:1.5rem}.writing-topic-list>article>div>a{grid-template-columns:1fr auto}.writing-topic-list>article>div span{grid-column:1/-1}}
+
+@media(min-width:721px){.about-hero.page-top{padding-top:clamp(5rem,7vw,7rem)}.about-hero h1{max-width:15ch;font-size:clamp(3.8rem,6.2vw,6.2rem)}}

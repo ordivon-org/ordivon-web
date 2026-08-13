@@ -1,0 +1,56 @@
+{
+  "baseline": {
+    "aboutDesktop": "sha256:2e009b223c6e65be29e15dabcdb6ce0a21f676bcd63f18db4a08d157847525ad",
+    "aboutMobile": "sha256:d80451ae34a043eb24166d3df20aab4e6b383d700ad310ce7a19f41f921a9173",
+    "colophonDesktop": "sha256:7ea94cffa973e9d0e8a38c2e7053d20bceb419a253955a232bed084b2e91a5e8",
+    "colophonMobile": "sha256:826e8158a0e3e93842e0fcb9fd026a7679208eef8006d3bafe55b99531d592c3",
+    "reviewPacketDigest": "sha256:cd62a8da268c776047b7d0501f6693326d230c6a28f12c242133515c9ed75cb6"
+  },
+  "baselineWebRevision": "fa3b00c210a14bb58a50350870eb4322fcabed37",
+  "candidateChange": {
+    "css": "reduce desktop About top padding and headline scale/max-width; no content/fact/component changes",
+    "scope": "desktop About hero only"
+  },
+  "currentTreatment": {
+    "aboutDesktop": "sha256:093d2e5207702842de2d66e2b6235e1e449a55a9d26bfbbd211216f4e5ad8a8d",
+    "aboutMobile": "sha256:d80451ae34a043eb24166d3df20aab4e6b383d700ad310ce7a19f41f921a9173",
+    "colophonDesktop": "sha256:7ea94cffa973e9d0e8a38c2e7053d20bceb419a253955a232bed084b2e91a5e8",
+    "colophonMobile": "sha256:826e8158a0e3e93842e0fcb9fd026a7679208eef8006d3bafe55b99531d592c3",
+    "reviewJobId": "job-019ffb40-9de8-7be2-8d74-c3017075f9e6",
+    "reviewPacketDigest": "sha256:0d00da2d0f386808bc33a368138b2faa9c6f357c7da3fa5f81c32733d043445a",
+    "sourceTreeDigest": "sha256:474df07e0da06ec710f54bd0bcd155cc8c85656152335a2c1c0bf9b6a01228d8"
+  },
+  "currentWebBaseRevision": "f9e8ee8f9ce1d9455bb3f4ad2844769ef376794b",
+  "fullOwnerGate": {
+    "jobId": "job-019ffb3c-8ae3-7f40-9322-c52907679dcc",
+    "playwrightTests": 228,
+    "status": "passed"
+  },
+  "heldoutSurfaces": [
+    "/about",
+    "/colophon"
+  ],
+  "interpretation": {
+    "humanOutcomeKnown": false,
+    "l4ScopedProductionMechanics": true,
+    "reason": "A prior earned by earlier ordinary Web/Studio production was consumed on materially different ordinary Web surfaces, exposed a real rendered residual that source/build gates left unresolved, and produced a localized correction that passed the full owner gate while exact control pixels remained unchanged.",
+    "retain": "Keep the local CSS correction and render-review discipline; do not create a universal visual score or human-response proxy.",
+    "sharedServicePromotion": false
+  },
+  "kind": "ordivon.web.pal-p5-render-prior-transfer",
+  "localizationProof": {
+    "aboutDesktopChanged": true,
+    "aboutMobileByteIdentical": true,
+    "colophonDesktopByteIdentical": true,
+    "colophonMobileByteIdentical": true
+  },
+  "observedResidual": {
+    "claimBoundary": "Rendered encounter/task-legibility evidence only; no human preference, comprehension, trust or beauty claim.",
+    "fact": "At 1440x1000 the baseline first viewport showed the thesis heading but not the introductory explanatory paragraph; source/type/build/mechanical browser gates were otherwise green.",
+    "profile": "desktop",
+    "route": "/about"
+  },
+  "persistentPrior": "When expression/layout can affect the result, inspect exact rendered pixels; source/type/build/mechanical checks do not substitute for encounter evidence. Human preference/comprehension remains a separate evidence plane.",
+  "schemaVersion": 1,
+  "status": "accepted-scoped-production-loop-transfer"
+}
