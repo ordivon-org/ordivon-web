@@ -5,12 +5,14 @@ import { constants as fsConstants } from "node:fs";
 import { homedir } from "node:os";
 import { join, relative, resolve, sep } from "node:path";
 import process from "node:process";
-import { chromium } from "@playwright/test";
+import { configureBrowserTempEnvironment } from "./browser-runtime.mjs";
 
 const ROOT = process.cwd();
 const OUTPUT = resolve(ROOT, process.argv[2] || "out/m7-interaction");
 const VARIANTS = ["lawful", "premature-success", "silent-delay"];
 const OPERATION_ID = "op-recovery-42";
+const browserTempRoot = await configureBrowserTempEnvironment();
+const { chromium } = await import("@playwright/test");
 
 function sha256(value) {
   const bytes = Buffer.isBuffer(value) ? value : Buffer.from(typeof value === "string" ? value : JSON.stringify(value));
@@ -94,10 +96,6 @@ const address = server.address();
 if (!address || typeof address === "string") throw new Error("failed to allocate local port");
 const base = `http://127.0.0.1:${address.port}`;
 const browserExecutable = await resolveBrowserExecutable();
-const ambientTemp = process.env.ORDIVON_WEB_BROWSER_TMPDIR || process.env.TMPDIR || process.env.TMP || process.env.TEMP || "/tmp";
-const browserTempRoot = Buffer.byteLength(ambientTemp) + 48 <= 100 ? ambientTemp : "/tmp";
-if (browserTempRoot === "/tmp") await access("/tmp", fsConstants.W_OK);
-process.env.TMPDIR = browserTempRoot; process.env.TMP = browserTempRoot; process.env.TEMP = browserTempRoot;
 const browser = await chromium.launch({ headless: true, executablePath: browserExecutable, args: ["--disable-dev-shm-usage"] });
 const records = [];
 try {
@@ -156,7 +154,7 @@ const arms = [
 const report = {
   schemaVersion: 1,
   kind: "ordivon.web.m7-interaction-trajectory-evidence",
-  browser: { executable: browserExecutable, viewport: { width: 900, height: 700 } },
+  browser: { executable: browserExecutable, tempRoot: browserTempRoot, viewport: { width: 900, height: 700 } },
   sourceProposition: "The response was lost. The operation outcome is unknown. Recover the same operation identity before concluding success or failure.",
   operationId: OPERATION_ID,
   records,

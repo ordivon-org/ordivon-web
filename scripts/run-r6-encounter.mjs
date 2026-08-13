@@ -5,9 +5,11 @@ import { constants as fsConstants } from "node:fs";
 import { homedir } from "node:os";
 import { join, relative, resolve, sep } from "node:path";
 import process from "node:process";
-import { chromium } from "@playwright/test";
+import { configureBrowserTempEnvironment } from "./browser-runtime.mjs";
 
 const ROOT = process.cwd();
+const browserTempRoot = await configureBrowserTempEnvironment();
+const { chromium } = await import("@playwright/test");
 
 function sha256(value) {
   const bytes = Buffer.isBuffer(value) ? value : Buffer.from(typeof value === "string" ? value : JSON.stringify(value));
@@ -147,10 +149,6 @@ const address = server.address();
 if (!address || typeof address === "string") throw new Error("failed to allocate R6 encounter port");
 const baseUrl = `http://127.0.0.1:${address.port}`;
 const browserExecutable = await resolveBrowserExecutable();
-const ambientTemp = process.env.ORDIVON_WEB_BROWSER_TMPDIR || process.env.TMPDIR || process.env.TMP || process.env.TEMP || "/tmp";
-const browserTempRoot = Buffer.byteLength(ambientTemp) + 48 <= 100 ? ambientTemp : "/tmp";
-if (browserTempRoot === "/tmp") await access("/tmp", fsConstants.W_OK);
-process.env.TMPDIR = browserTempRoot; process.env.TMP = browserTempRoot; process.env.TEMP = browserTempRoot;
 const browser = await chromium.launch({ headless: true, executablePath: browserExecutable, args: ["--disable-dev-shm-usage"] });
 const representative = new Map();
 const configuredViewport = manifest.encounter?.viewport || { width: 1080, height: 900 };
