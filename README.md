@@ -86,13 +86,14 @@ Web is a deterministic static publication system: committed sources → Agent co
 ```bash
 pnpm install --frozen-lockfile
 pnpm agent:context
+pnpm agent:context:currentness
 pnpm check
 pnpm pages:prepare
 ```
 
 ## Content and source of truth
 
-`content/` owns public content/judgment, `design/` owns design context, and `app/`/`components/` own the rendered interface. Generated projections are rebuildable. An owner snapshot records one exact observed source envelope, not floating latest truth.
+`content/` owns public content/judgment, `design/` owns design context, and `app/`/`components/` own the rendered interface. Generated projections are rebuildable. An owner snapshot records one exact observed source envelope, not floating latest truth. `pnpm agent:context` reports that captured publication snapshot; `pnpm agent:context:currentness` re-probes each owner's admitted canonical public-document envelope. A changed envelope creates a Web review obligation, not proof that the published explanation is semantically stale or must be mutated.
 
 ## Editorial system
 
