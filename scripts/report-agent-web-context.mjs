@@ -45,6 +45,15 @@ const output = {
   canonicalEntry: "content/editorial/agent-web-system.md",
   authority: design.authority,
   projectedProjects,
+  projectedProjectsTruth: {
+    truthRole: "captured-publication-snapshot",
+    currentnessCommand: "pnpm agent:context:currentness",
+    currentnessBasis: "owner-admitted-canonical-public-document-envelope",
+    rule: (
+      "Captured sourceRevision/publicSourceDigest values describe the reviewed public-source " +
+      "envelope. They are not floating owner implementation/live-state truth."
+    ),
+  },
   design: {
     tokenSource: design.authority.tokens,
     tokens: collectTokenPaths(tokens),
