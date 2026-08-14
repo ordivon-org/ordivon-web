@@ -250,3 +250,10 @@ The Writing and Projects cases are materially different, but both reinforce prio
 ## Current pressure
 
 Stop extending the numbered A3 showcase loop. The production protocol now lives upstream in Studio. Web's next job is to use it during ordinary Home, Project, Research, Writing, and Now work, and to discover which Web-specific priors actually deserve to remain in this profile. New aesthetic experiments should begin only when a durable uncertainty survives normal browser rendering, semantic audit, and mature Web craft.
+
+
+## M7 interaction boundary evidence
+
+Studio's M7 foundational-media program used Web as the concrete Interactive encounter owner without transferring Web authority upstream. A controlled real-Chromium fixture held source proposition, operation identity, and initial/final static states constant while changing only the intermediate action → state → feedback trajectory. A premature `Succeeded` state and a silent-latency state were both visible during the encounter and both disappeared when the artifact was frozen to initial + final screenshots.
+
+Retain the narrow Web consequence: **interaction review must inspect state/action trajectories when transient feedback, latency, recovery, or irreversible consequence can carry meaning; static screenshot equivalence does not prove encounter equivalence.** This strengthens the existing Web profile's state-legibility/recovery priors. It does not prove human preference or justify a second Studio-owned active Interactive profile; generic graduation requires non-Web transfer.
