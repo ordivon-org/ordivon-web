@@ -1,11 +1,10 @@
 import { createHash } from "node:crypto";
 import { createServer } from "node:http";
-import { access, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
-import { constants as fsConstants } from "node:fs";
-import { homedir } from "node:os";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, relative, resolve, sep } from "node:path";
 import process from "node:process";
 import { configureBrowserTempEnvironment } from "./browser-runtime.mjs";
+import { resolveBrowserExecutable } from "./browser-equipment.mjs";
 
 const ROOT = process.cwd();
 const OUTPUT = resolve(ROOT, process.argv[2] || "out/m7-interaction");
@@ -17,36 +16,6 @@ const { chromium } = await import("@playwright/test");
 function sha256(value) {
   const bytes = Buffer.isBuffer(value) ? value : Buffer.from(typeof value === "string" ? value : JSON.stringify(value));
   return `sha256:${createHash("sha256").update(bytes).digest("hex")}`;
-}
-
-async function isExecutable(path) {
-  try { await access(path, fsConstants.X_OK); return true; } catch { return false; }
-}
-
-async function findBrowser(root, depth = 0) {
-  if (!root || depth > 4) return null;
-  let entries;
-  try { entries = await readdir(root, { withFileTypes: true }); } catch { return null; }
-  for (const entry of entries) {
-    const path = join(root, entry.name);
-    if (entry.isFile() && ["chrome", "headless_shell"].includes(entry.name) && await isExecutable(path)) return path;
-  }
-  for (const entry of entries) {
-    if (!entry.isDirectory()) continue;
-    const found = await findBrowser(join(root, entry.name), depth + 1);
-    if (found) return found;
-  }
-  return null;
-}
-
-async function resolveBrowserExecutable() {
-  const candidates = [process.env.ORDIVON_WEB_BROWSER, chromium.executablePath(), "/usr/bin/chromium", "/usr/bin/google-chrome"].filter(Boolean);
-  for (const candidate of candidates) if (await isExecutable(candidate)) return candidate;
-  for (const root of [process.env.PLAYWRIGHT_BROWSERS_PATH, join(homedir(), ".cache", "ms-playwright"), "/root/.cache/ms-playwright"].filter(Boolean)) {
-    const found = await findBrowser(root);
-    if (found) return found;
-  }
-  throw new Error("no provisioned Chromium executable found");
 }
 
 function pageHtml(variant) {
@@ -95,7 +64,7 @@ await new Promise((ok, fail) => { server.once("error", fail); server.listen(0, "
 const address = server.address();
 if (!address || typeof address === "string") throw new Error("failed to allocate local port");
 const base = `http://127.0.0.1:${address.port}`;
-const browserExecutable = await resolveBrowserExecutable();
+const browserExecutable = await resolveBrowserExecutable(chromium.executablePath());
 const browser = await chromium.launch({ headless: true, executablePath: browserExecutable, args: ["--disable-dev-shm-usage"] });
 const records = [];
 try {

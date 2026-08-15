@@ -1,11 +1,12 @@
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { createServer } from "node:http";
-import { access, mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
+import { access, mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import { constants as fsConstants } from "node:fs";
 import { extname, join, relative, resolve, sep } from "node:path";
 import process from "node:process";
 import { configureBrowserTempEnvironment } from "./browser-runtime.mjs";
+import { resolveBrowserExecutable } from "./browser-equipment.mjs";
 
 const ROOT = process.cwd();
 const STATIC_ROOT = resolve(ROOT, "out");
@@ -89,49 +90,6 @@ async function startStaticServer() {
   return { server, baseUrl: `http://127.0.0.1:${address.port}` };
 }
 
-async function isExecutable(path) {
-  try { await access(path, fsConstants.X_OK); return true; }
-  catch { return false; }
-}
-
-async function findProvisionedBrowser(root, depth = 0) {
-  if (!root || depth > 4) return null;
-  let entries;
-  try { entries = await readdir(root, { withFileTypes: true }); } catch { return null; }
-  for (const entry of entries) {
-    const path = join(root, entry.name);
-    if (entry.isFile() && (entry.name === "chrome" || entry.name === "headless_shell") && await isExecutable(path)) return path;
-  }
-  for (const entry of entries) if (entry.isDirectory()) {
-    const found = await findProvisionedBrowser(join(root, entry.name), depth + 1);
-    if (found) return found;
-  }
-  return null;
-}
-
-async function resolveBrowserExecutable() {
-  const directCandidates = [
-    process.env.ORDIVON_WEB_BROWSER,
-    chromium.executablePath(),
-    "/usr/bin/chromium",
-    "/usr/bin/chromium-browser",
-    "/usr/bin/google-chrome",
-  ].filter(Boolean);
-  for (const candidate of directCandidates) if (await isExecutable(candidate)) return candidate;
-
-  const searchRoots = [
-    process.env.PLAYWRIGHT_BROWSERS_PATH,
-    "/root/.cache/ms-playwright",
-  ].filter(Boolean);
-  for (const root of searchRoots) {
-    const found = await findProvisionedBrowser(root);
-    if (found) return found;
-  }
-
-  throw new Error(`No provisioned Chromium executable was found. Tried ${directCandidates.join(", ")} and cache roots ${searchRoots.join(", ")}. Set ORDIVON_WEB_BROWSER to an exact executable when using another workstation.`);
-}
-
-
 const { routes: requestedRoutes, outputDirectory } = parseArgs(process.argv.slice(2));
 await access(resolve(STATIC_ROOT, "index.html"), fsConstants.R_OK).catch(() => { throw new Error("static candidate is missing: run `pnpm build` first, or use `pnpm browser:review`"); });
 const designContext = JSON.parse(await readFile(resolve(ROOT, "design/context.json"), "utf8"));
@@ -141,7 +99,7 @@ const sourceHead = execFileSync("git", ["rev-parse", "HEAD"], { cwd: ROOT, encod
 const decisionContext = await Promise.all(["content/editorial/agent-web-system.md", "design/context.json", "design/expression-profile.md"].map(async (path) => ({ path, digest: await fileDigest(resolve(ROOT, path)) })));
 await mkdir(join(outputDirectory, "model-views"), { recursive: true });
 const { server, baseUrl } = await startStaticServer();
-const browserExecutable = await resolveBrowserExecutable();
+const browserExecutable = await resolveBrowserExecutable(chromium.executablePath());
 const browser = await chromium.launch({ headless: true, executablePath: browserExecutable, args: ["--disable-dev-shm-usage"] });
 const profiles = [
   { id: "desktop", viewport: { width: 1440, height: 1000 }, isMobile: false, hasTouch: false },
