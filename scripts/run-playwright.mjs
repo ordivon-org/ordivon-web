@@ -1,4 +1,4 @@
-import { spawn, spawnSync } from "node:child_process";
+import { spawn } from "node:child_process";
 import { constants as fsConstants } from "node:fs";
 import { access } from "node:fs/promises";
 import { resolve } from "node:path";
@@ -70,25 +70,30 @@ if (needsStaticServer) {
     env,
     stdio: ["ignore", "ignore", "pipe"],
   });
-  staticServer.stderr.on("data", (chunk) => { serverStderr.value += chunk.toString(); });
+  staticServer.stderr.on("data", (chunk) => {
+    serverStderr.value = (serverStderr.value + chunk.toString()).slice(-16_384);
+  });
   await waitForStaticServer(staticServer, serverStderr);
 }
 
 process.stderr.write(`[ordivon-web] playwright browser=${browserExecutable} cache=${browserCacheRoot} temp=${tempRoot}${needsStaticServer ? " static-server=127.0.0.1:8788" : ""}\n`);
-let child;
+let result;
 try {
-  child = spawnSync(playwrightBin, playwrightArgs, {
-    cwd: ROOT,
-    env,
-    stdio: "inherit",
+  result = await new Promise((resolvePromise, rejectPromise) => {
+    const child = spawn(playwrightBin, playwrightArgs, {
+      cwd: ROOT,
+      env,
+      stdio: "inherit",
+    });
+    child.once("error", rejectPromise);
+    child.once("exit", (code, signal) => resolvePromise({ code, signal }));
   });
 } finally {
   if (staticServer && staticServer.exitCode === null) staticServer.kill("SIGTERM");
 }
 
-if (child.error) throw child.error;
-if (child.signal) {
-  process.stderr.write(`[ordivon-web] playwright terminated by ${child.signal}\n`);
+if (result.signal) {
+  process.stderr.write(`[ordivon-web] playwright terminated by ${result.signal}\n`);
   process.exit(1);
 }
-process.exit(child.status ?? 1);
+process.exit(result.code ?? 1);
