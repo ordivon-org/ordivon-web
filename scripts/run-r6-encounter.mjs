@@ -1,11 +1,10 @@
 import { createHash } from "node:crypto";
 import { createServer } from "node:http";
-import { access, mkdir, readFile, readdir, writeFile } from "node:fs/promises";
-import { constants as fsConstants } from "node:fs";
-import { homedir } from "node:os";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, relative, resolve, sep } from "node:path";
 import process from "node:process";
 import { configureBrowserTempEnvironment } from "./browser-runtime.mjs";
+import { resolveBrowserExecutable } from "./browser-equipment.mjs";
 
 const ROOT = process.cwd();
 const browserTempRoot = await configureBrowserTempEnvironment();
@@ -85,35 +84,6 @@ function renderPage({ manifest, participantId, assignmentId, variant, mode }) {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(variant.title || manifest.experimentId)}</title><style>html{font-family:ui-sans-serif,system-ui;background:#111;color:#f5f5f2}body{max-width:760px;margin:0 auto;padding:48px 24px 80px;line-height:1.65}main{display:grid;gap:28px}section{padding:20px 0;border-top:1px solid #444}h1{font-size:clamp(2rem,6vw,4.4rem);line-height:.95}h2{font-size:1rem;text-transform:uppercase;letter-spacing:.08em;color:#bbb}button{margin-top:24px;padding:12px 16px;font:inherit;background:#f5f5f2;color:#111;border:0}</style></head><body><main data-experiment-id="${escapeHtml(manifest.experimentId)}" data-assignment-id="${escapeHtml(assignmentId)}" data-participant-id="${escapeHtml(participantId)}" data-variant-id="${escapeHtml(variant.variantId)}" data-variant-digest="${escapeHtml(variant.variantDigest)}"><header><p>Controlled R6 encounter</p><h1>${escapeHtml(variant.title || variant.variantId)}</h1></header>${sections}${instrumentation}</main><script>const payload={experimentId:${JSON.stringify(manifest.experimentId)},assignmentId:${JSON.stringify(assignmentId)},participantId:${JSON.stringify(participantId)},variantId:${JSON.stringify(variant.variantId)},variantDigest:${JSON.stringify(variant.variantDigest)}};async function emit(eventType,detail={}){const response=await fetch('/event',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({...payload,eventType,detail,clientTimestampMs:Date.now()})});if(!response.ok)throw new Error('event emission failed: '+response.status);}window.addEventListener('DOMContentLoaded',()=>emit('exposure',{visibilityState:document.visibilityState}));const instrumentation=document.querySelector('[data-instrumentation-outcome]');if(instrumentation)instrumentation.addEventListener('click',async(event)=>{const target=event.currentTarget;await emit('outcome',{outcomeType:'instrumentation-confirmation',value:target.dataset.instrumentationOutcome});target.dataset.recorded='true';});</script></body></html>`;
 }
 
-async function isExecutable(path) {
-  try { await access(path, fsConstants.X_OK); return true; } catch { return false; }
-}
-
-async function findBrowser(root, depth = 0) {
-  if (!root || depth > 4) return null;
-  let entries;
-  try { entries = await readdir(root, { withFileTypes: true }); } catch { return null; }
-  for (const entry of entries) {
-    const path = join(root, entry.name);
-    if (entry.isFile() && ["chrome", "headless_shell"].includes(entry.name) && await isExecutable(path)) return path;
-  }
-  for (const entry of entries) if (entry.isDirectory()) {
-    const found = await findBrowser(join(root, entry.name), depth + 1);
-    if (found) return found;
-  }
-  return null;
-}
-
-async function resolveBrowserExecutable() {
-  const direct = [process.env.ORDIVON_WEB_BROWSER, chromium.executablePath(), "/usr/bin/chromium", "/usr/bin/google-chrome"].filter(Boolean);
-  for (const candidate of direct) if (await isExecutable(candidate)) return candidate;
-  for (const root of [process.env.PLAYWRIGHT_BROWSERS_PATH, join(homedir(), ".cache", "ms-playwright"), "/root/.cache/ms-playwright"].filter(Boolean)) {
-    const found = await findBrowser(root);
-    if (found) return found;
-  }
-  throw new Error("no provisioned Chromium executable found for R6 encounter harness");
-}
-
 const args = parseArgs(process.argv.slice(2));
 const manifest = validateManifest(JSON.parse(await readFile(args.manifest, "utf8")));
 await mkdir(join(args.outputDir, "model-views"), { recursive: true });
@@ -148,7 +118,7 @@ await new Promise((ok, fail) => { server.once("error", fail); server.listen(0, "
 const address = server.address();
 if (!address || typeof address === "string") throw new Error("failed to allocate R6 encounter port");
 const baseUrl = `http://127.0.0.1:${address.port}`;
-const browserExecutable = await resolveBrowserExecutable();
+const browserExecutable = await resolveBrowserExecutable(chromium.executablePath());
 const browser = await chromium.launch({ headless: true, executablePath: browserExecutable, args: ["--disable-dev-shm-usage"] });
 const representative = new Map();
 const configuredViewport = manifest.encounter?.viewport || { width: 1080, height: 900 };
