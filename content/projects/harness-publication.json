@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-harness",
-  "sourceRevision": "b640f2dbbd78cbd645f4adbedc9465fd2218876f",
-  "sourceDigest": "sha256:9580b7d53275240cab9517f88e74bbdfd4016725f966528cc4de875092443e50",
+  "sourceRevision": "58fd56e2444d0569ff25a1cd22c54f294fdaec25",
+  "sourceDigest": "sha256:8bc1d4998862ba7e63f437c1a1d3dc13b7f7651150e510829b326398eda475cd",
   "boundary": {
     "id": "system:harness",
     "kind": "boundary",
@@ -38,13 +38,13 @@
     "architectureRoleId": "system:harness",
     "publicPage": true,
     "problem": "Agent execution needs durable Run-local authority and recovery without making a Provider session, Host, or caller-domain state the owner of the Run.",
-    "capability": "Compiles caller-delegated execution mandates with a chosen strategy into immutable Run contracts, then executes bounded Agent attempts with durable Provider and Tool recovery, privacy-authorized persistence, Agent-selected WorkingSet transitions, cross-process reconstruction of authorized attempt-local Provider/Tool cognition, explicit per-turn execution-control metadata, pause/resume, receipts, and completion proposals.",
+    "capability": "Compiles caller-delegated execution mandates and exact Run contracts into bounded Agent attempts with durable Provider/Tool recovery, Agent-selected cognition, request-bound action authority, optional bounded ToolProgram composition, pause/resume, receipts, and caller-defined structured completion whose local structural conformance can be verified without taking semantic completion authority from the caller/domain.",
     "maturity": "Operational pre-1.0 engineering prototype",
     "audience": "Agent builders who need caller-neutral Run execution, bounded authority, explicit Provider and Tool recovery, and completion handoff without a Host dependency.",
-    "latestProof": "Projected Runs now admit a separate caller-owned cognition ingress after needs_input. Exact plain caller user messages enter the effective model view without becoming Agent-selected WorkingSet pins, remain visible across WorkingSet transitions for that interaction, and are consumed at the next needs_input boundary. Recovery reconstructs their exact chronology around Tool exchanges from Snapshot/Journal authority; unbound or role-shaped caller injection is rejected.",
+    "latestProof": "At the current public-source revision, opt-in local JSON-Schema structural conformance rejects schema-invalid Provider completion output before candidate completion while leaving semantic/evidence admission with the caller or domain. This closes a concrete control-boundary failure without turning Harness into domain truth authority.",
     "flagshipSlug": "what-h1-h5-proved",
     "summary": "The independent execution authority for bounded Agent Runs. Harness owns how an admitted attempt executes and what Run content it may durably retain, while callers retain Task meaning, domain commitments, and final verification.",
-    "state": "Operational pre-1.0 for caller-neutral independent Runs. The effective model suffix now distinguishes caller interaction ingress from attempt-local Tool cognition and from durable Agent-selected WorkingSet pins. Caller ingress is genuine model-visible progress and may reset soft progress counters, but it does not change Agent-owned selection and cannot revive the global hard Tool budget. Exact recovery requires model-content authority; Tool-content authority is needed only when Tool-channel cognition is present.",
+    "state": "Operational pre-1.0 for caller-neutral independent Runs. Harness separates canonical history, Agent-selected durable cognition, interaction/attempt cognition, installed versus Run/turn-admitted capabilities, Tool effect recovery, and optional local structured-result conformance. Advanced ToolProgram and cross-Run exact-reference paths remain bounded mechanisms rather than automatic authority or semantic policy.",
     "evidence": [
       {
         "value": "independent",

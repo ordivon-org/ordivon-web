@@ -82,10 +82,10 @@ These are distinct owners, not three names for one platform. Applications may us
 
 Project pages must distinguish at least these states:
 
-- **Usable now** — an operational capability with a current run or operations contract.
+- **Operational capability** — an operational capability under a stated owner scope and dated projection; this does not itself establish user value, external availability, or broad production readiness.
 - **Implemented prototype** — executable and tested, but not a general production product.
-- **Playable now** — a current application that can be run as documented.
-- **Research** — a bounded question, method, path, or experiment whose conclusions remain conditional.
+- **Playable application** — a documented playable application or executable game surface; playability does not itself establish Player Value.
+- **Bounded research** — a bounded question, method, path, or experiment whose conclusions remain conditional.
 - **Historical** — retained evidence or argument that no longer describes current capability or direction.
 
 Do not use one word such as `active` to imply maturity, stability, priority, adoption, or production readiness.
@@ -127,4 +127,4 @@ A publication remains a record of its date. When later work changes a material f
 
 ## Authority
 
-Current project summaries are public projections at `siteUpdatedAt`. Some remain directly authored; Harness, Security, and Game are compiled from source-bound owner snapshots plus Web editorial judgment. Their owner repositories may organize current truth differently—the projection contract follows declared authority dependencies rather than requiring a shared STATUS schema or treating every dependency as the same temporal state. Game, for example, keeps a registered current product, accepted unregistered replacement target, long-range vision, and historical release evidence distinct. The owning repositories remain authoritative for code, tests, releases, product registration, operations, and current technical boundaries. Research records remain authoritative for setup and evidence. Articles remain authoritative for their dated argument. Generated modules, manifests, and pages remain rebuildable projections.
+Project summaries are dated public projections. `siteUpdatedAt` dates the Web publication surface; each Project `updatedAt` preserves the date of its bound owner-source envelope or direct editorial record rather than being silently promoted to today. Some remain directly authored; Harness, Security, and Game are compiled from source-bound owner snapshots plus Web editorial judgment. Their owner repositories may organize current truth differently—the projection contract follows declared authority dependencies rather than requiring a shared STATUS schema or treating every dependency as the same temporal state. Game, for example, keeps its registered current product distinct from executable research treatments, pre-G0 evidence apparatus, long-range vision, and historical product-stage evidence; none of those other states silently selects a new product. The owning repositories remain authoritative for code, tests, releases, product registration, operations, and current technical boundaries. Research records remain authoritative for setup and evidence. Articles remain authoritative for their dated argument. Generated modules, manifests, and pages remain rebuildable projections.

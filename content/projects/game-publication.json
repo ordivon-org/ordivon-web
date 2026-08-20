@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-game",
-  "sourceRevision": "6e8c668c29378b7707e099a39a3039f8fec42737",
-  "sourceDigest": "sha256:f7be9b567044112e0684fe53da3fd6d00c9103343f4993e8cc81a5d2343c28f5",
+  "sourceRevision": "f405ed4251f3d4a4db245675edc7b4933dcbf563",
+  "sourceDigest": "sha256:adfa31d3d85e19c3d078a75e433ecb03e1bc48d6a75b96d4c571a71b8d3ecbd0",
   "project": {
     "id": "project:game",
     "kind": "project",
@@ -23,30 +23,31 @@
     ],
     "boundary": [
       "Station Zero v2 is the only registered current product",
-      "Station Zero v3 is an accepted unregistered replacement target, not current product truth",
-      "Long-range Game vision creates no feature commitment",
+      "Station Zero v3, Casefile, Last Light, and Echo Hunt are Game Core research treatments, not competing product stages",
+      "No new Game product is selected; canonical G0–G8 product-stage meanings remain unchanged",
+      "Long-range Game vision and research implementation create no feature or product commitment",
       "No generic Host, Runtime, or universal Game-engine authority"
     ],
     "problem": "Most Agent games attach probabilistic dialogue to classical mechanics instead of making persistence, partial knowledge, communication, authority, and intervention part of play.",
-    "capability": "Runs registered Station Zero v2 as a deterministic multi-Agent mission game and separately exposes an implemented Station Zero v3 first-playable target with three factions, bounded Agent planning, sealed enemy plans, explicit whole-Turn Commit, durable recovery, and a dedicated `/v3` surface.",
-    "maturity": "Registered playable v2 product plus accepted, implemented, unregistered v3 first-playable target",
+    "capability": "Runs registered Station Zero v2 as a deterministic multi-Agent mission game while retaining several executable Game Core research treatments, including the Station Zero v3 reference experiment, Casefile, Concept Lab work, and bounded pre-G0 playable apparatus used to obtain evidence without selecting a new product.",
+    "maturity": "Registered playable v2 product plus executable pre-G0 research treatments; no new product selected",
     "audience": "Players, game designers, and Agent researchers examining delegation, partial knowledge, adversarial roles, authoritative consequence, replay, and recoverable play.",
-    "latestProof": "Owner authority binds `station-zero@2 / station-zero-core@3` as the current registered product while P0–P3 jointly define and verify the `station-zero@3 / station-zero-core@4` replacement target through a separate API, SQLite state, `/v3` first-playable, and process-restart recovery. Registration remains deferred pending repeated human playtesting and live-Provider evaluation.",
+    "latestProof": "Current owner authority keeps station-zero@2 / station-zero-core@3 as the only registered product. Pre-G0 Wave1 materialized bounded A/D/I playable apparatus for evidence collection, while unimplemented families remain UNTESTED and C0/C1 human Player Value evidence remains unobserved; apparatus existence does not admit G0 or rank a product direction.",
     "flagshipSlug": "station-zero-alpha-1",
-    "summary": "Intervention-driven worlds for people and Agents. Game keeps current product registration, accepted replacement targets, long-range vision, and historical releases distinct rather than treating the newest implementation as automatically shipped.",
-    "state": "Station Zero v2 remains the registered current product. Station Zero v3 is an implemented and playable replacement target with P0–P3 accepted, but it remains outside `src/registry.ts` and the root product contract. Human playtesting and live-Provider evaluation gate any v3 registration or v2 deletion.",
+    "summary": "Authoritative interactive worlds for people and Agents. Game keeps the registered Station Zero product separate from executable research treatments, pre-G0 apparatus, long-range possibilities, and historical product-stage evidence so implementation maturity cannot silently select the next product.",
+    "state": "Station Zero v2 remains the registered current product. Station Zero v3, Casefile, Last Light, Echo Hunt and current pre-G0 playable work are research treatments/apparatus rather than competing product stages. No new product has been selected; human Player Value evidence remains a gate before any G0 direction admission.",
     "evidence": [
       {
         "value": "v2",
         "label": "registered current product"
       },
       {
-        "value": "P0–P3",
-        "label": "accepted v3 target"
+        "value": "A / D / I",
+        "label": "Wave1 playable apparatus"
       },
       {
-        "value": "/v3",
-        "label": "separate first-playable"
+        "value": "unobserved",
+        "label": "C0/C1 human Player Value"
       }
     ],
     "repository": "https://github.com/zycxfyh/ordivon-game",

@@ -198,13 +198,13 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByRole("heading", { name: "The dossier is an index, not the evidence authority." })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/projects/game");
-  await expect(page.getByText("Registered playable v2 product plus accepted, implemented, unregistered v3 first-playable target", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("Registered playable v2 product plus executable pre-G0 research treatments; no new product selected", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("v2", { exact: true })).toBeVisible();
   await expect(page.getByText("registered current product", { exact: true })).toBeVisible();
-  await expect(page.getByText("P0–P3", { exact: true })).toBeVisible();
-  await expect(page.getByText("accepted v3 target", { exact: true })).toBeVisible();
-  await expect(page.getByText("/v3", { exact: true })).toBeVisible();
-  await expect(page.getByText("separate first-playable", { exact: true })).toBeVisible();
+  await expect(page.getByText("A / D / I", { exact: true })).toBeVisible();
+  await expect(page.getByText("Wave1 playable apparatus", { exact: true })).toBeVisible();
+  await expect(page.getByText("unobserved", { exact: true })).toBeVisible();
+  await expect(page.getByText("C0/C1 human Player Value", { exact: true })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/research/game-agent-native-mechanics");
   await expect(page.getByText("36/36", { exact: false }).first()).toBeVisible();

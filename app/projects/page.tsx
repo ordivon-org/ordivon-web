@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SectionHeading } from "@/components/section-heading";
-import { articles } from "@/lib/content";
+import { articles, formatDate } from "@/lib/content";
+import { siteUpdatedAt } from "@/content/model";
 import { projects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "A current map of Ordivon infrastructure, playable applications, operational capability, and bounded research—with explicit maturity and repository authority.",
+  description: "A dated public projection of Ordivon infrastructure, playable applications, operational capability, and bounded research—with explicit maturity, evidence basis, and repository authority.",
   alternates: { canonical: "/projects" },
 };
 
@@ -32,10 +33,10 @@ const groups = [
 ] as const;
 
 const statusLabel = {
-  operational: "Usable now",
+  operational: "Operational capability",
   prototype: "Implemented prototype",
-  playable: "Playable now",
-  research: "Research",
+  playable: "Playable application",
+  research: "Bounded research",
   internal: "Internal",
 } as const;
 
@@ -43,9 +44,9 @@ export default function ProjectsPage() {
   return (
     <div className="page-shell page-top projects-page">
       <header className="index-hero projects-hero">
-        <p className="eyebrow">Projects · current map</p>
+        <p className="eyebrow">Projects · public projection · {formatDate(siteUpdatedAt)}</p>
         <h1>{projects.length} projects, three kinds of work, no single mandatory stack.</h1>
-        <p>Use this page to distinguish operational infrastructure, implemented prototypes, playable applications, retained capability, and research. Exact implementation facts remain in each repository.</p>
+        <p>Use this page to distinguish operational infrastructure, implemented prototypes, playable applications, retained capability, and research. Each card is a dated Web judgment with its own source/editorial basis; exact current implementation facts remain in each repository.</p>
         <div className="project-status-legend" aria-label="Project status legend">
           {Object.entries(statusLabel).filter(([key]) => key !== "internal").map(([key, label]) => <span key={key} data-status={key}>{label}</span>)}
         </div>
@@ -67,12 +68,12 @@ export default function ProjectsPage() {
                   <article className={`project-capability-card status-${project.lifecycle}`} data-availability={project.availability} key={project.slug}>
                     <header>
                       <div><span>{project.index}</span><b>{statusLabel[project.availability]}</b></div>
-                      <i>{project.maturity}</i>
+                      <i>{project.maturity}</i>{project.updatedAt && <time dateTime={project.updatedAt}>Basis {formatDate(project.updatedAt)}</time>}
                     </header>
                     <h2 id={`project-group-${group.id}-${project.slug}`}><Link href={`/projects/${project.slug}`}>{project.title}</Link></h2>
                     <section><span>Role</span><p>{project.label}</p></section>
                     <section><span>What exists</span><p>{project.capability}</p></section>
-                    <section className="project-card-proof"><span>Current evidence</span><p>{project.latestProof}</p>{proofArticle && <Link href={`/writing/${proofArticle.slug}`}>{proofArticle.status === "historical" ? "Historical evidence" : "Read the evidence"}: {proofArticle.title} ↗</Link>}</section>
+                    <section className="project-card-proof"><span>Evidence for this judgment</span><p>{project.latestProof}</p>{proofArticle && <Link href={`/writing/${proofArticle.slug}`}>{proofArticle.status === "historical" ? "Historical evidence" : "Read the evidence"}: {proofArticle.title} ↗</Link>}</section>
                     {nextQuestion && <section className="project-card-question"><span>Question · {nextQuestion.state}</span><p>{nextQuestion.title}</p><Link href={nextQuestion.href}>Open the research dossier ↗</Link></section>}
                     <footer><Link href={`/projects/${project.slug}`}>Open project</Link><a href={project.repository}>Repository ↗</a></footer>
                   </article>
