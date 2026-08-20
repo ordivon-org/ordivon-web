@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-security",
-  "sourceRevision": "7ce19d8c6e395419883af16b0adcb171f9e83a93",
-  "sourceDigest": "sha256:ec7fc299e2e692d89b5e00adda269c2030c5fd7f8593eaa51556b7d10b8ca589",
+  "sourceRevision": "0891de43499836463d24a142cf81df0b5d5285ed",
+  "sourceDigest": "sha256:8cbcfa084c05593ccfe292aafd65231d54bacd7a81c27098a95d2306a650df0e",
   "project": {
     "id": "project:security",
     "kind": "project",
@@ -29,25 +29,25 @@
       "No unrestricted external targets or production attack-platform claim"
     ],
     "problem": "Classical security mechanisms can execute, observe, and contain effects, but they do not by themselves define the experiment when autonomous opponents hold different observations, authority, objectives, and interpretations of the same changing world.",
-    "capability": "Runs bounded adversarial-autonomy experiments over a reusable RangeSession/RangeAuthority substrate and scoped profiles such as synchronous Contest, CAGE, software Evaluation, and Windows KVM. It composes Host, Harness, Runtime, World, hypervisors, ranges, and security tools while keeping principal information, authority, consequence, truth, recovery, and evaluation distinct.",
-    "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
+    "capability": "Runs authorized adversarial-autonomy research across persistent RangeSession/RangeAuthority substrates and scoped Contest, CAGE, software-evaluation, Windows/Linux and incident-response profiles while keeping principal intent, authority, execution, evidence, world truth, recovery, and evaluator judgment distinct. An ordinary derived view now exposes bounded task-oriented entry without replacing the full research surface or granting new authority.",
+    "maturity": "Executable authorized research system with experimental interfaces, physical range evidence, and bounded ordinary-consumption paths",
     "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
-    "latestProof": "AE2 now introduces two independently sourced sensor observations that disagree while neither is world truth. With no source ranking or history, one shared Defender policy refuses arbitrary source selection, requests explicit adjudicating inspection, and only authoritative current world truth later separates healthy hold from compromised quarantine. The contradictory sensor observations remain preserved as historical evidence.",
+    "latestProof": "Current ordinary-consumption work reduced mixed-maturity navigation through a derived ordinary view, used the exact ResearchCorpus before analysis, and closed a bounded EICAR/ClamAV current-versus-stale response consumer without creating a new EDR/SIEM layer. The retained constitutional laws still preserve sovereignty, truth separation, causal accountability, exact identity, UNKNOWN, and recoverability under authorized ranges.",
     "flagshipSlug": "winning-move-loses-contest",
     "summary": "An Agent-first adversarial-autonomy laboratory. Security owns the minimum semantics required for contested authority, information asymmetry, verified consequence, uncertainty, recovery, and evaluation; cyber is the first high-fidelity domain rather than the project definition.",
-    "state": "Agent-first adversarial epistemics now spans AE0 information acquisition, AE1 delayed truth under costly waiting, and AE2 conflicting independent sensor observations. Provenance plus UNKNOWN is sufficient for the tested one-shot conflict to trigger adjudication without promoting either sensor to truth. Trust/Reputation, confidence, source-history, and freshness remain unforced; the next pressure is conflict when adjudication is unavailable/expensive or repeated source history becomes causally useful.",
+    "state": "Security remains an EXPERIMENTAL authorized adversarial-autonomy laboratory, not a production attack platform. Current standing is broader than the earlier AE0–AE2 frontier: scoped Range/evaluation implementations, C1 recovery laws, authority-lifecycle separation, ordinary research navigation, and bounded incident consumers are retained; trust/reputation, generic lease/revocation, universal transactions, and stronger shared abstractions remain unearned until independent pressure requires them.",
     "evidence": [
       {
-        "value": "AE0",
-        "label": "information acquisition"
+        "value": "EXPERIMENTAL",
+        "label": "owner readiness"
       },
       {
-        "value": "AE1",
-        "label": "delayed-truth hold"
+        "value": "RangeSession",
+        "label": "persistent adversarial substrate"
       },
       {
-        "value": "AE2",
-        "label": "sensor conflict adjudication"
+        "value": "ordinary R1",
+        "label": "bounded consumption path"
       }
     ],
     "repository": "https://github.com/zycxfyh/ordivon-security",
