@@ -34,7 +34,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <div className={`project-page project-${project.slug}`}>
       <header className="project-hero page-shell page-top">
-        <div className="project-hero-meta"><p>{project.group}</p><span>{project.index} / {String(projects.length).padStart(2, "0")}</span></div>
+        <div className="project-hero-meta"><p>{project.group}{project.updatedAt && <> · Basis {formatDate(project.updatedAt)}</>}</p><span>{project.index} / {String(projects.length).padStart(2, "0")}</span></div>
         <div className="project-availability" data-status={project.availability}>{availability[project.availability]}</div>
         <h1>{project.title}</h1>
         <p className="project-hero-thesis">{project.thesis}</p>
@@ -42,7 +42,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <dl className="project-use-strip">
           <div><dt>Projected status</dt><dd>{project.maturity}</dd></div>
           <div><dt>For</dt><dd>{project.audience}</dd></div>
-          <div><dt>Evidence for status</dt><dd>{project.latestProof}</dd></div>{project.updatedAt && <div><dt>Projection basis</dt><dd><time dateTime={project.updatedAt}>{formatDate(project.updatedAt)}</time></dd></div>}
+          <div><dt>Evidence for status</dt><dd>{project.latestProof}</dd></div>
         </dl>
       </header>
       <section className="project-question page-shell"><p>Question this project must answer</p><h2>{project.question}</h2></section>
