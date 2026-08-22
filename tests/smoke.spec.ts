@@ -206,7 +206,7 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByRole("heading", { name: "The dossier is an index, not the evidence authority." })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/projects/game");
-  await expect(page.getByText(gameProject.maturity, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(gameProject.maturity!, { exact: true }).first()).toBeVisible();
   await expect(page.getByText(gameProject.state, { exact: true }).first()).toBeVisible();
   for (const item of gameProject.evidence) {
     await expect(page.locator(".evidence-metrics").getByText(item.value, { exact: true })).toBeVisible();
