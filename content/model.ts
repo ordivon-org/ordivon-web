@@ -21,12 +21,12 @@ export const researchPlanes: ResearchPlaneDefinition[] = [
 export const boundaries: BoundaryDefinition[] = [
   {
     id: "system:host", kind: "boundary", slug: "host", index: "01", title: "Host", maturity: "tested",
-    summary: "The durable coordination boundary that preserves Task meaning, commitments, verification, and outcomes above replaceable Runs and processes.",
-    thesis: "Replace the intelligence or process without replacing the Task.",
-    question: "Which commitments and evidence must remain durable across cognition and execution replacement?",
-    owns: ["Task continuity", "Journal and CAS", "Commitment admission", "Verification and outcomes"],
-    boundary: ["No model–Tool loop", "No process ownership", "No domain-world truth"],
-    href: "/projects/host", updatedAt: portfolioUpdatedAt,
+    summary: "The durable semantic Task-continuity boundary: exact Task identity/revision, Host Journal/CAS admission, WorkingCheckpoint handoff, and bounded Host-local integrity across replaceable Agent sessions.",
+    thesis: "Replace the cognition or process without replacing the admitted semantic work claim—and without copying foreign owner truth into Host.",
+    question: "Which bounded semantic work claims must survive session replacement, and which Runtime, Git, Provider, or domain facts must instead be revalidated with their native owners?",
+    owns: ["Task identity and revisioned projection", "Host Journal/CAS admission", "WorkingCheckpoint external continuity", "Opaque extension durability", "Host-local integrity, inspection, and deployment receipts"],
+    boundary: ["No universal coordinator or scheduler", "No model–Tool/cognition execution", "No Runtime proxy or source mutation", "No foreign currentness or domain-world truth"],
+    href: "/projects/host", updatedAt: "2026-08-18",
   },
   harnessBoundary,
   {
@@ -45,15 +45,15 @@ export const architectureRoles = [...researchPlanes, ...boundaries];
 export const projects: ProjectDefinition[] = [
   {
     id: "project:host", kind: "project", slug: "host", title: "Ordivon Host", lifecycle: "active", group: "Core work system",
-    label: "Durable Task continuity", category: "core-system", availability: "prototype", architectureRoleId: "system:host", publicPage: true,
-    problem: "A model Run can end while the user's larger Task, accepted commitments, unresolved effects, and completion evidence still need to continue.",
-    capability: "Persists generic Tasks, Journal/CAS state, commitment admission, verification records, and Task outcomes above replaceable Harness Runs and Runtime processes.",
-    maturity: "Implemented engineering prototype", audience: "Builders of long-running Agent systems that need durable work state without a workflow platform or model monopoly.",
-    latestProof: "The schema-v3 Host exposes operational inspection and conservative reconciliation, with 167 deterministic tests and extracted Harness ownership.", flagshipSlug: "host-task-continuity",
-    summary: "The persistent coordination and commitment plane for Ordivon. Host keeps durable work legible while cognition and physical execution remain replaceable dependencies.",
-    state: "Implemented and independently versioned. It is an engineering prototype, not a general workflow engine, policy platform, or multi-Agent scheduler.",
-    evidence: [{ value: "167", label: "deterministic tests" }, { value: "v3", label: "operational state schema" }, { value: "0", label: "Harness tables owned" }],
-    repository: "https://github.com/zycxfyh/ordivon-host", href: "/projects/host", updatedAt: portfolioUpdatedAt,
+    label: "Durable semantic Task continuity", category: "core-system", availability: "prototype", architectureRoleId: "system:host", publicPage: true,
+    problem: "A long piece of work can outlive the model session, process, Workspace, or external state that originally carried it. A future Agent needs the exact semantic frontier and uncertainty without inheriting stale Runtime, Git, Provider, or domain facts as copied truth.",
+    capability: "Provides schema-v5 Host Journal/CAS authority, revision-fenced TaskProjection state, external-continuity WorkingCheckpoints with exact response-loss replay, bounded handoff/inspection, opaque extension-state durability, Doctor/backup/restore/deployment receipts, and a deliberately small six-Tool MCP surface for adopt, checkpoint, resume, list, observe, and Host status.",
+    maturity: "Operational owner-trusted local engineering component; pre-1.0 public interface", audience: "Builders and Agent workflows that need semantic work to survive conversation/session replacement without adopting a workflow platform, central coordinator, Runtime proxy, or generic cognition host.",
+    latestProof: "The 0.3 contraction removed unconsumed Goal coordination, foreign execution, legacy execution workloads, generic capability policy, and Runtime-integration residue. Current 0.4.x then makes external semantic continuity first-class: one WorkingCheckpoint can survive client replacement with revision-coherent resume and exact response-loss replay, while every Runtime/Git/domain hint remains explicitly subject to owner-native revalidation.", flagshipSlug: "host-task-continuity",
+    summary: "The durable semantic work-continuity component for Ordivon. Host preserves what work is being continued and what was last claimed, while cognition, physical execution, source currentness, external occurrence, and domain acceptance stay with their own owners.",
+    state: "Operational with schema-v5 Journal/CAS and exactly six public MCP Tools. Host is intentionally narrower than its historical designs: it is not a universal coordination ontology, scheduler, executor, Runtime client, source engine, cognition host, or cross-owner truth service.",
+    evidence: [{ value: "6", label: "public Host MCP Tools" }, { value: "v5", label: "current Journal schema" }, { value: "0", label: "Runtime proxy / generic coordinator roles" }],
+    repository: "https://github.com/zycxfyh/ordivon-host", href: "/projects/host", updatedAt: "2026-08-18",
   },
   harnessProject,
   {
