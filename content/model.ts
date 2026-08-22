@@ -36,7 +36,7 @@ export const boundaries: BoundaryDefinition[] = [
     question: "Which physical execution facts cannot safely be reconstructed after interruption?",
     owns: ["Workspaces", "Jobs and Runtime Attempts", "Process trees", "Artifacts and physical recovery"],
     boundary: ["No Task semantics", "No Provider policy", "No semantic completion"],
-    href: "/projects/runtime", updatedAt: portfolioUpdatedAt,
+    href: "/projects/runtime", updatedAt: "2026-08-20",
   },
 ];
 
@@ -59,14 +59,14 @@ export const projects: ProjectDefinition[] = [
   {
     id: "project:runtime", kind: "project", slug: "runtime", title: "Ordivon Runtime", lifecycle: "active", group: "Core work system",
     label: "Exact physical execution and recovery", category: "core-system", availability: "operational", architectureRoleId: "system:runtime", publicPage: true,
-    problem: "A command can be admitted, partially execute, lose its response, time out, restart, or cross execution targets while a later Agent still needs exact physical evidence about what happened.",
-    capability: "Owns exact Workspaces, durable Jobs and Attempts, immutable-input execution, provider commitments, Windows-native execution, cancellation, restart recovery, bounded Artifacts, exact replay, and reconciliation of uncertain local commits.",
-    maturity: "Operational owner-trusted infrastructure under active high-pressure validation", audience: "Builders who need Agent actions to remain physically identifiable and recoverable after interruption without turning the executor into the Task or domain authority.",
-    latestProof: "The P0–P5 foundation and HP0 compositional pressure survived capacity, cancellation, restart, provider identity, immutable-input, Windows-native, and uncertain-commit attacks; current production exposes a bounded Runtime MCP surface.",
-    summary: "The physical authority for admitted local execution. Runtime proves what the machine executed and retained; it does not decide what that execution means for the Task or external world.",
-    state: "Operational in the owner-trusted local environment. Exact execution and recovery are current capabilities; hostile-root isolation, arbitrary external-effect truth, and semantic Task completion remain outside Runtime.",
-    evidence: [{ value: "36 / 36", label: "transactional real-system acceptance" }, { value: "80 / 80", label: "cancel-swarm trials" }, { value: "30 / 30", label: "restart-swarm trials" }],
-    repository: "https://github.com/zycxfyh/ordivon-runtime", href: "/projects/runtime", updatedAt: portfolioUpdatedAt,
+    problem: "A command can be admitted, partially execute, lose its response, time out, restart, cross execution targets, or outlive/release its Workspace while a later Agent still needs exact physical evidence about what happened and what remains current.",
+    capability: "Owns exact Workspaces, durable Jobs and Attempts, immutable-input execution on local Linux and configured limited Windows targets, provider/source commitments, digest-bound image observation, request/target affordance discovery, Windows-native Job Object execution, cancellation, restart recovery, bounded Artifacts, exact replay, reclamation, and reconciliation of uncertain local commits.",
+    maturity: "Operational owner-trusted local infrastructure; public interface remains pre-1.0 and Windows-native is experimental opt-in", audience: "Builders who need Agent actions, source commitments, physical effects, retained evidence, and lifecycle transitions to remain identifiable and recoverable without turning the executor into Task or domain authority.",
+    latestProof: "The C1–C10 operational-realization programme saturated its current evidence horizon without reopening Runtime Foundations: currentness, consequential retry, evidence scope, identity/lineage, authority/binding, lifecycle retention, and reclamation remained separable. Current production also exposes workspace.content for digest-bound pixel observation, runtime.describe for capability/ceiling discovery, and workspace.execBound on Linux plus configured limited windows_native targets; the latest fixes preserve fresh remote source currentness, reclaim lifecycle contracts, and terminal observation time instead of guessing after the fact.",
+    summary: "The physical authority for admitted local execution. Runtime proves what the machine executed, retained, observed, reclaimed, and can safely replay; it does not decide what that execution means for the Task, Provider, or external domain.",
+    state: "Operational for owner-trusted Linux engineering work with an experimental configured Windows-native backend. Exact execution, immutable inputs, observation, cancellation, recovery, lifecycle/reclamation, and bounded evidence are current capabilities. Hostile multi-tenant isolation, arbitrary external-effect truth, and semantic Task completion remain outside Runtime.",
+    evidence: [{ value: "C1–C10", label: "operational-realization programme saturated" }, { value: "2 targets", label: "verified immutable-input execution" }, { value: "pre-1.0", label: "explicit public compatibility boundary" }],
+    repository: "https://github.com/zycxfyh/ordivon-runtime", href: "/projects/runtime", updatedAt: "2026-08-20",
   },
   gameProject,
   {
