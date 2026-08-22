@@ -5,7 +5,7 @@ export const editorialSelections = {
   },
   writing: {
     startHere: "why-ordivon",
-    evidenceReports: ["the-patterns-recurred-our-taxonomy-got-worse", "we-cut-203-observations-to-8-and-still-didnt-edit"],
+    evidenceReports: ["the-decision-was-valid-the-portfolio-changed", "the-evidence-is-real-it-is-still-too-old"],
     readingPaths: [
       {
         label: "More evidence, less certainty",

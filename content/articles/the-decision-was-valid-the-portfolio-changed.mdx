@@ -1,0 +1,161 @@
+export const metadata = {
+  "slug": "the-decision-was-valid-the-portfolio-changed",
+  "title": "The Decision Was Valid. The Portfolio Changed.",
+  "deck": "A state-changing Finance Decision passed when it was created. Then the portfolio advanced. The historical conclusion remained coherent, but the right to turn it into a new Proposal disappeared until the Decision was rebased on current capital state.",
+  "description": "Why Decision validity and commitment currentness are different facts, using Ordivon Finance's exact portfolio-baseline fence for state-changing proposals.",
+  "projectSlugs": ["finance", "computing"],
+  "questionSlugs": ["finance-real-capital-agent", "evidence-current-applicability"],
+  "type": "Research report",
+  "project": "Ordivon Finance",
+  "publishedAt": "2026-08-22",
+  "readMinutes": 5,
+  "author": "zycxfyh",
+  "lead": "A decision can be completely defensible at 10:00 and still be unsafe to execute at 10:05—not because the reasoning became false, but because the state it was reasoning from is no longer the state that will receive the consequence.",
+  "status": "current",
+  "claimClass": "experimental-result",
+  "evidenceLevel": "E4",
+  "takeaways": [
+    "A state-changing Decision must bind the exact portfolio state it reasons from; semantic coherence at creation is not permanent authority to create a later Proposal.",
+    "When the current PortfolioSnapshot no longer matches the Decision baseline, Finance returns needs_revision and routes the Agent to refresh/rebase rather than silently acting from stale capital state.",
+    "The Proposal boundary revalidates current state again, so an assessment that was once eligible cannot be replayed after the portfolio advances."
+  ],
+  "limitations": [
+    "This is a deterministic Finance-kernel/currentness result, not evidence that one universal freshness rule should govern every domain or commitment.",
+    "The experiment proves a semantic and implementation fence around portfolio-state currentness; it does not by itself activate live external financial submission or make any investment recommendation."
+  ],
+  "canonicalResearchRecord": "https://github.com/zycxfyh/ordivon-finance/blob/feded82/kernel/decision_kernel.py"
+};
+
+<InBrief claim="A valid past decision is not automatically a valid present commitment." evidence="E4 · Finance kernel implementation plus deterministic stale/current baseline tests" scope="State-changing Finance Decisions and Proposal admission">
+  <p>Finance now requires the Decision's exact baseline PortfolioSnapshot to remain the current portfolio state when the Decision is re-evaluated and again when a Proposal is created.</p>
+</InBrief>
+
+<h2 id="the-decision-did-not-become-false" data-toc="The Decision did not become false">The Decision did not become false</h2>
+
+<p>Suppose an Agent evaluates a state-changing capital action against portfolio state <code>S0</code>.</p>
+
+<p>The evidence is available. The comparison against NO-OP supports change. The Decision names <code>S0</code> explicitly and passes every rule that exists at that moment.</p>
+
+<p>Then something else changes the portfolio.</p>
+
+<pre tabIndex={0}><code>{`10:00  Decision D is evaluated against S0
+10:03  portfolio changes to S1
+10:05  a caller tries to create Proposal P from D`}</code></pre>
+
+<p>Nothing about the historical record of <code>D</code> has been corrupted. Its evidence can still be authentic. Its original reasoning can still be coherent.</p>
+
+<p>But the action would no longer land in the world the Decision evaluated.</p>
+
+<div className="article-thesis"><p>The Decision can remain valid as history while becoming stale as authority for a new state-changing commitment.</p></div>
+
+<h2 id="finance-made-the-baseline-an-exact-object" data-toc="The baseline is exact">Finance made the baseline an exact object</h2>
+
+<p>State-changing Finance Decisions already carried an explicit NO-OP baseline. The currentness repair made one additional relationship consequential: the Decision's <code>baseline.portfolioStateRef</code> must match the current PortfolioSnapshot used by Capital Rationality.</p>
+
+<pre tabIndex={0}><code>{`Decision baseline = snapshot://S0
+Current portfolio = snapshot://S0
+→ current baseline check PASS
+
+Decision baseline = snapshot://S0
+Current portfolio = snapshot://S1
+→ current baseline check FAIL
+→ rebase-decision-to-current-portfolio-state`}</code></pre>
+
+<p>If current portfolio state cannot be observed at all, Finance does not guess. The check becomes <strong>UNKNOWN</strong> and requests a refresh of current portfolio state.</p>
+
+<p>This is deliberately narrower than “the Decision is older than five minutes” or “the repository generation changed.” The relevant dependency is the capital state the action would actually modify.</p>
+
+<h2 id="one-test-preserved-the-old-answer-and-blocked-the-new-action" data-toc="Historical coherence, current block">One test preserved the old answer and blocked the new action</h2>
+
+<p>The regression fixture creates one state-changing Decision against a known baseline, records it, and then advances the PortfolioSnapshot.</p>
+
+<p>Finance evaluates the same immutable Decision under two semantics.</p>
+
+<div tabIndex={0} className="article-data-table article-data-table-wide" role="table" aria-label="Historical and current Decision evaluation">
+  <div className="article-data-row article-data-head" role="row"><span role="columnheader">Evaluation</span><span role="columnheader">Portfolio state</span><span role="columnheader">Result</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Historical v2 replay</strong><span role="cell">Decision still records S0</span><span role="cell">coherent · proposal eligible</span></div>
+  <div className="article-data-row" role="row"><strong role="cell">Current v3</strong><span role="cell">current state is S1</span><span role="cell">needs revision · proposal blocked</span></div>
+</div>
+
+<p>The historical answer is intentionally not rewritten. Finance can still reproduce why the Decision looked coherent under the old contract.</p>
+
+<p>The current answer is different because the consumer is different: it is asking whether the Decision may govern a consequence <em>now</em>.</p>
+
+<blockquote>Replay asks what the Decision meant then. Commitment admission asks whether its baseline still governs the world now.</blockquote>
+
+<h2 id="proposal-creation-checks-again" data-toc="Proposal creation checks again">Proposal creation checks again</h2>
+
+<p>A second test closes a subtler hole.</p>
+
+<p>Imagine the Decision was evaluated while <code>S0</code> was current. Its assessment is recorded as proposal-eligible. Only after that does the portfolio advance to <code>S1</code>.</p>
+
+<p>If Proposal creation trusted the old eligibility bit forever, the stale action could still escape.</p>
+
+<p>So <code>proposal.create@2</code> re-evaluates current Capital Rationality and compares the current snapshot with the Decision baseline again.</p>
+
+<pre tabIndex={0}><code>{`Decision D @ S0
+→ Assessment A = eligible
+→ portfolio advances to S1
+→ create Proposal from D + A
+→ REJECT: Decision baseline must match current portfolio state`}</code></pre>
+
+<p>The assessment was not “wrong.” It simply cannot mint permanent authority over a state that may later change.</p>
+
+<h2 id="the-agent-gets-a-repair-path-not-a-dead-end" data-toc="The Agent gets a repair path">The Agent gets a repair path, not a dead end</h2>
+
+<p>Blocking a stale Decision is useful only if the system can say what became stale.</p>
+
+<p>Agent Context v19 turns the failed baseline check into a bounded obligation:</p>
+
+<pre tabIndex={0}><code>{`need: rebase-decision-to-current-portfolio-state
+candidate operation: finance.decide
+target: the exact stale Decision`}</code></pre>
+
+<p>The repair is not “rerun everything.” It is not “discard all old research.” It is not “assume the action is still good because nothing obvious changed.”</p>
+
+<p>The Agent goes back to the semantic boundary that owns the stale commitment and decides again against current state.</p>
+
+<h2 id="this-is-not-the-same-as-stale-evidence" data-toc="Decision currentness is downstream">This is not the same as stale evidence</h2>
+
+<p>Ordivon already had a narrower result: authentic evidence can remain byte-for-byte valid while the dependency it described changes.</p>
+
+<p>Decision currentness is one step farther downstream.</p>
+
+<pre tabIndex={0}><code>{`Evidence currentness
+→ may this evidence still support this claim?
+
+Decision currentness
+→ may this already-formed judgment still govern this state-changing commitment?`}</code></pre>
+
+<p>A system can get the first question right and still fail the second. The evidence used by a Decision might remain valid while the portfolio itself has changed for an entirely different reason.</p>
+
+<p>That is why currentness cannot stop at research admission.</p>
+
+<h2 id="the-general-lesson-is-smaller-than-a-global-currentness-engine" data-toc="No global currentness engine">The general lesson is smaller than a global currentness engine</h2>
+
+<p>This experiment does not justify one universal service that marks every Decision, Task, credential, route, model, or artifact fresh or stale.</p>
+
+<p>Finance has a particularly strong local dependency: state-changing capital decisions are defined relative to an exact portfolio baseline. Other domains can have different commitment identities and different revalidation boundaries.</p>
+
+<p>The transferable rule is narrower:</p>
+
+<blockquote>When an action is consequential, revalidate the load-bearing state that made the commitment admissible before letting that commitment create a new effect.</blockquote>
+
+<p>If the dependency is still current, continue. If it changed, rebase. If it cannot be observed, preserve UNKNOWN.</p>
+
+<h2 id="what-this-does-not-prove" data-toc="What this does not prove">What this does not prove</h2>
+
+<p>It does not prove that every old Decision should be invalidated by time. It does not make Finance a global scheduler. It does not make a portfolio snapshot a universal currentness object.</p>
+
+<p>It also does not activate live trading. The current public Finance boundary still treats external financial submission as a separate fail-closed deployment question.</p>
+
+<p className="article-closing">The difficult part of durable Agent work is not only remembering what was decided. It is knowing when a remembered decision has lost the right to move the current world.</p>
+
+<section className="article-sources" aria-labelledby="sources-title">
+  <p className="section-index">Primary record</p>
+  <h2 id="sources-title" data-toc="Primary record">Decision-currentness implementation</h2>
+  <ol className="source-list">
+    <li><a href="https://github.com/zycxfyh/ordivon-finance/blob/feded82/kernel/decision_kernel.py">Finance Decision Kernel at the stale-decision fix</a></li>
+    <li><a href="https://github.com/zycxfyh/ordivon-finance/blob/feded82/tests/test_decision_kernel.py">Deterministic current-baseline and Proposal-revalidation tests</a></li>
+  </ol>
+</section>
