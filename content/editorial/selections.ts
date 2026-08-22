@@ -1,7 +1,7 @@
 export const editorialSelections = {
   home: {
     proof: "the-shorter-explanation-won",
-    recentArguments: ["the-patterns-recurred-our-taxonomy-got-worse", "we-cut-203-observations-to-8-and-still-didnt-edit", "the-agent-knew-the-goal-it-still-wouldnt-do-it"],
+    recentArguments: ["the-decision-was-valid-the-portfolio-changed", "the-evidence-is-real-it-is-still-too-old", "a-better-looking-result-can-still-be-noise"],
   },
   writing: {
     startHere: "why-ordivon",

@@ -455,8 +455,8 @@ test("article context is derived from Project and Question metadata", async ({ p
 test("homepage presents one continuous dark visual thesis", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/");
   await expect(page.locator(".home-poster-brand")).toHaveText("ORDIVON");
-  await expect(page.getByRole("heading", { name: "Keep the work when the model, session, process, or provider changes." })).toBeVisible();
-  await expect(page.locator(".home-current-card")).toHaveCount(4);
+  await expect(page.getByRole("heading", { name: "Build Agent systems that can survive contact with time, tools, capital, people, and Reality." })).toBeVisible();
+  await expect(page.locator(".home-current-card")).toHaveCount(6);
   await expect(page.locator(".home-project-groups > article")).toHaveCount(3);
   await expect(page.getByRole("heading", { name: "The family is organized by what it owns—not by one universal platform diagram." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "We made the explanation richer. The decisions did not improve." })).toBeVisible();

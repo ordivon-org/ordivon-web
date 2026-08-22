@@ -14,26 +14,10 @@ export const metadata: Metadata = {
 };
 
 const authoredSummary = [
-  {
-    label: "What is usable",
-    title: "Runtime is operational; Station Zero v2 is the registered playable product.",
-    body: "__GAME_PROJECT_STATE__",
-  },
-  {
-    label: "What is implemented",
-    title: "Host and Harness are independent pre-1.0 work authorities.",
-    body: "__HARNESS_PROJECT_STATE__",
-  },
-  {
-    label: "What was removed",
-    title: "World became smaller after stale authority and research-only machinery failed deletion pressure.",
-    body: "World now keeps only the cross-owner external relationships that survived HP0–HP8. Historical studies remain retrievable, while provider truth, Runtime execution, Workstation networking, and domain meaning stay with their native owners.",
-  },
-  {
-    label: "What remains research",
-    title: "Computing, Finance, Media/Studio, Human, and Security keep major questions explicitly bounded.",
-    body: "__SECURITY_PROJECT_STATE__",
-  },
+  { label: "Durable work", title: "Host contracted; Harness and Runtime became more explicit about what they do not own.", projectSlugs: ["host", "harness", "runtime"] },
+  { label: "Reality-facing systems", title: "Game and Finance now expose materially different consequences instead of serving as demonstrations of one platform.", projectSlugs: ["game", "finance"] },
+  { label: "Mediation and external relation", title: "Media is now the top-level mediation owner; World remains a narrow cross-owner relation boundary.", projectSlugs: ["studio", "world"] },
+  { label: "Research and knowledge", title: "Computing, Human, and Security retain bounded research while mature results descend into Knowledge or owner-local practice.", projectSlugs: ["computing", "human", "security"] },
 ] as const;
 
 const availabilityLabel = {
@@ -48,15 +32,10 @@ export default function NowPage() {
   const frontier = getResearchQuestionSummaries().filter((item) => item.question.state === "testing" || item.question.state === "open").slice(0, 6);
   const publications = getRecentPublications(8);
   const projects = getCurrentProjects();
-  const harnessProject = getProjectBySlug("harness")!;
-  const gameProject = getProjectBySlug("game")!;
-  const securityProject = getProjectBySlug("security")!;
-  const summary = authoredSummary.map((item) => {
-    if (item.body === "__GAME_PROJECT_STATE__") return { ...item, body: `Runtime remains the operational local execution boundary. ${gameProject.state}` };
-    if (item.body === "__HARNESS_PROJECT_STATE__") return { ...item, body: `Host preserves durable Task continuity above replaceable execution. ${harnessProject.state}` };
-    if (item.body === "__SECURITY_PROJECT_STATE__") return { ...item, body: `Computing tests cross-project laws without becoming product authority. Finance keeps live submission disabled while effect preparation remains incomplete. Media retains Studio Agent-observer evidence but no human-response claim. Human retains bounded conditional research. ${securityProject.state}` };
-    return item;
-  });
+  const summary = authoredSummary.map((item) => ({
+    ...item,
+    body: item.projectSlugs.map((slug) => getProjectBySlug(slug)?.state).filter(Boolean).join(" "),
+  }));
   const revisedQuestions = editorialSelections.now.judgmentChanges.map(getQuestionBySlug).filter((question): question is NonNullable<typeof question> => Boolean(question));
 
   return (

@@ -3,7 +3,7 @@ import { harnessBoundary, harnessProject } from "./projects/generated-harness.ts
 import { securityProject } from "./projects/generated-security.ts";
 import { gameProject } from "./projects/generated-game.ts";
 
-export const siteUpdatedAt = "2026-08-12";
+export const siteUpdatedAt = "2026-08-22";
 const portfolioUpdatedAt = "2026-08-12";
 
 export const researchPlanes: ResearchPlaneDefinition[] = [

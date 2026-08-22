@@ -23,9 +23,8 @@ const statusLabel = {
 
 export default function HomePage() {
   const research = getResearchQuestionSummaries();
-  const frontier = research
-    .filter((item) => item.question.state === "testing" || item.question.state === "open")
-    .sort((left, right) => right.articleCount - left.articleCount || (right.latestPublicationDate || "").localeCompare(left.latestPublicationDate || ""))[0];
+  const frontier = research.find((item) => item.question.slug === editorialSelections.research.currentQuestion)
+    || research.filter((item) => item.question.state === "testing" || item.question.state === "open")[0];
   const featured = editorialSelections.home.recentArguments.map(getArticle);
   const proofArticle = getArticle(editorialSelections.home.proof);
   const proofQuestion = getQuestionBySlug("causal-responsibility-explanation");
@@ -39,16 +38,16 @@ export default function HomePage() {
         <div className="home-poster-inner">
           <p className="home-poster-brand" aria-hidden="true">ORDIVON</p>
           <div className="home-poster-copy">
-            <p className="home-poster-meta">Independent research, infrastructure, and experiments for durable Agent work · {formatDate(siteUpdatedAt)}</p>
-            <h1 id="home-title">Keep the work when the model, session, process, or provider changes.</h1>
-            <p>Ordivon is a family of projects that separates durable Task meaning, one Agent Run, physical execution, applications, and research. Intelligence can remain replaceable without making the work or its evidence disposable.</p>
+            <p className="home-poster-meta">Independent systems, research, applications, and public evidence for Agent work · {formatDate(siteUpdatedAt)}</p>
+            <h1 id="home-title">Build Agent systems that can survive contact with time, tools, capital, people, and Reality.</h1>
+            <p>Ordivon is a family of independently owned systems and research lines. Host, Harness, and Runtime preserve durable work; Game, Finance, World, Human, Security, and Media pressure those ideas in materially different domains; Computing tests what should become reusable knowledge and what should be deleted.</p>
             <div className="home-actions">
               <Link className="home-action-primary" href="/projects">See the complete project map</Link>
               <Link className="home-action-secondary" href="/system">Follow one work trajectory <span aria-hidden="true">↗</span></Link>
             </div>
           </div>
           <div className="home-poster-legend" aria-label="Ordivon public scope">
-            <span>Operational infrastructure</span><span>Implemented prototypes</span><span>Playable application</span><span>Bounded research</span>
+            <span>Operational infrastructure</span><span>Agent capital system</span><span>Playable product</span><span>Cross-domain research</span>
           </div>
         </div>
       </section>
@@ -56,19 +55,19 @@ export default function HomePage() {
       <section className="home-proof home-shell" aria-labelledby="home-current-title">
         <header className="home-section-intro"><p>What exists today</p><span>Capability, not roadmap language</span></header>
         <div className="home-current-grid">
-          {projects.filter((project) => ["runtime", "host", "harness", "game"].includes(project.slug)).map((project) => (
+          {projects.filter((project) => ["runtime", "host", "game", "finance", "computing", "studio"].includes(project.slug)).map((project) => (
             <Link href={`/projects/${project.slug}`} className="home-current-card" data-availability={project.availability} key={project.slug}>
               <span>{statusLabel[project.availability]}</span><strong>{project.title}</strong><p>{project.capability}</p><small>{project.maturity}</small><b aria-hidden="true">↗</b>
             </Link>
           ))}
         </div>
-        <footer className="home-proof-source"><span>Runtime is operational; Host and Harness are implemented engineering prototypes.</span><span>{gameProject.state}</span></footer>
+        <footer className="home-proof-source"><span>These cards are current Web orientation. Exact implementation and operational truth remain with each owning repository.</span><span>{gameProject.state}</span></footer>
       </section>
 
       <section className="home-owners home-shell" aria-labelledby="home-map-title">
         <div className="home-section-copy">
           <p>Project map</p><h2 id="home-map-title">The family is organized by what it owns—not by one universal platform diagram.</h2>
-          <span>Core boundaries carry durable work. Applications and adapters pressure them. Research projects decide what deserves to remain shared.</span>
+          <span>Core boundaries carry durable work. Domain owners preserve their own truth. Research and Knowledge decide which distinctions transfer—and which should disappear.</span>
         </div>
         <div className="home-project-groups">
           {Object.entries(categoryCopy).map(([category, [label, description]]) => (
