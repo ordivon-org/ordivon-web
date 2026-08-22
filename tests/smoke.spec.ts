@@ -293,14 +293,14 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
 
 test("system explorer uses curated architecture views", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/system");
-  await expect(page.getByRole("heading", { name: "One Task can outlive the model Run and process that carried it." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "One piece of semantic work can outlive the model Run and process that carried it." })).toBeVisible();
   await expect(page.locator(".system-trajectory li")).toHaveCount(5);
   await expect(page.locator(".system-owner-grid .system-owner-card")).toHaveCount(3);
   await expect(page.locator(".system-research-plane .system-owner-card")).toHaveCount(1);
   await expect(page.getByRole("heading", { name: "Computing", exact: true })).toBeVisible();
   await expect(page.locator(".system-hero-stats > div")).toHaveCount(4);
-  await expect(page.locator(".system-hero-stats").getByText("independent", { exact: true })).toBeVisible();
-  await expect(page.locator(".system-hero-stats").getByText("Host-free", { exact: true })).toBeVisible();
+  await expect(page.locator(".system-hero-stats").getByText("6", { exact: true })).toBeVisible();
+  await expect(page.locator(".system-hero-stats").getByText("owner-external", { exact: true })).toBeVisible();
   await expect(page.getByText("Harness tests against exact Host pin", { exact: true })).toHaveCount(0);
   await expect(page.getByText("An Assignment binds", { exact: false })).toHaveCount(0);
   await expect(page.locator(".system-explorer")).toHaveAttribute("data-ready", "true", { timeout: 15_000 });

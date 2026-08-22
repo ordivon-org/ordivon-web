@@ -8,7 +8,7 @@ import { systemPerspectives } from "@/lib/system-views";
 
 export const metadata: Metadata = {
   title: "How it works",
-  description: "Follow durable Agent work through Host Task continuity, a replaceable Harness Run, Runtime physical execution, verification, and the owning application or external system.",
+  description: "Follow one composable durable-work trajectory through Host semantic continuity, a replaceable Harness Run, Runtime physical execution, and back to the owning application or external system.",
   alternates: { canonical: "/system" },
 };
 
@@ -34,7 +34,7 @@ export default function SystemPage() {
   const runtimeProject = getProjectBySlug("runtime")!;
   const trajectory = [
     ["01", "A participant or application defines the work", "A real goal, repository, game state, external service, budget, or human decision creates work whose meaning belongs to its domain."],
-    ["02", "Host preserves the Task and commitment", "Generic Task continuity, accepted decisions, unresolved commitments, evidence admission, and outcomes remain durable above one conversation or model Run."],
+    ["02", "Host preserves the semantic work frontier", "Task identity/revision, Host Journal/CAS admission, and the current WorkingCheckpoint survive client replacement while Runtime, Git, Provider, and domain facts remain references that must be revalidated with their native owners."],
     ["03", "Harness runs replaceable intelligence", harnessProject.capability],
     ["04", "Runtime commits local physical work", "Exact source and request identity become observable Jobs, process state, structured patches, Artifacts, cancellation, and reconciliation evidence."],
     ["05", "Current consequence returns to the owner", "External providers keep native truth; World preserves only the cross-owner relation when needed. The caller or domain then revalidates current applicability, accepts or rejects completion, and decides what the evidence means next."],
@@ -51,8 +51,8 @@ export default function SystemPage() {
       <header className="system-hero page-shell">
         <div className="system-hero-copy">
           <p className="eyebrow"><span>How it works · durable work trajectory</span><b>{formatDate(siteUpdatedAt)}</b></p>
-          <h1>One Task can outlive the model Run and process that carried it.</h1>
-          <p>Ordivon does not require every project to run through one platform. Its core work system separates durable Task commitments, one replaceable Agent Run, and physical execution so each owner can recover without inventing another layer&apos;s facts.</p>
+          <h1>One piece of semantic work can outlive the model Run and process that carried it.</h1>
+          <p>Ordivon does not require every project to run through one platform. When durable semantic continuity, replaceable cognition, and physical execution are all needed, Host, Harness, and Runtime can compose without turning any one of them into the owner of the caller&apos;s domain truth.</p>
           <div className="actions"><Link className="button primary" href="/projects">See every project and status</Link><Link className="button text" href="/writing/from-tokens-to-work">Read the complete execution guide</Link></div>
         </div>
         <dl className="system-hero-stats" aria-label="Demonstrated system evidence">{evidence.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
@@ -60,7 +60,7 @@ export default function SystemPage() {
 
       <div className="page-shell system-main">
         <section className="system-trajectory" aria-labelledby="system-trajectory-title">
-          <SectionHeading eyebrow="End-to-end trajectory" title="The work moves; ownership does not blur." description="The domain begins and ends the trajectory. Host, Harness, and Runtime own different failure classes in the middle. World appears only when a cross-owner relationship to external reality cannot be reconstructed safely by either endpoint alone." />
+          <SectionHeading eyebrow="One composable trajectory" title="The work moves; ownership does not blur." description="This is a supported path, not a mandatory platform pipeline. The domain begins and ends the trajectory; Host, Harness, and Runtime own different interruption-sensitive facts in the middle, and World appears only when a cross-owner relationship cannot be reconstructed safely by either endpoint alone." />
           <ol>{trajectory.map(([index, title, description]) => <li key={title} className="tested"><span>{index}</span><div><b>Current boundary</b><h3>{title}</h3><p>{description}</p></div></li>)}</ol>
         </section>
 
