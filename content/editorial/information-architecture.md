@@ -55,7 +55,7 @@ The primary hierarchy is:
 
 ### Core work system
 
-- **Host** preserves generic Task continuity, commitments, verification, and outcomes.
+- **Host** preserves durable semantic Task identity/revision, Journal/CAS admission, and the bounded WorkingCheckpoint frontier across session replacement. Runtime, Git, Provider, and domain facts remain owner-native references that must be revalidated.
 - **Harness** owns caller-neutral Agent Run execution: immutable Run attempts, Provider and Tool continuity, recovery, receipts, and completion proposals. Caller Task meaning, domain commitments, and final verification remain outside Harness.
 - **Runtime** owns physical local execution, Workspaces, Jobs, process trees, Artifacts, cancellation, and reconciliation.
 
@@ -63,16 +63,16 @@ These are distinct owners, not three names for one platform. Applications may us
 
 ### Applications and capability
 
-- **Game** owns Station Zero and its domain World, rules, player interventions, replay, and comparison.
-- **World** owns only the narrow cross-owner relationships to external reality that survived HP0–HP8 deletion pressure: observation availability, provider/consequence binding, unresolved-consequence reconciliation, and related typed relations. Provider, Runtime, Workstation, Host, and domain truth remain with their native owners.
-- **Finance** owns capital-domain proposals, quantitative research, financial-effect admission, and venue reconciliation. A backtest, model conclusion, API permission, and committed financial consequence are not treated as the same fact.
-- **Studio** owns cross-medium production cognition, rendered-artifact perception, grounded creative experiments, and scoped expression priors. It does not own domain truth or a universal taste/reward model.
+- **Game** owns the registered Station Zero product, executable Game research treatments, the frozen R1–R29 foundations corpus, and current Pre-G0 GameForm/Player-Value direction search. Only v2 is the registered current product; research treatments do not silently become product stages.
+- **World** owns only narrow cross-owner relation and trajectory identity: provider consequence binding/reconciliation plus Resource Transfer, Message Delivery, and Entity Migration where neither endpoint can reconstruct the relationship safely alone. Provider, Runtime, Workstation, Host, and domain truth remain with their native owners.
+- **Finance** owns Finance-domain capital state, owner scope/objectives, research, Decision/Proposal semantics, financial-effect admission/reconciliation, attribution, and performance. Evidence, valuation basis, current portfolio state, judgment, execution authority, and reconciled consequence remain distinct facts.
+- **Media** owns structured mediation across source-owned realities and retains **Studio** as its cross-medium authoring/production capability plane. Neither Media nor Studio owns source-domain truth or a universal taste/reward model.
 
 ### Research and specification
 
 - **Computing** owns cross-project falsification, research synthesis, historical dogfood, promoted world-model knowledge, and conformance; it does not own current product truth.
 - **Human** owns bounded human research, practical paths, methods, conditions, and privacy boundaries.
-- **Security** owns bounded strategic adversarial experiments and multidimensional evaluation, not a production attack platform.
+- **Security** owns bounded adversarial-domain semantics, capability/evidence experiments, exact Range/Scenario authority, and multidimensional evaluation. CA0–CA7 currently retains conditional selection/replanning as a scoped Agent-level residual while Campaign, Organization, persistent OpponentModel, and coevolution remain unadmitted.
 
 ### Publication
 

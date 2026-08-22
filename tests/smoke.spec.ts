@@ -186,11 +186,19 @@ test("internal navigation targets resolve", async ({ page, request }) => {
 });
 
 test("public model is article-centered and does not expose the retired graph ledger", async ({ page }) => {
+  const gameProject = projects.find((project) => project.slug === "game")!;
+  const gameHistoricalQuestion = questions.find((question) => question.slug === "game-agent-native-mechanics")!;
+  const gameCurrentQuestion = questions.find((question) => question.slug === "game-direction-player-value")!;
+  const securityQuestion = questions.find((question) => question.slug === "security-adversarial-trajectory")!;
+  const harnessQuestion = questions.find((question) => question.slug === "ordivon-harness-v0")!;
+
   await gotoWithNetworkRetry(page, "/now");
   await expect(page.getByRole("heading", { name: "Read the arguments and reports that changed the judgment." })).toBeVisible();
   await expect(page.getByRole("heading", { name: `${publicProjects.length} public projects with explicit maturity and boundaries.` })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Questions carrying the current architectural and research pressure." })).toBeVisible();
-  await expect(page.getByRole("link", { name: /The Agent Asked for More Evidence\. The Answer Became No\./ })).toBeVisible();
+  const datedArguments = page.locator(".now-signal-grid > a");
+  expect(await datedArguments.count()).toBeGreaterThan(0);
+  await expect(datedArguments.first()).toHaveAttribute("href", /^\/writing\//);
 
   await gotoWithNetworkRetry(page, "/research/web-research-interface");
   await expect(page.getByRole("heading", { name: "Complete arguments connected to this Question." })).toBeVisible();
@@ -198,23 +206,25 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByRole("heading", { name: "The dossier is an index, not the evidence authority." })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/projects/game");
-  await expect(page.getByText("Registered playable v2 product plus executable pre-G0 research treatments; no new product selected", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("v2", { exact: true })).toBeVisible();
-  await expect(page.getByText("registered current product", { exact: true })).toBeVisible();
-  await expect(page.getByText("A / D / I", { exact: true })).toBeVisible();
-  await expect(page.getByText("Wave1 playable apparatus", { exact: true })).toBeVisible();
-  await expect(page.getByText("unobserved", { exact: true })).toBeVisible();
-  await expect(page.getByText("C0/C1 human Player Value", { exact: true })).toBeVisible();
+  await expect(page.getByText(gameProject.maturity!, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(gameProject.state, { exact: true }).first()).toBeVisible();
+  for (const item of gameProject.evidence) {
+    await expect(page.locator(".evidence-metrics").getByText(item.value, { exact: true })).toBeVisible();
+    await expect(page.locator(".evidence-metrics").getByText(item.label, { exact: true })).toBeVisible();
+  }
 
-  await gotoWithNetworkRetry(page, "/research/game-agent-native-mechanics");
-  await expect(page.getByText("36/36", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("0/6", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("GX2 pressure-versus-strategic-collapse", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("objective oracles", { exact: false }).first()).toBeVisible();
+  await gotoWithNetworkRetry(page, `/research/${gameHistoricalQuestion.slug}`);
+  await expect(page.getByText(gameHistoricalQuestion.state, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(gameHistoricalQuestion.currentJudgment, { exact: true }).first()).toBeVisible();
 
-  await gotoWithNetworkRetry(page, "/research/security-adversarial-trajectory");
+  await gotoWithNetworkRetry(page, `/research/${gameCurrentQuestion.slug}`);
+  await expect(page.getByText(gameCurrentQuestion.state, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(gameCurrentQuestion.currentJudgment, { exact: true }).first()).toBeVisible();
+
+  await gotoWithNetworkRetry(page, `/research/${securityQuestion.slug}`);
   await expect(page.getByRole("link", { name: /Winning the Move Can Lose the Contest/ })).toBeVisible();
-  await expect(page.getByText("accepted AE0–AE2 adversarial-epistemics line", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText(securityQuestion.state, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(securityQuestion.currentJudgment, { exact: true }).first()).toBeVisible();
   await expect(page.getByText("84 Trials", { exact: false })).toHaveCount(0);
 
   await gotoWithNetworkRetry(page, "/research/harness-composition-and-completion");
@@ -223,12 +233,9 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByRole("link", { name: /What Survived When Codex and Hermes Replaced Each Other Mid-Task/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 
-  await gotoWithNetworkRetry(page, "/research/ordivon-harness-v0");
-  await expect(page.getByText("testing", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("25.375×", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("239,953", { exact: false }).first()).toBeVisible();
-  await expect(page.getByRole("link", { name: /We Cut 203 Observations to 8\. The Agent Still Refused to Edit\./ })).toBeVisible();
-  await expect(page.getByRole("link", { name: /What Survived When Codex and Hermes Replaced Each Other Mid-Task/ })).toBeVisible();
+  await gotoWithNetworkRetry(page, `/research/${harnessQuestion.slug}`);
+  await expect(page.getByText(harnessQuestion.state, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(harnessQuestion.currentJudgment, { exact: true }).first()).toBeVisible();
 
   for (const route of ["/system", "/research", "/writing", "/now", "/research/web-research-interface"]) {
     await gotoWithNetworkRetry(page, route);
@@ -266,11 +273,11 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
 
   await gotoWithNetworkRetry(page, "/projects");
   await expect(page.locator(".project-capability-card")).toHaveCount(publicProjects.length);
-  await expect(page.getByText("Operational owner-trusted infrastructure under active high-pressure validation", { exact: true })).toBeVisible();
-  await expect(page.getByText("Operational minimal boundary after HP0–HP8 survival audit", { exact: true })).toBeVisible();
+  await expect(page.getByText("Operational owner-trusted local infrastructure; public interface remains pre-1.0 and Windows-native is experimental opt-in", { exact: true })).toBeVisible();
+  await expect(page.getByText("Operational 0.4 owner-preserving adapter/trajectory boundary after high-pressure contraction", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Harness", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Finance", exact: true })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Ordivon Studio", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Ordivon Media", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Human", exact: true })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/projects/runtime");
@@ -281,26 +288,26 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
   await gotoWithNetworkRetry(page, "/research");
   await expect(page.locator(".research-start-grid > a")).toHaveCount(3);
   await expect(page.getByText("Most important question under test", { exact: true })).toBeVisible();
-  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "Which Agent-era world-model laws survive historical out-of-distribution pressure?" })).toBeVisible();
-  await expect(page.getByText("240", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("72", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("192", { exact: true }).first()).toBeVisible();
+  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "When should a finite intelligence expand its interface to Reality instead of only reasoning harder?" })).toBeVisible();
+  await expect(page.getByText("open / testing public questions", { exact: true })).toBeVisible();
+  await expect(page.getByText("answered / reframed public questions", { exact: true })).toBeVisible();
+  await expect(page.getByText("project domains represented", { exact: true })).toBeVisible();
   await expect(page.getByText("Recently answered boundary", { exact: true })).toBeVisible();
-  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "Does canonical evidence order make an Agent understand the evidence better?" })).toBeVisible();
+  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "Which Agent-era world-model laws survive historical out-of-distribution pressure?" })).toBeVisible();
   await expect(page.getByText("Experiment that most changed the architecture", { exact: true })).toBeVisible();
   await expect(page.locator(".research-start-grid").getByRole("heading", { name: "We Cut 203 Observations to 8. The Agent Still Refused to Edit." })).toBeVisible();
 });
 
 test("system explorer uses curated architecture views", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/system");
-  await expect(page.getByRole("heading", { name: "One Task can outlive the model Run and process that carried it." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "One piece of semantic work can outlive the model Run and process that carried it." })).toBeVisible();
   await expect(page.locator(".system-trajectory li")).toHaveCount(5);
   await expect(page.locator(".system-owner-grid .system-owner-card")).toHaveCount(3);
   await expect(page.locator(".system-research-plane .system-owner-card")).toHaveCount(1);
   await expect(page.getByRole("heading", { name: "Computing", exact: true })).toBeVisible();
   await expect(page.locator(".system-hero-stats > div")).toHaveCount(4);
-  await expect(page.locator(".system-hero-stats").getByText("independent", { exact: true })).toBeVisible();
-  await expect(page.locator(".system-hero-stats").getByText("Host-free", { exact: true })).toBeVisible();
+  await expect(page.locator(".system-hero-stats").getByText("6", { exact: true })).toBeVisible();
+  await expect(page.locator(".system-hero-stats").getByText("owner-external", { exact: true })).toBeVisible();
   await expect(page.getByText("Harness tests against exact Host pin", { exact: true })).toHaveCount(0);
   await expect(page.getByText("An Assignment binds", { exact: false })).toHaveCount(0);
   await expect(page.locator(".system-explorer")).toHaveAttribute("data-ready", "true", { timeout: 15_000 });
@@ -326,7 +333,7 @@ test("research index switches among Questions, Projects, Publications, and Statu
   await gotoWithNetworkRetry(page, "/research");
   await expect(page.locator(".research-explorer")).toHaveAttribute("data-ready", "true");
   await expect(page.getByRole("button", { name: "Questions the active frontier" })).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator(".research-explorer").getByRole("link", { name: /Can Host complete a broader repository Goal/ })).toBeVisible();
+  await expect(page.locator(".research-explorer").getByRole("link", { name: /When should a finite intelligence expand its interface to Reality/ })).toBeVisible();
 
   await page.getByRole("button", { name: "Projects where pressure accumulates" }).click();
   await expect(page.locator('[data-view="projects"]')).toBeVisible();
@@ -419,7 +426,9 @@ test("flagship adversarial report preserves metric contradictions and negative r
   await expect(page.getByRole("heading", { name: "What the data does not establish" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "The next test is transfer under disruption" })).toBeVisible();
   await expect(page.locator(".article-anchor-grid > *")).toHaveCount(metadata.projectSlugs.length + metadata.questionSlugs.length);
-  await expect(page.getByRole("link", { name: /Research Question.*Which Agent-native laws survive in persistent adversarial worlds/ })).toHaveAttribute("href", "/research/security-adversarial-trajectory/");
+  const securityQuestion = questions.find((question) => question.slug === "security-adversarial-trajectory")!;
+  const questionLink = page.locator(`.article-anchor-grid a[href="/research/${securityQuestion.slug}/"]`);
+  await expect(questionLink).toContainText(securityQuestion.title);
 });
 
 test("flagship strong-baseline report preserves evidence and claim boundaries", async ({ page }) => {
@@ -455,8 +464,8 @@ test("article context is derived from Project and Question metadata", async ({ p
 test("homepage presents one continuous dark visual thesis", async ({ page }) => {
   await gotoWithNetworkRetry(page, "/");
   await expect(page.locator(".home-poster-brand")).toHaveText("ORDIVON");
-  await expect(page.getByRole("heading", { name: "Keep the work when the model, session, process, or provider changes." })).toBeVisible();
-  await expect(page.locator(".home-current-card")).toHaveCount(4);
+  await expect(page.getByRole("heading", { name: "Build Agent systems that can survive contact with time, tools, capital, people, and Reality." })).toBeVisible();
+  await expect(page.locator(".home-current-card")).toHaveCount(6);
   await expect(page.locator(".home-project-groups > article")).toHaveCount(3);
   await expect(page.getByRole("heading", { name: "The family is organized by what it owns—not by one universal platform diagram." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "We made the explanation richer. The decisions did not improve." })).toBeVisible();

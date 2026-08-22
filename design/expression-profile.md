@@ -27,7 +27,7 @@ related:
 Cross-medium aesthetic, narrative, rhetorical, motion, sound, style, and computational-aesthetics research is owned by Ordivon Studio's Art & Expression Laboratory:
 
 ```text
-repository: /root/projects/ordivon-studio
+repository: /root/projects/ordivon-media
 revision: c27275c84d559b3446d6fac1d3c4635710f3286d
 path: research/expression/
 protocol: research/expression/protocol.md

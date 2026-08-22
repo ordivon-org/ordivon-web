@@ -60,7 +60,7 @@ type PerspectiveDefinition = Omit<SystemPerspective, "nodes" | "edges"> & { plac
 const definitions: PerspectiveDefinition[] = [
   {
     id: "structure", label: "Structure", kicker: "State ownership",
-    description: "Three durable boundaries, one research plane, and the repositories that implement or pressure them. World is shown only as retained capability, not a semantic layer.",
+    description: "Three durable work boundaries, one independent research plane, and the repositories that implement or pressure them. No edge makes Computing a runtime authority, and World appears only where a cross-owner relation is needed.",
     defaultNodeId: "system:host",
     placements: [
       { id: "system:computing", label: "Computing", detail: "research + conformance", x: 110, y: 145 },
@@ -68,7 +68,7 @@ const definitions: PerspectiveDefinition[] = [
       { id: "system:harness", label: "Harness", detail: "Agent Runs", x: 680, y: 145 },
       { id: "system:runtime", label: "Runtime", detail: "physical execution", x: 970, y: 145 },
       { id: "project:computing", label: "Computing repository", detail: "theory + protocol", x: 110, y: 500 },
-      { id: "project:host", label: "Host repository", detail: "coordination plane", x: 390, y: 500 },
+      { id: "project:host", label: "Host repository", detail: "semantic continuity", x: 390, y: 500 },
       { id: "project:harness", label: "Harness repository", detail: "replaceable execution", x: 680, y: 500 },
       { id: "project:runtime", label: "Runtime repository", detail: "owner-trusted execution", x: 970, y: 500 },
     ],
@@ -79,12 +79,11 @@ const definitions: PerspectiveDefinition[] = [
       { id: "structure-runtime", type: "implements", source: "project:runtime", target: "system:runtime" },
       { id: "structure-host-harness", type: "depends_on", source: "system:host", target: "system:harness", label: "may delegate Runs" },
       { id: "structure-harness-runtime", type: "depends_on", source: "system:harness", target: "system:runtime", label: "dispatches Tools" },
-      { id: "structure-host-computing", type: "depends_on", source: "system:host", target: "system:computing", label: "implements contracts" },
     ],
   },
   {
     id: "execution", label: "Execution", kicker: "Task to evidence",
-    description: "The core path is Host to Harness to Runtime and back through verification. Applications and providers remain authoritative for their own World state.",
+    description: "One supported execution path composes Host, Harness, and Runtime and then returns evidence to the owning domain. Computing is external research pressure, not an execution dependency.",
     defaultNodeId: "project:host",
     placements: [
       { id: "project:computing", label: "Computing", detail: "tests shared contracts", x: 110, y: 105 },
@@ -96,7 +95,6 @@ const definitions: PerspectiveDefinition[] = [
       { id: "question:runtime-structured-effect", label: "Runtime pressure", detail: "new structured operation", x: 945, y: 565, width: 250, height: 132 },
     ],
     edges: [
-      { id: "execution-computing-host", type: "implements", source: "project:computing", target: "project:host", label: "promotes contracts" },
       { id: "execution-host-harness", type: "depends_on", source: "project:host", target: "project:harness", label: "delegates execution" },
       { id: "execution-harness-runtime", type: "depends_on", source: "project:harness", target: "project:runtime", label: "dispatches Tools" },
       { id: "execution-host-question", type: "explores", source: "project:host", target: "question:host-general-goal" },

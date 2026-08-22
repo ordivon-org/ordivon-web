@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ResearchExplorer, type ResearchTimelineItem } from "@/components/research/research-explorer";
 import { SectionHeading } from "@/components/section-heading";
-import { siteUpdatedAt } from "@/content/model";
 import { articles, formatDate, getArticle } from "@/lib/content";
 import { getResearchDossier, getResearchQuestionSummaries } from "@/lib/research";
 import { editorialSelections } from "@/content/editorial/selections";
@@ -13,12 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/research" },
 };
 
-const evidence = [
-  ["240", "source-locked historical trajectories through HD6"],
-  ["72", "historical Deep Anchors through 1999"],
-  ["192", "historical replay Provider calls through HD6"],
-  [String(articles.length), "dated public arguments"],
-] as const;
+const researchUpdatedAt = "2026-08-22";
 
 const method = [
   ["Question", "A bounded uncertainty whose answer can change structure, priority, or project scope."],
@@ -28,6 +22,15 @@ const method = [
 
 export default function ResearchPage() {
   const questions = getResearchQuestionSummaries();
+  const activeQuestionCount = questions.filter(({ question }) => question.state === "testing" || question.state === "open").length;
+  const answeredQuestionCount = questions.filter(({ question }) => question.state === "answered" || question.state === "reframed").length;
+  const representedProjects = new Set(questions.map(({ project }) => project?.id).filter(Boolean)).size;
+  const evidence = [
+    [String(activeQuestionCount), "open / testing public questions"],
+    [String(answeredQuestionCount), "answered / reframed public questions"],
+    [String(representedProjects), "project domains represented"],
+    [String(articles.length), "dated public arguments"],
+  ] as const;
   const current = getResearchDossier(editorialSelections.research.currentQuestion);
   const answered = getResearchDossier(editorialSelections.research.recentlyAnswered);
   const changedArticle = getArticle(editorialSelections.research.architectureChangingExperiment);
@@ -40,7 +43,7 @@ export default function ResearchPage() {
     <div className="research-page">
       <header className="research-hero page-shell page-top">
         <div>
-          <p className="eyebrow">Research · {formatDate(siteUpdatedAt)}</p>
+          <p className="eyebrow">Research · {formatDate(researchUpdatedAt)}</p>
           <h1>Research here exists to change what we know, test, preserve, or build.</h1>
           <p>Each question is tied to a decision that more evidence can still overturn: revise the standing, change the experiment, keep or narrow a boundary, materialize something needed to learn or act, or deliberately leave implementation unchanged.</p>
         </div>

@@ -62,7 +62,8 @@ A formal term should not be the only explanation of a public result.
 | Ordivon Computing | Cross-project research synthesis, falsification, historical dogfood, and promoted world-model knowledge; not current product authority. |
 | Ordivon Human | Bounded human research and practical paths with explicit conditions, limitations, ethics, and privacy boundaries. |
 | Ordivon Security | Strategic adversarial research through bounded experiments and multidimensional evaluation; not a production attack platform. |
-| Ordivon Studio | Cross-medium production cognition and empirical expression research; owns creative evidence and artifact interpretation, not domain truth or universal taste. |
+| Ordivon Media | Top-level structured-mediation owner; preserves source-truth conservation across projection, transformation, exposure, interaction, and metricization. Studio remains Media’s authoring/production capability plane. |
+| Ordivon Studio | Media capability plane for cross-medium authoring, production, editing, rendering, packaging, creative evidence, and artifact interpretation; not a separate top-level truth owner. |
 | Ordivon Web | Public orientation, project navigation, encounter surface, and dated publication layer; not a technical truth store. |
 
 ## Public-first definitions

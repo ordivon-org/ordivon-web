@@ -1,11 +1,11 @@
 export const editorialSelections = {
   home: {
     proof: "the-shorter-explanation-won",
-    recentArguments: ["the-patterns-recurred-our-taxonomy-got-worse", "we-cut-203-observations-to-8-and-still-didnt-edit", "the-agent-knew-the-goal-it-still-wouldnt-do-it"],
+    recentArguments: ["the-decision-was-valid-the-portfolio-changed", "the-evidence-is-real-it-is-still-too-old", "a-better-looking-result-can-still-be-noise"],
   },
   writing: {
     startHere: "why-ordivon",
-    evidenceReports: ["the-patterns-recurred-our-taxonomy-got-worse", "we-cut-203-observations-to-8-and-still-didnt-edit"],
+    evidenceReports: ["the-decision-was-valid-the-portfolio-changed", "the-evidence-is-real-it-is-still-too-old"],
     readingPaths: [
       {
         label: "More evidence, less certainty",
@@ -28,8 +28,8 @@ export const editorialSelections = {
     ],
   },
   research: {
-    currentQuestion: "historical-world-model-dogfood",
-    recentlyAnswered: "semantic-order-and-canonicalization",
+    currentQuestion: "open-interface-relative-closure",
+    recentlyAnswered: "historical-world-model-dogfood",
     architectureChangingExperiment: "we-cut-203-observations-to-8-and-still-didnt-edit",
   },
   now: {
