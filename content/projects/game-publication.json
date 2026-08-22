@@ -1,52 +1,53 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-game",
-  "sourceRevision": "6e8c668c29378b7707e099a39a3039f8fec42737",
-  "sourceDigest": "sha256:f7be9b567044112e0684fe53da3fd6d00c9103343f4993e8cc81a5d2343c28f5",
+  "sourceRevision": "f405ed4251f3d4a4db245675edc7b4933dcbf563",
+  "sourceDigest": "sha256:adfa31d3d85e19c3d078a75e433ecb03e1bc48d6a75b96d4c571a71b8d3ecbd0",
   "project": {
     "id": "project:game",
     "kind": "project",
     "slug": "game",
     "group": "Applications and capability",
-    "label": "Playable intervention-driven worlds",
+    "label": "Playable worlds and pre-G0 game direction research",
     "category": "application",
     "availability": "playable",
     "publicPage": true,
     "index": "04",
-    "thesis": "Use playable worlds to test persistent Agent participation, communication, authority, replay, and human intervention as mechanics rather than decoration.",
-    "question": "Which forms of play become possible when people and replaceable Agents act through one persistent World history?",
+    "thesis": "Keep registered product truth separate from Game Core research, and use cheap falsifiers plus playable proof before selecting the next game or deciding where Runtime Agents add value.",
+    "question": "Which game forms are worth building next, and what role should Agents play only after simpler forms survive player-facing pressure?",
     "owns": [
-      "Station Zero product and target product decisions",
-      "Game rules and authoritative World state",
-      "Player interventions and Commander Orders",
-      "Replay, recovery, and deployment comparison"
+      "Registered Station Zero product and executable Game truth",
+      "Game Core research treatments and player-facing experiments",
+      "R1–R29 Game Foundations research corpus and reopen conditions",
+      "Pre-G0 direction search and playable-proof evidence"
     ],
     "boundary": [
       "Station Zero v2 is the only registered current product",
-      "Station Zero v3 is an accepted unregistered replacement target, not current product truth",
-      "Long-range Game vision creates no feature commitment",
+      "Station Zero v3, Casefile, Last Light, and Echo Hunt are research/reference treatments rather than selected product stages",
+      "No next Ordivon Game product has been selected from the recent direction experiments",
+      "Foundation expansion is provisionally frozen after R29 and reopens only on a concrete counterexample",
       "No generic Host, Runtime, or universal Game-engine authority"
     ],
-    "problem": "Most Agent games attach probabilistic dialogue to classical mechanics instead of making persistence, partial knowledge, communication, authority, and intervention part of play.",
-    "capability": "Runs registered Station Zero v2 as a deterministic multi-Agent mission game and separately exposes an implemented Station Zero v3 first-playable target with three factions, bounded Agent planning, sealed enemy plans, explicit whole-Turn Commit, durable recovery, and a dedicated `/v3` surface.",
-    "maturity": "Registered playable v2 product plus accepted, implemented, unregistered v3 first-playable target",
-    "audience": "Players, game designers, and Agent researchers examining delegation, partial knowledge, adversarial roles, authoritative consequence, replay, and recoverable play.",
-    "latestProof": "Owner authority binds `station-zero@2 / station-zero-core@3` as the current registered product while P0–P3 jointly define and verify the `station-zero@3 / station-zero-core@4` replacement target through a separate API, SQLite state, `/v3` first-playable, and process-restart recovery. Registration remains deferred pending repeated human playtesting and live-Provider evaluation.",
+    "problem": "A technically impressive Agent mechanic can still fail to create a game worth playing. Game now separates product registration, foundation research, game-form search, Agent participation, and player-facing proof so architecture does not substitute for Player Value.",
+    "capability": "Runs registered Station Zero v2 while retaining Station Zero v3, Casefile, Concept Lab, and other treatments as executable research pressure. The R1–R29 corpus provides a compact Game Foundations map, and the current Pre-G0 programme uses cheap falsifiers plus bounded playable proofs to search game form before any G0 product admission.",
+    "maturity": "Registered playable v2 product plus active Pre-G0 direction research; no next product selected",
+    "audience": "Players, game designers, and Agent researchers examining how game form, delegation, partial knowledge, persistent subjects, and Agent participation become—or fail to become—player value.",
+    "latestProof": "R29 froze further foundation expansion after synthesizing R1–R28. The next Pre-G0 search then separated GameForm from Agent role, ran cheap falsifiers, and materialized a bounded A/D/I playable-proof wave with mechanical browser evidence while keeping C0/C1 human Player Value explicitly unobserved.",
     "flagshipSlug": "station-zero-alpha-1",
-    "summary": "Intervention-driven worlds for people and Agents. Game keeps current product registration, accepted replacement targets, long-range vision, and historical releases distinct rather than treating the newest implementation as automatically shipped.",
-    "state": "Station Zero v2 remains the registered current product. Station Zero v3 is an implemented and playable replacement target with P0–P3 accepted, but it remains outside `src/registry.ts` and the root product contract. Human playtesting and live-Provider evaluation gate any v3 registration or v2 deletion.",
+    "summary": "Ordivon Game separates one registered playable product from executable research treatments, frozen foundation knowledge, and the current Pre-G0 search for what game should be built next. Recent playable proofs are evidence for direction search, not a product-selection event.",
+    "state": "Station Zero v2 remains the only registered current product. Station Zero v3 and the newer treatments remain executable reference/research surfaces. The R1–R29 foundation-expansion programme is provisionally frozen; current work is Pre-G0 direction search and bounded playable proof, with no next product selected and no human Player Value claim from the current mechanical evidence.",
     "evidence": [
       {
         "value": "v2",
-        "label": "registered current product"
+        "label": "only registered current product"
       },
       {
-        "value": "P0–P3",
-        "label": "accepted v3 target"
+        "value": "R1–R29",
+        "label": "foundation corpus provisionally frozen"
       },
       {
-        "value": "/v3",
-        "label": "separate first-playable"
+        "value": "A / D / I",
+        "label": "bounded Pre-G0 playable-proof wave"
       }
     ],
     "repository": "https://github.com/zycxfyh/ordivon-game",
