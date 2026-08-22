@@ -266,8 +266,8 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
 
   await gotoWithNetworkRetry(page, "/projects");
   await expect(page.locator(".project-capability-card")).toHaveCount(publicProjects.length);
-  await expect(page.getByText("Operational owner-trusted infrastructure under active high-pressure validation", { exact: true })).toBeVisible();
-  await expect(page.getByText("Operational minimal boundary after HP0–HP8 survival audit", { exact: true })).toBeVisible();
+  await expect(page.getByText("Operational owner-trusted local infrastructure; public interface remains pre-1.0 and Windows-native is experimental opt-in", { exact: true })).toBeVisible();
+  await expect(page.getByText("Operational 0.4 owner-preserving adapter/trajectory boundary after high-pressure contraction", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Harness", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Finance", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Media", exact: true })).toBeVisible();
