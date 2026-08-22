@@ -326,7 +326,7 @@ test("research index switches among Questions, Projects, Publications, and Statu
   await gotoWithNetworkRetry(page, "/research");
   await expect(page.locator(".research-explorer")).toHaveAttribute("data-ready", "true");
   await expect(page.getByRole("button", { name: "Questions the active frontier" })).toHaveAttribute("aria-pressed", "true");
-  await expect(page.locator(".research-explorer").getByRole("link", { name: /Can Host complete a broader repository Goal/ })).toBeVisible();
+  await expect(page.locator(".research-explorer").getByRole("link", { name: /When should a finite intelligence expand its interface to Reality/ })).toBeVisible();
 
   await page.getByRole("button", { name: "Projects where pressure accumulates" }).click();
   await expect(page.locator('[data-view="projects"]')).toBeVisible();
