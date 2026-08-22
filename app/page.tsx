@@ -9,7 +9,7 @@ import { editorialSelections } from "@/content/editorial/selections";
 
 const categoryCopy = {
   "core-system": ["Core work system", "Host preserves the Task, Harness runs a replaceable Agent episode, and Runtime commits physical local execution."],
-  application: ["Applications and capability", "Game, World, Finance, and Studio pressure the system through play, external reality, capital effects, and human-facing expression."],
+  application: ["Applications and capability", "Game, World, Finance, and Media pressure the system through play, external reality, capital effects, and structured human-facing mediation; Studio remains Media’s production plane."],
   research: ["Research and specification", "Computing tests cross-project laws, Human studies practical trajectories, and Security runs bounded adversarial experiments."],
 } as const;
 

@@ -31,7 +31,7 @@ const authoredSummary = [
   },
   {
     label: "What remains research",
-    title: "Computing, Finance, Studio, Human, and Security keep major questions explicitly bounded.",
+    title: "Computing, Finance, Media/Studio, Human, and Security keep major questions explicitly bounded.",
     body: "__SECURITY_PROJECT_STATE__",
   },
 ] as const;
@@ -54,7 +54,7 @@ export default function NowPage() {
   const summary = authoredSummary.map((item) => {
     if (item.body === "__GAME_PROJECT_STATE__") return { ...item, body: `Runtime remains the operational local execution boundary. ${gameProject.state}` };
     if (item.body === "__HARNESS_PROJECT_STATE__") return { ...item, body: `Host preserves durable Task continuity above replaceable execution. ${harnessProject.state}` };
-    if (item.body === "__SECURITY_PROJECT_STATE__") return { ...item, body: `Computing tests cross-project laws without becoming product authority. Finance keeps live submission disabled while effect preparation remains incomplete. Studio has Agent-observer evidence but no human-response claim. Human retains bounded conditional research. ${securityProject.state}` };
+    if (item.body === "__SECURITY_PROJECT_STATE__") return { ...item, body: `Computing tests cross-project laws without becoming product authority. Finance keeps live submission disabled while effect preparation remains incomplete. Media retains Studio Agent-observer evidence but no human-response claim. Human retains bounded conditional research. ${securityProject.state}` };
     return item;
   });
   const revisedQuestions = editorialSelections.now.judgmentChanges.map(getQuestionBySlug).filter((question): question is NonNullable<typeof question> => Boolean(question));

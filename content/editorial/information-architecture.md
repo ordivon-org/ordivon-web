@@ -66,7 +66,7 @@ These are distinct owners, not three names for one platform. Applications may us
 - **Game** owns Station Zero and its domain World, rules, player interventions, replay, and comparison.
 - **World** owns only the narrow cross-owner relationships to external reality that survived HP0–HP8 deletion pressure: observation availability, provider/consequence binding, unresolved-consequence reconciliation, and related typed relations. Provider, Runtime, Workstation, Host, and domain truth remain with their native owners.
 - **Finance** owns capital-domain proposals, quantitative research, financial-effect admission, and venue reconciliation. A backtest, model conclusion, API permission, and committed financial consequence are not treated as the same fact.
-- **Studio** owns cross-medium production cognition, rendered-artifact perception, grounded creative experiments, and scoped expression priors. It does not own domain truth or a universal taste/reward model.
+- **Media** owns structured mediation across source-owned realities and retains **Studio** as its cross-medium authoring/production capability plane. Neither Media nor Studio owns source-domain truth or a universal taste/reward model.
 
 ### Research and specification
 

@@ -270,7 +270,7 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
   await expect(page.getByText("Operational minimal boundary after HP0–HP8 survival audit", { exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Harness", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Finance", exact: true })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Ordivon Studio", exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Ordivon Media", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Ordivon Human", exact: true })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/projects/runtime");

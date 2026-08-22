@@ -21,7 +21,7 @@ const groups = [
     id: "application",
     eyebrow: "Applications and capability",
     title: "Domain systems test whether the boundaries survive real consequences.",
-    description: "Game tests agency, World tests cross-owner reality relations, Finance tests capital judgment and effects, and Studio tests creation, perception, and expression.",
+    description: "Game tests agency, World tests cross-owner reality relations, Finance tests capital judgment and effects, and Media tests structured mediation while Studio carries authoring and production.",
   },
   {
     id: "research",
@@ -85,7 +85,7 @@ export default function ProjectsPage() {
 
       <section className="portfolio-boundary">
         <SectionHeading eyebrow="Authority" title="The website explains the map; repositories own the facts." description="Public status is an authored orientation at a date. Source, tests, releases, receipts, research methods, and operational truth remain with the project that produced them." />
-        <div><p>Start with <Link href="/system">How it works</Link> when you need the core work trajectory. Start with <Link href="/research">Research</Link> when the useful unit is an uncertainty that can still change the architecture. Use the repository link whenever exact capability, installation, or evidence matters.</p><p>A project can be valuable without becoming universal infrastructure: Game owns its game semantics, Finance owns capital meaning, Studio owns creative evidence, World owns only the cross-owner reality relations that survived deletion, and Human and Security retain bounded research scopes.</p></div>
+        <div><p>Start with <Link href="/system">How it works</Link> when you need the core work trajectory. Start with <Link href="/research">Research</Link> when the useful unit is an uncertainty that can still change the architecture. Use the repository link whenever exact capability, installation, or evidence matters.</p><p>A project can be valuable without becoming universal infrastructure: Game owns its game semantics, Finance owns capital meaning, Media owns structured mediation and retains Studio as its production plane, World owns only the cross-owner reality relations that survived deletion, and Human and Security retain bounded research scopes.</p></div>
       </section>
     </div>
   );
