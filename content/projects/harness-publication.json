@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-harness",
-  "sourceRevision": "b640f2dbbd78cbd645f4adbedc9465fd2218876f",
-  "sourceDigest": "sha256:9580b7d53275240cab9517f88e74bbdfd4016725f966528cc4de875092443e50",
+  "sourceRevision": "58fd56e2444d0569ff25a1cd22c54f294fdaec25",
+  "sourceDigest": "sha256:8bc1d4998862ba7e63f437c1a1d3dc13b7f7651150e510829b326398eda475cd",
   "boundary": {
     "id": "system:harness",
     "kind": "boundary",
@@ -10,20 +10,21 @@
     "index": "02",
     "title": "Harness",
     "maturity": "tested",
-    "summary": "The caller-neutral Agent execution boundary for immutable Run attempts, privacy-bounded durable continuity, Provider and Tool recovery, receipts, and completion proposals.",
-    "thesis": "One bounded Agent Run may be replaced without becoming the owner of durable work or caller-domain truth.",
-    "question": "Which Run-local facts must survive interruption while execution policy and Task meaning remain outside the Harness authority?",
+    "summary": "The durable cognitive execution boundary for one bounded Agent Run: canonical history, Agent-selected cognition, interaction/attempt context, request-bound action authority, Provider/Tool recovery, receipts, and completion proposals.",
+    "thesis": "Preserve the structural truth of one Agent Run while leaving semantic cognition and action choice with the Agent and Task/domain meaning with the caller.",
+    "question": "Which structural facts must survive interruption so an Agent can resume from exact current cognition and authority without Harness choosing relevance, world truth, or Task completion?",
     "owns": [
-      "Run contracts and execution attempts",
-      "Provider-call continuity",
-      "Tool-step fencing and recovery",
-      "Run-scoped durable content authority",
-      "Run receipts and completion proposals"
+      "Canonical bounded-Run history and immutable Run authority",
+      "Durable WorkingSet/WorkingView cognition mechanics",
+      "Interaction and attempt-local cognition reconstruction",
+      "Request-bound Harness/Tool action authority",
+      "Provider/Tool effect fencing, recovery, receipts, and CompletionProposal"
     ],
     "boundary": [
-      "No generic Task database",
-      "No Runtime process ownership",
-      "No final caller or domain authority"
+      "No generic Task/domain database or final acceptance",
+      "No Runtime Workspace/Job/Attempt ownership",
+      "No semantic ranking, Memory/RAG truth, or automatic knowledge promotion",
+      "No generic Provider-opaque continuation or Mandate scheduler"
     ],
     "href": "/projects/harness"
   },
@@ -32,31 +33,31 @@
     "kind": "project",
     "slug": "harness",
     "group": "Core work system",
-    "label": "Caller-neutral Agent execution",
+    "label": "Durable cognitive execution for bounded Agent Runs",
     "category": "core-system",
     "availability": "prototype",
     "architectureRoleId": "system:harness",
     "publicPage": true,
-    "problem": "Agent execution needs durable Run-local authority and recovery without making a Provider session, Host, or caller-domain state the owner of the Run.",
-    "capability": "Compiles caller-delegated execution mandates with a chosen strategy into immutable Run contracts, then executes bounded Agent attempts with durable Provider and Tool recovery, privacy-authorized persistence, Agent-selected WorkingSet transitions, cross-process reconstruction of authorized attempt-local Provider/Tool cognition, explicit per-turn execution-control metadata, pause/resume, receipts, and completion proposals.",
-    "maturity": "Operational pre-1.0 engineering prototype",
-    "audience": "Agent builders who need caller-neutral Run execution, bounded authority, explicit Provider and Tool recovery, and completion handoff without a Host dependency.",
-    "latestProof": "Projected Runs now admit a separate caller-owned cognition ingress after needs_input. Exact plain caller user messages enter the effective model view without becoming Agent-selected WorkingSet pins, remain visible across WorkingSet transitions for that interaction, and are consumed at the next needs_input boundary. Recovery reconstructs their exact chronology around Tool exchanges from Snapshot/Journal authority; unbound or role-shaped caller injection is rejected.",
+    "problem": "A bounded Agent Run must preserve what happened, what the Agent is currently allowed to know and do, and what effects actually occurred without collapsing all of that into one transcript or letting recovery invent semantic truth.",
+    "capability": "Provides independent Journal/CAS Run authority plus Agent-selected WorkingSet cognition, caller interaction and attempt-local Tool context, request-bound action capabilities, Provider/Tool response-loss recovery, bounded cognition history, exact cross-Run source admission, and the supported HarnessAgentRun Python composition surface.",
+    "maturity": "Operational pre-1.0 engineering prototype with a supported caller-facing Agent Run surface",
+    "audience": "Agent builders who need durable bounded execution, explicit cognition/action authority, exact Provider/Tool recovery, and caller-owned completion semantics without a Host or generic Memory/RAG dependency.",
+    "latestProof": "Current Status and Architecture freeze six distinct state domains—canonical history, durable cognition, interaction cognition, attempt cognition, execution control, and effects—while HarnessAgentRun provides the supported Python composition surface. Recent verification work binds typed evidence to creation lineage and fails closed on structured-result conformance without promoting semantic evaluation or Provider continuation into Harness.",
     "flagshipSlug": "what-h1-h5-proved",
-    "summary": "The independent execution authority for bounded Agent Runs. Harness owns how an admitted attempt executes and what Run content it may durably retain, while callers retain Task meaning, domain commitments, and final verification.",
-    "state": "Operational pre-1.0 for caller-neutral independent Runs. The effective model suffix now distinguishes caller interaction ingress from attempt-local Tool cognition and from durable Agent-selected WorkingSet pins. Caller ingress is genuine model-visible progress and may reset soft progress counters, but it does not change Agent-owned selection and cannot revive the global hard Tool budget. Exact recovery requires model-content authority; Tool-content authority is needed only when Tool-channel cognition is present.",
+    "summary": "The independent durable cognitive execution substrate for bounded Agent Runs. Harness preserves exact structural cognition, action, and effect continuity while the Agent chooses semantic cognition/action and the caller/domain retains Task meaning and final acceptance.",
+    "state": "Operational pre-1.0. One independent Harness Journal/CAS owns bounded Run continuity; Agent-selected cognition is distinct from history, current action authority is request-bound, ambiguous Provider/Tool effects are recovered conservatively, and HarnessAgentRun is the supported normal Python composition surface. Generic Memory/RAG, semantic ranking, Provider-opaque continuation, Strategy scheduling, and domain completion remain outside Harness.",
     "evidence": [
       {
-        "value": "independent",
-        "label": "Run authority"
+        "value": "6",
+        "label": "separate Run state domains"
       },
       {
-        "value": "metadata-only",
-        "label": "default retention"
+        "value": "HarnessAgentRun",
+        "label": "supported Python composition surface"
       },
       {
-        "value": "Host-free",
-        "label": "dependency boundary"
+        "value": "owner-external",
+        "label": "semantic relevance and final acceptance"
       }
     ],
     "href": "/projects/harness"
