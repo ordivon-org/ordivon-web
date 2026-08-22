@@ -55,7 +55,7 @@ The primary hierarchy is:
 
 ### Core work system
 
-- **Host** preserves generic Task continuity, commitments, verification, and outcomes.
+- **Host** preserves durable semantic Task identity/revision, Journal/CAS admission, and the bounded WorkingCheckpoint frontier across session replacement. Runtime, Git, Provider, and domain facts remain owner-native references that must be revalidated.
 - **Harness** owns caller-neutral Agent Run execution: immutable Run attempts, Provider and Tool continuity, recovery, receipts, and completion proposals. Caller Task meaning, domain commitments, and final verification remain outside Harness.
 - **Runtime** owns physical local execution, Workspaces, Jobs, process trees, Artifacts, cancellation, and reconciliation.
 
@@ -63,16 +63,16 @@ These are distinct owners, not three names for one platform. Applications may us
 
 ### Applications and capability
 
-- **Game** owns Station Zero and its domain World, rules, player interventions, replay, and comparison.
-- **World** owns only the narrow cross-owner relationships to external reality that survived HP0–HP8 deletion pressure: observation availability, provider/consequence binding, unresolved-consequence reconciliation, and related typed relations. Provider, Runtime, Workstation, Host, and domain truth remain with their native owners.
-- **Finance** owns capital-domain proposals, quantitative research, financial-effect admission, and venue reconciliation. A backtest, model conclusion, API permission, and committed financial consequence are not treated as the same fact.
+- **Game** owns the registered Station Zero product, executable Game research treatments, the frozen R1–R29 foundations corpus, and current Pre-G0 GameForm/Player-Value direction search. Only v2 is the registered current product; research treatments do not silently become product stages.
+- **World** owns only narrow cross-owner relation and trajectory identity: provider consequence binding/reconciliation plus Resource Transfer, Message Delivery, and Entity Migration where neither endpoint can reconstruct the relationship safely alone. Provider, Runtime, Workstation, Host, and domain truth remain with their native owners.
+- **Finance** owns Finance-domain capital state, owner scope/objectives, research, Decision/Proposal semantics, financial-effect admission/reconciliation, attribution, and performance. Evidence, valuation basis, current portfolio state, judgment, execution authority, and reconciled consequence remain distinct facts.
 - **Media** owns structured mediation across source-owned realities and retains **Studio** as its cross-medium authoring/production capability plane. Neither Media nor Studio owns source-domain truth or a universal taste/reward model.
 
 ### Research and specification
 
 - **Computing** owns cross-project falsification, research synthesis, historical dogfood, promoted world-model knowledge, and conformance; it does not own current product truth.
 - **Human** owns bounded human research, practical paths, methods, conditions, and privacy boundaries.
-- **Security** owns bounded strategic adversarial experiments and multidimensional evaluation, not a production attack platform.
+- **Security** owns bounded adversarial-domain semantics, capability/evidence experiments, exact Range/Scenario authority, and multidimensional evaluation. CA0–CA7 currently retains conditional selection/replanning as a scoped Agent-level residual while Campaign, Organization, persistent OpponentModel, and coevolution remain unadmitted.
 
 ### Publication
 
@@ -82,10 +82,10 @@ These are distinct owners, not three names for one platform. Applications may us
 
 Project pages must distinguish at least these states:
 
-- **Usable now** — an operational capability with a current run or operations contract.
+- **Operational capability** — an operational capability under a stated owner scope and dated projection; this does not itself establish user value, external availability, or broad production readiness.
 - **Implemented prototype** — executable and tested, but not a general production product.
-- **Playable now** — a current application that can be run as documented.
-- **Research** — a bounded question, method, path, or experiment whose conclusions remain conditional.
+- **Playable application** — a documented playable application or executable game surface; playability does not itself establish Player Value.
+- **Bounded research** — a bounded question, method, path, or experiment whose conclusions remain conditional.
 - **Historical** — retained evidence or argument that no longer describes current capability or direction.
 
 Do not use one word such as `active` to imply maturity, stability, priority, adoption, or production readiness.
@@ -127,4 +127,4 @@ A publication remains a record of its date. When later work changes a material f
 
 ## Authority
 
-Current project summaries are public projections at `siteUpdatedAt`. Some remain directly authored; Harness, Security, and Game are compiled from source-bound owner snapshots plus Web editorial judgment. Their owner repositories may organize current truth differently—the projection contract follows declared authority dependencies rather than requiring a shared STATUS schema or treating every dependency as the same temporal state. Game, for example, keeps a registered current product, accepted unregistered replacement target, long-range vision, and historical release evidence distinct. The owning repositories remain authoritative for code, tests, releases, product registration, operations, and current technical boundaries. Research records remain authoritative for setup and evidence. Articles remain authoritative for their dated argument. Generated modules, manifests, and pages remain rebuildable projections.
+Project summaries are dated public projections. `siteUpdatedAt` dates the Web publication surface; each Project `updatedAt` preserves the date of its bound owner-source envelope or direct editorial record rather than being silently promoted to today. Some remain directly authored; Harness, Security, and Game are compiled from source-bound owner snapshots plus Web editorial judgment. Their owner repositories may organize current truth differently—the projection contract follows declared authority dependencies rather than requiring a shared STATUS schema or treating every dependency as the same temporal state. Game, for example, keeps its registered current product distinct from executable research treatments, pre-G0 evidence apparatus, long-range vision, and historical product-stage evidence; none of those other states silently selects a new product. The owning repositories remain authoritative for code, tests, releases, product registration, operations, and current technical boundaries. Research records remain authoritative for setup and evidence. Articles remain authoritative for their dated argument. Generated modules, manifests, and pages remain rebuildable projections.

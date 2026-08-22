@@ -44,8 +44,8 @@ export default function ResearchPage() {
       <header className="research-hero page-shell page-top">
         <div>
           <p className="eyebrow">Research · {formatDate(researchUpdatedAt)}</p>
-          <h1>Research here exists to change what we build.</h1>
-          <p>Each question is tied to a decision that another experiment can still overturn: keep a boundary, narrow it, move it to a mature system, or delete it.</p>
+          <h1>Research here exists to change what we know, test, preserve, or build.</h1>
+          <p>Each question is tied to a decision that more evidence can still overturn: revise the standing, change the experiment, keep or narrow a boundary, materialize something needed to learn or act, or deliberately leave implementation unchanged.</p>
         </div>
         <dl aria-label="Research evidence summary">
           {evidence.map(([value, label]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}

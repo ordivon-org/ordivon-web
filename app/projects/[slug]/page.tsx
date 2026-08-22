@@ -5,7 +5,7 @@ import { ProjectMechanism } from "@/components/project-mechanism";
 import { RuntimeRecoveryExpression } from "@/components/runtime-recovery-expression";
 import { SecurityEpistemicExpression } from "@/components/security-epistemic-expression";
 import { GameStationZeroAffect } from "@/components/game-station-zero-affect";
-import { articles } from "@/lib/content";
+import { articles, formatDate } from "@/lib/content";
 import { getProject, projects } from "@/lib/projects";
 
 export const dynamicParams = false;
@@ -18,10 +18,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const availability = {
-  operational: "Usable now",
+  operational: "Operational capability",
   prototype: "Implemented prototype",
-  playable: "Playable now",
-  research: "Research",
+  playable: "Playable application",
+  research: "Bounded research",
   internal: "Internal",
 } as const;
 
@@ -34,15 +34,15 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   return (
     <div className={`project-page project-${project.slug}`}>
       <header className="project-hero page-shell page-top">
-        <div className="project-hero-meta"><p>{project.group}</p><span>{project.index} / {String(projects.length).padStart(2, "0")}</span></div>
+        <div className="project-hero-meta"><p>{project.group}{project.updatedAt && <> · Basis {formatDate(project.updatedAt)}</>}</p><span>{project.index} / {String(projects.length).padStart(2, "0")}</span></div>
         <div className="project-availability" data-status={project.availability}>{availability[project.availability]}</div>
         <h1>{project.title}</h1>
         <p className="project-hero-thesis">{project.thesis}</p>
         <div className="project-intro"><p>{project.summary}</p><div className="actions"><a className="button primary" href={project.repository}>Repository <span>↗</span></a>{flagship && <Link className="button text" href={`/writing/${flagship.slug}`}>{flagship.status === "historical" ? "Read historical evidence" : "Read the evidence"}</Link>}</div></div>
         <dl className="project-use-strip">
-          <div><dt>Current status</dt><dd>{project.maturity}</dd></div>
+          <div><dt>Projected status</dt><dd>{project.maturity}</dd></div>
           <div><dt>For</dt><dd>{project.audience}</dd></div>
-          <div><dt>Evidence</dt><dd>{project.latestProof}</dd></div>
+          <div><dt>Evidence for status</dt><dd>{project.latestProof}</dd></div>
         </dl>
       </header>
       <section className="project-question page-shell"><p>Question this project must answer</p><h2>{project.question}</h2></section>
@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       {project.slug === "game" && <div className="page-shell"><GameStationZeroAffect /></div>}
       <section className="project-model-wrap page-shell"><ProjectMechanism project={project} /></section>
       <section className="project-facts page-shell">
-        <div className="project-fact-copy"><p className="section-index">Where it stands now</p><h2>{project.maturity}</h2><p>{project.state}</p></div>
+        <div className="project-fact-copy"><p className="section-index">Standing in this projection</p><h2>{project.maturity}</h2><p>{project.state}</p></div>
         <div><p className="section-index project-evidence-label">Capability evidence</p><div className="evidence-metrics">{project.evidence.map((item) => <div key={item.label}><strong>{item.value}</strong><span>{item.label}</span></div>)}</div></div>
       </section>
       <section className="ownership-grid page-shell">
