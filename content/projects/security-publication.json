@@ -1,53 +1,54 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-security",
-  "sourceRevision": "7ce19d8c6e395419883af16b0adcb171f9e83a93",
-  "sourceDigest": "sha256:ec7fc299e2e692d89b5e00adda269c2030c5fd7f8593eaa51556b7d10b8ca589",
+  "sourceRevision": "0891de43499836463d24a142cf81df0b5d5285ed",
+  "sourceDigest": "sha256:8cbcfa084c05593ccfe292aafd65231d54bacd7a81c27098a95d2306a650df0e",
   "project": {
     "id": "project:security",
     "kind": "project",
     "slug": "security",
     "group": "Research and specification",
-    "label": "Agent-first adversarial-autonomy laboratory",
+    "label": "Authorized adversarial-autonomy and security capability laboratory",
     "category": "research",
     "availability": "research",
     "publicPage": true,
     "index": "08",
-    "thesis": "Study autonomous opposition by keeping actor intent and observation, authority, physical consequence, sensor evidence, world truth, and evaluation as distinct facts.",
-    "question": "Which minimal laws remain necessary when autonomous principals can hold different information, authority, goals, and interpretations while causing and recovering consequential effects?",
+    "thesis": "Compose mature security capabilities inside exact owned/delegated authority, truth, consequence, recovery, and evaluation boundaries; promote new shared semantics only when an adversarial experiment proves that existing tools and owners cannot carry them.",
+    "question": "Which adversarial and security capabilities actually require new Agent-native semantics after mature mechanisms, execution carriers, providers, and owner-native truth are used directly?",
     "owns": [
-      "Contested-Range and reusable adversarial substrate semantics",
-      "Principal/Actor information boundaries and domain effect admission",
-      "Independent truth, uncertainty, consequence verification, and recovery meaning",
-      "Raw metrics, scoring, and adversarial evaluation",
-      "Scoped profiles only where experiments prove domain-specific value"
+      "Authorized Range/Scenario and principal authority semantics",
+      "Asymmetric observation, adversarial intent, and domain effect admission",
+      "Separated executor, sensor, management, world-truth, recovery, and evaluator evidence",
+      "Bounded Evaluation and revisioned vulnerability/Sample research corpus",
+      "Scoped adversarial capability research and falsification"
     ],
     "boundary": [
-      "Authorized owned or explicitly delegated ranges only",
-      "No generic Agent cognition, Task continuity, physical runtime, World capability, hypervisor, or security-tool ownership",
-      "Campaign, coalition, organization, trust, infection, and stronger transaction/replication structures remain hypotheses until experiments force them",
-      "No unrestricted external targets or production attack-platform claim"
+      "Owned or explicitly delegated ranges and samples only",
+      "No unrestricted-target or production attack-platform claim",
+      "No generic SIEM/EDR/IDS, malware zoo/downloader, ATT&CK clone, or RangeActionGateway",
+      "Campaign, Organization, persistent OpponentModel, coevolution, and cross-fidelity strategic law remain unadmitted after CA7",
+      "Host, Harness, Runtime, native providers, hypervisors, and security tools retain their own authority"
     ],
-    "problem": "Classical security mechanisms can execute, observe, and contain effects, but they do not by themselves define the experiment when autonomous opponents hold different observations, authority, objectives, and interpretations of the same changing world.",
-    "capability": "Runs bounded adversarial-autonomy experiments over a reusable RangeSession/RangeAuthority substrate and scoped profiles such as synchronous Contest, CAGE, software Evaluation, and Windows KVM. It composes Host, Harness, Runtime, World, hypervisors, ranges, and security tools while keeping principal information, authority, consequence, truth, recovery, and evaluation distinct.",
-    "maturity": "Executable bounded research with experimental 0.8 interfaces and accepted physical range evidence",
-    "audience": "Security and Agent researchers studying autonomous opposition, authority, deception, contested observation, consequence recovery, evaluator integrity, and cross-fidelity transfer.",
-    "latestProof": "AE2 now introduces two independently sourced sensor observations that disagree while neither is world truth. With no source ranking or history, one shared Defender policy refuses arbitrary source selection, requests explicit adjudicating inspection, and only authoritative current world truth later separates healthy hold from compromised quarantine. The contradictory sensor observations remain preserved as historical evidence.",
+    "problem": "Mature security tools can scan, fuzz, execute, observe, isolate, and recover systems, but an autonomous adversarial experiment still needs exact sovereignty, principal authority, evidence/truth separation, consequence identity, and recovery meaning. Rebuilding classical capability as a new Agent ontology would add machinery without solving that semantic gap.",
+    "capability": "Runs bounded authorized adversarial experiments across deterministic Contests, CAGE, disposable Windows KVM, isolated contested fabrics, software Evaluation, ResearchCorpus, and model-backed Actors while composing mature providers and tools. CA0–CA7 now supplies a source-bound classical-capability map, carrier/evidence/post-compromise/defensive-response/adaptive-tactics results, and explicit negative gates against unnecessary shared Security infrastructure.",
+    "maturity": "Executable bounded research with an ordinary-consumption surface; experimental rather than a production security platform",
+    "audience": "Security and Agent researchers studying autonomous opposition, exact authority, vulnerability evidence, post-compromise state, defensive response, adaptive tactics, consequence recovery, evaluator integrity, and when mature security mechanisms need—or do not need—new Agent semantics.",
+    "latestProof": "The CA0–CA7 sequence imported and pressure-tested classical capability rather than building a new tool ontology: same semantic effects survived multiple execution carriers; vulnerability evidence stopped at independently replayed sanitizer consequence; post-compromise and defensive-response experiments preserved truth/authority boundaries; provider assimilation rejected a shared RangeActionGateway; adaptive tactics used current evidence; and CA7 declined Campaign/Organization/persistent OpponentModel admission. Ordinary consumption now exposes a bounded task view and ResearchCorpus without adding SIEM/EDR infrastructure.",
     "flagshipSlug": "winning-move-loses-contest",
-    "summary": "An Agent-first adversarial-autonomy laboratory. Security owns the minimum semantics required for contested authority, information asymmetry, verified consequence, uncertainty, recovery, and evaluation; cyber is the first high-fidelity domain rather than the project definition.",
-    "state": "Agent-first adversarial epistemics now spans AE0 information acquisition, AE1 delayed truth under costly waiting, and AE2 conflicting independent sensor observations. Provenance plus UNKNOWN is sufficient for the tested one-shot conflict to trigger adjudication without promoting either sensor to truth. Trust/Reputation, confidence, source-history, and freshness remain unforced; the next pressure is conflict when adjudication is unavailable/expensive or repeated source history becomes causally useful.",
+    "summary": "An authorized adversarial-autonomy laboratory that composes mature security mechanisms with exact Range sovereignty, asymmetric information, evidence/truth separation, effect/recovery identity, and bounded evaluation. Current research is as much about deleting unnecessary Agent-security abstractions as adding capability.",
+    "state": "Current Security retains executable Contest, Range, Evaluation, Windows-KVM/fabric, ResearchCorpus, and model-backed Actor capability under experimental authority. The CA0–CA7 classical-capability round is accepted without promoting a generic Gateway, SIEM/EDR stack, Campaign, Organization, persistent OpponentModel, or cross-fidelity strategic law. An ordinary task view and bounded pre-analysis corpus are available; stronger strategic abstractions reopen only when a concrete authorized consumer forces them.",
     "evidence": [
       {
-        "value": "AE0",
-        "label": "information acquisition"
+        "value": "CA0–CA7",
+        "label": "classical capability assimilation"
       },
       {
-        "value": "AE1",
-        "label": "delayed-truth hold"
+        "value": "ordinary",
+        "label": "bounded consumption view"
       },
       {
-        "value": "AE2",
-        "label": "sensor conflict adjudication"
+        "value": "0",
+        "label": "Campaign / Organization / Gateway layers admitted"
       }
     ],
     "repository": "https://github.com/zycxfyh/ordivon-security",
