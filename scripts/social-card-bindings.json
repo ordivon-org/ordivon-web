@@ -112,6 +112,12 @@
       "sizeBytes": 175122
     },
     {
+      "slug": "the-decision-was-valid-the-portfolio-changed",
+      "sourceDigest": "sha256:44eb907e1822034f57081abab5d126635375c275f5abb88472d5477f5953f11d",
+      "blobDigest": "sha256:bc3005871192a974ab6fd6b2faf9a543c8c7e40e36afb9315be87852ae56bd0e",
+      "sizeBytes": 170030
+    },
+    {
       "slug": "the-evidence-is-real-it-is-still-too-old",
       "sourceDigest": "sha256:ddecffb5b5ea54e7b0e1faa48ec859d1dd165ae6573776a3ae38bb62742d965a",
       "blobDigest": "sha256:9a1bf5f7d18b7ca331ad8213a81b4bedf9f935caeb8c1c18860a6f6c8d23efeb",
