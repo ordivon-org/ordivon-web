@@ -28,8 +28,8 @@ export const editorialSelections = {
     ],
   },
   research: {
-    currentQuestion: "historical-world-model-dogfood",
-    recentlyAnswered: "semantic-order-and-canonicalization",
+    currentQuestion: "open-interface-relative-closure",
+    recentlyAnswered: "historical-world-model-dogfood",
     architectureChangingExperiment: "we-cut-203-observations-to-8-and-still-didnt-edit",
   },
   now: {

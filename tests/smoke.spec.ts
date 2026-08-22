@@ -281,12 +281,12 @@ test("reader orientation precedes formal models on the remaining R2 surfaces", a
   await gotoWithNetworkRetry(page, "/research");
   await expect(page.locator(".research-start-grid > a")).toHaveCount(3);
   await expect(page.getByText("Most important question under test", { exact: true })).toBeVisible();
-  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "Which Agent-era world-model laws survive historical out-of-distribution pressure?" })).toBeVisible();
-  await expect(page.getByText("240", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("72", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("192", { exact: true }).first()).toBeVisible();
+  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "When should a finite intelligence expand its interface to Reality instead of only reasoning harder?" })).toBeVisible();
+  await expect(page.getByText("open / testing public questions", { exact: true })).toBeVisible();
+  await expect(page.getByText("answered / reframed public questions", { exact: true })).toBeVisible();
+  await expect(page.getByText("project domains represented", { exact: true })).toBeVisible();
   await expect(page.getByText("Recently answered boundary", { exact: true })).toBeVisible();
-  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "Does canonical evidence order make an Agent understand the evidence better?" })).toBeVisible();
+  await expect(page.locator(".research-start-grid").getByRole("heading", { name: "Which Agent-era world-model laws survive historical out-of-distribution pressure?" })).toBeVisible();
   await expect(page.getByText("Experiment that most changed the architecture", { exact: true })).toBeVisible();
   await expect(page.locator(".research-start-grid").getByRole("heading", { name: "We Cut 203 Observations to 8. The Agent Still Refused to Edit." })).toBeVisible();
 });

@@ -158,6 +158,17 @@ export const projects: ProjectDefinition[] = [
 
 export const questions: QuestionDefinition[] = [
   {
+    id: "question:computing-open-interface-relative-closure", kind: "question", slug: "open-interface-relative-closure", projectSlug: "computing",
+    title: "When should a finite intelligence expand its interface to Reality instead of only reasoning harder?",
+    summary: "Distinguish failures of a callable action interface, representation/hypothesis language, physical affordance, installed executor capability, and artifact/grounding so repair happens at the level that is actually closed.",
+    importance: "A finite Agent can fail because its current action set, representation language, physical affordances, or installed tools are insufficient—not only because its reasoning is weak. Collapsing those cases creates the wrong repair and encourages vague claims of ‘basis escape.’",
+    hypothesis: "Open-interface change is best represented as a level-relative closure transition under prospectively frozen feasibility/resource bounds. Mature external witnesses already cover several distinct cases: B* expansion for finite-agent callable reachability, predicate invention for representation-space expansion, and compound-tool construction for bounded physical affordance expansion.",
+    currentJudgment: "Testing under a contracted theory. External prior art falsifies the claim that action/interface expansion is absent, but it also weakens any absolute transcendence claim: callable, representational, affordance, and executor expansions can be new relative to one closure while remaining compositional inside a deeper supplied substrate. No universal basis hierarchy or generic basis-escape object is admitted.",
+    nextStep: "Wait for a natural owner-level failure that satisfies an already-frozen strict burden: a real certificate/language or grounded-meta-closure case where the current closure is prospectively explicit and the repair cannot be reconstructed as ordinary composition inside the admitted substrate. Do not manufacture E1b/E2 merely because apparatus exists.",
+    falsifier: "If every apparent expansion is explained by an already-available deeper composition/meta-action, or mature interface/representation methods plus owner-local repair classify the failure without a new shared relation, keep the theory contracted; conversely, a source-fenced strict missing-primitive case that survives the frozen closure burden would reopen it.",
+    state: "testing", href: "/research/open-interface-relative-closure", updatedAt: "2026-08-22",
+  },
+  {
     id: "question:computing-smallest-core", kind: "question", slug: "smallest-agent-native-core", projectSlug: "computing",
     title: "Which Agent-native responsibilities remain after strong classical baselines?",
     summary: "Use mature workflow, retrieval, idempotency, and Provider systems to delete shared abstractions that do not own a distinct failure.",
@@ -362,10 +373,10 @@ export const questions: QuestionDefinition[] = [
     title: "Which Agent-era world-model laws survive historical out-of-distribution pressure?",
     summary: "Freeze the modern theory, reconstruct history before coding it, preserve failures and anti-cases, and let independent epochs narrow or contradict the candidate laws before any cross-era promotion.",
     importance: "A modern systems theory can appear universal if it chooses famous examples and retrospective labels after seeing the outcomes. Historical OOD pressure is useful only when the theory cannot move to fit the evidence.",
-    hypothesis: "Materially different scientific and industrial worlds will repeatedly expose a smaller set of structural pressures while narrowing Agent-era laws that are domain-specific, over-general, or artifacts of our present taxonomy.",
-    currentJudgment: "Testing after HD1–HD6. The campaign has source-locked 240 trajectories and 72 Deep Anchors across 1760–1999 with the original S1–S10/F1–F7 frozen. R1–R8 now recur across all six epochs, but HD6 weakened confidence in the current taxonomy: fresh independent exact agreement was only 64/120 (53.3%) and coarse applicability 77/120 (64.2%); removing repeated scaffold boilerplate improved these only to 60.8% and 67.5%. Six-epoch recurrence therefore strengthens Reality recurrence while measurement/taxonomy confidence remains deliberately unpromoted.",
-    nextStep: "Complete HD7–HD8 through 2026 under the unchanged theory and stronger late-epoch leakage warnings, then run HD9 cross-era adversarial/redundancy/negation-condition review before promoting, merging, narrowing, or deleting any recurrent structure.",
-    falsifier: "Later epochs produce clean contradictions, supposedly recurrent residuals disappear outside early industrial history, anti-laws prove Agent-era-specific, or independent coding/anti-case pressure shows that an apparent cross-era law was mainly a taxonomy artifact.", state: "testing", href: "/research/historical-world-model-dogfood", updatedAt: portfolioUpdatedAt,
+    hypothesis: "Materially different scientific and industrial worlds may expose recurring structural pressures, but recurrence must be separated from universal law, taxonomy quality, measurement currentness, and replay validity.",
+    currentJudgment: "Answered for the HD0–HD9 programme. The frozen 1760–2026 campaign closed with 320 trajectories and 96 Deep Anchors across eight chronological waves. Cross-era recurrence survived only as a typed seven-family structural map plus explicit demotions, merges, replay negatives, and measurement/currentness results; the evidence did not justify ten universal success invariants or eight universal innovation laws.",
+    nextStep: "Keep HD0–HD9 closed and use the bounded structural map as a prior, not a law factory. Reopen only when a new decision requires historical pressure that the retained map cannot answer, or when an independent anti-case materially changes the bounded standing; HD10 is not admitted by numbering inertia.",
+    falsifier: "A future independent corpus or coding audit can still show that a retained family is mainly taxonomy artifact, selection bias, or historical-replay leakage; such evidence should narrow or delete that family rather than restart the programme automatically.", state: "answered", href: "/research/historical-world-model-dogfood", updatedAt: "2026-08-22",
   },
   {
     id: "question:web-research-interface", kind: "question", slug: "web-research-interface", projectSlug: "web",
