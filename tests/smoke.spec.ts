@@ -186,11 +186,19 @@ test("internal navigation targets resolve", async ({ page, request }) => {
 });
 
 test("public model is article-centered and does not expose the retired graph ledger", async ({ page }) => {
+  const gameProject = projects.find((project) => project.slug === "game")!;
+  const gameHistoricalQuestion = questions.find((question) => question.slug === "game-agent-native-mechanics")!;
+  const gameCurrentQuestion = questions.find((question) => question.slug === "game-direction-player-value")!;
+  const securityQuestion = questions.find((question) => question.slug === "security-adversarial-trajectory")!;
+  const harnessQuestion = questions.find((question) => question.slug === "ordivon-harness-v0")!;
+
   await gotoWithNetworkRetry(page, "/now");
   await expect(page.getByRole("heading", { name: "Read the arguments and reports that changed the judgment." })).toBeVisible();
   await expect(page.getByRole("heading", { name: `${publicProjects.length} public projects with explicit maturity and boundaries.` })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Questions carrying the current architectural and research pressure." })).toBeVisible();
-  await expect(page.getByRole("link", { name: /The Agent Asked for More Evidence\. The Answer Became No\./ })).toBeVisible();
+  const datedArguments = page.locator(".now-signal-grid > a");
+  expect(await datedArguments.count()).toBeGreaterThan(0);
+  await expect(datedArguments.first()).toHaveAttribute("href", /^\/writing\//);
 
   await gotoWithNetworkRetry(page, "/research/web-research-interface");
   await expect(page.getByRole("heading", { name: "Complete arguments connected to this Question." })).toBeVisible();
@@ -198,23 +206,25 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByRole("heading", { name: "The dossier is an index, not the evidence authority." })).toBeVisible();
 
   await gotoWithNetworkRetry(page, "/projects/game");
-  await expect(page.getByText("Registered playable v2 product plus accepted, implemented, unregistered v3 first-playable target", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("v2", { exact: true })).toBeVisible();
-  await expect(page.getByText("registered current product", { exact: true })).toBeVisible();
-  await expect(page.getByText("P0–P3", { exact: true })).toBeVisible();
-  await expect(page.getByText("accepted v3 target", { exact: true })).toBeVisible();
-  await expect(page.getByText("/v3", { exact: true })).toBeVisible();
-  await expect(page.getByText("separate first-playable", { exact: true })).toBeVisible();
+  await expect(page.getByText(gameProject.maturity, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(gameProject.state, { exact: true }).first()).toBeVisible();
+  for (const item of gameProject.evidence) {
+    await expect(page.locator(".evidence-metrics").getByText(item.value, { exact: true })).toBeVisible();
+    await expect(page.locator(".evidence-metrics").getByText(item.label, { exact: true })).toBeVisible();
+  }
 
-  await gotoWithNetworkRetry(page, "/research/game-agent-native-mechanics");
-  await expect(page.getByText("36/36", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("0/6", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("GX2 pressure-versus-strategic-collapse", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("objective oracles", { exact: false }).first()).toBeVisible();
+  await gotoWithNetworkRetry(page, `/research/${gameHistoricalQuestion.slug}`);
+  await expect(page.getByText(gameHistoricalQuestion.state, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(gameHistoricalQuestion.currentJudgment, { exact: true }).first()).toBeVisible();
 
-  await gotoWithNetworkRetry(page, "/research/security-adversarial-trajectory");
+  await gotoWithNetworkRetry(page, `/research/${gameCurrentQuestion.slug}`);
+  await expect(page.getByText(gameCurrentQuestion.state, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(gameCurrentQuestion.currentJudgment, { exact: true }).first()).toBeVisible();
+
+  await gotoWithNetworkRetry(page, `/research/${securityQuestion.slug}`);
   await expect(page.getByRole("link", { name: /Winning the Move Can Lose the Contest/ })).toBeVisible();
-  await expect(page.getByText("accepted AE0–AE2 adversarial-epistemics line", { exact: false }).first()).toBeVisible();
+  await expect(page.getByText(securityQuestion.state, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(securityQuestion.currentJudgment, { exact: true }).first()).toBeVisible();
   await expect(page.getByText("84 Trials", { exact: false })).toHaveCount(0);
 
   await gotoWithNetworkRetry(page, "/research/harness-composition-and-completion");
@@ -223,12 +233,9 @@ test("public model is article-centered and does not expose the retired graph led
   await expect(page.getByRole("link", { name: /What Survived When Codex and Hermes Replaced Each Other Mid-Task/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /Why Ordivon Needs a Harness/ })).toBeVisible();
 
-  await gotoWithNetworkRetry(page, "/research/ordivon-harness-v0");
-  await expect(page.getByText("testing", { exact: true }).first()).toBeVisible();
-  await expect(page.getByText("25.375×", { exact: false }).first()).toBeVisible();
-  await expect(page.getByText("239,953", { exact: false }).first()).toBeVisible();
-  await expect(page.getByRole("link", { name: /We Cut 203 Observations to 8\. The Agent Still Refused to Edit\./ })).toBeVisible();
-  await expect(page.getByRole("link", { name: /What Survived When Codex and Hermes Replaced Each Other Mid-Task/ })).toBeVisible();
+  await gotoWithNetworkRetry(page, `/research/${harnessQuestion.slug}`);
+  await expect(page.getByText(harnessQuestion.state, { exact: true }).first()).toBeVisible();
+  await expect(page.getByText(harnessQuestion.currentJudgment, { exact: true }).first()).toBeVisible();
 
   for (const route of ["/system", "/research", "/writing", "/now", "/research/web-research-interface"]) {
     await gotoWithNetworkRetry(page, route);
@@ -419,7 +426,9 @@ test("flagship adversarial report preserves metric contradictions and negative r
   await expect(page.getByRole("heading", { name: "What the data does not establish" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "The next test is transfer under disruption" })).toBeVisible();
   await expect(page.locator(".article-anchor-grid > *")).toHaveCount(metadata.projectSlugs.length + metadata.questionSlugs.length);
-  await expect(page.getByRole("link", { name: /Research Question.*Which Agent-native laws survive in persistent adversarial worlds/ })).toHaveAttribute("href", "/research/security-adversarial-trajectory/");
+  const securityQuestion = questions.find((question) => question.slug === "security-adversarial-trajectory")!;
+  const questionLink = page.locator(`.article-anchor-grid a[href="/research/${securityQuestion.slug}/"]`);
+  await expect(questionLink).toContainText(securityQuestion.title);
 });
 
 test("flagship strong-baseline report preserves evidence and claim boundaries", async ({ page }) => {
