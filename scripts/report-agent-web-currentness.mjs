@@ -33,9 +33,14 @@ function fail(message) {
 
 function parseArgs(argv) {
   let projectsRoot = DEFAULT_PROJECTS_ROOT;
+  let requireCurrent = false;
   const explicitRepositories = new Map();
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
+    if (argument === "--require-current") {
+      requireCurrent = true;
+      continue;
+    }
     if (argument === "--projects-root") {
       const value = argv[index + 1];
       if (!value) throw new Error("--projects-root requires PATH");
@@ -56,7 +61,7 @@ function parseArgs(argv) {
     }
     throw new Error(`unknown argument: ${argument}`);
   }
-  return { projectsRoot, explicitRepositories };
+  return { projectsRoot, explicitRepositories, requireCurrent };
 }
 
 async function capturedSources() {
@@ -96,7 +101,7 @@ function observedProjection(observed) {
 }
 
 export async function reportAgentWebCurrentness(argv = []) {
-  const { projectsRoot, explicitRepositories } = parseArgs(argv);
+  const { projectsRoot, explicitRepositories, requireCurrent } = parseArgs(argv);
   const projects = [];
   for (const { slug, value: captured } of await capturedSources()) {
     const projectId = captured.project.id;
@@ -177,6 +182,13 @@ export async function reportAgentWebCurrentness(argv = []) {
       unknown: projects.filter((project) => project.envelopeRelation === "unknown").map((project) => project.projectId),
       reviewRequired: projects.filter((project) => project.reviewObligation === "required").map((project) => project.projectId),
     },
+    admission: {
+      mode: requireCurrent ? "promotion-preflight" : "report-only",
+      accepted: !requireCurrent || projects.every((project) => project.envelopeRelation === "unchanged"),
+      rule: requireCurrent
+        ? "Promotion preflight fails closed unless every source-projected owner envelope is currently revalidated and unchanged. A changed envelope requires Web review/rebind; an unknown envelope cannot authorize promotion."
+        : "Report-only mode does not authorize or block promotion.",
+    },
   };
 }
 
@@ -184,6 +196,9 @@ if (fileURLToPath(import.meta.url) === resolve(process.argv[1] || "")) {
   try {
     const report = await reportAgentWebCurrentness(process.argv.slice(2));
     process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
+    if (report.admission.mode === "promotion-preflight" && report.admission.accepted !== true) {
+      process.exitCode = 2;
+    }
   } catch (error) {
     fail(error instanceof Error ? error.message : String(error));
   }

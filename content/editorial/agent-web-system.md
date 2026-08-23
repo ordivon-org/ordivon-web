@@ -14,7 +14,7 @@ audience:
   - publisher
   - editor
   - agent
-updated: 2026-08-10
+updated: 2026-08-24
 summary: Architecture for letting Agents observe source authority, make public judgments, compose with design context, verify previews, and promote static Web changes without acting like human CMS operators.
 evidence_status: verified
 readiness: CANDIDATE
@@ -200,7 +200,9 @@ External AI content systems commonly hard-code a human approval step. Ordivon sh
 
 Promotion requires **publication authority**.
 
-That authority may belong to a human, an Agent, or another admitted workflow depending on the consequence. The mechanism must make the candidate, verification evidence, and source identity inspectable before promotion.
+That authority may belong to a human, an Agent, or another admitted workflow depending on the consequence. The ordinary machine path is now explicit: the candidate remains an ordinary Git revision until `promotion:preflight` validates the owner read-set, runs the full Web gate, prepares the candidate, and then **revalidates the owner read-set at the final admission point**. Only an admitted exact revision may be wrapped in the source-bound promotion receipt used by `promotion:admit`.
+
+The annotated `web-promotion-*` tag is transport, not authority by naming convention. It carries the exact promotion receipt and is rejected when it is lightweight, targets a different revision, has a mismatched receipt digest, or contains a non-admitted owner read-set. GitHub then rebuilds and verifies that exact revision before the Pages Artifact is deployed. A later owner change creates a new review obligation; it does not retroactively erase a publication admission that was valid at its linearization point.
 
 Human evidence is specifically required when the claim being made is about human perception, preference, comprehension, or usability—not for every Web mutation.
 

@@ -14,7 +14,7 @@ audience:
   - editor
   - builder
   - agent
-updated: 2026-08-08
+updated: 2026-08-24
 summary: Canonical architecture for authoring, validating, compiling, distributing, revising, correcting, and deploying Ordivon publications.
 evidence_status: verified
 readiness: READY
@@ -96,12 +96,15 @@ Other proposed primitives remain deleted until repeated use earns them.
 - Atom separates `published` and `updated` and uses related links for canonical evidence.
 - Article JSON-LD and independent social images derive from the same article metadata.
 - Sitemap last-modified values follow real article, Project, or Question dates.
-- GitHub Pages receives a tested static Artifact rather than a generated production branch.
-- `deploy-manifest.json` binds live output to the full source commit.
+- Ordinary Web source commits do **not** imply publication. `pnpm promotion:preflight` first revalidates every source-projected owner envelope, runs the full Web verification gate, prepares the Pages artifact, then revalidates the owner read-set again at the publication-admission boundary.
+- `pnpm promotion:admit` is the ordinary semantic publication entrypoint. A successful admission binds the exact Web source revision, final owner read-set, verification profile, and stable deploy-manifest facts into an experimental promotion receipt; an annotated `web-promotion-*` tag carries that receipt to GitHub only as a transport trigger.
+- GitHub Pages verifies the promotion tag against the checked-out source, provisions the same browser equipment used by the normal Web CI baseline, reruns the full Web gate, prepares one remote static Artifact, and deploys that same workflow Artifact.
+- The local receipt deliberately does not claim cross-workspace equality for the complete Next.js output tree: repeated builds can produce different chunk identities while preserving the same admitted source and publication semantics.
+- `deploy-manifest.json` binds the realized live output to the full Web source commit.
 
 ## Failure modes
 
-The system fails when generated output diverges from committed inputs, an article overstates evidence, a current selection points to superseded material without labeling it, publication metadata loses temporal identity, a projected project snapshot is no longer bound to its owner public-source revision/digest, current synthesis reasserts an explicitly retired owner concept, a project summary becomes implementation authority, or deployment cannot be bound to an exact tested source revision.
+The system fails when generated output diverges from committed inputs, an article overstates evidence, a current selection points to superseded material without labeling it, publication metadata loses temporal identity, a projected project snapshot is no longer bound to its owner public-source revision/digest, current synthesis reasserts an explicitly retired owner concept, a project summary becomes implementation authority, or deployment cannot be bound to an exact admitted and remotely reverified source revision.
 
 ## Verification
 

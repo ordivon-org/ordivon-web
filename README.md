@@ -62,7 +62,7 @@ For one owner change:
 3. update or deliberately preserve the short public explanation while linking exact detail back to the owner;
 4. generate and verify the static candidate;
 5. separate mechanical encounter evidence from factual and human-response claims;
-6. publish the tested committed Artifact—or record a public no-op.
+6. admit publication only after final owner-envelope revalidation, then let the remote deployment workflow rebuild, verify, and deploy that exact admitted Web revision—or record a public no-op.
 
 Dated articles may retain older judgments when their temporal context is explicit. Current Project pages must rebind or correct when a relevant owner fact changes.
 
@@ -89,11 +89,13 @@ pnpm agent:context
 pnpm agent:context:currentness
 pnpm check
 pnpm pages:prepare
+pnpm promotion:preflight
+pnpm promotion:admit --dry-run
 ```
 
 ## Content and source of truth
 
-`content/` owns public content/judgment, `design/` owns design context, and `app/`/`components/` own the rendered interface. Generated projections are rebuildable. An owner snapshot records one exact observed source envelope, not floating latest truth. `pnpm agent:context` reports that captured publication snapshot; `pnpm agent:context:currentness` re-probes each owner's admitted canonical public-document envelope. A changed envelope creates a Web review obligation, not proof that the published explanation is semantically stale or must be mutated.
+`content/` owns public content/judgment, `design/` owns design context, and `app/`/`components/` own the rendered interface. Generated projections are rebuildable. An owner snapshot records one exact observed source envelope, not floating latest truth. `pnpm agent:context` reports that captured publication snapshot; `pnpm agent:context:currentness` re-probes each owner's admitted canonical public-document envelope. A changed envelope creates a Web review obligation, not proof that the published explanation is semantically stale or must be mutated. Ordinary source admission is not publication: `pnpm promotion:preflight` revalidates owner envelopes before and after the full Web gate, and `pnpm promotion:admit` is the semantic publication entrypoint that may create an annotated `web-promotion-*` transport tag only after that boundary passes.
 
 ## Editorial system
 

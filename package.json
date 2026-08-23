@@ -25,6 +25,8 @@
     "design:check": "pnpm design:generate && node scripts/generate-design-tokens.mjs --check && node scripts/validate-design-context.mjs",
     "agent:context": "node scripts/report-agent-web-context.mjs",
     "agent:context:currentness": "node scripts/report-agent-web-currentness.mjs",
+    "promotion:preflight": "node scripts/run-web-promotion-preflight.mjs",
+    "promotion:admit": "node scripts/admit-web-promotion.mjs",
     "browser:review": "pnpm build && node scripts/review-browser-surfaces.mjs",
     "browser:review:current": "node scripts/review-browser-surfaces.mjs",
     "research:r6:encounter": "node scripts/run-r6-encounter.mjs",
