@@ -91,11 +91,12 @@ pnpm check
 pnpm pages:prepare
 pnpm promotion:preflight
 pnpm promotion:admit --dry-run
+pnpm promotion:publish <web-promotion-tag> --dry-run
 ```
 
 ## Content and source of truth
 
-`content/` owns public content/judgment, `design/` owns design context, and `app/`/`components/` own the rendered interface. Generated projections are rebuildable. An owner snapshot records one exact observed source envelope, not floating latest truth. `pnpm agent:context` reports that captured publication snapshot; `pnpm agent:context:currentness` re-probes each owner's admitted canonical public-document envelope. A changed envelope creates a Web review obligation, not proof that the published explanation is semantically stale or must be mutated. Ordinary source admission is not publication: `pnpm promotion:preflight` revalidates owner envelopes before and after the full Web gate, and `pnpm promotion:admit` is the semantic publication entrypoint that may create an annotated `web-promotion-*` transport tag only after that boundary passes.
+`content/` owns public content/judgment, `design/` owns design context, and `app/`/`components/` own the rendered interface. Generated projections are rebuildable. An owner snapshot records one exact observed source envelope, not floating latest truth. `pnpm agent:context` reports that captured publication snapshot; `pnpm agent:context:currentness` re-probes each owner's admitted canonical public-document envelope. A changed envelope creates a Web review obligation, not proof that the published explanation is semantically stale or must be mutated. Ordinary source admission is not publication: `pnpm promotion:preflight` revalidates owner envelopes before and after the full Web gate, `pnpm promotion:admit` creates/reconciles an exact local annotated `web-promotion-*` admission tag only after that boundary passes, and `pnpm promotion:publish <tag>` separately revalidates the checked-out admitted source against live owner envelopes before the first exact remote tag realization. Raw Git remains a professional escape; the semantic path does not treat an old local admission as unlimited future currentness authority.
 
 ## Editorial system
 
