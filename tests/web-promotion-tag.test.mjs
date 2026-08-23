@@ -5,6 +5,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 
+import { ensurePromotionTag } from "../scripts/admit-web-promotion.mjs";
+
 function run(cwd, command, args, options = {}) {
   return execFileSync(command, args, { cwd, encoding: "utf8", ...options });
 }
@@ -57,4 +59,45 @@ test("ordinary promotion preflight rejects owner repository overrides before ver
   const result = spawnSync("node", ["scripts/run-web-promotion-preflight.mjs", "--repo", "ordivon-game=/tmp/stale"], { cwd: process.cwd(), encoding: "utf8" });
   assert.equal(result.status, 2);
   assert.match(result.stderr, /does not accept owner repository overrides/);
+});
+
+
+test("promotion tag creation reconciles the exact same admission after response loss", () => {
+  const root = mkdtempSync(join(tmpdir(), "ordivon-web-promotion-reconcile-"));
+  try {
+    run(root, "git", ["init", "-q"]);
+    run(root, "git", ["config", "user.email", "test@example.invalid"]);
+    run(root, "git", ["config", "user.name", "Test"]);
+    run(root, "bash", ["-lc", "printf x > x && git add x && git commit -qm base"]);
+    const head = run(root, "git", ["rev-parse", "HEAD"]).trim();
+    const tagName = `web-promotion-${head.slice(0, 12)}-${"c".repeat(12)}`;
+    const envelope = { schemaVersion: 0, kind: "test-promotion", receiptDigest: "sha256:" + "d".repeat(64) };
+    assert.equal(ensurePromotionTag({ tagName, sourceRevision: head, envelope, cwd: root }), "created");
+    const tagObject = run(root, "git", ["rev-parse", `refs/tags/${tagName}`]).trim();
+    assert.equal(ensurePromotionTag({ tagName, sourceRevision: head, envelope, cwd: root }), "existing");
+    assert.equal(run(root, "git", ["rev-parse", `refs/tags/${tagName}`]).trim(), tagObject);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("promotion tag reconciliation rejects same-name conflicting admission", () => {
+  const root = mkdtempSync(join(tmpdir(), "ordivon-web-promotion-conflict-"));
+  try {
+    run(root, "git", ["init", "-q"]);
+    run(root, "git", ["config", "user.email", "test@example.invalid"]);
+    run(root, "git", ["config", "user.name", "Test"]);
+    run(root, "bash", ["-lc", "printf x > x && git add x && git commit -qm base"]);
+    const head = run(root, "git", ["rev-parse", "HEAD"]).trim();
+    const tagName = `web-promotion-${head.slice(0, 12)}-${"e".repeat(12)}`;
+    const first = { schemaVersion: 0, kind: "test-promotion", receiptDigest: "sha256:" + "1".repeat(64) };
+    const second = { schemaVersion: 0, kind: "test-promotion", receiptDigest: "sha256:" + "2".repeat(64) };
+    assert.equal(ensurePromotionTag({ tagName, sourceRevision: head, envelope: first, cwd: root }), "created");
+    assert.throws(
+      () => ensurePromotionTag({ tagName, sourceRevision: head, envelope: second, cwd: root }),
+      /different admission content/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
