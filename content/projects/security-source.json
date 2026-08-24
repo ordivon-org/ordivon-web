@@ -9,9 +9,9 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "0891de43499836463d24a142cf81df0b5d5285ed",
+    "revision": "cb35bf8364a3ce4376ee8e840365c45d991ffc1c",
     "dirty": false,
-    "publicSourceDigest": "sha256:8cbcfa084c05593ccfe292aafd65231d54bacd7a81c27098a95d2306a650df0e",
+    "publicSourceDigest": "sha256:af497e0ad79cc1d306b3ba2a2ee1c8a0b662b9c5181bd44721c70070a91a2753",
     "projectManifestDigest": "sha256:0cdde2a505a090772c004986e250de961202ac3b5d18ad891f89fc8e63a8c6e7",
     "authorityDocument": "docs/authority.md",
     "authorityDigest": "sha256:6b0148d68d2407d6f9c207572926744e391cfc237eb5704cc36c226251294308",
@@ -652,7 +652,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:ca945258a41f197acd896735f4c1a1b63f169d8aef07d38c95fdf855256075e3",
+        "digest": "sha256:37a1b3d394bc345af269a5ef3f6b191a97dac85ccf8e76b3be0537232c81e399",
         "id": "security.start",
         "type": "start",
         "lifecycle": "active",
@@ -664,7 +664,7 @@
       }
     ],
     "anchorDocument": "README.md",
-    "anchorDigest": "sha256:ca945258a41f197acd896735f4c1a1b63f169d8aef07d38c95fdf855256075e3",
+    "anchorDigest": "sha256:37a1b3d394bc345af269a5ef3f6b191a97dac85ccf8e76b3be0537232c81e399",
     "anchorId": "security.start",
     "anchorUpdated": "2026-08-15",
     "lifecycle": "active",

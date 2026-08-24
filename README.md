@@ -88,15 +88,16 @@ pnpm install --frozen-lockfile
 pnpm agent:context
 pnpm agent:context:currentness
 pnpm check
-pnpm pages:prepare
-pnpm promotion:preflight
 pnpm promotion:admit --dry-run
 pnpm promotion:publish <web-promotion-tag> --dry-run
+pnpm site:audit
 ```
+
+`promotion:admit` is the ordinary local publication-admission entrypoint: it runs the owner-currentness / full-check / Pages-preparation preflight internally and revalidates owner envelopes before minting an exact annotated promotion tag. `promotion:preflight` and `pages:prepare` remain lower-level inspection and troubleshooting commands, not prerequisite steps a normal Agent must remember to sequence manually.
 
 ## Content and source of truth
 
-`content/` owns public content/judgment, `design/` owns design context, and `app/`/`components/` own the rendered interface. The GitHub `github-pages` environment admits the source-bound transport only through the narrow `web-promotion-*` tag policy; branch policies may remain for legacy/manual recovery but are not publication authority. Generated projections are rebuildable. An owner snapshot records one exact observed source envelope, not floating latest truth. `pnpm agent:context` reports that captured publication snapshot; `pnpm agent:context:currentness` re-probes each owner's admitted canonical public-document envelope. A changed envelope creates a Web review obligation, not proof that the published explanation is semantically stale or must be mutated. Ordinary source admission is not publication: `pnpm promotion:preflight` revalidates owner envelopes before and after the full Web gate, `pnpm promotion:admit` creates/reconciles an exact local annotated `web-promotion-*` admission tag only after that boundary passes, and `pnpm promotion:publish <tag>` separately revalidates the checked-out admitted source against live owner envelopes before the first exact remote tag realization. Raw Git remains a professional escape; the semantic path does not treat an old local admission as unlimited future currentness authority.
+`content/` owns public content/judgment, `design/` owns design context, and `app/`/`components/` own the rendered interface. The GitHub `github-pages` environment admits the source-bound transport only through the narrow `web-promotion-*` tag policy; branch policies may remain for legacy/manual recovery but are not publication authority. Generated projections are rebuildable. An owner snapshot records one exact observed source envelope, not floating latest truth. `pnpm agent:context` reports that captured publication snapshot; `pnpm agent:context:currentness` re-probes each owner's admitted canonical public-document envelope. A changed envelope creates a Web review obligation, not proof that the published explanation is semantically stale or must be mutated. Ordinary source admission is not publication: `pnpm promotion:admit` invokes the preflight that revalidates owner envelopes before and after the full Web gate, then creates/reconciles an exact local annotated `web-promotion-*` admission tag; `pnpm promotion:publish <tag>` separately revalidates the checked-out admitted source against live owner envelopes before the first exact remote tag realization. Raw Git remains a professional escape; the semantic path does not treat an old local admission as unlimited future currentness authority.
 
 ## Editorial system
 
