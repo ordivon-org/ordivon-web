@@ -3,6 +3,7 @@ import process from "node:process";
 
 import { buildPromotionReceipt } from "./prepare-web-promotion.mjs";
 import { reportAgentWebCurrentness } from "./report-agent-web-currentness.mjs";
+import { requireCanonicalSourceIntegration } from "./source-integration.mjs";
 
 function runLogged(command, args) {
   execFileSync(command, args, { stdio: ["ignore", process.stderr, process.stderr] });
@@ -10,6 +11,7 @@ function runLogged(command, args) {
 
 try {
   if (process.argv.length !== 2) throw new Error("promotion preflight does not accept owner repository overrides");
+  requireCanonicalSourceIntegration();
   const before = await reportAgentWebCurrentness(["--require-current"]);
   if (before.admission.accepted !== true) throw new Error("initial owner currentness gate rejected promotion");
   runLogged("pnpm", ["check"]);

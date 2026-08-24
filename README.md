@@ -93,7 +93,7 @@ pnpm promotion:publish <web-promotion-tag> --dry-run
 pnpm site:audit
 ```
 
-`promotion:admit` is the ordinary local publication-admission entrypoint: it runs the owner-currentness / full-check / Pages-preparation preflight internally and revalidates owner envelopes before minting an exact annotated promotion tag. `promotion:preflight` and `pages:prepare` remain lower-level inspection and troubleshooting commands, not prerequisite steps a normal Agent must remember to sequence manually.
+`promotion:admit` is the ordinary local publication-admission entrypoint: it first requires the exact candidate source to be integrated into `origin/main`, then runs the owner-currentness / full-check / Pages-preparation preflight internally and revalidates owner envelopes before minting an exact annotated promotion tag. `origin/main` proves canonical source integration, not publication; the promotion receipt/tag remains publication authority. `promotion:preflight` and `pages:prepare` remain lower-level inspection and troubleshooting commands, not prerequisite steps a normal Agent must remember to sequence manually.
 
 ## Content and source of truth
 
