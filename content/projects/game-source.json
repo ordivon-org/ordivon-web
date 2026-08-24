@@ -9,9 +9,9 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "f405ed4251f3d4a4db245675edc7b4933dcbf563",
+    "revision": "e86f3b640d831eb246caf9a602a8b74334996df0",
     "dirty": false,
-    "publicSourceDigest": "sha256:adfa31d3d85e19c3d078a75e433ecb03e1bc48d6a75b96d4c571a71b8d3ecbd0",
+    "publicSourceDigest": "sha256:3e98125c55e57bd561367725a04c87b712035448d280b35e3cced3de3426155c",
     "projectManifestDigest": "sha256:0ad385bb14c2ddb8ca4fa94e75a213a8d7837d267a4b7c020f1dfa17d666df52",
     "authorityDocument": "docs/authority.md",
     "authorityDigest": "sha256:7b1b86853db1b9c2239a4debe182443432e108c50bd6d62b053875587694233b",
@@ -354,18 +354,18 @@
       },
       {
         "path": "docs/STATION_ZERO_V3_PRODUCT_VALUE.md",
-        "digest": "sha256:1973710832917e52614a5c93519e41bc518dff01c9718e46877a191592b91628",
+        "digest": "sha256:3ed8d3c38458b06b1390b0592316cbd5106f1a22bc0c09874d5ee7c6c7cf05dc",
         "id": "game.product.station-zero-v3.product-value",
         "lifecycle": "accepted",
         "sourceRole": "canonical",
         "visibility": "public",
-        "updated": "2026-08-15",
+        "updated": "2026-08-24",
         "evidenceStatus": "verified",
         "readiness": "READY"
       },
       {
         "path": "docs/STATION_ZERO_V3_PRODUCT.md",
-        "digest": "sha256:b10d7938a3334bc30de2502a9e415b5cd8984d64c309bd5cc67afec3edb00bbc",
+        "digest": "sha256:b438951ce88da1ca78b9f722c870bc9f1f881f2bff048f1c4edda7678fc85e48",
         "id": "game.product.station-zero-v3",
         "type": "product-target",
         "lifecycle": "accepted",
@@ -418,7 +418,7 @@
     "lifecycle": "active",
     "sourceRole": "canonical",
     "visibility": "public",
-    "updated": "2026-08-17",
+    "updated": "2026-08-24",
     "summary": "Canonical entry to Ordivon Game, its cross-game development model, current Station Zero executable, research treatments, and the R1–R29 foundations corpus without selecting a new product.",
     "evidenceStatus": "verified",
     "readiness": "READY"

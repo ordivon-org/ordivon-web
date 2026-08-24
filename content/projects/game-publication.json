@@ -1,20 +1,20 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-game",
-  "sourceRevision": "f405ed4251f3d4a4db245675edc7b4933dcbf563",
-  "sourceDigest": "sha256:adfa31d3d85e19c3d078a75e433ecb03e1bc48d6a75b96d4c571a71b8d3ecbd0",
+  "sourceRevision": "e86f3b640d831eb246caf9a602a8b74334996df0",
+  "sourceDigest": "sha256:3e98125c55e57bd561367725a04c87b712035448d280b35e3cced3de3426155c",
   "project": {
     "id": "project:game",
     "kind": "project",
     "slug": "game",
     "group": "Applications and capability",
-    "label": "Playable worlds and pre-G0 game direction research",
+    "label": "Playable worlds, product-value pressure, and pre-G0 game direction research",
     "category": "application",
     "availability": "playable",
     "publicPage": true,
     "index": "04",
-    "thesis": "Keep registered product truth separate from Game Core research, and use cheap falsifiers plus playable proof before selecting the next game or deciding where Runtime Agents add value.",
-    "question": "Which game forms are worth building next, and what role should Agents play only after simpler forms survive player-facing pressure?",
+    "thesis": "Keep registered product truth separate from Game research, use the cheapest claim-preserving pressure before escalating evidence cost, and let actual product consequences—not Agent sophistication or one observer—decide what deserves promotion.",
+    "question": "Which game form deserves further investment, which Agent roles materially improve it, and which remaining product claims require machine, player, or market evidence?",
     "owns": [
       "Registered Station Zero product and executable Game truth",
       "Game Core research treatments and player-facing experiments",
@@ -28,26 +28,26 @@
       "Foundation expansion is provisionally frozen after R29 and reopens only on a concrete counterexample",
       "No generic Host, Runtime, or universal Game-engine authority"
     ],
-    "problem": "A technically impressive Agent mechanic can still fail to create a game worth playing. Game now separates product registration, foundation research, game-form search, Agent participation, and player-facing proof so architecture does not substitute for Player Value.",
-    "capability": "Runs registered Station Zero v2 while retaining Station Zero v3, Casefile, Concept Lab, and other treatments as executable research pressure. The R1–R29 corpus provides a compact Game Foundations map, and the current Pre-G0 programme uses cheap falsifiers plus bounded playable proofs to search game form before any G0 product admission.",
-    "maturity": "Registered playable v2 product plus active Pre-G0 direction research; no next product selected",
-    "audience": "Players, game designers, and Agent researchers examining how game form, delegation, partial knowledge, persistent subjects, and Agent participation become—or fail to become—player value.",
-    "latestProof": "R29 froze further foundation expansion after synthesizing R1–R28. The next Pre-G0 search then separated GameForm from Agent role, ran cheap falsifiers, and materialized a bounded A/D/I playable-proof wave with mechanical browser evidence while keeping C0/C1 human Player Value explicitly unobserved.",
+    "problem": "A technically impressive Agent mechanic, a large simulation battery, or one Human reaction can each look persuasive without establishing a game worth continuing. Game must keep product registration, machine Product Value, human-specific Player Value, and broader population/market consequence as separate evidence targets.",
+    "capability": "Runs the registered Station Zero v2 product while retaining v3 and other treatments as executable research pressure. Station Zero v3 now has owner-native Product Value lanes with cheap objective/profile slices, currentness-fenced retained evidence, browser/playable proof, and a full promotion matrix; recent natural dogfood used those pressures to reject two plausible fixes and correct a real Core extraction defect without making Human approval a default inner-loop gate.",
+    "maturity": "Registered playable v2 product plus active pre-G0 product-value/direction research; no next product selected",
+    "audience": "Players, game designers, and Agent researchers examining how game form, delegation, partial knowledge, autonomous production pressure, and later human/market evidence become—or fail to become—Player Value.",
+    "latestProof": "On 2026-08-24 natural Product Value dogfood traced a Core cargo successor defect, rejected unrelated Heat/scan fixes, and promoted one objective-scoped correction after exact regression, 18-profile negative controls, evidence revalidation, and 350/350 repository checks. The current matrix keeps Rescue at 3/6 focus-complete victories and Hive at 6/6 while Core rises from 1/6 to 5/6; v2 remains the only registered product.",
     "flagshipSlug": "station-zero-alpha-1",
-    "summary": "Ordivon Game separates one registered playable product from executable research treatments, frozen foundation knowledge, and the current Pre-G0 search for what game should be built next. Recent playable proofs are evidence for direction search, not a product-selection event.",
-    "state": "Station Zero v2 remains the only registered current product. Station Zero v3 and the newer treatments remain executable reference/research surfaces. The R1–R29 foundation-expansion programme is provisionally frozen; current work is Pre-G0 direction search and bounded playable proof, with no next product selected and no human Player Value claim from the current mechanical evidence.",
+    "summary": "Ordivon Game separates the registered product from executable research treatments and now has a real autonomous product-pressure loop: cheap scoped falsifiers can change canonical behavior, broader retained standing is revalidated before promotion, and Human evidence is reserved for claims that are actually human-specific rather than used as a universal approval stage.",
+    "state": "Station Zero v2 remains the only registered current product. Station Zero v3 remains an unregistered reference/product target, but its current Product Value evidence is materially stronger than the earlier playable-proof snapshot: owner-native machine pressure can now falsify and improve product behavior, with Core completion at 5/6 deterministic profiles after the latest correction. No next product or G0 direction has been selected. Human evidence remains necessary for unresolved human-specific experience claims, not as the default next gate for every Game change.",
     "evidence": [
       {
         "value": "v2",
         "label": "only registered current product"
       },
       {
-        "value": "R1–R29",
-        "label": "foundation corpus provisionally frozen"
+        "value": "5/6",
+        "label": "current Core focus-complete fixture profiles"
       },
       {
-        "value": "A / D / I",
-        "label": "bounded Pre-G0 playable-proof wave"
+        "value": "2s / ~12s",
+        "label": "cost-earned fine Product Value slices"
       }
     ],
     "repository": "https://github.com/zycxfyh/ordivon-game",

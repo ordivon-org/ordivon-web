@@ -14,7 +14,7 @@ audience:
   - publisher
   - editor
   - agent
-updated: 2026-08-10
+updated: 2026-08-24
 summary: Architecture for letting Agents observe source authority, make public judgments, compose with design context, verify previews, and promote static Web changes without acting like human CMS operators.
 evidence_status: verified
 readiness: CANDIDATE
@@ -200,7 +200,9 @@ External AI content systems commonly hard-code a human approval step. Ordivon sh
 
 Promotion requires **publication authority**.
 
-That authority may belong to a human, an Agent, or another admitted workflow depending on the consequence. The mechanism must make the candidate, verification evidence, and source identity inspectable before promotion.
+That authority may belong to a human, an Agent, or another admitted workflow depending on the consequence. The ordinary machine entrypoint is `promotion:admit`: it invokes the preflight that validates the owner read-set, runs the full Web gate, prepares the candidate, and then **revalidates the owner read-set at the final admission point** before creating or reconciling the exact source-bound promotion tag. `promotion:preflight` remains independently callable for inspection and troubleshooting; it is not an extra ceremony the ordinary caller must sequence before admission.
+
+The annotated `web-promotion-*` tag is transport, not authority by naming convention. It carries the exact promotion receipt and is rejected when it is lightweight, targets a different revision, has a mismatched receipt digest, or contains a non-admitted owner read-set. Exact retry is intrinsically reconcilable: if the expected tag already contains the same source-bound admission, the semantic operation returns the existing tag rather than guessing or dispatching another identity; conflicting same-name content fails closed. First remote publication is a second consequence boundary rather than a blind delayed push: `promotion:publish` requires the exact admitted source checkout, revalidates its live owner dependencies against the receipt, and permits only an absent-or-identical remote tag ref. GitHub then rebuilds and verifies that exact revision before the Pages Artifact is deployed. A later owner change does not erase an earlier admission or already-published historical tag, but it blocks a not-yet-realized first publication until Web reviews the new owner envelope.
 
 Human evidence is specifically required when the claim being made is about human perception, preference, comprehension, or usability—not for every Web mutation.
 
