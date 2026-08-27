@@ -4,6 +4,7 @@ import { access } from "node:fs/promises";
 import { resolve } from "node:path";
 import process from "node:process";
 import { resolveBrowserCacheRoot, resolveBrowserExecutable } from "./browser-equipment.mjs";
+import { configureBrowserTempEnvironment } from "./browser-runtime.mjs";
 
 const ROOT = process.cwd();
 
@@ -16,22 +17,6 @@ async function isExecutable(path) {
   }
 }
 
-async function resolveTempRoot(env) {
-  const explicit = env.ORDIVON_WEB_BROWSER_TMPDIR;
-  const ambient = explicit || env.TMPDIR || env.TMP || env.TEMP || "/tmp";
-  const chromiumSocketSuffixBudget = 48;
-  const unixSocketBudget = 100;
-  if (Buffer.byteLength(ambient) + chromiumSocketSuffixBudget <= unixSocketBudget) return ambient;
-
-  await access("/tmp", fsConstants.W_OK).catch(() => {
-    throw new Error(
-      `Browser temporary root is too long for Chromium Unix sockets (${ambient}); ` +
-        "set ORDIVON_WEB_BROWSER_TMPDIR to a short writable path.",
-    );
-  });
-  return "/tmp";
-}
-
 const playwrightBin = resolve(ROOT, "node_modules", ".bin", "playwright");
 if (!(await isExecutable(playwrightBin))) {
   throw new Error(`Project Playwright executable is missing at ${playwrightBin}; run pnpm bootstrap first.`);
@@ -41,10 +26,7 @@ const { chromium } = await import("@playwright/test");
 const browserExecutable = await resolveBrowserExecutable(chromium.executablePath());
 const browserCacheRoot = await resolveBrowserCacheRoot(browserExecutable);
 const env = { ...process.env, PLAYWRIGHT_BROWSERS_PATH: browserCacheRoot, ORDIVON_WEB_BROWSER: browserExecutable };
-const tempRoot = await resolveTempRoot(env);
-env.TMPDIR = tempRoot;
-env.TMP = tempRoot;
-env.TEMP = tempRoot;
+const tempRoot = await configureBrowserTempEnvironment(env);
 
 async function waitForStaticServer(server, stderr) {
   for (let attempt = 0; attempt < 20; attempt += 1) {
