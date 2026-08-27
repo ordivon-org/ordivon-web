@@ -53,11 +53,13 @@ doctor_browser() {
   if ! (cd "$repo" && "$node_bin" --input-type=module - <<'JS'
 import { chromium } from "@playwright/test";
 import { resolveBrowserExecutable, resolveBrowserCacheRoot } from "./scripts/browser-equipment.mjs";
+import { configureBrowserTempEnvironment } from "./scripts/browser-runtime.mjs";
+const tempRoot = await configureBrowserTempEnvironment();
 const executable = await resolveBrowserExecutable(chromium.executablePath());
 const cache = await resolveBrowserCacheRoot(executable);
 const browser = await chromium.launch({ headless: true, executablePath: executable });
 await browser.close();
-console.log(`web browser=${executable} cache=${cache}`);
+console.log(`web browser=${executable} cache=${cache} temp=${tempRoot}`);
 JS
   ); then
     echo 'Web browser equipment is unavailable or incompatible. Provision Playwright Chromium separately, then rerun doctor-browser.' >&2
