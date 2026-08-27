@@ -84,14 +84,17 @@ Web is a deterministic static publication system: committed sources → Agent co
 ## Commands
 
 ```bash
-pnpm install --frozen-lockfile
+scripts/owner-environment bootstrap
+scripts/owner-environment doctor
+scripts/owner-environment test
 pnpm agent:context
 pnpm agent:context:currentness
-pnpm check
 pnpm promotion:admit --dry-run
 pnpm promotion:publish <web-promotion-tag> --dry-run
 pnpm site:audit
 ```
+
+`scripts/owner-environment cold-start` proves the portable package/build/type/lint/unit surface without inheriting `node_modules`, `.next`, or `out`. Browser equipment is an explicit capability profile: `scripts/owner-environment doctor-browser` consumes already-provisioned Playwright Chromium, and `scripts/owner-environment test-browser` runs the complete historical `pnpm check`, including smoke. Browser installation/download is substrate provisioning rather than dependency bootstrap. Git source integration and publication admission/currentness remain separate authority gates.
 
 `promotion:admit` is the ordinary local publication-admission entrypoint: it first requires the exact candidate source to be integrated into `origin/main`, then runs the owner-currentness / full-check / Pages-preparation preflight internally and revalidates owner envelopes before minting an exact annotated promotion tag. `origin/main` proves canonical source integration, not publication; the promotion receipt/tag remains publication authority. `promotion:preflight` and `pages:prepare` remain lower-level inspection and troubleshooting commands, not prerequisite steps a normal Agent must remember to sequence manually.
 

@@ -1,0 +1,92 @@
+#!/usr/bin/env bash
+set -euo pipefail
+repo=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+mode=${1:-}
+pnpm_bin=${PNPM_BIN:-/root/tools/bin/pnpm}
+node_bin=${NODE_BIN:-$(command -v node || true)}
+
+usage() {
+  cat <<'TXT'
+usage: scripts/owner-environment bootstrap|doctor|test|cold-start|doctor-browser|test-browser
+
+bootstrap       materialize the exact pnpm lockfile dependency graph
+doctor          verify Node engine, exact pnpm generation, and local package surface
+test            bootstrap, doctor, and run the portable build/type/lint/unit gate
+cold-start      copy the current source fence and prove portable test without warmed node_modules/build output
+doctor-browser  verify already-provisioned Playwright Chromium equipment is resolvable
+test-browser    run the complete Web check, including Playwright smoke, using existing browser equipment
+
+Browser installation/download is substrate provisioning, not dependency bootstrap.
+Git publication admission/currentness remains separate from environment readiness.
+TXT
+}
+require_tools() {
+  [[ -n "$node_bin" ]] || { echo 'Web owner environment requires Node >=22' >&2; exit 1; }
+  [[ -x "$pnpm_bin" ]] || { echo "Web owner environment requires pinned pnpm: $pnpm_bin" >&2; exit 1; }
+}
+pnpm_owner() { (cd "$repo" && CI=true "$pnpm_bin" "$@"); }
+bootstrap() {
+  require_tools
+  pnpm_owner install --frozen-lockfile
+}
+doctor() {
+  require_tools
+  (cd "$repo" && "$node_bin" - <<'JS'
+const fs=require('node:fs');
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+const major=Number(process.versions.node.split('.')[0]);
+if (major < 22) throw new Error(`Web requires Node >=22, got ${process.version}`);
+if (pkg.packageManager !== 'pnpm@11.17.0') throw new Error(`unexpected packageManager ${pkg.packageManager}`);
+for (const path of ['node_modules/.bin/next','node_modules/.bin/tsc','node_modules/.bin/eslint','node_modules/.bin/playwright','node_modules/.modules.yaml']) {
+  if (!fs.existsSync(path)) throw new Error(`missing materialized dependency surface: ${path}`);
+}
+console.log(`web node=${process.version} packageManager=${pkg.packageManager}`);
+JS
+  )
+  actual=$(cd "$repo" && "$pnpm_bin" --version)
+  [[ "$actual" == '11.17.0' ]] || { echo "pnpm=$actual; expected 11.17.0" >&2; exit 1; }
+  echo 'owner environment doctor: valid profile=test'
+}
+doctor_browser() {
+  bootstrap
+  doctor
+  if ! (cd "$repo" && "$node_bin" --input-type=module - <<'JS'
+import { chromium } from "@playwright/test";
+import { resolveBrowserExecutable, resolveBrowserCacheRoot } from "./scripts/browser-equipment.mjs";
+const executable = await resolveBrowserExecutable(chromium.executablePath());
+const cache = await resolveBrowserCacheRoot(executable);
+const browser = await chromium.launch({ headless: true, executablePath: executable });
+await browser.close();
+console.log(`web browser=${executable} cache=${cache}`);
+JS
+  ); then
+    echo 'Web browser equipment is unavailable or incompatible. Provision Playwright Chromium separately, then rerun doctor-browser.' >&2
+    exit 1
+  fi
+  echo 'owner environment doctor: valid profile=capability:browser'
+}
+run_tests() {
+  bootstrap
+  doctor
+  pnpm_owner check:portable
+}
+run_browser_tests() {
+  doctor_browser
+  pnpm_owner check
+}
+case "$mode" in
+  bootstrap) bootstrap ;;
+  doctor) doctor ;;
+  test) run_tests ;;
+  cold-start)
+    tmp=$(mktemp -d -t ordivon-web-owner-env-XXXXXX)
+    trap 'rm -rf "$tmp"' EXIT
+    mkdir -p "$tmp/repo"
+    (cd "$repo" && tar --exclude=.git --exclude=node_modules --exclude=.next --exclude=out --exclude=playwright-report --exclude=test-results --exclude=coverage --exclude='*.tsbuildinfo' -cf - .) | tar -xf - -C "$tmp/repo"
+    "$tmp/repo/scripts/owner-environment" test
+    ;;
+  doctor-browser) doctor_browser ;;
+  test-browser) run_browser_tests ;;
+  --help|-h) usage ;;
+  *) usage >&2; exit 2 ;;
+esac
