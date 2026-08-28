@@ -9,12 +9,12 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "cb35bf8364a3ce4376ee8e840365c45d991ffc1c",
+    "revision": "8132f5483921d2b8cc1b8dce534108c3b5b4fc38",
     "dirty": false,
-    "publicSourceDigest": "sha256:af497e0ad79cc1d306b3ba2a2ee1c8a0b662b9c5181bd44721c70070a91a2753",
+    "publicSourceDigest": "sha256:10c9e6dd4f340306fbc5707b3efdf1abf7683c94e25c0d3758c6a6fb13ba52bd",
     "projectManifestDigest": "sha256:0cdde2a505a090772c004986e250de961202ac3b5d18ad891f89fc8e63a8c6e7",
     "authorityDocument": "docs/authority.md",
-    "authorityDigest": "sha256:6b0148d68d2407d6f9c207572926744e391cfc237eb5704cc36c226251294308",
+    "authorityDigest": "sha256:b23b68bbb049d65f0f249157afaebfd9a2b621b0f69200afd8ddd2f5f9ce4837",
     "authoritySection": "Current authority",
     "documents": [
       {
@@ -30,6 +30,102 @@
         "readiness": "READY"
       },
       {
+        "path": "docs/ADVERSARIAL-CAPABILITY-ENVIRONMENT-ACE0.md",
+        "digest": "sha256:34107a2627944c1e28741546b2724e57bdee54992de29364d9da8db66a036b90",
+        "id": "security.adversarial-capability-environment-ace0",
+        "type": "research-result",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-27",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED_NEGATIVE"
+      },
+      {
+        "path": "docs/ADVERSARIAL-CAPABILITY-ENVIRONMENT-ACE1-11.md",
+        "digest": "sha256:3cc631d55bf63552b473c7666cb7fe71e81a1d26ee5e1fc403a240346aad9ec6",
+        "id": "security.adversarial-capability-environment-ace1-11",
+        "type": "research-result",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-28",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED_BOUNDED"
+      },
+      {
+        "path": "docs/ADVERSARIAL-EPISTEMICS-AE0.md",
+        "digest": "sha256:d8392014cebb7477fe5d697d2e49db0d5cff1c3d1ea359ee5e97e4882807d1fd",
+        "id": "security.adversarial-epistemics-ae0",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
+        "path": "docs/ADVERSARIAL-EPISTEMICS-AE1.md",
+        "digest": "sha256:81d860af18517815599c59ab8d20ae3eb71393a18941961e215209315b8e2876",
+        "id": "security.adversarial-epistemics-ae1",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
+        "path": "docs/ADVERSARIAL-EPISTEMICS-AE2.md",
+        "digest": "sha256:b74e0c27c21ab71c8f555777f94c98f4352c95a5bb614a4c1151394ee8e24b75",
+        "id": "security.adversarial-epistemics-ae2",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
+        "path": "docs/ADVERSARIAL-EPISTEMICS-AE3.md",
+        "digest": "sha256:8039a6fc761c3a60fae7fed17bdbd112d652239f8e11d107590f0a4325432288",
+        "id": "security.adversarial-epistemics-ae3",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified-with-falsifier",
+        "readiness": "ACCEPTED_WITH_FALSIFIER"
+      },
+      {
+        "path": "docs/ADVERSARIAL-EPISTEMICS-AE3B.md",
+        "digest": "sha256:b60174e53f677e4bfbc96df8920c0d01e97634404416fb1877cd1fc88eaf7080",
+        "id": "security.adversarial-epistemics-ae3b",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "falsified",
+        "readiness": "FALSIFIED"
+      },
+      {
+        "path": "docs/ADVERSARIAL-EPISTEMICS-AE3C.md",
+        "digest": "sha256:c6eb718218decaad3c1a178e08a8e0d1e9968c33207e155d6e9cd8f20d151f96",
+        "id": "security.adversarial-epistemics-ae3c",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
         "path": "docs/AGENT-EXPERIMENT-P0.md",
         "digest": "sha256:746fd20485e479243ff61b464678ad37dad4f62c4500066e6843ced18e73a1f3",
         "id": "security.agent-experiment-p0",
@@ -42,8 +138,44 @@
         "readiness": "EXPERIMENTAL"
       },
       {
+        "path": "docs/AGENT-FIRST-DECEPTION-AF3.md",
+        "digest": "sha256:7ef62b97e7a1aca2f2a68605a27c9abd9975a63b88ff3579e14b28a9158963b5",
+        "id": "security.agent-first-deception-af3",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-08",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
+        "path": "docs/AGENT-FIRST-INTENT-AF2.md",
+        "digest": "sha256:36bf05443acd668afa279b63b1eb3d321436e2b917c0e41ad9c7a541fc5b3a09",
+        "id": "security.agent-first-intent-af2",
+        "type": "decision",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
+        "path": "docs/AGENT-FIRST-STRUCTURE-AF1.md",
+        "digest": "sha256:ec705dfe0911f4951e8d45d1c00aef5750183cc81ba0daf5f698b4e1574f021e",
+        "id": "security.agent-first-structure-af1",
+        "type": "decision",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-28",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
         "path": "docs/architecture.md",
-        "digest": "sha256:9c7bac69107b243f4f2766e49774d8f742e8bd81b49d6bbac53ebace8ab39f7b",
+        "digest": "sha256:2e3df6332f0ceeb0e40cd43226e16ff7644ed4c112fe1d770d48e65588ac3ee2",
         "id": "security.architecture",
         "type": "architecture",
         "lifecycle": "active",
@@ -66,19 +198,31 @@
       },
       {
         "path": "docs/authority.md",
-        "digest": "sha256:6b0148d68d2407d6f9c207572926744e391cfc237eb5704cc36c226251294308",
+        "digest": "sha256:b23b68bbb049d65f0f249157afaebfd9a2b621b0f69200afd8ddd2f5f9ce4837",
         "id": "security.authority",
         "type": "decision",
         "lifecycle": "active",
         "sourceRole": "canonical",
         "visibility": "public",
-        "updated": "2026-08-15",
+        "updated": "2026-08-27",
         "evidenceStatus": "not_applicable",
         "readiness": "READY"
       },
       {
+        "path": "docs/AUTONOMOUS-COMMUNICATION-AC0.md",
+        "digest": "sha256:c690300fab08080bb8533a4c5470e6fd21a4e50de02b23e773256c28b3955666",
+        "id": "security.autonomous-communication-ac0",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "FALSIFIED"
+      },
+      {
         "path": "docs/AUTONOMOUS-INTENT-C1A.md",
-        "digest": "sha256:e885f500eb8c843c18e9d639930aa5e198aaa8f99278c1a799a7a4f733cc30e8",
+        "digest": "sha256:0fb6b05ccbab674d84118932337b2a5c63d205f8a642f140f56b80b6aa4c1b82",
         "id": "security.autonomous-intent-c1a",
         "type": "experiment",
         "lifecycle": "active",
@@ -126,7 +270,7 @@
       },
       {
         "path": "docs/CLASSICAL-EXECUTION-CARRIERS-CA1.md",
-        "digest": "sha256:601eb524036c71570f45b64fb55de66c416a436399f0f7be80c20e323a441569",
+        "digest": "sha256:d0d8c862b05b8f7613c48aa1f291f0d169936f836d00fa12b7b6127b0f86ddaa",
         "id": "security.classical-execution-carriers-ca1",
         "type": "experiment",
         "lifecycle": "active",
@@ -160,7 +304,7 @@
       },
       {
         "path": "docs/COMPENSATION-C1L.md",
-        "digest": "sha256:cf02ce758427f2ea75d8bb497f2935628cb17276e1e4198961d9f893c67780a4",
+        "digest": "sha256:ad9e2cafaea900f39b8d9a0a68e4113e9b99f9dc88b86c435d159ad254581adc",
         "id": "security.compensation-c1l",
         "type": "experiment",
         "lifecycle": "active",
@@ -172,7 +316,7 @@
       },
       {
         "path": "docs/COMPENSATION-INFORMATION-LOSS-C1M.md",
-        "digest": "sha256:26682e460186ddd71135b503d4ab4cd1c00d988377f7c0d931bad706403c394c",
+        "digest": "sha256:e90a3bb9b6ee88fbe7c097dfd62b11e60fc85f373273c9af3dfa0380b915f918",
         "id": "security.compensation-information-loss-c1m",
         "type": "experiment",
         "lifecycle": "active",
@@ -184,7 +328,7 @@
       },
       {
         "path": "docs/DEFENSIVE-OBSERVATION-RESPONSE-CA4.md",
-        "digest": "sha256:6fa5b0a8e5b7f83b9f8c0a72931d0318f9c06c063f424d70cf6af6ad389c7782",
+        "digest": "sha256:4fb23b0fc5dae33d27fc10fd1c592d3418f728b83db6272638aa40145f7c2466",
         "id": "security.defensive-observation-response-ca4",
         "type": "experiment",
         "lifecycle": "active",
@@ -196,7 +340,7 @@
       },
       {
         "path": "docs/DOWNSTREAM-TRUTH-FAILURE-C1N.md",
-        "digest": "sha256:5a4e43913b41998a9bc1a79f82bc9b755ce4fc86468631b5def0ee464994e565",
+        "digest": "sha256:d2ca9848a7b6c61f3ede85d207fbd174ea7dd66fd2dfe5412bd336c154eb4944",
         "id": "security.downstream-truth-failure-c1n",
         "type": "experiment",
         "lifecycle": "active",
@@ -219,8 +363,32 @@
         "readiness": "EXPERIMENTAL"
       },
       {
+        "path": "docs/EVIDENCE-COMPUTATION-EC0.md",
+        "digest": "sha256:358f57d71e70f62a14b23dfe13ddd44fb4cee9a5663262ad04b387e85e2bde86",
+        "id": "security.evidence-computation-ec0",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
+        "path": "docs/EVIDENCE-FRESHNESS-EC1.md",
+        "digest": "sha256:03349b5533df8f3ad7639ac82981d825a3293b4eba40f041785e77f077d8126b",
+        "id": "security.evidence-freshness-ec1",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
         "path": "docs/EXECUTABLE-AUTHORITY-C1.md",
-        "digest": "sha256:a058d400aa3c66fe4951c16c385c3bdea12633ccb9aaedff53a6562dad9b17d0",
+        "digest": "sha256:255ee8bf8f2593824de49af66580a989109fbf62203b03a576051452d2eb2ad9",
         "id": "security.executable-authority-c1",
         "type": "experiment",
         "lifecycle": "active",
@@ -232,7 +400,7 @@
       },
       {
         "path": "docs/FRESH-CONTROLLER-CONTINUATION-C1D.md",
-        "digest": "sha256:09b77c5d2f8c179872fa08a98b4aab51cd43fc036ad5c306f1e6babbaa989cbe",
+        "digest": "sha256:6ce3820e64717427bc6210689ee50f1ec278c97a513784099e90690a1e309ae3",
         "id": "security.fresh-controller-continuation-c1d",
         "type": "experiment",
         "lifecycle": "active",
@@ -243,8 +411,20 @@
         "readiness": "ACCEPTED"
       },
       {
+        "path": "docs/INCENTIVE-COMMUNICATION-AC1.md",
+        "digest": "sha256:e703bf8d37ec55edc125a02f4147c4b673a85f2f410046b6e75f642dd170114b",
+        "id": "security.incentive-communication-ac1",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "FALSIFIED"
+      },
+      {
         "path": "docs/INFORMATION-LOSS-C1I.md",
-        "digest": "sha256:e51a9511bf961683d3887bdb371ed3867c07bd2fb8b096216b8aae909c62aaa7",
+        "digest": "sha256:6bac690712ec6fdc152bff3cb25ae3ee91231d55b67cfeef4460a0c24e0bf904",
         "id": "security.information-loss-c1i",
         "type": "experiment",
         "lifecycle": "active",
@@ -255,8 +435,32 @@
         "readiness": "ACCEPTED"
       },
       {
+        "path": "docs/INTENT-CEREMONY-ABLATION-IF3.md",
+        "digest": "sha256:dbd81adfc2321877e09e9f39925955d877cd6db7969ef5710ae06e109b777ae7",
+        "id": "security.intent-ceremony-ablation-if3",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
+        "path": "docs/INTENT-CONVERGENCE-IF0-IF2.md",
+        "digest": "sha256:2aa6ca5d886ce9387f2bd5ec73f7fb473478a6a2dd33159d1c6d48285cfdaf80",
+        "id": "security.intent-convergence-if0-if2",
+        "type": "experiment-series",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED_WITH_FALSIFIERS"
+      },
+      {
         "path": "docs/INTERRUPTED-CONSEQUENCE-C1B.md",
-        "digest": "sha256:9eef0b1fa610f06a4859d7c0c174d041cfe8ea4cff3414d47ffd1d9f002a0b2d",
+        "digest": "sha256:e9eef6c218a75f581fd4307d65874cc479b03998afdf03cad61ffc992fe2e659",
         "id": "security.interrupted-consequence-c1b",
         "type": "experiment",
         "lifecycle": "active",
@@ -268,7 +472,7 @@
       },
       {
         "path": "docs/INTRINSIC-IDEMPOTENCY-C1K.md",
-        "digest": "sha256:14f2fcd0f79bf752f7f3ba2969ebef48b96224b900919b09b5005dde8020fd60",
+        "digest": "sha256:27a68a191b750cf9cd37c42bb542d80b930e0f795ae5d6c83a4c8dc342135d5c",
         "id": "security.intrinsic-idempotency-c1k",
         "type": "experiment",
         "lifecycle": "active",
@@ -363,6 +567,30 @@
         "readiness": "ACCEPTED"
       },
       {
+        "path": "docs/ORDINARY-SECURITY-CAPABILITY-PREFLIGHT-R2.md",
+        "digest": "sha256:26899767d990488575a6d55a813ef9f3274b324496e2cb0944144ef7d2309c92",
+        "id": "security.ordinary-capability-preflight-r2",
+        "type": "engineering-result",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-27",
+        "evidenceStatus": "verified",
+        "readiness": "READY"
+      },
+      {
+        "path": "docs/ORDINARY-SECURITY-CONSUMPTION-R1.md",
+        "digest": "sha256:83388322f4bc54777d5e13e6043e85c0d36f2c9245a8649adab4ea715fce02ae",
+        "id": "security.ordinary-consumption-r1",
+        "type": "experiment",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-14",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
         "path": "docs/OUT-OF-BAND-TRUTH-S4.md",
         "digest": "sha256:ed27a73c2b469cc40194b647026ae7f904616331f9908d2277e6037e05fcc788",
         "id": "security.out-of-band-truth-s4",
@@ -375,8 +603,20 @@
         "readiness": "EXPERIMENTAL"
       },
       {
+        "path": "docs/P1-CAPABILITY-SURFACE-TRANSFER.md",
+        "digest": "sha256:65e2c3e9dd9402b7ec8f6b6d3acd92f68456a88bbcf077f3d1ec7326c167f1ef",
+        "id": "security.p1-capability-surface-transfer",
+        "type": "research-result",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-28",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED_BOUNDED"
+      },
+      {
         "path": "docs/PARTIAL-MATERIALIZATION-C1C.md",
-        "digest": "sha256:399732bcd76cdba54c530c88ddef077e7337919a17ec77f1627918cb44090bba",
+        "digest": "sha256:15627ead37c4b19bd11052a124612fba46f84641b3597b4d34b9bb43b0d7b97a",
         "id": "security.partial-materialization-c1c",
         "type": "experiment",
         "lifecycle": "active",
@@ -399,8 +639,32 @@
         "readiness": "EXPERIMENTAL"
       },
       {
+        "path": "docs/POST-CA-O1-CARRIER-OBSERVABILITY.md",
+        "digest": "sha256:420e1753d11f4e003397ac52b7a3e8906e5f398e1402111a947f1a978fbd3fae",
+        "id": "security.post-ca-o1-carrier-observability",
+        "type": "experiment",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-14",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED_SCOPED"
+      },
+      {
+        "path": "docs/POST-CA-P1-PHYSICAL-ADAPTATION.md",
+        "digest": "sha256:a452fb58f40a4b495a05a9b14c223023f8bd882e0759472a13a8be0b7a269f81",
+        "id": "security.post-ca-p1-physical-adaptation",
+        "type": "experiment",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-14",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
         "path": "docs/POST-COMPROMISE-STATE-CA3.md",
-        "digest": "sha256:f1792408beabd07ba3e16759167bad0ba0d8fc4c9d844ca01db24792b173e8c8",
+        "digest": "sha256:db916495f97bdca0fb0fe748bf00c583f843c7c63864e82733abcbad817d9c21",
         "id": "security.post-compromise-state-ca3",
         "type": "experiment",
         "lifecycle": "active",
@@ -436,7 +700,7 @@
       },
       {
         "path": "docs/RECIPIENT-COMMIT-GAP-C1J.md",
-        "digest": "sha256:9ff60e4a95363b670313b08308907c9084a4f454863fa277dc8498ff9cd1c6ad",
+        "digest": "sha256:ea31678dcd658efee01c3d8a2409a096c6b475ff4efb102e138a371980fc1a5b",
         "id": "security.recipient-commit-gap-c1j",
         "type": "experiment",
         "lifecycle": "active",
@@ -448,7 +712,7 @@
       },
       {
         "path": "docs/research-agenda.md",
-        "digest": "sha256:848b3b0ae73d544b4abbcea447f6f21373da6ab9258ff49e983c59fff8277d1b",
+        "digest": "sha256:e5564f3b216c505506be920e774d6e8081cd4b08536696c8fe2ee42d2a7a463d",
         "id": "security.research-agenda",
         "type": "research-proposal",
         "lifecycle": "active",
@@ -471,6 +735,18 @@
         "readiness": "READY"
       },
       {
+        "path": "docs/RESEARCH-CORPUS-K1-CURRENTNESS.md",
+        "digest": "sha256:8edd615892fd9d565ccc91fdaba823e536bfeeb1060c41672e373a93ea666136",
+        "id": "security.research-corpus-k1-currentness",
+        "type": "experiment",
+        "lifecycle": "accepted",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-14",
+        "evidenceStatus": "verified",
+        "readiness": "ACCEPTED"
+      },
+      {
         "path": "docs/RESEARCH-CORPUS-P0.md",
         "digest": "sha256:98b8ae073e646f94a39471af29f83ba8fade277138d90c266f489aef9839075e",
         "id": "security.research-corpus-p0",
@@ -484,7 +760,7 @@
       },
       {
         "path": "docs/SACRIFICIAL-NODE-S3.md",
-        "digest": "sha256:601e21bdb1cc1e8c3ac6f609478da0cd4093f917e2d23196bfb4c3acc19c7b33",
+        "digest": "sha256:68e07758aa904221b046a973667626cccc2db9934fe583c0880956887409e5ef",
         "id": "security.sacrificial-node-s3",
         "type": "architecture",
         "lifecycle": "active",
@@ -532,7 +808,7 @@
       },
       {
         "path": "docs/TACTICAL-ADAPTATION-CA6.md",
-        "digest": "sha256:66e8fd6ef03c5873e021cdd071a8ce4207e6550f52bde2b6f6e1b3fbad221698",
+        "digest": "sha256:3f9a6924b677e4b43f6e432482b1ae5e67f7ea7f29ab62bafae3da2fef19b893",
         "id": "security.tactical-adaptation-ca6",
         "type": "experiment",
         "lifecycle": "active",
@@ -544,7 +820,7 @@
       },
       {
         "path": "docs/TOPOLOGY-CHURN-S6.md",
-        "digest": "sha256:5a0c94305a27f3bc3bc5104c65d478d328c057984e489ec9bff07b55081cf53a",
+        "digest": "sha256:4ceacac49423e74667d44ad6ad5fbbc6050b462b0c2c66ec5ef19808c965b030",
         "id": "security.topology-churn-s6",
         "type": "architecture",
         "lifecycle": "active",
@@ -567,8 +843,20 @@
         "readiness": "ACCEPTED"
       },
       {
+        "path": "docs/VERIFIABLE-DISCLOSURE-AC2.md",
+        "digest": "sha256:813a7cb2f3970501d4e4a10e53063472488805318948dda9e9a3ad8d080c0d2a",
+        "id": "security.verifiable-disclosure-ac2",
+        "type": "experiment",
+        "lifecycle": "active",
+        "sourceRole": "canonical",
+        "visibility": "public",
+        "updated": "2026-08-09",
+        "evidenceStatus": "verified",
+        "readiness": "FALSIFIED"
+      },
+      {
         "path": "docs/VULNERABILITY-EVIDENCE-CA2.md",
-        "digest": "sha256:103269c5f34c59c8485044dce2a992cf79d712cd31299efc4b49f5c1d65b0bf3",
+        "digest": "sha256:01f31b2b69e3b7907706c835990aa28ee8da4e49dc7f3e91d62a499b967811b7",
         "id": "security.vulnerability-evidence-ca2",
         "type": "experiment",
         "lifecycle": "active",
@@ -580,7 +868,7 @@
       },
       {
         "path": "docs/WINDOWS-KVM-INSTALLER-P1.md",
-        "digest": "sha256:54b23bfa1213fdc0902a24e82979c5e732a1f4f6389d6162dd29a10db687b26b",
+        "digest": "sha256:264d67d9014a2bd347a33b5a05471f995db805d0de926ae06720bc986b73ef9e",
         "id": "security.windows-kvm-installer-p1",
         "type": "specification",
         "lifecycle": "active",
@@ -592,7 +880,7 @@
       },
       {
         "path": "docs/WINDOWS-KVM-P0.md",
-        "digest": "sha256:29f574496867278bc7211afec050ffc5f079642f8adb1ab33fd34ae3de7ab136",
+        "digest": "sha256:609be0fb32ce3a3746bc40610a7ef95d5b8a0f6896ed8f737527daf863ab81ff",
         "id": "security.windows-kvm-p0",
         "type": "architecture",
         "lifecycle": "active",
@@ -652,7 +940,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:37a1b3d394bc345af269a5ef3f6b191a97dac85ccf8e76b3be0537232c81e399",
+        "digest": "sha256:145eeb744d4d81367bdcaff16e7df90a3ff9bd6630e784aa582d058640115c44",
         "id": "security.start",
         "type": "start",
         "lifecycle": "active",
@@ -664,13 +952,13 @@
       }
     ],
     "anchorDocument": "README.md",
-    "anchorDigest": "sha256:37a1b3d394bc345af269a5ef3f6b191a97dac85ccf8e76b3be0537232c81e399",
+    "anchorDigest": "sha256:145eeb744d4d81367bdcaff16e7df90a3ff9bd6630e784aa582d058640115c44",
     "anchorId": "security.start",
     "anchorUpdated": "2026-08-15",
     "lifecycle": "active",
     "sourceRole": "canonical",
     "visibility": "public",
-    "updated": "2026-08-15",
+    "updated": "2026-08-28",
     "summary": "Canonical entry to the authorized adversarial-autonomy laboratory, with explicit Range sovereignty, separated truth and evidence, verified consequence, recovery, scoped profiles, and research routes.",
     "evidenceStatus": "verified",
     "readiness": "EXPERIMENTAL"

@@ -1,54 +1,54 @@
 {
   "schemaVersion": 2,
   "projectId": "ordivon-security",
-  "sourceRevision": "cb35bf8364a3ce4376ee8e840365c45d991ffc1c",
-  "sourceDigest": "sha256:af497e0ad79cc1d306b3ba2a2ee1c8a0b662b9c5181bd44721c70070a91a2753",
+  "sourceRevision": "8132f5483921d2b8cc1b8dce534108c3b5b4fc38",
+  "sourceDigest": "sha256:10c9e6dd4f340306fbc5707b3efdf1abf7683c94e25c0d3758c6a6fb13ba52bd",
   "project": {
     "id": "project:security",
     "kind": "project",
     "slug": "security",
     "group": "Research and specification",
-    "label": "Authorized adversarial-autonomy and security capability laboratory",
+    "label": "Authorized adversarial-autonomy, adversarial epistemics, and current-capability laboratory",
     "category": "research",
     "availability": "research",
     "publicPage": true,
     "index": "08",
-    "thesis": "Compose mature security capabilities inside exact owned/delegated authority, truth, consequence, recovery, and evaluation boundaries; promote new shared semantics only when an adversarial experiment proves that existing tools and owners cannot carry them.",
-    "question": "Which adversarial and security capabilities actually require new Agent-native semantics after mature mechanisms, execution carriers, providers, and owner-native truth are used directly?",
+    "thesis": "Keep sovereignty, truth, consequence, recovery, and current applicability owner-scoped; reduce model-facing Security affordances with exact owner-local evidence before asking the Agent to choose, and promote shared machinery only after independent consumers prove that local composition is insufficient.",
+    "question": "Which adversarial distinctions and current-capability constraints remain Security-owned, which should stay as owner-local projections over mature mechanisms, and what repeated independent consumer pressure would actually justify a shared abstraction?",
     "owns": [
       "Authorized Range/Scenario and principal authority semantics",
-      "Asymmetric observation, adversarial intent, and domain effect admission",
-      "Separated executor, sensor, management, world-truth, recovery, and evaluator evidence",
-      "Bounded Evaluation and revisioned vulnerability/Sample research corpus",
-      "Scoped adversarial capability research and falsification"
+      "Asymmetric observation, adversarial intent, deception, communication, and domain effect admission",
+      "Separated executor, sensor, management, world-truth, recovery, evaluator, and derived-evidence standings",
+      "Bounded Evaluation, ResearchCorpus, adversarial epistemics, evidence-applicability, and capability-surface falsification",
+      "Owner-local ordinary Security task navigation and mechanical capability preflight without semantic routing"
     ],
     "boundary": [
-      "Owned or explicitly delegated ranges and samples only",
+      "Owned or explicitly delegated ranges, samples, and effect scopes only",
       "No unrestricted-target or production attack-platform claim",
-      "No generic SIEM/EDR/IDS, malware zoo/downloader, ATT&CK clone, or RangeActionGateway",
-      "Campaign, Organization, persistent OpponentModel, coevolution, and cross-fidelity strategic law remain unadmitted after CA7",
-      "Host, Harness, Runtime, native providers, hypervisors, and security tools retain their own authority"
+      "No generic SIEM/EDR/IDS, Trust/Reputation system, global EvidenceReducer/freshness service, planner, registry, compiler, semantic router, or RangeActionGateway",
+      "Mechanical current eligibility may withdraw model-facing operations, but it does not choose the Agent's semantic task or grant Security authority",
+      "Generic cognition sequencing remains Harness-owned; Runtime, Interlocus, World, providers, and source domains retain their own execution, capability, occurrence, and truth authority"
     ],
-    "problem": "Mature security tools can scan, fuzz, execute, observe, isolate, and recover systems, but an autonomous adversarial experiment still needs exact sovereignty, principal authority, evidence/truth separation, consequence identity, and recovery meaning. Rebuilding classical capability as a new Agent ontology would add machinery without solving that semantic gap.",
-    "capability": "Runs bounded authorized adversarial experiments across deterministic Contests, CAGE, disposable Windows KVM, isolated contested fabrics, software Evaluation, ResearchCorpus, and model-backed Actors while composing mature providers and tools. CA0–CA7 now supplies a source-bound classical-capability map, carrier/evidence/post-compromise/defensive-response/adaptive-tactics results, and explicit negative gates against unnecessary shared Security infrastructure.",
-    "maturity": "Executable bounded research with an ordinary-consumption surface; experimental rather than a production security platform",
+    "problem": "A rich adversarial research repository can itself become an Agent hazard: historical runners, broad callable surfaces, stale evidence, and mechanically unavailable operations can look current even when the underlying Security distinctions are sound. Security must preserve exact authority/truth/consequence semantics while exposing only the owner-local current surface that a bounded Agent can legitimately act on.",
+    "capability": "Runs bounded authorized Contest, Range, Evaluation, Windows-KVM/fabric, ResearchCorpus, and model-backed Actor work while now presenting an ordinary owner-native surface by default. Read-only capability preflight withdraws mechanically ineligible operations before model-facing disclosure, exact dependency/currentness experiments distinguish integrity from applicability, and P1 real-provider transfer shows that UNKNOWN/UNAVAILABLE actions can remain physically executable under a broad static surface yet be rejected before provider reachability by a current-compiled surface. Historical experiment runners and mixed-maturity console affordances have been contracted without deleting reproducible evidence.",
+    "maturity": "Executable bounded research with a thin ordinary owner surface and read-only current-capability preflight; experimental rather than a production security platform",
     "audience": "Security and Agent researchers studying autonomous opposition, exact authority, vulnerability evidence, post-compromise state, defensive response, adaptive tactics, consequence recovery, evaluator integrity, and when mature security mechanisms need—or do not need—new Agent semantics.",
-    "latestProof": "The CA0–CA7 sequence imported and pressure-tested classical capability rather than building a new tool ontology: same semantic effects survived multiple execution carriers; vulnerability evidence stopped at independently replayed sanitizer consequence; post-compromise and defensive-response experiments preserved truth/authority boundaries; provider assimilation rejected a shared RangeActionGateway; adaptive tactics used current evidence; and CA7 declined Campaign/Organization/persistent OpponentModel admission. Ordinary consumption now exposes a bounded task view and ResearchCorpus without adding SIEM/EDR infrastructure.",
+    "latestProof": "On 2026-08-28 Security completed a destructive executable-topology contraction and retained the P1/R2 current-capability result: owner-native mechanical applicability can compile the exact model-facing operation set, and the returned request is checked against that same surface. In deterministic real-provider fault injection, a broad static surface let UNKNOWN/UNAVAILABLE intents reach providers (one UNKNOWN action even produced a verified physical consequence), while the current-compiled surface rejected the same requests before provider invocation. This strengthened the admission boundary without earning a shared planner, registry, compiler, gateway, Trust system, or freshness service.",
     "flagshipSlug": "winning-move-loses-contest",
-    "summary": "An authorized adversarial-autonomy laboratory that composes mature security mechanisms with exact Range sovereignty, asymmetric information, evidence/truth separation, effect/recovery identity, and bounded evaluation. Current research is as much about deleting unnecessary Agent-security abstractions as adding capability.",
-    "state": "Current Security retains executable Contest, Range, Evaluation, Windows-KVM/fabric, ResearchCorpus, and model-backed Actor capability under experimental authority. The CA0–CA7 classical-capability round is accepted without promoting a generic Gateway, SIEM/EDR stack, Campaign, Organization, persistent OpponentModel, or cross-fidelity strategic law. An ordinary task view and bounded pre-analysis corpus are available; stronger strategic abstractions reopen only when a concrete authorized consumer forces them.",
+    "summary": "An authorized adversarial-autonomy laboratory whose current interface is getting smaller as its evidence gets richer: ordinary task navigation, exact ResearchCorpus memory, adversarial epistemics/currentness findings, and owner-local capability preflight preserve stronger authority and consequence boundaries without turning Security into a generic cyber platform or cross-owner policy engine.",
+    "state": "Current Security keeps the accepted Contest/Range/Evaluation/KVM/ResearchCorpus and model-backed Actor substrate, but the default Agent surface is now the thin ordinary view rather than research chronology. Read-only preflight exposes only mechanically eligible owner operations for the current turn, while semantic choice and consequence authority remain separate. Many research-only console affordances and historical runners have been retired from the wheel or archived as reproduction apparatus. No generic Campaign/Organization, SIEM/EDR, Trust/Reputation, planner/registry/compiler/gateway, global freshness service, or cross-owner capability compiler is admitted.",
     "evidence": [
       {
-        "value": "CA0–CA7",
-        "label": "classical capability assimilation"
+        "value": "ordinary",
+        "label": "default bounded Security task view"
       },
       {
-        "value": "ordinary",
-        "label": "bounded consumption view"
+        "value": "preflight",
+        "label": "read-only owner-local mechanical eligibility"
       },
       {
         "value": "0",
-        "label": "Campaign / Organization / Gateway layers admitted"
+        "label": "shared planner / registry / compiler / gateway layers admitted"
       }
     ],
     "repository": "https://github.com/zycxfyh/ordivon-security",
