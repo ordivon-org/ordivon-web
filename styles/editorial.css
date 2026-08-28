@@ -45,8 +45,10 @@
 }
 
 .now-brief-grid article {
+  min-width: 0;
   min-height: 25rem;
   padding: clamp(1.3rem, 3vw, 2.2rem);
+  overflow-wrap: anywhere;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 6%, transparent), transparent 55%);
@@ -637,7 +639,7 @@
   .now-brief-grid,
   .about-principle-grid,
   .not-found-recovery {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .now-timeline > a {

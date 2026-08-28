@@ -9,12 +9,12 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "e86f3b640d831eb246caf9a602a8b74334996df0",
+    "revision": "d9f039349d7b70b98a75be23b05c64a9e2a6be8b",
     "dirty": false,
-    "publicSourceDigest": "sha256:3e98125c55e57bd561367725a04c87b712035448d280b35e3cced3de3426155c",
-    "projectManifestDigest": "sha256:0ad385bb14c2ddb8ca4fa94e75a213a8d7837d267a4b7c020f1dfa17d666df52",
+    "publicSourceDigest": "sha256:5ce16cfb93162c28c072c3efd2085d74d7316e802a13c09093234ff2967bcdf6",
+    "projectManifestDigest": "sha256:579065fb0a03d8a0b29dea213b6514a61910f8977b7c1a21049b546ef4ae7bec",
     "authorityDocument": "docs/authority.md",
-    "authorityDigest": "sha256:7b1b86853db1b9c2239a4debe182443432e108c50bd6d62b053875587694233b",
+    "authorityDigest": "sha256:e1a6216b5cc7dcbdfe51b159d420990bfa00db454c7eec2ed110130d5b1bab39",
     "authoritySection": "Decision",
     "documents": [
       {
@@ -31,7 +31,7 @@
       },
       {
         "path": "docs/authority.md",
-        "digest": "sha256:7b1b86853db1b9c2239a4debe182443432e108c50bd6d62b053875587694233b",
+        "digest": "sha256:e1a6216b5cc7dcbdfe51b159d420990bfa00db454c7eec2ed110130d5b1bab39",
         "id": "game.authority",
         "type": "decision",
         "lifecycle": "active",
@@ -43,7 +43,7 @@
       },
       {
         "path": "docs/DEVELOPMENT_MODEL.md",
-        "digest": "sha256:61e0b23d39984f3e6ef2fb4fee0b64f768c98f0e35bc7955a8def8d6a9237767",
+        "digest": "sha256:dbc6e3d57e8a177d3ba59b44b9a8c94aff17f326d2aca41826176138f7259d6a",
         "id": "game.development-model",
         "type": "development-model",
         "lifecycle": "active",
@@ -90,7 +90,7 @@
       },
       {
         "path": "docs/GAME_CORE_RESEARCH_RESET.md",
-        "digest": "sha256:c45881be1916be79aeda0c5fce8f60b7acb487ffe503a754f951033ee0456842",
+        "digest": "sha256:e83f386e062f487242384d9a795c77a42d8b3611f2b629c4f15aac5a627df451",
         "id": "game.core-research.reset",
         "type": "decision",
         "lifecycle": "active",
@@ -342,7 +342,7 @@
       },
       {
         "path": "docs/STATION_ZERO_V3_P3.md",
-        "digest": "sha256:6e548c8f09d55113a184cf7f94eea38a7d7befc79274235523b041263c409cc5",
+        "digest": "sha256:7c0513bf378723cc3956828d886757bec6ad4693961216c970b90fa6c4676c0b",
         "id": "game.station-zero-v3.planning",
         "type": "architecture",
         "lifecycle": "accepted",
@@ -400,7 +400,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:b558ee72bc791b27a56493527f9072fd4146665534677c4383d059a389f9b5d3",
+        "digest": "sha256:dc32dcc94fb3d929128e69ac0b1701dde58b665e18bba31745f83926fbeb85b3",
         "id": "game.start",
         "type": "start",
         "lifecycle": "active",
@@ -412,7 +412,7 @@
       }
     ],
     "anchorDocument": "README.md",
-    "anchorDigest": "sha256:b558ee72bc791b27a56493527f9072fd4146665534677c4383d059a389f9b5d3",
+    "anchorDigest": "sha256:dc32dcc94fb3d929128e69ac0b1701dde58b665e18bba31745f83926fbeb85b3",
     "anchorId": "game.start",
     "anchorUpdated": "2026-08-17",
     "lifecycle": "active",
@@ -436,7 +436,7 @@
     "accepted": true
   },
   "candidate": {
-    "currentState": "The registered executable remains Station Zero `station-zero@2` with Ruleset `station-zero-core@3`. Station Zero v3, Casefile, Last Light, and Echo Hunt are currently **Game Core research treatments**, not competing product stages. No new Ordivon Game product has been selected from the recent direction experiments. Canonical G0–G8 meanings remain exclusively those in `docs/DEVELOPMENT_MODEL.md`; research rounds do not redefine them.",
+    "currentState": "The registered executable remains Station Zero `station-zero@2` with Ruleset `station-zero-core@3`. Station Zero v3, Casefile, Last Light, Echo Hunt, Concept Lab and Pre-G0 playables are retained as **Game Core research / regression apparatus**, not candidate product momentum. No new Ordivon Game product has been selected. Canonical G0–G8 meanings remain exclusively those in `docs/DEVELOPMENT_MODEL.md`; `docs/GAME_DEVELOPMENT_CORE.md` exposes the concurrent development responsibility/evidence state underneath that stage projection without creating new stages.",
     "capabilities": [],
     "capabilityBullets": [],
     "operational": [],
