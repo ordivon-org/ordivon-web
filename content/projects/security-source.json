@@ -9,9 +9,9 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "8132f5483921d2b8cc1b8dce534108c3b5b4fc38",
+    "revision": "4826d5141ae0010d9e82f7e23d7f076b5a1cb7a5",
     "dirty": false,
-    "publicSourceDigest": "sha256:10c9e6dd4f340306fbc5707b3efdf1abf7683c94e25c0d3758c6a6fb13ba52bd",
+    "publicSourceDigest": "sha256:29c54603a280499f7996a5ec9888672c5ca895a0618830840ecc79e84ca58fff",
     "projectManifestDigest": "sha256:0cdde2a505a090772c004986e250de961202ac3b5d18ad891f89fc8e63a8c6e7",
     "authorityDocument": "docs/authority.md",
     "authorityDigest": "sha256:b23b68bbb049d65f0f249157afaebfd9a2b621b0f69200afd8ddd2f5f9ce4837",
@@ -127,7 +127,7 @@
       },
       {
         "path": "docs/AGENT-EXPERIMENT-P0.md",
-        "digest": "sha256:746fd20485e479243ff61b464678ad37dad4f62c4500066e6843ced18e73a1f3",
+        "digest": "sha256:b604369888cda82793065c5e04c4ba80ccf701c7f085c331914acc2a371ea126",
         "id": "security.agent-experiment-p0",
         "type": "architecture",
         "lifecycle": "active",
@@ -163,7 +163,7 @@
       },
       {
         "path": "docs/AGENT-FIRST-STRUCTURE-AF1.md",
-        "digest": "sha256:ec705dfe0911f4951e8d45d1c00aef5750183cc81ba0daf5f698b4e1574f021e",
+        "digest": "sha256:3f5b98d5c24df48095ab70cc4570b00817cc1fe6235f887e3e7b3b8b4133cc7d",
         "id": "security.agent-first-structure-af1",
         "type": "decision",
         "lifecycle": "active",
@@ -484,7 +484,7 @@
       },
       {
         "path": "docs/ISOLATED-FABRIC-S5.md",
-        "digest": "sha256:14146dd3091955916b82298b216a2ba7a3bd76d71ca736a36de08e6fad3f9297",
+        "digest": "sha256:70186095f3c0676da7ebb38ad72757d5ec7efe6767bc2d5748ebe09f8b146403",
         "id": "security.isolated-fabric-s5",
         "type": "architecture",
         "lifecycle": "active",
@@ -580,7 +580,7 @@
       },
       {
         "path": "docs/ORDINARY-SECURITY-CONSUMPTION-R1.md",
-        "digest": "sha256:83388322f4bc54777d5e13e6043e85c0d36f2c9245a8649adab4ea715fce02ae",
+        "digest": "sha256:a2164d13115575393fba629f86ad4603659bb5a8e1ac608f5b1576dbe56acdac",
         "id": "security.ordinary-consumption-r1",
         "type": "experiment",
         "lifecycle": "accepted",
@@ -616,7 +616,7 @@
       },
       {
         "path": "docs/PARTIAL-MATERIALIZATION-C1C.md",
-        "digest": "sha256:15627ead37c4b19bd11052a124612fba46f84641b3597b4d34b9bb43b0d7b97a",
+        "digest": "sha256:6d8eca900b1f96ea6a71f91098bc8d3dc350465260eeca136c9893fca366f000",
         "id": "security.partial-materialization-c1c",
         "type": "experiment",
         "lifecycle": "active",
@@ -712,13 +712,13 @@
       },
       {
         "path": "docs/research-agenda.md",
-        "digest": "sha256:e5564f3b216c505506be920e774d6e8081cd4b08536696c8fe2ee42d2a7a463d",
+        "digest": "sha256:54a1f1f9d1d88832c24118c690e11d046d8c0f443103761ae53c599da7523434",
         "id": "security.research-agenda",
         "type": "research-proposal",
         "lifecycle": "active",
         "sourceRole": "canonical",
         "visibility": "public",
-        "updated": "2026-08-15",
+        "updated": "2026-08-28",
         "evidenceStatus": "not_applicable",
         "readiness": "READY"
       },
@@ -820,7 +820,7 @@
       },
       {
         "path": "docs/TOPOLOGY-CHURN-S6.md",
-        "digest": "sha256:4ceacac49423e74667d44ad6ad5fbbc6050b462b0c2c66ec5ef19808c965b030",
+        "digest": "sha256:5040b16b16d87a79acb69a1581b5b8ffa4aeffb40e0c3c8f043817e51db2ed13",
         "id": "security.topology-churn-s6",
         "type": "architecture",
         "lifecycle": "active",
@@ -904,7 +904,7 @@
       },
       {
         "path": "docs/WINDOWS-KVM-SUBSTRATE-S2.md",
-        "digest": "sha256:b18503e4d54bcb8398d9c4800747b6efc1358cd3d80b0730bc83fc2f12c4cb8e",
+        "digest": "sha256:f97587fd159fc38ba525e2e220dce15e285fd3f9d833c36914580eee73873884",
         "id": "security.windows-kvm-substrate-s2",
         "type": "architecture",
         "lifecycle": "active",
@@ -940,7 +940,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:145eeb744d4d81367bdcaff16e7df90a3ff9bd6630e784aa582d058640115c44",
+        "digest": "sha256:5ca37e4c8dce4c1abd523d9b3835742a7001c7b8cce01c6a3a86317c64094bc4",
         "id": "security.start",
         "type": "start",
         "lifecycle": "active",
@@ -952,7 +952,7 @@
       }
     ],
     "anchorDocument": "README.md",
-    "anchorDigest": "sha256:145eeb744d4d81367bdcaff16e7df90a3ff9bd6630e784aa582d058640115c44",
+    "anchorDigest": "sha256:5ca37e4c8dce4c1abd523d9b3835742a7001c7b8cce01c6a3a86317c64094bc4",
     "anchorId": "security.start",
     "anchorUpdated": "2026-08-15",
     "lifecycle": "active",
