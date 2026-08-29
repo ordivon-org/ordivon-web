@@ -109,18 +109,30 @@ function witnessRelation(capturedDigest, projection) {
   return projection.source.publicSourceDigest === capturedDigest ? "unchanged" : "changed";
 }
 
-export function composeSourceReviewWitnesses(capturedDigest, localProjection, remoteProjection) {
-  const localRelation = witnessRelation(capturedDigest, localProjection);
+export function composeSourceReviewWitnesses(
+  capturedDigest,
+  localProjection,
+  remoteProjection,
+  { localPublicRevisionRelationToRemote = null } = {},
+) {
+  let localRelation = witnessRelation(capturedDigest, localProjection);
   const remoteRelation = witnessRelation(capturedDigest, remoteProjection);
-  const relations = [localRelation, remoteRelation];
-  const changed = relations.includes("changed");
-  const unknown = relations.includes("unknown");
+  if (
+    localRelation === "changed" &&
+    remoteRelation === "unchanged" &&
+    localPublicRevisionRelationToRemote === "behind"
+  ) {
+    localRelation = "superseded";
+  }
+  const changed = localRelation === "changed" || remoteRelation === "changed";
+  const unknown = localRelation === "unknown" || remoteRelation === "unknown";
   return {
     envelopeRelation: changed ? "changed" : unknown ? "unknown" : "unchanged",
     sourceEnvelopeRevalidated: !unknown,
     reviewObligation: changed ? "required" : unknown ? "unknown" : "none",
     localRelation,
     remoteRelation,
+    localPublicRevisionRelationToRemote,
   };
 }
 
@@ -130,6 +142,34 @@ function git(repository, args, options = {}) {
     timeout: 20_000,
     ...options,
   }).trim();
+}
+
+function gitIsAncestor(repository, ancestor, descendant) {
+  try {
+    execFileSync("git", ["-C", repository, "merge-base", "--is-ancestor", ancestor, descendant], {
+      encoding: "utf8",
+      timeout: 20_000,
+      stdio: ["ignore", "ignore", "ignore"],
+    });
+    return true;
+  } catch (error) {
+    if (error && typeof error === "object" && "status" in error && error.status === 1) return false;
+    throw error;
+  }
+}
+
+function localPublicRevisionRelationToRemote(repository, localRevision, remoteRevision) {
+  if (!localRevision || !remoteRevision) return "unknown";
+  if (localRevision === remoteRevision) return "equal";
+  try {
+    git(repository, ["cat-file", "-e", `${localRevision}^{commit}`]);
+    git(repository, ["cat-file", "-e", `${remoteRevision}^{commit}`]);
+    if (gitIsAncestor(repository, localRevision, remoteRevision)) return "behind";
+    if (gitIsAncestor(repository, remoteRevision, localRevision)) return "ahead";
+    return "divergent";
+  } catch {
+    return "unknown";
+  }
 }
 
 function projectRepository(repository) {
@@ -211,7 +251,7 @@ function semanticRemoteObservationError(error) {
   return /reviewed source branch moved|reviewed remote manifest repository identity|reviewed remote public envelope is not source-admitted/.test(message);
 }
 
-async function probeReviewedRepositoryProjectionViaTransport(repository, reviewed, transport) {
+async function probeReviewedRepositoryProjectionViaTransport(repository, reviewed, transport, localSourceRevision = null) {
   const reviewedRemote = await remoteDefaultBranch(transport.locator, reviewed.expected);
   const localHead = git(repository, ["rev-parse", "HEAD"]);
 
@@ -237,6 +277,11 @@ async function probeReviewedRepositoryProjectionViaTransport(repository, reviewe
           transportRoute: transport.route,
           observation: "reviewed-remote-head-matches-clean-local-source",
           remoteFreshnessObserved: true,
+          localPublicRevisionRelationToRemote: localPublicRevisionRelationToRemote(
+            repository,
+            localSourceRevision,
+            localProjection.source.revision,
+          ),
         },
       };
     }
@@ -291,6 +336,11 @@ async function probeReviewedRepositoryProjectionViaTransport(repository, reviewe
         transportRoute: transport.route,
         observation: "disposable-full-history-observer-of-web-reviewed-repository",
         remoteFreshnessObserved: true,
+        localPublicRevisionRelationToRemote: localPublicRevisionRelationToRemote(
+          clone,
+          localSourceRevision,
+          projection.source.revision,
+        ),
       },
     };
   } finally {
@@ -298,12 +348,12 @@ async function probeReviewedRepositoryProjectionViaTransport(repository, reviewe
   }
 }
 
-export async function probeReviewedRepositoryProjection(repository, { expectedRepository } = {}) {
+export async function probeReviewedRepositoryProjection(repository, { expectedRepository, localSourceRevision = null } = {}) {
   const reviewed = requireReviewedRepositoryIdentity(repository, expectedRepository);
   const failures = [];
   for (const transport of reviewedTransportLocators(repository, reviewed)) {
     try {
-      return await probeReviewedRepositoryProjectionViaTransport(repository, reviewed, transport);
+      return await probeReviewedRepositoryProjectionViaTransport(repository, reviewed, transport, localSourceRevision);
     } catch (error) {
       if (semanticRemoteObservationError(error)) throw error;
       failures.push(`${transport.route}: ${error instanceof Error ? error.message : String(error)}`);
@@ -330,8 +380,10 @@ export async function reportAgentWebCurrentness(argv = []) {
       rule: (
         "This command compares Web's reviewed source envelope with two Web review witnesses: the current local " +
         "owner-visible projection and the fresh default-branch projection of the repository locator already bound " +
-        "in Web's capture. Either changed witness creates a Web review obligation; only two admitted unchanged witnesses " +
-        "authorize currentness. This does not prove owner-domain standing or the published explanation semantically stale."
+        "in Web's capture. The fresh reviewed repository is the canonical publication horizon; the local projection is " +
+        "prospective pressure. A local public revision strictly behind that reviewed horizon is diagnostic, while local-ahead " +
+        "or divergent public work still creates review pressure. This does not prove owner-domain standing or the published " +
+        "explanation semantically stale."
       ),
       captured: capturedProjection(slug, captured),
     };
@@ -360,7 +412,10 @@ export async function reportAgentWebCurrentness(argv = []) {
     let sourceReview = null;
     let remoteIssue = null;
     try {
-      const remote = await probeReviewedRepositoryProjection(repository, { expectedRepository: captured.project.repository });
+      const remote = await probeReviewedRepositoryProjection(repository, {
+        expectedRepository: captured.project.repository,
+        localSourceRevision: localProjection?.source?.revision ?? null,
+      });
       remoteProjection = remote.projection;
       sourceReview = remote.sourceReview;
     } catch (error) {
@@ -371,6 +426,7 @@ export async function reportAgentWebCurrentness(argv = []) {
       captured.source.publicSourceDigest,
       localProjection,
       remoteProjection,
+      { localPublicRevisionRelationToRemote: sourceReview?.localPublicRevisionRelationToRemote ?? null },
     );
     const issues = [localIssue && `local: ${localIssue}`, remoteIssue && `remote: ${remoteIssue}`].filter(Boolean);
     return {
@@ -385,6 +441,7 @@ export async function reportAgentWebCurrentness(argv = []) {
         local: {
           relation: composition.localRelation,
           issue: localIssue,
+          revisionRelationToRemote: sourceReview?.localPublicRevisionRelationToRemote ?? null,
           observed: localProjection ? observedProjection(localProjection) : null,
         },
         remote: {
@@ -420,7 +477,7 @@ export async function reportAgentWebCurrentness(argv = []) {
       mode: requireCurrent ? "promotion-preflight" : "report-only",
       accepted: !requireCurrent || projects.every((project) => project.envelopeRelation === "unchanged"),
       rule: requireCurrent
-        ? "Promotion preflight fails closed unless every source-projected owner envelope is remotely fresh, currently revalidated and unchanged. A changed envelope requires Web review/rebind; an unknown envelope cannot authorize promotion."
+        ? "Promotion preflight fails closed unless every source-projected owner envelope matches the fresh reviewed repository horizon and no local prospective/divergent public pressure remains. A local checkout strictly behind that canonical horizon is nonblocking; changed or unknown pressure cannot authorize promotion."
         : "Report-only mode does not authorize or block promotion.",
     },
   };
