@@ -150,6 +150,7 @@ function publicDocuments(repo, projectSource) {
     authorityDigest: sha256(authoritySource),
     authorityMeta,
     authoritySection: authoritySection.heading,
+    dependencyPaths: unique,
     documents,
   };
 }
@@ -176,6 +177,7 @@ export function probePublicProjection(repoArg) {
   const anchorMeta = frontmatter(anchorSource);
 
   const publicPaths = [projectRelativePath, ...envelope.documents.map((document) => document.path)];
+  const projectionInputPaths = [projectRelativePath, ...envelope.dependencyPaths];
   const revision = git(repo, ["log", "-1", "--format=%H", "--", ...publicPaths]) || git(repo, ["rev-parse", "HEAD"]);
   const projectManifestDigest = sha256(projectSource);
   const publicSourceDigest = sha256(JSON.stringify({
@@ -195,7 +197,7 @@ export function probePublicProjection(repoArg) {
   };
   const source = {
     revision,
-    dirty: Boolean(git(repo, ["status", "--porcelain"])),
+    dirty: Boolean(git(repo, ["status", "--porcelain", "--", ...projectionInputPaths])),
     publicSourceDigest,
     projectManifestDigest,
     authorityDocument: envelope.authorityDocument,
