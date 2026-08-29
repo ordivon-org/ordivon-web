@@ -235,7 +235,10 @@ test("local public change ahead of reviewed remote remains a changed Web review 
   run(x.owner, ["commit", "-qm", "local public change ahead of remote"]);
 
   const local = probePublicProjection(x.owner);
-  const remote = await probeReviewedRepositoryProjection(x.owner, { expectedRepository: x.remote });
+  const remote = await probeReviewedRepositoryProjection(x.owner, {
+    expectedRepository: x.remote,
+    localSourceRevision: local.source.revision,
+  });
   assert.notEqual(local.source.publicSourceDigest, baseline.source.publicSourceDigest);
   assert.equal(remote.projection.source.publicSourceDigest, baseline.source.publicSourceDigest);
 
@@ -243,12 +246,121 @@ test("local public change ahead of reviewed remote remains a changed Web review 
     baseline.source.publicSourceDigest,
     local,
     remote.projection,
+    { localPublicRevisionRelationToRemote: remote.sourceReview.localPublicRevisionRelationToRemote },
+  );
+  assert.equal(remote.sourceReview.localPublicRevisionRelationToRemote, "ahead");
+  assert.equal(composed.localRelation, "changed");
+  assert.equal(composed.remoteRelation, "unchanged");
+  assert.equal(composed.envelopeRelation, "changed");
+  assert.equal(composed.reviewObligation, "required");
+  assert.equal(composed.sourceEnvelopeRevalidated, true);
+});
+
+test("stale local public revision behind the reviewed remote horizon is nonblocking after rebind", async (t) => {
+  const x = remoteCurrentnessFixture(t);
+  const local = probePublicProjection(x.owner);
+  const status = join(x.writer, "docs/STATUS.md");
+  writeFileSync(status, readFileSync(status, "utf8").replace("Fixture public state v1.", "Fixture remote public state v2."));
+  run(x.writer, ["add", "docs/STATUS.md"]);
+  run(x.writer, ["commit", "-qm", "remote public change for rebind"]);
+  run(x.writer, ["push", "-q", "origin", "main"]);
+
+  const remote = await probeReviewedRepositoryProjection(x.owner, {
+    expectedRepository: x.remote,
+    localSourceRevision: local.source.revision,
+  });
+  assert.equal(remote.sourceReview.localPublicRevisionRelationToRemote, "behind");
+  assert.notEqual(local.source.publicSourceDigest, remote.projection.source.publicSourceDigest);
+
+  const composed = composeSourceReviewWitnesses(
+    remote.projection.source.publicSourceDigest,
+    local,
+    remote.projection,
+    { localPublicRevisionRelationToRemote: remote.sourceReview.localPublicRevisionRelationToRemote },
+  );
+  assert.equal(composed.localRelation, "superseded");
+  assert.equal(composed.remoteRelation, "unchanged");
+  assert.equal(composed.envelopeRelation, "unchanged");
+  assert.equal(composed.reviewObligation, "none");
+  assert.equal(composed.sourceEnvelopeRevalidated, true);
+});
+
+
+
+test("divergent local public revision remains blocking against a rebound remote horizon", async (t) => {
+  const x = remoteCurrentnessFixture(t);
+  const remoteStatus = join(x.writer, "docs/STATUS.md");
+  writeFileSync(remoteStatus, readFileSync(remoteStatus, "utf8").replace("Fixture public state v1.", "Fixture remote public state v2."));
+  run(x.writer, ["add", "docs/STATUS.md"]);
+  run(x.writer, ["commit", "-qm", "remote public change"]);
+  run(x.writer, ["push", "-q", "origin", "main"]);
+
+  const localStatus = join(x.owner, "docs/STATUS.md");
+  writeFileSync(localStatus, readFileSync(localStatus, "utf8").replace("Fixture public state v1.", "Fixture divergent local public state."));
+  run(x.owner, ["add", "docs/STATUS.md"]);
+  run(x.owner, ["commit", "-qm", "divergent local public change"]);
+  const local = probePublicProjection(x.owner);
+  const remote = await probeReviewedRepositoryProjection(x.owner, {
+    expectedRepository: x.remote,
+    localSourceRevision: local.source.revision,
+  });
+  assert.equal(remote.sourceReview.localPublicRevisionRelationToRemote, "divergent");
+
+  const composed = composeSourceReviewWitnesses(
+    remote.projection.source.publicSourceDigest,
+    local,
+    remote.projection,
+    { localPublicRevisionRelationToRemote: remote.sourceReview.localPublicRevisionRelationToRemote },
   );
   assert.equal(composed.localRelation, "changed");
   assert.equal(composed.remoteRelation, "unchanged");
   assert.equal(composed.envelopeRelation, "changed");
   assert.equal(composed.reviewObligation, "required");
   assert.equal(composed.sourceEnvelopeRevalidated, true);
+});
+
+test("uncommitted local public change remains unknown and blocks currentness", async (t) => {
+  const x = remoteCurrentnessFixture(t);
+  const baseline = probePublicProjection(x.owner);
+  const status = join(x.owner, "docs/STATUS.md");
+  writeFileSync(status, readFileSync(status, "utf8").replace("Fixture public state v1.", "Fixture uncommitted local public state."));
+  const local = probePublicProjection(x.owner);
+  assert.equal(local.admission.accepted, false);
+  const remote = await probeReviewedRepositoryProjection(x.owner, {
+    expectedRepository: x.remote,
+    localSourceRevision: local.source.revision,
+  });
+  const composed = composeSourceReviewWitnesses(
+    baseline.source.publicSourceDigest,
+    local,
+    remote.projection,
+    { localPublicRevisionRelationToRemote: remote.sourceReview.localPublicRevisionRelationToRemote },
+  );
+  assert.equal(composed.localRelation, "unknown");
+  assert.equal(composed.remoteRelation, "unchanged");
+  assert.equal(composed.envelopeRelation, "unknown");
+  assert.equal(composed.reviewObligation, "unknown");
+  assert.equal(composed.sourceEnvelopeRevalidated, false);
+});
+
+test("unproven ancestry cannot silently become superseded", () => {
+  const captured = "sha256:" + "a".repeat(64);
+  const local = { admission: { accepted: true }, source: { publicSourceDigest: "sha256:" + "b".repeat(64) } };
+  const remote = { admission: { accepted: true }, source: { publicSourceDigest: captured } };
+  const composed = composeSourceReviewWitnesses(captured, local, remote, { localPublicRevisionRelationToRemote: "unknown" });
+  assert.equal(composed.localRelation, "changed");
+  assert.equal(composed.envelopeRelation, "changed");
+  assert.equal(composed.reviewObligation, "required");
+});
+
+test("same revision relation cannot excuse a digest mismatch", () => {
+  const captured = "sha256:" + "a".repeat(64);
+  const local = { admission: { accepted: true }, source: { publicSourceDigest: "sha256:" + "b".repeat(64) } };
+  const remote = { admission: { accepted: true }, source: { publicSourceDigest: captured } };
+  const composed = composeSourceReviewWitnesses(captured, local, remote, { localPublicRevisionRelationToRemote: "equal" });
+  assert.equal(composed.localRelation, "changed");
+  assert.equal(composed.envelopeRelation, "changed");
+  assert.equal(composed.reviewObligation, "required");
 });
 
 test("dual witness composition fails closed on incomplete evidence without erasing known change", () => {
