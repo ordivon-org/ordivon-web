@@ -9,9 +9,9 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "bb999dad54126b12f2053b6d4082800d0435efff",
+    "revision": "65286a0af1a4a571633ed5f5cd126b0f686326d6",
     "dirty": false,
-    "publicSourceDigest": "sha256:23e31a5765de78302d985ca446cce9de94e3b690e3a447a448232f37c4e25a10",
+    "publicSourceDigest": "sha256:7833f6f0031d6dfccc4321dc5f31ae6c43aa8ea3f88ec98aa08f1200e9a6fc2b",
     "projectManifestDigest": "sha256:27dc84698e22341d875486dd141e12938b7927f3d7e8181590ee72cc155f4bce",
     "authorityDocument": "docs/authority.md",
     "authorityDigest": "sha256:db47a2d5e69f48e9063be177e91b81247d9244161dcbefc6172e7c511ad5eb3f",
@@ -139,7 +139,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:a044a9fc6fe40085b740c2bd9608179007fd51f7a6d7d8413c77d946e6fe6338",
+        "digest": "sha256:29724055ca4a8f708ae181d56694d04145bbd74807e3ce1d6bbefc0ab6c6ce20",
         "id": "harness.start",
         "type": "start",
         "lifecycle": "active",
