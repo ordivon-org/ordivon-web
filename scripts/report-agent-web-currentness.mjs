@@ -1,15 +1,18 @@
-import { execFileSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { execFile, execFileSync } from "node:child_process";
+import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { readdir, readFile } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
+import { tmpdir } from "node:os";
 import { fileURLToPath } from "node:url";
 import process from "node:process";
+import { promisify } from "node:util";
 
 import { probePublicProjection } from "./probe-public-projection.mjs";
 
 const SCRIPT_DIR = dirname(fileURLToPath(import.meta.url));
 const WEB_ROOT = resolve(SCRIPT_DIR, "..");
 const CAPTURE_ROOT = resolve(WEB_ROOT, "content/projects");
+const execFileAsync = promisify(execFile);
 
 function defaultProjectsRoot() {
   try {
@@ -88,7 +91,7 @@ function capturedProjection(slug, captured) {
   };
 }
 
-function observedProjection(observed) {
+function observedProjection(observed, sourceReview = null) {
   return {
     sourceRevision: observed.source.revision,
     publicSourceDigest: observed.source.publicSourceDigest,
@@ -97,13 +100,224 @@ function observedProjection(observed) {
     admissionAccepted: observed.admission.accepted,
     dirty: observed.source.dirty,
     authorityDocument: observed.source.authorityDocument,
+    sourceReview,
   };
+}
+
+function witnessRelation(capturedDigest, projection) {
+  if (!projection || projection.admission.accepted !== true) return "unknown";
+  return projection.source.publicSourceDigest === capturedDigest ? "unchanged" : "changed";
+}
+
+export function composeSourceReviewWitnesses(capturedDigest, localProjection, remoteProjection) {
+  const localRelation = witnessRelation(capturedDigest, localProjection);
+  const remoteRelation = witnessRelation(capturedDigest, remoteProjection);
+  const relations = [localRelation, remoteRelation];
+  const changed = relations.includes("changed");
+  const unknown = relations.includes("unknown");
+  return {
+    envelopeRelation: changed ? "changed" : unknown ? "unknown" : "unchanged",
+    sourceEnvelopeRevalidated: !unknown,
+    reviewObligation: changed ? "required" : unknown ? "unknown" : "none",
+    localRelation,
+    remoteRelation,
+  };
+}
+
+function git(repository, args, options = {}) {
+  return execFileSync("git", ["-C", repository, ...args], {
+    encoding: "utf8",
+    timeout: 20_000,
+    ...options,
+  }).trim();
+}
+
+function projectRepository(repository) {
+  const manifest = readFileSync(resolve(repository, ".ordivon/project.yaml"), "utf8");
+  const match = manifest.match(/^repository:\s*(.+)$/m);
+  if (!match) throw new Error("owner project manifest does not declare repository identity");
+  return match[1].trim();
+}
+
+function normalizeRepositoryIdentity(value, baseRepository = process.cwd()) {
+  const raw = String(value ?? "").trim().replace(/\/$/, "");
+  if (!raw) throw new Error("owner repository identity is empty");
+  const scp = raw.match(/^git@([^:]+):(.+)$/i);
+  if (scp) return `https://${scp[1].toLowerCase()}/${scp[2].replace(/\.git$/i, "")}`;
+  if (/^ssh:\/\//i.test(raw)) {
+    const url = new URL(raw);
+    const host = url.hostname.toLowerCase();
+    const path = url.pathname.replace(/^\//, "").replace(/\.git$/i, "");
+    return `https://${host}/${path}`;
+  }
+  if (/^https?:\/\//i.test(raw)) {
+    const url = new URL(raw);
+    const host = url.hostname.toLowerCase();
+    const path = url.pathname.replace(/^\//, "").replace(/\.git$/i, "").replace(/\/$/, "");
+    return `https://${host}/${path}`;
+  }
+  if (/^file:\/\//i.test(raw)) return resolve(new URL(raw).pathname);
+  return resolve(baseRepository, raw);
+}
+
+function requireReviewedRepositoryIdentity(repository, expectedRepository) {
+  if (expectedRepository == null) throw new Error("reviewed Web repository identity is required");
+  const declaredIdentity = normalizeRepositoryIdentity(projectRepository(repository), repository);
+  const expectedIdentity = normalizeRepositoryIdentity(expectedRepository, repository);
+  if (declaredIdentity !== expectedIdentity) {
+    throw new Error(`owner manifest repository identity ${declaredIdentity} differs from reviewed Web identity ${expectedIdentity}`);
+  }
+  return { declared: declaredIdentity, expected: expectedIdentity, locator: String(expectedRepository).trim() };
+}
+
+async function remoteDefaultBranch(reviewedLocator, expectedIdentity) {
+  const locator = String(reviewedLocator ?? "").trim();
+  if (!locator) throw new Error("reviewed Web repository locator is unavailable");
+  const locatorIdentity = normalizeRepositoryIdentity(locator);
+  if (locatorIdentity !== expectedIdentity) {
+    throw new Error(`reviewed repository locator ${locatorIdentity} differs from reviewed Web identity ${expectedIdentity}`);
+  }
+  const { stdout } = await execFileAsync(
+    "git", ["ls-remote", "--symref", locator, "HEAD"],
+    { encoding: "utf8", timeout: 20_000 },
+  );
+  const output = stdout.trim();
+  const symbolic = output.split("\n").find((line) => line.startsWith("ref: refs/heads/") && line.endsWith("\tHEAD"));
+  const head = output.split("\n").find((line) => /^[0-9a-f]{40,64}\tHEAD$/.test(line));
+  if (!symbolic || !head) throw new Error(`reviewed source repository default branch is unavailable from ${expectedIdentity}`);
+  const branch = symbolic.slice("ref: refs/heads/".length, -"\tHEAD".length);
+  const revision = head.split("\t", 1)[0];
+  return { branch, revision, locator, repositoryIdentity: expectedIdentity };
+}
+
+function reviewedTransportLocators(repository, reviewed) {
+  const candidates = [];
+  try {
+    const localOrigin = git(repository, ["remote", "get-url", "origin"]);
+    if (localOrigin && normalizeRepositoryIdentity(localOrigin, repository) === reviewed.expected) {
+      candidates.push({ locator: localOrigin, route: "identity-equivalent-local-origin" });
+    }
+  } catch {
+    // Local origin is optional transport only.
+  }
+  if (!candidates.some((candidate) => candidate.locator === reviewed.locator)) {
+    candidates.push({ locator: reviewed.locator, route: "reviewed-project-repository" });
+  }
+  return candidates;
+}
+
+function semanticRemoteObservationError(error) {
+  const message = error instanceof Error ? error.message : String(error);
+  return /reviewed source branch moved|reviewed remote manifest repository identity|reviewed remote public envelope is not source-admitted/.test(message);
+}
+
+async function probeReviewedRepositoryProjectionViaTransport(repository, reviewed, transport) {
+  const reviewedRemote = await remoteDefaultBranch(transport.locator, reviewed.expected);
+  const localHead = git(repository, ["rev-parse", "HEAD"]);
+
+  // Fast path: an exact checkout plus a clean projection-input set already carries
+  // the same bytes as the freshly observed Web-reviewed repository horizon.
+  if (localHead === reviewedRemote.revision) {
+    const localProjection = probePublicProjection(repository);
+    if (localProjection.admission.accepted === true) {
+      const finalRemote = await remoteDefaultBranch(transport.locator, reviewed.expected);
+      if (finalRemote.branch !== reviewedRemote.branch || finalRemote.revision !== reviewedRemote.revision) {
+        throw new Error(
+          `reviewed source branch moved during projection observation: ${reviewedRemote.branch}@${reviewedRemote.revision} -> ${finalRemote.branch}@${finalRemote.revision}`,
+        );
+      }
+      return {
+        projection: localProjection,
+        sourceReview: {
+          branch: reviewedRemote.branch,
+          remoteHeadRevision: reviewedRemote.revision,
+          localHeadRevision: localHead,
+          repositoryIdentity: reviewed.expected,
+          repositoryLocator: reviewed.locator,
+          transportRoute: transport.route,
+          observation: "reviewed-remote-head-matches-clean-local-source",
+          remoteFreshnessObserved: true,
+        },
+      };
+    }
+  }
+
+  // Divergence is not automatic semantic staleness. Clone through an identity-equivalent
+  // transport with complete branch history, using the local owner checkout only as an
+  // object cache. Authority remains the reviewed repository identity.
+  const root = mkdtempSync(join(tmpdir(), "ordivon-web-owner-currentness-"));
+  const clone = join(root, "repo");
+  try {
+    await execFileAsync(
+      "git",
+      [
+        "clone", "--quiet", "--no-checkout", "--single-branch", "--no-tags",
+        "--branch", reviewedRemote.branch, "--reference-if-able", repository,
+        transport.locator, clone,
+      ],
+      { encoding: "utf8", timeout: 60_000 },
+    );
+    const cloneHead = git(clone, ["rev-parse", "HEAD"]);
+    if (cloneHead !== reviewedRemote.revision) {
+      throw new Error(
+        `reviewed source branch moved during materialization: ${reviewedRemote.branch}@${reviewedRemote.revision} -> ${cloneHead}`,
+      );
+    }
+    git(clone, ["checkout", "--quiet", "--detach", cloneHead]);
+    const finalRemote = await remoteDefaultBranch(transport.locator, reviewed.expected);
+    if (finalRemote.branch !== reviewedRemote.branch || finalRemote.revision !== reviewedRemote.revision) {
+      throw new Error(
+        `reviewed source branch moved during projection observation: ${reviewedRemote.branch}@${reviewedRemote.revision} -> ${finalRemote.branch}@${finalRemote.revision}`,
+      );
+    }
+    const projection = probePublicProjection(clone);
+    if (projection.admission.accepted !== true) {
+      throw new Error("reviewed remote public envelope is not source-admitted");
+    }
+    const remoteManifestIdentity = normalizeRepositoryIdentity(projectRepository(clone), clone);
+    if (remoteManifestIdentity !== reviewed.expected) {
+      throw new Error(
+        `reviewed remote manifest repository identity ${remoteManifestIdentity} differs from reviewed Web identity ${reviewed.expected}`,
+      );
+    }
+    return {
+      projection,
+      sourceReview: {
+        branch: reviewedRemote.branch,
+        remoteHeadRevision: cloneHead,
+        localHeadRevision: localHead,
+        repositoryIdentity: reviewed.expected,
+        repositoryLocator: reviewed.locator,
+        transportRoute: transport.route,
+        observation: "disposable-full-history-observer-of-web-reviewed-repository",
+        remoteFreshnessObserved: true,
+      },
+    };
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+}
+
+export async function probeReviewedRepositoryProjection(repository, { expectedRepository } = {}) {
+  const reviewed = requireReviewedRepositoryIdentity(repository, expectedRepository);
+  const failures = [];
+  for (const transport of reviewedTransportLocators(repository, reviewed)) {
+    try {
+      return await probeReviewedRepositoryProjectionViaTransport(repository, reviewed, transport);
+    } catch (error) {
+      if (semanticRemoteObservationError(error)) throw error;
+      failures.push(`${transport.route}: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  }
+  throw new Error(
+    `reviewed repository transport unavailable for ${reviewed.expected}: ${failures.join(" | ")}`,
+  );
 }
 
 export async function reportAgentWebCurrentness(argv = []) {
   const { projectsRoot, explicitRepositories, requireCurrent } = parseArgs(argv);
-  const projects = [];
-  for (const { slug, value: captured } of await capturedSources()) {
+  const sources = await capturedSources();
+  const projects = await Promise.all(sources.map(async ({ slug, value: captured }) => {
     const projectId = captured.project.id;
     const repository = explicitRepositories.get(projectId) ?? resolve(projectsRoot, projectId);
     const base = {
@@ -111,19 +325,19 @@ export async function reportAgentWebCurrentness(argv = []) {
       projectId,
       repository,
       truthRole: "public-source-review-obligation-projection",
-      basis: "admitted-canonical-public-document-envelope",
+      basis: "web-reviewed-repository-fresh-owner-declared-public-document-envelope",
       semanticApplicability: "not-evaluated",
       rule: (
-        "This command compares Web's reviewed source envelope with the owner's currently admitted " +
-        "canonical public-document envelope. A changed envelope creates a Web review obligation; " +
-        "it does not prove the published explanation is semantically stale or must be mutated. " +
-        "Unrelated owner HEAD changes are outside this comparison."
+        "This command compares Web's reviewed source envelope with two Web review witnesses: the current local " +
+        "owner-visible projection and the fresh default-branch projection of the repository locator already bound " +
+        "in Web's capture. Either changed witness creates a Web review obligation; only two admitted unchanged witnesses " +
+        "authorize currentness. This does not prove owner-domain standing or the published explanation semantically stale."
       ),
       captured: capturedProjection(slug, captured),
     };
 
     if (!existsSync(repository)) {
-      projects.push({
+      return {
         ...base,
         envelopeRelation: "unknown",
         sourceEnvelopeRevalidated: false,
@@ -131,36 +345,56 @@ export async function reportAgentWebCurrentness(argv = []) {
         publicationMutationRequired: "not-evaluated",
         issue: "owner-repository-unavailable",
         observed: null,
-      });
-      continue;
+      };
     }
 
+    let localProjection = null;
+    let localIssue = null;
     try {
-      const observed = probePublicProjection(repository);
-      const admissionAccepted = observed.admission.accepted === true;
-      const sameDigest = captured.source.publicSourceDigest === observed.source.publicSourceDigest;
-      const envelopeRelation = admissionAccepted ? (sameDigest ? "unchanged" : "changed") : "unknown";
-      projects.push({
-        ...base,
-        envelopeRelation,
-        sourceEnvelopeRevalidated: admissionAccepted,
-        reviewObligation: envelopeRelation === "changed" ? "required" : envelopeRelation === "unchanged" ? "none" : "unknown",
-        publicationMutationRequired: "not-evaluated",
-        issue: admissionAccepted ? null : "observed-public-envelope-not-admitted",
-        observed: observedProjection(observed),
-      });
+      localProjection = probePublicProjection(repository);
     } catch (error) {
-      projects.push({
-        ...base,
-        envelopeRelation: "unknown",
-        sourceEnvelopeRevalidated: false,
-        reviewObligation: "unknown",
-        publicationMutationRequired: "not-evaluated",
-        issue: error instanceof Error ? error.message : String(error),
-        observed: null,
-      });
+      localIssue = error instanceof Error ? error.message : String(error);
     }
-  }
+
+    let remoteProjection = null;
+    let sourceReview = null;
+    let remoteIssue = null;
+    try {
+      const remote = await probeReviewedRepositoryProjection(repository, { expectedRepository: captured.project.repository });
+      remoteProjection = remote.projection;
+      sourceReview = remote.sourceReview;
+    } catch (error) {
+      remoteIssue = error instanceof Error ? error.message : String(error);
+    }
+
+    const composition = composeSourceReviewWitnesses(
+      captured.source.publicSourceDigest,
+      localProjection,
+      remoteProjection,
+    );
+    const issues = [localIssue && `local: ${localIssue}`, remoteIssue && `remote: ${remoteIssue}`].filter(Boolean);
+    return {
+      ...base,
+      envelopeRelation: composition.envelopeRelation,
+      sourceEnvelopeRevalidated: composition.sourceEnvelopeRevalidated,
+      reviewObligation: composition.reviewObligation,
+      publicationMutationRequired: "not-evaluated",
+      issue: issues.length ? issues.join("; ") : null,
+      observed: remoteProjection ? observedProjection(remoteProjection, sourceReview) : null,
+      witnesses: {
+        local: {
+          relation: composition.localRelation,
+          issue: localIssue,
+          observed: localProjection ? observedProjection(localProjection) : null,
+        },
+        remote: {
+          relation: composition.remoteRelation,
+          issue: remoteIssue,
+          observed: remoteProjection ? observedProjection(remoteProjection, sourceReview) : null,
+        },
+      },
+    };
+  }));
 
   return {
     schemaVersion: 1,
@@ -168,7 +402,7 @@ export async function reportAgentWebCurrentness(argv = []) {
     truthRole: "derived-read-only-currentness-projection",
     authority: {
       publicationProjectionOwner: "ordivon-web",
-      currentnessSource: "owner-admitted-canonical-public-document-envelope",
+      currentnessSource: "web-reviewed-repository-fresh-owner-declared-public-document-envelope",
       rule: (
         "Web owns the review obligation and publication judgment. Owner repositories still own " +
         "their implementation, research, deployment, and live-state truth."
@@ -186,7 +420,7 @@ export async function reportAgentWebCurrentness(argv = []) {
       mode: requireCurrent ? "promotion-preflight" : "report-only",
       accepted: !requireCurrent || projects.every((project) => project.envelopeRelation === "unchanged"),
       rule: requireCurrent
-        ? "Promotion preflight fails closed unless every source-projected owner envelope is currently revalidated and unchanged. A changed envelope requires Web review/rebind; an unknown envelope cannot authorize promotion."
+        ? "Promotion preflight fails closed unless every source-projected owner envelope is remotely fresh, currently revalidated and unchanged. A changed envelope requires Web review/rebind; an unknown envelope cannot authorize promotion."
         : "Report-only mode does not authorize or block promotion.",
     },
   };
