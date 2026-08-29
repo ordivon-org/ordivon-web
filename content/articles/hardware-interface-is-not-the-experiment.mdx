@@ -3,8 +3,8 @@ export const metadata = {
   "title": "The Hardware Interface Is Not the Experiment",
   "deck": "A standard interface can make hardware easier for an Agent to operate without proving that the physical state was understood, the measurement was adequate, or the evidence is strong enough for the downstream decision.",
   "description": "What Anthropic's Model Hardware Standard, Universal Robots, Genentech, QuEra, LAP, NIST, and NASA reveal about the distinct engineering questions that remain after an Agent can operate physical equipment.",
-  "projectSlugs": ["studio"],
-  "questionSlugs": [],
+  "projectSlugs": [],
+  "questionSlugs": ["open-interface-relative-closure"],
   "type": "Research note",
   "project": "Ordivon Media",
   "publishedAt": "2026-08-29",
@@ -110,7 +110,7 @@ machine is safe only because the agent remembers the limit`}</code></pre>
 
 <h2 id="prior-art" data-toc="The distinctions are prior art">These distinctions are not new protocol primitives</h2>
 
-<p>The underlying ideas predate MHS. LAP, an agent-to-instrument protocol posted in June 2026, already treats instrument operations as stateful, safety-critical and physically embodied, and defines measurement results with units, calibration, uncertainty and provenance. NIST and NASA likewise supply mature measurement and verification/validation distinctions.</p>
+<p>The underlying ideas predate MHS. LAP, an agent-to-instrument protocol published in June 2026, already treats instrument operations as stateful, safety-critical and physically embodied, and defines measurement results with units, calibration, uncertainty and provenance. NIST and NASA likewise supply mature measurement and verification/validation distinctions.</p>
 
 <p>So the useful claim here is not that agent-controlled hardware needs a newly invented five-part ontology. It is narrower and current: <strong>MHS makes operability cheap enough, and its own partner cases concrete enough, that engineers can see exactly where stronger physical and evidential claims must come from after the interface works.</strong></p>
 
@@ -149,7 +149,7 @@ machine is safe only because the agent remembers the limit`}</code></pre>
   <li>Anthropic, “Previewing the Model Hardware Standard,” 27 Aug 2026: <a href="https://www.anthropic.com/news/model-hardware-standard-research-preview">anthropic.com</a></li>
   <li>Universal Robots, “Testing Agentic Physical AI on UR Cobots,” 28 Aug 2026: <a href="https://www.universal-robots.com/blog/testing-agentic-physical-ai-univeral-robots-cobots/">universal-robots.com</a></li>
   <li>QuEra, “Holding the Light: Teaching an AI to Lock and Tune our Quantum Computer’s Lasers,” 27 Aug 2026: <a href="https://www.quera.com/blog-posts/holding-the-light-teaching-an-ai-to-lock-and-tune-our-quantum-computers-lasers">quera.com</a></li>
-  <li>Zhu et al., “LAP: An Agent-to-Instrument Protocol for Autonomous Science,” posted 2 Jun 2026: <a href="https://arxiv.org/abs/2606.03755">arXiv:2606.03755</a></li>
+  <li>Zhu et al., “LAP: An Agent-to-Instrument Protocol for Autonomous Science,” 2 Jun 2026: <a href="https://arxiv.org/abs/2606.03755">arXiv:2606.03755</a></li>
   <li>NIST, “Metrological Traceability: Frequently Asked Questions and NIST Policy”: <a href="https://www.nist.gov/metrology/metrological-traceability">nist.gov</a></li>
   <li>NASA Systems Engineering Handbook, “Product Verification” and “Product Validation”: <a href="https://www.nasa.gov/reference/5-3-product-verification/">verification</a> · <a href="https://www.nasa.gov/reference/5-4-product-validation/">validation</a></li>
 </ul>
