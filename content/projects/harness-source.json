@@ -9,17 +9,17 @@
     "publicProjection": "ordivon-web"
   },
   "source": {
-    "revision": "58fd56e2444d0569ff25a1cd22c54f294fdaec25",
+    "revision": "bb999dad54126b12f2053b6d4082800d0435efff",
     "dirty": false,
-    "publicSourceDigest": "sha256:8bc1d4998862ba7e63f437c1a1d3dc13b7f7651150e510829b326398eda475cd",
+    "publicSourceDigest": "sha256:23e31a5765de78302d985ca446cce9de94e3b690e3a447a448232f37c4e25a10",
     "projectManifestDigest": "sha256:27dc84698e22341d875486dd141e12938b7927f3d7e8181590ee72cc155f4bce",
     "authorityDocument": "docs/authority.md",
-    "authorityDigest": "sha256:9f5866bf7bbf6567bcf5c6566cb3e1263ac96f1e348172bc7d2ba9c67569898c",
+    "authorityDigest": "sha256:db47a2d5e69f48e9063be177e91b81247d9244161dcbefc6172e7c511ad5eb3f",
     "authoritySection": "Decision",
     "documents": [
       {
         "path": "ARCHITECTURE.md",
-        "digest": "sha256:dcd0f195762a6fad216c97862b7592d165eb2cedf62ea39f641f59064381dbf4",
+        "digest": "sha256:7667e53b9d572cd4ebac72699f81dc4c5a088974245568edb7fbb613dc1b3984",
         "id": "harness.architecture",
         "type": "architecture",
         "lifecycle": "active",
@@ -31,37 +31,37 @@
       },
       {
         "path": "docs/authority.md",
-        "digest": "sha256:9f5866bf7bbf6567bcf5c6566cb3e1263ac96f1e348172bc7d2ba9c67569898c",
+        "digest": "sha256:db47a2d5e69f48e9063be177e91b81247d9244161dcbefc6172e7c511ad5eb3f",
         "id": "harness.authority",
         "type": "decision",
         "lifecycle": "active",
         "sourceRole": "canonical",
         "visibility": "public",
-        "updated": "2026-08-19",
+        "updated": "2026-08-29",
         "evidenceStatus": "not_applicable",
         "readiness": "READY"
       },
       {
         "path": "docs/COMPATIBILITY.md",
-        "digest": "sha256:80a5ebdcfbf8cf234be4e68ed925527ad9ddb06d2ad1460a0d437f962efeb54b",
+        "digest": "sha256:b1c64ac78c2fa7941d0f58b9fd91360680166ed604ad690f740923cbd0e1f8b9",
         "id": "harness.compatibility",
         "type": "policy",
         "lifecycle": "active",
         "sourceRole": "canonical",
         "visibility": "public",
-        "updated": "2026-08-20",
+        "updated": "2026-08-24",
         "evidenceStatus": "verified",
         "readiness": "READY"
       },
       {
         "path": "docs/DATA_AND_PRIVACY.md",
-        "digest": "sha256:538767a067ed36785dd81043d79bff69b7b9ece83f46e2742467d6092653d965",
+        "digest": "sha256:c9a97e09c5a9aac687e23d8ce497f47425d033b8ca75aff64e377c26ca9d8371",
         "id": "harness.data-privacy",
         "type": "policy",
         "lifecycle": "active",
         "sourceRole": "canonical",
         "visibility": "public",
-        "updated": "2026-08-08",
+        "updated": "2026-08-24",
         "evidenceStatus": "verified",
         "readiness": "READY"
       },
@@ -91,7 +91,7 @@
       },
       {
         "path": "docs/QUICKSTART.md",
-        "digest": "sha256:a200f74eb61b5e364c678c0c1459c94c6614e8800efa6877c32c718779ff5d64",
+        "digest": "sha256:6f9c844c8bc080f66c277f1c8c2b338a34c9b5c337b4ddb432c8b4292a6f21d1",
         "id": "harness.quickstart",
         "type": "guide",
         "lifecycle": "active",
@@ -115,19 +115,19 @@
       },
       {
         "path": "docs/STATUS.md",
-        "digest": "sha256:8ca72ef5f75d141d1a7892ffdf09a6a13656ef6b716be689eae1dbda3230371e",
+        "digest": "sha256:eb993fb07f48a75b7cba6c642c41ac05c29a5ea370363337396e4e68ef0e2578",
         "id": "harness.status",
         "type": "status",
         "lifecycle": "active",
         "sourceRole": "canonical",
         "visibility": "public",
-        "updated": "2026-08-20",
+        "updated": "2026-08-24",
         "evidenceStatus": "verified",
         "readiness": "READY"
       },
       {
         "path": "docs/VERIFICATION.md",
-        "digest": "sha256:8f66796de2e5693c6457284f85648a2e0c09b07e98c123b6d8f5dde59075aa92",
+        "digest": "sha256:3ddb73facb6b3b169b687d963531784160f0594645e1c5a201483bc7114fbcd7",
         "id": "harness.verification",
         "type": "reference",
         "lifecycle": "active",
@@ -139,7 +139,7 @@
       },
       {
         "path": "README.md",
-        "digest": "sha256:19d71d49715f616c8d8fb8a1bff3809cfa727597af5d47c38084a9673418eed5",
+        "digest": "sha256:a044a9fc6fe40085b740c2bd9608179007fd51f7a6d7d8413c77d946e6fe6338",
         "id": "harness.start",
         "type": "start",
         "lifecycle": "active",
@@ -151,13 +151,13 @@
       }
     ],
     "anchorDocument": "docs/STATUS.md",
-    "anchorDigest": "sha256:8ca72ef5f75d141d1a7892ffdf09a6a13656ef6b716be689eae1dbda3230371e",
+    "anchorDigest": "sha256:eb993fb07f48a75b7cba6c642c41ac05c29a5ea370363337396e4e68ef0e2578",
     "anchorId": "harness.status",
-    "anchorUpdated": "2026-08-20",
+    "anchorUpdated": "2026-08-24",
     "lifecycle": "active",
     "sourceRole": "canonical",
     "visibility": "public",
-    "updated": "2026-08-20",
+    "updated": "2026-08-29",
     "summary": "Current maturity claim for Harness as an independent durable cognitive execution substrate, with supported cognition, Provider and Tool continuity, composition, verification, and known limits.",
     "evidenceStatus": "verified",
     "readiness": "READY"
@@ -198,15 +198,20 @@
       "`HarnessAgentRun` is the recommended Python state-root execution handle for normal create/open/run/resume composition.",
       "Capability truth has three explicit stages: package-installed mechanisms, immutable Run-admitted Contract/Binding authority, and exact turn-admitted `AgentTurnRequest` actions. Earlier stages never imply later stages.",
       "`effective_capability_catalog()` is a generated read-only projection over source-owned Tool surfaces and cognition mechanisms; it is not a mutable registry or grant store.",
+      "experimental task-conditioned capability discovery can return a bounded candidate set and later expand one exact descriptor instead of projecting the complete installed catalog. Candidate ranking is navigation only: discovery does not prove currentness, grant authority or mutate an active Run.",
+      "experimental capability-to-First-Interface composition intersects discovered candidates with supplied owner/caller standing and the already-admitted action set. Missing standing remains `UNKNOWN`; only `AVAILABLE` actions already admitted by the existing turn surface can become current invokable affordances.",
+      "preregistered fresh-Agent ablations now separate retrieval from currentness pressure. A 64-Tool static-semantic V1 was ceilinged (A/B/C all 12/12), so no generic retrieval behavior gain is claimed. A distinct V2 with byte-identical target/stale carrier descriptions produced A 5/11, B 3/12 and compact-current-affordance C 11/12 current-target selection with zero stale-twin selections; this supports a bounded behavioral consequence for current standing + existing admission, not semantic retrieval superiority.",
+      "capability-aware First Interface now uses a compact model projection (`capabilityId`, owner, action, standing, admitted, `canInvokeNow`) while retaining the full summary/evidence/reason/digest carrier for exact inspection. It no longer repeats a parallel legacy affordance list, and admission drift after capability compilation fails closed.",
       "`HarnessAgentRun.explain()` projects validated process-local composition while reporting Provider/Runtime liveness as not probed; durable CLI `explain` projects only reconstructable Journal/CAS facts and leaves unavailable process-local facts unknown.",
       "`HarnessAgentRunToolSurface` is an explicit application-local advanced seam for an exact Runtime-backed Tool catalog/grant pair. It performs pre-state-creation Contract/Binding checks and then reuses the existing Run continuity/Runner; it does not dynamically mutate active Run authority or create a global plugin tree.",
+      "`build_observation_tool_surface()` is the advanced observation-only source-recovery composition. Its dynamic Grant binds exact search scope and readable source path/digest, can bind caller-owned owner/authority/version/transport evidence into the Run, and can project statements for one exact `subjectRef` from an immutable research-owner publication only after the publication's complete-file digest equals the bound `AuthorityVersionRef`. Search results are reduced to admitted object routing rather than used as line-level semantic evidence. Harness verifies and transports this fence but explicitly does not mint owner/currentness truth or grant mutation.",
       "caller-owned Adapter factories keep Provider choice outside Harness policy.",
       "Tool-bearing applications provide a `HarnessRuntimeClient`; the primary CLI does not invent Runtime authority.",
-      "structured completion binds caller-defined result shape into the Run Contract. Policy-absent v1 remains provider-constrained but not locally schema-verified; opt-in `local-json-schema-draft-2020-12-profile-v1` performs fail-closed local structural validation before candidate completion, while semantic/evidence admission remains caller/domain authority.",
+      "structured completion binds caller-defined result shape into the Run Contract. Provider results use a versioned one-MiB-bounded terminal carrier instead of the 8,000-byte human/control summary; legacy summary-encoded results remain readable. Policy-absent v1 remains provider-constrained but not locally schema-verified; opt-in `local-json-schema-draft-2020-12-profile-v1` performs fail-closed local structural validation before candidate completion, while semantic/evidence admission remains caller/domain authority.",
       "the contracted current core does not expose a generic `ProviderToolContinuation`; Provider-specific opaque continuation remains integration-local unless fresh direct pressure earns a bounded Harness surface."
     ],
     "removed": [
-      "The old Host-backed Runner, TaskContract/Assignment persistence, Host compatibility package/dependency/extra, Host CLI namespace, cutover/rollback machinery and Host-coupled execution drivers are not supported current paths and have no compatibility aliases."
+      "The old Host-backed Runner, TaskContract/Assignment persistence, Host compatibility package/dependency/extra, Host CLI namespace, cutover/rollback machinery and Host-coupled execution drivers are not supported current paths and have no compatibility aliases. The unreachable Host-era abandonment/disposition layer is also retired: current independent recovery persists `NativeRunRecoveryAssessment` and derives whether retry/resume is safe, but does not create a separate `NativeRunAbandonment`, `ABANDONED` Run state, or `harness.run-abandoned` event."
     ]
   }
 }
