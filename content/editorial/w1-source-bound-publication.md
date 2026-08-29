@@ -71,7 +71,7 @@ The captured source is accepted only when:
 - `source_role: canonical`;
 - `visibility: public`;
 - the anchor and authority sources are active, canonical, and public; document readiness is captured rather than used as a universal admission gate (W2 correction);
-- the owner worktree is clean.
+- the projection-input set is clean: the project manifest, authority document, and every authority-linked candidate whose bytes or metadata can change public-envelope membership. Dirty paths outside that input set do not invalidate the source review; owner source-integration horizon/currentness remains a separate prerequisite.
 
 The publication synthesis must then name the same project and bind to the exact captured public-source revision and aggregate source digest. Harness still uses STATUS as its preferred anchor, but the binding contract no longer requires every project to have one.
 
