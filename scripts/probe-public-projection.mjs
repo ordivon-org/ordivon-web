@@ -107,7 +107,12 @@ function localMarkdownLinks(repo, authorityDocument, body) {
     const absolute = resolve(authorityDir, target);
     const repoRelative = relative(repo, absolute).replaceAll("\\", "/");
     if (!repoRelative || repoRelative.startsWith("../") || repoRelative === "..") continue;
-    if (!existsSync(absolute) || !statSync(absolute).isFile()) continue;
+    if (!existsSync(absolute)) {
+      throw new Error(`${repo}: authority document references missing local projection input: ${repoRelative}`);
+    }
+    if (!statSync(absolute).isFile()) {
+      throw new Error(`${repo}: authority document references non-file local projection input: ${repoRelative}`);
+    }
     paths.add(repoRelative);
   }
   return [...paths];
@@ -176,9 +181,8 @@ export function probePublicProjection(repoArg) {
   const anchorSource = readFileSync(resolve(repo, anchor.path), "utf8");
   const anchorMeta = frontmatter(anchorSource);
 
-  const publicPaths = [projectRelativePath, ...envelope.documents.map((document) => document.path)];
   const projectionInputPaths = [projectRelativePath, ...envelope.dependencyPaths];
-  const revision = git(repo, ["log", "-1", "--format=%H", "--", ...publicPaths]) || git(repo, ["rev-parse", "HEAD"]);
+  const revision = git(repo, ["log", "-1", "--format=%H", "--", ...projectionInputPaths]) || git(repo, ["rev-parse", "HEAD"]);
   const projectManifestDigest = sha256(projectSource);
   const publicSourceDigest = sha256(JSON.stringify({
     projectManifest: { path: projectRelativePath, digest: projectManifestDigest },
