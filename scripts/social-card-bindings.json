@@ -34,6 +34,12 @@
       "sizeBytes": 180310
     },
     {
+      "slug": "hardware-interface-is-not-the-experiment",
+      "sourceDigest": "sha256:334f6af2b2d4e042dafccd2a8cbb4830c60fbaf061c6354cc0f63d5ffbb442c0",
+      "blobDigest": "sha256:70c452b520c12269393fff4a0fa682f91b4778aed9f60fcff4970347e72a5048",
+      "sizeBytes": 168442
+    },
+    {
       "slug": "history-did-not-prove-us-right",
       "sourceDigest": "sha256:eaff63f475aa981f377602912f81f48238964e228b8926e95a849ef474c420c0",
       "blobDigest": "sha256:71491f707578b712afdb3c90e285a7cb4c1b4a3c8d2a0e80367f1360bd7046e7",
