@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync, spawnSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import process from "node:process";
@@ -33,7 +33,10 @@ try {
   const keyPath = join(temp, "private-key.json");
   const reviewPath = join(temp, "review.html");
   writeFileSync(preparedPath, ballotA);
+  writeFileSync(keyPath, "stale-placeholder\n");
+  chmodSync(keyPath, 0o644);
   execFileSync(process.execPath, [blind, preparedPath, publicPath, keyPath], { encoding: "utf8" });
+  assert.equal(statSync(keyPath).mode & 0o777, 0o600, "private ballot mapping must remain local-reader only even when reusing a permissive path");
   execFileSync(process.execPath, [renderReview, publicPath, reviewPath], { encoding: "utf8" });
   const publicText = readFileSync(publicPath, "utf8");
   const reviewText = readFileSync(reviewPath, "utf8");
