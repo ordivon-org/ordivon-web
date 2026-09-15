@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { open, readFile, writeFile } from "node:fs/promises";
 import process from "node:process";
 
 const [, , ballotPath, publicPath, keyPath] = process.argv;
@@ -48,5 +48,13 @@ const privateKey = {
 };
 
 await writeFile(publicPath, `${JSON.stringify(publicBallot, null, 2)}\n`);
-await writeFile(keyPath, `${JSON.stringify(privateKey, null, 2)}\n`);
+const keyFile = await open(keyPath, "w", 0o600);
+try {
+  // The mapping is not a credential, but exposing it to another local evaluator
+  // invalidates the identity-blinding evidence. Tighten reused paths before writing.
+  await keyFile.chmod(0o600);
+  await keyFile.writeFile(`${JSON.stringify(privateKey, null, 2)}\n`);
+} finally {
+  await keyFile.close();
+}
 console.log(`design_ballot_blinded=passed comparisons=${publicComparisons.length}`);
